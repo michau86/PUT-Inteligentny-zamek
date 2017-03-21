@@ -1,2 +1,2 @@
-# PUT-Inteligentny-zamek
+# PUT Inteligentny zamek
 Projekt PUT Projekt zespołowy
