@@ -1,1 +1,1 @@
-# PUT Inteligentny zamek
+# PUT Inteligentny zamek bluetoth
