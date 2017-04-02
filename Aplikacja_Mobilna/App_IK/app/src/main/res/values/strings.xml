@@ -16,8 +16,6 @@
     </string>
 
 
-
-
     <!-- activity_main  -->
     <string name="icon_SortingAsc">&#xf160;</string>
     <string name="acivity_main_text1">Lista dostępnych zamków do otwarcia</string>
@@ -31,5 +29,18 @@
     <string name="acivity_login_text4">Jeśli nie posiadasz konta zarejestruj się lub przejdź do trybu gościa</string>
     <string name="acivity_login_text5">Zarejestruj się</string>
     <string name="acivity_login_text6">Gość</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main3">Main3Activity</string>
 
 </resources>
