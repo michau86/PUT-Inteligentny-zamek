@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="inteligenty_zamek.app_ik.MainActivity">
+
+    <TextView
+        android:id="@+id/TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="23dp"
+        android:text="@string/acivity_main_text1"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="42dp" />
+
+    <ListView
+        android:id="@+id/listView_Keys"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/searchView"
+        />
+
+    <SearchView
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/TextView"
+        android:layout_toRightOf="@+id/editText_Search"
+        android:layout_toEndOf="@+id/editText_Search"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+
+    <EditText
+        android:id="@+id/editText_Search"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/searchView"
+        android:layout_alignLeft="@+id/TextView"
+        android:layout_alignStart="@+id/TextView"
+        android:layout_marginBottom="7dp"
+        android:background="#304c4c4c"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingLeft="7dp"
+        android:text="@string/activity_main_text2"
+        android:textColor="@color/color_text_ico"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/TextView_sortingIco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/icon_SortingAsc"
+        android:layout_marginRight="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_alignBaseline="@+id/editText_Search"
+        android:layout_alignBottom="@+id/editText_Search"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/textView_sorting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView_sortingIco"
+        android:layout_alignBottom="@+id/TextView_sortingIco"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/TextView_sortingIco"
+        android:layout_toStartOf="@+id/TextView_sortingIco"
+        android:text="@string/activity_main_text3"
+        android:textColor="@color/color_text_ico"
+        />
+
+
+</RelativeLayout>
