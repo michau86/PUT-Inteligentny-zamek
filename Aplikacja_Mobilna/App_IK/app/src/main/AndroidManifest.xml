@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Admin_PanelActivity">
+        <activity android:name=".SetingsActivity">
 
             <!-- <activity android:name=".LoginActivity"> -->
 
@@ -33,6 +33,10 @@
         <activity android:name=".RegisterActivity"></activity>
 
         <activity android:name=".Admin_PanelActivity"></activity>
+
+        <activity android:name=".Managment_certyficationActivity"></activity>
+
+        <activity android:name=".SetingsActivity"></activity>
          -->
     </application>
 

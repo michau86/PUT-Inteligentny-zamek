@@ -5,5 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="color_text_ico">#40ffffff</color>
     <color name="color_background_input">#304c4c4c</color>
-
+    <color name="color_border_list">#494949</color>
+    <color name="color_background_list">#3C3C3C</color>
+    <color name="color_primary">#171717</color>
+    <color name="color_text_dim">#6c6c6c</color>
 </resources>

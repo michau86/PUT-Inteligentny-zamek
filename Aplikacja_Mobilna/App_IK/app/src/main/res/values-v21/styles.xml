@@ -1,0 +1,11 @@
+<resources>
+
+    <!-- Base application theme. -->
+
+    <style name="AppBaseTheme" parent="android:Theme.DeviceDefault"/>
+    <style name="AppTheme" parent="AppBaseTheme" >
+        <!--  kolor drugi an górze  -->
+        <item name="android:colorPrimary">@color/color_primary</item>
+    </style>
+
+</resources>

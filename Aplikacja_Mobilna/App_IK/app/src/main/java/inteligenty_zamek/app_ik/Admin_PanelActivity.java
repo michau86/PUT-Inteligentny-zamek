@@ -136,7 +136,7 @@ public class Admin_PanelActivity extends Activity
 
             ListView resultsListView = (ListView) rootView.findViewById(R.id.ListView_Admin_Panel);
 
-            String list_item[] = {"Historia Zamków", "Akcje", "Ustawienia"};
+            String list_item[] = {"Historia użycia Zamków", "Generowanie nowego klucza", "Zarządzanie kluczami użytkowników", "Lista oczekującyh użytkowników"};
 
             ArrayList<String> list = new ArrayList<String>();
             list.addAll( Arrays.asList(list_item) );
