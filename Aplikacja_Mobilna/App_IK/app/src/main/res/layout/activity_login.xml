@@ -24,12 +24,14 @@
         android:id="@+id/EditText_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView_Login"
+        android:layout_alignStart="@+id/TextView_Login"
+        android:layout_below="@+id/TextView_Login"
         android:layout_marginTop="7dp"
+        android:background="@color/color_background_input"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_below="@+id/TextView_Login"
-        android:layout_alignLeft="@+id/TextView_Login"
-        android:layout_alignStart="@+id/TextView_Login" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/TextView_password"
@@ -45,12 +47,14 @@
         android:id="@+id/EditText_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView_password"
+        android:layout_alignStart="@+id/TextView_password"
+        android:layout_below="@+id/TextView_password"
+        android:layout_marginTop="9dp"
+        android:background="@color/color_background_input"
         android:ems="10"
         android:inputType="textPassword"
-        android:layout_marginTop="9dp"
-        android:layout_below="@+id/TextView_password"
-        android:layout_alignLeft="@+id/TextView_password"
-        android:layout_alignStart="@+id/TextView_password" />
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/button_login"
