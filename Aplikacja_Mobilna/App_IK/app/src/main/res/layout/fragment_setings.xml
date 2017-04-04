@@ -13,47 +13,21 @@
         android:text="Ustawienia"
         android:textSize="25sp" />
 
-    <TextView
-        android:id="@+id/textView11"
+    <View
+        android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:text="Imie" />
-
-    <EditText
-        android:id="@+id/editText_Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Jan"
-        android:textColor="@color/color_text_dim" />
+        android:layout_height="1dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/color_border_list" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingLeft="20dp"
-        android:text="Nazwisko" />
-
-    <EditText
-        android:id="@+id/editText_Surname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Kowalski"
-        android:textColor="@color/color_text_dim" />
-
-    <Button
-        android:id="@+id/button_data_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:text="zmień" />
+        android:text="Zmień hasło"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -65,9 +39,11 @@
 
     <EditText
         android:id="@+id/editText3"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/color_background_input"
         android:ems="10"
         android:inputType="textPassword" />
 
@@ -81,9 +57,11 @@
 
     <EditText
         android:id="@+id/editText6"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/color_background_input"
         android:ems="10"
         android:inputType="textPassword" />
 
@@ -92,5 +70,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
         android:text="zmień" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_border_list" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:text="sparuj telefon z zamkiem" />
 </LinearLayout>

@@ -128,7 +128,7 @@ public class Managment_certyficationActivity extends Activity
 
             ListView resultsListView = (ListView) rootView.findViewById(R.id.ListView_Managment_Certyfivation);
 
-            String list_item[] = {"Dodaj Certyfikat", "Lista twoich certyfikatów", "poproś o certyfikat", "certyfikat dla gośćia"};
+            String list_item[] = {"Dodaj Certyfikat", "Lista twoich certyfikatów", "wnioskuj o certyfikat", "certyfikat dla gośćia"};
 
             ArrayList<String> list = new ArrayList<String>();
             list.addAll( Arrays.asList(list_item) );

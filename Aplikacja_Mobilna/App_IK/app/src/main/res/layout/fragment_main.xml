@@ -14,7 +14,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="23dp"
         android:text="@string/acivity_main_text1"
         android:textSize="24sp"
@@ -24,11 +24,10 @@
     <ListView
         android:id="@+id/listView_Keys"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/searchView"
-        />
+        android:layout_below="@+id/searchView" />
 
     <SearchView
         android:layout_width="20dp"

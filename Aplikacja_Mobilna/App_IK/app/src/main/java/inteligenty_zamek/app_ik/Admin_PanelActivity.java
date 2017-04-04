@@ -134,16 +134,31 @@ public class Admin_PanelActivity extends Activity
             View rootView = inflater.inflate(R.layout.fragment_admin_panel, container, false);
 
 
-            ListView resultsListView = (ListView) rootView.findViewById(R.id.ListView_Admin_Panel);
+            ListView resultsListView = (ListView) rootView.findViewById(R.id.listView_Keys);
 
-            String list_item[] = {"Historia użycia Zamków", "Generowanie nowego klucza", "Zarządzanie kluczami użytkowników", "Lista oczekującyh użytkowników"};
+            //hasmap przechowujący elemety do wyświetlenia
+            HashMap<String, String> Keys = new HashMap<>();
+            Keys.put("Zamek 1", "piwnica");
+            Keys.put("Zamek 2", "parter");
 
-            ArrayList<String> list = new ArrayList<String>();
-            list.addAll( Arrays.asList(list_item) );
-            ArrayAdapter<String> adapter ;
+            //stworzenie adaptera
+            List<HashMap<String, String>> listItems = new ArrayList<>();
+            SimpleAdapter adapter = new SimpleAdapter(getActivity(), listItems, R.layout.main_key_list,
+                    new String[]{"First Line", "Second Line"},
+                    new int[]{R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey});
 
+            //iterator elementow (przepisanie z hashmap do adaptera[listitems] elementow)
+            Iterator it = Keys.entrySet().iterator();
+            while (it.hasNext())
+            {
+                HashMap<String, String> resultsMap = new HashMap<>();
+                Map.Entry pair = (Map.Entry)it.next();
+                resultsMap.put("First Line", pair.getKey().toString());
+                resultsMap.put("Second Line", pair.getValue().toString());
+                listItems.add(resultsMap);
+            }
 
-            adapter = new ArrayAdapter<String>(getActivity(), R.layout.admin_panel_key_list, list);
+            resultsListView.setAdapter(adapter);
 
             resultsListView.setAdapter(adapter);
 
