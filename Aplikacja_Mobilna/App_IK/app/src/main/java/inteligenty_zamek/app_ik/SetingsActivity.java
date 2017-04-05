@@ -73,7 +73,7 @@ public class SetingsActivity extends Activity
 
 
     }
-    //funkcja odpowiedzialna za wpisanie zawartosci do drawera
+    //funkcja odpowiedzialna za wpisanie ratosci do drawera
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:

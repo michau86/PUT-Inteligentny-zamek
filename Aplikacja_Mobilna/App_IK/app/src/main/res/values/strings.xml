@@ -34,10 +34,10 @@
     <!-- activity_register   -->
     <string name="acivity_register_text1">Login</string>
     <string name="acivity_register_text2">Hasło</string>
-    <string name="acivity_register_text3">Imię</string>
+    <string name="acivity_register_text3">Imie</string>
     <string name="acivity_register_text4">Nazwisko</string>
     <string name="acivity_register_text5">Rejestracja</string>
-    <string name="acivity_register_text6">Zarejestruj się</string>
+    <string name="acivity_register_text6">Zarejestruj</string>
 
 
     <!-- drawer  -->
