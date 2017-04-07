@@ -1,0 +1,361 @@
+\documentclass[12pt,oneside,a4paper]{report}
+\usepackage{polski}
+\usepackage[cp1250]{inputenc}
+\usepackage{mdwlist}
+\usepackage{enumitem}
+\usepackage{geometry}
+ \geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=30mm,
+	right=30mm,
+	top=20mm,
+}
+\usepackage{graphicx}
+\usepackage{sidecap}
+\usepackage{wrapfig}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref} 
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\usepackage{setspace}
+\usepackage{blkarray}
+\usepackage{longtable}
+\usepackage{lipsum}
+\singlespacing 
+\setlength{\parindent}{25pt}
+\setlength{\parskip}{5pt}
+\pagestyle{plain}
+\usepackage{pdflscape}
+\frenchspacing
+\widowpenalty=10000
+\clubpenalty=10000
+\usepackage[tableposition=top]{caption}
+\makeatletter
+\newcommand{\linia}{\rule{\linewidth}{0.4mm}}
+\renewcommand{\maketitle}{\begin{titlepage}
+		\vspace*{-3cm}
+		\begin{center}\small
+			Politechnika Poznañska\\
+			Wydzia³ Elektryczny\\
+			Instytut Automatyki i In¿ynierii Informatycznej
+		\end{center}
+		\vspace{5cm}
+		\noindent\linia
+		\begin{center}
+			\LARGE \textsc{Projekt Zespo³owy}\\
+			\Large {Inteligentny zamek}
+		\end{center}
+		\linia
+		\vspace{1cm}
+		\begin{flushright}
+			\begin{minipage}{7cm}
+				\textit{\small Autorzy:}\\
+				\normalsize \textsc{Maciej Marciniak}\\
+				\normalsize nr indeksu: 121996\\
+				\normalsize e mail: \\
+				maciej.r.marcniak@student.put.poznan.pl\\\\
+				\normalsize \textsc{Damian Filipowicz}\\
+				\normalsize nr indeksu: 122002\\
+				\normalsize e mail: \\
+				Damian.Filipowicz@student.put.poznan.pl \par
+			\end{minipage}
+		\end{flushright}
+		\vspace*{\stretch{6}}
+		\begin{center}
+			\@date
+		\end{center}
+	\end{titlepage}%
+}
+\makeatother
+\usepackage[none]{hyphenat}
+\renewcommand{\figurename}{Diagram}
+\begin{document}
+	\sloppy
+	\maketitle
+	\newpage 
+	\tableofcontents
+	\newpage 
+	\chapter*{Wstêp}
+	Inteligentny zamek powinien byæ systemem, który ma na celu zast¹pienie starego modelu zabezpieczeñ ró¿nego rodzaju drzwi i skrytek w którym u¿ywano tradycyjnych kluczy, czy szyfrów na klucze cyfrowe, którymi bêdzie mo¿na pos³ugiwaæ siê przy pomocy smartfonów z funkcj¹ bluetooth. Celem tego rodzaju usprawnieñ bêdzie wyeliminowanie z ¿ycia codziennego sytuacji w których u¿ytkownik musi posiadaæ pêki kluczy. Zamiast tego dziêki temu systemowi mo¿e wszystkie klucze przechowywaæ w jednym miejscu (smartfonie).
+	
+	System sk³adaæ siê bêdzie z:
+	\noindent \begin{itemize*}
+		\item urz¹dzenia steruj¹cego:
+		\begin{itemize*}
+			\item mikrokomputera Raspberry Pi 3,
+			\item serwomechanizmu / elektronicznego zamka,
+		\end{itemize*}
+		\item aplikacji mobilnej,
+		\item aplikacji serwerowej obs³uguj¹cej bazê danych.
+	\end{itemize*}
+	
+	System bêdzie spe³nia³  wymagania dotycz¹ce bezpieczeñstwa poprzez zastosowanie szeregu funkcji kryptograficznych przy procesie uwierzytelniania jak i przy generowaniu kluczy takich jak np. funkcje skrótu, SSH, algorytmów szyfrowania asymetrycznego, systemu zarz¹dzaniem kluczem publicznym (podpisu cyfrowego).
+	
+	U¿ywane klucze bêd¹ posiada³y podpis cyfrowy, który jednoznacznie bêdzie definiowa³ w³aœciciela oraz stempel czasowy do okreœlania wa¿noœci. Klucze bêd¹ mog³y mieæ w zale¿noœci od przeznaczenia ró¿ne okresy przedawnienia, np. w³aœciciel mieszkaj¹cy  w danym domu posiadaæ bêdzie klucz o d³ugim terminie wa¿noœci, a goœcie klucz jednorazowy, b¹dŸ kilku godzinny bez mo¿liwoœci odnowienia. Wszelkie dane dostêpowe bêd¹ generowane i dystrybuowane na serwerze systemu, z mo¿liwoœci¹ zdalnej proœby o utworzenie kluczy tylko przez uprawnione przez administratora osoby.
+	
+	\newpage Ogólny schemat systemu znajduje siê na Diagramie \ref{diagram:diagram wdro¿eñ}.
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=16cm]{Obrazy/Schemat_ogolny_inteligentnego_zamka.png}
+		\caption{Diagram wdro¿eñ}
+		\label{diagram:diagram wdro¿eñ}
+	\end{figure}
+	\chapter{Aktorzy systemu}
+	W systemie Inteligentnego zamka wyró¿niamy nastêpuj¹cych aktorów:
+	\begin{itemize*}
+		\item \textbf{RaspberryPi} - jest to mikrokomputer Raspberry Pi 3 steruj¹cy zamkiem,
+		\item \textbf{serwomechanizm/elektrozamek} - jest to urz¹dzenie s³u¿¹ce \linebreak do odblokowania/zablokowania zamka,
+		\item \textbf{urz¹dzenie mobilne} - jest to urz¹dzenie posiadaj¹ce system operacyjny, \linebreak z funkcj¹ bluetooth oraz posiadaj¹ce mo¿liwoœæ instalacji aplikacji,
+		\item \textbf{aplikacja serwerowa} - jest to program znajduj¹cy siê na serwerze z dostêpem globalnym poprzez Internet,
+		\item \textbf{u¿ytkownik} - jest to osoba fizyczna operuj¹ca urz¹dzeniem mobilnym, chc¹ca uzyskaæ dostêp do zamka.
+	\end{itemize*}
+	U¿ytkowników dodatkowo dzieli siê na grupy ze wzglêdu na uprawnienia w systemie:
+	\begin{itemize*}
+		\item \textbf{goœæ} - posiada najni¿sze uprawniania, mo¿e jedynie posiadaæ klucze o krótkim okresie wa¿noœci, nie mo¿e generowaæ nowych kluczy ani udostêpniaæ ich,
+		\item \textbf{u¿ytkownik zalogowany} - posiada uprawnienia goœcia, dodatkowo przechowywaæ mo¿e klucze o sta³ym dostêpie do zamka (np. dostêp przez ca³y dzieñ),
+		\item \textbf{administrator} - mo¿e wykonywaæ wszystkie czynnoœci zwi¹zane \linebreak z uprawnieniami goœcia i u¿ytkownika zalogowanego, dodatkowo posiada dostêp do statystyk historii zamka, decyduje o rejestracji u¿ytkowników zalogowanych.
+	\end{itemize*}
+	\chapter{Opis sk³adowych systemu}
+	\section{Urz¹dzenie steruj¹ce}
+	Zadaniem urz¹dzenia steruj¹cego, w którego sk³ad wchodziæ bêd¹ Raspberry Pi 3 oraz serwomechanizm/zamka elektronicznego jest weryfikacja klucza cyfrowego przesy³anego przez urz¹dzenie mobilne oraz otwieranie zamka przy pozytywnym wyniku weryfikacji.
+	
+	Oprogramowanie mikrokomputera obejmuje system Linux raspbian-jessie oraz szereg podprogramów napisanych w jêzyku Python. Skrypty programów ³¹cz¹ siê do serwera w celu pobrania informacji o poprawnoœci i daty wa¿noœci certyfikatu dostêpu.Jeœli dane bêd¹ poprawne to zostaje wysterowany serwomechanizm, który otwiera zamek, w przeciwnym przypadku u¿ytkownik zostanie poinformowany o odmowie dostêpu, a nieudana próba dostania siê do systemu zarejestrowana zostanie w bazie danych wraz z danymi w³aœciciela klucza.  Funkcjonalnoœæ urz¹dzenia steruj¹cego przedstawiona zosta³a w Tabeli \ref{tab:wymagania_urz¹dzenie_steruj¹ce}.
+	\begin{longtable}[!ht]{|p{3.5cm}|p{7.5cm}|p{3.7cm}|} 
+		\caption{Tabela wymagañ funkcjonalnych urz¹dzenia steruj¹cego}
+		\label{tab:wymagania_urz¹dzenie_steruj¹ce}\\
+		\hline	
+		Funkcja & Opis & Aktorzy \\	\hline
+				Parowanie  urz¹dzeñ  bluetooth & Parowanie bluetooth urz¹dzenia mobilnego z Raspberry Pi & RaspberryPi,  Urz¹dzenie mobilne \\ \hline
+				Nas³uchiwanie po³¹czenia bluetooth & Oczekuje na przychodz¹ce po³¹czenia bluetooth & RaspberryPi \\ \hline
+				Nawi¹zanie po³¹czenia bluetooth & Ka¿da próba nawi¹zania po³¹czenia bluetooth zostanie zaakceptowana & RaspberryPi, Urz¹dzenie mobilne \\ \hline
+				Pobranie pliku z kluczem cyfrowym przez bluetooth & Przesy³anie pliku z kluczem dostêpowym z urz¹dzenia mobilnego do Raspberry Pi poprzez bluetooth & RaspberryPi, Urz¹dzenie mobilne, Goœæ \\ \hline
+				Weryfikacja poprawnoœci klucza cyfrowego & Wys³anie zapytania w jêzyku SQL do bazy danych & RaspberryPi, 
+				Aplikacja serwerowa \\ \hline
+				Otwarcie zamka & Otwarcie zamka poprzez wys³anie sygna³u PWM do serwomechanizmu lub zezwolenie zamka elektronicznego & RaspberryPi, Serwomechanizm/ elektrozamek \\ \hline
+				Zamkniêcie zamka & Zamkniêcie zamka poprzez wys³anie sygna³u PWM do serwomechanizmu lub zezwolenie zamka elektronicznego & RaspberryPi, Serwomechanizm/ elektrozamek \\ \hline
+				Rejestracja próby dostêpu & Zapis ka¿dej pozytywnej i negatywnej próby weryfikacji klucza cyfrowego w tabeli bazy danych & RaspberryPi \\ \hline
+				Deszyfracja certyfikatu u¿ytkownika & Deszyfracja pliku z certyfikatem dostêpowym u¿ywaj¹c klucza publicznego u¿ytkownika & RaspberryPi \\ \hline
+				Pobranie awaryjnego klucza dostêpu & Umo¿liwia wczytanie specjalnego has³a 512-bitowego do Raspberry Pi, który otwiera zamek bez koniecznoœci dostêpu do Internetu & RaspberryPi, Aplikacja mobilna,	Administrator \\ \hline
+		\end{longtable}
+	
+	\textbf{Wymagania pozafunkcjonalne:}
+	\begin{itemize*}
+		\item jednoczeœnie mo¿e byæ weryfikowany tylko jeden u¿ytkownik,
+		\item zasiêg po³¹czenia bluetooth to maksymalnie 15m,
+		\item niezbêdny dostêp do Internetu do po³¹czenia z aplikacj¹ serwerow¹ przy weryfikacji kluczy,
+		\item narzut czasowy zwi¹zany z weryfikacj¹ poprawnoœci klucza cyfrowego zale¿ny od parametrów serwera i sieci,
+		\item niezbêdny ci¹g³y dostêp do zasilania 5V o pr¹dzie co najmniej 2.5A,
+		\item ograniczenia pr¹dowe dla serwomechanizmu lub zamka elektronicznego,
+		\item narzut czasowy zwi¹zany z uruchomieniem urz¹dzenia - maksymalnie 20 sekund.
+	\end{itemize*}
+\newpage
+	\section{Aplikacja mobilna}
+	Aplikacja mobilna w jêzyku Java na platformê Android ma na celu przechowywanie  w pamiêci smartfona klucze cyfrowe u¿ytkownika oraz mo¿liwoœæ komunikacji z cz³owiek-zamek-serwer. Program posiadaæ powinien interfejs graficzny, dziêki któremu bêdzie mo¿na wybraæ, który zamek chce siê otworzyæ w danej chwili. Klucz cyfrowy przesy³any bêdzie bezprzewodowo do komputera steruj¹cego zamkiem za pomoc¹ sieci bluetooth. Aplikacja powinna posiadaæ równie¿ funkcjê generowania kluczy tymczasowych, które mo¿na udostêpniaæ osobom postronnym z ustalonym okresem wa¿noœci (jednorazowy, godzinny, od poniedzia³ku do pi¹tku w godzinach od 8 do 16 itp.). W tym celu zostaje wys³ana proœba do serwera poprzez Internet o wygenerowanie klucza o okreœlonych parametrach. Funkcjonalnoœæ aplikacja przedstawiona zosta³a w Tabeli \ref{tab:wymagania_aplikacja_mobilna}.
+	
+	\begin{longtable}[!ht]{|p{3.5cm}|p{7cm}|p{4.4cm}|} 
+		\caption{Tabela wymagañ funkcjonalnych aplikacji mobilnej}
+		\label{tab:wymagania_aplikacja_mobilna}\\
+		\hline
+			Funkcja & Opis & Aktorzy \\	\hline
+			Parowanie  urz¹dzeñ  bluetooth & Parowanie bluetooth urz¹dzenia mobilnego z Raspberry Pi &  Urz¹dzenie mobilne, RaspberryPi  \\ \hline
+			Nawi¹zywanie po³¹czenia bluetooth & Nawi¹zanie po³¹czenia bluetooth z konkretnym zamkiem identyfikuj¹c go jednoznacznie adresem MAC & Urz¹dzenie mobilne, RaspberryPi \\ \hline
+			Przes³anie pliku klucza cyfrowego & Przes³anie pliku zawieraj¹cego klucz cyfrowy do urz¹dzenia steruj¹cego zamkiem. Komputer steruj¹cy odsy³a wynik weryfikacji (pozytywny lub negatywny) & Urz¹dzenie mobilne, RaspberryPi \\ \hline
+			Utworzenie  klucza cyfrowego dla goœci & Utworzenie specjalnego klucza cyfrowego o ograniczonym dostêpie oraz krótkim terminie wa¿noœci do u¿ytku dla goœci. Ka¿de ¿¹danie generowania klucza wymaga wpisania klucza bezpieczeñstwa & Urz¹dzenie mobilne, Aplikacja serwerowa, U¿ytkownik zalogowany \\ \hline
+			Udostêpnianie klucza cyfrowego dla goœci & Udostêpnienie specjalnego klucza cyfrowego o ograniczonym dostêpie oraz krótkim terminie wa¿noœci poprzez np. wiadomoœæ MMS, bluetooth & Urz¹dzenie mobilne, U¿ytkownik zalogowany \\ \hline
+			Wczytanie klucza cyfrowego z pliku & Umo¿liwia wczytanie do listy dostêpnych zamków pliku klucza cyfrowego & Urz¹dzenie mobilne,
+			Goœæ \\ \hline
+			Pobranie z serwera nowego klucza cyfrowego & Umo¿liwia pobranie z serwera klucza cyfrowego i dodanie go do listy dostêpnych zamków & Urz¹dzenie mobilne, Aplikacja serwerowa, U¿ytkownik zalogowany \\ \hline
+			Proœba o przed³u¿enie wa¿noœci klucza & W celu przed³u¿enia wa¿noœci certyfikatu zostaje wys³ana proœba do administratora systemu & Urz¹dzenie mobilne, Aplikacja serwerowa, U¿ytkownik zalogowany \\ \hline
+			Listowanie dostêpnych kluczy & Wyœwietlenie na ekranie telefonu listy dostêpnych kluczy do danych drzwi & Urz¹dzenie mobilne,
+			Goœæ \\ \hline
+			Modyfikacja danych kluczy cyfrowych & Modyfikacja nazw u¿ytkownika, zamków. Pozwala spersonalizowaæ opis zamków & Urz¹dzenie mobilne, Aplikacja serwerowa, U¿ytkownik zalogowany \\ \hline
+			Szyfrowanie pliku klucza cyfrowego & Szyfrowanie algorytmem RSA klucza cyfrowego z wykorzystaniem klucza prywatnego & Urz¹dzenie mobilne \\ \hline
+			Przechowywanie kluczy cyfrowych & Przechowywanie kluczy cyfrowych (szyfrowanych) w pamiêci telefonu & Urz¹dzenie mobilne \\ \hline
+			Podgl¹d do historii akcji zamków & Umo¿liwia przegl¹danie historii akcji zamka, tzn. daty otwarcia przez kogo, daty zamkniêcia & Urz¹dzenie mobilne, Aplikacja serwerowa, Administrator \\ \hline
+			Autoryzacja u¿ytkownika do aplikacji & Logowanie u¿ytkownika poprzez podanie has³a i loginu do odblokowania aplikacji & Urz¹dzenie mobilne, Aplikacja serwerowa, U¿ytkownik zalogowany \\ \hline
+			Rejestracja u¿ytkownika & Za³o¿enie nowego konta u¿ytkownika w systemie & Urz¹dzenie mobilne, Aplikacja serwerowa, Goœæ \\ \hline
+			Akceptacja przez administratora nowego u¿ytkownika & Administrator systemu mo¿e zaakceptowaæ i nadaæ uprawniania u¿ytkownika & Urz¹dzenie mobilne, Aplikacja serwerowa, Administrator \\ \hline
+			Zarz¹dzanie wa¿noœci¹ certyfikatów dostêpu & Dodawanie, usuwanie wa¿noœci certyfikatów dostêpowych. Usuniêcie praw u¿ytkownika nie skutkuje uniewa¿nieniem wygenerowanych przez niego certyfikatów & Urz¹dzenie mobilne, Aplikacja serwerowa, Administrator \\ \hline
+			Przes³anie awaryjnego klucza dostêpu & Umo¿liwia wczytanie specjalnego has³a 512-bitowego do Raspberry Pi, który otwiera zamek bez koniecznoœci dostêpu do Internetu & Urz¹dzenie mobilne, RaspberryPi, Administrator \\ \hline
+			Tryb otwierania zamka & Komunikacja z Raspberry mo¿e odbywaæ siê automatycznie lub na ¿¹danie wyzwalane przyciskiem otwierania zamka z poziomu aplikacji & Urz¹dzenie mobilne, RaspberryPi, U¿ytkownik zalogowany \\ \hline
+	\end{longtable}
+	
+	\textbf{Wymagania pozafunkcjonalne:}
+	\begin{itemize*}
+	\item narzut czasowy zwi¹zany z procesem szyfrowania kluczy cyfrowych (zale¿ny od parametrów urz¹dzenia mobilnego),
+	\item zabezpieczenie transmisji danych poprzez szyfrowanie przy pomocy asymetrycznych kluczy cyfrowych,
+	\item wymagany dostêp do Internetu do zarz¹dzania kluczami, czy logowania, 
+	\item przyznanie uprawnieñ aplikacji do modu³u bluetooth, wysy³ania wiadomoœci MMS, Internetu,
+	\item jêzyk aplikacji Polski,
+	\item wersja androida minimalna 4.4, docelowa 5.0.
+	\end{itemize*}
+	\section{Aplikacja serwerowa obs³uguj¹cego bazê danych}
+	Rol¹ serwera w tym systemie bêdzie przechowywanie danych dostêpowych w bazie danych MySQL oraz generowanie nowych kluczy cyfrowych poprzez program w jêzyku Python. Aplikacja serwerowa oparta powinna byæ o technologiê Python oraz serwera http Nginx. Serwer postawiony powinien byæ na odrêbnym urz¹dzeniu od instalacji zamka, lecz dopuszcza siê ze wzglêdów ekonomicznych równie¿ postawienie serwera na wybranym (jeœli w systemie znajduje siê wiele zamków) urz¹dzeniu Raspberry Pi. Funkcjonalnoœæ aplikacji serwerowej i bazy danych przedstawiona zosta³a w Tabeli \ref{tab:wymagania_serwer_baza_danych}.
+	
+	\begin{longtable}[!ht]{|p{3.5cm}|p{7.5cm}|p{3.7cm}|} 
+		\caption{Tabela wymagañ funkcjonalnych aplikacji serwerowej obs³uguj¹cej bazê danych}
+		\label{tab:wymagania_serwer_baza_danych} \\
+		\hline
+		Funkcja & Opis & Aktorzy \\	\hline
+		Utworzenie klucza cyfrowego na ¿¹danie & Utworzenie pseudolosowego 128-bitowego klucza cyfrowego & Aplikacja serwerowa,
+		U¿ytkownik zalogowany \\ \hline
+		Kontrola uprawnieñ u¿ytkownika & Weryfikacja uprawnieñ u¿ytkownika do wykonania danej czynnoœci & Aplikacja serwerowa \\ \hline
+		Modyfikowanie wpisów w bazie danych & Poœredniczenie w modyfikacji danych zawartych w bazie danych & Aplikacja serwerowa \\ \hline
+		Przekazywanie wpisów z bazy danych & Poœredniczenie w przekazywaniu danych pobieranych z bazy danych & Aplikacja serwerowa \\ \hline
+		Rejestrowanie ¿¹dañ dostêpu & Zapisywanie danych u¿ytkownika ubiegaj¹cego siê o dostêp do serwera & Aplikacja serwerowa \\ \hline
+		Pobranie historii dostêpu zamka & Pobranie statystyk zwi¹zanych z histori¹ dostêpu do zamka & Aplikacja serwerowa, Administrator \\ \hline
+		Zablokowanie dostêpu u¿ytkownika & Zablokowanie certyfikatu dostêpowego, np. w przypadku kradzie¿y telefonu & Aplikacja serwerowa, Administrator \\ \hline
+	\end{longtable}
+
+	\textbf{Wymagania niefunkcjonalne:}
+	\begin{itemize*}
+	\item ograniczenie pamiêci dostêpnej dla bazy danych (32Gb - pamiêæ niezbêdna dla systemu operacyjnego i oprogramowania),
+	\item ograniczenie liczby obs³ugiwanych zamków zale¿na od wielkoœci dostêpnej pamiêci i liczby u¿ytkowników,
+	\item narzut czasowy zwi¹zany z generowaniem nowych kluczy,
+	\item ograniczenie liczby u¿ytkowników wykonuj¹cych jednoczeœnie ¿¹dania do serwera - 9 urz¹dzeñ,
+	\item wymagany system operacyjny Linux dedykowany pod Raspberry,
+	\item dostêp do Internetu do po³¹czenia z zamkami i urz¹dzeniami mobilnymi,
+	\item zabezpieczenie bazy danych has³em generowanym losowo.
+	\end{itemize*}
+	
+	
+	\chapter{Diagram przypadków u¿ycia}
+	Funkcjonalnoœæ systemu przedstawiono na Diagramie \ref{diagram:diagram przypadków_u¿ycia} przypadków u¿ycia.
+	
+	\begin{landscape}
+		\begin{figure}[!h]
+		\centering
+		\includegraphics[width=26cm]{Obrazy/Diagram_przypadkow_uzycia.png}
+		\caption{Diagram przypadków u¿ycia}
+		\label{diagram:diagram przypadków_u¿ycia}
+	\end{figure}
+	\end{landscape}
+
+	\chapter{Projekt bazy danych}
+	Baza danych przechowywaæ bêdzie sk³adaæ siê z piêciu tabel:
+	\begin{itemize*}
+	\item \textbf{USERS} - przechowuje dane u¿ytkowników oraz dane niezbêdne przy weryfikacji logowania,
+	\item \textbf{LOCKS} - zawiera informacje na temat dostêpnych w systemie zamków,
+	\item \textbf{ACCESS\_TO\_LOCKS} - archiwizuje próby u¿ycia certyfikatów,
+	\item \textbf{TYPES\_ACCESS} - przechowuje zdefiniowane typy uprawnieñ dostêpowych do zamków,
+	\item \textbf{LOCKS\_KEYS} - zawiera wszystkie klucze dostêpowe u¿ytkowników. 
+	\end{itemize*}
+	Wiersz tabeli USERS zawieraæ musi:
+	\begin{itemize*}
+	\item \textbf{ID\_USER} - unikalny identyfikator (klucz g³ówny) u¿ytkownika sk³adaj¹cy siê z 10 cyfr,
+	\item \textbf{LOGIN} - unikalna nazwa u¿ytkownika niezbêdna podczas logowania, zawieraj¹ca nie wiêcej ni¿ 255 znaków,
+	\item \textbf{PASSWORD} - has³o zapisane w postaci skrótu, potrzebne do autoryzacji dostêpu u¿ytkownikowi,
+	\item \textbf{NAME} - imiê u¿ytkownika,
+	\item \textbf{SURNAME} - nazwisko u¿ytkownika,
+	\item \textbf{IS\_ADMIN} - pole boolowskie wskazuj¹ce czy dany u¿ytkownik jest administratorem czy nie.
+	\end{itemize*}
+	Zamek opisywany jest poprzez kolumny:
+	\begin{itemize*}
+	\item \textbf{ID\_LOCK} - unikalny identyfikator (klucz g³ówny) zamka sk³adaj¹cy siê z 10 cyfr,
+	\item \textbf{NAME} - unikalna nazwa zamka,
+	\item \textbf{LOCALIZATION} - nieobowi¹zkowe pole opisuj¹ce fizyczne po³o¿enie zamka.
+	\end{itemize*}
+\newpage
+	Typy uprawnieñ posiadaæ bêdê takie parametry jak:
+	\begin{itemize*}
+	\item \textbf{ID\_TYPE} - unikalny identyfikator (klucz g³ówny) typu dostêpu sk³adaj¹cy siê z 10 cyfr,
+	\item \textbf{NAME} - unikalna nazwa typu dostêpu,
+	\item \textbf{DAYS} - binarny ci¹g oznaczaj¹cym których dni dotyczy dostêp, najstarszy bit oznacza poniedzia³ek, zaœ najm³odszy niedzielê, np. 1011000 oznacza dostêp w  poniedzia³ek, œrodê i czwartek, w pozosta³e dni nie,
+	\item \textbf{FROM\_HOURS} - godzina od której obowi¹zuje dostêp,
+	\item \textbf{TO\_HOURS} - godzina do której obowi¹zuje dostêp,
+	\item \textbf{DESCRIPTION} - nieobowi¹zkowy pole charakteryzuj¹ce typ dostêpu.
+	\end{itemize*}
+	Klucz dostêpowy sk³ada siê z:
+	\begin{itemize*}
+	\item \textbf{ID\_KEY} - unikalny identyfikator (klucz g³ówny) klucza dostêpowego sk³adaj¹cy siê z 10 cyfr,
+	\item \textbf{ID\_LOCK} - klucz obcy do tabeli tabeli przechowuj¹cej dostêpne zamki,
+	\item \textbf{ID\_USER} - klucz obcy do tabeli tabeli przechowuj¹cej dane u¿ytkownika, jest to pole s³u¿¹ce do okreœlenia kto utworzy³ klucz dostêpu,
+	\item \textbf{ACCESS\_TYPE} - klucz obcy do tabeli tabeli przechowuj¹cej typy dostêpu, jest to pole s³u¿¹ce do okreœlenia jakiego rodzaju dostêp ma klucz dostêpowy,
+	\item \textbf{KEY} - unikalna wartoœæ certyfikatu dostêpu,
+	\item \textbf{FROM} - data od której obowi¹zuje klucz,
+	\item \textbf{TO} - data do której obowi¹zuje klucz,
+	\item \textbf{ISACTUAL} - data wygaœniêcia klucza, jeœli równa TO, oznacza to ¿e klucz utraci³ wa¿noœæ z powodu czasu, jeœli ró¿na oznacza, to ¿e zablokowano z innego powodu wa¿noœæ,
+	\item \textbf{NAME} - imiê osoby, której dotyczy certyfikat,
+	\item \textbf{SURNAME} - nazwisko osoby, której dotyczy certyfikat.
+	\end{itemize*}
+	W tabeli archiwizuj¹cej akcje na zamku znajduj¹ siê takie dane jak:
+	\begin{itemize*}
+	\item \textbf{ID} - unikalny identyfikator (klucz g³ówny) akcji wykonanej na certyfikacie sk³adaj¹cy siê z 10 cyfr,
+	\item \textbf{ID\_KEY} - klucz obcy do tabeli tabeli przechowuj¹cej klucze dostêpowe, dziêki tej informacji mo¿emy uzyskaæ dane o zamku który zosta³ otwierany jak równie¿ do kogo nale¿a³ klucz,
+	\item \textbf{DATE} - dok³adna data z godzin¹ u¿ycia klucza dostêpowego,
+	\item \textbf{ACCESS} - binarna flaga informuj¹ca czy dostêp zosta³ przyznany czy odmówiony.
+	\end{itemize*}
+
+	Diagramy bazy danych odpowiednio encji i relacji przedstawione zosta³y na Diagramie \ref{diagram:diagram encji} i \ref{diagram:diagram relacji}.  
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=16cm]{Obrazy/Diagram_encji.png}
+		\caption{Diagram encji bazy danych}
+		\label{diagram:diagram encji}
+	\end{figure}
+
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=16cm]{Obrazy/Diagram_relacji.png}
+		\caption{Diagram relacji bazy danych}
+		\label{diagram:diagram relacji}
+	\end{figure}
+	
+	\chapter{Widok graficzny systemu}
+	Jedynym elementem graficznym systemu Inteligentnego Zamka jest aplikacja znajduj¹ca siê na urz¹dzeniach mobilnych. Poni¿ej opisano,krótko poszczególne widoki wykonane w œrodowisku Android Studio.
+	
+	\section{Panel logowania u¿ytkownika}
+	
+	\section{Panel rejestracji}
+	
+	\section{Panel listy zamków}
+	\begin{wrapfigure}{r}{4cm}
+		\includegraphics[width=5.5cm]{Obrazy/lista_dostepnych_zamkow_pionowo}
+		\caption{Lista dostêpnych zamków (pionowo)}
+		\label{rys:lista_dostepnych_zamkow_pionowo}
+	\end{wrapfigure}
+	
+	Widok listy dostêpnych zamków przedstawia listê nazw zamków do jakich dany u¿ytkownik ma dostêp. U³atwieniem jest mo¿liwoœæ sortowania wyników i wyszukiwanie po nazwach. Klikniêcie w nazwê zamka powoduje otwarcie zamka. Ustawiæ mo¿na równie¿ zamek, który ma byæ otwierany automatycznie gdy jest siê w pobli¿u zamka. (Rysunek \ref{rys:lista_dostepnych_zamkow_pionowo} i \ref{rys:lista_dostepnych_zamkow_poziomo})
+	
+	\begin{figure}[h]
+		\includegraphics[width=10cm]{Obrazy/lista_dostepnych_zamkow_poziomo}
+		\caption{Lista dostêpnych \\ zamków (poziomo)}
+		\label{rys:lista_dostepnych_zamkow_poziomo}	
+	\end{figure}
+	
+	\section{Panel boczny}
+	
+	\section{Panel zarz¹dzania certyfikatami}
+	
+	\section{Panel listy aktualnych certyfikatów}
+	
+	\section{Panel certyfikatu}
+	
+	\section{Panel wnioskowania o certyfikat}
+	
+	\section{Panel tworzenia certyfikatu dla goœcia}
+	
+	\section{Panel administratora}
+	
+	\section{Panel historii u¿ycia zamków}
+	
+	\section{Panel generowania nowego certyfikatu (administrator)}
+	
+	\section{Panel dodawania typu dostêpu}
+	
+	\section{Panel zarz¹dzania certyfikatami (administrator)}
+	
+	\section{Panel listy oczekuj¹cych u¿ytkowników}
+	
+	\section{Panel listy oczekuj¹cych certyfikatów}
+	
+	\section{Panel ustawieñ konta}
+	
+\end{document}

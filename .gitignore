@@ -9,3 +9,8 @@
 /build
 /captures
 .externalNativeBuild
+*.aux
+*.log
+*.synctex.gz
+*.toc
+*.out
