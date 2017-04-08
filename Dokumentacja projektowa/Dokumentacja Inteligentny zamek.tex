@@ -312,11 +312,45 @@
 	Jedynym elementem graficznym systemu Inteligentnego Zamka jest aplikacja znajduj¹ca siê na urz¹dzeniach mobilnych. Poni¿ej opisano,krótko poszczególne widoki wykonane w œrodowisku Android Studio.
 	
 	\section{Panel logowania u¿ytkownika}
+	\begin{wrapfigure}[5]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/logowanie_uzytkownika_pionowo}
+		\caption{Panel logowania u¿ytkownika (pionowo)}
+		\label{rys:panel_logowania_pionowo}
+	\end{wrapfigure}
+
+	Widok umo¿liwia zalogowanie siê u¿ytkownika do systemu poprzez podanie loginu i has³a w odpowiednie pola, a nastêpnie klikniêcie w przycisk “ZALOGUJ SIÊ”. Jeœli nie posiada siê konta, mo¿na je utworzyæ poprzez przycisk “ZAREJESTRUJ SIÊ” lub przejœæ do panelu Goœcia przyciskiem “GOŒÆ”. (Rysunek \ref{rys:panel_logowania_pionowo} i \ref{rys:panel_logowania_poziomo})
 	
-	\section{Panel rejestracji}
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=10cm]{Obrazy/logowanie_uzytkownika_poziomo}
+			\caption{Panel logowania u¿ytkownika (poziomo)}
+			\label{rys:panel_logowania_poziomo}	
+		\end{minipage}
+	\end{figure}
+\newpage
+	
+	\section{Panel rejestracji u¿ytkownika}
+	\begin{wrapfigure}[6]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/rejestracja_uzytkownika_pionowo}
+		\caption{Panel logowania u¿ytkownika (pionowo)}
+		\label{rys:panel_rejestracji_pionowo}
+	\end{wrapfigure}
+	
+	Panel rejestracji s³u¿y do utworzenie nowego u¿ytkownika poprzez podanie loginu, has³a, imienia i nazwiska. Po upewnieniu siê, ¿e wszystkie dane s¹ poprawne, aby zakoñczyæ proces rejestracji, klikamy przycisk “ZAREJESTRUJ”. (Rysunek \ref{rys:panel_rejestracji_pionowo} i \ref{rys:panel_rejestracji_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=10cm]{Obrazy/rejestracja_uzytkownika_poziomo}
+			\caption{Panel logowania u¿ytkownika (poziomo)}
+			\label{rys:panel_rejestracji_poziomo}	
+		\end{minipage}
+	\end{figure}
 	
 	\section{Panel listy zamków}
-	\begin{wrapfigure}{r}{4cm}
+	\begin{wrapfigure}[6]{R}{4.5cm}
+		\vspace{-1cm}
 		\includegraphics[width=5.5cm]{Obrazy/lista_dostepnych_zamkow_pionowo}
 		\caption{Lista dostêpnych zamków (pionowo)}
 		\label{rys:lista_dostepnych_zamkow_pionowo}
@@ -325,37 +359,278 @@
 	Widok listy dostêpnych zamków przedstawia listê nazw zamków do jakich dany u¿ytkownik ma dostêp. U³atwieniem jest mo¿liwoœæ sortowania wyników i wyszukiwanie po nazwach. Klikniêcie w nazwê zamka powoduje otwarcie zamka. Ustawiæ mo¿na równie¿ zamek, który ma byæ otwierany automatycznie gdy jest siê w pobli¿u zamka. (Rysunek \ref{rys:lista_dostepnych_zamkow_pionowo} i \ref{rys:lista_dostepnych_zamkow_poziomo})
 	
 	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
 		\includegraphics[width=10cm]{Obrazy/lista_dostepnych_zamkow_poziomo}
-		\caption{Lista dostêpnych \\ zamków (poziomo)}
+		\caption{Lista dostêpnych zamków (poziomo)}
 		\label{rys:lista_dostepnych_zamkow_poziomo}	
+	\end{minipage}
+	\end{figure}
+
+	\section{Panel boczny}
+	\begin{wrapfigure}[5]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/panel_boczny_pionowo}
+		\caption{Panel boczny (pionowo)}
+		\label{rys:panel_boczny_pionowo}
+	\end{wrapfigure}
+	
+	Panel boczny pozwala na szybkie prze³¹czanie pomiêdzy widokami. Chowany jest po lewej stronie ekranu. Umo¿liwia przechodzenie odpowiednio do listy zamków, zarz¹dzania certyfikatami, panelu administracyjnego oraz ustawieñ. (Rysunek \ref{rys:panel_boczny_pionowo} i \ref{rys:panel_boczny_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+	\includegraphics[width=10cm]{Obrazy/panel_boczny_poziomo}
+	\caption{Panel boczny (poziomo)}
+	\label{rys:panel_boczny_poziomo}
+\end{minipage}	
+	\end{figure}
+
+	\section{Panel zarz¹dzania certyfikatami}
+	\begin{wrapfigure}[6]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/zarzadzaj_certyfikatami_pionowo}
+		\caption{Panel zarz¹dzania certyfikatami (pionowo)}
+		\label{rys:panel_zarz¹dzania_certyfikatami_pionowo}
+	\end{wrapfigure}
+	
+	Panel zarz¹dzania certyfikatami umo¿liwia wybór funkcji dodania certyfikatu w dwóch wariantach (rozwijana lista) - dodania z pliku lub œci¹gniêcia z serwera. Kolejne pozycje to lista posiadanych certyfikatów, wys³anie wniosku o utworzenie nowego certyfikatu oraz ostatnia opcja to wygenerowanie certyfikatu dla goœcia. (Rysunek \ref{rys:panel_zarz¹dzania_certyfikatami_pionowo} i \ref{rys:panel_zarz¹dzania_certyfikatami_poziomo})
+	
+	\begin{figure}[h]
+			\begin{minipage}{9.5cm}
+		\includegraphics[width=10.1cm]{Obrazy/zarzadzaj_certyfikatami_poziomo}
+		\caption{Panel zarz¹dzania certyfikatami (poziomo)}
+		\label{rys:panel_zarz¹dzania_certyfikatami_poziomo}	
+	\end{minipage}
+	\end{figure}
+
+	\section{Panel listy certyfikatów}
+		\begin{wrapfigure}[4]{R}{4.5cm}
+		\vspace{-1.5cm}
+		\includegraphics[width=5.5cm]{Obrazy/lista_certyfikatow_pionowo}
+		\caption{Panel listy certyfikatów (pionowo)}
+		\label{rys:panel_listy_certyfikatów_pionowo}
+	\end{wrapfigure}
+	
+	Panel listy certyfikatów, jest list¹ aktualnych certyfikatów nale¿¹cych do u¿ytkownika. Klikniêcie w dany certyfikat przenosi do widoku szczegó³owego zwi¹zanego z operacjami na certyfikacie. (Rysunek \ref{rys:panel_listy_certyfikatów_pionowo} i \ref{rys:panel_listy_certyfikatów_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=10.3cm]{Obrazy/lista_certyfikatow_poziomo}
+			\caption{Panel listy certyfikatów (poziomo)}
+			\label{rys:panel_listy_certyfikatów_poziomo}	
+		\end{minipage}
 	\end{figure}
 	
-	\section{Panel boczny}
-	
-	\section{Panel zarz¹dzania certyfikatami}
-	
-	\section{Panel listy aktualnych certyfikatów}
-	
 	\section{Panel certyfikatu}
+		\begin{wrapfigure}[5]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/certyfikat_pionowo}
+		\caption{Panel certyfikatu (pionowo)}
+		\label{rys:panel_certyfikatu_pionowo}
+	\end{wrapfigure}
+	
+	Panel certyfikatu u góry zawiera nazwê certyfikatu, poni¿ej informacje o dacie wygaœniêcia, którego zamku dotyczy oraz w jakim czasie przyznaje dostêp. Na dole dostêpne s¹ dwa przyciski pozwalaj¹ce usun¹æ certyfikat lub wys³aæ proœbê o przed³u¿enie wa¿noœci. (Rysunek \ref{rys:panel_certyfikatu_pionowo} i \ref{rys:panel_certyfikatu_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=10.3cm]{Obrazy/certyfikat_poziomo}
+			\caption{Panel certyfikatu (poziomo)}
+			\label{rys:panel_certyfikatu_poziomo}	
+		\end{minipage}
+	\end{figure}
 	
 	\section{Panel wnioskowania o certyfikat}
+	\begin{wrapfigure}[3]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/wnioskuj_o_certyfikat_pionowo}
+		\caption{Panel wnioskowania o certyfikat (pionowo)}
+		\label{rys:panel_wnioskowania_o_certyfikat_pionowo}
+	\end{wrapfigure}
+	
+	Panel wnioskowania o certyfikat polega na wybraniu z listy wszystkich zamków, konkretnego do którego chcemy uzyskaæ dostêp i wys³aæ wniosek o przydzielenie dostêpu. (Rysunek \ref{rys:panel_wnioskowania_o_certyfikat_pionowo} i \ref{rys:panel_wnioskowania_o_certyfikat_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=10cm]{Obrazy/wnioskuj_o_certyfikat_poziomo}
+			\caption{Panel wnioskowania o certyfikat (poziomo)}
+			\label{rys:panel_wnioskowania_o_certyfikat_poziomo}	
+		\end{minipage}
+	\end{figure}
 	
 	\section{Panel tworzenia certyfikatu dla goœcia}
+	\begin{wrapfigure}[5]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/generowanie_nowego_klucza_goscia_pionowo}
+		\caption{Panel tworzenia certyfikatu dla goœcia (pionowo)}
+		\label{rys:generowanie_nowego_klucza_goscia_pionowo}
+	\end{wrapfigure}
+	
+	Panel tworzenia certyfikatu goœcia sk³ada siê z danych goœcia (imiê i nazwisko), daty od której obowi¹zuje certyfikat, zamka którego dotyczy oraz jak d³ugo pozostanie wa¿ny (wybór z rozwijanej listy). Aby zakoñczyæ proces generowania nale¿y klikn¹æ przycisk “WYGENERUJ”. (Rysunek \ref{rys:generowanie_nowego_klucza_goscia_pionowo} i \ref{rys:generowanie_nowego_klucza_goscia_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=10cm]{Obrazy/generowanie_nowego_klucza_goscia_poziomo}
+			\caption{Panel tworzenia certyfikatu dla goœcia (poziomo)}
+			\label{rys:generowanie_nowego_klucza_goscia_poziomo}	
+		\end{minipage}
+	\end{figure}
 	
 	\section{Panel administratora}
+	\begin{wrapfigure}[8]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/panel_administracyjny_pionowo}
+		\caption{Panel administratora (pionowo)}
+		\label{rys:panel_administracyjny_pionowo}
+	\end{wrapfigure}
+	
+	W panelu administratora znajduj¹ siê 4 przyciski do administrowania systemem zamków:
+	\begin{itemize*}
+	\item ,,Historia u¿ycia Zamków''
+	\item ,,Generowanie nowego klucza'',
+	\item ,,Zarz¹dzanie kluczami u¿ytkowników'',
+	\item ,,Lista oczekuj¹cych u¿ytkowników'',
+	\item ,,Lista oczekuj¹cych certyfikatów''.
+	\end{itemize*}
+
+	Po klikniêciu ka¿dego przycisku przechodzi siê do nowego odpowiadaj¹cego widoku. (Rysunek \ref{rys:panel_administracyjny_pionowo} i \ref{rys:panel_administracyjny_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=6cm]{Obrazy/panel_administracyjny_poziomo}
+			\caption{Panel administratora (poziomo)}
+			\label{rys:panel_administracyjny_poziomo}	
+		\end{minipage}
+	\end{figure}
 	
 	\section{Panel historii u¿ycia zamków}
+		\begin{wrapfigure}[5]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/historia_zamkow_pionowo}
+		\caption{Panel historii u¿ycia zamków (pionowo)}
+		\label{rys:panel_historii_uzycia_zamka_pionowo}
+	\end{wrapfigure}
+	
+	Panel historii u¿ycia zamków sk³ada siê z rozwijanej listy wszystkich zamków znaj¹cych siê w systemie, s³u¿¹cej do filtrowania wyników. Pozycje opisane kolorem czerwonym dotycz¹ operacji odrzucanych, bia³e przyznaj¹cych dostêp do zamka. (Rysunek \ref{rys:panel_historii_uzycia_zamka_pionowo} i \ref{rys:panel_historii_uzycia_zamka_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=10cm]{Obrazy/historia_zamkow_poziomo}
+			\caption{Panel historii u¿ycia zamków (poziomo)}
+			\label{rys:panel_historii_uzycia_zamka_poziomo}	
+		\end{minipage}
+	\end{figure}
 	
 	\section{Panel generowania nowego certyfikatu (administrator)}
+	\begin{wrapfigure}[10]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/generowanie_nowego_klucza_gosc_admin_pioniowo}
+		\caption{Panel generowania nowego klucza dla goœcia (administrator) (pionowo)}
+		\label{rys:panel_generowanie_nowego_klucza_gosc_admin_pioniowo}
+	\end{wrapfigure}
+	
+	Panel generowanie nowego certyfikatu (administrator) s³u¿y do tworzenia nowych certyfikatów przez administratora. W pierwszych polach podaje siê imiê i nazwisko kogo dotyczy certyfikat. W nastêpnych administrator wybiera typ certyfikatu (goœæ / u¿ytkownik zalogowany). W zale¿noœci od wyboru dostêpne s¹ okreœlone pola. Wspólne to od kiedy jest dostêp i jakiego zamka dotyczy. Dla goœcia nale¿y wybraæ na jak d³ugo jest dostêp, a dla zalogowanego u¿ytkownika do kiedy jest wa¿noœæ i jakiego jest typu. (Rysunek \ref{rys:panel_generowanie_nowego_klucza_gosc_admin_pioniowo}, \ref{rys:panel_generowanie_nowego_klucza_admin_poziomo} i \ref{rys:panel_generowanie_nowego_klucza_uzytkownik_zalogowany_admin_pioniowo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=7cm]{Obrazy/generowanie_nowego_klucza_admin_poziomo}
+			\caption{Panel generowania nowego klucza (administrator)(poziomo)}
+			\label{rys:panel_generowanie_nowego_klucza_admin_poziomo}	
+		\end{minipage}
+	\end{figure}
+
+	\begin{SCfigure}[][h]
+			\includegraphics[width=6.5cm]{Obrazy/generowanie_nowego_klucza_uzytkownik_zalogowany_admin_pioniowo}
+			\caption{Panel generowania nowego klucza dla u¿ytkownika zalogowanego (administrator)(poziomo)}
+			\label{rys:panel_generowanie_nowego_klucza_uzytkownik_zalogowany_admin_pioniowo}
+	\end{SCfigure}
 	
 	\section{Panel dodawania typu dostêpu}
+	\begin{wrapfigure}[6]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=4.5cm]{Obrazy/dodaj_typ_dostepu_pionowo}
+		\caption{Panel dodawania nowego typu dostêpu (pionowo)}
+		\label{rys:panel_dodaj_typ_dostepu_pionowo}
+	\end{wrapfigure}
 	
-	\section{Panel zarz¹dzania certyfikatami (administrator)}
+	Panel dodawania typu dostêpu s³u¿y do dodania nowego rodzaju dostêpu. Administrator wybiera dni tygodnia w których ma obowi¹zywaæ typ, nastêpnie godzinê od do dla danych dni. Na koniec podaje unikaln¹ nazwê i klika “DODAJ” w celu zakoñczenia dodawania lub “ANULUJ”, aby usun¹æ wprowadzone zmiany. (Rysunek \ref{rys:panel_dodaj_typ_dostepu_pionowo} i \ref{rys:panel_dodaj_typ_dostepu_poziomo} )
 	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=7cm]{Obrazy/dodaj_typ_dostepu_poziomo}
+			\caption{Panel dodawania nowego typu dostêpu (poziomo)}
+			\label{rys:panel_dodaj_typ_dostepu_poziomo}	
+		\end{minipage}
+	\end{figure}
+
+	\section{Panel zarz¹dzania certyfikatami~(administrator)}
+	\begin{wrapfigure}[5]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/lista_certyfikatow_administrator_pionowo}
+		\caption{Panel zarz¹dzania certyfikatami (administrator) (pionowo)}
+		\label{rys:panel_lista_certyfikatow_administrator_pionowo}
+	\end{wrapfigure}
+	
+	Panel zarz¹dzania certyfikatami u¿ytkowników (administrator) jest widokiem tylko wszystkich aktywnych certyfikatów w systemie. Administrator klikaj¹c na pozycjê przechodzi do panelu certyfikatu opisanego wy¿ej. Tam mo¿e usun¹æ dostêp lub go przed³u¿yæ. (Rysunek \ref{rys:panel_lista_certyfikatow_administrator_pionowo} i \ref{rys:panel_lista_certyfikatow_administrator_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=10cm]{Obrazy/lista_certyfikatow_administrator_poziomo}
+			\caption{Panel zarz¹dzania certyfikatami (administrator) (poziomo)}
+			\label{rys:panel_lista_certyfikatow_administrator_poziomo}	
+		\end{minipage}
+	\end{figure}
+
 	\section{Panel listy oczekuj¹cych u¿ytkowników}
+	\begin{wrapfigure}[5]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/lista_oczekujacych_uzytkownikow_pionowo}
+		\caption{Panel listy oczekuj¹cych u¿ytkowników (pionowo)}
+		\label{rys:panel_lista_oczekujacych_uzytkownikow_pionowo}
+	\end{wrapfigure}
+	
+	Panel listy oczekuj¹cych u¿ytkowników jest list¹ wszystkich goœci, którzy ubiegaj¹ siê o zarejestrowanie. PO klikniêciu w odpowiedni¹ pozycjê pojawiaj¹ siê dwie opcjê: “AKCEPTUJ” lub “ODRZUÆ”.  (Rysunek \ref{rys:panel_lista_oczekujacych_uzytkownikow_pionowo} i \ref{rys:panel_lista_oczekujacych_uzytkownikow_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=10cm]{Obrazy/lista_oczekujacych_uzytkownikow_poziomo}
+			\caption{Panel listy oczekuj¹cych u¿ytkowników (poziomo)}
+			\label{rys:panel_lista_oczekujacych_uzytkownikow_poziomo}	
+		\end{minipage}
+	\end{figure}
 	
 	\section{Panel listy oczekuj¹cych certyfikatów}
+	\begin{wrapfigure}[5]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/lista_oczekujacych_certyfikatow_pionowo}
+		\caption{Panel listy oczekuj¹cych certyfikatów (pionowo)}
+		\label{rys:panel_lista_oczekujacych_certyfikatow_pionowo}
+	\end{wrapfigure}
 	
+	Panel listy oczekuj¹cych certyfikatów jest list¹ wszystkich certyfikatów, które ubiegaj¹ siê o akceptacjê administratora. Po klikniêciu w odpowiedni¹ pozycjê pojawiaj¹ siê dwie opcjê: “AKCEPTUJ” lub “ODRZUÆ”.  (Rysunek \ref{rys:panel_lista_oczekujacych_certyfikatow_pionowo} i \ref{rys:panel_lista_oczekujacych_certyfikatow_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=10cm]{Obrazy/lista_oczekujacych_certyfikatow_poziomo}
+			\caption{Panel listy oczekuj¹cych certyfikatów (poziomo)}
+			\label{rys:panel_lista_oczekujacych_certyfikatow_poziomo}	
+		\end{minipage}
+	\end{figure}
+
 	\section{Panel ustawieñ konta}
+	\begin{wrapfigure}[5]{R}{4.5cm}
+		\vspace{-1cm}
+		\includegraphics[width=5.5cm]{Obrazy/ustawienia_pionowo}
+		\caption{Panel ustawieñ konta (pionowo)}
+		\label{rys:panel_ustawienia_pionowo}
+	\end{wrapfigure}
+	
+	W panelu ustawieñ u¿ytkownik mo¿e zmieniæ has³o do swojego konta. Wymagane jest podanie starego has³a, a nastêpnie nowego. Aby zakoñczyæ czynnoœæ klikamy na “ZMIEÑ”. (Rysunek \ref{rys:panel_ustawienia_pionowo} i \ref{rys:panel_ustawienia_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{9.5cm}
+			\includegraphics[width=10cm]{Obrazy/ustawienia_poziomo}
+			\caption{Panel ustawieñ konta (poziomo)}
+			\label{rys:panel_ustawienia_poziomo}	
+		\end{minipage}
+	\end{figure}
 	
 \end{document}
