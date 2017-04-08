@@ -39,7 +39,7 @@
 \makeatletter
 \newcommand{\linia}{\rule{\linewidth}{0.4mm}}
 \renewcommand{\maketitle}{\begin{titlepage}
-		\vspace*{-3cm}
+		\vspace*{-2.5cm}
 		\begin{center}\small
 			Politechnika Poznañska\\
 			Wydzia³ Elektryczny\\
@@ -74,7 +74,7 @@
 }
 \makeatother
 \usepackage[none]{hyphenat}
-\renewcommand{\figurename}{Diagram}
+\renewcommand{\figurename}{Rysunek}
 \begin{document}
 	\sloppy
 	\maketitle
@@ -99,7 +99,7 @@
 	
 	U¿ywane klucze bêd¹ posiada³y podpis cyfrowy, który jednoznacznie bêdzie definiowa³ w³aœciciela oraz stempel czasowy do okreœlania wa¿noœci. Klucze bêd¹ mog³y mieæ w zale¿noœci od przeznaczenia ró¿ne okresy przedawnienia, np. w³aœciciel mieszkaj¹cy  w danym domu posiadaæ bêdzie klucz o d³ugim terminie wa¿noœci, a goœcie klucz jednorazowy, b¹dŸ kilku godzinny bez mo¿liwoœci odnowienia. Wszelkie dane dostêpowe bêd¹ generowane i dystrybuowane na serwerze systemu, z mo¿liwoœci¹ zdalnej proœby o utworzenie kluczy tylko przez uprawnione przez administratora osoby.
 	
-	\newpage Ogólny schemat systemu znajduje siê na Diagramie \ref{diagram:diagram wdro¿eñ}.
+	\newpage Ogólny schemat systemu znajduje siê na Rysunku \ref{diagram:diagram wdro¿eñ}.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Schemat_ogolny_inteligentnego_zamka.png}
@@ -226,7 +226,7 @@
 	
 	
 	\chapter{Diagram przypadków u¿ycia}
-	Funkcjonalnoœæ systemu przedstawiono na Diagramie \ref{diagram:diagram przypadków_u¿ycia} przypadków u¿ycia.
+	Diagram przypadków u¿ycia (funkcjonalnoœci) systemu wraz z opowiadaj¹cymi aktorami przedstawiono na Rysunku \ref{diagram:diagram przypadków_u¿ycia}.
 	
 	\begin{landscape}
 		\begin{figure}[!h]
@@ -292,7 +292,7 @@
 	\item \textbf{ACCESS} - binarna flaga informuj¹ca czy dostêp zosta³ przyznany czy odmówiony.
 	\end{itemize*}
 
-	Diagramy bazy danych odpowiednio encji i relacji przedstawione zosta³y na Diagramie \ref{diagram:diagram encji} i \ref{diagram:diagram relacji}.  
+	Diagramy bazy danych odpowiednio encji i relacji przedstawione zosta³y na Rysunkach \ref{diagram:diagram encji} i \ref{diagram:diagram relacji}.  
 	
 	\begin{figure}[!h]
 		\centering
@@ -353,16 +353,16 @@
 		\vspace{-1cm}
 		\includegraphics[width=5.5cm]{Obrazy/lista_dostepnych_zamkow_pionowo}
 		\caption{Lista dostêpnych zamków (pionowo)}
-		\label{rys:lista_dostepnych_zamkow_pionowo}
+		\label{rys:panel_listy_dostepnych_zamkow_pionowo}
 	\end{wrapfigure}
 	
-	Widok listy dostêpnych zamków przedstawia listê nazw zamków do jakich dany u¿ytkownik ma dostêp. U³atwieniem jest mo¿liwoœæ sortowania wyników i wyszukiwanie po nazwach. Klikniêcie w nazwê zamka powoduje otwarcie zamka. Ustawiæ mo¿na równie¿ zamek, który ma byæ otwierany automatycznie gdy jest siê w pobli¿u zamka. (Rysunek \ref{rys:lista_dostepnych_zamkow_pionowo} i \ref{rys:lista_dostepnych_zamkow_poziomo})
+	Widok listy dostêpnych zamków przedstawia listê nazw zamków do jakich dany u¿ytkownik ma dostêp. U³atwieniem jest mo¿liwoœæ sortowania wyników i wyszukiwanie po nazwach. Klikniêcie w nazwê zamka powoduje otwarcie zamka. Ustawiæ mo¿na równie¿ zamek, który ma byæ otwierany automatycznie gdy jest siê w pobli¿u zamka. (Rysunek \ref{rys:panel_listy_dostepnych_zamkow_pionowo} i \ref{rys:panel_listy_dostepnych_zamkow_poziomo})
 	
 	\begin{figure}[h]
 		\begin{minipage}{9.5cm}
 		\includegraphics[width=10cm]{Obrazy/lista_dostepnych_zamkow_poziomo}
 		\caption{Lista dostêpnych zamków (poziomo)}
-		\label{rys:lista_dostepnych_zamkow_poziomo}	
+		\label{rys:panel_listy_dostepnych_zamkow_poziomo}	
 	\end{minipage}
 	\end{figure}
 
@@ -461,16 +461,16 @@
 		\vspace{-1cm}
 		\includegraphics[width=5.5cm]{Obrazy/generowanie_nowego_klucza_goscia_pionowo}
 		\caption{Panel tworzenia certyfikatu dla goœcia (pionowo)}
-		\label{rys:generowanie_nowego_klucza_goscia_pionowo}
+		\label{rys:panel_generowanie_nowego_klucza_goscia_pionowo}
 	\end{wrapfigure}
 	
-	Panel tworzenia certyfikatu goœcia sk³ada siê z danych goœcia (imiê i nazwisko), daty od której obowi¹zuje certyfikat, zamka którego dotyczy oraz jak d³ugo pozostanie wa¿ny (wybór z rozwijanej listy). Aby zakoñczyæ proces generowania nale¿y klikn¹æ przycisk “WYGENERUJ”. (Rysunek \ref{rys:generowanie_nowego_klucza_goscia_pionowo} i \ref{rys:generowanie_nowego_klucza_goscia_poziomo})
+	Panel tworzenia certyfikatu goœcia sk³ada siê z danych goœcia (imiê i nazwisko), daty od której obowi¹zuje certyfikat, zamka którego dotyczy oraz jak d³ugo pozostanie wa¿ny (wybór z rozwijanej listy). Aby zakoñczyæ proces generowania nale¿y klikn¹æ przycisk “WYGENERUJ”. (Rysunek \ref{rys:panel_generowanie_nowego_klucza_goscia_pionowo} i \ref{rys:panel_generowanie_nowego_klucza_goscia_poziomo})
 	
 	\begin{figure}[h]
 		\begin{minipage}{9.5cm}
 			\includegraphics[width=10cm]{Obrazy/generowanie_nowego_klucza_goscia_poziomo}
 			\caption{Panel tworzenia certyfikatu dla goœcia (poziomo)}
-			\label{rys:generowanie_nowego_klucza_goscia_poziomo}	
+			\label{rys:panel_generowanie_nowego_klucza_goscia_poziomo}	
 		\end{minipage}
 	\end{figure}
 	
