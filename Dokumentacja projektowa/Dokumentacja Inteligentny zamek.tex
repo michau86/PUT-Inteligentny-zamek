@@ -97,7 +97,7 @@
 	
 	System bêdzie spe³nia³  wymagania dotycz¹ce bezpieczeñstwa poprzez zastosowanie szeregu funkcji kryptograficznych przy procesie uwierzytelniania jak i przy generowaniu kluczy takich jak np. funkcje skrótu, SSH, algorytmów szyfrowania asymetrycznego, systemu zarz¹dzaniem kluczem publicznym (podpisu cyfrowego).
 	
-	U¿ywane klucze bêd¹ posiada³y podpis cyfrowy, który jednoznacznie bêdzie definiowa³ w³aœciciela oraz stempel czasowy do okreœlania wa¿noœci. Klucze bêd¹ mog³y mieæ w zale¿noœci od przeznaczenia ró¿ne okresy przedawnienia, np. w³aœciciel mieszkaj¹cy  w danym domu posiadaæ bêdzie klucz o d³ugim terminie wa¿noœci, a goœcie klucz jednorazowy, b¹dŸ kilku godzinny bez mo¿liwoœci odnowienia. Wszelkie dane dostêpowe bêd¹ generowane i dystrybuowane na serwerze systemu, z mo¿liwoœci¹ zdalnej proœby o utworzenie kluczy tylko przez uprawnione przez administratora osoby.
+	U¿ywane klucze bêd¹ posiada³y podpis cyfrowy, który jednoznacznie bêdzie definiowa³ w³aœciciela oraz stempel czasowy do okreœlania wa¿noœci. Klucze bêd¹ mog³y mieæ w zale¿noœci od przeznaczenia ró¿ne okresy przedawnienia, np. w³aœciciel mieszkaj¹cy  w danym domu posiadaæ bêdzie klucz o d³ugim terminie wa¿noœci, a goœcie klucz jednorazowy b¹dŸ kilku godzinny bez mo¿liwoœci odnowienia. Wszelkie dane dostêpowe bêd¹ generowane i dystrybuowane na serwerze systemu, z mo¿liwoœci¹ zdalnej proœby o utworzenie kluczy tylko przez uprawnione przez administratora osoby.
 	
 	\newpage Ogólny schemat systemu znajduje siê na Rysunku \ref{diagram:diagram wdro¿eñ}.
 	\begin{figure}[!h]
@@ -274,9 +274,9 @@
 	Klucz dostêpowy sk³ada siê z:
 	\begin{itemize*}
 	\item \textbf{ID\_KEY} - unikalny identyfikator (klucz g³ówny) klucza dostêpowego sk³adaj¹cy siê z 10 cyfr,
-	\item \textbf{ID\_LOCK} - klucz obcy do tabeli tabeli przechowuj¹cej dostêpne zamki,
-	\item \textbf{ID\_USER} - klucz obcy do tabeli tabeli przechowuj¹cej dane u¿ytkownika, jest to pole s³u¿¹ce do okreœlenia kto utworzy³ klucz dostêpu,
-	\item \textbf{ACCESS\_TYPE} - klucz obcy do tabeli tabeli przechowuj¹cej typy dostêpu, jest to pole s³u¿¹ce do okreœlenia jakiego rodzaju dostêp ma klucz dostêpowy,
+	\item \textbf{ID\_LOCK} - klucz obcy do tabeli przechowuj¹cej dostêpne zamki,
+	\item \textbf{ID\_USER} - klucz obcy do tabeli przechowuj¹cej dane u¿ytkownika, jest to pole s³u¿¹ce do okreœlenia kto utworzy³ klucz dostêpu,
+	\item \textbf{ACCESS\_TYPE} - klucz obcy do tabeli przechowuj¹cej typy dostêpu, jest to pole s³u¿¹ce do okreœlenia jakiego rodzaju dostêp ma klucz dostêpowy,
 	\item \textbf{KEY} - unikalna wartoœæ certyfikatu dostêpu,
 	\item \textbf{FROM} - data od której obowi¹zuje klucz,
 	\item \textbf{TO} - data do której obowi¹zuje klucz,
@@ -287,7 +287,7 @@
 	W tabeli archiwizuj¹cej akcje na zamku znajduj¹ siê takie dane jak:
 	\begin{itemize*}
 	\item \textbf{ID} - unikalny identyfikator (klucz g³ówny) akcji wykonanej na certyfikacie sk³adaj¹cy siê z 10 cyfr,
-	\item \textbf{ID\_KEY} - klucz obcy do tabeli tabeli przechowuj¹cej klucze dostêpowe, dziêki tej informacji mo¿emy uzyskaæ dane o zamku który zosta³ otwierany jak równie¿ do kogo nale¿a³ klucz,
+	\item \textbf{ID\_KEY} - klucz obcy do tabeli przechowuj¹cej klucze dostêpowe, dziêki tej informacji mo¿emy uzyskaæ dane o zamku, który zosta³ otwierany jak równie¿ do kogo nale¿a³ klucz,
 	\item \textbf{DATE} - dok³adna data z godzin¹ u¿ycia klucza dostêpowego,
 	\item \textbf{ACCESS} - binarna flaga informuj¹ca czy dostêp zosta³ przyznany czy odmówiony.
 	\end{itemize*}
@@ -464,7 +464,7 @@
 		\label{rys:panel_generowanie_nowego_klucza_goscia_pionowo}
 	\end{wrapfigure}
 	
-	Panel tworzenia certyfikatu goœcia sk³ada siê z danych goœcia (imiê i nazwisko), daty od której obowi¹zuje certyfikat, zamka którego dotyczy oraz jak d³ugo pozostanie wa¿ny (wybór z rozwijanej listy). Aby zakoñczyæ proces generowania nale¿y klikn¹æ przycisk “WYGENERUJ”. (Rysunek \ref{rys:panel_generowanie_nowego_klucza_goscia_pionowo} i \ref{rys:panel_generowanie_nowego_klucza_goscia_poziomo})
+	Panel tworzenia certyfikatu goœcia sk³ada siê z danych goœcia (imiê i nazwisko), daty, od której obowi¹zuje certyfikat, zamka którego dotyczy oraz jak d³ugo pozostanie wa¿ny (wybór z rozwijanej listy). Aby zakoñczyæ proces generowania nale¿y klikn¹æ przycisk “WYGENERUJ”. (Rysunek \ref{rys:panel_generowanie_nowego_klucza_goscia_pionowo} i \ref{rys:panel_generowanie_nowego_klucza_goscia_poziomo})
 	
 	\begin{figure}[h]
 		\begin{minipage}{9.5cm}
