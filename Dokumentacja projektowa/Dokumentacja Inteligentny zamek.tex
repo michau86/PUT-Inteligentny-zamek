@@ -243,7 +243,6 @@
 	\item \textbf{USERS} - przechowuje dane u¿ytkowników oraz dane niezbêdne przy weryfikacji logowania,
 	\item \textbf{LOCKS} - zawiera informacje na temat dostêpnych w systemie zamków,
 	\item \textbf{ACCESS\_TO\_LOCKS} - archiwizuje próby u¿ycia certyfikatów,
-	\item \textbf{TYPES\_ACCESS} - przechowuje zdefiniowane typy uprawnieñ dostêpowych do zamków,
 	\item \textbf{LOCKS\_KEYS} - zawiera wszystkie klucze dostêpowe u¿ytkowników. 
 	\end{itemize*}
 	Wiersz tabeli USERS zawieraæ musi:
@@ -262,25 +261,23 @@
 	\item \textbf{LOCALIZATION} - nieobowi¹zkowe pole opisuj¹ce fizyczne po³o¿enie zamka.
 	\end{itemize*}
 \newpage
-	Typy uprawnieñ posiadaæ bêdê takie parametry jak:
-	\begin{itemize*}
-	\item \textbf{ID\_TYPE} - unikalny identyfikator (klucz g³ówny) typu dostêpu sk³adaj¹cy siê z 10 cyfr,
-	\item \textbf{NAME} - unikalna nazwa typu dostêpu,
-	\item \textbf{DAYS} - binarny ci¹g oznaczaj¹cym których dni dotyczy dostêp, najstarszy bit oznacza poniedzia³ek, zaœ najm³odszy niedzielê, np. 1011000 oznacza dostêp w  poniedzia³ek, œrodê i czwartek, w pozosta³e dni nie,
-	\item \textbf{FROM\_HOURS} - godzina od której obowi¹zuje dostêp,
-	\item \textbf{TO\_HOURS} - godzina do której obowi¹zuje dostêp,
-	\item \textbf{DESCRIPTION} - nieobowi¹zkowy pole charakteryzuj¹ce typ dostêpu.
-	\end{itemize*}
 	Klucz dostêpowy sk³ada siê z:
 	\begin{itemize*}
 	\item \textbf{ID\_KEY} - unikalny identyfikator (klucz g³ówny) klucza dostêpowego sk³adaj¹cy siê z 10 cyfr,
 	\item \textbf{ID\_LOCK} - klucz obcy do tabeli przechowuj¹cej dostêpne zamki,
 	\item \textbf{ID\_USER} - klucz obcy do tabeli przechowuj¹cej dane u¿ytkownika, jest to pole s³u¿¹ce do okreœlenia kto utworzy³ klucz dostêpu,
-	\item \textbf{ACCESS\_TYPE} - klucz obcy do tabeli przechowuj¹cej typy dostêpu, jest to pole s³u¿¹ce do okreœlenia jakiego rodzaju dostêp ma klucz dostêpowy,
 	\item \textbf{KEY} - unikalna wartoœæ certyfikatu dostêpu,
 	\item \textbf{FROM} - data od której obowi¹zuje klucz,
 	\item \textbf{TO} - data do której obowi¹zuje klucz,
 	\item \textbf{ISACTUAL} - data wygaœniêcia klucza, jeœli równa TO, oznacza to ¿e klucz utraci³ wa¿noœæ z powodu czasu, jeœli ró¿na oznacza, to ¿e zablokowano z innego powodu wa¿noœæ,
+	\item \textbf{MONDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w poniedzia³ki,
+	\item \textbf{TUESDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp we wtorki,
+	\item \textbf{WEDNESDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w œrody,
+	\item \textbf{THURSDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w czwartki,
+	\item \textbf{FRIDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w pi¹tki,
+	\item \textbf{SATURDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w soboty,
+	\item \textbf{SUNDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w niedziele,
+	\item \textbf{IS\_PERNAMENT} - zmienna boolowska oznaczaj¹ca czy dostêp jest zawsze,
 	\item \textbf{NAME} - imiê osoby, której dotyczy certyfikat,
 	\item \textbf{SURNAME} - nazwisko osoby, której dotyczy certyfikat.
 	\end{itemize*}
@@ -543,24 +540,6 @@
 			\label{rys:panel_generowanie_nowego_klucza_uzytkownik_zalogowany_admin_pioniowo}
 	\end{SCfigure}
 	
-	\section{Panel dodawania typu dostêpu}
-	\begin{wrapfigure}[6]{R}{4.5cm}
-		\vspace{-1cm}
-		\includegraphics[width=4.5cm]{Obrazy/dodaj_typ_dostepu_pionowo}
-		\caption{Panel dodawania nowego typu dostêpu (pionowo)}
-		\label{rys:panel_dodaj_typ_dostepu_pionowo}
-	\end{wrapfigure}
-	
-	Panel dodawania typu dostêpu s³u¿y do dodania nowego rodzaju dostêpu. Administrator wybiera dni tygodnia w których ma obowi¹zywaæ typ, nastêpnie godzinê od do dla danych dni. Na koniec podaje unikaln¹ nazwê i klika “DODAJ” w celu zakoñczenia dodawania lub “ANULUJ”, aby usun¹æ wprowadzone zmiany. (Rysunek \ref{rys:panel_dodaj_typ_dostepu_pionowo} i \ref{rys:panel_dodaj_typ_dostepu_poziomo} )
-	
-	\begin{figure}[h]
-		\begin{minipage}{9.5cm}
-			\includegraphics[width=7cm]{Obrazy/dodaj_typ_dostepu_poziomo}
-			\caption{Panel dodawania nowego typu dostêpu (poziomo)}
-			\label{rys:panel_dodaj_typ_dostepu_poziomo}	
-		\end{minipage}
-	\end{figure}
-
 	\section{Panel zarz¹dzania certyfikatami~(administrator)}
 	\begin{wrapfigure}[5]{R}{4.5cm}
 		\vspace{-1cm}
@@ -581,7 +560,7 @@
 
 	\section{Panel listy oczekuj¹cych u¿ytkowników}
 	\begin{wrapfigure}[5]{R}{4.5cm}
-		\vspace{-1cm}
+		\vspace{-1.1cm}
 		\includegraphics[width=5.5cm]{Obrazy/lista_oczekujacych_uzytkownikow_pionowo}
 		\caption{Panel listy oczekuj¹cych u¿ytkowników (pionowo)}
 		\label{rys:panel_lista_oczekujacych_uzytkownikow_pionowo}
