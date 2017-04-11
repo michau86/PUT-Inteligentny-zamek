@@ -304,6 +304,27 @@
 		\caption{Diagram relacji bazy danych}
 		\label{diagram:diagram relacji}
 	\end{figure}
+
+	\chapter{Zabezpieczenia systemu}
+	Inteligentny zamek ma na celu zabezpieczanie wejœcia do pomieszczeñ, dlatego sam system powinien byæ równie¿ bezpieczny. Podstawowymi elementami jakie nale¿y chroniæ s¹:
+	\begin{itemize*}
+		\item has³a,
+		\item dane u¿ytkowników,
+		\item wa¿niejsze funkcje systemu (tj. generowanie nowych kluczy),
+		\item transmisjê danych,
+		\item zasilanie urz¹dzenia,
+		\item dostêpnoœæ do instalacji.
+	\end{itemize*}
+	
+	Has³a przechowywane powinny byæ w bazie danych w postaci skrótu funkcji SHA-3. Ka¿de has³o sk³adaæ powinno siê z przynajmniej 6 znaków i zawieraæ co najmniej jedn¹ cyfrê.
+	
+	Ogólne dane u¿ytkowników znajdowaæ siê bêd¹ w bazie danych, do której jedynie bezpoœredni dostêp bêdzie z aplikacji serwera lub z konta administratora. Has³o dostêpu generowane powinny byæ za pomoc¹ generatora liczb pseudolosowych i byæ o d³ugoœci co najmniej 400bitów oraz przechodziæ podstawowe testy losowoœci.
+	
+	Zabezpieczeniem wa¿niejszych (wra¿liwych) funkcji systemu odbywaæ siê bêdzie po stronie aplikacji serwerowej. Serwer bêdzie zezwala³ tylko na operacje dozwolone dla danego typu u¿ytkownika. Do wra¿liwych funkcji nale¿y przede wszystkim pobieranie danych z bazy danych oraz ich modyfikacje. Inn¹ form¹ zabezpieczenia operacji bêdzie podawanie has³a, mimo i¿ u¿ytkownik bêdzie zalogowany. Weryfikacja has³a ma na celu ochronê przed chwilowym przejêciem telefonu i wygenerowaniem np. sobie dostêpu do zamka.
+	
+	Ka¿de po³¹czenie internetowe pomiêdzy mikrokomputerem Raspberry Pi i serwerem bêdzie zabezpieczone protoko³em IPSec. Komunikacja bluetooth nie bêdzie szyfrowana, lecz certyfikaty przesy³ane bêd¹ podpisane cyfrowo kluczem asymetrycznym RSA. Pary kluczy (prywatny i publiczny) bêd¹ przypisane do danego certyfikatu i trac¹ce wa¿noœæ wraz z nim.
+	
+	Zabezpieczeniem fizycznym systemu przed utrat¹ zasilania z sieci energetycznej, bêdzie zamontowanie równolegle zasilania bateryjnego za³¹czanego w momencie zaniku g³ównego. Ochron¹ systemu przed ingerencj¹ w sprzêt bêdzie umieszczenie zabudowanego mikrokomputera po wewnêtrznej stronie pomieszczenia, tak ¿eby dostêp mia³y tylko osoby które mia³y pozwolenie przejœæ przez drzwi.
 	
 	\chapter{Widok graficzny systemu}
 	Jedynym elementem graficznym systemu Inteligentnego Zamka jest aplikacja znajduj¹ca siê na urz¹dzeniach mobilnych. Poni¿ej opisano,krótko poszczególne widoki wykonane w œrodowisku Android Studio.
@@ -576,7 +597,7 @@
 		\end{minipage}
 	\end{figure}
 	
-	\section{Panel~listy~oczekuj¹cych~certyfikatów~na~akceptacjê}
+	\section{Panel~listy~oczekuj¹cych~certyfikatów~do~wygenerowania}
 	\begin{wrapfigure}[5]{R}{4.5cm}
 		\vspace{-1cm}
 		\includegraphics[width=5.5cm]{Obrazy/lista_oczekujacych_certyfikatow_pionowo}
@@ -611,5 +632,6 @@
 			\label{rys:panel_ustawienia_poziomo}	
 		\end{minipage}
 	\end{figure}
+	
 	
 \end{document}
