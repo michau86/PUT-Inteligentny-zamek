@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas generowania: 17 Kwi 2017, 21:26
+-- Czas generowania: 17 Kwi 2017, 22:04
 -- Wersja serwera: 5.5.54-0+deb8u1
 -- Wersja PHP: 5.6.30-0+deb8u1
 
@@ -45,6 +45,13 @@ CREATE TABLE IF NOT EXISTS `LOCKS` (
   `LOCALIZATION` text CHARACTER SET utf8 COLLATE utf8_polish_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Zrzut danych tabeli `LOCKS`
+--
+
+INSERT INTO `LOCKS` (`ID_LOCK`, `NAME`, `LOCALIZATION`) VALUES
+(1, 'Zamek testowy', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -71,6 +78,13 @@ CREATE TABLE IF NOT EXISTS `LOCKS_KEYS` (
   `SURNAME` varchar(50) COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+--
+-- Zrzut danych tabeli `LOCKS_KEYS`
+--
+
+INSERT INTO `LOCKS_KEYS` (`ID_KEY`, `ID_LOCK`, `ID_USER`, `LOCK_KEY`, `FROM_DATE`, `TO_DATE`, `ISACTUAL`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`, `IS_PERNAMENT`, `NAME`, `SURNAME`) VALUES
+(1, 1, 123, 'c411bba96157e3dfeecbc80e11ef3c18465aec26b7348cfcb13296d0ba523068', '2017-04-18', '2018-04-17', NULL, '8-12;14-16', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Maciej', 'Marciniak');
+
 -- --------------------------------------------------------
 
 --
@@ -85,6 +99,13 @@ CREATE TABLE IF NOT EXISTS `USERS` (
   `SURNAME` varchar(50) NOT NULL,
   `IS_ADMIN` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `USERS`
+--
+
+INSERT INTO `USERS` (`ID_USER`, `LOGIN`, `PASSWORD`, `NAME`, `SURNAME`, `IS_ADMIN`) VALUES
+(123, 'mapet', 'c411bba96157e3dfeecbc80e11ef3c18465aec26b7348cfcb13296d0ba523068', 'Maciej', 'Marciniak', 1);
 
 --
 -- Indeksy dla zrzutów tabel
