@@ -156,7 +156,11 @@
 	\end{itemize*}
 \newpage
 	\section{Aplikacja mobilna}
-	Aplikacja mobilna w jêzyku Java na platformê Android ma na celu przechowywanie  w pamiêci smartfona klucze cyfrowe u¿ytkownika oraz mo¿liwoœæ komunikacji z cz³owiek-zamek-serwer. Program posiadaæ powinien interfejs graficzny, dziêki któremu bêdzie mo¿na wybraæ, który zamek chce siê otworzyæ w danej chwili. Klucz cyfrowy przesy³any bêdzie bezprzewodowo do komputera steruj¹cego zamkiem za pomoc¹ sieci bluetooth. Aplikacja powinna posiadaæ równie¿ funkcjê generowania kluczy tymczasowych, które mo¿na udostêpniaæ osobom postronnym z ustalonym okresem wa¿noœci (jednorazowy, godzinny, od poniedzia³ku do pi¹tku w godzinach od 8 do 16 itp.). W tym celu zostaje wys³ana proœba do serwera poprzez Internet o wygenerowanie klucza o okreœlonych parametrach. Funkcjonalnoœæ aplikacja przedstawiona zosta³a w Tabeli \ref{tab:wymagania_aplikacja_mobilna}.
+	Aplikacja mobilna w jêzyku Java na platformê Android ma na celu przechowywanie  w pamiêci smartfona klucze cyfrowe u¿ytkownika oraz mo¿liwoœæ komunikacji z cz³owiek-zamek-serwer. Program posiadaæ powinien interfejs graficzny, dziêki któremu bêdzie mo¿na wybraæ, który zamek chce siê otworzyæ w danej chwili. Klucz cyfrowy przesy³any bêdzie bezprzewodowo do komputera steruj¹cego zamkiem za pomoc¹ sieci bluetooth. Aplikacja powinna posiadaæ równie¿ funkcjê generowania kluczy tymczasowych, które mo¿na udostêpniaæ osobom postronnym z ustalonym okresem wa¿noœci (jednorazowy, godzinny, od poniedzia³ku do pi¹tku w godzinach od 8 do 16 itp.). W tym celu zostaje wys³ana proœba do serwera poprzez Internet o wygenerowanie klucza o okreœlonych parametrach.
+	
+	Klucze przesy³ane przez bluetooth powinny byæ szyfrowane algorytmem RSA (kluczem prywatnym). Klucz prywatny otrzymywany wraz z certyfikatem przypisany jest tylko do jednego zamka i przekazywany wraz z nim. W celu przeniesienia klucza dostêpowego na inne urz¹dzenie nale¿y wyeksportowaæ klucz, a nastêpnie importowaæ do nowego urz¹dzenia. 
+	
+	Funkcjonalnoœæ aplikacja przedstawiona zosta³a w Tabeli \ref{tab:wymagania_aplikacja_mobilna}.
 	
 	\begin{longtable}[!ht]{|p{3.5cm}|p{7cm}|p{4.4cm}|} 
 		\caption{Tabela wymagañ funkcjonalnych aplikacji mobilnej}
@@ -184,8 +188,10 @@
 			Zarz¹dzanie wa¿noœci¹ certyfikatów dostêpu & Dodawanie, usuwanie wa¿noœci certyfikatów dostêpowych. Usuniêcie praw u¿ytkownika nie skutkuje uniewa¿nieniem wygenerowanych przez niego certyfikatów & Urz¹dzenie mobilne, Aplikacja serwerowa, Administrator \\ \hline
 			Przes³anie awaryjnego klucza dostêpu & Umo¿liwia wczytanie specjalnego has³a 512-bitowego do Raspberry Pi, który otwiera zamek bez koniecznoœci dostêpu do Internetu & Urz¹dzenie mobilne, RaspberryPi, Administrator \\ \hline
 			Tryb otwierania zamka & Komunikacja z Raspberry mo¿e odbywaæ siê automatycznie lub na ¿¹danie wyzwalane przyciskiem otwierania zamka z poziomu aplikacji & Urz¹dzenie mobilne, RaspberryPi, U¿ytkownik zalogowany \\ \hline
+			Importowanie z pliku klucza prywatnego & Pobranie z pliku klucza prywatnego klucza dostêpowego & Urz¹dzenie mobilne\\ \hline
+			Eksportowanie do pliku klucza prywatnego  & Przes³anie do pliku klucza prywatnego potrzebnego do szyfrowania kluczy dostêpowych & Urz¹dzenie mobilne\\ \hline
 	\end{longtable}
-	
+	\newpage
 	\textbf{Wymagania pozafunkcjonalne:}
 	\begin{itemize*}
 	\item narzut czasowy zwi¹zany z procesem szyfrowania kluczy cyfrowych (zale¿ny od parametrów urz¹dzenia mobilnego),
@@ -193,7 +199,7 @@
 	\item wymagany dostêp do Internetu do zarz¹dzania kluczami, czy logowania, 
 	\item przyznanie uprawnieñ aplikacji do modu³u bluetooth, wysy³ania wiadomoœci MMS, Internetu,
 	\item jêzyk aplikacji Polski,
-	\item wersja androida minimalna 4.4, docelowa 5.0.
+	\item wersja androida minimalna 4.4, docelowa 5.0,
 	\end{itemize*}
 	\section{Aplikacja serwerowa obs³uguj¹cego bazê danych}
 	Rol¹ serwera w tym systemie bêdzie przechowywanie danych dostêpowych w bazie danych MySQL oraz generowanie nowych kluczy cyfrowych poprzez program w jêzyku Python. Aplikacja serwerowa oparta powinna byæ o technologiê Python oraz serwera http Nginx. Serwer postawiony powinien byæ na odrêbnym urz¹dzeniu od instalacji zamka, lecz dopuszcza siê ze wzglêdów ekonomicznych równie¿ postawienie serwera na wybranym (jeœli w systemie znajduje siê wiele zamków) urz¹dzeniu Raspberry Pi. Funkcjonalnoœæ aplikacji serwerowej i bazy danych przedstawiona zosta³a w Tabeli \ref{tab:wymagania_serwer_baza_danych}.
