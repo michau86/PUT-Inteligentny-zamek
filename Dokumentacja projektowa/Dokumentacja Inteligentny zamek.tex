@@ -99,7 +99,7 @@
 	
 	U¿ywane klucze bêd¹ posiada³y podpis cyfrowy, który jednoznacznie bêdzie definiowa³ w³aœciciela oraz stempel czasowy do okreœlania wa¿noœci. Klucze bêd¹ mog³y mieæ w zale¿noœci od przeznaczenia ró¿ne okresy przedawnienia, np. w³aœciciel mieszkaj¹cy  w danym domu posiadaæ bêdzie klucz o d³ugim terminie wa¿noœci, a goœcie klucz jednorazowy b¹dŸ kilku godzinny bez mo¿liwoœci odnowienia. Wszelkie dane dostêpowe bêd¹ generowane i dystrybuowane na serwerze systemu, z mo¿liwoœci¹ zdalnej proœby o utworzenie kluczy tylko przez uprawnione przez administratora osoby.
 	
-	\newpage Ogólny schemat systemu znajduje siê na Rysunku \ref{diagram:diagram wdro¿eñ}.
+	Ogólny schemat systemu znajduje siê na Rysunku \ref{diagram:diagram wdro¿eñ}.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Schemat_ogolny_inteligentnego_zamka.png}
@@ -125,7 +125,9 @@
 	\section{Urz¹dzenie steruj¹ce}
 	Zadaniem urz¹dzenia steruj¹cego, w którego sk³ad wchodziæ bêd¹ Raspberry Pi 3 oraz serwomechanizm/zamka elektronicznego jest weryfikacja klucza cyfrowego przesy³anego przez urz¹dzenie mobilne oraz otwieranie zamka przy pozytywnym wyniku weryfikacji.
 	
-	Oprogramowanie mikrokomputera obejmuje system Linux raspbian-jessie oraz szereg podprogramów napisanych w jêzyku Python. Skrypty programów ³¹cz¹ siê do serwera w celu pobrania informacji o poprawnoœci i daty wa¿noœci certyfikatu dostêpu.Jeœli dane bêd¹ poprawne to zostaje wysterowany serwomechanizm, który otwiera zamek, w przeciwnym przypadku u¿ytkownik zostanie poinformowany o odmowie dostêpu, a nieudana próba dostania siê do systemu zarejestrowana zostanie w bazie danych wraz z danymi w³aœciciela klucza.  Funkcjonalnoœæ urz¹dzenia steruj¹cego przedstawiona zosta³a w Tabeli \ref{tab:wymagania_urz¹dzenie_steruj¹ce}.
+	Oprogramowanie mikrokomputera obejmuje system Linux raspbian-jessie oraz szereg podprogramów napisanych w jêzyku Python. Skrypty programów ³¹cz¹ siê do serwera w celu pobrania informacji o poprawnoœci i daty wa¿noœci certyfikatu dostêpu.Jeœli dane bêd¹ poprawne to zostaje wysterowany serwomechanizm, który otwiera zamek, w przeciwnym przypadku u¿ytkownik zostanie poinformowany o odmowie dostêpu, a nieudana próba dostania siê do systemu zarejestrowana zostanie w bazie danych wraz z danymi w³aœciciela klucza.
+	
+	Funkcjonalnoœæ urz¹dzenia steruj¹cego przedstawiona zosta³a w Tabeli \ref{tab:wymagania_urz¹dzenie_steruj¹ce}.
 	\begin{longtable}[!ht]{|p{3.5cm}|p{7.5cm}|p{3.7cm}|} 
 		\caption{Tabela wymagañ funkcjonalnych urz¹dzenia steruj¹cego}
 		\label{tab:wymagania_urz¹dzenie_steruj¹ce}\\
@@ -201,11 +203,13 @@
 	\item jêzyk aplikacji Polski,
 	\item wersja androida minimalna 4.4, docelowa 5.0,
 	\end{itemize*}
-	\section{Aplikacja serwerowa obs³uguj¹cego bazê danych}
-	Rol¹ serwera w tym systemie bêdzie przechowywanie danych dostêpowych w bazie danych MySQL oraz generowanie nowych kluczy cyfrowych poprzez program w jêzyku Python. Aplikacja serwerowa oparta powinna byæ o technologiê Python oraz serwera http Nginx. Serwer postawiony powinien byæ na odrêbnym urz¹dzeniu od instalacji zamka, lecz dopuszcza siê ze wzglêdów ekonomicznych równie¿ postawienie serwera na wybranym (jeœli w systemie znajduje siê wiele zamków) urz¹dzeniu Raspberry Pi. Funkcjonalnoœæ aplikacji serwerowej i bazy danych przedstawiona zosta³a w Tabeli \ref{tab:wymagania_serwer_baza_danych}.
+	\section{Aplikacja serwerowa obs³uguj¹ca bazê danych}
+	Rol¹ serwera w tym systemie bêdzie przechowywanie danych dostêpowych w bazie danych MySQL oraz generowanie nowych kluczy cyfrowych poprzez program w jêzyku Python. Aplikacja serwerowa oparta powinna byæ o technologiê Python oraz serwera http Nginx. Serwer postawiony powinien byæ na odrêbnym urz¹dzeniu od instalacji zamka, lecz dopuszcza siê ze wzglêdów ekonomicznych równie¿ postawienie serwera na wybranym (jeœli w systemie znajduje siê wiele zamków) urz¹dzeniu Raspberry Pi.
+	
+	Funkcjonalnoœæ aplikacji serwerowej przedstawiona zosta³a w Tabeli \ref{tab:wymagania_serwer_baza_danych}.
 	
 	\begin{longtable}[!ht]{|p{3.5cm}|p{7.5cm}|p{3.7cm}|} 
-		\caption{Tabela wymagañ funkcjonalnych aplikacji serwerowej obs³uguj¹cej bazê danych}
+		\caption{Tabela wymagañ funkcjonalnych aplikacji serwerowej}
 		\label{tab:wymagania_serwer_baza_danych} \\
 		\hline
 		Funkcja & Opis & Aktorzy \\	\hline
@@ -218,7 +222,7 @@
 		Pobranie historii dostêpu zamka & Pobranie statystyk zwi¹zanych z histori¹ dostêpu do zamka & Aplikacja serwerowa, Administrator \\ \hline
 		Zablokowanie dostêpu u¿ytkownika & Zablokowanie certyfikatu dostêpowego, np. w przypadku kradzie¿y telefonu & Aplikacja serwerowa, Administrator \\ \hline
 	\end{longtable}
-
+	\newpage
 	\textbf{Wymagania niefunkcjonalne:}
 	\begin{itemize*}
 	\item ograniczenie pamiêci dostêpnej dla bazy danych (32Gb - pamiêæ niezbêdna dla systemu operacyjnego i oprogramowania),
@@ -251,6 +255,7 @@
 	\item \textbf{ACCESS\_TO\_LOCKS} - archiwizuje próby u¿ycia certyfikatów,
 	\item \textbf{LOCKS\_KEYS} - zawiera wszystkie klucze dostêpowe u¿ytkowników. 
 	\end{itemize*}
+
 	Wiersz tabeli USERS zawieraæ musi:
 	\begin{itemize*}
 	\item \textbf{ID\_USER} - unikalny identyfikator (klucz g³ówny) u¿ytkownika sk³adaj¹cy siê z 10 cyfr,
@@ -260,6 +265,7 @@
 	\item \textbf{SURNAME} - nazwisko u¿ytkownika,
 	\item \textbf{IS\_ADMIN} - pole boolowskie wskazuj¹ce czy dany u¿ytkownik jest administratorem czy nie.
 	\end{itemize*}
+
 	Zamek opisywany jest poprzez kolumny:
 	\begin{itemize*}
 	\item \textbf{ID\_LOCK} - unikalny identyfikator (klucz g³ówny) zamka sk³adaj¹cy siê z 10 cyfr,
@@ -267,6 +273,7 @@
 	\item \textbf{LOCALIZATION} - nieobowi¹zkowe pole opisuj¹ce fizyczne po³o¿enie zamka.
 	\end{itemize*}
 \newpage
+
 	Klucz dostêpowy sk³ada siê z:
 	\begin{itemize*}
 	\item \textbf{ID\_KEY} - unikalny identyfikator (klucz g³ówny) klucza dostêpowego sk³adaj¹cy siê z 10 cyfr,
@@ -287,6 +294,7 @@
 	\item \textbf{NAME} - imiê osoby, której dotyczy certyfikat,
 	\item \textbf{SURNAME} - nazwisko osoby, której dotyczy certyfikat.
 	\end{itemize*}
+
 	W tabeli archiwizuj¹cej akcje na zamku znajduj¹ siê takie dane jak:
 	\begin{itemize*}
 	\item \textbf{ID} - unikalny identyfikator (klucz g³ówny) akcji wykonanej na certyfikacie sk³adaj¹cy siê z 10 cyfr,
@@ -335,7 +343,7 @@
 	\chapter{Widok graficzny systemu}
 	Jedynym elementem graficznym systemu Inteligentnego Zamka jest aplikacja znajduj¹ca siê na urz¹dzeniach mobilnych. Poni¿ej opisano,krótko poszczególne widoki wykonane w œrodowisku Android Studio.
 	
-	\section{Panel logowania u¿ytkownika}
+	\section*{Panel logowania u¿ytkownika}
 	Widok umo¿liwia zalogowanie siê u¿ytkownika do systemu poprzez podanie loginu i has³a w odpowiednie pola, a nastêpnie klikniêcie w przycisk “ZALOGUJ SIÊ”. Jeœli nie posiada siê konta, mo¿na je utworzyæ poprzez przycisk “ZAREJESTRUJ SIÊ” lub przejœæ do panelu Goœcia przyciskiem “GOŒÆ”. (Rysunek \ref{rys:panel_logowania_pionowo} i \ref{rys:panel_logowania_poziomo})
 	
 	\begin{figure}[h]
@@ -352,7 +360,7 @@
 	\end{figure}
 	\newpage
 	
-	\section{Panel rejestracji u¿ytkownika}
+	\section*{Panel rejestracji u¿ytkownika}
 	Panel rejestracji s³u¿y do utworzenie nowego u¿ytkownika poprzez podanie loginu, has³a, imienia i nazwiska. Po upewnieniu siê, ¿e wszystkie dane s¹ poprawne, aby zakoñczyæ proces rejestracji, klikamy przycisk “ZAREJESTRUJ”. (Rysunek \ref{rys:panel_rejestracji_pionowo} i \ref{rys:panel_rejestracji_poziomo})
 	
 	\begin{figure}[h]
@@ -369,7 +377,7 @@
 	\end{figure}
 	\newpage
 	
-	\section{Panel listy zamków}
+	\section*{Panel listy zamków}
 	Widok listy dostêpnych zamków przedstawia listê nazw zamków do jakich dany u¿ytkownik ma dostêp. U³atwieniem jest mo¿liwoœæ sortowania wyników i wyszukiwanie po nazwach. Klikniêcie w nazwê zamka powoduje otwarcie zamka. Ustawiæ mo¿na równie¿ zamek, który ma byæ otwierany automatycznie gdy jest siê w pobli¿u zamka. (Rysunek \ref{rys:panel_listy_dostepnych_zamkow_pionowo} i \ref{rys:panel_listy_dostepnych_zamkow_poziomo})
 	
 	\begin{figure}[h]
@@ -386,7 +394,7 @@
 	\end{figure}
 	\newpage
 	
-	\section{Panel boczny}
+	\section*{Panel boczny}
 	Panel boczny pozwala na szybkie prze³¹czanie pomiêdzy widokami. Chowany jest po lewej stronie ekranu. Umo¿liwia przechodzenie odpowiednio do listy zamków, zarz¹dzania certyfikatami, panelu administracyjnego oraz ustawieñ. (Rysunek \ref{rys:panel_boczny_pionowo} i \ref{rys:panel_boczny_poziomo})
 	
 	\begin{figure}[h]
@@ -403,7 +411,7 @@
 	\end{figure}
 	\newpage
 	
-	\section{Panel zarz¹dzania certyfikatami}
+	\section*{Panel zarz¹dzania certyfikatami}
 	Panel zarz¹dzania certyfikatami umo¿liwia wybór funkcji dodania certyfikatu w dwóch wariantach (rozwijana lista) - dodania z pliku lub œci¹gniêcia z serwera. Kolejne pozycje to lista posiadanych certyfikatów, wys³anie wniosku o utworzenie nowego certyfikatu oraz ostatnia opcja to wygenerowanie certyfikatu dla goœcia. (Rysunek \ref{rys:panel_zarz¹dzania_certyfikatami_pionowo} i \ref{rys:panel_zarz¹dzania_certyfikatami_poziomo})
 	
 	\begin{figure}[h]
@@ -420,7 +428,7 @@
 	\end{figure}
 	\newpage
 
-	\section{Panel listy certyfikatów}
+	\section*{Panel listy certyfikatów}
 	Panel listy certyfikatów, jest list¹ aktualnych certyfikatów nale¿¹cych do u¿ytkownika. Klikniêcie w dany certyfikat przenosi do widoku szczegó³owego zwi¹zanego z operacjami na certyfikacie. (Rysunek \ref{rys:panel_listy_certyfikatów_pionowo} i \ref{rys:panel_listy_certyfikatów_poziomo})
 	
 	\begin{figure}[h]
@@ -437,7 +445,7 @@
 	\end{figure}
 	\newpage
 	
-	\section{Panel certyfikatu}
+	\section*{Panel certyfikatu}
 	Panel certyfikatu u góry zawiera nazwê certyfikatu, poni¿ej informacje o dacie wygaœniêcia, którego zamku dotyczy oraz w jakim czasie przyznaje dostêp. Na dole dostêpne s¹ dwa przyciski pozwalaj¹ce usun¹æ certyfikat lub wys³aæ proœbê o przed³u¿enie wa¿noœci. (Rysunek \ref{rys:panel_certyfikatu_pionowo} i \ref{rys:panel_certyfikatu_poziomo})
 	
 	\begin{figure}[h]
@@ -453,7 +461,7 @@
 		\end{minipage}
 	\end{figure}
 	
-	\section{Panel wnioskowania o certyfikat}
+	\section*{Panel wnioskowania o certyfikat}
 	Panel wnioskowania o certyfikat polega na wybraniu z listy wszystkich zamków, konkretnego do którego chcemy uzyskaæ dostêp i wys³aæ wniosek o przydzielenie dostêpu. (Rysunek \ref{rys:panel_wnioskowania_o_certyfikat_pionowo} i \ref{rys:panel_wnioskowania_o_certyfikat_poziomo})
 	
 	\begin{figure}[h]
@@ -470,7 +478,7 @@
 	\end{figure}
 	\newpage
 	
-	\section{Panel tworzenia certyfikatu dla goœcia}
+	\section*{Panel tworzenia certyfikatu dla goœcia}
 	Panel tworzenia certyfikatu goœcia sk³ada siê z danych goœcia (imiê i nazwisko), daty, od której obowi¹zuje certyfikat, zamka którego dotyczy oraz jak d³ugo pozostanie wa¿ny (wybór z rozwijanej listy). Aby zakoñczyæ proces generowania nale¿y klikn¹æ przycisk “WYGENERUJ”. (Rysunek \ref{rys:panel_generowanie_nowego_klucza_goscia_pionowo} i \ref{rys:panel_generowanie_nowego_klucza_goscia_poziomo})
 	
 	\begin{figure}[h]
@@ -487,7 +495,7 @@
 	\end{figure}
 	\newpage
 	
-	\section{Panel administratora}
+	\section*{Panel administratora}
 	W panelu administratora znajduj¹ siê 4 przyciski do administrowania systemem zamków:
 	\begin{itemize*}
 	\item ,,Historia u¿ycia Zamków''
@@ -513,7 +521,7 @@
 	\end{figure}
 	\newpage
 	
-	\section{Panel historii u¿ycia zamków}
+	\section*{Panel historii u¿ycia zamków}
 	Panel historii u¿ycia zamków sk³ada siê z rozwijanej listy wszystkich zamków znaj¹cych siê w systemie, s³u¿¹cej do filtrowania wyników. Dodatkowo wybraæ mo¿na okres z jakiego wyniki s¹ prezentowane. Pozycje opisane kolorem czerwonym dotycz¹ operacji odrzucanych, bia³e przyznaj¹cych dostêp do zamka. (Rysunek \ref{rys:panel_historii_uzycia_zamka_pionowo} i \ref{rys:panel_historii_uzycia_zamka_poziomo})
 	
 	\begin{figure}[h]
@@ -530,7 +538,7 @@
 	\end{figure}
 	\newpage
 	
-	\section{Panel generowania nowego certyfikatu (administrator)}
+	\section*{Panel generowania nowego certyfikatu (administrator)}
 	Panel generowanie nowego certyfikatu (administrator) s³u¿y do tworzenia nowych certyfikatów przez administratora. W pierwszych polach podaje siê imiê i nazwisko kogo dotyczy certyfikat. W nastêpnych administrator wybiera typ certyfikatu (goœæ / u¿ytkownik zalogowany). W zale¿noœci od wyboru dostêpne s¹ okreœlone pola. Wspólne to od kiedy jest dostêp i jakiego zamka dotyczy. Dla goœcia nale¿y wybraæ na jak d³ugo jest dostêp, a dla zalogowanego u¿ytkownika do kiedy jest wa¿noœæ i w jakich godzinach danych dni tygodni ma dostêp (po klikniêciu przycisku "ZAKRES OBOWI¥ZYWANIA CERTYFIKATU" przechodzi siê do widoku wyboru zakresu godziny). (Rysunek \ref{rys:panel_generowanie_nowego_klucza_gosc_admin_pioniowo}, \ref{rys:panel_generowanie_nowego_klucza_admin_poziomo}, \ref{rys:panel_generowanie_nowego_klucza_uzytkownik_zalogowany_admin_pioniowo} i 
 	\ref{rys:panel_wyboru_zakresu_certyfikatu})
 	
@@ -564,7 +572,7 @@
 	\end{figure}
 	\newpage
 	
-	\section{Panel zarz¹dzania certyfikatami~(administrator)}
+	\section*{Panel zarz¹dzania certyfikatami~(administrator)}
 	Panel zarz¹dzania certyfikatami u¿ytkowników (administrator) jest widokiem tylko wszystkich aktywnych certyfikatów w systemie. Administrator klikaj¹c na pozycjê przechodzi do panelu certyfikatu opisanego wy¿ej. Tam mo¿e usun¹æ dostêp lub go przed³u¿yæ. U³atwieniem jest mo¿liwoœæ wyboru typu sortowania. (Rysunek \ref{rys:panel_lista_certyfikatow_administrator_pionowo} i \ref{rys:panel_lista_certyfikatow_administrator_poziomo})
 	
 	\begin{figure}[h]
@@ -581,7 +589,7 @@
 	\end{figure}
 	\newpage
 
-	\section{Panel~listy~oczekuj¹cych~u¿ytkowników~do~rejestracji}
+	\section*{Panel~listy~oczekuj¹cych~u¿ytkowników~do~rejestracji}
 	Panel listy oczekuj¹cych u¿ytkowników jest list¹ wszystkich goœci, którzy ubiegaj¹ siê o zarejestrowanie. PO klikniêciu w odpowiedni¹ pozycjê pojawiaj¹ siê dwie opcjê: “AKCEPTUJ” lub “ODRZUÆ”.  (Rysunek \ref{rys:panel_lista_oczekujacych_uzytkownikow_pionowo} i \ref{rys:panel_lista_oczekujacych_uzytkownikow_poziomo})
 	
 	\begin{figure}[h]
@@ -598,7 +606,7 @@
 	\end{figure}
 	\newpage
 	
-	\section{Panel~listy~oczekuj¹cych~certyfikatów do~wygenerowania}
+	\section*{Panel~listy~oczekuj¹cych~certyfikatów do~wygenerowania}
 	Panel listy oczekuj¹cych certyfikatów jest list¹ wszystkich certyfikatów, które ubiegaj¹ siê o akceptacjê administratora. Po klikniêciu w odpowiedni¹ pozycjê pojawiaj¹ siê dwie opcjê: “AKCEPTUJ” lub “ODRZUÆ”.  (Rysunek \ref{rys:panel_lista_oczekujacych_certyfikatow_pionowo} i \ref{rys:panel_lista_oczekujacych_certyfikatow_poziomo})
 	
 	\begin{figure}[h]
@@ -614,7 +622,7 @@
 		\end{minipage}
 	\end{figure}
 
-	\section{Panel ustawieñ konta}
+	\section*{Panel ustawieñ konta}
 	W panelu ustawieñ u¿ytkownik mo¿e zmieniæ has³o do swojego konta. Wymagane jest podanie starego has³a, a nastêpnie nowego. Aby zakoñczyæ czynnoœæ klikamy na “ZMIEÑ”. (Rysunek \ref{rys:panel_ustawienia_pionowo} i \ref{rys:panel_ustawienia_poziomo})
 	
 	\begin{figure}[h]
