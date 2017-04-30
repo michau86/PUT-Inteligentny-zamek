@@ -1,9 +1,14 @@
 package inteligenty_zamek.app_ik;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +18,7 @@ public class Managment_certyficationActivity extends BaseActivity
 
            private String[] navMenuTitles;
            private TypedArray navMenuIcons;
-
+           ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +27,13 @@ public class Managment_certyficationActivity extends BaseActivity
 
         navMenuIcons =getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles,navMenuIcons);
+
+
+        Typeface fontFamily = Typeface.createFromAsset(this.getAssets(), "fonts/fontawesome.ttf");
+        TextView sampleText = (TextView) this.findViewById(R.id.TextView_download_serwer);
+        sampleText.setTypeface(fontFamily);
+        TextView sampleText2 = (TextView) this.findViewById(R.id.TextView_download_file);
+        sampleText2.setTypeface(fontFamily);
 
         ListView resultsListView = (ListView) this.findViewById(R.id.ListView_Managment_Certyfivation);
 
@@ -36,8 +48,22 @@ public class Managment_certyficationActivity extends BaseActivity
 
         resultsListView.setAdapter(adapter);
 
+        listView = (ListView) findViewById(R.id.ListView_Managment_Certyfivation);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                if (position == 2) {
+                    Intent myIntent = new Intent(view.getContext(), CertificationaskActivity.class);
+                    startActivityForResult(myIntent, 0);
+                }
+
+
+            }
+
+            });
     }
+       }
 
 
 
-}
+

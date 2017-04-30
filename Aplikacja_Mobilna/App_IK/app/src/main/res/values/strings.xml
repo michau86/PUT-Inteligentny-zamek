@@ -23,7 +23,8 @@
     <string name="activity_main_text3">sortuj</string>
 
     <!-- activity managment certyfication  -->
-
+    <string name="icon_download_serwer">&#xf0ed;</string>
+    <string name="icon_download_file">&#xf15b;</string>
     <string name="activity_managmentCertyfication1">Dodaj Certyfikat</string>
     <string name="activity_managmentCertyfication2">Lista twoich certyfikatów</string>
     <string name="activity_managmentCertyfication3">wnioskuj o certyfikat</string>

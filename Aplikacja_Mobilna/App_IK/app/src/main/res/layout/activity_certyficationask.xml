@@ -38,7 +38,16 @@
     <ListView
         android:id="@+id/ListView_key_generate_certyfiaction"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:background="@color/color_background_list" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/color_border_list" />
+
 </LinearLayout>
 
     <!-- The navigation drawer -->
