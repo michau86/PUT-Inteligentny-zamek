@@ -22,24 +22,38 @@
     <string name="activity_main_text2">wyszukaj...</string>
     <string name="activity_main_text3">sortuj</string>
 
+    <!-- activity managment certyfication  -->
+
+    <string name="activity_managmentCertyfication1">Dodaj Certyfikat</string>
+    <string name="activity_managmentCertyfication2">Lista twoich certyfikatów</string>
+    <string name="activity_managmentCertyfication3">wnioskuj o certyfikat</string>
+    <string name="activity_managmentCertyfication4">wygeneruj certyfikat dla gościa</string>
+
+
     <!-- activity_login   -->
-    <string name="acivity_login_text1">Login</string>
-    <string name="acivity_login_text2">Hasło</string>
-    <string name="acivity_login_text3">Zaloguj się</string>
-    <string name="acivity_login_text4">Jeśli nie posiadasz konta zarejestruj się lub przejdź do trybu gościa</string>
-    <string name="acivity_login_text5">Zarejestruj się</string>
-    <string name="acivity_login_text6">Gość</string>
+    <string name="activity_login_text1">Login</string>
+    <string name="activity_login_text2">Hasło</string>
+    <string name="activity_login_text3">Zaloguj się</string>
+    <string name="activity_login_text4">Jeśli nie posiadasz konta zarejestruj się lub przejdź do trybu gościa</string>
+    <string name="activity_login_text5">Zarejestruj się</string>
+    <string name="activity_login_text6">Gość</string>
     <string name="title_activity_main">MainActivity</string>
 
     <!-- activity_register   -->
-    <string name="acivity_register_text1">Login</string>
-    <string name="acivity_register_text2">Hasło</string>
-    <string name="acivity_register_text3">Imie</string>
-    <string name="acivity_register_text4">Nazwisko</string>
-    <string name="acivity_register_text5">Rejestracja</string>
-    <string name="acivity_register_text6">Zarejestruj</string>
+    <string name="activity_register_text1">Login</string>
+    <string name="activity_register_text2">Hasło</string>
+    <string name="activity_register_text3">Imie</string>
+    <string name="activity_register_text4">Nazwisko</string>
+    <string name="activity_register_text5">Rejestracja</string>
+    <string name="activity_register_text6">Zarejestruj</string>
 
-
+    <!-- activity admin panel  -->
+    <string name="activity_admin_panel1">Historia użycia zamków</string>
+    <string name="activity_admin_panel2">Generowanie nowego certyfikatu</string>
+    <string name="activity_admin_panel3">Zarządzanie certyfikatami użytkowników</string>
+    <string name="activity_admin_panel4">Lista oczekujących uzytkowników do zarejestrowania</string>
+    <string name="activity_admin_panel5">Lista oczekujących certyfikatów do zaakceptowania</string>
+    <string name="activity_admin_panel_text1">Panel Administracyjny</string>
     <!-- drawer  -->
     <string name="title_section1">Otwórz kłódke</string>
     <string name="title_section2">Certyfikaty</string>
@@ -53,5 +67,20 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_main3">Main3Activity</string>
+    <string-array name="nav_drawer_items">
+        <item>Otwórz kłódke</item>
+        <item>Certyfikaty</item>
+        <item>Panel Administracyjny</item>
+        <item>Ustawienia</item>
+        <item>Wyloguj</item>
+
+    </string-array>
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+
+    </array>
 
 </resources>

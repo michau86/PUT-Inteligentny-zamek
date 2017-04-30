@@ -15,7 +15,7 @@
         android:layout_marginLeft="19dp"
         android:layout_marginStart="19dp"
         android:layout_marginTop="19dp"
-        android:text="@string/acivity_login_text1"
+        android:text="@string/activity_login_text1"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
-        android:text="@string/acivity_login_text2"
+        android:text="@string/activity_login_text2"
         android:layout_below="@+id/EditText_login"
         android:layout_alignLeft="@+id/EditText_login"
         android:layout_alignStart="@+id/EditText_login" />
@@ -60,7 +60,7 @@
         android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/acivity_login_text3"
+        android:text="@string/activity_login_text3"
         android:layout_below="@+id/EditText_password"
         android:layout_alignLeft="@+id/EditText_password"
         android:layout_alignStart="@+id/EditText_password"
@@ -76,13 +76,13 @@
         android:layout_marginTop="21dp"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
-        android:text="@string/acivity_login_text4" />
+        android:text="@string/activity_login_text4" />
 
     <Button
         android:id="@+id/button_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/acivity_login_text5"
+        android:text="@string/activity_login_text5"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/textView"
@@ -98,6 +98,6 @@
         android:layout_marginStart="16dp"
         android:layout_toEndOf="@+id/button_register"
         android:layout_toRightOf="@+id/button_register"
-        android:text="@string/acivity_login_text6" />
+        android:text="@string/activity_login_text6" />
 
 </RelativeLayout>

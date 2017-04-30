@@ -1,29 +1,98 @@
-<!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="inteligenty_zamek.app_ik.MainActivity">
+    android:layout_height="match_parent" >
 
-    <!-- As the main content view, the view below consumes the entire
-         space available using match_parent in both dimensions. -->
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+    <!-- The main content view -->
 
-    </FrameLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <!-- The drawer is given a fixed width in dp and extends the full height of
-         the container. -->
-    <fragment
-    android:id="@+id/navigation_drawer"
-    android:name="inteligenty_zamek.app_ik.NavigationDrawerFragment"
-    android:layout_width="@dimen/navigation_drawer_width"
-    android:layout_height="match_parent"
-    android:layout_gravity="start"
-    tools:layout="@layout/drawer_main" />
+        <TextView
+            android:id="@+id/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="20dp"
+            android:text="@string/acivity_main_text1"
+            android:textSize="30sp" />
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editText_Search"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/color_background_input"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/activity_main_text2"
+                android:textColor="@color/color_text_ico"
+                android:textSize="14sp" />
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView_sorting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/activity_main_text3"
+                android:textColor="@color/color_text_ico" />
+
+            <TextView
+                android:id="@+id/TextView_sortingIco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/icon_SortingAsc" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/color_border_list" />
+
+        <ListView
+            android:id="@+id/listView_Keys"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_background_list" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/color_border_list" />
+
+
+    </LinearLayout>
+
+    <!-- The navigation drawer -->
+
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/drawer_background"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp" />
 
 
 </android.support.v4.widget.DrawerLayout>
