@@ -213,8 +213,7 @@
 		\label{tab:wymagania_serwer_baza_danych} \\
 		\hline
 		Funkcja & Opis & Aktorzy \\	\hline
-		Utworzenie klucza cyfrowego na ¿¹danie & Utworzenie pseudolosowego 128-bitowego klucza cyfrowego & Aplikacja serwerowa,
-		U¿ytkownik zalogowany \\ \hline
+		Utworzenie klucza cyfrowego u¿ytkownika & Utworzenie pseudolosowego 128-bitowego klucza prywatnego i publicznego u¿ytkownika potrzebnych do uwierzytelnienia kluczy dostêpowych  & Aplikacja serwerowa, U¿ytkownik zalogowany \\ \hline
 		Kontrola uprawnieñ u¿ytkownika & Weryfikacja uprawnieñ u¿ytkownika do wykonania danej czynnoœci & Aplikacja serwerowa \\ \hline
 		Modyfikowanie wpisów w bazie danych & Poœredniczenie w modyfikacji danych zawartych w bazie danych & Aplikacja serwerowa \\ \hline
 		Przekazywanie wpisów z bazy danych & Poœredniczenie w przekazywaniu danych pobieranych z bazy danych & Aplikacja serwerowa \\ \hline
@@ -247,6 +246,33 @@
 	\end{figure}
 	\end{landscape}
 
+	\chapter{Diagramy sekwencji}
+	\section*{Logowanie u¿ytkownika}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=15cm]{Obrazy/Diagram sekwencji logowanie uzytkownika.png}
+		\caption{Diagram sekwencji logowanie u¿ytkownika}
+		\label{diagram:Diagram sekwencji logowanie uzytkownika}
+	\end{figure}
+	
+	\newpage
+	\section*{Rejestracja u¿ytkownika}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=15cm]{Obrazy/Diagram sekwencji rejestracja uzytkownika.png}
+		\caption{Diagram sekwencji rejestracja u¿ytkownika}
+		\label{diagram:Diagram sekwencji rejestracja uzytkownika}
+	\end{figure}
+
+	\newpage
+	\section*{Otwieranie zamka}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=15cm]{Obrazy/Diagram sekwencji otwieranie zamka.png}
+		\caption{Diagram sekwencji otwieranie zamka}
+		\label{diagram:Diagram sekwencji otwieranie zamka}
+	\end{figure}
+
 	\chapter{Projekt bazy danych}
 	Baza danych przechowywaæ bêdzie sk³adaæ siê z piêciu tabel:
 	\begin{itemize*}
@@ -261,6 +287,7 @@
 	\item \textbf{ID\_USER} - unikalny identyfikator (klucz g³ówny) u¿ytkownika sk³adaj¹cy siê z 10 cyfr,
 	\item \textbf{LOGIN} - unikalna nazwa u¿ytkownika niezbêdna podczas logowania, zawieraj¹ca nie wiêcej ni¿ 255 znaków,
 	\item \textbf{PASSWORD} - has³o zapisane w postaci skrótu, potrzebne do autoryzacji dostêpu u¿ytkownikowi,
+	\item \textbf{PUBLIC\_KEY} - klucz publiczny u¿ytkownika potrzebny do podpisu cyfrowego,
 	\item \textbf{NAME} - imiê u¿ytkownika,
 	\item \textbf{SURNAME} - nazwisko u¿ytkownika,
 	\item \textbf{IS\_ADMIN} - pole boolowskie wskazuj¹ce czy dany u¿ytkownik jest administratorem czy nie.
