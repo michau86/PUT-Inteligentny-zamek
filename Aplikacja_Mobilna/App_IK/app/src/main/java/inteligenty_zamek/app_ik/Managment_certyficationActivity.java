@@ -37,7 +37,7 @@ public class Managment_certyficationActivity extends BaseActivity
 
         ListView resultsListView = (ListView) this.findViewById(R.id.ListView_Managment_Certyfivation);
 
-        String list_item[] = {getString(R.string.activity_managmentCertyfication1),getString(R.string.activity_managmentCertyfication2),getString(R.string.activity_managmentCertyfication3),getString(R.string.activity_managmentCertyfication4) };
+        String list_item[] = {getString(R.string.activity_managmentCertyfication2),getString(R.string.activity_managmentCertyfication3),getString(R.string.activity_managmentCertyfication4) };
 
         ArrayList<String> list = new ArrayList<String>();
         list.addAll( Arrays.asList(list_item) );
@@ -52,8 +52,18 @@ public class Managment_certyficationActivity extends BaseActivity
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                if (position == 2) {
+
+                if (position == 0) {
+                    Intent myIntent = new Intent(view.getContext(), userCertyfikationListActivity.class);
+                    startActivityForResult(myIntent, 0);
+                }
+
+                if (position == 1) {
                     Intent myIntent = new Intent(view.getContext(), CertificationaskActivity.class);
+                    startActivityForResult(myIntent, 0);
+                }
+                if (position == 2) {
+                    Intent myIntent = new Intent(view.getContext(), GenerationCertyfikatForGuestActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
 

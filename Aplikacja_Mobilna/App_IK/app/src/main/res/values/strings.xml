@@ -55,6 +55,15 @@
     <string name="activity_admin_panel4">Lista oczekujących uzytkowników do zarejestrowania</string>
     <string name="activity_admin_panel5">Lista oczekujących certyfikatów do zaakceptowania</string>
     <string name="activity_admin_panel_text1">Panel Administracyjny</string>
+
+
+    <!-- activity user Certyfikation List  -->
+    <string name="activity_user_Certyfikation_List1">Lista twoich certyfikatów</string>
+
+
+    <!-- activity Certyficat   -->
+
+
     <!-- drawer  -->
     <string name="title_section1">Otwórz kłódke</string>
     <string name="title_section2">Certyfikaty</string>
@@ -67,7 +76,7 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_main3">Main3Activity</string>
+
     <string-array name="nav_drawer_items">
         <item>Otwórz kłódke</item>
         <item>Certyfikaty</item>
