@@ -29,7 +29,7 @@ public class BaseActivity extends ActionBarActivity
     private CharSequence mTitle;
 
     private ArrayList<NavDrawerItem> navDrawerItems;
-    private NavDrawerListAdapter adapter;
+    NavDrawerListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

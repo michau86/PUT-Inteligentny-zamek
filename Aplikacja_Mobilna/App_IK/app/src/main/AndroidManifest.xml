@@ -31,7 +31,9 @@
         <activity android:name=".BaseActivity" />
         <activity android:name=".userCertyfikationListActivity" />
         <activity android:name=".certyficatActivity" />
-        <activity android:name=".GenerationCertyfikatForGuestActivity"></activity>
+        <activity android:name=".GenerationCertyfikatForGuestActivity" />
+        <activity android:name=".UserWaitActivity" />
+        <activity android:name=".EmergencyPasswordActivity"></activity>
     </application>
 
 </manifest>

@@ -7,25 +7,179 @@
 
     <!-- The main content view -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/textView8"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
-        android:text="Historia użyca zamków"
-        android:textSize="25sp" />
+        android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/ListView_History"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Historia użyca zamków"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/view17"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/color_border_list" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView29"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Wbierz z listy dostępnych zamków" />
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view16"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/color_border_list" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editText_Search"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/color_background_input"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="@string/activity_main_text2"
+                    android:textColor="@color/color_text_ico"
+                    android:textSize="14sp" />
+
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/textView_sorting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/activity_main_text3"
+                    android:textColor="@color/color_text_ico" />
+
+                <TextView
+                    android:id="@+id/TextView_sortingIco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/icon_SortingAsc" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view18"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/color_border_list" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:elevation="0dp"
+                android:text="Wybierz zakres do wyświetlenia" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="od"
+                    android:inputType="date"
+                    android:paddingLeft="10dp" />
+
+                <EditText
+                    android:id="@+id/editText10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="do"
+                    android:inputType="date"
+                    android:paddingLeft="10dp" />
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Button" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view13"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/color_border_list" />
+
+            <ListView
+                android:id="@+id/ListView_History"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="@color/color_background_input" />
+
+            <View
+                android:id="@+id/view14"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_border_list" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <!-- The navigation drawer -->
 
