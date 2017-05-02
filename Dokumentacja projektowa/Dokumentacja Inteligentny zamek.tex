@@ -240,7 +240,7 @@
 	\begin{landscape}
 		\begin{figure}[!h]
 		\centering
-		\includegraphics[width=26cm]{Obrazy/Diagram_przypadkow_uzycia.png}
+		\includegraphics[width=27cm]{Obrazy/Diagram_przypadkow_uzycia.png}
 		\caption{Diagram przypadków u¿ycia}
 		\label{diagram:diagram przypadków_u¿ycia}
 	\end{figure}
@@ -250,7 +250,7 @@
 	\section*{Logowanie u¿ytkownika}
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=15cm]{Obrazy/Diagram sekwencji logowanie uzytkownika.png}
+		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_logowanie_uzytkownika.png}
 		\caption{Diagram sekwencji logowanie u¿ytkownika}
 		\label{diagram:Diagram sekwencji logowanie uzytkownika}
 	\end{figure}
@@ -259,18 +259,79 @@
 	\section*{Rejestracja u¿ytkownika}
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=15cm]{Obrazy/Diagram sekwencji rejestracja uzytkownika.png}
+		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_rejestracja_uzytkownika.png}
 		\caption{Diagram sekwencji rejestracja u¿ytkownika}
 		\label{diagram:Diagram sekwencji rejestracja uzytkownika}
 	\end{figure}
 
 	\newpage
+	\section*{Generowanie certyfikatu u¿ytkownika}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_generowanie_certyfikatu_uzytkownika.png}
+		\caption{Diagram sekwencji generowanie certyfikatu u¿ytkownika}
+		\label{diagram:Diagram sekwencji generowanie certyfikatu u¿ytkownika}
+	\end{figure}
+	
+	\newpage
+	\section*{Generowanie certyfikatu dla goœcia}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_generowanie_certyfikatu_goscia.png}
+		\caption{Diagram sekwencji generowanie certyfikatu goœcia}
+		\label{diagram:Diagram sekwencji generowanie certyfikatu goœcia}
+	\end{figure}
+
+	\newpage
+	\section*{Importowanie certyfikatu z serwera}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_importowanie_certyfikatu_z_serwera.png}
+		\caption{Diagram sekwencji generowanie importowanie certyfikatu z serwera}
+		\label{diagram:Diagram sekwencji importowanie certyfikatu z serwera}
+	\end{figure}
+
+	\section*{Importowanie certyfikatu z pliku}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_importowanie_certyfikatu_z_pliku.png}
+		\caption{Diagram sekwencji generowanie importowanie certyfikatu z pliku}
+		\label{diagram:Diagram sekwencji generowanie importowanie certyfikatu z pliku}
+	\end{figure}
+
+	\newpage
+	\section*{Modyfikacja certyfikatu}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_modyfikacja_certyfikatu.png}
+		\caption{Diagram sekwencji modyfikacji certyfikatu}
+		\label{diagram:Diagram sekwencji modyfikacji certyfikatu}
+	\end{figure}
+	
+	\newpage
 	\section*{Otwieranie zamka}
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=15cm]{Obrazy/Diagram sekwencji otwieranie zamka.png}
+		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_otwieranie_zamka.png}
 		\caption{Diagram sekwencji otwieranie zamka}
 		\label{diagram:Diagram sekwencji otwieranie zamka}
+	\end{figure}
+
+	\newpage
+	\section*{Eksportowanie klucza prywatnego u¿ytkownika}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_eksportowanie_klucza_prywatnego_uzytkownika.png}
+		\caption{Diagram sekwencji eksportowania klucza prywatnego u¿ytkownika}
+		\label{diagram:Diagram_sekwencji_eksportowania_klucza_prywatnego_uzytkownika}
+	\end{figure}
+
+	\section*{Importowanie klucza prywatnego u¿ytkownika}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_importowanie_klucza_prywatnego_uzytkownika.png}
+		\caption{Diagram sekwencji importowanie klucza prywatnego u¿ytkownika}
+		\label{diagram:Diagram_sekwencji_importowanie_klucza_prywatnego_uzytkownika}
 	\end{figure}
 
 	\chapter{Projekt bazy danych}
@@ -523,13 +584,14 @@
 	\newpage
 	
 	\section*{Panel administratora}
-	W panelu administratora znajduj¹ siê 4 przyciski do administrowania systemem zamków:
+	W panelu administratora znajduj¹ siê 6 przycisków do administrowania systemem zamków:
 	\begin{itemize*}
-	\item ,,Historia u¿ycia Zamków''
-	\item ,,Generowanie nowego klucza'',
-	\item ,,Zarz¹dzanie kluczami u¿ytkowników'',
-	\item ,,Lista oczekuj¹cych u¿ytkowników na rejestracjê'',
-	\item ,,Lista oczekuj¹cych certyfikatów na akceptacjê''.
+	\item ,,Historia u¿ycia zamków''
+	\item ,,Generowanie nowego certyfikatu'',
+	\item ,,Zarz¹dzanie certyfikatami u¿ytkowników'',
+	\item ,,Lista oczekuj¹cych u¿ytkowników do zarejestrowania'',
+	\item ,,Lista oczekuj¹cych certyfikatów do zaakceptowania'',
+	\item ,,Klucz awaryjny''.
 	\end{itemize*}
 
 	Po klikniêciu ka¿dego przycisku przechodzi siê do nowego odpowiadaj¹cego widoku. (Rysunek \ref{rys:panel_administracyjny_pionowo} i \ref{rys:panel_administracyjny_poziomo})
@@ -646,6 +708,22 @@
 			\includegraphics[width=\textwidth]{Obrazy/lista_oczekujacych_certyfikatow_poziomo}
 			\caption{Panel listy oczekuj¹cych certyfikatów (poziomo)}
 			\label{rys:panel_lista_oczekujacych_certyfikatow_poziomo}	
+		\end{minipage}
+	\end{figure}
+
+	\section*{Panel klucza awaryjnego}
+	Panel klucza awaryjnego s³u¿y do otwierania zamków w sytuacji awaryjnej, np. gdy zamek nie ma dostêpu do Internetu lub innej awarii. (Rysunek \ref{rys:panel_klucza_awaryjnego_pionowo} i \ref{rys:panel_klucza_awaryjnego_poziomo})
+	
+	\begin{figure}[h]
+		\begin{minipage}{0.4\textwidth}
+			\includegraphics[width=0.7\textwidth]{Obrazy/klucz_awaryjny_pionowo}
+			\caption{Panel klucza awaryjnego (pionowo)}
+			\label{rys:panel_klucza_awaryjnego_pionowo}
+		\end{minipage}
+		\begin{minipage}{0.6\textwidth}
+			\includegraphics[width=0.7\textwidth]{Obrazy/klucz_awaryjny_poziomo}
+			\caption{Panel klucza awaryjnego (poziomo)}
+			\label{rys:panel_klucza_awaryjnego_poziomo}	
 		\end{minipage}
 	\end{figure}
 
