@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas generowania: 17 Kwi 2017, 22:04
+-- Czas generowania: 08 Maj 2017, 20:33
 -- Wersja serwera: 5.5.54-0+deb8u1
 -- Wersja PHP: 5.6.30-0+deb8u1
 
@@ -42,15 +42,17 @@ CREATE TABLE IF NOT EXISTS `ACCESS_TO_LOCKS` (
 CREATE TABLE IF NOT EXISTS `LOCKS` (
   `ID_LOCK` int(10) NOT NULL,
   `NAME` varchar(30) NOT NULL,
-  `LOCALIZATION` text CHARACTER SET utf8 COLLATE utf8_polish_ci
+  `LOCALIZATION` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
+  `MAC_ADDRESS` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `LOCKS`
 --
 
-INSERT INTO `LOCKS` (`ID_LOCK`, `NAME`, `LOCALIZATION`) VALUES
-(1, 'Zamek testowy', NULL);
+INSERT INTO `LOCKS` (`ID_LOCK`, `NAME`, `LOCALIZATION`, `MAC_ADDRESS`) VALUES
+(1, 'Zamek testowy', 'Opis zamka', ''),
+(2, 'Drugi zamek', 'Drugi zamek testowy', '');
 
 -- --------------------------------------------------------
 
@@ -97,15 +99,16 @@ CREATE TABLE IF NOT EXISTS `USERS` (
   `PASSWORD` varchar(64) NOT NULL,
   `NAME` varchar(30) NOT NULL,
   `SURNAME` varchar(50) NOT NULL,
-  `IS_ADMIN` tinyint(1) NOT NULL
+  `IS_ADMIN` tinyint(1) NOT NULL,
+  `PUBLIC_KEY` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `USERS`
 --
 
-INSERT INTO `USERS` (`ID_USER`, `LOGIN`, `PASSWORD`, `NAME`, `SURNAME`, `IS_ADMIN`) VALUES
-(123, 'mapet', 'c411bba96157e3dfeecbc80e11ef3c18465aec26b7348cfcb13296d0ba523068', 'Maciej', 'Marciniak', 1);
+INSERT INTO `USERS` (`ID_USER`, `LOGIN`, `PASSWORD`, `NAME`, `SURNAME`, `IS_ADMIN`, `PUBLIC_KEY`) VALUES
+(123, 'mapet', 'c411bba96157e3dfeecbc80e11ef3c18465aec26b7348cfcb13296d0ba523068', 'Maciej', 'Marciniak', 1, NULL);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -133,7 +136,7 @@ ALTER TABLE `LOCKS_KEYS`
 -- Indexes for table `USERS`
 --
 ALTER TABLE `USERS`
- ADD PRIMARY KEY (`ID_USER`), ADD UNIQUE KEY `LOGIN` (`LOGIN`);
+ ADD PRIMARY KEY (`ID_USER`), ADD UNIQUE KEY `LOGIN` (`LOGIN`), ADD UNIQUE KEY `PUBLIC_KEY` (`PUBLIC_KEY`);
 
 --
 -- Ograniczenia dla zrzutów tabel
