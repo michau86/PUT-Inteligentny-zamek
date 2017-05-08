@@ -247,7 +247,9 @@
 	\end{landscape}
 
 	\chapter{Diagramy sekwencji}
+	Diagramy poni¿ej przedstawione maj¹ mieæ na celu przybli¿yæ ogólne dzia³anie systemu. Schematy nie s¹ odzwierciedleniem poszczególnych przypadków u¿ycia, mo¿e zawieraæ nawet niepe³ne odniesienia do wielu. 
 	\section*{Logowanie u¿ytkownika}
+	Diagram \ref{diagram:Diagram sekwencji logowanie uzytkownika} opisuje proces logowania u¿ytkownika do aplikacji mobilnej z weryfikacj¹ danych na serwerze.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_logowanie_uzytkownika.png}
@@ -257,6 +259,7 @@
 	
 	\newpage
 	\section*{Rejestracja u¿ytkownika}
+	Diagram \ref{diagram:Diagram sekwencji rejestracja uzytkownika} opisuje proces rejestracji u¿ytkownika do systemu z weryfikacj¹ danych na serwerze oraz podjêciem decyzji przez administratora o przydzieleniu dostêpu.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_rejestracja_uzytkownika.png}
@@ -266,6 +269,7 @@
 
 	\newpage
 	\section*{Generowanie certyfikatu u¿ytkownika}
+	Diagram \ref{diagram:Diagram sekwencji generowanie certyfikatu u¿ytkownika} przedstawia sekwencjê operacji podczas generowania certyfikatu u¿ytkownika oraz podjêcia decyzji przez administratora o przydzieleniu dostêpu.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_generowanie_certyfikatu_uzytkownika.png}
@@ -275,6 +279,7 @@
 	
 	\newpage
 	\section*{Generowanie certyfikatu dla goœcia}
+	Diagram \ref{diagram:Diagram sekwencji generowanie certyfikatu goœcia} przedstawia sekwencjê operacji podczas generowania certyfikatu dla goœcia przez u¿ytkownika zalogowanego wraz z wyborem okresu wa¿noœci klucza oraz udostêpnienie certyfikatu goœciowi.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_generowanie_certyfikatu_goscia.png}
@@ -284,6 +289,7 @@
 
 	\newpage
 	\section*{Importowanie certyfikatu z serwera}
+	Diagram \ref{diagram:Diagram sekwencji importowanie certyfikatu z serwera} opisuje operacjê importowania certyfikatu z serwera.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_importowanie_certyfikatu_z_serwera.png}
@@ -292,6 +298,7 @@
 	\end{figure}
 
 	\section*{Importowanie certyfikatu z pliku}
+	Diagram \ref{diagram:Diagram sekwencji generowanie importowanie certyfikatu z pliku} opisuje operacjê importowania certyfikatu z pliku.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_importowanie_certyfikatu_z_pliku.png}
@@ -301,6 +308,7 @@
 
 	\newpage
 	\section*{Modyfikacja certyfikatu}
+	Diagram \ref{diagram:Diagram sekwencji modyfikacji certyfikatu} opisuje proces modyfikacji, przez administratora, certyfikatów znajduj¹cych siê w bazie danych.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_modyfikacja_certyfikatu.png}
@@ -310,6 +318,7 @@
 	
 	\newpage
 	\section*{Otwieranie zamka}
+	Diagram \ref{diagram:Diagram sekwencji otwieranie zamka} przedstawia operacje wykonywane podczas otwierania zamka wraz z jego automatycznym zamkniêciem.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_otwieranie_zamka.png}
@@ -318,7 +327,18 @@
 	\end{figure}
 
 	\newpage
+	\section*{Wybór sposobu otwierania zamka}
+	Diagram \ref{diagram:Diagram sekwencji ustawienia sposobu otwierania zamka} przedstawia operacje wykonywane podczas wyboru sposobu otwierania zamka.
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=14.5cm]{Obrazy/Diagram_sekwencji_wybor_sposobu_otwierania_zamka.png}
+		\caption{Diagram sekwencji ustawienia sposobu otwierania zamka}
+		\label{diagram:Diagram sekwencji ustawienia sposobu otwierania zamka}
+	\end{figure}
+
+	\newpage
 	\section*{Eksportowanie klucza prywatnego u¿ytkownika}
+	Diagram \ref{diagram:Diagram_sekwencji_eksportowania_klucza_prywatnego_uzytkownika} opisuje operacjê eksportowania klucza prywatnego u¿ytkownika.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_eksportowanie_klucza_prywatnego_uzytkownika.png}
@@ -327,6 +347,7 @@
 	\end{figure}
 
 	\section*{Importowanie klucza prywatnego u¿ytkownika}
+	Diagram \ref{diagram:Diagram_sekwencji_importowanie_klucza_prywatnego_uzytkownika} opisuje operacjê importowania klucza prywatnego u¿ytkownika.
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=16cm]{Obrazy/Diagram_sekwencji_importowanie_klucza_prywatnego_uzytkownika.png}
@@ -358,6 +379,7 @@
 	\begin{itemize*}
 	\item \textbf{ID\_LOCK} - unikalny identyfikator (klucz g³ówny) zamka sk³adaj¹cy siê z 10 cyfr,
 	\item \textbf{NAME} - unikalna nazwa zamka,
+	\item \textbf{MAC\_ADDRESS} - adres fizyczny urz¹dzenia steruj¹cego zamkiem,
 	\item \textbf{LOCALIZATION} - nieobowi¹zkowe pole opisuj¹ce fizyczne po³o¿enie zamka.
 	\end{itemize*}
 \newpage
