@@ -354,8 +354,20 @@
 		\caption{Diagram sekwencji importowanie klucza prywatnego u¿ytkownika}
 		\label{diagram:Diagram_sekwencji_importowanie_klucza_prywatnego_uzytkownika}
 	\end{figure}
+	
+\chapter{Diagramy Klas}
+	Diagram \ref{diagram:Diagram_klas_aplikacji_mobilnej} przedstawia opis klas znajduj¹cych siê w aplikacji mobilnej.
+	
+	\begin{landscape}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=27cm]{Obrazy/Diagram_klas_aplikacja_mobilna.png}
+		\caption{Diagram klas aplikacji mobilnej}
+		\label{diagram:Diagram_klas_aplikacji_mobilnej}
+	\end{figure}
+	\end{landscape}
 
-	\chapter{Projekt bazy danych}
+\chapter{Projekt bazy danych}
 	Baza danych przechowywaæ bêdzie sk³adaæ siê z piêciu tabel:
 	\begin{itemize*}
 	\item \textbf{USERS} - przechowuje dane u¿ytkowników oraz dane niezbêdne przy weryfikacji logowania,
@@ -450,7 +462,7 @@
 	
 	Zabezpieczeniem fizycznym systemu przed utrat¹ zasilania z sieci energetycznej, bêdzie zamontowanie równolegle zasilania bateryjnego za³¹czanego w momencie zaniku g³ównego. Ochron¹ systemu przed ingerencj¹ w sprzêt bêdzie umieszczenie zabudowanego mikrokomputera po wewnêtrznej stronie pomieszczenia, tak ¿eby dostêp mia³y tylko osoby które mia³y pozwolenie przejœæ przez drzwi.
 	
-	\chapter{Widok graficzny systemu}
+\chapter{Widok graficzny systemu}
 	Jedynym elementem graficznym systemu Inteligentnego Zamka jest aplikacja znajduj¹ca siê na urz¹dzeniach mobilnych. Poni¿ej opisano,krótko poszczególne widoki wykonane w œrodowisku Android Studio.
 	
 	\section*{Panel logowania u¿ytkownika}
@@ -765,5 +777,39 @@
 		\end{minipage}
 	\end{figure}
 	\newpage
+	
+\chapter{Testowanie aplikacji}	
+	G³ówne zagadnienia które nale¿y przetestowaæ:
+	\begin{itemize*}
+		\item generator liczb pseudolosowych,
+		\item zasilanie urz¹dzeñ,
+		\item wydajnoœæ systemu,
+		\item komunikatywnoœæ aplikacji mobilnej (cz³owiek-system oraz system-cz³owiek),
+		\item g³ówne funkcje systemu podczas operacji otwierania/zamykania zamków oraz dystrybucji kluczy,
+	\end{itemize*}
+
+	Generator liczb pseudolosowych powinien byæ przetestowany pod kontem testów losowoœci, takie jak test pojedynczych bitów, serii, d³ugiej serii, pokerowy oraz dwójkowy. Próby wykonywane powinny byæ wielokrotnie, dla wielu utworzonych próbek.
+	
+	System oparty jest o poprawne dzia³anie sprzêtu, nale¿y wiêc przetestowaæ reakcjê urz¹dzeñ na spadki napiêcia podczas spoczynku, pracy zwyk³ej oraz przy du¿ym obci¹¿eniu. Raspberry Pi w razie awarii zasilania sieciowego, prze³¹czyæ powinno siê na zasilanie bateryjne. Poprzez czêste prze³¹czanie sposobu zasiania, np. przy u¿yciu tranzystora nale¿y sprawdziæ, czy w trakcie przejœæ urz¹dzenie nie wy³¹czy siê z powodu krótkiego ca³kowitego zaniku napiêcia. Test zasilania zweryfikowaæ powinien równie¿ czas dzia³ania urz¹dzeñ pod zasilaniem bateryjnym.
+	
+	Testem wydajnoœci systemu jest sprawdzenie odpornoœci na przeci¹¿enia systemu, choæby przy wielu ¿¹daniach do serwera. System zak³ada obs³ugê wielu zamków przy jednym serwerze, dlatego nale¿y zweryfikowaæ dzia³anie bazy danych oraz aplikacji serwerowej pod k¹tem wielu zapytañ jednoczeœnie. Wykonaæ taki test mo¿na przy pomocy aplikacji Apache JMeter. Program zbada serwer pod k¹tem szybkoœci oraz odpowiedzi httprequest.
+	
+	Jedynym elementem kontaktuj¹cym siê z u¿ytkownikiem jest aplikacja mobilna. Program powinien w pierwszej fazie testów zostaæ sprawdzony automatycznie przy pomocy narzêdzia Robotium, pozwalaj¹cym na utworzeniu sekwencji operacji jakie maj¹ po sobie nast¹piæ, aby osi¹gn¹æ zamierzony efekt. Scenariusz testu obejmowaæ powinien reakcjê na: 
+	\begin{itemize*}
+		\item podanie b³êdnych kluczy dostêpowych podczas procesu otwierania zamka,
+		\item z³ego lub przedawnionego klucza prywatnego,
+		\item braku po³¹czenia z internetem,
+		\item braku po³¹czenia bluetooth,
+		\item b³êdnego logowania u¿ytkownika,
+		\item niew³aœciwych danych przy rejestracji u¿ytkownika.
+	\end{itemize*}
+
+	Po przejœciu aplikacji przez testy automatyczne, nale¿y przekazaæ aplikacjê u¿ytkownikom, w pierwszej kolejnoœci posiadaj¹cym wiedzê informatyczn¹ oraz znaj¹cym za³o¿enia systemu. U¿ytkownicy wyra¿aj¹ opinie na temat dzia³ania, czytelnoœci aplikacji podczas ankiety. Nastêpnym krokiem jest testowanie aplikacji przez osoby nie posiadaj¹ce wiedzy informatycznej, lecz zaznajomione z tematyk¹ systemu. Ostatnim krokiem testów aplikacji s¹ testy przez u¿ytkowników bez wiedzy informatycznej oraz bez szczegó³owej wiedzy o tematyce projektu. Ka¿dy etap musi zostaæ uzyskaæ pewien próg pozytywnych ocen, przy braku zdania testu nale¿y wróciæ do pocz¹tku. Ankieta zawieraæ powinna pytania na temat estetyki aplikacji, komunikatywnoœci z u¿ytkownikiem.
+	
+	Testowanie g³ównej funkcji systemu, tzn. otwierania/zamykania zamka oraz dystrybucji kluczy dostêpowych zrealizowane zostanie podczas wczeœniej wymienionych testów. Dodatkowo, równie¿ przy u¿yciu narzêdzia Robotium wykonane zostan¹ scenariusze przyk³adowych u¿yæ systemu. Przyk³adowy scenariusz:
+	
+	{\scriptsize \textsl{U¿ytkownik zalogowany (UZ) wnioskuje o klucz dostêpowy do zamka A, B i C na  okres tygodnia. Administrator (AD) akceptuje wniosek dla zamka B i C, dla zamka A odrzuca. UZ tworzy klucz goœcia do zamka B jednorazowy (za³. powodzenie). UZ próbuje otworzyæ zamek B (za³. powodzenie). AD blokuje dostêp UZ do zamka B. Goœæ próbuje otworzyæ zamek B (za³. powodzenie). UZ próbuje otworzyæ ponownie zamek B (za³. niepowodzenie). Goœæ próbuje otworzyæ zamek B (za³. niepowodzenie). UZ próbuje utworzyæ klucz dostêpu dla goœcia do zamka B na 10 minut (za³. niepowodzenie). UZ próbuje utworzyæ klucz dostêpu dla goœcia do zamka C na 10 minut (za³. powodzenie). Goœæ próbuje otworzyæ zamek C (za³. powodzenie). Goœæ próbuje ponownie otworzyæ zamek C po up³ywie 10 minut (za³. niepowodzenie). UZ próbuje otworzyæ zamek C (za³. powodzenie). UZ próbuje otworzyæ zamek C po up³ywie tygodnia od utworzenia klucza dostêpu (za³. niepowodzenie).}}
+	
+	Ka¿da operacja wykonana w scenariuszy bêdzie mierzona ile czasu zajmuje, pozwoli to na okreœlenie czasu oczekiwania aplikacji na odpowiedzi, w celu optymalizacji dzia³ania.
 	
 \end{document}
