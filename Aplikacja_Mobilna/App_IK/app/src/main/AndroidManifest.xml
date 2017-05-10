@@ -33,7 +33,10 @@
         <activity android:name=".certyficatActivity" />
         <activity android:name=".GenerationCertyfikatForGuestActivity" />
         <activity android:name=".UserWaitActivity" />
-        <activity android:name=".EmergencyPasswordActivity"></activity>
+        <activity android:name=".EmergencyPasswordActivity" />
+        <activity android:name=".GenerationCertyficatActivity" />
+        <activity android:name=".ManagmentCertyficationUserActivity" />
+        <activity android:name=".CertyficatWaitActivity"></activity>
     </application>
 
 </manifest>

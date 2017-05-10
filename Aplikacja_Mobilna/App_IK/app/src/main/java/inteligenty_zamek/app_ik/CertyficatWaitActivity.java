@@ -1,11 +1,10 @@
 package inteligenty_zamek.app_ik;
 
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,34 +12,28 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-
-public class MainActivity extends BaseActivity {
-
-private String[] navMenuTitles;
+public class CertyficatWaitActivity extends BaseActivity{
+    private String[] navMenuTitles;
     private TypedArray navMenuIcons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_certyficat_wait);
+
         navMenuTitles= getResources().getStringArray(R.array.nav_drawer_items);
+        navMenuIcons =getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        set(navMenuTitles,navMenuIcons);
 
-                navMenuIcons =getResources().obtainTypedArray(R.array.nav_drawer_icons);
-                set(navMenuTitles,navMenuIcons);
-
-        Typeface fontFamily = Typeface.createFromAsset(this.getAssets(), "fonts/fontawesome.ttf");
-        TextView sampleText = (TextView) this.findViewById(R.id.TextView_sortingIco);
-        sampleText.setTypeface(fontFamily);
-        ListView resultsListView = (ListView) this.findViewById(R.id.listView_Keys);
-
+        ListView resultsListView = (ListView) this.findViewById(R.id.listView_user_wait_Keys);
         //hasmap przechowujący elemety do wyświetlenia
         HashMap<String, String> Keys = new HashMap<>();
-        Keys.put("Zamek 1", "piwnica");
-        Keys.put("Zamek 2", "parter");
+        Keys.put("Użytkownik 1", "Jan Kowlaski");
+        Keys.put("Użytkownik 2", "Tola\n Nowak");
 
         //stworzenie adaptera
         List<HashMap<String, String>> listItems = new ArrayList<>();
-        SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.main_key_list,
+        SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.user_wait_key_list,
                 new String[]{"First Line", "Second Line"},
                 new int[]{R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey});
 
@@ -55,11 +48,6 @@ private String[] navMenuTitles;
             listItems.add(resultsMap);
         }
         resultsListView.setAdapter(adapter);
-    }
 
-    @Override
-    public void onBackPressed() {
     }
-    }
-
-
+}

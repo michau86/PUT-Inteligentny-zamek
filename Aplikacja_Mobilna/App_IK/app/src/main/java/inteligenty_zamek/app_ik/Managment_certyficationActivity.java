@@ -72,6 +72,9 @@ public class Managment_certyficationActivity extends BaseActivity
 
             });
     }
+           @Override
+           public void onBackPressed() {
+           }
        }
 
 

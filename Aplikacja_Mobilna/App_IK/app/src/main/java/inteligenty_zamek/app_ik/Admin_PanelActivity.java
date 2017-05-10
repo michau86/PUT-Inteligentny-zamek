@@ -58,16 +58,21 @@ public class Admin_PanelActivity extends BaseActivity
                 }
 
                 if (position == 1) {
-                    Intent myIntent = new Intent(view.getContext(), CertificationaskActivity.class);
+                    Intent myIntent = new Intent(view.getContext(), GenerationCertyficatActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
                 if (position == 2) {
-                    Intent myIntent = new Intent(view.getContext(), GenerationCertyfikatForGuestActivity.class);
+                    Intent myIntent = new Intent(view.getContext(), ManagmentCertyficationUserActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
 
                 if (position == 3) {
                     Intent myIntent = new Intent(view.getContext(), UserWaitActivity.class);
+                    startActivityForResult(myIntent, 0);
+                }
+
+                if (position == 4) {
+                    Intent myIntent = new Intent(view.getContext(), CertyficatWaitActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
 
@@ -80,10 +85,9 @@ public class Admin_PanelActivity extends BaseActivity
         });
 
     }
-
-
-
-
+            @Override
+            public void onBackPressed() {
+            }
 
 
 
