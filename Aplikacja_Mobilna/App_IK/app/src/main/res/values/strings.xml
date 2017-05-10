@@ -91,4 +91,10 @@
 
     </array>
 
+
+    <string-array name="generationCertyficatInAdmin">
+        <item>Dla gośćia</item>
+        <item>Dla użytkownika</item>
+    </string-array>
+
 </resources>

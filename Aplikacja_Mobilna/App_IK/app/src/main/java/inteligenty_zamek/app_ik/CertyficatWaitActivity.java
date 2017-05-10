@@ -24,12 +24,13 @@ public class CertyficatWaitActivity extends BaseActivity{
         navMenuTitles= getResources().getStringArray(R.array.nav_drawer_items);
         navMenuIcons =getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles,navMenuIcons);
-
+        Certyficat[] certyficatlist=new Certyficat[1];
         ListView resultsListView = (ListView) this.findViewById(R.id.listView_user_wait_Keys);
         //hasmap przechowujący elemety do wyświetlenia
         HashMap<String, String> Keys = new HashMap<>();
         Keys.put("Użytkownik 1", "Jan Kowlaski");
-        Keys.put("Użytkownik 2", "Tola\n Nowak");
+        certyficatlist[0]=new Certyficat();
+        certyficatlist[0].setName("Jan Kowalski");
 
         //stworzenie adaptera
         List<HashMap<String, String>> listItems = new ArrayList<>();
@@ -38,13 +39,14 @@ public class CertyficatWaitActivity extends BaseActivity{
                 new int[]{R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey});
 
         //iterator elementow (przepisanie z hashmap do adaptera[listitems] elementow)
+
+
         Iterator it = Keys.entrySet().iterator();
-        while (it.hasNext())
+        for (Certyficat X : certyficatlist)
         {
             HashMap<String, String> resultsMap = new HashMap<>();
-            Map.Entry pair = (Map.Entry)it.next();
-            resultsMap.put("First Line", pair.getKey().toString());
-            resultsMap.put("Second Line", pair.getValue().toString());
+            resultsMap.put("First Line", certyficatlist[0].getName());
+            resultsMap.put("Second Line", "Piwnica");
             listItems.add(resultsMap);
         }
         resultsListView.setAdapter(adapter);
