@@ -186,6 +186,7 @@
 			Podgl¹d do historii akcji zamków & Umo¿liwia przegl¹danie historii akcji zamka, tzn. daty otwarcia przez kogo, daty zamkniêcia & Urz¹dzenie mobilne, Aplikacja serwerowa, Administrator \\ \hline
 			Autoryzacja u¿ytkownika do aplikacji & Logowanie u¿ytkownika poprzez podanie has³a i loginu do odblokowania aplikacji & Urz¹dzenie mobilne, Aplikacja serwerowa, U¿ytkownik zalogowany \\ \hline
 			Rejestracja u¿ytkownika & Za³o¿enie nowego konta u¿ytkownika w systemie & Urz¹dzenie mobilne, Aplikacja serwerowa, Goœæ \\ \hline
+			Logowanie u¿ytkownika & Zalogowanie do systemu poprzez podanie adresu IP serwera, loginu oraz has³a & Urz¹dzenie mobilne, Aplikacja serwerowa, Goœæ \\ \hline
 			Akceptacja przez administratora nowego u¿ytkownika & Administrator systemu mo¿e zaakceptowaæ i nadaæ uprawniania u¿ytkownika & Urz¹dzenie mobilne, Aplikacja serwerowa, Administrator \\ \hline
 			Zarz¹dzanie wa¿noœci¹ certyfikatów dostêpu & Dodawanie, usuwanie wa¿noœci certyfikatów dostêpowych. Usuniêcie praw u¿ytkownika nie skutkuje uniewa¿nieniem wygenerowanych przez niego certyfikatów & Urz¹dzenie mobilne, Aplikacja serwerowa, Administrator \\ \hline
 			Przes³anie awaryjnego klucza dostêpu & Umo¿liwia wczytanie specjalnego has³a 512-bitowego do Raspberry Pi, który otwiera zamek bez koniecznoœci dostêpu do Internetu & Urz¹dzenie mobilne, RaspberryPi, Administrator \\ \hline
@@ -356,6 +357,17 @@
 	\end{figure}
 	
 \chapter{Diagramy Klas}
+	\section*{Urz¹dzenie steruj¹ce}
+	Diagram \ref{diagram:Diagram_klas_urzadzenia_sterujacego} przedstawia opis klas znajduj¹cych siê w urz¹dzeniu steruj¹cym.
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=15cm]{Obrazy/Diagram_klas_urzadzenie_sterujace.png}
+		\caption{Diagram klas urz¹dzenia steruj¹cego}
+		\label{diagram:Diagram_klas_urzadzenia_sterujacego}
+	\end{figure}
+	
+	\section*{Aplikacja mobilna}
 	Diagram \ref{diagram:Diagram_klas_aplikacji_mobilnej} przedstawia opis klas znajduj¹cych siê w aplikacji mobilnej.
 	
 	\begin{landscape}
@@ -366,6 +378,17 @@
 		\label{diagram:Diagram_klas_aplikacji_mobilnej}
 	\end{figure}
 	\end{landscape}
+
+	\section*{Aplikacja serwerowa}
+	
+	Diagram \ref{diagram:Diagram_klas_aplikacji_serwerowej} przedstawia opis klas znajduj¹cych siê w aplikacji serwerowej.
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=15cm]{Obrazy/Diagram_klas_aplikacja_serwerowa.png}
+		\caption{Diagram klas aplikacji serwerowej}
+		\label{diagram:Diagram_klas_aplikacji_serwerowej}
+	\end{figure}
 
 \chapter{Projekt bazy danych}
 	Baza danych przechowywaæ bêdzie sk³adaæ siê z piêciu tabel:
