@@ -82,7 +82,7 @@
 	\tableofcontents
 	\newpage 
 	\chapter*{Wstêp}
-	Inteligentny zamek powinien byæ systemem, który ma na celu zast¹pienie starego modelu zabezpieczeñ ró¿nego rodzaju drzwi i skrytek w którym u¿ywano tradycyjnych kluczy, czy szyfrów na klucze cyfrowe, którymi bêdzie mo¿na pos³ugiwaæ siê przy pomocy smartfonów z funkcj¹ bluetooth. Celem tego rodzaju usprawnieñ bêdzie wyeliminowanie z ¿ycia codziennego sytuacji w których u¿ytkownik musi posiadaæ pêki kluczy. Zamiast tego dziêki temu systemowi mo¿e wszystkie klucze przechowywaæ w jednym miejscu (smartfonie).
+	Inteligentny zamek powinien byæ systemem, który ma na celu zast¹pienie starego modelu zabezpieczeñ ró¿nego rodzaju drzwi i skrytek, w którym u¿ywano tradycyjnych kluczy, czy szyfrów na klucze cyfrowe, którymi bêdzie mo¿na pos³ugiwaæ siê przy pomocy smartfonów z funkcj¹ bluetooth. Celem tego rodzaju usprawnieñ bêdzie wyeliminowanie z ¿ycia codziennego sytuacji, w których u¿ytkownik musi posiadaæ pêki kluczy. Zamiast tego dziêki temu systemowi mo¿e wszystkie klucze przechowywaæ w jednym miejscu (smartfonie). System jest dedykowany przede wszystkim budynkom zawieraj¹cych wiele pomieszczeñ, które nale¿y chroniæ, lecz wykorzystany mo¿e byæ równie¿ w u¿ytku domowym.
 	
 	System sk³adaæ siê bêdzie z:
 	\noindent \begin{itemize*}
@@ -97,7 +97,7 @@
 	
 	System bêdzie spe³nia³  wymagania dotycz¹ce bezpieczeñstwa poprzez zastosowanie szeregu funkcji kryptograficznych przy procesie uwierzytelniania jak i przy generowaniu kluczy takich jak np. funkcje skrótu, SSH, algorytmów szyfrowania asymetrycznego, systemu zarz¹dzaniem kluczem publicznym (podpisu cyfrowego).
 	
-	U¿ywane klucze bêd¹ posiada³y podpis cyfrowy, który jednoznacznie bêdzie definiowa³ w³aœciciela oraz stempel czasowy do okreœlania wa¿noœci. Klucze bêd¹ mog³y mieæ w zale¿noœci od przeznaczenia ró¿ne okresy przedawnienia, np. w³aœciciel mieszkaj¹cy  w danym domu posiadaæ bêdzie klucz o d³ugim terminie wa¿noœci, a goœcie klucz jednorazowy b¹dŸ kilku godzinny bez mo¿liwoœci odnowienia. Wszelkie dane dostêpowe bêd¹ generowane i dystrybuowane na serwerze systemu, z mo¿liwoœci¹ zdalnej proœby o utworzenie kluczy tylko przez uprawnione przez administratora osoby.
+	U¿ywane klucze bêd¹ posiada³y podpis cyfrowy, który jednoznacznie bêdzie definiowa³ w³aœciciela oraz stempel czasowy do okreœlania wa¿noœci. Klucze bêd¹ mog³y mieæ w zale¿noœci od przeznaczenia ró¿ne okresy przedawnienia, np. pracownik zatrudniony  w danym budynku posiadaæ bêdzie klucz o d³ugim terminie wa¿noœci, a goœcie klucz jednorazowy b¹dŸ kilku godzinny bez mo¿liwoœci odnowienia. Wszelkie dane dostêpowe bêd¹ generowane i dystrybuowane na serwerze systemu, z mo¿liwoœci¹ zdalnej proœby o utworzenie kluczy tylko przez uprawnione przez administratora osoby.
 	
 	Ogólny schemat systemu znajduje siê na Rysunku \ref{diagram:diagram wdro¿eñ}.
 	\begin{figure}[!h]
@@ -123,9 +123,9 @@
 	\end{itemize*}
 	\chapter{Opis sk³adowych systemu}
 	\section{Urz¹dzenie steruj¹ce}
-	Zadaniem urz¹dzenia steruj¹cego, w którego sk³ad wchodziæ bêd¹ Raspberry Pi 3 oraz serwomechanizm/zamka elektronicznego jest weryfikacja klucza cyfrowego przesy³anego przez urz¹dzenie mobilne oraz otwieranie zamka przy pozytywnym wyniku weryfikacji.
+	Zadaniem urz¹dzenia steruj¹cego, w którego sk³ad wchodziæ bêd¹ Raspberry Pi 3 oraz serwomechanizm/zamek elektroniczny, jest weryfikacja klucza cyfrowego przesy³anego przez urz¹dzenie mobilne oraz otwieranie zamka przy pozytywnym wyniku weryfikacji.
 	
-	Oprogramowanie mikrokomputera obejmuje system Linux raspbian-jessie oraz szereg podprogramów napisanych w jêzyku Python. Skrypty programów ³¹cz¹ siê do serwera w celu pobrania informacji o poprawnoœci i daty wa¿noœci certyfikatu dostêpu.Jeœli dane bêd¹ poprawne to zostaje wysterowany serwomechanizm, który otwiera zamek, w przeciwnym przypadku u¿ytkownik zostanie poinformowany o odmowie dostêpu, a nieudana próba dostania siê do systemu zarejestrowana zostanie w bazie danych wraz z danymi w³aœciciela klucza.
+	Oprogramowanie mikrokomputera obejmuje system Linux raspbian-jessie oraz szereg podprogramów napisanych w jêzyku Python. Skrypty programów ³¹cz¹ siê do serwera w celu pobrania informacji o poprawnoœci i dacie wa¿noœci certyfikatu dostêpu. Jeœli dane bêd¹ poprawne to zostaje wysterowany serwomechanizm (lub wys³any impuls do elektrozamka), który otwiera zamek, w przeciwnym przypadku u¿ytkownik zostanie poinformowany o odmowie dostêpu, a nieudana próba dostania siê do systemu zarejestrowana zostanie w bazie danych wraz z danymi w³aœciciela klucza.
 	
 	Funkcjonalnoœæ urz¹dzenia steruj¹cego przedstawiona zosta³a w Tabeli \ref{tab:wymagania_urz¹dzenie_steruj¹ce}.
 	\begin{longtable}[!ht]{|p{3.5cm}|p{7.5cm}|p{3.7cm}|} 
@@ -143,6 +143,7 @@
 				Zamkniêcie zamka & Zamkniêcie zamka poprzez wys³anie sygna³u PWM do serwomechanizmu lub zezwolenie zamka elektronicznego & RaspberryPi, Serwomechanizm/ elektrozamek \\ \hline
 				Rejestracja próby dostêpu & Zapis ka¿dej pozytywnej i negatywnej próby weryfikacji klucza cyfrowego w tabeli bazy danych & RaspberryPi \\ \hline
 				Deszyfracja certyfikatu u¿ytkownika & Deszyfracja pliku z certyfikatem dostêpowym u¿ywaj¹c klucza publicznego u¿ytkownika & RaspberryPi \\ \hline
+				Wys³anie ¿¹dania do serwera & Wys³anie zapytania do aplikacji serwerowej, w celu pobrania informacji & RaspberryPi, Aplikacja serwerowa\\ \hline
 				Pobranie awaryjnego klucza dostêpu & Umo¿liwia wczytanie specjalnego has³a 512-bitowego do Raspberry Pi, który otwiera zamek bez koniecznoœci dostêpu do Internetu & RaspberryPi, Aplikacja mobilna,	Administrator \\ \hline
 		\end{longtable}
 	
@@ -152,16 +153,16 @@
 		\item zasiêg po³¹czenia bluetooth to maksymalnie 15m,
 		\item niezbêdny dostêp do Internetu do po³¹czenia z aplikacj¹ serwerow¹ przy weryfikacji kluczy,
 		\item narzut czasowy zwi¹zany z weryfikacj¹ poprawnoœci klucza cyfrowego zale¿ny od parametrów serwera i sieci,
-		\item zainstalowany interpreter jêzyka Python 2.7 z pakietem bibliotek (RSA, Bluetooth, Lightblue, RPi.GPIO),
+		\item zainstalowany interpreter jêzyka Python 2.7 z pakietem bibliotek (RSA, Bluetooth, Lightblue, RPi.GPIO, SHA3),
 		\item niezbêdny ci¹g³y dostêp do zasilania 5V o pr¹dzie co najmniej 2.5A,
 		\item ograniczenia pr¹dowe dla serwomechanizmu lub zamka elektronicznego,
 		\item narzut czasowy zwi¹zany z uruchomieniem urz¹dzenia - maksymalnie 20 sekund.
 	\end{itemize*}
 \newpage
 	\section{Aplikacja mobilna}
-	Aplikacja mobilna w jêzyku Java na platformê Android ma na celu przechowywanie  w pamiêci smartfona klucze cyfrowe u¿ytkownika oraz mo¿liwoœæ komunikacji z cz³owiek-zamek-serwer. Program posiadaæ powinien interfejs graficzny, dziêki któremu bêdzie mo¿na wybraæ, który zamek chce siê otworzyæ w danej chwili. Klucz cyfrowy przesy³any bêdzie bezprzewodowo do komputera steruj¹cego zamkiem za pomoc¹ sieci bluetooth. Aplikacja powinna posiadaæ równie¿ funkcjê generowania kluczy tymczasowych, które mo¿na udostêpniaæ osobom postronnym z ustalonym okresem wa¿noœci (jednorazowy, godzinny, od poniedzia³ku do pi¹tku w godzinach od 8 do 16 itp.). W tym celu zostaje wys³ana proœba do serwera poprzez Internet o wygenerowanie klucza o okreœlonych parametrach.
+	Aplikacja mobilna w jêzyku Java na platformê Android ma na celu przechowywanie  w pamiêci smartfona kluczy cyfrowych u¿ytkownika oraz mo¿liwoœæ komunikacji cz³owiek-zamek-serwer. Program posiadaæ powinien interfejs graficzny, dziêki któremu bêdzie mo¿na wybraæ, który zamek chce siê otworzyæ w danej chwili. Klucz cyfrowy przesy³any bêdzie bezprzewodowo do komputera steruj¹cego zamkiem za pomoc¹ sieci bluetooth. Aplikacja powinna posiadaæ równie¿ funkcjê generowania kluczy tymczasowych, które mo¿na udostêpniaæ osobom postronnym z ustalonym okresem wa¿noœci (jednorazowy, godzinny, od poniedzia³ku do pi¹tku w godzinach od 8 do 16 itp.). W tym celu zostaje wys³ana proœba do serwera poprzez Internet o wygenerowanie klucza o okreœlonych parametrach.
 	
-	Klucze przesy³ane przez bluetooth powinny byæ szyfrowane algorytmem RSA (kluczem prywatnym). Klucz prywatny otrzymywany wraz z certyfikatem przypisany jest tylko do jednego zamka i przekazywany wraz z nim. W celu przeniesienia klucza dostêpowego na inne urz¹dzenie nale¿y wyeksportowaæ klucz, a nastêpnie importowaæ do nowego urz¹dzenia. 
+	Klucze przesy³ane przez bluetooth powinny byæ szyfrowane algorytmem RSA (kluczem prywatnym). Klucz prywatny otrzymywany jest wraz z pierwszym certyfikatem oraz systematycznie odnawiany w celach bezpieczeñstwa. Przypadku potrzeby przeniesienia klucza dostêpowego na inne urz¹dzenie nale¿y wyeksportowaæ klucz, a nastêpnie zaimportowaæ do nowego urz¹dzenia.
 	
 	Funkcjonalnoœæ aplikacja przedstawiona zosta³a w Tabeli \ref{tab:wymagania_aplikacja_mobilna}.
 	
@@ -231,7 +232,7 @@
 	\item narzut czasowy zwi¹zany z generowaniem nowych kluczy,
 	\item ograniczenie liczby u¿ytkowników wykonuj¹cych jednoczeœnie ¿¹dania do serwera - 9 urz¹dzeñ,
 	\item wymagany system operacyjny Linux,
-	\item zainstalowany interpreter jêzyka Python 2.7 wraz z pakietem bibliotek (MySQl, RSA, Django),
+	\item zainstalowany interpreter jêzyka Python 2.7 wraz z pakietem bibliotek (MySQl, RSA, Django, SHA3),
 	\item zainstalowany i skonfigurowany serwer Apache2, 
 	\item dostêp do Internetu do po³¹czenia z zamkami i urz¹dzeniami mobilnymi,
 	\item zabezpieczenie bazy danych has³em generowanym losowo.
@@ -251,7 +252,7 @@
 	\end{landscape}
 
 	\chapter{Diagramy sekwencji}
-	Diagramy poni¿ej przedstawione maj¹ mieæ na celu przybli¿yæ ogólne dzia³anie systemu. Schematy nie s¹ odzwierciedleniem poszczególnych przypadków u¿ycia, mo¿e zawieraæ nawet niepe³ne odniesienia do wielu. 
+	Diagramy poni¿ej przedstawione maj¹ mieæ na celu przybli¿enie ogólnego dzia³ania systemu. Schematy nie s¹ odzwierciedleniem poszczególnych przypadków u¿ycia, mog¹ zawieraæ nawet szcz¹tkowe odniesienia do wielu z nich. 
 	\section*{Logowanie u¿ytkownika}
 	Diagram \ref{diagram:Diagram sekwencji logowanie uzytkownika} opisuje proces logowania u¿ytkownika do aplikacji mobilnej z weryfikacj¹ danych na serwerze.
 	\begin{figure}[!h]
@@ -363,15 +364,19 @@
 	\section*{Urz¹dzenie steruj¹ce}
 	Diagram \ref{diagram:Diagram_klas_urzadzenia_sterujacego} przedstawia opis klas znajduj¹cych siê w urz¹dzeniu steruj¹cym.
 	
+	\section*{Aplikacja mobilna}
+	Diagram \ref{diagram:Diagram_klas_aplikacji_mobilnej} przedstawia opis klas znajduj¹cych siê w aplikacji mobilnej.
+	
+	\section*{Aplikacja serwerowa}
+	Diagram \ref{diagram:Diagram_klas_aplikacji_serwerowej} przedstawia opis klas znajduj¹cych siê w aplikacji serwerowej.
+	\begin{landscape}
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=15cm]{Obrazy/Diagram_klas_urzadzenie_sterujace.png}
+		\includegraphics[width=25cm]{Obrazy/Diagram_klas_urzadzenie_sterujace.png}
 		\caption{Diagram klas urz¹dzenia steruj¹cego}
 		\label{diagram:Diagram_klas_urzadzenia_sterujacego}
 	\end{figure}
-	
-	\section*{Aplikacja mobilna}
-	Diagram \ref{diagram:Diagram_klas_aplikacji_mobilnej} przedstawia opis klas znajduj¹cych siê w aplikacji mobilnej.
+	\end{landscape}
 	
 	\begin{landscape}
 	\begin{figure}[!h]
@@ -381,17 +386,15 @@
 		\label{diagram:Diagram_klas_aplikacji_mobilnej}
 	\end{figure}
 	\end{landscape}
-
-	\section*{Aplikacja serwerowa}
 	
-	Diagram \ref{diagram:Diagram_klas_aplikacji_serwerowej} przedstawia opis klas znajduj¹cych siê w aplikacji serwerowej.
-	
+	\begin{landscape}
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=15cm]{Obrazy/Diagram_klas_aplikacja_serwerowa.png}
+		\includegraphics[width=25cm]{Obrazy/Diagram_klas_aplikacja_serwerowa.png}
 		\caption{Diagram klas aplikacji serwerowej}
 		\label{diagram:Diagram_klas_aplikacji_serwerowej}
 	\end{figure}
+	\end{landscape}
 
 \chapter{Projekt bazy danych}
 	Baza danych przechowywaæ bêdzie sk³adaæ siê z piêciu tabel:
@@ -489,10 +492,10 @@
 	Zabezpieczeniem fizycznym systemu przed utrat¹ zasilania z sieci energetycznej, bêdzie zamontowanie równolegle zasilania bateryjnego za³¹czanego w momencie zaniku g³ównego. Ochron¹ systemu przed ingerencj¹ w sprzêt bêdzie umieszczenie zabudowanego mikrokomputera po wewnêtrznej stronie pomieszczenia, tak ¿eby dostêp mia³y tylko osoby które mia³y pozwolenie przejœæ przez drzwi.
 	
 \chapter{Widok graficzny systemu}
-	Jedynym elementem graficznym systemu Inteligentnego Zamka jest aplikacja znajduj¹ca siê na urz¹dzeniach mobilnych. Poni¿ej opisano,krótko poszczególne widoki wykonane w œrodowisku Android Studio.
+	Jedynym elementem graficznym systemu Inteligentnego Zamka jest aplikacja znajduj¹ca siê na urz¹dzeniach mobilnych. Poni¿ej opisano, krótko poszczególne widoki wykonane w œrodowisku Android Studio.
 	
 	\section*{Panel logowania u¿ytkownika}
-	Widok umo¿liwia zalogowanie siê u¿ytkownika do systemu poprzez podanie loginu i has³a w odpowiednie pola, a nastêpnie klikniêcie w przycisk “ZALOGUJ SIÊ”. Jeœli nie posiada siê konta, mo¿na je utworzyæ poprzez przycisk “ZAREJESTRUJ SIÊ” lub przejœæ do panelu Goœcia przyciskiem “GOŒÆ”. (Rysunek \ref{rys:panel_logowania_pionowo} i \ref{rys:panel_logowania_poziomo})
+	Widok umo¿liwia zalogowanie siê u¿ytkownika do systemu poprzez podanie loginu, has³a oraz adres IP serwera w odpowiednie pola, a nastêpnie klikniêcie w przycisk “ZALOGUJ SIÊ”. Jeœli nie posiada siê konta, mo¿na je utworzyæ poprzez przycisk “ZAREJESTRUJ SIÊ” lub przejœæ do panelu Goœcia przyciskiem “GOŒÆ”. (Rysunek \ref{rys:panel_logowania_pionowo} i \ref{rys:panel_logowania_poziomo})
 	
 	\begin{figure}[h]
 		\begin{minipage}{0.4\textwidth}
@@ -509,7 +512,7 @@
 	\newpage
 	
 	\section*{Panel rejestracji u¿ytkownika}
-	Panel rejestracji s³u¿y do utworzenie nowego u¿ytkownika poprzez podanie loginu, has³a, imienia i nazwiska. Po upewnieniu siê, ¿e wszystkie dane s¹ poprawne, aby zakoñczyæ proces rejestracji, klikamy przycisk “ZAREJESTRUJ”. (Rysunek \ref{rys:panel_rejestracji_pionowo} i \ref{rys:panel_rejestracji_poziomo})
+	Panel rejestracji s³u¿y do utworzenie nowego u¿ytkownika poprzez podanie loginu, has³a, imienia i nazwiska u¿ytkownika oraz adresu IP serwera do którego chcemy siê zarejestrowaæ. Po upewnieniu siê, ¿e wszystkie dane s¹ poprawne, aby zakoñczyæ proces rejestracji, klikamy przycisk “ZAREJESTRUJ”. (Rysunek \ref{rys:panel_rejestracji_pionowo} i \ref{rys:panel_rejestracji_poziomo})
 	
 	\begin{figure}[h]
 		\begin{minipage}{0.4\textwidth}
@@ -526,7 +529,7 @@
 	\newpage
 	
 	\section*{Panel listy zamków}
-	Widok listy dostêpnych zamków przedstawia listê nazw zamków do jakich dany u¿ytkownik ma dostêp. U³atwieniem jest mo¿liwoœæ sortowania wyników i wyszukiwanie po nazwach. Klikniêcie w nazwê zamka powoduje otwarcie zamka. Ustawiæ mo¿na równie¿ zamek, który ma byæ otwierany automatycznie gdy jest siê w pobli¿u zamka. (Rysunek \ref{rys:panel_listy_dostepnych_zamkow_pionowo} i \ref{rys:panel_listy_dostepnych_zamkow_poziomo})
+	Widok listy dostêpnych zamków przedstawia listê nazw zamków do jakich dany u¿ytkownik ma dostêp. U³atwieniem jest mo¿liwoœæ sortowania wyników i wyszukiwanie po nazwach. Klikniêcie w nazwê zamka powoduje otwarcie zamka. Ustawiæ mo¿na równie¿ zamek, który ma byæ otwierany automatycznie gdy jest siê w pobli¿u zamka. Kolorowe k³ódki obok nazw zamków sygnalizowaæ maj¹ status zamka. Zielona k³ódka oznacza zamek otwarty, ¿ó³ta w trakcie weryfikacji, czarna zamkniêt¹, zaœ czerwona odmowê dostêpu. (Rysunek \ref{rys:panel_listy_dostepnych_zamkow_pionowo} i \ref{rys:panel_listy_dostepnych_zamkow_poziomo})
 	
 	\begin{figure}[h]
 		\begin{minipage}{0.4\textwidth}
@@ -543,7 +546,7 @@
 	\newpage
 	
 	\section*{Panel boczny}
-	Panel boczny pozwala na szybkie prze³¹czanie pomiêdzy widokami. Chowany jest po lewej stronie ekranu. Umo¿liwia przechodzenie odpowiednio do listy zamków, zarz¹dzania certyfikatami, panelu administracyjnego oraz ustawieñ. (Rysunek \ref{rys:panel_boczny_pionowo} i \ref{rys:panel_boczny_poziomo})
+	Panel boczny pozwala na szybkie prze³¹czanie pomiêdzy widokami. Chowany jest po lewej stronie ekranu. Umo¿liwia przechodzenie odpowiednio do listy zamków, zarz¹dzania certyfikatami, panelu administracyjnego oraz ustawieñ. Ostatnia pozycja powoduje wylogowanie z aplikacji. (Rysunek \ref{rys:panel_boczny_pionowo} i \ref{rys:panel_boczny_poziomo})
 	
 	\begin{figure}[h]
 		\begin{minipage}{0.4\textwidth}
@@ -577,7 +580,7 @@
 	\newpage
 
 	\section*{Panel listy certyfikatów}
-	Panel listy certyfikatów, jest list¹ aktualnych certyfikatów nale¿¹cych do u¿ytkownika. Klikniêcie w dany certyfikat przenosi do widoku szczegó³owego zwi¹zanego z operacjami na certyfikacie. (Rysunek \ref{rys:panel_listy_certyfikatów_pionowo} i \ref{rys:panel_listy_certyfikatów_poziomo})
+	Panel listy certyfikatów, jest list¹ aktualnych certyfikatów nale¿¹cych do u¿ytkownika. Klikniêcie w dany certyfikat przenosi do widoku szczegó³owego zwi¹zanego z operacjami na tym certyfikacie. (Rysunek \ref{rys:panel_listy_certyfikatów_pionowo} i \ref{rys:panel_listy_certyfikatów_poziomo})
 	
 	\begin{figure}[h]
 		\begin{minipage}{0.4\textwidth}
@@ -615,7 +618,7 @@
 	\begin{figure}[h]
 		\begin{minipage}{0.4\textwidth}
 			\includegraphics[width=0.7\textwidth]{Obrazy/wnioskuj_o_certyfikat_pionowo}
-			\caption{Panel wnioskowania o certyfikat (pionowo)}
+			\caption{\newline Panel wnioskowania o certyfikat (pionowo)}
 			\label{rys:panel_wnioskowania_o_certyfikat_pionowo}
 		\end{minipage}
 		\begin{minipage}{0.6\textwidth}
