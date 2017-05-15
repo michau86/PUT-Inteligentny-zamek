@@ -97,4 +97,22 @@
         android:layout_toEndOf="@+id/button_register"
         android:layout_toRightOf="@+id/button_register"
         android:text="@string/activity_login_text6" />
+
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button_login"
+        android:layout_alignStart="@+id/button_register"
+        android:text="Adres serwera" />
+
+    <EditText
+        android:id="@+id/editText14"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/textView37"
+        android:layout_below="@+id/textView37"
+        android:background="@color/color_background_input"
+        android:ems="10"
+        android:inputType="textPassword" />
 </RelativeLayout>

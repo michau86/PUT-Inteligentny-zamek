@@ -13,11 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="19dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="35dp"
         android:text="@string/activity_login_text1"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -61,10 +60,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_login_text3"
-        android:layout_below="@+id/EditText_password"
-        android:layout_alignLeft="@+id/EditText_password"
-        android:layout_alignStart="@+id/EditText_password"
-        android:layout_marginTop="18dp" />
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/editText16"
+        android:layout_alignStart="@+id/editText16" />
 
     <TextView
         android:id="@+id/textView"
@@ -99,5 +97,23 @@
         android:layout_toEndOf="@+id/button_register"
         android:layout_toRightOf="@+id/button_register"
         android:text="@string/activity_login_text6" />
+
+    <EditText
+        android:id="@+id/editText16"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@color/color_background_input"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/EditText_password" />
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText16"
+        android:layout_alignStart="@+id/editText16"
+        android:text="Adres serwera" />
 
 </RelativeLayout>

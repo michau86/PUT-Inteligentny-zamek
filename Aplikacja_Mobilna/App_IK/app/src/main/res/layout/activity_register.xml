@@ -92,6 +92,19 @@
         android:id="@+id/editText5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:background="@color/color_background_input"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        android:layout_above="@+id/button_Register"
+        android:layout_alignStart="@+id/editText15"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editText15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView5"
         android:layout_alignStart="@+id/textView5"
         android:layout_below="@+id/textView5"
@@ -116,11 +129,9 @@
         android:id="@+id/button_Register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText5"
+        android:text="@string/activity_register_text6"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/editText5"
-        android:layout_marginBottom="14dp"
-        android:text="@string/activity_register_text6" />
+        android:layout_alignEnd="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView9"
@@ -165,5 +176,13 @@
         android:layout_alignBaseline="@+id/editText_Password"
         android:layout_alignBottom="@+id/editText_Password"
         android:layout_toEndOf="@+id/editText_Password" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText5"
+        android:layout_alignStart="@+id/button_Register"
+        android:text="adres serwera" />
 
 </android.widget.RelativeLayout>

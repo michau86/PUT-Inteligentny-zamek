@@ -48,11 +48,21 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:layout_below="@+id/textView2"
+        android:background="@color/color_background_input"
+        android:layout_alignBaseline="@+id/button_Register"
+        android:layout_alignBottom="@+id/button_Register"
+        android:layout_alignStart="@+id/editText17" />
+
+    <EditText
+        android:id="@+id/editText17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/textView2"
         android:background="@color/color_background_input"
-        />
+        android:ems="10"
+        android:inputType="textPassword" />
 
     <TextView
         android:id="@+id/textView4"
@@ -136,11 +146,10 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText_Password"
-        android:layout_alignLeft="@+id/textView12"
-        android:layout_alignStart="@+id/textView12"
         android:text="Hasło niepoprawne"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:layout_above="@+id/editText17"
+        android:layout_alignStart="@+id/textView12" />
 
     <TextView
         android:id="@+id/warning_ico1"
@@ -155,16 +164,24 @@
         android:id="@+id/warning_ico2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText_Password"
-        android:layout_alignStart="@+id/warning_ico1"
-        android:text="&#xf071;" />
+        android:text="&#xf071;"
+        android:layout_above="@+id/editText17"
+        android:layout_alignStart="@+id/warning_ico1" />
 
     <TextView
         android:id="@+id/eye_ico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText_Password"
-        android:layout_centerHorizontal="true"
-        android:text="&#xf06e;" />
+        android:text="&#xf06e;"
+        android:layout_above="@+id/editText17"
+        android:layout_toEndOf="@+id/editText17" />
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adres serwera"
+        android:layout_above="@+id/editText_Password"
+        android:layout_alignStart="@+id/editText_Password" />
 
 </android.widget.RelativeLayout>
