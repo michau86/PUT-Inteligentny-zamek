@@ -152,6 +152,7 @@
 		\item zasiêg po³¹czenia bluetooth to maksymalnie 15m,
 		\item niezbêdny dostêp do Internetu do po³¹czenia z aplikacj¹ serwerow¹ przy weryfikacji kluczy,
 		\item narzut czasowy zwi¹zany z weryfikacj¹ poprawnoœci klucza cyfrowego zale¿ny od parametrów serwera i sieci,
+		\item zainstalowany interpreter jêzyka Python 2.7 z pakietem bibliotek (RSA, Bluetooth, Lightblue, RPi.GPIO),
 		\item niezbêdny ci¹g³y dostêp do zasilania 5V o pr¹dzie co najmniej 2.5A,
 		\item ograniczenia pr¹dowe dla serwomechanizmu lub zamka elektronicznego,
 		\item narzut czasowy zwi¹zany z uruchomieniem urz¹dzenia - maksymalnie 20 sekund.
@@ -205,7 +206,7 @@
 	\item wersja androida minimalna 4.4, docelowa 5.0,
 	\end{itemize*}
 	\section{Aplikacja serwerowa obs³uguj¹ca bazê danych}
-	Rol¹ serwera w tym systemie bêdzie przechowywanie danych dostêpowych w bazie danych MySQL oraz generowanie nowych kluczy cyfrowych poprzez program w jêzyku Python. Aplikacja serwerowa oparta powinna byæ o technologiê Python oraz serwera http Nginx. Serwer postawiony powinien byæ na odrêbnym urz¹dzeniu od instalacji zamka, lecz dopuszcza siê ze wzglêdów ekonomicznych równie¿ postawienie serwera na wybranym (jeœli w systemie znajduje siê wiele zamków) urz¹dzeniu Raspberry Pi.
+	Rol¹ serwera w tym systemie bêdzie przechowywanie danych dostêpowych w bazie danych MySQL oraz generowanie nowych kluczy cyfrowych poprzez program w jêzyku Python. Aplikacja serwerowa oparta powinna byæ o technologiê Python oraz serwera http Apache2. Serwer postawiony powinien byæ na odrêbnym urz¹dzeniu od instalacji zamka, lecz dopuszcza siê ze wzglêdów ekonomicznych równie¿ postawienie serwera na wybranym (jeœli w systemie znajduje siê wiele zamków) urz¹dzeniu Raspberry Pi.
 	
 	Funkcjonalnoœæ aplikacji serwerowej przedstawiona zosta³a w Tabeli \ref{tab:wymagania_serwer_baza_danych}.
 	
@@ -229,7 +230,9 @@
 	\item ograniczenie liczby obs³ugiwanych zamków zale¿na od wielkoœci dostêpnej pamiêci i liczby u¿ytkowników,
 	\item narzut czasowy zwi¹zany z generowaniem nowych kluczy,
 	\item ograniczenie liczby u¿ytkowników wykonuj¹cych jednoczeœnie ¿¹dania do serwera - 9 urz¹dzeñ,
-	\item wymagany system operacyjny Linux dedykowany pod Raspberry,
+	\item wymagany system operacyjny Linux,
+	\item zainstalowany interpreter jêzyka Python 2.7 wraz z pakietem bibliotek (MySQl, RSA, Django),
+	\item zainstalowany i skonfigurowany serwer Apache2, 
 	\item dostêp do Internetu do po³¹czenia z zamkami i urz¹dzeniami mobilnymi,
 	\item zabezpieczenie bazy danych has³em generowanym losowo.
 	\end{itemize*}
