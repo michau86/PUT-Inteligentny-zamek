@@ -166,14 +166,6 @@
                         android:inputType="textPassword"
                         android:padding="5dp" />
 
-                    <Button
-                        android:id="@+id/button9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:padding="10dp"
-                        android:text="Zakres obowiązywania certyfikatu" />
-
                     <TextView
                         android:id="@+id/textView35"
                         android:layout_width="match_parent"
@@ -192,6 +184,14 @@
                         android:ems="10"
                         android:inputType="textPassword"
                         android:padding="5dp" />
+
+                    <Button
+                        android:id="@+id/buttonRangeGenerateCertyficat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Zakres obowiązywania certyfikatu" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -213,33 +213,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="80dp" />
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="1"
-                            android:text="Od:" />
-
-                        <EditText
-                            android:id="@+id/editText11"
-                            android:layout_width="260dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="@color/color_background_input"
-                            android:ems="10"
-                            android:inputType="textPassword"
-                            android:padding="5dp" />
                     </LinearLayout>
 
                     <Button

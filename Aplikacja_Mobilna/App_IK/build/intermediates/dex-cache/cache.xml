@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="G:\Maciej\studia\Semestr VI\Projekt zespolowy\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="D:\GIT_REPOSITORY\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="90bc6b018e001ebe196399eb97923d917bb6c682">
+        <dex dex="D:\GIT_REPOSITORY\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_2ac15e014a9f8642412589d1935413b67177d8a2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\GIT_REPOSITORY\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="G:\Maciej\studia\Semestr VI\Projekt zespolowy\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_04f431e1c759d176983652be228708b5f1299ddc\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="G:\Maciej\studia\Semestr VI\Projekt zespolowy\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="934cbef0bfc6f45dc70dbeb424a3dad7a8e33d9d">
-        <dex dex="G:\Maciej\studia\Semestr VI\Projekt zespolowy\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_4b4153b661b19c0c976da2c14b6011af5daeddfd\classes.dex" />
+        <dex dex="D:\GIT_REPOSITORY\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_95702190ce943d7587b69da5602d48009d47ab4a\classes.dex" />
     </item>
 
 </items>

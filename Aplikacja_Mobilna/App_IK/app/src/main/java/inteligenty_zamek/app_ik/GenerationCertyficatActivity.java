@@ -1,11 +1,13 @@
 package inteligenty_zamek.app_ik;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.ViewFlipper;
 
@@ -50,6 +52,14 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
         aa2.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
         spin2.setAdapter(aa2);
+
+        final Button register = (Button) findViewById(R.id.buttonRangeGenerateCertyficat);
+        register.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(GenerationCertyficatActivity.this,GenerateCertyficatRangeActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

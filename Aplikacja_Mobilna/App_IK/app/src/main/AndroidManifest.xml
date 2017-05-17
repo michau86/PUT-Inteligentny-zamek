@@ -38,7 +38,8 @@
         <activity android:name=".EmergencyPasswordActivity" />
         <activity android:name=".GenerationCertyficatActivity" />
         <activity android:name=".ManagmentCertyficationUserActivity" />
-        <activity android:name=".CertyficatWaitActivity"></activity>
+        <activity android:name=".CertyficatWaitActivity" />
+        <activity android:name=".GenerateCertyficatRangeActivity"></activity>
     </application>
 
 </manifest>
