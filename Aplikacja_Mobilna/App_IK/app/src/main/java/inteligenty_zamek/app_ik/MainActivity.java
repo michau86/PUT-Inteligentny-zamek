@@ -24,8 +24,6 @@ public class MainActivity extends BaseActivity {
 
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
-    public static String EXTRA_DEVICE_ADDRESS = "device_address";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,13 +68,11 @@ public class MainActivity extends BaseActivity {
         resultsListView.setAdapter(adapter);
 
         resultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                new Connect_and_send_message("64:B3:10:B4:81:DD", "hej123").execute();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                new Connect_and_send_message("B8:27:EB:FC:73:A2", "hej123").execute();          //B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,5 +88,3 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-
-

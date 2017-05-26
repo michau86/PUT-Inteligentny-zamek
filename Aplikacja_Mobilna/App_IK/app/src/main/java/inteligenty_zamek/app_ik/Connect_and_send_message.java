@@ -41,9 +41,17 @@ public class Connect_and_send_message extends AsyncTask<Object, Object, Boolean>
         }
 
         connectDevice(true);
-        while(bluetooth_maneger.getState() != Bluetooth_maneger.STATE_CONNECTED){}
+        Long tsLong = System.currentTimeMillis()/1000;
+        while(bluetooth_maneger.getState() != Bluetooth_maneger.STATE_CONNECTED){
+            if (tsLong + 15 < System.currentTimeMillis()/1000)
+                break;
+        }
         sendMessage(data);
-        while(bluetooth_maneger.getState() != Bluetooth_maneger.MESSAGE_SENDED){}
+        tsLong = System.currentTimeMillis()/1000;
+        while(bluetooth_maneger.getState() != Bluetooth_maneger.MESSAGE_RECEIVED){
+            if (tsLong + 15 < System.currentTimeMillis()/1000)
+                break;
+        }
         return true;
     }
 

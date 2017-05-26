@@ -37,6 +37,7 @@ public class Bluetooth_maneger {
     public static final int STATE_CONNECTING = 2; // now initiating an outgoing connection
     public static final int STATE_CONNECTED = 3;  // now connected to a remote device
     public static final int MESSAGE_SENDED = 4;
+    public static final int MESSAGE_RECEIVED = 5;
 
 
     public Bluetooth_maneger(Handler handler) {
@@ -373,6 +374,8 @@ public class Bluetooth_maneger {
                     // Send the obtained bytes to the UI Activity
                     mHandler.obtainMessage(3, bytes, -1, buffer)
                             .sendToTarget();
+                    mState = MESSAGE_RECEIVED;
+                    updateUserInterfaceTitle();
                 } catch (IOException e) {
                     connectionLost();
                     break;
