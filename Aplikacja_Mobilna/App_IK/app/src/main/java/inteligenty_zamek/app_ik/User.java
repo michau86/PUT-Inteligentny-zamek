@@ -9,6 +9,7 @@ public class User {
         return login;
     }
 
+
     public void setLogin(String login) {
         this.login = login;
     }
@@ -37,7 +38,19 @@ public class User {
         isAdmin = admin;
     }
 
-   private String login,name,surname;
-   private  boolean isAdmin;
+    private String login;
+    private String name;
+    private String surname;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    private String password;
+    private  boolean isAdmin;
 
 }
