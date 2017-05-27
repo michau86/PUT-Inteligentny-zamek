@@ -15,23 +15,19 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 
 public class MainActivity extends BaseActivity {
 
-    private String[] navMenuTitles;
-    private TypedArray navMenuIcons;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        String[] navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 
-        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        TypedArray navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles, navMenuIcons);
 
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -57,10 +53,9 @@ public class MainActivity extends BaseActivity {
                 new int[]{R.id.TextView_listNameKey, R.id.TextView_listPlaceKey});
 
         //iterator elementow (przepisanie z hashmap do adaptera[listitems] elementow)
-        Iterator it = Keys.entrySet().iterator();
-        while (it.hasNext()) {
+        for (Object o : Keys.entrySet()) {
             HashMap<String, String> resultsMap = new HashMap<>();
-            Map.Entry pair = (Map.Entry) it.next();
+            Map.Entry pair = (Map.Entry) o;
             resultsMap.put("First Line", pair.getKey().toString());
             resultsMap.put("Second Line", pair.getValue().toString());
             listItems.add(resultsMap);
@@ -82,9 +77,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 }
