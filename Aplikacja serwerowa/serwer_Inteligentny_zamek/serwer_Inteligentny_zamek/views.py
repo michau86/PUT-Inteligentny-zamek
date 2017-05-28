@@ -63,6 +63,9 @@ def api_register(request):
                 db.rollback()
                 return JsonResponse({"status": "ERROR"})
 <<<<<<< HEAD
+<<<<<<< HEAD
         db.close()
+=======
+>>>>>>> 045e9e4b32de11883f34212861099e73457a4321
 =======
 >>>>>>> 045e9e4b32de11883f34212861099e73457a4321
