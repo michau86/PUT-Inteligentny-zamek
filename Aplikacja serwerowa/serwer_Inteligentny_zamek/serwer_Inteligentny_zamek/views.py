@@ -1,4 +1,6 @@
 # coding=utf-8
+from random import randint
+
 from django.shortcuts import render
 from django.contrib.auth import authenticate  # metoda autoryzacji
 from django.http import JsonResponse  # zwracanie JSONow w odpowiedzi
@@ -6,6 +8,9 @@ import hashlib  # generowanie SHA384
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt  # wylaczenie CSRF tokenow
 import MySQLdb
+from Crypto.PublicKey import RSA
+from Crypto import Random
+
 
 @csrf_exempt
 
@@ -14,9 +19,13 @@ def api_login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
+        random_generator = Random.new().read
+        key = RSA.generate(1024, random_generator).publickey().exportKey()
+        token = ""
+        for x in key.split("\n")[1:-1]:
+            token += x
 
-
-        return JsonResponse({"status":"ok", "token":"sample token"})
+        return JsonResponse({"status":"ok", "token":token})
 
 @csrf_exempt
 def api_register(request):
@@ -53,4 +62,7 @@ def api_register(request):
             except:
                 db.rollback()
                 return JsonResponse({"status": "ERROR"})
+<<<<<<< HEAD
         db.close()
+=======
+>>>>>>> 045e9e4b32de11883f34212861099e73457a4321
