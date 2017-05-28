@@ -1,15 +1,18 @@
 package inteligenty_zamek.app_ik;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -30,12 +33,13 @@ import java.util.List;
 
 public class RegisterActivity extends Activity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
+        final Context registercontext=this;
         Typeface fontFamily = Typeface.createFromAsset(this.getAssets(), "fonts/fontawesome.ttf");
         TextView sampleText = (TextView) this.findViewById(R.id.warning_ico1);
         sampleText.setTypeface(fontFamily);
@@ -52,15 +56,25 @@ public class RegisterActivity extends Activity {
                 EditText password=(EditText)findViewById(R.id.editText_Password);
                 EditText name=(EditText)findViewById(R.id.editTextName);
                 EditText surname=(EditText)findViewById(R.id.editTextSurname);
+                EditText ipserwer=  (EditText) findViewById(R.id.ipserwertextview);
 
+
+                //  tutaj warunek sprawdzajacy poprawnosc adresu ip
+               if (ipserwer.getText().toString()!="") {
+                    ((SessionContainer) getApplication()).setSerwerIP(ipserwer.getText().toString());
+                }
                 User user=new User();
                 user.setLogin(login.getText().toString());
                 user.setName(name.getText().toString());
-                user.setPassword(password.getText().toString());
+                user.setPassword(((SessionContainer) getApplication()).bin2hex(((SessionContainer) getApplication()).getHash(password.getText().toString())));
                 user.setSurname(surname.getText().toString());
-                new HTTPRequest(user).execute();
-
-
+                if(user.getLogin()!=null && user.getName()!=null && user.getPassword()!=null && user.getSurname()!=null) {
+                    new HTTPRequest(user).execute();
+                }
+                else
+                {
+                    Toast.makeText(RegisterActivity.this, "wypelnij wszystkie pola", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -71,14 +85,18 @@ public class RegisterActivity extends Activity {
     public class HTTPRequest extends AsyncTask<Void, Void, String> {
         User user;
         boolean choise;
+        Context registerContex;
         public HTTPRequest(User x){
             user=x;
+
         }
         @Override
         protected String doInBackground(Void... params) {
             HttpClient httpclient = new DefaultHttpClient();
 
-            HttpPost httppost = new HttpPost("http://192.168.8.100:8000/api/register/");
+            String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/register/";
+
+            HttpPost httppost = new HttpPost(adres);
             try{
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                 nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
@@ -94,9 +112,22 @@ public class RegisterActivity extends Activity {
 
                 return responseString;
             } catch (ClientProtocolException e) {
-                // TODO Auto-generated catch block
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+
+                        Toast.makeText(RegisterActivity.this, "problem z polaczneniem z serwerem", Toast.LENGTH_SHORT).show();
+                    }
+                });
             } catch (IOException e) {
-                // TODO Auto-generated catch block
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+
+                        Toast.makeText(RegisterActivity.this, "problem z polaczneniem z serwerem", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
 
             return null;
@@ -109,19 +140,22 @@ public class RegisterActivity extends Activity {
             JSONObject jObj = null;
 
             try {
-                jObj = new JSONObject(response);
+                if(response!=null) {
+                    jObj = new JSONObject(response);
 
-                if (jObj.getString("status").equals("REGISTER OK")) {
-                    //przechodzimy do okna logowania
-                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-                    startActivity(intent);
+                    if (jObj.getString("status").equals("REGISTER OK")) {
+                        //przechodzimy do okna logowania
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
 
+                    } else {
+                        TextView textView = (TextView) findViewById(R.id.loginerrortextview);
+                        textView.setVisibility(View.VISIBLE);
+                        TextView textView2 = (TextView) findViewById(R.id.warning_ico1);
+                        textView2.setVisibility(View.VISIBLE);
+
+                    }
                 }
-                else
-                {
-                    //nie zarejestrowalim sie
-                }
-
             } catch (JSONException e) {
 
             }

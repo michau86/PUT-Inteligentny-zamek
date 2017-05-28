@@ -25,30 +25,32 @@ def api_register(request):
         password=request.POST.get('password')
         name= request.POST.get('name')
         surname=request.POST.get('surname')
+        print (login)
         # Open database connection
-        db = MySQLdb.connect("localhost", "testuser", "test123", "TESTDB")
+        db = MySQLdb.connect("localhost", "root", "1234", "inteligentny_zamek_db")
 
         # prepare a cursor object using cursor() method
         cursor = db.cursor()
 
+
+
         # execute SQL query using execute() method.
-        cursor.execute("SELECT Login FROM users WHERE login=%s" % login)
+        cursor.execute("SELECT Login FROM users WHERE login='%s'" %login)
 
         # Fetch a single row using fetchone() method.
         data = cursor.fetchone()
         if(data != None):
             return JsonResponse({"status": "ERROR LOGIN"})
         else:
-            #stworzyc skort hasla
+
 
             try:
                 #
-                hash_object = hashlib.sha384(password)
-                passwordhash=hash_object.hexdigest()
-                record = [login, passwordhash,name,surname,'0']
+                record = [login, password,name,surname,'0']
                 cursor.execute("insert into users (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN) values(%s,%s,%s,%s,%s)", record)
                 db.commit()
                 return JsonResponse({"status": "REGISTER OK"})
             except:
                 db.rollback()
                 return JsonResponse({"status": "ERROR"})
+        db.close()
