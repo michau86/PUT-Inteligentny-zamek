@@ -45,13 +45,16 @@ public class LoginActivity extends Activity{
         protected String doInBackground(Void... params) {
             HttpClient httpclient = new DefaultHttpClient();
 
-            HttpPost httppost = new HttpPost("http://192.168.8.100:8000/api/login/");
+            String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/login/";
+
+            HttpPost httppost = new HttpPost(adres);
 
             try {
                 // Add your data
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-                nameValuePairs.add(new BasicNameValuePair("username", "12345"));
-                nameValuePairs.add(new BasicNameValuePair("password", "AndDev is Cool!"));
+                nameValuePairs.add(new BasicNameValuePair("username", user.getLogin()));
+
+                nameValuePairs.add(new BasicNameValuePair("password", user.getPassword()));
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
                 // Execute HTTP Post Request
@@ -79,7 +82,7 @@ public class LoginActivity extends Activity{
                 jObj = new JSONObject(response);
 
                 if (jObj.getString("status").equals("ok")) {
-
+                    ((SessionContainer) getApplication()).setSession(jObj.getString("token"));
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);
 
@@ -105,10 +108,21 @@ public class LoginActivity extends Activity{
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                // ((SessionContainer) getApplication()).setSession("test");
+                EditText login=(EditText)findViewById(R.id.EditText_login);
+                EditText password=(EditText)findViewById(R.id.EditText_password);
+                EditText ipserwer=  (EditText) findViewById(R.id.iptextview);
+
+                if (ipserwer.getText().toString()!="") {
+                    ((SessionContainer) getApplication()).setSerwerIP(ipserwer.getText().toString());
+                }
+
+                User user=new User();
+                user.setLogin(login.getText().toString());
+                user.setPassword(((SessionContainer) getApplication()).bin2hex(((SessionContainer) getApplication()).getHash(password.getText().toString())));
+                //((SessionContainer) getApplication()).setSession("test");
 
                 //wywolanie posta
-                //new HTTPRequest().execute();
+                new HTTPRequest(user).execute();
 
             }
         });
@@ -118,6 +132,7 @@ public class LoginActivity extends Activity{
         final Button register = (Button) findViewById(R.id.button_register);
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
 
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);

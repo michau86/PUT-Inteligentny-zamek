@@ -11,7 +11,7 @@ from django.views.decorators.csrf import csrf_exempt  # wylaczenie CSRF tokenow
 import MySQLdb
 from Crypto.PublicKey import RSA
 from Crypto import Random
-
+from parse import *
 
 
 
@@ -26,8 +26,27 @@ def api_login(request):
 
     for x in key.split("\n")[1:-1]:
                 token += x
+    # trzeba zapisac do BD
 
-    return JsonResponse({"status": "ok", "token": token})
+    db = MySQLdb.connect("localhost", "root", "1234", "inteligentny_zamek_db")
+    # prepare a cursor object using cursor() method
+    cursor = db.cursor()
+    # execute SQL query using execute() method.
+
+    cursor.execute("SELECT PASSWORD FROM users WHERE login='%s'" %username)
+    data = cursor.fetchone()[0]
+    print data
+    print password
+    if(data==password):
+
+        cursor.execute("UPDATE users SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
+        data = cursor.fetchone()
+
+        return JsonResponse({"status": "ok", "token": token})
+
+    else:
+
+        return JsonResponse({"status": "ERROR PASSWORD", "token": "invalid"})
 
 
 @csrf_exempt
@@ -38,13 +57,13 @@ def api_register(request):
         name= request.POST.get('name')
         surname=request.POST.get('surname')
         # Open database connection
-        db = MySQLdb.connect("localhost", "testuser", "test123", "TESTDB")
+        db = MySQLdb.connect("localhost", "root", "1234", "inteligentny_zamek_db")
 
         # prepare a cursor object using cursor() method
         cursor = db.cursor()
 
         # execute SQL query using execute() method.
-        cursor.execute("SELECT Login FROM users WHERE login=%s" % login)
+        cursor.execute("SELECT Login FROM users WHERE login='%s'" % login)
 
         # Fetch a single row using fetchone() method.
         data = cursor.fetchone()
@@ -55,9 +74,7 @@ def api_register(request):
 
             try:
                 #
-                hash_object = hashlib.sha384(password)
-                passwordhash=hash_object.hexdigest()
-                record = [login, passwordhash,name,surname,'0']
+                record = [login, password,name,surname,'0']
                 cursor.execute("insert into users (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN) values(%s,%s,%s,%s,%s)", record)
                 db.commit()
                 return JsonResponse({"status": "REGISTER OK"})

@@ -61,8 +61,8 @@
         android:layout_height="wrap_content"
         android:text="@string/activity_login_text3"
         android:layout_marginTop="25dp"
-        android:layout_below="@+id/editText16"
-        android:layout_alignStart="@+id/editText16" />
+        android:layout_below="@+id/iptextview"
+        android:layout_alignStart="@+id/iptextview" />
 
     <TextView
         android:id="@+id/textView"
@@ -99,21 +99,21 @@
         android:text="@string/activity_login_text6" />
 
     <EditText
-        android:id="@+id/editText16"
+        android:id="@+id/iptextview"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/EditText_password"
+        android:layout_centerVertical="true"
         android:background="@color/color_background_input"
         android:ems="10"
-        android:inputType="textPassword"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/EditText_password" />
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText16"
-        android:layout_alignStart="@+id/editText16"
+        android:layout_above="@+id/iptextview"
+        android:layout_alignStart="@+id/iptextview"
         android:text="Adres serwera" />
 
 </RelativeLayout>
