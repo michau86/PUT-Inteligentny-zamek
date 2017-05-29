@@ -14,7 +14,6 @@ databaseaddres = "192.168.137.53"
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
-
 # api do logowania
 @csrf_exempt
 def api_login(request):
