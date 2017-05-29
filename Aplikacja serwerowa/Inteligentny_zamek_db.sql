@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas generowania: 28 Maj 2017, 12:27
+-- Czas generowania: 29 Maj 2017, 20:29
 -- Wersja serwera: 5.5.54-0+deb8u1
 -- Wersja PHP: 5.6.30-0+deb8u1
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `ACCESS_TO_LOCKS` (
-  `ID` int(10) NOT NULL,
+`ID` int(10) NOT NULL,
   `ID_KEY` int(10) NOT NULL,
   `DATE` date NOT NULL,
   `ACCESS` tinyint(1) NOT NULL
@@ -229,19 +229,20 @@ CREATE TABLE IF NOT EXISTS `django_session` (
 --
 
 CREATE TABLE IF NOT EXISTS `LOCKS` (
-  `ID_LOCK` int(10) NOT NULL,
+`ID_LOCK` int(10) NOT NULL,
   `NAME` varchar(30) NOT NULL,
   `LOCALIZATION` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
-  `MAC_ADDRESS` varchar(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `MAC_ADDRESS` varchar(17) NOT NULL,
+  `ADMIN_KEY` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `LOCKS`
 --
 
-INSERT INTO `LOCKS` (`ID_LOCK`, `NAME`, `LOCALIZATION`, `MAC_ADDRESS`) VALUES
-(1, 'Zamek testowy', 'Opis zamka', ''),
-(2, 'Drugi zamek', 'Drugi zamek testowy', '');
+INSERT INTO `LOCKS` (`ID_LOCK`, `NAME`, `LOCALIZATION`, `MAC_ADDRESS`, `ADMIN_KEY`) VALUES
+(1, 'Zamek testowy', 'Opis zamka', 'B8:27:EB:FC:73:A1', 'B8:27:EB:FC:73:A2'),
+(2, 'Drugi zamek', 'Drugi zamek testowy', 'B8:27:EB:FC:73:A2', 'B8:27:EB:FC:73:A2');
 
 -- --------------------------------------------------------
 
@@ -250,13 +251,13 @@ INSERT INTO `LOCKS` (`ID_LOCK`, `NAME`, `LOCALIZATION`, `MAC_ADDRESS`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `LOCKS_KEYS` (
-  `ID_KEY` int(10) NOT NULL,
+`ID_KEY` int(10) NOT NULL,
   `ID_LOCK` int(10) NOT NULL,
   `ID_USER` int(10) NOT NULL,
   `LOCK_KEY` varchar(255) COLLATE utf8_polish_ci NOT NULL,
-  `FROM_DATE` date NOT NULL,
-  `TO_DATE` date NOT NULL,
-  `ISACTUAL` timestamp NULL DEFAULT NULL,
+  `FROM_DATE` datetime NOT NULL,
+  `TO_DATE` datetime NOT NULL,
+  `ISACTUAL` datetime DEFAULT NULL,
   `MONDAY` varchar(10) COLLATE utf8_polish_ci DEFAULT NULL,
   `TUESDAY` varchar(10) COLLATE utf8_polish_ci DEFAULT NULL,
   `WEDNESDAY` varchar(10) COLLATE utf8_polish_ci DEFAULT NULL,
@@ -267,14 +268,15 @@ CREATE TABLE IF NOT EXISTS `LOCKS_KEYS` (
   `IS_PERNAMENT` tinyint(1) NOT NULL,
   `NAME` varchar(30) COLLATE utf8_polish_ci NOT NULL,
   `SURNAME` varchar(50) COLLATE utf8_polish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `LOCKS_KEYS`
 --
 
 INSERT INTO `LOCKS_KEYS` (`ID_KEY`, `ID_LOCK`, `ID_USER`, `LOCK_KEY`, `FROM_DATE`, `TO_DATE`, `ISACTUAL`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`, `IS_PERNAMENT`, `NAME`, `SURNAME`) VALUES
-(1, 1, 123, 'c411bba96157e3dfeecbc80e11ef3c18465aec26b7348cfcb13296d0ba523068', '2017-04-18', '2018-04-17', NULL, '8-12;14-16', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Maciej', 'Marciniak');
+(1, 1, 124, 'asdf2', '2017-04-18 00:00:00', '2018-04-17 00:00:00', NULL, '8-12;14-16', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Maciej', 'Marciniak'),
+(2, 2, 124, 'ASDF', '2017-04-18 00:00:00', '2017-04-19 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Maciej', 'MM');
 
 -- --------------------------------------------------------
 
@@ -289,15 +291,30 @@ CREATE TABLE IF NOT EXISTS `USERS` (
   `NAME` varchar(30) NOT NULL,
   `SURNAME` varchar(50) NOT NULL,
   `IS_ADMIN` tinyint(1) NOT NULL,
-  `PUBLIC_KEY` varchar(32) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=latin1;
+  `PUBLIC_KEY` varchar(32) DEFAULT NULL,
+  `TOKEN` varchar(300) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `ISACTIVATED` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `USERS`
 --
 
-INSERT INTO `USERS` (`ID_USER`, `LOGIN`, `PASSWORD`, `NAME`, `SURNAME`, `IS_ADMIN`, `PUBLIC_KEY`) VALUES
-(123, 'mapet', 'c411bba96157e3dfeecbc80e11ef3c18465aec26b7348cfcb13296d0ba523068', 'Maciej', 'Marciniak', 1, NULL);
+INSERT INTO `USERS` (`ID_USER`, `LOGIN`, `PASSWORD`, `NAME`, `SURNAME`, `IS_ADMIN`, `PUBLIC_KEY`, `TOKEN`, `ISACTIVATED`) VALUES
+(123, 'mapet', 'c411bba96157e3dfeecbc80e11ef3c18465aec26b7348cfcb13296d0ba523068', 'Maciej', 'Marciniak', 1, NULL, NULL, 0),
+(124, 'Maciej', 'aaa', 'Maciej', 'MM', 0, NULL, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDXLFh6QkIYurjsCY8qGw3E45hAtPD0SGrZvSEvNrtSIioKIVZHUBYLRdRZciyLPL0i/nP+dxYufnGsjT8ZdVcD334fz+GbkJeo1GhXefn7MXwTM6WjoXsNWWdw96KoWCvmbZ4v5a4fLk4pFI3m51RofnJGZHcZIYdBHeorVlHpMwIDAQAB', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `WAIT_LOCKS_KEYS`
+--
+
+CREATE TABLE IF NOT EXISTS `WAIT_LOCKS_KEYS` (
+`ID_KEY` int(10) NOT NULL,
+  `ID_LOCK` int(10) NOT NULL,
+  `ID_USER` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Indeksy dla zrzutów tabel
@@ -388,9 +405,20 @@ ALTER TABLE `USERS`
  ADD PRIMARY KEY (`ID_USER`), ADD UNIQUE KEY `LOGIN` (`LOGIN`), ADD UNIQUE KEY `PUBLIC_KEY` (`PUBLIC_KEY`);
 
 --
+-- Indexes for table `WAIT_LOCKS_KEYS`
+--
+ALTER TABLE `WAIT_LOCKS_KEYS`
+ ADD PRIMARY KEY (`ID_KEY`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT dla tabeli `ACCESS_TO_LOCKS`
+--
+ALTER TABLE `ACCESS_TO_LOCKS`
+MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `auth_group`
 --
@@ -437,10 +465,25 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 ALTER TABLE `django_migrations`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
+-- AUTO_INCREMENT dla tabeli `LOCKS`
+--
+ALTER TABLE `LOCKS`
+MODIFY `ID_LOCK` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT dla tabeli `LOCKS_KEYS`
+--
+ALTER TABLE `LOCKS_KEYS`
+MODIFY `ID_KEY` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT dla tabeli `USERS`
 --
 ALTER TABLE `USERS`
-MODIFY `ID_USER` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=124;
+MODIFY `ID_USER` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=125;
+--
+-- AUTO_INCREMENT dla tabeli `WAIT_LOCKS_KEYS`
+--
+ALTER TABLE `WAIT_LOCKS_KEYS`
+MODIFY `ID_KEY` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- Ograniczenia dla zrzutów tabel
 --

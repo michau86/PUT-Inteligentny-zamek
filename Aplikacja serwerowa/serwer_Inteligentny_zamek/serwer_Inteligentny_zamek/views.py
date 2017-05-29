@@ -1,99 +1,180 @@
 # coding=utf-8
 
-from random import randint
-from django.shortcuts import render
-from django.contrib.auth import authenticate  # metoda autoryzacji
 from django.http import JsonResponse  # zwracanie JSONow w odpowiedzi
-import hashlib  # generowanie SHA384
-from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt  # wylaczenie CSRF tokenow
 import MySQLdb
 from Crypto.PublicKey import RSA
 from Crypto import Random
-from parse import *
+from datetime import datetime
 
-username="root"
-userpassword="1234"
-databasename="inteligentny_zamek_db"
-databaseaddres="localhost"
+username = "maciej"
+userpassword = "WApet1995"
+databasename = "Inteligentny_zamek_db"
+databaseaddres = "192.168.137.53"
+
+db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
+
 
 # api do logowania
 @csrf_exempt
 def api_login(request):
-    username = request.POST.get('username')
-    password = request.POST.get('password')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-    random_generator = Random.new().read
-    key = RSA.generate(1024, random_generator).publickey().exportKey()
-    token = ""
+        random_generator = Random.new().read
+        key = RSA.generate(1024, random_generator).publickey().exportKey()
+        token = ""
 
-    for x in key.split("\n")[1:-1]:
-                token += x
-    # trzeba zapisac do BD
+        for x in key.split("\n")[1:-1]:
+            token += x
+        # trzeba zapisac do BD
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT PASSWORD FROM USERS WHERE login='%s'" % username)
+            data = cursor.fetchone()[0]
+            if (data == password):
+                cursor.execute("UPDATE USERS SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
+                db.commit()
 
-    db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
-    cursor = db.cursor()
-    cursor.execute("SELECT PASSWORD FROM users WHERE login='%s'" %username)
-    data = cursor.fetchone()[0]
+                return JsonResponse({"status": "ok", "token": token})
+            else:
+                return JsonResponse({"status": "ERROR PASSWORD", "token": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "ERROR", "token": "Invalid"})
 
-    if(data==password and data!=""):
-        cursor.execute("UPDATE users SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
-        data = cursor.fetchone()
-        return JsonResponse({"status": "ok", "token": token})
-    else:
-        return JsonResponse({"status": "ERROR PASSWORD", "token": "invalid"})
 
-#api do rejestrowania
+# api do rejestrowania
 @csrf_exempt
 def api_register(request):
     if request.method == 'POST':
-        login =request.POST.get('login')
-        password=request.POST.get('password')
-        name= request.POST.get('name')
-        surname=request.POST.get('surname')
-        # Open database connection
-        db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
+        login = request.POST.get('login')
+        password = request.POST.get('password')
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
+
         # prepare a cursor object using cursor() method
         cursor = db.cursor()
         # execute SQL query using execute() method.
-        cursor.execute("SELECT Login FROM users WHERE login='%s'" % login)
+        cursor.execute("SELECT LOGIN FROM USERS WHERE LOGIN='%s'" % login)
         # Fetch a single row using fetchone() method.
         data = cursor.fetchone()
-        if(data != None):
+        if data is None:
             return JsonResponse({"status": "ERROR LOGIN"})
         else:
-            #stworzyc skort hasla
-
             try:
-                #
-                record = [login, password,name,surname,'0']
-                cursor.execute("insert into users (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN) values(%s,%s,%s,%s,%s)", record)
+                record = [login, password, name, surname, '0']
+                cursor.execute("insert into USERS (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN) values(%s,%s,%s,%s,%s)",
+                               record)
                 db.commit()
                 return JsonResponse({"status": "REGISTER OK"})
-            except:
+            except Exception:
                 db.rollback()
                 return JsonResponse({"status": "ERROR"})
 
 
-#api do wylogowania
+# api do wylogowania
 @csrf_exempt
 def api_logout(request):
     if request.method == 'POST':
-        login =request.POST.get('login')
-        token=request.POST.get('token')
+        login = request.POST.get('login')
+        token = request.POST.get('token')
 
-        db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
+            data = cursor.fetchone()[0]
+
+            # jezeli token jest poprawny to nastepuje wylogowanie
+            if (data == token):
+                # aktualizacja tokena na pusty
+                cursor.execute("UPDATE USERS SET TOKEN = '%s' WHERE LOGIN = '%s'" % ("", username))
+                db.commit()
+
+                return JsonResponse({"status": "logout"})
+            else:
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "invalid"})
+
+
+@csrf_exempt
+def api_download_all_certificate(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
+            token_from_DB = cursor.fetchone()[0]
+
+            if (token_from_DB == token):
+                cursor.execute("SELECT * FROM LOCKS_KEYS WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s')" % login)
+                dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                        in cursor.fetchall()]
+                return JsonResponse({"data": dict_all_certificate})
+            else:
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "invalid"})
+
+@csrf_exempt
+def api_RPI_download_cetificate(request):
+    if request.method == 'POST':
+        certificate_id = request.POST.get('certificate_id')
+        RPI_MAC = request.POST.get('mac')
+
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT * FROM LOCKS_KEYS WHERE ID_KEY='%s' and  ID_LOCK=(SELECT ID_LOCK FROM LOCKS WHERE MAC_ADDRESS='%s')" % (certificate_id, RPI_MAC))
+            dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                    in cursor.fetchall()]
+            if len(dict_all_certificate) == 0:
+                return JsonResponse({"status": "invalid"})
+            else:
+                return JsonResponse({"data": dict_all_certificate})
+        except Exception:
+            return JsonResponse({"status": "invalid"})
+
+@csrf_exempt
+def api_deactivation(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+        certificate_id = request.POST.get('certificate_id')
+
+    #try:
         cursor = db.cursor()
-        cursor.execute("SELECT TOKEN FROM users WHERE login='%s'" % login)
-        data = cursor.fetchone()[0]
-
-        #jezeli token jest poprawny to nastepuje wylogowanie
-        if(data==token):
-            #aktualizacja tokena na pusty
-            cursor.execute("UPDATE users SET TOKEN = '%s' WHERE LOGIN = '%s'" % ("", username))
-            data = cursor.fetchone()
-
-            return JsonResponse({"status": "logout"})
+        cursor.execute("SELECT TOKEN FROM USERS WHERE LOGIN='%s'" % login)
+        token_from_DB = cursor.fetchone()[0]
+        if (token_from_DB == token):
+            cursor = db.cursor()
+            print "a"
+            cursor.execute("UPDATE LOCKS_KEYS SET ISACTUAL='%s' WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s') and ID_KEY='%s' " % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'),login, certificate_id))
+            print "aa"
+            db.commit()
+            print "aaa"
+            return JsonResponse({"status": "ok"})
         else:
-            return JsonResponse({"status": "invalid token"})
+            return JsonResponse({"status": "invalid"})
+    #except Exception:
+    #    return JsonResponse({"status": "invalid"})
 
+'''@csrf_exempt
+def api_request_new_certificate(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+        lock_id = request.POST.get('lock_id')
+
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
+            token_from_DB = cursor.fetchone()[0]
+
+            if (token_from_DB == token):
+                record = [login, password, name, surname, '0']
+                cursor.execute("INSERT INTO `WAIT_LOCKS_KEYS`(`ID_LOCK`, `ID_USER`) VALUES (%s,%s)",
+                               record)
+                db.commit()'''
