@@ -1,4 +1,3 @@
-
 # coding=utf-8
 
 from random import randint
@@ -18,8 +17,6 @@ userpassword="1234"
 databasename="inteligentny_zamek_db"
 databaseaddres="localhost"
 
-
-
 # api do logowania
 @csrf_exempt
 def api_login(request):
@@ -35,22 +32,15 @@ def api_login(request):
     # trzeba zapisac do BD
 
     db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
-    # prepare a cursor object using cursor() method
     cursor = db.cursor()
-    # execute SQL query using execute() method.
-
     cursor.execute("SELECT PASSWORD FROM users WHERE login='%s'" %username)
     data = cursor.fetchone()[0]
 
     if(data==password and data!=""):
-
         cursor.execute("UPDATE users SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
         data = cursor.fetchone()
-
         return JsonResponse({"status": "ok", "token": token})
-
     else:
-
         return JsonResponse({"status": "ERROR PASSWORD", "token": "invalid"})
 
 #api do rejestrowania
@@ -106,3 +96,4 @@ def api_logout(request):
             return JsonResponse({"status": "logout"})
         else:
             return JsonResponse({"status": "invalid token"})
+
