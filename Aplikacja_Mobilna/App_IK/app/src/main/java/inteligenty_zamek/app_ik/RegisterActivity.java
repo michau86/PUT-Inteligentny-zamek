@@ -94,9 +94,9 @@ public class RegisterActivity extends Activity {
         protected String doInBackground(Void... params) {
             HttpClient httpclient = new DefaultHttpClient();
 
-            String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/register/";
+                String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/register/";
 
-            HttpPost httppost = new HttpPost(adres);
+                HttpPost httppost = new HttpPost(adres);
             try{
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                 nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
