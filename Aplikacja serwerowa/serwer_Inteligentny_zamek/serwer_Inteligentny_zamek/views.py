@@ -13,7 +13,10 @@ from Crypto.PublicKey import RSA
 from Crypto import Random
 from parse import *
 
-
+username="root"
+userpassword="1234"
+databasename="inteligentny_zamek_db"
+databaseaddres="localhost"
 
 @csrf_exempt
 def api_login(request):
@@ -28,7 +31,7 @@ def api_login(request):
                 token += x
     # trzeba zapisac do BD
 
-    db = MySQLdb.connect("localhost", "root", "1234", "inteligentny_zamek_db")
+    db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
     # prepare a cursor object using cursor() method
     cursor = db.cursor()
     # execute SQL query using execute() method.
@@ -57,7 +60,7 @@ def api_register(request):
         name= request.POST.get('name')
         surname=request.POST.get('surname')
         # Open database connection
-        db = MySQLdb.connect("localhost", "root", "1234", "inteligentny_zamek_db")
+        db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
         # prepare a cursor object using cursor() method
         cursor = db.cursor()
