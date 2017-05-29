@@ -3,6 +3,7 @@ package inteligenty_zamek.app_ik;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -13,8 +14,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BaseActivity extends ActionBarActivity
 {
@@ -146,6 +163,8 @@ public class BaseActivity extends ActionBarActivity
                 finish();
                 break;
             case 4:
+                User user=((SessionContainer) getApplication()).getUser();
+                new HTTPRequest(user).execute();
                 break;
             default:
                 break;
@@ -176,5 +195,81 @@ public class BaseActivity extends ActionBarActivity
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
+
+    public class HTTPRequest extends AsyncTask<Void, Void, String> {
+        User user;
+        boolean choise;
+        public HTTPRequest(User x){
+            user=x;
+        }
+        @Override
+        protected String doInBackground(Void... params) {
+            HttpClient httpclient = new DefaultHttpClient();
+
+            String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/login/";
+
+            HttpPost httppost = new HttpPost(adres);
+
+            try {
+                // Add your data
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+                nameValuePairs.add(new BasicNameValuePair("username", user.getLogin()));
+
+                nameValuePairs.add(new BasicNameValuePair("token", ((SessionContainer) getApplication()).getSession()));
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                // Execute HTTP Post Request
+                HttpResponse response = httpclient.execute(httppost);
+                HttpEntity entity = response.getEntity();
+                String responseString = EntityUtils.toString(entity, "UTF-8");
+
+                return responseString;
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+            }
+
+            return null;
+        }
+
+        //akcja po otrzyman iu odpowiedzi z serwera
+        @Override
+        protected void onPostExecute(String response) {
+            super.onPostExecute(response);
+            JSONObject jObj = null;
+
+            try {
+                jObj = new JSONObject(response);
+
+                if (jObj.getString("status").equals("logout")) {
+                    ((SessionContainer) getApplication()).setSession("");
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+
+                            Intent intent4 = new Intent(BaseActivity.this, LoginActivity.class);
+                            startActivity(intent4);
+                            finish();
+                        }
+                    });
+
+
+                }
+                else
+                {
+                // error z logoutu
+                }
+
+            } catch (JSONException e) {
+
+            }
+        }
+    }
+
+
+
+
 }
 

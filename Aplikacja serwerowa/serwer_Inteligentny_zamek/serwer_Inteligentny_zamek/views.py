@@ -16,6 +16,7 @@ username="root"
 userpassword="1234"
 databasename="inteligentny_zamek_db"
 databaseaddres="localhost"
+db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
 # api do logowania
 @csrf_exempt
@@ -31,7 +32,7 @@ def api_login(request):
                 token += x
     # trzeba zapisac do BD
 
-    db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
+
     cursor = db.cursor()
     cursor.execute("SELECT PASSWORD FROM users WHERE login='%s'" %username)
     data = cursor.fetchone()[0]
@@ -51,9 +52,6 @@ def api_register(request):
         password=request.POST.get('password')
         name= request.POST.get('name')
         surname=request.POST.get('surname')
-        # Open database connection
-        db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
-        # prepare a cursor object using cursor() method
         cursor = db.cursor()
         # execute SQL query using execute() method.
         cursor.execute("SELECT Login FROM users WHERE login='%s'" % login)
