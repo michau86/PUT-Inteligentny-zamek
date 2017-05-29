@@ -10,7 +10,7 @@ from datetime import datetime
 username = "maciej"
 userpassword = "WApet1995"
 databasename = "Inteligentny_zamek_db"
-databaseaddres = "192.168.137.53"
+databaseaddres = "192.168.137.141"
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
@@ -63,8 +63,7 @@ def api_register(request):
         else:
             try:
                 record = [login, password, name, surname, '0']
-                cursor.execute("insert into USERS (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN) values(%s,%s,%s,%s,%s)",
-                               record)
+                cursor.execute('insert into USERS (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN) values(%s,%s,%s,%s,%s)', record)
                 db.commit()
                 return JsonResponse({"status": "REGISTER OK"})
             except Exception:
@@ -94,7 +93,7 @@ def api_logout(request):
             else:
                 return JsonResponse({"status": "invalid"})
         except Exception:
-            return JsonResponse({"status": "invalid"})
+            return JsonResponse({"status": "Invalid"})
 
 
 @csrf_exempt
@@ -116,7 +115,7 @@ def api_download_all_certificate(request):
             else:
                 return JsonResponse({"status": "invalid"})
         except Exception:
-            return JsonResponse({"status": "invalid"})
+            return JsonResponse({"status": "Invalid"})
 
 @csrf_exempt
 def api_RPI_download_cetificate(request):
@@ -134,7 +133,7 @@ def api_RPI_download_cetificate(request):
             else:
                 return JsonResponse({"data": dict_all_certificate})
         except Exception:
-            return JsonResponse({"status": "invalid"})
+            return JsonResponse({"status": "Invalid"})
 
 @csrf_exempt
 def api_deactivation(request):
@@ -143,24 +142,21 @@ def api_deactivation(request):
         token = request.POST.get('token')
         certificate_id = request.POST.get('certificate_id')
 
-    #try:
-        cursor = db.cursor()
-        cursor.execute("SELECT TOKEN FROM USERS WHERE LOGIN='%s'" % login)
-        token_from_DB = cursor.fetchone()[0]
-        if (token_from_DB == token):
+        try:
             cursor = db.cursor()
-            print "a"
-            cursor.execute("UPDATE LOCKS_KEYS SET ISACTUAL='%s' WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s') and ID_KEY='%s' " % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'),login, certificate_id))
-            print "aa"
-            db.commit()
-            print "aaa"
-            return JsonResponse({"status": "ok"})
-        else:
-            return JsonResponse({"status": "invalid"})
-    #except Exception:
-    #    return JsonResponse({"status": "invalid"})
+            cursor.execute("SELECT TOKEN FROM USERS WHERE LOGIN='%s'" % login)
+            token_from_DB = cursor.fetchone()[0]
+            if (token_from_DB == token):
+                cursor = db.cursor()
+                cursor.execute("UPDATE LOCKS_KEYS SET ISACTUAL='%s' WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s') and ID_KEY='%s' " % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'),login, certificate_id))
+                db.commit()
+                return JsonResponse({"status": "ok"})
+            else:
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
 
-'''@csrf_exempt
+@csrf_exempt
 def api_request_new_certificate(request):
     if request.method == 'POST':
         login = request.POST.get('login')
@@ -173,7 +169,32 @@ def api_request_new_certificate(request):
             token_from_DB = cursor.fetchone()[0]
 
             if (token_from_DB == token):
-                record = [login, password, name, surname, '0']
-                cursor.execute("INSERT INTO `WAIT_LOCKS_KEYS`(`ID_LOCK`, `ID_USER`) VALUES (%s,%s)",
-                               record)
-                db.commit()'''
+                cursor.execute("INSERT INTO WAIT_LOCKS_KEYS(ID_LOCK, ID_USER) VALUES ('%s',(SELECT ID_USER FROM USERS WHERE LOGIN='%s'))" % (lock_id, login))
+                db.commit()
+                return JsonResponse({"status": "ok"})
+            else:
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
+
+@csrf_exempt
+def api_generate_new_quest_certificate(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+        lock_id = request.POST.get('lock_id')
+        quest_name = request.POST.get('quest_name')
+        quest_surname = request.POST.get('quest_surname')
+        period = request.POST.get('periot')
+
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
+            token_from_DB = cursor.fetchone()[0]
+
+            if (token_from_DB == token): # TODO: jak zrobić by nie przydzielać uprawnień, których sam użytkownik nie ma?
+                return JsonResponse({"status": "ok"})
+            else:
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
