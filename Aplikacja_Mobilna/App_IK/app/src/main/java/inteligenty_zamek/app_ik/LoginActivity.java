@@ -3,6 +3,7 @@ package inteligenty_zamek.app_ik;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -114,7 +115,10 @@ public class LoginActivity extends Activity{
                 }
                 else
                 {
-
+                    TextView textView = (TextView) findViewById(R.id.warning_icologin);
+                    textView.setVisibility(View.VISIBLE);
+                    TextView textView2 = (TextView) findViewById(R.id.errorlogin);
+                    textView2.setVisibility(View.VISIBLE);
                 }
 
             } catch (JSONException e) {
@@ -129,6 +133,10 @@ public class LoginActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Typeface fontFamily = Typeface.createFromAsset(this.getAssets(), "fonts/fontawesome.ttf");
+        TextView sampleText = (TextView) this.findViewById(R.id.warning_icologin);
+        sampleText.setTypeface(fontFamily);
+
         String session=((SessionContainer) getApplication()).readFromFile(this,"session");
         if(session!="NULL")
         {
@@ -141,6 +149,7 @@ public class LoginActivity extends Activity{
         {
             EditText ipserwer=  (EditText) findViewById(R.id.iptextview);
             ipserwer.setText(setings);
+            ((SessionContainer) getApplication()).setSerwerIP(setings);
         }
       /*akcja do przycisku zaloguj  */
         final Button login = (Button) findViewById(R.id.button_login);
