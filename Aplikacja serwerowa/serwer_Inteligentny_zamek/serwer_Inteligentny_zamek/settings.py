@@ -77,9 +77,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Inteligentny_zamek_db',
-        'USER': 'maciej',
-        'PASSWORD': 'WApet1995',
-        'HOST': '192.168.8.102',   # Or an IP Address that your DB is hosted on
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }

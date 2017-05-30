@@ -7,10 +7,10 @@ from Crypto.PublicKey import RSA
 from Crypto import Random
 from datetime import datetime
 
-username = "maciej"
-userpassword = "WApet1995"
+username = "root"
+userpassword = "1234"
 databasename = "Inteligentny_zamek_db"
-databaseaddres = "192.168.8.102"
+databaseaddres = "127.0.0.1"
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
@@ -108,7 +108,7 @@ def api_download_all_certificate(request):
             token_from_DB = cursor.fetchone()[0]
 
             if (token_from_DB == token):
-                cursor.execute("SELECT * FROM LOCKS_KEYS WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s')" % login)
+                cursor.execute("SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s')" % login)
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                         in cursor.fetchall()]
                 return JsonResponse({"data": dict_all_certificate})

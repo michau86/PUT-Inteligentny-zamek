@@ -7,7 +7,7 @@ package inteligenty_zamek.app_ik;
 public class Certyficat {
 
 
-    public Certyficat(String isActual, String isPermanent, String monday, String tuesday, String wednesday, String thurstday, String friday, String sunday, String saturday, String from, String to, String name, String surname, String idKey, String id_lock, String lok_key, String id_user) {
+    public Certyficat(String isActual, String isPermanent, String monday, String tuesday, String wednesday, String thurstday, String friday, String sunday, String saturday, String from, String to, String name, String surname, String idKey, String lockName, String lockLocalization, String id_lock, String lok_key, String id_user) {
         this.isActual = isActual;
         this.isPermanent = isPermanent;
         this.monday = monday;
@@ -22,6 +22,8 @@ public class Certyficat {
         this.name = name;
         this.surname = surname;
         this.idKey = idKey;
+        this.lockName = lockName;
+        this.lockLocalization = lockLocalization;
         this.id_lock = id_lock;
         this.lok_key = lok_key;
         this.id_user = id_user;
@@ -142,6 +144,26 @@ public class Certyficat {
     String isActual,isPermanent;
     String monday,tuesday,wednesday,thurstday,friday,sunday,saturday,from,to,name,surname;
     String idKey;
+
+    public String getLockName() {
+        return lockName;
+    }
+
+    public void setLockName(String lockName) {
+        this.lockName = lockName;
+    }
+
+    String lockName;
+
+    public String getLockLocalization() {
+        return lockLocalization;
+    }
+
+    public void setLockLocalization(String lockLocalization) {
+        this.lockLocalization = lockLocalization;
+    }
+
+    String lockLocalization;
 
     public String getId_lock() {
         return id_lock;

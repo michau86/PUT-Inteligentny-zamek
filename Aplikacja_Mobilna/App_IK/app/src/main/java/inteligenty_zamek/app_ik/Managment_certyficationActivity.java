@@ -155,7 +155,6 @@ public class Managment_certyficationActivity extends BaseActivity
                protected void onPostExecute(String response) {
                    super.onPostExecute(response);
                    JSONObject jObj = null;
-                    Log.i("otrzymany", response);
                    try {
                        jObj = new JSONObject(response);
 
@@ -163,10 +162,7 @@ public class Managment_certyficationActivity extends BaseActivity
 
                        ((SessionContainer) getApplication()).getUser().addCertyficatList(arrJson);
 
-                       for(int i=0; i<((SessionContainer) getApplication()).getUser().getCertyficateList().length; i++)
-                       {
-                           Log.i("log",((SessionContainer) getApplication()).getUser().getCertyficateList()[i].getLok_key());
-                       }
+
 
                    } catch (JSONException e) {
 
