@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'serwer_Inteligentny_zamek.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Inteligentny_zamek_db',
-        'USER': 'maciej',
-        'PASSWORD': 'WApet1995',
-        'HOST': '192.168.137.53',   # Or an IP Address that your DB is hosted on
+        'NAME': 'inteligentny_zamek_db',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': '127.0.0.2',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }

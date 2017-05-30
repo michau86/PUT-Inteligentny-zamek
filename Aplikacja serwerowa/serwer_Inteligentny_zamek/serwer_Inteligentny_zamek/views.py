@@ -7,10 +7,10 @@ from Crypto.PublicKey import RSA
 from Crypto import Random
 from datetime import datetime
 
-username = "maciej"
-userpassword = "WApet1995"
-databasename = "Inteligentny_zamek_db"
-databaseaddres = "192.168.137.141"
+username = "root"
+userpassword = "1234"
+databasename = "inteligentny_zamek_db"
+databaseaddres = "127.0.0.1"
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
@@ -58,7 +58,8 @@ def api_register(request):
         cursor.execute("SELECT LOGIN FROM USERS WHERE LOGIN='%s'" % login)
         # Fetch a single row using fetchone() method.
         data = cursor.fetchone()
-        if data is None:
+        if data is not None:
+
             return JsonResponse({"status": "ERROR LOGIN"})
         else:
             try:
@@ -86,9 +87,8 @@ def api_logout(request):
             # jezeli token jest poprawny to nastepuje wylogowanie
             if (data == token):
                 # aktualizacja tokena na pusty
-                cursor.execute("UPDATE USERS SET TOKEN = '%s' WHERE LOGIN = '%s'" % ("", username))
+                cursor.execute("UPDATE USERS SET TOKEN = '' WHERE LOGIN = '%s'" % ( login))
                 db.commit()
-
                 return JsonResponse({"status": "logout"})
             else:
                 return JsonResponse({"status": "invalid"})

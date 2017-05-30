@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -207,14 +208,15 @@ public class BaseActivity extends ActionBarActivity
         protected String doInBackground(Void... params) {
             HttpClient httpclient = new DefaultHttpClient();
 
-            String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/login/";
+            String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/logout/";
 
             HttpPost httppost = new HttpPost(adres);
 
             try {
                 // Add your data
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-                nameValuePairs.add(new BasicNameValuePair("username", user.getLogin()));
+                Log.i("aloginaaaa",user.getLogin());
+                nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
 
                 nameValuePairs.add(new BasicNameValuePair("token", ((SessionContainer) getApplication()).getSession()));
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -239,19 +241,20 @@ public class BaseActivity extends ActionBarActivity
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
             JSONObject jObj = null;
-
+            Log.i("aaaaaaa","1");
             try {
                 jObj = new JSONObject(response);
-
+                Log.i("aaaaaaa",jObj.getString("status"));
                 if (jObj.getString("status").equals("logout")) {
                     ((SessionContainer) getApplication()).setSession("");
-
+                    Log.i("aaaaaaa","3");
                     runOnUiThread(new Runnable() {
                         public void run() {
-
+                            Log.i("aaaaaaa","4");
                             Intent intent4 = new Intent(BaseActivity.this, LoginActivity.class);
                             startActivity(intent4);
                             finish();
+                            Log.i("aaaaaaa","5");
                         }
                     });
 

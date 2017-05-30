@@ -119,8 +119,8 @@ public class LoginActivity extends Activity{
                 User user=new User();
                 user.setLogin(login.getText().toString());
                 user.setPassword(((SessionContainer) getApplication()).bin2hex(((SessionContainer) getApplication()).getHash(password.getText().toString())));
-                //((SessionContainer) getApplication()).setSession("test");
-
+                ((SessionContainer) getApplication()).setUser(user);
+                Log.i("aaaaaaa",user.getLogin());
                 //wywolanie posta
                 new HTTPRequest(user).execute();
 
