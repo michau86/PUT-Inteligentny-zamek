@@ -90,7 +90,6 @@ public class Managment_certyficationActivity extends BaseActivity
 
             });
 
-
         textView= (TextView) findViewById(R.id.TextView_download_serwer);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +158,7 @@ public class Managment_certyficationActivity extends BaseActivity
                        jObj = new JSONObject(response);
 
                        JSONArray arrJson = jObj.getJSONArray("data");
-
+                       ((SessionContainer) getApplication()).writeToFile(response,Managment_certyficationActivity.this,((SessionContainer) getApplication()).getUser().getLogin());
                        ((SessionContainer) getApplication()).getUser().addCertyficatList(arrJson);
 
 

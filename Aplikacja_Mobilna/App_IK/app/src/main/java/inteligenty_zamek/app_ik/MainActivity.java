@@ -44,6 +44,7 @@ public class MainActivity extends BaseActivity {
         sampleText.setTypeface(fontFamily);
         ListView resultsListView = (ListView) this.findViewById(R.id.listView_Keys);
 
+
         //hasmap przechowujący elemety do wyświetlenia
         HashMap<String, String> Keys = new HashMap<>();
         try {
