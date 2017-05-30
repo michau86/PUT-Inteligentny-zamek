@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'Inteligentny_zamek_db',
         'USER': 'maciej',
         'PASSWORD': 'WApet1995',
-        'HOST': '192.168.8.102',   # Or an IP Address that your DB is hosted on
+        'HOST': '192.168.137.204',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }

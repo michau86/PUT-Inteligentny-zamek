@@ -1,97 +1,133 @@
 from bluetooth import *
 import time
 from Crypto.PublicKey import RSA
+from Crypto.Hash import SHA256
 from Crypto import Random
 import requests
 import json
 from datetime import datetime
+from datetime import date
+import calendar
 
 import Servo
+import Models
 
-def Compare(certificat1, certificat2):
-    if True:
-        return True
-    else:
-        return False
+server_address = 'http://192.168.137.1:8080/'
+
+def Check_access(certificate):
+     date().weekday()
 
 if __name__ == '__main__':
-	while True:
-		try:
-			server_sock = BluetoothSocket(RFCOMM)
-			server_sock.bind(("", PORT_ANY))
-			server_sock.listen(1)
-			
-			port = server_sock.getsockname()[1]
-			
-			uuid = "fa87c0d0-afac-11de-8a39-0800200c9a66"
-			
-			advertise_service(server_sock, "BluetoothChatSecure",
-							service_id=uuid,
-							service_classes=[uuid, SERIAL_PORT_CLASS],
-							profiles=[SERIAL_PORT_PROFILE])
-			
-			random_generator = Random.new().read
-			key = RSA.generate(1024, random_generator)
-			
-			public_key = key.publickey()
-			
-			with open("rsa.pub", "w") as pub_file:
-				pub_file.write(public_key.exportKey())
-			
-			with open("rsa.pvt", "w") as pvt_file:
-				pvt_file.write(key.exportKey())
-			
-			servo = Servo.Servo()
-			
-			url = 'http://192.168.137.232:8000/api/login/'
-			print "Waiting for connection on RFCOMM channel %d" % port
-			while True:
-				try:
-					client_sock, client_info = server_sock.accept()
-					with open("log.log", "a") as log:
-						log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ":\tAccepted connection from " + str(client_info[0]) + "\n")
-					
-					data = client_sock.recv(1024)
-			
-					with open("log.log", "a") as log:
-						log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ":\tReceived data: " + data + " from " + str(client_info[0]) + "\n")
-			
-					r = requests.post(url, data={'username': 'aaa', 'password': 'password'})
-					
-					with open('rsa.pub', 'r') as pub_file:
-						pub_key = RSA.importKey(pub_file.read())
-					client_sock.send(r.json()['token'])
-			
-					certificat1 = None
-					certificat2 = None
-					
-					if Compare(certificat1, certificat2):
-						with open("log.log", "a") as log:
-							log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ":\tAccess to lock" + "\n")
-						servo.Open()
-						time.sleep(10)
-						servo.Close()
-					else:
-						with open("log.log", "a") as log:
-							log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ":\tAccess denied to lock" + "\n")
-			
-					client_sock.close()
-			
-				except IOError:
-					pass
-		
-		except KeyboardInterrupt:
-				print "disconnected"
-				servo.Destroy()
-				server_sock.close()
-				print "all done"
-				break
-		
-		except Exception:
-				servo.Destroy()
-				server_sock.close()
-				client_sock.close()
-				with open("log.log", "a") as log:
-					log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "\tError for unknow reson" + "\n")
-				print "Error for unknow reson"
-				break
+    while True:
+        try:
+            with open('/sys/class/bluetooth/hci0/address') as mac:
+                mac = mac.read().split("\n")[0]
+            with open("log.log", "a") as log:
+                log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "\tStart working" + "\n")
+            server_sock = BluetoothSocket(RFCOMM)
+            server_sock.bind(("", PORT_ANY))
+            server_sock.listen(1)
+
+            port = server_sock.getsockname()[1]
+
+            uuid = "fa87c0d0-afac-11de-8a39-0800200c9a66"
+
+            advertise_service(server_sock, "BluetoothChatSecure",
+                              service_id=uuid,
+                              service_classes=[uuid, SERIAL_PORT_CLASS],
+                              profiles=[SERIAL_PORT_PROFILE])
+
+            servo = Servo.Servo()
+            servo.Open()
+            url_download_certificate = server_address + 'api/RPI/download/cerificate/'
+            url_ = server_address + 'api/RPI//'
+            print "Waiting for connection on RFCOMM channel %d" % port
+            while True:
+                try:
+                    client_sock, client_info = server_sock.accept()
+                    with open("log.log", "a") as log:
+                        log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ":\tAccepted connection from " + str(
+                            client_info[0]) + "\n")
+
+                    data = client_sock.recv(1024)
+                    try:
+                        id_certificate = data.split(";")[0]
+                        login = data.split(";")[1]
+                        signature_lock_key = data.split(";")[2]
+                        data = True
+                    except Exception:
+                        data = False
+
+                    with open("log.log", "a") as log:
+                        log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ":\tReceived data: " + str(
+                            data) + " from " + str(client_info[0]) + "\n")
+
+                    if data:
+                        request = requests.post(url_download_certificate,
+                                                data={'mac': mac, 'certificate_id': id_certificate, 'login': login})
+                        if request.json()['data'] == 'invalid':
+                            with open("log.log", "a") as log:
+                                log.write(
+                                    datetime.now().strftime(
+                                        '%Y-%m-%d %H:%M:%S') + ":\tAccess denied to lock: received data false" + "\n")
+                            client_sock.send("Access denied")
+                        else:
+                            certificate = Models.Certificate(isactual=request.json()['data'][0]['ISACTUAL'],
+                                                             ispernament=request.json()['data'][0]['IS_PERNAMENT'],
+                                                             date_from=request.json()['data'][0]['FROM_DATE'],
+                                                             date_to=request.json()['data'][0]['TO_DATE'],
+                                                             lock_key=request.json()['data'][0]['LOCK_KEY'],
+                                                             monday=request.json()['data'][0]['MONDAY'], #.split(";"),
+                                                             tuesday=request.json()['data'][0]['TUESDAY'],
+                                                             wednesday=request.json()['data'][0]['WEDNESDAY'],
+                                                             thursday=request.json()['data'][0]['THURSDAY'],
+                                                             friday=request.json()['data'][0]['FRIDAY'],
+                                                             saturday=request.json()['data'][0]['SATURDAY'],
+                                                             sunday=request.json()['data'][0]['SUNDAY'])
+                            #public_key = RSA.importKey(request.json()['public_key'])
+                            if True: #public_key.verify(SHA256.new(certificate.lock_key).digest(),
+                                #                 signature=signature_lock_key):
+                                if True: #Check_access(certificate):
+                                    with open("log.log", "a") as log:
+                                        log.write(datetime.now().strftime(
+                                            '%Y-%m-%d %H:%M:%S') + ":\tAccess granted to lock" + "\n")
+                                    client_sock.send("Access granted")
+                                    servo.Open()
+                                    time.sleep(10)
+                                    servo.Close()
+                                else:
+                                    with open("log.log", "a") as log:
+                                        log.write(datetime.now().strftime(
+                                            '%Y-%m-%d %H:%M:%S') + ":\tAccess denied to lock : certificate false" + "\n")
+                                    client_sock.send("Access denied")
+                            else:
+                                with open("log.log", "a") as log:
+                                    log.write(datetime.now().strftime(
+                                        '%Y-%m-%d %H:%M:%S') + ":\tAccess denied to lock : signature false" + "\n")
+                                client_sock.send("Access denied")
+
+                    else:
+                        client_sock.send("Access denied")
+
+                    client_sock.close()
+
+                except IOError:
+                    pass
+
+        except KeyboardInterrupt:
+            print "disconnected"
+            servo.Destroy()
+            server_sock.close()
+            print "all done"
+            with open("log.log", "a") as log:
+                log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "\tExit with KeyboardInterrupt" + "\n")
+            break
+
+        '''except Exception:
+                servo.Destroy()
+                server_sock.close()
+                client_sock.close()
+                with open("log.log", "a") as log:
+                    log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "\tError for unknow reson" + "\n")
+                print "Error for unknow reson"
+                break'''

@@ -10,7 +10,7 @@ from datetime import datetime
 username = "maciej"
 userpassword = "WApet1995"
 databasename = "Inteligentny_zamek_db"
-databaseaddres = "192.168.8.102"
+databaseaddres = "192.168.137.204"
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
@@ -122,17 +122,24 @@ def api_RPI_download_cetificate(request):
     if request.method == 'POST':
         certificate_id = request.POST.get('certificate_id')
         RPI_MAC = request.POST.get('mac')
+        login_user = request.POST.get('login')
+
         try:
             cursor = db.cursor()
-            cursor.execute("SELECT * FROM LOCKS_KEYS WHERE ID_KEY='%s' and  ID_LOCK=(SELECT ID_LOCK FROM LOCKS WHERE MAC_ADDRESS='%s')" % (certificate_id, RPI_MAC))
+            cursor.execute("SELECT LOCK_KEY, FROM_DATE, TO_DATE, ISACTUAL, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, IS_PERNAMENT FROM LOCKS_KEYS WHERE ID_KEY='%s' and  ID_LOCK=(SELECT ID_LOCK FROM LOCKS WHERE MAC_ADDRESS='%s')" % (certificate_id, RPI_MAC))
             dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                     in cursor.fetchall()]
+            cursor2 = db.cursor()
+            cursor2.execute("SELECT PUBLIC_KEY FROM USERS WHERE LOGIN='%s'" % login_user)
+            public_key = cursor2.fetchone()
+
             if len(dict_all_certificate) == 0:
                 return JsonResponse({"data": "invalid"})
             else:
-                return JsonResponse({"data": dict_all_certificate})
+                return JsonResponse({"data": dict_all_certificate, "public_key" : public_key})
         except Exception:
-            return JsonResponse({"data": "Invalid"})
+            print "Error: api_RPI_download_cetificate"
+            return JsonResponse({"data": "invalid"})
 
 @csrf_exempt
 def api_deactivation(request):
