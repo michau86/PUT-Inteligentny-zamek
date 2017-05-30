@@ -7,10 +7,10 @@ from Crypto.PublicKey import RSA
 from Crypto import Random
 from datetime import datetime
 
-username = "root"
-userpassword = "1234"
-databasename = "inteligentny_zamek_db"
-databaseaddres = "127.0.0.1"
+username = "maciej"
+userpassword = "WApet1995"
+databasename = "Inteligentny_zamek_db"
+databaseaddres = "192.168.8.102"
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
@@ -122,18 +122,17 @@ def api_RPI_download_cetificate(request):
     if request.method == 'POST':
         certificate_id = request.POST.get('certificate_id')
         RPI_MAC = request.POST.get('mac')
-
         try:
             cursor = db.cursor()
             cursor.execute("SELECT * FROM LOCKS_KEYS WHERE ID_KEY='%s' and  ID_LOCK=(SELECT ID_LOCK FROM LOCKS WHERE MAC_ADDRESS='%s')" % (certificate_id, RPI_MAC))
             dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                     in cursor.fetchall()]
             if len(dict_all_certificate) == 0:
-                return JsonResponse({"status": "invalid"})
+                return JsonResponse({"data": "invalid"})
             else:
                 return JsonResponse({"data": dict_all_certificate})
         except Exception:
-            return JsonResponse({"status": "Invalid"})
+            return JsonResponse({"data": "Invalid"})
 
 @csrf_exempt
 def api_deactivation(request):
