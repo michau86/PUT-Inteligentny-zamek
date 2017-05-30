@@ -12,6 +12,15 @@ public class SessionContainer extends Application {
     public String session;
     public User user;
 
+    public Certyficat[] getCertyficatlist() {
+        return certyficatlist;
+    }
+
+    public void setCertyficatlist(Certyficat[] certyficatlist) {
+        this.certyficatlist = certyficatlist;
+    }
+
+    public Certyficat[] certyficatlist;
     public String getSerwerIP() {
         return serwerIP;
     }

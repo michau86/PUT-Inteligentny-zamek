@@ -29,8 +29,8 @@ public class CertyficatWaitActivity extends BaseActivity{
         //hasmap przechowujący elemety do wyświetlenia
         HashMap<String, String> Keys = new HashMap<>();
         Keys.put("Użytkownik 1", "Jan Kowlaski");
-        certyficatlist[0]=new Certyficat();
-        certyficatlist[0].setName("Jan Kowalski");
+       /* certyficatlist[0]=new Certyficat();
+       // certyficatlist[0].setName("Jan Kowalski");
 
         //stworzenie adaptera
         List<HashMap<String, String>> listItems = new ArrayList<>();
@@ -50,6 +50,6 @@ public class CertyficatWaitActivity extends BaseActivity{
             listItems.add(resultsMap);
         }
         resultsListView.setAdapter(adapter);
-
+        */
     }
 }

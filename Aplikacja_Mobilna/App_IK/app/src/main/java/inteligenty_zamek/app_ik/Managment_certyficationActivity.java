@@ -3,15 +3,33 @@ package inteligenty_zamek.app_ik;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Managment_certyficationActivity extends BaseActivity
        {
@@ -19,6 +37,7 @@ public class Managment_certyficationActivity extends BaseActivity
            private String[] navMenuTitles;
            private TypedArray navMenuIcons;
            ListView listView;
+           TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +69,7 @@ public class Managment_certyficationActivity extends BaseActivity
 
         listView = (ListView) findViewById(R.id.ListView_Managment_Certyfivation);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if (position == 0) {
                     Intent myIntent = new Intent(view.getContext(), userCertyfikationListActivity.class);
@@ -71,10 +89,95 @@ public class Managment_certyficationActivity extends BaseActivity
             }
 
             });
+
+
+        textView= (TextView) findViewById(R.id.TextView_download_serwer);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View viewIn) {
+                try {
+
+                    User user=((SessionContainer) getApplication()).getUser();
+                    new Managment_certyficationActivity.HTTPRequest(user).execute();
+                } catch (Exception except) {
+
+                }
+            }
+        });
+
     }
            @Override
            public void onBackPressed() {
            }
+
+
+
+
+           public class HTTPRequest extends AsyncTask<Void, Void, String> {
+               User user;
+               boolean choise;
+               public HTTPRequest(User x){
+                   user=x;
+               }
+               @Override
+               protected String doInBackground(Void... params) {
+                   HttpClient httpclient = new DefaultHttpClient();
+
+                   String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/download/all_certifacate/";
+
+                   HttpPost httppost = new HttpPost(adres);
+
+                   try {
+                       // Add your data
+                       List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+                       nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
+
+                       nameValuePairs.add(new BasicNameValuePair("token",  ((SessionContainer) getApplication()).getSession()));
+                       httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                       // Execute HTTP Post Request
+                       HttpResponse response = httpclient.execute(httppost);
+                       HttpEntity entity = response.getEntity();
+                       String responseString = EntityUtils.toString(entity, "UTF-8");
+
+                       return responseString;
+                   } catch (ClientProtocolException e) {
+                       // TODO Auto-generated catch block
+                   } catch (IOException e) {
+                       // TODO Auto-generated catch block
+                   }
+
+                   return null;
+               }
+
+               //akcja po otrzyman iu odpowiedzi z serwera
+               @Override
+               protected void onPostExecute(String response) {
+                   super.onPostExecute(response);
+                   JSONObject jObj = null;
+                    Log.i("otrzymany", response);
+                   try {
+                       jObj = new JSONObject(response);
+
+                       JSONArray arrJson = jObj.getJSONArray("data");
+
+                       ((SessionContainer) getApplication()).getUser().addCertyficatList(arrJson);
+
+                       for(int i=0; i<((SessionContainer) getApplication()).getUser().getCertyficateList().length; i++)
+                       {
+                           Log.i("log",((SessionContainer) getApplication()).getUser().getCertyficateList()[i].getLok_key());
+                       }
+
+                   } catch (JSONException e) {
+
+                   }
+               }
+           }
+
+
+
+
+
        }
 
 

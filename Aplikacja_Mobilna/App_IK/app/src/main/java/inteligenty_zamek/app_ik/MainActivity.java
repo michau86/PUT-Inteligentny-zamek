@@ -13,10 +13,19 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+
+//opis dostania się do obiektu z listy certyfikatow
+
+//((SessionContainer) getApplication()).getUser().getCertyficateList()[i].getLok_key()
+// gdzie i jest elementem na tej liscie (wedlug tej kolejnosci sa wyswietlane w main)
+//po ostatniej wartosci jest get/set do konkretnej wartosci otrzymanej z jsona
 
 
 public class MainActivity extends BaseActivity {
@@ -37,8 +46,14 @@ public class MainActivity extends BaseActivity {
 
         //hasmap przechowujący elemety do wyświetlenia
         HashMap<String, String> Keys = new HashMap<>();
-        Keys.put("Zamek 1", "piwnica");
-        Keys.put("Zamek 2", "parter");
+        try {
+            for (int i = 0; i < ((SessionContainer) getApplication()).getUser().getCertyficateList().length; i++) {
+                Keys.put(((SessionContainer) getApplication()).getUser().getCertyficateList()[i].getLok_key(), "piwnica");
+
+            }
+        }catch (Exception e) {
+
+        }
 
         //stworzenie adaptera
         List<HashMap<String, String>> listItems = new ArrayList<>();
