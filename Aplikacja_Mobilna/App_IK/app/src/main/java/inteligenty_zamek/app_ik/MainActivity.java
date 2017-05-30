@@ -44,11 +44,12 @@ public class MainActivity extends BaseActivity {
         sampleText.setTypeface(fontFamily);
         ListView resultsListView = (ListView) this.findViewById(R.id.listView_Keys);
 
+
         //hasmap przechowujący elemety do wyświetlenia
         HashMap<String, String> Keys = new HashMap<>();
         try {
             for (int i = 0; i < ((SessionContainer) getApplication()).getUser().getCertyficateList().length; i++) {
-                Keys.put(((SessionContainer) getApplication()).getUser().getCertyficateList()[i].getLok_key(), "piwnica");
+                Keys.put(((SessionContainer) getApplication()).getUser().getCertyficateList()[i].getLockName(), ((SessionContainer) getApplication()).getUser().getCertyficateList()[i].getLockLocalization());
 
             }
         }catch (Exception e) {

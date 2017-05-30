@@ -90,7 +90,6 @@ public class Managment_certyficationActivity extends BaseActivity
 
             });
 
-
         textView= (TextView) findViewById(R.id.TextView_download_serwer);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,18 +154,14 @@ public class Managment_certyficationActivity extends BaseActivity
                protected void onPostExecute(String response) {
                    super.onPostExecute(response);
                    JSONObject jObj = null;
-                    Log.i("otrzymany", response);
                    try {
                        jObj = new JSONObject(response);
 
                        JSONArray arrJson = jObj.getJSONArray("data");
-
+                       ((SessionContainer) getApplication()).writeToFile(response,Managment_certyficationActivity.this,((SessionContainer) getApplication()).getUser().getLogin());
                        ((SessionContainer) getApplication()).getUser().addCertyficatList(arrJson);
 
-                       for(int i=0; i<((SessionContainer) getApplication()).getUser().getCertyficateList().length; i++)
-                       {
-                           Log.i("log",((SessionContainer) getApplication()).getUser().getCertyficateList()[i].getLok_key());
-                       }
+
 
                    } catch (JSONException e) {
 

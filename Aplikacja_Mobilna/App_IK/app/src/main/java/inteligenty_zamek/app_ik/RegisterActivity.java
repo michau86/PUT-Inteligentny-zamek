@@ -47,8 +47,9 @@ public class RegisterActivity extends Activity {
         sampleText2.setTypeface(fontFamily);
         TextView sampleText3 = (TextView) this.findViewById(R.id.eye_ico);
         sampleText3.setTypeface(fontFamily);
+        TextView ipserwerregister = (TextView) this.findViewById(R.id.ipserwertextview);
 
-
+        ipserwerregister.setText( ((SessionContainer) getApplication()).getSerwerIP());
         final Button register = (Button) findViewById(R.id.button_Register);
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

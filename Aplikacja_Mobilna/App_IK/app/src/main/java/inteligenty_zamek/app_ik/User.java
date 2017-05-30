@@ -84,6 +84,8 @@ public class User {
                         arrJson.getJSONObject(i).getString("NAME"),
                         arrJson.getJSONObject(i).getString("SURNAME"),
                         arrJson.getJSONObject(i).getString("ID_KEY"),
+                        arrJson.getJSONObject(i).getString("LOCK_NAME"),
+                        arrJson.getJSONObject(i).getString("LOCALIZATION"),
                         arrJson.getJSONObject(i).getString("ID_LOCK"),
                         arrJson.getJSONObject(i).getString("LOCK_KEY"),
                         arrJson.getJSONObject(i).getString("ID_USER")
