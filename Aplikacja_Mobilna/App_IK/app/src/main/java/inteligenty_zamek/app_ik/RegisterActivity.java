@@ -7,6 +7,8 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +23,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -28,12 +31,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
+import java.security.Signature;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 public class RegisterActivity extends Activity {
 
-
+    private KeyPair pair = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,16 +105,32 @@ public class RegisterActivity extends Activity {
         @Override
         protected String doInBackground(Void... params) {
             HttpClient httpclient = new DefaultHttpClient();
-
+            String stringKey="";
+            String stringKeypriv="";
+            try {
+                pair = generateKeyPair();
+            }catch(Exception e){}
+            if (pair.getPublic()!= null) {stringKey = Base64.encodeToString(pair.getPublic().getEncoded(), Base64.DEFAULT);
+                stringKeypriv = Base64.encodeToString(pair.getPrivate().getEncoded(), Base64.DEFAULT);
+            }
                 String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/register/";
 
+            try {
+                String signature = sign("foobar", pair.getPrivate());
+            }catch(Exception e){}
+
+                Log.i("prywatny",stringKeypriv);
+                Log.i("publiczny",stringKey);
+                Log.i("wiadomosc","foobar");
                 HttpPost httppost = new HttpPost(adres);
             try{
+
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                 nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
                 nameValuePairs.add(new BasicNameValuePair("password", user.getPassword()));
                 nameValuePairs.add(new BasicNameValuePair("name", user.getName()));
                 nameValuePairs.add(new BasicNameValuePair("surname", user.getSurname()));
+                nameValuePairs.add(new BasicNameValuePair("publickkey", stringKey));
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
                 // Execute HTTP Post Request
@@ -145,7 +172,10 @@ public class RegisterActivity extends Activity {
                     jObj = new JSONObject(response);
 
                     if (jObj.getString("status").equals("REGISTER OK")) {
-                        //przechodzimy do okna logowania
+                        String stringKey="";
+                        if (pair.getPrivate()!= null) {stringKey = Base64.encodeToString(pair.getPrivate().getEncoded(), Base64.DEFAULT);}
+                        ((SessionContainer) getApplication()).writeToFile(stringKey,RegisterActivity.this,"*"+user.getName());
+                        ((SessionContainer) getApplication()).setPrivatekye(pair.getPrivate());
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
 
@@ -161,9 +191,38 @@ public class RegisterActivity extends Activity {
 
             }
         }
+
+
+
     }
 
+    public static String sign(String plainText, PrivateKey privateKey) throws Exception {
+        Signature privateSignature = Signature.getInstance("SHA256withRSA");
+        privateSignature.initSign(privateKey);
+        privateSignature.update(plainText.getBytes(UTF_8));
 
+        byte[] signature = privateSignature.sign();
+
+        return Base64.encodeToString(signature,Base64.DEFAULT);
+    }
+
+    public static boolean verify(String plainText, String signature, PublicKey publicKey) throws Exception {
+        Signature publicSignature = Signature.getInstance("SHA256withRSA");
+        publicSignature.initVerify(publicKey);
+        publicSignature.update(plainText.getBytes(UTF_8));
+
+        byte[] signatureBytes = Base64.decode(signature,Base64.DEFAULT);
+
+        return publicSignature.verify(signatureBytes);
+    }
+
+    public static KeyPair generateKeyPair() throws Exception {
+        KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
+        generator.initialize(1024, new SecureRandom());
+        KeyPair pair = generator.generateKeyPair();
+
+        return pair;
+    }
 
 }
 
