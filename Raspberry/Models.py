@@ -5,10 +5,14 @@ class Certificate:
         self.date_from = date_from
         self.date_to = date_to
         self.lock_key = lock_key
-        self.access_table[0] = monday
-        self.access_table[1] = tuesday
-        self.access_table[2] = wednesday
-        self.access_table[3] = thursday
-        self.access_table[4] = friday
-        self.access_table[5] = saturday
-        self.access_table[6] = sunday
+        self.access_table = []
+        self.access_table.append(monday)
+        self.access_table.append(tuesday)
+        self.access_table.append(wednesday)
+        self.access_table.append(thursday)
+        self.access_table.append(friday)
+        self.access_table.append(saturday)
+        self.access_table.append(sunday)
+
+    def __getitem__(self, item):
+        return self.access_table

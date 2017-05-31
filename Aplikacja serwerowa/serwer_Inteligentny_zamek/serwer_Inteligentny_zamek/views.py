@@ -7,10 +7,17 @@ from Crypto.PublicKey import RSA
 from Crypto import Random
 from datetime import datetime
 
+<<<<<<< HEAD
 username = "root"
 userpassword = "1234"
 databasename = "Inteligentny_zamek_db"
 databaseaddres = "127.0.0.1"
+=======
+username = "maciej"
+userpassword = "WApet1995"
+databasename = "inteligentny_zamek_db"
+databaseaddres = "192.168.137.1"
+>>>>>>> 05975d814ea3c595c9a7eb52a5f7792d192e2510
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
@@ -151,18 +158,17 @@ def api_RPI_download_cetificate(request):
 @csrf_exempt
 def api_RPI_access_decision(request):
     if request.method == 'POST':
-        desicion = request.POST.get('decision')
+        desicion = request.POST.get('desicion')
         certificate_id = request.POST.get('certificate_id')
-        try:
-            cursor = db.cursor()
-            cursor.execute(
-                "INSERT INTO `ACCESS_TO_LOCKS`(`ID_KEY`, `DATE`, `ACCESS`) VALUES (%s,[value-3],[value-4])" % (
-                certificate_id, datetime.now().strftime('%Y-%m-%d %H:%M:%S')), desicion)
-            db.commit()
-            return JsonResponse({"status": "ok"})
-        except Exception:
-            return JsonResponse({"status": "Invalid"})
-
+#   try:
+        cursor = db.cursor()
+        cursor.execute(
+            "INSERT INTO ACCESS_TO_LOCKS(ID_KEY, DATE, ACCESS) VALUES (%s,'%s',%s)" % (
+            certificate_id, datetime.now().strftime('%Y-%m-%d %H:%M:%S'), desicion))
+        db.commit()
+        return JsonResponse({"status": "ok"})
+    #except Exception:
+     #   return JsonResponse({"status": "Invalid"})
 
 @csrf_exempt
 def api_deactivation(request):
