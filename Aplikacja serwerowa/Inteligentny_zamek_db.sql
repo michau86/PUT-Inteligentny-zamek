@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas generowania: 29 Maj 2017, 20:29
+-- Czas generowania: 31 Maj 2017, 15:02
 -- Wersja serwera: 5.5.54-0+deb8u1
 -- Wersja PHP: 5.6.30-0+deb8u1
 
@@ -242,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `LOCKS` (
 
 INSERT INTO `LOCKS` (`ID_LOCK`, `NAME`, `LOCALIZATION`, `MAC_ADDRESS`, `ADMIN_KEY`) VALUES
 (1, 'Zamek testowy', 'Opis zamka', 'B8:27:EB:FC:73:A1', 'B8:27:EB:FC:73:A2'),
-(2, 'Drugi zamek', 'Drugi zamek testowy', 'B8:27:EB:FC:73:A2', 'B8:27:EB:FC:73:A2');
+(2, 'Drugi zamek', 'Drugi zamek testowy', 'b8:27:eb:fc:73:a2', 'B8:27:EB:FC:73:A2');
 
 -- --------------------------------------------------------
 
@@ -276,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `LOCKS_KEYS` (
 
 INSERT INTO `LOCKS_KEYS` (`ID_KEY`, `ID_LOCK`, `ID_USER`, `LOCK_KEY`, `FROM_DATE`, `TO_DATE`, `ISACTUAL`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`, `IS_PERNAMENT`, `NAME`, `SURNAME`) VALUES
 (1, 1, 124, 'asdf2', '2017-04-18 00:00:00', '2018-04-17 00:00:00', NULL, '8-12;14-16', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Maciej', 'Marciniak'),
-(2, 2, 124, 'ASDF', '2017-04-18 00:00:00', '2017-04-19 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Maciej', 'MM');
+(2, 2, 124, 'ASDF', '2017-04-18 00:00:00', '2017-04-19 00:00:00', '2017-05-29 20:55:09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Maciej', 'MM');
 
 -- --------------------------------------------------------
 
@@ -294,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `USERS` (
   `PUBLIC_KEY` varchar(32) DEFAULT NULL,
   `TOKEN` varchar(300) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
   `ISACTIVATED` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `USERS`
@@ -302,7 +302,8 @@ CREATE TABLE IF NOT EXISTS `USERS` (
 
 INSERT INTO `USERS` (`ID_USER`, `LOGIN`, `PASSWORD`, `NAME`, `SURNAME`, `IS_ADMIN`, `PUBLIC_KEY`, `TOKEN`, `ISACTIVATED`) VALUES
 (123, 'mapet', 'c411bba96157e3dfeecbc80e11ef3c18465aec26b7348cfcb13296d0ba523068', 'Maciej', 'Marciniak', 1, NULL, NULL, 0),
-(124, 'Maciej', 'aaa', 'Maciej', 'MM', 0, NULL, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDXLFh6QkIYurjsCY8qGw3E45hAtPD0SGrZvSEvNrtSIioKIVZHUBYLRdRZciyLPL0i/nP+dxYufnGsjT8ZdVcD334fz+GbkJeo1GhXefn7MXwTM6WjoXsNWWdw96KoWCvmbZ4v5a4fLk4pFI3m51RofnJGZHcZIYdBHeorVlHpMwIDAQAB', 0);
+(124, 'Maciej', 'aaa', 'Maciej', 'MM', 0, NULL, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrZS6gvAgDsdjnuYUbt/iA6GxM5GsML4p77OFD769IwzXmRepC46XgNk6+I6FCFYeRwBCxUtv1Pj8jdqGXTEKupzsLR3nd6BLjtgJ0zX4+KHbqk3MtLnrNFS/+ktAxu1sKa2edbuJ7pXqcEKpi/oCf1zJyb4EpQjUXh/ZAz8XYgwIDAQAB', 0),
+(126, 'Maciej123', 'E3763FC44D96B0FB4812C1843D6AE626CCFD674B92175B809048AD5E2F86F04F', 'Mm', 'Mm', 0, NULL, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdiR8evz6q0TpZrHY8Cl1mO2dHWnK9Ma8wGQIPkoXV899cQ/rZamTNaS79PjOhxYpHPy/wdd2im5B1e83ds2u/UQJuCsuhqK6ybxSEbpa6/snGW8QL1kdMp+/76CYuoO/a46+QcLDSRQQSiHWhhgGz65yz6MbUio1KuTCfn+tEewIDAQAB', 0);
 
 -- --------------------------------------------------------
 
@@ -314,7 +315,15 @@ CREATE TABLE IF NOT EXISTS `WAIT_LOCKS_KEYS` (
 `ID_KEY` int(10) NOT NULL,
   `ID_LOCK` int(10) NOT NULL,
   `ID_USER` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `WAIT_LOCKS_KEYS`
+--
+
+INSERT INTO `WAIT_LOCKS_KEYS` (`ID_KEY`, `ID_LOCK`, `ID_USER`) VALUES
+(3, 2, 124),
+(4, 2, 124);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -478,12 +487,12 @@ MODIFY `ID_KEY` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT dla tabeli `USERS`
 --
 ALTER TABLE `USERS`
-MODIFY `ID_USER` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=125;
+MODIFY `ID_USER` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=127;
 --
 -- AUTO_INCREMENT dla tabeli `WAIT_LOCKS_KEYS`
 --
 ALTER TABLE `WAIT_LOCKS_KEYS`
-MODIFY `ID_KEY` int(10) NOT NULL AUTO_INCREMENT;
+MODIFY `ID_KEY` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- Ograniczenia dla zrzutów tabel
 --
