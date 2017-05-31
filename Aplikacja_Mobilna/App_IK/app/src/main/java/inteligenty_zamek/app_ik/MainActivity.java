@@ -63,6 +63,9 @@ public class MainActivity extends BaseActivity {
         }catch(Exception e){}
         ((SessionContainer) getApplication()).setPrivatekye(priv);
 
+        String stringKeypriv = Base64.encodeToString(priv.getEncoded(), Base64.DEFAULT);
+        Log.i("prywatny",stringKeypriv);
+        Log.i("prywatny all", priv.toString());
 
 
 

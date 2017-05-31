@@ -7,17 +7,12 @@ from Crypto.PublicKey import RSA
 from Crypto import Random
 from datetime import datetime
 
-<<<<<<< HEAD
+
 username = "root"
 userpassword = "1234"
 databasename = "Inteligentny_zamek_db"
 databaseaddres = "127.0.0.1"
-=======
-username = "maciej"
-userpassword = "WApet1995"
-databasename = "inteligentny_zamek_db"
-databaseaddres = "192.168.137.1"
->>>>>>> 05975d814ea3c595c9a7eb52a5f7792d192e2510
+
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
@@ -67,7 +62,7 @@ def api_register(request):
         # Fetch a single row using fetchone() method.
         data = cursor.fetchone()
         if data is not None:
-
+            print "aa"
             return JsonResponse({"status": "ERROR LOGIN"})
         else:
             try:
@@ -78,6 +73,7 @@ def api_register(request):
                 return JsonResponse({"status": "REGISTER OK"})
             except Exception:
                 db.rollback()
+                print  publickkey
                 return JsonResponse({"status": "ERROR"})
 
 

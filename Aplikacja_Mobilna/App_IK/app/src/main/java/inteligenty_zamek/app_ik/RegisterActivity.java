@@ -115,13 +115,13 @@ public class RegisterActivity extends Activity {
             }
                 String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/register/";
 
-            try {
-                String signature = sign("foobar", pair.getPrivate());
-            }catch(Exception e){}
+           // try {
+            //    String signature = sign("foobar", pair.getPrivate());
+            //}catch(Exception e){}
 
                 Log.i("prywatny",stringKeypriv);
-                Log.i("publiczny",stringKey);
-                Log.i("wiadomosc","foobar");
+                Log.i("prywatny all", pair.getPrivate().toString());
+              //  Log.i("wiadomosc","foobar");
                 HttpPost httppost = new HttpPost(adres);
             try{
 

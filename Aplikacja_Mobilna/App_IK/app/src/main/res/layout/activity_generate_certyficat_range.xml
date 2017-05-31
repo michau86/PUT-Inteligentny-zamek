@@ -38,7 +38,7 @@
                 android:background="@color/color_border_list" />
 
             <CheckBox
-                android:id="@+id/checkBoxMonday"
+                android:id="@+id/checkBoxPoniedzialek"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -53,7 +53,7 @@
                 android:text="Od:" />
 
             <EditText
-                android:id="@+id/editText19"
+                android:id="@+id/inputfromPoniedzialek"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -72,7 +72,7 @@
                 android:text="Do:" />
 
             <EditText
-                android:id="@+id/editText18"
+                android:id="@+id/inputtoPoniedzialek"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -111,7 +111,7 @@
                     android:layout_weight="1" />
 
                 </LinearLayout>
-                <!-- wtorek  -->
+
 
 
                 <View
@@ -123,15 +123,93 @@
                     android:layout_marginTop="20dp"
                     android:background="@color/color_border_list" />
 
-                <CheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="Poniedziałek" />
+            <!--wtorek-->
+            <CheckBox
+                android:id="@+id/checkBoxWtorek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Wtorek" />
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Od:" />
+
+            <EditText
+                android:id="@+id/editText52"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_background_input"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Do:" />
+
+            <EditText
+                android:id="@+id/editText54"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_background_input"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="5dp" />
+
+            <Button
+                android:id="@+id/buttonAddRangeTuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Dodaj zakres" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView51"
+                    android:id="@+id/textView55"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:text="Zakresy juz dodane" />
+
+                <Spinner
+                    android:id="@+id/spinnerTuesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+
+            <!--Sroda-->
+            <CheckBox
+                android:id="@+id/checkBoxSroda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Srodak" />
+
+                <TextView
+                    android:id="@+id/textView61"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -139,7 +217,7 @@
                     android:text="Od:" />
 
                 <EditText
-                    android:id="@+id/editText52"
+                    android:id="@+id/inputfromSroda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -150,7 +228,7 @@
                     android:padding="5dp" />
 
                 <TextView
-                    android:id="@+id/textView53"
+                    android:id="@+id/inputtoSroda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -158,7 +236,7 @@
                     android:text="Do:" />
 
                 <EditText
-                    android:id="@+id/editText54"
+                    android:id="@+id/editText64"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -169,7 +247,7 @@
                     android:padding="5dp" />
 
                 <Button
-                    android:id="@+id/buttonAddRangeTuesday"
+                    android:id="@+id/buttonAddRangeSroda"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -183,7 +261,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView55"
+                        android:id="@+id/textView65"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -191,12 +269,319 @@
                         android:text="Zakresy juz dodane" />
 
                     <Spinner
-                        android:id="@+id/spinnerTuesday"
+                        android:id="@+id/spinnerSroda"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
             </LinearLayout>
+
+            <!--Czwartek-->
+            <CheckBox
+                android:id="@+id/checkBoxCzwartek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Czwartek" />
+
+            <TextView
+                android:id="@+id/textView71"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Od:" />
+
+            <EditText
+                android:id="@+id/inputfromCzwartek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_background_input"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView63"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Do:" />
+
+            <EditText
+                android:id="@+id/inputtoCzwartek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_background_input"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="5dp" />
+
+            <Button
+                android:id="@+id/buttonAddRangeCzwartek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Dodaj zakres" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView75"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:text="Zakresy juz dodane" />
+
+                <Spinner
+                    android:id="@+id/spinnerCzwartek"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+            <!--Piatek-->
+            <CheckBox
+                android:id="@+id/checkBoxPiatek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Piatek" />
+
+            <TextView
+                android:id="@+id/textView81"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Od:" />
+
+            <EditText
+                android:id="@+id/editText82"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_background_input"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView83"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Do:" />
+
+            <EditText
+                android:id="@+id/editText84"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_background_input"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="5dp" />
+
+            <Button
+                android:id="@+id/buttonAddRangePiatek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Dodaj zakres" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView85"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:text="Zakresy juz dodane" />
+
+                <Spinner
+                    android:id="@+id/spinnerPiatek"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+            <!--sobota-->
+            <CheckBox
+                android:id="@+id/checkBoxSobota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Sobota" />
+
+            <TextView
+                android:id="@+id/textView91"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Od:" />
+
+            <EditText
+                android:id="@+id/inputfromSobota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_background_input"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/inputtoSobota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Do:" />
+
+            <EditText
+                android:id="@+id/editText94"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_background_input"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="5dp" />
+
+            <Button
+                android:id="@+id/buttonAddRangeSobota"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Dodaj zakres" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView95"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:text="Zakresy juz dodane" />
+
+                <Spinner
+                    android:id="@+id/spinnerSobota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+            <!--Niedziela-->
+            <CheckBox
+                android:id="@+id/checkBoxNiedziela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Niedziela" />
+
+            <TextView
+                android:id="@+id/textView101"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Od:" />
+
+            <EditText
+                android:id="@+id/inpiutfromNiedziela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_background_input"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView103"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Do:" />
+
+            <EditText
+                android:id="@+id/inputtoNiedziela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_background_input"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="5dp" />
+
+            <Button
+                android:id="@+id/buttonAddRangeNiedziela"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Dodaj zakres" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView105"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:text="Zakresy juz dodane" />
+
+                <Spinner
+                    android:id="@+id/spinnerNiedziela"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+
+
+
+
+
 
             <View
                 android:id="@+id/view24"

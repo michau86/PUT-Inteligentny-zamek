@@ -35,6 +35,15 @@ public class SessionContainer extends Application {
     public String session;
     public User user;
 
+    public String getCertyficatadminlist() {
+        return certyficatadminlist;
+    }
+
+    public void setCertyficatadminlist(String certyficatadminlist) {
+        this.certyficatadminlist = certyficatadminlist;
+    }
+
+    public String certyficatadminlist="";
     public PrivateKey getPrivatekye() {
         return privatekye;
     }

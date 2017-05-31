@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 public class GenerationCertyficatActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
@@ -74,6 +75,12 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        Toast.makeText(GenerationCertyficatActivity.this, ((SessionContainer) getApplication()).getCertyficatadminlist(), Toast.LENGTH_SHORT).show();
 
+
+    }
 
 }
