@@ -21,5 +21,6 @@ urlpatterns = {
     # url(r'^api/admin/certificate_decision/$', views.api_register, name='api_admin_certificate_decision'),
     # url(r'^api/change_password/$', views.api_register, name='api_change_password'),
     url(r'^api/RPI/download/cerificate/$', views.api_RPI_download_cetificate, name='api_RPI_download_cetificate'),
+    url(r'^api/RPI/access_decision/$', views.api_RPI_download_cetificate, name='api_RPI_access_decision'),
     # url(r'^api/RPI/key/$', views.api_register, name='api_RPI_key'),
 }
