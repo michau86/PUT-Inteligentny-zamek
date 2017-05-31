@@ -106,22 +106,14 @@ public class RegisterActivity extends Activity {
         protected String doInBackground(Void... params) {
             HttpClient httpclient = new DefaultHttpClient();
             String stringKey="";
-            String stringKeypriv="";
             try {
                 pair = generateKeyPair();
             }catch(Exception e){}
             if (pair.getPublic()!= null) {stringKey = Base64.encodeToString(pair.getPublic().getEncoded(), Base64.DEFAULT);
-                stringKeypriv = Base64.encodeToString(pair.getPrivate().getEncoded(), Base64.DEFAULT);
+
             }
                 String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/register/";
 
-           // try {
-            //    String signature = sign("foobar", pair.getPrivate());
-            //}catch(Exception e){}
-
-                Log.i("prywatny",stringKeypriv);
-                Log.i("prywatny all", pair.getPrivate().toString());
-              //  Log.i("wiadomosc","foobar");
                 HttpPost httppost = new HttpPost(adres);
             try{
 
@@ -173,9 +165,10 @@ public class RegisterActivity extends Activity {
 
                     if (jObj.getString("status").equals("REGISTER OK")) {
                         String stringKey="";
-                        if (pair.getPrivate()!= null) {stringKey = Base64.encodeToString(pair.getPrivate().getEncoded(), Base64.DEFAULT);}
-                        ((SessionContainer) getApplication()).writeToFile(stringKey,RegisterActivity.this,"*"+user.getName());
+                        stringKey = Base64.encodeToString(pair.getPrivate().getEncoded(), Base64.DEFAULT);
+                        ((SessionContainer) getApplication()).writeToFile(stringKey,RegisterActivity.this,"X"+user.getLogin());
                         ((SessionContainer) getApplication()).setPrivatekye(pair.getPrivate());
+
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
 

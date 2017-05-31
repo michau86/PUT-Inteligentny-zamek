@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,12 +30,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.KeyFactory;
+import java.security.PrivateKey;
+import java.security.Signature;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.crypto.SecretKey;
 
 import static android.content.ContentValues.TAG;
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class LoginActivity extends Activity{
 
@@ -91,6 +97,19 @@ public class LoginActivity extends Activity{
                     String sessionencrypt=((SessionContainer) getApplication()).decryption(jObj.getString("token"));
                     ((SessionContainer) getApplication()).writeToFile(sessionencrypt,LoginActivity.this,"session");
 
+
+                    String privatekeystring=((SessionContainer) getApplication()).readFromFile(LoginActivity.this,"X"+((SessionContainer) getApplication()).getUser().getLogin());
+
+
+
+                    byte[] encodedKey     = Base64.decode(privatekeystring, Base64.DEFAULT);
+                    PrivateKey priv=null;
+                    try {
+                        KeyFactory kf = KeyFactory.getInstance("RSA"); // or "EC" or whatever
+                         priv = kf.generatePrivate(new PKCS8EncodedKeySpec(encodedKey));
+                    }catch(Exception e){}
+
+                    ((SessionContainer) getApplication()).setPrivatekye(priv);
 
 
                         JSONObject  json= null;
@@ -190,7 +209,16 @@ public class LoginActivity extends Activity{
                 startActivity(intent);
             }
         });
-    }
 
+    }
+    public static String sign(String plainText, PrivateKey privateKey) throws Exception {
+        Signature privateSignature = Signature.getInstance("SHA256withRSA");
+        privateSignature.initSign(privateKey);
+        privateSignature.update(plainText.getBytes(UTF_8));
+
+        byte[] signature = privateSignature.sign();
+
+        return Base64.encodeToString(signature,Base64.DEFAULT);
+    }
 
 }

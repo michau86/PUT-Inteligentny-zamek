@@ -53,19 +53,7 @@ public class MainActivity extends BaseActivity {
         sampleText.setTypeface(fontFamily);
         ListView resultsListView = (ListView) this.findViewById(R.id.listView_Keys);
 
-        String privatekeystring=((SessionContainer) getApplication()).readFromFile(this,"*"+((SessionContainer) getApplication()).getUser().getLogin());
-        byte[] encodedKey     = Base64.decode(privatekeystring, Base64.DEFAULT);
-        PrivateKey priv=null;
-        try {
-          PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(encodedKey);
-          KeyFactory fact = KeyFactory.getInstance("RSA");
-           priv= fact.generatePrivate(keySpec);
-        }catch(Exception e){}
-        ((SessionContainer) getApplication()).setPrivatekye(priv);
 
-        String stringKeypriv = Base64.encodeToString(priv.getEncoded(), Base64.DEFAULT);
-        Log.i("prywatny",stringKeypriv);
-        Log.i("prywatny all", priv.toString());
 
 
 
