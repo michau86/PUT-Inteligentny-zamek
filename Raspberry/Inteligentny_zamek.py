@@ -114,9 +114,12 @@ if __name__ == '__main__':
                                                               'desicion': "0"})
                                 client_sock.send("Access denied")
                             else:
-                                public_key = RSA.importKey('-----BEGIN PUBLIC KEY-----\n' + request.json()['public_key'][0] + '\n-----END PUBLIC KEY-----')
+                                key = '-----BEGIN PUBLIC KEY-----\n' + request.json()['public_key'][0] + '\n-----END PUBLIC KEY-----'
+                                print key
+                                public_key = RSA.importKey(key)
                                 verifier = PKCS1_v1_5.new(public_key)
-                                if verifier.verify(SHA256.new(certificate.lock_key), signature=base64.standard_b64decode(signature_lock_key)):
+                                if verifier.verify(SHA256.new(certificate.lock_key), base64.standard_b64decode(signature_lock_key)):
+                                    print "ok"
                                     if Check_access(certificate):
                                         with open("log.log", "a") as log:
                                             log.write(datetime.now().strftime(
