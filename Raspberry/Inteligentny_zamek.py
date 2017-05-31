@@ -2,12 +2,13 @@ from bluetooth import *
 import time
 from Crypto.PublicKey import RSA
 from Crypto.Hash import SHA256
+import base64
+from Crypto.Signature import PKCS1_v1_5
 from Crypto import Random
 import requests
 import json
 from datetime import datetime
 from datetime import date
-import calendar
 
 import Servo
 import Models
@@ -113,9 +114,9 @@ if __name__ == '__main__':
                                                               'desicion': "0"})
                                 client_sock.send("Access denied")
                             else:
-                                #public_key = RSA.importKey(request.json()['public_key'][0])
-                                if True: #public_key.verify(SHA256.new(certificate.lock_key).digest(),
-                                        #             signature=signature_lock_key):
+                                public_key = RSA.importKey('-----BEGIN PUBLIC KEY-----\n' + request.json()['public_key'][0] + '\n-----END PUBLIC KEY-----')
+                                verifier = PKCS1_v1_5.new(public_key)
+                                if verifier.verify(SHA256.new(certificate.lock_key), signature=base64.standard_b64decode(signature_lock_key)):
                                     if Check_access(certificate):
                                         with open("log.log", "a") as log:
                                             log.write(datetime.now().strftime(
