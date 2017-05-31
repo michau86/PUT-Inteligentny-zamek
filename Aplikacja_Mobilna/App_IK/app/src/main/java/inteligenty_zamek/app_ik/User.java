@@ -88,8 +88,8 @@ public class User {
                         arrJson.getJSONObject(i).getString("LOCALIZATION"),
                         arrJson.getJSONObject(i).getString("ID_LOCK"),
                         arrJson.getJSONObject(i).getString("LOCK_KEY"),
-                        arrJson.getJSONObject(i).getString("ID_USER")
-
+                        arrJson.getJSONObject(i).getString("ID_USER"),
+                        arrJson.getJSONObject(i).getString("MAC_ADDRESS")
                 );
             }catch(JSONException e)
             {}

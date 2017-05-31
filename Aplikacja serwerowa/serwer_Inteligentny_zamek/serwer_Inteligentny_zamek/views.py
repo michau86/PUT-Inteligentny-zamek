@@ -7,10 +7,17 @@ from Crypto.PublicKey import RSA
 from Crypto import Random
 from datetime import datetime
 
+<<<<<<< HEAD
+username = "root"
+userpassword = "1234"
+databasename = "Inteligentny_zamek_db"
+databaseaddres = "127.0.0.1"
+=======
 username = "maciej"
 userpassword = "WApet1995"
 databasename = "inteligentny_zamek_db"
 databaseaddres = "192.168.137.1"
+>>>>>>> 05975d814ea3c595c9a7eb52a5f7792d192e2510
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
@@ -52,7 +59,7 @@ def api_register(request):
         password = request.POST.get('password')
         name = request.POST.get('name')
         surname = request.POST.get('surname')
-
+        publickkey=request.POST.get('publickkey')
         # prepare a cursor object using cursor() method
         cursor = db.cursor()
         # execute SQL query using execute() method.
@@ -64,8 +71,8 @@ def api_register(request):
             return JsonResponse({"status": "ERROR LOGIN"})
         else:
             try:
-                record = [login, password, name, surname, '0']
-                cursor.execute('INSERT INTO USERS (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN) VALUES(%s,%s,%s,%s,%s)',
+                record = [login, password, name, surname, '0', publickkey]
+                cursor.execute('INSERT INTO USERS (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN,PUBLIC_KEY) VALUES(%s,%s,%s,%s,%s,%s)',
                                record)
                 db.commit()
                 return JsonResponse({"status": "REGISTER OK"})
@@ -110,8 +117,8 @@ def api_download_all_certificate(request):
             token_from_DB = cursor.fetchone()[0]
 
             if (token_from_DB == token):
-                cursor.execute(
-                    "SELECT * FROM LOCKS_KEYS WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s')" % login)
+
+                cursor.execute("SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s')" % login)
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                         in cursor.fetchall()]
                 return JsonResponse({"data": dict_all_certificate})

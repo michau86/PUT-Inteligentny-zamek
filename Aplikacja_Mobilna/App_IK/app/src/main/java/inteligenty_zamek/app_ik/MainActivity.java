@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,10 +17,17 @@ import android.widget.TextView;
 
 import org.json.JSONException;
 
+import java.security.KeyFactory;
+import java.security.PrivateKey;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 
 //opis dostania się do obiektu z listy certyfikatow
@@ -43,6 +52,19 @@ public class MainActivity extends BaseActivity {
         TextView sampleText = (TextView) this.findViewById(R.id.TextView_sortingIco);
         sampleText.setTypeface(fontFamily);
         ListView resultsListView = (ListView) this.findViewById(R.id.listView_Keys);
+
+        String privatekeystring=((SessionContainer) getApplication()).readFromFile(this,"*"+((SessionContainer) getApplication()).getUser().getLogin());
+        byte[] encodedKey     = Base64.decode(privatekeystring, Base64.DEFAULT);
+        PrivateKey priv=null;
+        try {
+          PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(encodedKey);
+          KeyFactory fact = KeyFactory.getInstance("RSA");
+           priv= fact.generatePrivate(keySpec);
+        }catch(Exception e){}
+        ((SessionContainer) getApplication()).setPrivatekye(priv);
+
+
+
 
 
         //hasmap przechowujący elemety do wyświetlenia
@@ -79,7 +101,14 @@ public class MainActivity extends BaseActivity {
                     Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                     startActivity(enableBtIntent);
                 }
-                new Connect_and_send_message("B8:27:EB:FC:73:A2", "hej123").execute();          //B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
+                User us=((SessionContainer) getApplication()).getUser();
+
+                String signature="";
+                try {
+                     signature = sign(us.getCertyficateList()[position].getLok_key(), ((SessionContainer) getApplication()).getPrivatekye());
+                }catch(Exception e){}
+                String tosend=us.getCertyficateList()[position].getIdKey()+";"+us.getLogin()+";"+signature;
+                new Connect_and_send_message(((SessionContainer) getApplication()).getUser().getCertyficateList()[position].getMac_addres(), tosend).execute();          //B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
             }
         });
     }

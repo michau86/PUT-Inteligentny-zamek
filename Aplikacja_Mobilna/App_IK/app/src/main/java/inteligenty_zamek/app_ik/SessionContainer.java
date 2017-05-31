@@ -16,6 +16,7 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.InvalidParameterSpecException;
@@ -34,6 +35,15 @@ public class SessionContainer extends Application {
     public String session;
     public User user;
 
+    public PrivateKey getPrivatekye() {
+        return privatekye;
+    }
+
+    public void setPrivatekye(PrivateKey privatekye) {
+        this.privatekye = privatekye;
+    }
+
+    public PrivateKey privatekye;
     public Certyficat[] getCertyficatlist() {
         return certyficatlist;
     }

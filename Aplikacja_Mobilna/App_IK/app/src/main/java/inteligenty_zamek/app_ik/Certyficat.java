@@ -7,7 +7,7 @@ package inteligenty_zamek.app_ik;
 public class Certyficat {
 
 
-    public Certyficat(String isActual, String isPermanent, String monday, String tuesday, String wednesday, String thurstday, String friday, String sunday, String saturday, String from, String to, String name, String surname, String idKey, String lockName, String lockLocalization, String id_lock, String lok_key, String id_user) {
+    public Certyficat(String isActual, String isPermanent, String monday, String tuesday, String wednesday, String thurstday, String friday, String sunday, String saturday, String from, String to, String name, String surname, String idKey, String lockName, String lockLocalization, String id_lock, String lok_key, String id_user, String mac_addres) {
         this.isActual = isActual;
         this.isPermanent = isPermanent;
         this.monday = monday;
@@ -27,8 +27,18 @@ public class Certyficat {
         this.id_lock = id_lock;
         this.lok_key = lok_key;
         this.id_user = id_user;
+        this.mac_addres=mac_addres;
     }
 
+    public String getMac_addres() {
+        return mac_addres;
+    }
+
+    public void setMac_addres(String mac_addres) {
+        this.mac_addres = mac_addres;
+    }
+
+    public String mac_addres;
     public String isActual() {
         return isActual;
     }
