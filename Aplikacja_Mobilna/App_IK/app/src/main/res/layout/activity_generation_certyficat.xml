@@ -64,7 +64,7 @@
                         android:layout_marginTop="5dp"
                         android:background="@color/color_background_input"
                         android:ems="10"
-                        android:inputType="textPassword"
+                        android:inputType="textPersonName"
                         android:padding="5dp" />
 
                     <TextView
@@ -83,7 +83,7 @@
                         android:layout_marginTop="5dp"
                         android:background="@color/color_background_input"
                         android:ems="10"
-                        android:inputType="textPassword"
+                        android:inputType="textPersonName"
                         android:padding="5dp" />
 
                     <View
@@ -132,7 +132,7 @@
                             android:text="Wybór użytkownika" />
 
                         <Spinner
-                            android:id="@+id/spinner"
+                            android:id="@+id/spinnerUser"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="80dp" />
@@ -156,18 +156,17 @@
                         android:text="Od:" />
 
                     <EditText
-                        android:id="@+id/editText12"
+                        android:id="@+id/inputfromAdmingenerate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
                         android:background="@color/color_background_input"
                         android:ems="10"
-                        android:inputType="textPassword"
+                        android:inputType="textPersonName"
                         android:padding="5dp" />
 
                     <TextView
-                        android:id="@+id/textView35"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
@@ -175,14 +174,31 @@
                         android:text="Do:" />
 
                     <EditText
-                        android:id="@+id/editText13"
+                        android:id="@+id/inputtoadminGenerateKey"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
                         android:background="@color/color_background_input"
                         android:ems="10"
-                        android:inputType="textPassword"
+                        android:inputType="textPersonName"
+                        android:padding="5dp" />
+
+                    <TextView
+                        android:id="@+id/textView35"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nazwa Certyfikatu" />
+
+                    <EditText
+                        android:id="@+id/inputName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/color_background_input"
+                        android:ems="10"
+                        android:inputType="textPersonName"
                         android:padding="5dp" />
 
                     <Button
@@ -208,7 +224,7 @@
                             android:text="Wybór zamka:" />
 
                         <Spinner
-                            android:id="@+id/spinner"
+                            android:id="@+id/spinnerLoks"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="80dp" />
@@ -216,7 +232,7 @@
                     </LinearLayout>
 
                     <Button
-                        android:id="@+id/button8"
+                        android:id="@+id/generujAdmin"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"

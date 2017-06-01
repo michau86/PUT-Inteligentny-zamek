@@ -3,19 +3,35 @@ package inteligenty_zamek.app_ik;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-/**
- * Created by damian on 10.05.2017.
- */
+
 
 public class User {
     public String getLogin() {
         return login;
     }
 
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+
+    public String idUser;
     public Certyficat[] getCertyficateList() {
         return certyficateList;
     }
 
+    public Lock[] getLockslist() {
+        return lockslist;
+    }
+
+    public void setLockslist(Lock[] lockslist) {
+        this.lockslist = lockslist;
+    }
+
+    public Lock[] lockslist;
     public void setCertyficateList(Certyficat[] certyficateList) {
         this.certyficateList = certyficateList;
     }
@@ -91,6 +107,20 @@ public class User {
                         arrJson.getJSONObject(i).getString("ID_USER"),
                         arrJson.getJSONObject(i).getString("MAC_ADDRESS")
                 );
+            }catch(JSONException e)
+            {}
+        }
+
+    }
+
+    public void addLockList(JSONArray arrJson)
+    {
+        lockslist=new Lock[arrJson.length()];
+        for(int i = 0; i < arrJson.length(); i++) {
+            try {
+                lockslist[i] = new Lock();
+                lockslist[i].setName( arrJson.getJSONObject(i).getString("NAME"));
+                lockslist[i].setIdKey(arrJson.getJSONObject(i).getString("ID_LOCK"));
             }catch(JSONException e)
             {}
         }

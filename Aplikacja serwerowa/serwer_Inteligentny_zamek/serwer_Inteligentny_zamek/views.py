@@ -7,10 +7,10 @@ from Crypto.PublicKey import RSA
 from Crypto import Random
 from datetime import datetime
 
-username = "maciej"
-userpassword = "WApet1995"
+username = "root"
+userpassword = "1234"
 databasename = "inteligentny_zamek_db"
-databaseaddres = "192.168.137.1"
+databaseaddres = "127.0.0.1"
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
@@ -138,7 +138,7 @@ def api_download_all_locks(request):
             token_from_DB = cursor.fetchone()[0]
             if (token_from_DB == token):
                 cursor.execute(
-                    "SELECT NAME, LOCALIZATION AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS  ")
+                    "SELECT NAME, LOCALIZATION AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS, ID_LOCK FROM LOCKS  ")
                 dict_all_locks = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                         in cursor.fetchall()]
                 if len(dict_all_locks) == 0:
@@ -149,6 +149,32 @@ def api_download_all_locks(request):
             return JsonResponse({"status": "Invalid"})
         except Exception:
             return JsonResponse({"status": "Invalid"})
+
+
+@csrf_exempt
+def api_download_all_user(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
+            token_from_DB = cursor.fetchone()[0]
+            if (token_from_DB == token):
+                cursor.execute(
+                    "SELECT LOGIN,ID_USER FROM USERS  ")
+                dict_all_locks = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                        in cursor.fetchall()]
+                if len(dict_all_locks) == 0:
+                    return JsonResponse({"data": "invalid"})
+                else:
+                    return JsonResponse({"data": dict_all_locks})
+
+            return JsonResponse({"status": "Invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
+
+
 
 @csrf_exempt
 def api_RPI_download_cetificate(request):
@@ -260,7 +286,7 @@ def api_admin_generate_new_certificate(request):
         is_pernament = request.POST.get('is_pernament')
         name = request.POST.get('name')
         surname = request.POST.get('surname')
-
+        print "aaa"
         try:
             cursor = db.cursor()
             cursor.execute("SELECT TOKEN, IS_ADMIN, ID_USER FROM USERS WHERE login='%s'" % login)

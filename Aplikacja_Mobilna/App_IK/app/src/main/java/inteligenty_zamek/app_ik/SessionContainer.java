@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,6 +23,7 @@ import java.security.PrivateKey;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.InvalidParameterSpecException;
+import java.util.ArrayList;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -35,6 +39,97 @@ public class SessionContainer extends Application {
     public String session;
     public User user;
 
+    public int getBuffor1() {
+        return buffor1;
+    }
+
+    public void setBuffor1(int buffor1) {
+        this.buffor1 = buffor1;
+    }
+
+    public int getBuffor2() {
+        return buffor2;
+    }
+
+    public void setBuffor2(int buffor2) {
+        this.buffor2 = buffor2;
+    }
+
+    public int buffor1,buffor2;
+    public ArrayList<String> getMondayList() {
+        return mondayList;
+    }
+
+    public User[] getUserlist() {
+        return userlist;
+    }
+
+
+    public void setUserlist(User[] userlist) {
+        this.userlist = userlist;
+    }
+
+    User[] userlist;
+    public void setMondayList(ArrayList<String> mondayList) {
+        this.mondayList = mondayList;
+    }
+
+    ArrayList<String> mondayList;
+
+    public ArrayList<String> getTuesdayList() {
+        return tuesdayList;
+    }
+
+    public void setTuesdayList(ArrayList<String> tuesdayList) {
+        this.tuesdayList = tuesdayList;
+    }
+
+    public ArrayList<String> getWednesdayList() {
+        return wednesdayList;
+    }
+
+    public void setWednesdayList(ArrayList<String> wednesdayList) {
+        this.wednesdayList = wednesdayList;
+    }
+
+    public ArrayList<String> getThurstdayList() {
+        return thurstdayList;
+    }
+
+    public void setThurstdayList(ArrayList<String> thurstdayList) {
+        this.thurstdayList = thurstdayList;
+    }
+
+    public ArrayList<String> getFridyList() {
+        return fridyList;
+    }
+
+    public void setFridyList(ArrayList<String> fridyList) {
+        this.fridyList = fridyList;
+    }
+
+    public ArrayList<String> getSaturdayList() {
+        return saturdayList;
+    }
+
+    public void setSaturdayList(ArrayList<String> saturdayList) {
+        this.saturdayList = saturdayList;
+    }
+
+    public ArrayList<String> getSundayList() {
+        return sundayList;
+    }
+
+    public void setSundayList(ArrayList<String> sundayList) {
+        this.sundayList = sundayList;
+    }
+
+    ArrayList<String> tuesdayList;
+    ArrayList<String> wednesdayList;
+    ArrayList<String> thurstdayList;
+    ArrayList<String> fridyList;
+    ArrayList<String>  saturdayList;
+    ArrayList<String> sundayList;
     public String getCertyficatadminlist() {
         return certyficatadminlist;
     }
@@ -244,7 +339,19 @@ public class SessionContainer extends Application {
         return strDecryptedText;
     }
 
+    public void addUserList(JSONArray arrJson)
+    {
+        userlist=new User[arrJson.length()];
+        for(int i = 0; i < arrJson.length(); i++) {
+            try {
+                userlist[i] = new User();
+                userlist[i].setLogin( arrJson.getJSONObject(i).getString("LOGIN"));
+                userlist[i].setIdUser(arrJson.getJSONObject(i).getString("ID_USER"));
+            }catch(JSONException e)
+            {}
+        }
 
+    }
 
 
 }

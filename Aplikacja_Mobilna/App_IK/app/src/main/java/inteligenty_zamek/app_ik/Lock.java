@@ -45,14 +45,14 @@ public class Lock {
         this.surname = surname;
     }
 
-    public int getIdKey() {
+    public String getIdKey() {
         return idKey;
     }
 
-    public void setIdKey(int idKey) {
+    public void setIdKey(String idKey) {
         this.idKey = idKey;
     }
 
     private String key,from,to,name,surname;
-   private int idKey;
+   private String idKey;
 }

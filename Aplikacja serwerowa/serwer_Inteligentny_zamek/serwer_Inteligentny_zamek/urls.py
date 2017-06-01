@@ -22,4 +22,5 @@ urlpatterns = {
     url(r'^api/RPI/download/cerificate/$', views.api_RPI_download_cetificate, name='api_RPI_download_cetificate'),
     url(r'^api/RPI/access_decision/$', views.api_RPI_access_decision, name='api_RPI_access_decision'),
     # url(r'^api/RPI/key/$', views.api_register, name='api_RPI_key'),
+    url(r'^api/download/all_user/$', views.api_download_all_user, name='api_download_all_user'),
 }
