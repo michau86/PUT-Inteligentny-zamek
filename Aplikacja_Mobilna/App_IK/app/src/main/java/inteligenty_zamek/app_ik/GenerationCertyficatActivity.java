@@ -3,16 +3,13 @@ package inteligenty_zamek.app_ik;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import org.apache.http.HttpEntity;
@@ -313,8 +310,8 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 else {nameValuePairs.add(new BasicNameValuePair("sunday", " "));}
 
                 nameValuePairs.add(new BasicNameValuePair("is_pernament","0" ));
-                nameValuePairs.add(new BasicNameValuePair("name","" ));
-                nameValuePairs.add(new BasicNameValuePair("surname"," " ));
+                nameValuePairs.add(new BasicNameValuePair("name","Damian" ));
+                nameValuePairs.add(new BasicNameValuePair("surname","F" ));
 
 
 
