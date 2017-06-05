@@ -38,6 +38,7 @@
 \usepackage[tableposition=top]{caption}
 \makeatletter
 \newcommand{\linia}{\rule{\linewidth}{0.4mm}}
+\newcommand{\tablinia}{\newline \linia \newline}
 \renewcommand{\maketitle}{\begin{titlepage}
 		\vspace*{-2.5cm}
 		\begin{center}\small
@@ -153,7 +154,7 @@
 		\item zasiêg po³¹czenia bluetooth to maksymalnie 15m,
 		\item niezbêdny dostêp do Internetu do po³¹czenia z aplikacj¹ serwerow¹ przy weryfikacji kluczy,
 		\item narzut czasowy zwi¹zany z weryfikacj¹ poprawnoœci klucza cyfrowego zale¿ny od parametrów serwera i sieci,
-		\item zainstalowany interpreter jêzyka Python 2.7 z pakietem bibliotek (RSA, Bluetooth, Lightblue, RPi.GPIO, SHA3),
+		\item zainstalowany interpreter jêzyka Python 2.7 z pakietem bibliotek (RSA, Bluetooth, Lightblue, RPi.GPIO, PyCrypto, Request),
 		\item niezbêdny ci¹g³y dostêp do zasilania 5V o pr¹dzie co najmniej 2.5A,
 		\item ograniczenia pr¹dowe dla serwomechanizmu lub zamka elektronicznego,
 		\item narzut czasowy zwi¹zany z uruchomieniem urz¹dzenia - maksymalnie 20 sekund.
@@ -232,7 +233,7 @@
 	\item narzut czasowy zwi¹zany z generowaniem nowych kluczy,
 	\item ograniczenie liczby u¿ytkowników wykonuj¹cych jednoczeœnie ¿¹dania do serwera - 9 urz¹dzeñ,
 	\item wymagany system operacyjny Linux,
-	\item zainstalowany interpreter jêzyka Python 2.7 wraz z pakietem bibliotek (MySQl, RSA, Django, SHA3),
+	\item zainstalowany interpreter jêzyka Python 2.7 wraz z pakietem bibliotek (MySQl, RSA, Django, PyCrypto),
 	\item zainstalowany i skonfigurowany serwer Apache2, 
 	\item dostêp do Internetu do po³¹czenia z zamkami i urz¹dzeniami mobilnymi,
 	\item zabezpieczenie bazy danych has³em generowanym losowo.
@@ -390,68 +391,116 @@
 	\begin{landscape}
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=25cm]{Obrazy/Diagram_klas_aplikacja_serwerowa.png}
+		\includegraphics[width=22cm]{Obrazy/Diagram_klas_aplikacja_serwerowa.png}
 		\caption{Diagram klas aplikacji serwerowej}
 		\label{diagram:Diagram_klas_aplikacji_serwerowej}
 	\end{figure}
 	\end{landscape}
-
+	
+\chapter{Komunikaty HTTP Request}
+	Modu³y systemu komunikuj¹ siê z serwerem za pomoc¹ komunikatów HTTP. Tabela \ref{tab:http_raspberry} przedstawia komunikaty serwera przeznaczone dla urz¹dzenia Raspberry~Pi. 
+	
+	Tabela \ref{tab:http_mobilne} zawiera komunikaty pomiêdzy serwerem, a urz¹dzeniem mobilnym.
+	\begin{landscape}
+	\begin{longtable}[!ht]{|p{6cm}|p{8cm}|p{6.5cm}|p{4cm}|} 
+		\caption{Tabela komunikatów HTTP dla Raspberry Pi}
+		\label{tab:http_raspberry}\\
+		\hline	
+		Adres URL & Parametry & OdpowiedŸ & Opis \\	\hline
+		/api/RPI/download/cerificate/ & certificate\_id --- identyfikator certyfikatu \newline RPI\_MAC --- adres MAC urz¹dzenia \newline login\_user --- login u¿ytkownika & "data": dict\_all\_certificate, "public\_key": public\_key \tablinia "data": "invalid" & Pobranie certyfikatu u¿ytkownika \\ \hline
+		/api/RPI/access\_decision/ & certificate\_id --- identyfikator certyfikatu \newline decision --- informacja o odmowie/akceptacji dostêpu & "status": "ok" \tablinia "data": "invalid" & Informacja do serwera o statusie otwierania zamka \\ \hline
+	\end{longtable}
+	\end{landscape}
+	
+	\begin{landscape}
+	\begin{longtable}[!ht]{|p{6cm}|p{8cm}|p{6.5cm}|p{4cm}|} 
+		\caption{Tabela komunikatów HTTP dla urz¹dzenia mobilnego}
+		\label{tab:http_mobilne}\\
+		\hline	
+		Adres URL & Parametry & OdpowiedŸ & Opis \\	\hline
+		/api/login/ & username --- login u¿ytkownika \newline password --- has³o u¿ytkownika & "status": "ok", "token": token \tablinia "status": "ERROR PASSWORD", "token": "invalid" & Logowanie u¿ytkownika do aplikacji \\ \hline
+		/api/register/ & login --- login u¿ytkownika \newline password --- has³a u¿ytkownika \newline name --- imiê u¿ytkownika \newline surname -- nazwisko u¿ytkownika \newline publickey --- klucz publiczny u¿ytkownika & "status": "ERROR" \tablinia "status": "REGISTER OK" & Rejestracja nowego u¿ytkownika do aplikacji \\ \hline
+		/api/logout/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania & "status": "logout" \tablinia "status": "invalid" & Wylogowanie u¿ytkownika z aplikacji \\ \hline
+		/api/download/all\_certifacate/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_certificate \tablinia "status": "invalid" & Pobranie wszystkich dostêpnych certyfikatów u¿ytkownika \\ \hline
+		/api/download/all\_locks/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_locks \tablinia "status": "invalid" & Pobranie listy wszystkich dostêpnych zamków w systemie \\ \hline
+		/api/download/all\_user/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_users \tablinia "status": "invalid" & Pobranie listy wszystkich u¿ytkowników systemu \\ \hline
+		/api/deactivation/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania \newline certificate\_id --- identyfikator certyfikatu do usuniêcia & "status": "ok" \tablinia "status": "invalid" & Usuniêcie dostêpu do certyfikatu \\ \hline
+		/api/request\_new\_certificate/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania \newline lock\_id --- identyfikator zamka & "status": "ok" \tablinia "status": "invalid" & Wnioskowanie o nowy certyfikat \\ \hline
+		/api/\linebreak generate\_new\_quest\_certificate/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania \newline lock\_id --- identyfikator zamka \newline quest\_name --- imiê goœcia \newline quest\_surname --- nazwisko goœcia \newline period --- okres wa¿noœci certyfikatu & "status": "ok" \tablinia "status": "invalid" & Generowanie nowego certyfikatu goœcia \\ \hline
+		/api/change\_password/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania & "status": "ok" \tablinia "status": "invalid" & Zmiana has³a u¿ytkownika \\ \hline
+		/api/admin/history/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania & "data": dict\_history \tablinia "status": "invalid" & Pobranie historii u¿ycia zamków w systemie (administrator) \\ \hline
+		/api/admin/download/\linebreak all\_certificate/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_certificate \tablinia "status": "invalid" & Pobranie wszystkich certyfikatów z systemu (administrator)\\ \hline
+		/api/admin/deactivation/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania \newline certificate\_id --- identyfikator certyfikatu do usuniêcia & "status": "ok" \tablinia "status": "invalid" & Usuniêcie dostêpu do certyfikatu (administrator) \\ \hline
+		/api/admin/\linebreak generate\_new\_certificate/ & login --- login u¿ytkownika \newline token --- klucz sesji logowania \newline user\_id --- identyfikator u¿ytkownika \newline lock\_id --- identyfikator zamka \newline from\_date --- data od której obowi¹zuje certyfikat \newline to\_date --- data do której obowi¹zuje certyfikat \newline monday...sunday --- 7 parametrów oznaczjacych zakresy godzin w poszczególnych dniach tygodnia \newline is\_pernament --- czy dostêp jest ci¹g³y \newline name --- imiê u¿ytkownika certyfikatu \newline surname --- nazwisko u¿ytkownika certyfikatu & "status": "ok" \tablinia "status": "invalid" & Generowanie nowego certyfikatu (administrator) \\ \hline
+	\end{longtable}
+	\end{landscape}
 \chapter{Projekt bazy danych}
 	Baza danych przechowywaæ bêdzie sk³adaæ siê z piêciu tabel:
 	\begin{itemize*}
-	\item \textbf{USERS} - przechowuje dane u¿ytkowników oraz dane niezbêdne przy weryfikacji logowania,
-	\item \textbf{LOCKS} - zawiera informacje na temat dostêpnych w systemie zamków,
-	\item \textbf{ACCESS\_TO\_LOCKS} - archiwizuje próby u¿ycia certyfikatów,
-	\item \textbf{LOCKS\_KEYS} - zawiera wszystkie klucze dostêpowe u¿ytkowników. 
+	\item \textbf{USERS} --- przechowuje dane u¿ytkowników oraz dane niezbêdne przy weryfikacji logowania,
+	\item \textbf{LOCKS} --- zawiera informacje na temat dostêpnych w systemie zamków,
+	\item \textbf{ACCESS\_TO\_LOCKS} --- archiwizuje próby u¿ycia certyfikatów,
+	\item \textbf{LOCKS\_KEYS} --- zawiera wszystkie klucze dostêpowe u¿ytkowników,
+	\item \textbf{WAIT\_LOCKS\_KEYS} --- przetrzymuje klucze dostêpowe oczekuj¹ce na zatwierdzenie przez administratora.
 	\end{itemize*}
 
 	Wiersz tabeli USERS zawieraæ musi:
 	\begin{itemize*}
-	\item \textbf{ID\_USER} - unikalny identyfikator (klucz g³ówny) u¿ytkownika sk³adaj¹cy siê z 10 cyfr,
-	\item \textbf{LOGIN} - unikalna nazwa u¿ytkownika niezbêdna podczas logowania, zawieraj¹ca nie wiêcej ni¿ 255 znaków,
-	\item \textbf{PASSWORD} - has³o zapisane w postaci skrótu, potrzebne do autoryzacji dostêpu u¿ytkownikowi,
-	\item \textbf{PUBLIC\_KEY} - klucz publiczny u¿ytkownika potrzebny do podpisu cyfrowego,
+	\item \textbf{ID\_USER} --- unikalny identyfikator (klucz g³ówny) u¿ytkownika sk³adaj¹cy siê z 10 cyfr,
+	\item \textbf{LOGIN} --- unikalna nazwa u¿ytkownika niezbêdna podczas logowania, zawieraj¹ca nie wiêcej ni¿ 255 znaków,
+	\item \textbf{PASSWORD} --- has³o zapisane w postaci skrótu, potrzebne do autoryzacji dostêpu u¿ytkownikowi,
+	\item \textbf{PUBLIC\_KEY} --- klucz publiczny u¿ytkownika potrzebny do podpisu cyfrowego,
 	\item \textbf{NAME} - imiê u¿ytkownika,
-	\item \textbf{SURNAME} - nazwisko u¿ytkownika,
-	\item \textbf{IS\_ADMIN} - pole boolowskie wskazuj¹ce czy dany u¿ytkownik jest administratorem czy nie.
+	\item \textbf{SURNAME} --- nazwisko u¿ytkownika,
+	\item \textbf{IS\_ADMIN} --- pole boolowskie wskazuj¹ce czy dany u¿ytkownik jest administratorem czy nie,
+	\item \textbf{TOKEN} --- generowany ci¹g pseudolosowy klucz sesji logowania,
+	\item  \textbf{ISACTIVATED} --- pole boolowskie oznaczaj¹ce, czy dane konto jest zaakceptowane (aktywowane) przez administratora.
 	\end{itemize*}
 
 	Zamek opisywany jest poprzez kolumny:
 	\begin{itemize*}
-	\item \textbf{ID\_LOCK} - unikalny identyfikator (klucz g³ówny) zamka sk³adaj¹cy siê z 10 cyfr,
-	\item \textbf{NAME} - unikalna nazwa zamka,
-	\item \textbf{MAC\_ADDRESS} - adres fizyczny urz¹dzenia steruj¹cego zamkiem,
-	\item \textbf{LOCALIZATION} - nieobowi¹zkowe pole opisuj¹ce fizyczne po³o¿enie zamka.
+	\item \textbf{ID\_LOCK} --- unikalny identyfikator (klucz g³ówny) zamka sk³adaj¹cy siê z 10 cyfr,
+	\item \textbf{NAME} --- unikalna nazwa zamka,
+	\item \textbf{MAC\_ADDRESS} --- adres fizyczny urz¹dzenia steruj¹cego zamkiem,
+	\item \textbf{LOCALIZATION} --- nieobowi¹zkowe pole opisuj¹ce fizyczne po³o¿enie zamka,
+	\item  \textbf{ADMIN\_KEY} --- wartoœæ klucza awaryjnego dla administratora.
 	\end{itemize*}
 \newpage
 
 	Klucz dostêpowy sk³ada siê z:
 	\begin{itemize*}
-	\item \textbf{ID\_KEY} - unikalny identyfikator (klucz g³ówny) klucza dostêpowego sk³adaj¹cy siê z 10 cyfr,
-	\item \textbf{ID\_LOCK} - klucz obcy do tabeli przechowuj¹cej dostêpne zamki,
-	\item \textbf{ID\_USER} - klucz obcy do tabeli przechowuj¹cej dane u¿ytkownika, jest to pole s³u¿¹ce do okreœlenia kto utworzy³ klucz dostêpu,
-	\item \textbf{KEY} - unikalna wartoœæ certyfikatu dostêpu,
-	\item \textbf{FROM} - data od której obowi¹zuje klucz,
-	\item \textbf{TO} - data do której obowi¹zuje klucz,
-	\item \textbf{ISACTUAL} - data wygaœniêcia klucza, jeœli równa TO, oznacza to ¿e klucz utraci³ wa¿noœæ z powodu czasu, jeœli ró¿na oznacza, to ¿e zablokowano z innego powodu wa¿noœæ,
-	\item \textbf{MONDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w poniedzia³ki,
-	\item \textbf{TUESDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp we wtorki,
-	\item \textbf{WEDNESDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w œrody,
-	\item \textbf{THURSDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w czwartki,
-	\item \textbf{FRIDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w pi¹tki,
-	\item \textbf{SATURDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w soboty,
-	\item \textbf{SUNDAY} - s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w niedziele,
-	\item \textbf{IS\_PERNAMENT} - zmienna boolowska oznaczaj¹ca czy dostêp jest zawsze,
+	\item \textbf{ID\_KEY} --- unikalny identyfikator (klucz g³ówny) klucza dostêpowego sk³adaj¹cy siê z 10 cyfr,
+	\item \textbf{ID\_LOCK} --- klucz obcy do tabeli przechowuj¹cej dostêpne zamki,
+	\item \textbf{ID\_USER} --- klucz obcy do tabeli przechowuj¹cej dane u¿ytkownika, jest to pole s³u¿¹ce do okreœlenia kto utworzy³ klucz dostêpu,
+	\item \textbf{KEY} --- unikalna wartoœæ certyfikatu dostêpu,
+	\item \textbf{FROM} --- data od której obowi¹zuje klucz,
+	\item \textbf{TO} --- data do której obowi¹zuje klucz,
+	\item \textbf{ISACTUAL} --- data wygaœniêcia klucza, jeœli równa TO, oznacza to ¿e klucz utraci³ wa¿noœæ z powodu czasu, jeœli ró¿na oznacza, to ¿e zablokowano z innego powodu wa¿noœæ,
+	\item \textbf{MONDAY} --- s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w poniedzia³ki,
+	\item \textbf{TUESDAY} --- s³owne okreœlenie, w których godzinach zostanie przyznany dostêp we wtorki,
+	\item \textbf{WEDNESDAY} --- s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w œrody,
+	\item \textbf{THURSDAY} --- s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w czwartki,
+	\item \textbf{FRIDAY} --- s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w pi¹tki,
+	\item \textbf{SATURDAY} --- s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w soboty,
+	\item \textbf{SUNDAY} --- s³owne okreœlenie, w których godzinach zostanie przyznany dostêp w niedziele,
+	\item \textbf{IS\_PERNAMENT} --- zmienna boolowska oznaczaj¹ca czy dostêp jest zawsze,
 	\item \textbf{NAME} - imiê osoby, której dotyczy certyfikat,
-	\item \textbf{SURNAME} - nazwisko osoby, której dotyczy certyfikat.
+	\item \textbf{SURNAME} --- nazwisko osoby, której dotyczy certyfikat.
 	\end{itemize*}
 
 	W tabeli archiwizuj¹cej akcje na zamku znajduj¹ siê takie dane jak:
 	\begin{itemize*}
-	\item \textbf{ID} - unikalny identyfikator (klucz g³ówny) akcji wykonanej na certyfikacie sk³adaj¹cy siê z 10 cyfr,
-	\item \textbf{ID\_KEY} - klucz obcy do tabeli przechowuj¹cej klucze dostêpowe, dziêki tej informacji mo¿emy uzyskaæ dane o zamku, który zosta³ otwierany jak równie¿ do kogo nale¿a³ klucz,
-	\item \textbf{DATE} - dok³adna data z godzin¹ u¿ycia klucza dostêpowego,
-	\item \textbf{ACCESS} - binarna flaga informuj¹ca czy dostêp zosta³ przyznany czy odmówiony.
+	\item \textbf{ID} --- unikalny identyfikator (klucz g³ówny) akcji wykonanej na certyfikacie sk³adaj¹cy siê z 10 cyfr,
+	\item \textbf{ID\_KEY} --- klucz obcy do tabeli przechowuj¹cej klucze dostêpowe, dziêki tej informacji mo¿emy uzyskaæ dane o zamku, który zosta³ otwierany jak równie¿ do kogo nale¿a³ klucz,
+	\item \textbf{DATE} --- dok³adna data z godzin¹ u¿ycia klucza dostêpowego,
+	\item \textbf{ACCESS} --- binarna flaga informuj¹ca czy dostêp zosta³ przyznany czy odmówiony.
+	\end{itemize*}
+
+	Tabela WAIT\_LOCKS\_KEYS sk³ada siê z:
+	\begin{itemize*}
+		\item \textbf{ID\_KEY} --- unikalny identyfikator (klucz g³ówny) oczekuj¹cego certyfikatu,
+		\item \textbf{ID\_LOCK} --- klucz obcy do tabeli LOCKS, oznacza zamek do którego jest zg³aszana proœba dostêpu,
+		\item \textbf{ID\_USER} --- klucz obcy do tabeli USERS, oznacza u¿ytkownika który zg³asza proœbê o dostêp do zamka.
 	\end{itemize*}
 
 	Diagramy bazy danych odpowiednio encji i relacji przedstawione zosta³y na Rysunkach \ref{diagram:diagram encji} i \ref{diagram:diagram relacji}.  
@@ -470,6 +519,16 @@
 		\label{diagram:diagram relacji}
 	\end{figure}
 
+	\chapter{Schemat elektryczny systemu}
+	Ze wzglêdu na sprzêtowy charakter projektu oraz liczne dostêpne piny GPIO urz¹dzania steruj¹cego Raspberry, nale¿y przedstawiæ schemat elektryczny systemu. Przyk³adowe pod³¹czenie zgodne z przeznaczeniem pinów przedstawiono na Rysunku \ref{schemat:schemat elektryczny systemu}.
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=14cm]{Obrazy/Schemat_elektryczny_Inteligentnego_zamka.png}
+		\caption{Schemat elektryczny systemu}
+		\label{schemat:schemat elektryczny systemu}
+	\end{figure}
+
 	\chapter{Zabezpieczenia systemu}
 	Inteligentny zamek ma na celu zabezpieczanie wejœcia do pomieszczeñ, dlatego sam system powinien byæ równie¿ bezpieczny. Podstawowymi elementami jakie nale¿y chroniæ s¹:
 	\begin{itemize*}
@@ -481,13 +540,13 @@
 		\item dostêpnoœæ do instalacji.
 	\end{itemize*}
 	
-	Has³a przechowywane powinny byæ w bazie danych w postaci skrótu funkcji SHA-3. Ka¿de has³o sk³adaæ powinno siê z przynajmniej 6 znaków i zawieraæ co najmniej jedn¹ cyfrê.
+	Has³a przechowywane powinny byæ w bazie danych w postaci skrótu funkcji SHA256. Ka¿de has³o sk³adaæ powinno siê z przynajmniej 6 znaków i zawieraæ co najmniej jedn¹ cyfrê.
 	
-	Ogólne dane u¿ytkowników znajdowaæ siê bêd¹ w bazie danych, do której jedynie bezpoœredni dostêp bêdzie z aplikacji serwera lub z konta administratora. Has³o dostêpu generowane powinny byæ za pomoc¹ generatora liczb pseudolosowych i byæ o d³ugoœci co najmniej 400bitów oraz przechodziæ podstawowe testy losowoœci.
+	Dane u¿ytkowników znajdowaæ siê bêd¹ w bazie danych, do której jedynie bezpoœredni dostêp bêdzie z aplikacji serwera lub z konta administratora. Has³o dostêpu generowane powinny byæ za pomoc¹ generatora liczb pseudolosowych i byæ o d³ugoœci co najmniej 400bitów oraz przechodziæ podstawowe testy losowoœci.
 	
 	Zabezpieczeniem wa¿niejszych (wra¿liwych) funkcji systemu odbywaæ siê bêdzie po stronie aplikacji serwerowej. Serwer bêdzie zezwala³ tylko na operacje dozwolone dla danego typu u¿ytkownika. Do wra¿liwych funkcji nale¿y przede wszystkim pobieranie danych z bazy danych oraz ich modyfikacje. Inn¹ form¹ zabezpieczenia operacji bêdzie podawanie has³a, mimo i¿ u¿ytkownik bêdzie zalogowany. Weryfikacja has³a ma na celu ochronê przed chwilowym przejêciem telefonu i wygenerowaniem np. sobie dostêpu do zamka.
 	
-	Ka¿de po³¹czenie internetowe pomiêdzy mikrokomputerem Raspberry Pi i serwerem bêdzie zabezpieczone protoko³em IPSec. Komunikacja bluetooth nie bêdzie szyfrowana, lecz certyfikaty przesy³ane bêd¹ podpisane cyfrowo kluczem asymetrycznym RSA. Pary kluczy (prywatny i publiczny) bêd¹ przypisane do danego certyfikatu i trac¹ce wa¿noœæ wraz z nim.
+	Ka¿de po³¹czenie internetowe pomiêdzy mikrokomputerem Raspberry Pi i serwerem bêdzie zabezpieczone protoko³em IPSec. Komunikacja bluetooth nie bêdzie szyfrowana, lecz certyfikaty przesy³ane bêd¹ podpisane cyfrowo kluczem asymetrycznym RSA oraz aplikacje posiadaæ bêd¹ klucze programowe, które musz¹ byæ identyczne po jednej i po drugiej stronie po³¹czenia bluetooth. Pary kluczy (prywatny i publiczny) bêd¹ przypisane do danego u¿ytkownika.
 	
 	Zabezpieczeniem fizycznym systemu przed utrat¹ zasilania z sieci energetycznej, bêdzie zamontowanie równolegle zasilania bateryjnego za³¹czanego w momencie zaniku g³ównego. Ochron¹ systemu przed ingerencj¹ w sprzêt bêdzie umieszczenie zabudowanego mikrokomputera po wewnêtrznej stronie pomieszczenia, tak ¿eby dostêp mia³y tylko osoby które mia³y pozwolenie przejœæ przez drzwi.
 	
@@ -842,5 +901,12 @@
 	\end{minipage}
 	
 	Ka¿da operacja wykonana w scenariuszy bêdzie mierzona ile czasu zajmuje, pozwoli to na okreœlenie czasu oczekiwania aplikacji na odpowiedzi, w celu optymalizacji dzia³ania.
+	
+\chapter{Mo¿liwe zagro¿enia systemu}
+	
+	
+\chapter{Dalsze perspektywy rozwoju projektu}
+
+\chapter{Podzia³ prac projektowych}
 	
 \end{document}
