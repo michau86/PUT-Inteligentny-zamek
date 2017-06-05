@@ -903,10 +903,52 @@
 	Ka¿da operacja wykonana w scenariuszy bêdzie mierzona ile czasu zajmuje, pozwoli to na okreœlenie czasu oczekiwania aplikacji na odpowiedzi, w celu optymalizacji dzia³ania.
 	
 \chapter{Mo¿liwe zagro¿enia systemu}
+	G³ównym celem ataków na system Inteligentnego Zamka mo¿e byæ uzyskanie klucza prywatnego u¿ytkownika. Umo¿liwi to podszywanie siê pod inn¹ osobê, próbuj¹c otrzymaæ dostêp do nowych zamków. Ograniczeniem tej mo¿liwoœci jest wci¹¿ decyzja administratora o przydzielenie pozwolenia oraz jeœli w³aœciciel spostrze¿e siê o naruszeniu mo¿e zablokowaæ konto.
 	
+	System nie przewiduje fizycznych zabezpieczeñ urz¹dzenia steruj¹cego, zatem maj¹c bezpoœredni kontakt z Raspberry mo¿na wówczas w ³atwy sposób wywo³aæ otwarcie zamka.
+	
+	Aplikacja mobilna mimo zabezpieczenia has³em oraz ponownego uwierzytelniania przy generowaniu nowych kluczy, wci¹¿ jest nara¿ona na przejêcie sesji lub urz¹dzenia u¿ytkownika.
+	
+	System wymaga w du¿ej mierze dostêpu do Internetu, przy braku po³¹czenia prawid³owe dzia³anie jest praktycznie niemo¿liwe. Tylko administrator jest w stanie otworzyæ zamek w takiej sytuacji.
 	
 \chapter{Dalsze perspektywy rozwoju projektu}
-
-\chapter{Podzia³ prac projektowych}
+	Projekt rozwin¹æ mo¿na o zabezpieczenia wizyjne, to znaczy pod³¹czyæ kamerê komunikuj¹c¹ siê z Raspberry, która przy nieudanej próbie otwarcia zamka wykonywa³a by zdjêcie. W ten sposób ka¿da próba naruszanie bezpieczeñstwa by³aby udokumentowana. 
 	
+	Innym pomys³em rozwoju systemu, równie¿ z u¿yciem kamer, mo¿e byæ monitorowanie ruchu wchodz¹cego jak i wychodz¹cego na podstawie mechanizmu wykrywania twarzy. Pozwoli to zabezpieczyæ system na sytuacje, ¿e pozostan¹ w pomieszczeniu / budynku osoby,po godzinach urzêdowania. Bilansu ruchu u¿yæ mo¿na tak¿e w sytuacjach awaryjnych, kiedy wa¿na jest informacja o liczbie osób znajduj¹cych siê w pomieszczeniu.
+	
+	Wykrywanie twarzy mog³oby równie¿ pos³u¿yæ jako alternatywa dla po³¹czenia bluetooth. Dodaj¹c algorytmy rozpoznaj¹ce twarzy mo¿na w ten sposób decydowaæ czy dana osoba ma aktualnie dostêp czy nie.
+	
+	System odpowiednio zabezpieczony móg³by byæ zarz¹dzany nie tylko z poziomu aplikacji telefonu, a równie¿ z strony internetowej.
+	
+	Sposobem na uatrakcyjnienie systemu jest przygotowanie ró¿nych wersji urz¹dzeñ steruj¹cych w zale¿noœci od stopnia zaawansowania. Mikrokomputer Raspberry Pi jest stosunkowo drogim narzêdziem, mo¿na zast¹piæ go s³abszym kontrolerem z ograniczonymi funkcjami. Poszerza to elastycznoœæ systemu w zale¿noœci od zapotrzebowania i ceny produktu.
+	
+\chapter{Podzia³ prac projektowych}
+	Zadania wykonane przez \textbf{Macieja Marciniak}:
+	
+	\begin{itemize}
+		\item pe³ne oprogramowanie Raspberry Pi,
+		\item aplikacja mobilna:
+			\begin{itemize*}
+				\item parowanie urz¹dzeñ bluetooth,
+				\item transmisja danych poprzez bluetooth,
+				\item uruchamianie i sprawdzanie aktywnoœci modu³u bluetooth,
+				\item konsultacje projektowe widoków aplikacji,
+			\end{itemize*}
+		\item serwer systemu:
+			\begin{itemize*}
+				\item tworzenie API serwerowego,
+				\item tworzenie bazy danych,
+			\end{itemize*}
+	\end{itemize}
+
+	Zadania wykonane przez \textbf{Damiana Filipowicz}:
+	
+	\begin{itemize}
+		\item aplikacja mobilna --- ca³a aplikacja, za wyj¹tkiem obs³ugi bluetooth,
+		\item serwer systemu:
+		\begin{itemize*}
+			\item tworzenie API serwerowego,
+			\item konfiguracja serwera.
+		\end{itemize*}
+	\end{itemize}
 \end{document}
