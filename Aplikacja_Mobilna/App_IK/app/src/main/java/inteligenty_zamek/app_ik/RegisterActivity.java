@@ -3,18 +3,21 @@ package inteligenty_zamek.app_ik;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import android.os.CountDownTimer;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.tooltip.Tooltip;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -23,7 +26,6 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -33,18 +35,42 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
-import java.security.PrivateKey;
-import java.security.PublicKey;
 import java.security.SecureRandom;
-import java.security.Signature;
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends Activity {
 
     private KeyPair pair = null;
+    private int toastDelay=4000;
+
+    //funkcja zwracajaca czy adres ip jest poprawny
+    public static boolean isValidIP(final String ip) {
+        String PATTERN = "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$";
+
+        return ip.matches(PATTERN);
+    }
+
+    //funkcjja zwracajaca czy jest poprawne haslo
+    //-przynajmniej jeden numer
+    //-przynajmniej jeden znak specjalny
+    //-przynajmniej jeden duży znak
+    public static boolean isValidPassword(final String password) {
+
+        if(password.length()<8){return false;}
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+        Log.i("", password);
+        return matcher.matches();
+
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,43 +82,114 @@ public class RegisterActivity extends Activity {
         sampleText.setTypeface(fontFamily);
         TextView sampleText2 = (TextView) this.findViewById(R.id.warning_ico2);
         sampleText2.setTypeface(fontFamily);
-        TextView sampleText3 = (TextView) this.findViewById(R.id.eye_ico);
-        sampleText3.setTypeface(fontFamily);
+        sampleText2 = (TextView) this.findViewById(R.id.warning_ico3);
+        sampleText2.setTypeface(fontFamily);
+
         TextView ipserwerregister = (TextView) this.findViewById(R.id.ipserwertextview);
 
         ipserwerregister.setText( ((SessionContainer) getApplication()).getSerwerIP());
         final Button register = (Button) findViewById(R.id.button_Register);
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+
+                TextView textView = (TextView) findViewById(R.id.loginerrortextview);
+                textView.setVisibility(View.INVISIBLE);
+                TextView textView2 = (TextView) findViewById(R.id.warning_ico1);
+                textView2.setVisibility(View.INVISIBLE);
+
+                textView = (TextView) findViewById(R.id.iperrortextview);
+                textView.setVisibility(View.INVISIBLE);
+                textView2 = (TextView) findViewById(R.id.warning_ico2);
+                textView2.setVisibility(View.INVISIBLE);
+
+                textView = (TextView) findViewById(R.id.passworderrorTextView);
+                textView.setVisibility(View.INVISIBLE);
+                 textView2 = (TextView) findViewById(R.id.warning_ico3);
+                textView2.setVisibility(View.INVISIBLE);
+
                 EditText login=(EditText)findViewById(R.id.editText_Login);
-                EditText password=(EditText)findViewById(R.id.editText_Password);
+                EditText password=(EditText)findViewById(R.id.editText_Password2);
+                EditText password2=(EditText)findViewById(R.id.editText_Password2);
                 EditText name=(EditText)findViewById(R.id.editTextName);
                 EditText surname=(EditText)findViewById(R.id.editTextSurname);
                 EditText ipserwer=  (EditText) findViewById(R.id.ipserwertextview);
 
-
-                //  tutaj warunek sprawdzajacy poprawnosc adresu ip
-               if (ipserwer.getText().toString()!="") {
-                    ((SessionContainer) getApplication()).setSerwerIP(ipserwer.getText().toString());
-                }
                 User user=new User();
                 user.setLogin(login.getText().toString());
                 user.setName(name.getText().toString());
                 user.setPassword(((SessionContainer) getApplication()).bin2hex(((SessionContainer) getApplication()).getHash(password.getText().toString())));
                 user.setSurname(surname.getText().toString());
-                if(user.getLogin()!=null && user.getName()!=null && user.getPassword()!=null && user.getSurname()!=null) {
-                    new HTTPRequest(user).execute();
+
+                //warunek sprawdzajacy czy wszystkie pola sa wypelnione
+                if(!user.getLogin().equals("") && !user.getName().equals("") && !user.getPassword().equals("") && !user.getSurname().equals("")) {
+                    //warunek sprawdzajacy poprawność ip
+                    if(isValidIP(ipserwer.getText().toString())) {
+                        //warunek sprawdzajacy poprawnosc hasla
+                        if (isValidPassword(password.getText().toString())) {
+                            if(password.getText().toString().equals(password2.getText().toString())) {
+                                new HTTPRequest(user).execute();
+                            }
+                            else{ Tooltip tooltip=new Tooltip.Builder(password2)
+                                    .setText("hasła sie nie zgadzają")
+                                    .setTextColor(Color.WHITE)
+                                    .setBackgroundColor(getResources().getColor(R.color.color_background_list))
+                                    .setCancelable(true)
+                                    .setGravity(Gravity.TOP)
+                                    .setCornerRadius(8f)
+                                    .show();}
+                        } else
+                        {
+
+                            Tooltip tooltip=new Tooltip.Builder(password)
+                                    .setText("hasło musi spełniać warunki:\n-długość minimum 8 znaków\n-posiadać duzy znak\n-posiadać znak specjalny (!@#$%^)\nposiadać cyfrę\n ")
+                                    .setTextColor(Color.WHITE)
+                                    .setBackgroundColor(getResources().getColor(R.color.color_background_list))
+                                    .setCancelable(true)
+                                    .setGravity(Gravity.TOP)
+                                    .setCornerRadius(8f)
+
+                                    .show();
+
+                            textView = (TextView) findViewById(R.id.passworderrorTextView);
+                            textView.setVisibility(View.VISIBLE);
+                            textView2 = (TextView) findViewById(R.id.warning_ico2);
+                            textView2.setVisibility(View.VISIBLE);
+                        }
+                    }
+                    else
+                    {
+                        if (isValidPassword(password.getText().toString())) {
+                             textView = (TextView) findViewById(R.id.iperrortextview);
+                            textView.setVisibility(View.VISIBLE);
+                             textView2 = (TextView) findViewById(R.id.warning_ico3);
+                            textView2.setVisibility(View.VISIBLE);
+                        } else
+                        {
+                            textView = (TextView) findViewById(R.id.passworderrorTextView);
+                            textView.setVisibility(View.VISIBLE);
+                            textView2 = (TextView) findViewById(R.id.warning_ico2);
+                            textView2.setVisibility(View.VISIBLE);
+                            TextView textView3 = (TextView) findViewById(R.id.iperrortextview);
+                            textView3.setVisibility(View.VISIBLE);
+                            TextView textView4 = (TextView) findViewById(R.id.warning_ico3);
+                            textView4.setVisibility(View.VISIBLE);
+                        }
+                    }
                 }
                 else
                 {
-                    Toast.makeText(RegisterActivity.this, "wypelnij wszystkie pola", Toast.LENGTH_SHORT).show();
+                    final Toast toast =Toast.makeText(RegisterActivity.this, "wypełnij wszystkie pola", Toast.LENGTH_LONG);
+                    toast.show();
+                    new CountDownTimer(toastDelay, 1000)
+                    {
+                        public void onTick(long millisUntilFinished) {toast.show();}
+                        public void onFinish() {toast.show();}
+                    }.start();
                 }
             }
         });
-
     }
-
-
 
     public class HTTPRequest extends AsyncTask<Void, Void, String> {
         User user;
@@ -169,6 +266,16 @@ public class RegisterActivity extends Activity {
                         ((SessionContainer) getApplication()).writeToFile(stringKey,RegisterActivity.this,"X"+user.getLogin());
                         ((SessionContainer) getApplication()).setPrivatekye(pair.getPrivate());
 
+
+                        final Toast toast =Toast.makeText(RegisterActivity.this, "nastapiła poprawna rejestracja", Toast.LENGTH_LONG);
+                        toast.show();
+                        new CountDownTimer(toastDelay, 1000)
+                        {
+                            public void onTick(long millisUntilFinished) {toast.show();}
+                            public void onFinish() {toast.show();}
+                        }.start();
+
+
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
 
@@ -185,29 +292,8 @@ public class RegisterActivity extends Activity {
             }
         }
 
-
-
     }
 
-    public static String sign(String plainText, PrivateKey privateKey) throws Exception {
-        Signature privateSignature = Signature.getInstance("SHA256withRSA");
-        privateSignature.initSign(privateKey);
-        privateSignature.update(plainText.getBytes(UTF_8));
-
-        byte[] signature = privateSignature.sign();
-
-        return Base64.encodeToString(signature,Base64.DEFAULT);
-    }
-
-    public static boolean verify(String plainText, String signature, PublicKey publicKey) throws Exception {
-        Signature publicSignature = Signature.getInstance("SHA256withRSA");
-        publicSignature.initVerify(publicKey);
-        publicSignature.update(plainText.getBytes(UTF_8));
-
-        byte[] signatureBytes = Base64.decode(signature,Base64.DEFAULT);
-
-        return publicSignature.verify(signatureBytes);
-    }
 
     public static KeyPair generateKeyPair() throws Exception {
         KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
@@ -216,6 +302,7 @@ public class RegisterActivity extends Activity {
 
         return pair;
     }
+
 
 }
 

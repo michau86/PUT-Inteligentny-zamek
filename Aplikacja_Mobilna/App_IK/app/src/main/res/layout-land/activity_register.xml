@@ -9,6 +9,17 @@
 
 
     <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView5"
+        android:layout_alignEnd="@+id/editText_Login"
+        android:layout_marginLeft="20dp"
+        android:text="Login jest już zajęty"
+        android:visibility="invisible"
+        android:textColor="@android:color/white" />
+
+    <TextView
         android:id="@+id/TextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,14 +47,13 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
         android:text="@string/activity_register_text2"
-        android:layout_below="@+id/editText_Login"
-        android:layout_alignLeft="@+id/editText_Login"
+        android:layout_alignBaseline="@+id/warning_ico2"
+        android:layout_alignBottom="@+id/warning_ico2"
         android:layout_alignStart="@+id/editText_Login" />
 
     <EditText
-        android:id="@+id/editText_Password"
+        android:id="@+id/editText_Password2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -57,12 +67,23 @@
         android:id="@+id/editText17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_below="@+id/textView2"
         android:background="@color/color_background_input"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:layout_below="@+id/editText5"
+        android:layout_alignStart="@+id/editText5"
+        android:layout_marginTop="43dp" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/color_background_input"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_below="@+id/ipserwertextview"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_marginTop="7dp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -133,23 +154,40 @@
         android:layout_marginBottom="13dp" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/loginerrortextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:text="Login jest już zajęty"
         android:textColor="@android:color/white"
         android:layout_above="@+id/textView5"
+        android:visibility="invisible"
+
         android:layout_alignEnd="@+id/editText_Login" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/iperrortextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/warning_ico3"
+        android:layout_alignBottom="@+id/warning_ico3"
+        android:layout_marginStart="6dp"
+        android:layout_toEndOf="@+id/warning_ico3"
+        android:text="niepoprawny adres ip"
+        android:visibility="invisible"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/passworderrortextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/warning_ico2"
+        android:layout_alignBottom="@+id/warning_ico2"
+        android:layout_alignEnd="@+id/editText5"
+
         android:text="Hasło niepoprawne"
-        android:textColor="@android:color/white"
-        android:layout_above="@+id/editText17"
-        android:layout_alignStart="@+id/textView12" />
+        android:visibility="invisible"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/warning_ico1"
@@ -158,6 +196,8 @@
         android:layout_alignBaseline="@+id/textView12"
         android:layout_alignBottom="@+id/textView12"
         android:layout_toStartOf="@+id/textView12"
+        android:visibility="invisible"
+
         android:text="&#xf071;" />
 
     <TextView
@@ -165,23 +205,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="&#xf071;"
-        android:layout_above="@+id/editText17"
+        android:visibility="invisible"
+
+        android:layout_below="@+id/textView5"
         android:layout_alignStart="@+id/warning_ico1" />
 
     <TextView
-        android:id="@+id/eye_ico"
+        android:id="@+id/warning_ico3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="&#xf06e;"
-        android:layout_above="@+id/editText17"
-        android:layout_toEndOf="@+id/editText17" />
+        android:text="&#xf071;"
+        android:visibility="invisible"
+
+        android:layout_marginEnd="7dp"
+        android:layout_above="@+id/button_Register"
+        android:layout_alignEnd="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView38"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adres serwera"
-        android:layout_above="@+id/editText_Password"
-        android:layout_alignStart="@+id/editText_Password" />
+        android:layout_alignBaseline="@+id/warning_ico3"
+        android:layout_alignBottom="@+id/warning_ico3"
+        android:layout_alignStart="@+id/editText_Password2" />
+
+    <TextView
+        android:id="@+id/p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editText5"
+        android:layout_below="@+id/editText5"
+        android:layout_marginTop="7dp"
+        android:text="powtorz haslo" />
 
 </android.widget.RelativeLayout>

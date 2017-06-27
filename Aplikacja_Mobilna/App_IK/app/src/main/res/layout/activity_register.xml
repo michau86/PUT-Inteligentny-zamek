@@ -11,26 +11,25 @@
         android:id="@+id/TextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView6"
         android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/activity_register_text1" />
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/activity_register_text1"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/editText_Login"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView1"
-        android:layout_alignStart="@+id/TextView1"
-        android:layout_below="@+id/TextView1"
         android:layout_marginRight="10dp"
         android:background="@color/color_background_input"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:layout_below="@+id/TextView1"
+        android:layout_alignStart="@+id/TextView1"
+        android:layout_marginTop="13dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -43,13 +42,26 @@
         android:text="@string/activity_register_text2" />
 
     <EditText
+        android:id="@+id/editText_Password2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:background="@color/color_background_input"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textSize="24sp"
+        android:layout_below="@+id/textView9"
+        android:layout_alignStart="@+id/editText_Password"
+        android:layout_marginTop="16dp" />
+
+    <EditText
         android:id="@+id/editText_Password"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
         android:layout_below="@+id/textView2"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="13dp"
         android:background="@color/color_background_input"
         android:ems="10"
         android:inputType="textPassword"
@@ -59,34 +71,32 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText_Password"
-        android:layout_alignStart="@+id/editText_Password"
-        android:layout_below="@+id/editText_Password"
-        android:layout_marginTop="21dp"
-        android:text="@string/activity_register_text3" />
+        android:layout_marginTop="11dp"
+        android:text="@string/activity_register_text3"
+        android:layout_below="@+id/editText_Password2"
+        android:layout_alignStart="@+id/button_Register" />
 
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4"
-        android:layout_below="@+id/textView4"
         android:layout_marginRight="10dp"
         android:background="@color/color_background_input"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:layout_below="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_marginTop="12dp" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextName"
-        android:layout_alignStart="@+id/editTextName"
+        android:layout_marginTop="13dp"
+        android:text="@string/activity_register_text4"
         android:layout_below="@+id/editTextName"
-        android:layout_marginTop="19dp"
-        android:text="@string/activity_register_text4" />
+        android:layout_alignStart="@+id/editText_Password2" />
 
     <EditText
         android:id="@+id/ipserwertextview"
@@ -97,22 +107,22 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="24sp"
-        android:layout_above="@+id/button_Register"
-        android:layout_alignStart="@+id/editTextSurname"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/warning_ico3"
+        android:layout_alignStart="@+id/editTextSurname" />
 
     <EditText
         android:id="@+id/editTextSurname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView5"
-        android:layout_alignStart="@+id/textView5"
-        android:layout_below="@+id/textView5"
         android:layout_marginRight="10dp"
         android:background="@color/color_background_input"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:layout_below="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_marginTop="12dp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -130,65 +140,86 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_register_text6"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/textView6" />
+        android:layout_below="@+id/ipserwertextview"
+        android:layout_alignStart="@+id/ipserwertextview"
+        android:layout_marginTop="22dp" />
 
     <TextView
         android:id="@+id/loginerrortextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText_Login"
-        android:layout_marginStart="15dp"
-        android:layout_toEndOf="@+id/warning_ico1"
         android:text="Login jest już zajęty"
         android:textColor="@android:color/white"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_above="@+id/editText_Login"
+        android:layout_alignEnd="@+id/editText_Login" />
 
     <TextView
-        android:id="@+id/passworderrortextview"
+        android:id="@+id/iperrortextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText_Password"
-        android:layout_alignStart="@+id/loginerrortextview"
+        android:text="niepoprawny adres"
+        android:textColor="@android:color/white"
+        android:visibility="invisible"
+        android:layout_alignBaseline="@+id/warning_ico3"
+        android:layout_alignBottom="@+id/warning_ico3"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/passworderrorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Hasło niepoprawne"
         android:textColor="@android:color/white"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:layout_above="@+id/editText_Password"
+        android:layout_alignEnd="@+id/loginerrortextview" />
 
     <TextView
         android:id="@+id/warning_ico1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText_Login"
-        android:layout_marginStart="24dp"
-        android:layout_toEndOf="@+id/textView5"
         android:text="&#xf071;"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_above="@+id/editText_Login"
+        android:layout_toEndOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/warning_ico2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="&#xf071;"
-        android:layout_above="@+id/editText_Password"
-        android:layout_alignStart="@+id/warning_ico1"
         android:visibility="invisible"
-        />
+        android:layout_above="@+id/editText_Password"
+        android:layout_alignStart="@+id/warning_ico1" />
 
     <TextView
-        android:id="@+id/eye_ico"
+        android:id="@+id/warning_ico3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="&#xf06e;"
-        android:layout_alignBaseline="@+id/editText_Password"
-        android:layout_alignBottom="@+id/editText_Password"
-        android:layout_toEndOf="@+id/editText_Password" />
+        android:text="&#xf071;"
+        android:visibility="invisible"
+        android:layout_alignBaseline="@+id/textView36"
+        android:layout_alignBottom="@+id/textView36"
+        android:layout_toStartOf="@+id/iperrortextview"
+        android:layout_marginEnd="6dp" />
 
     <TextView
         android:id="@+id/textView36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ipserwertextview"
-        android:layout_alignStart="@+id/button_Register"
-        android:text="adres serwera" />
+        android:text="adres serwera"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/editTextSurname"
+        android:layout_alignEnd="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Powtórz hasło"
+        android:layout_below="@+id/editText_Password"
+        android:layout_alignStart="@+id/editText_Password2" />
 
 </android.widget.RelativeLayout>

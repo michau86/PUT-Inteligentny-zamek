@@ -9,6 +9,27 @@
 
 
     <TextView
+        android:id="@+id/errorlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Niepoprawny login lub hasło"
+        android:visibility="invisible"
+        android:layout_above="@+id/EditText_login"
+        android:layout_toEndOf="@+id/warning_icologin"
+        android:layout_marginStart="19dp" />
+
+    <TextView
+        android:id="@+id/warning_icologin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&#xf071;"
+        android:visibility="invisible"
+        android:layout_alignBaseline="@+id/TextView_Login"
+        android:layout_alignBottom="@+id/TextView_Login"
+        android:layout_toEndOf="@+id/TextView_password"
+        android:layout_marginStart="19dp" />
+
+    <TextView
         android:id="@+id/TextView_Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,11 +47,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_below="@+id/TextView_Login"
-        android:layout_alignLeft="@+id/TextView_Login"
-        android:layout_alignStart="@+id/TextView_Login"
         android:background="@color/color_background_input"
-        />
+        android:layout_below="@+id/TextView_Login"
+        android:layout_alignStart="@+id/TextView_Login"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/TextView_password"
@@ -68,14 +88,14 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/EditText_login"
         android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
-        android:layout_toEndOf="@+id/EditText_login"
-        android:layout_toRightOf="@+id/EditText_login"
+        android:layout_marginStart="18dp"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
-        android:text="@string/activity_login_text4" />
+        android:text="@string/activity_login_text4"
+        android:layout_alignBaseline="@+id/errorlogin"
+        android:layout_alignBottom="@+id/errorlogin"
+        android:layout_toEndOf="@+id/errorlogin" />
 
     <Button
         android:id="@+id/button_register"
@@ -107,7 +127,7 @@
         android:text="Adres serwera" />
 
     <EditText
-        android:id="@+id/editText14"
+        android:id="@+id/iptextview"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignStart="@+id/textView37"

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\GIT_REPOSITORY\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="91c806cde7d96665ef209fdcaf2aab5e8c788d6d">
+        <dex dex="D:\GIT_REPOSITORY\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_2ac15e014a9f8642412589d1935413b67177d8a2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\GIT_REPOSITORY\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="D:\GIT_REPOSITORY\PUT-Inteligentny-zamek\Aplikacja_Mobilna\App_IK\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_95702190ce943d7587b69da5602d48009d47ab4a\classes.dex" />
+    </item>
+
+</items>

@@ -7,10 +7,10 @@ from Crypto.PublicKey import RSA
 from Crypto import Random
 from datetime import datetime
 
-username = "maciej"
-userpassword = "WApet1995"
+username = "root"
+userpassword = "1234"
 databasename = "inteligentny_zamek_db"
-databaseaddres = "192.168.137.1"
+databaseaddres = "127.0.0.1"
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
