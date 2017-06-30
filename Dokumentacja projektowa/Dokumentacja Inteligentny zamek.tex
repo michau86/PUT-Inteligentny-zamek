@@ -435,7 +435,7 @@
 	\end{longtable}
 	\end{landscape}
 \chapter{Projekt bazy danych}
-	Baza danych przechowywaæ bêdzie sk³adaæ siê z piêciu tabel:
+	Baza danych bêdzie sk³adaæ siê z piêciu tabel:
 	\begin{itemize*}
 	\item \textbf{USERS} --- przechowuje dane u¿ytkowników oraz dane niezbêdne przy weryfikacji logowania,
 	\item \textbf{LOCKS} --- zawiera informacje na temat dostêpnych w systemie zamków,
@@ -903,7 +903,7 @@
 	Ka¿da operacja wykonana w scenariuszy bêdzie mierzona ile czasu zajmuje, pozwoli to na okreœlenie czasu oczekiwania aplikacji na odpowiedzi, w celu optymalizacji dzia³ania.
 	
 \chapter{Mo¿liwe zagro¿enia systemu}
-	G³ównym celem ataków na system Inteligentnego Zamka mo¿e byæ uzyskanie klucza prywatnego u¿ytkownika. Umo¿liwi to podszywanie siê pod inn¹ osobê, próbuj¹c otrzymaæ dostêp do nowych zamków. Ograniczeniem tej mo¿liwoœci jest wci¹¿ decyzja administratora o przydzielenie pozwolenia oraz jeœli w³aœciciel spostrze¿e siê o naruszeniu mo¿e zablokowaæ konto.
+	G³ównym celem ataków na system Inteligentnego Zamka mo¿e byæ uzyskanie klucza prywatnego u¿ytkownika. Umo¿liwi to podszywanie siê pod inn¹ osobê, próbuj¹c otrzymaæ dostêp do nowych zamków. Ograniczeniem tej mo¿liwoœci jest decyzja administratora o przydzielenie pozwolenia oraz jeœli w³aœciciel spostrze¿e siê o naruszeniu, to mo¿e zablokowaæ konto.
 	
 	System nie przewiduje fizycznych zabezpieczeñ urz¹dzenia steruj¹cego, zatem maj¹c bezpoœredni kontakt z Raspberry mo¿na wówczas w ³atwy sposób wywo³aæ otwarcie zamka.
 	
@@ -951,4 +951,10 @@
 			\item konfiguracja serwera.
 		\end{itemize*}
 	\end{itemize}
+
+\chapter{Implementacja}
+	Postêpy prac oraz kod Ÿród³owy znajduje siê w repozytorium GitHub pod adresem: 
+	
+	\centering\huge\textcolor{blue}{\href{https://github.com/wapet1995/PUT-Inteligentny-zamek}{Inteligentny Zamek}}
+	
 \end{document}
