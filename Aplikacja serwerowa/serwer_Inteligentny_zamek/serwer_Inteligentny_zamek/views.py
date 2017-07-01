@@ -8,7 +8,7 @@ from Crypto import Random
 from datetime import datetime
 
 username = "root"
-userpassword = "1234"
+userpassword = "inteligentnyzamek"
 databasename = "inteligentny_zamek_db"
 databaseaddres = "127.0.0.1"
 
@@ -31,13 +31,15 @@ def api_login(request):
         # trzeba zapisac do BD
         try:
             cursor = db.cursor()
-            cursor.execute("SELECT PASSWORD FROM USERS WHERE login='%s'" % username)
-            data = cursor.fetchone()[0]
-            if (data == password):
+            cursor.execute("SELECT PASSWORD, IS_ADMIN FROM USERS WHERE login='%s'" % username)
+            data = cursor.fetchone()
+            if (data[0] == password):
                 cursor.execute("UPDATE USERS SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
                 db.commit()
-
-                return JsonResponse({"status": "ok", "token": token})
+                if data[1] == "1":
+                    return JsonResponse({"status": "root", "token": token})
+                else:
+                    return JsonResponse({"status": "ok", "token": token})
             else:
                 return JsonResponse({"status": "ERROR PASSWORD", "token": "invalid"})
         except Exception:
