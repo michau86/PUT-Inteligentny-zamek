@@ -22,19 +22,20 @@ def Check_access(certificate):
         if certificate.ispernament == "1":
             return True
         else:
-            try:
-                day_access = certificate.access_table[date.today().weekday()].split(";")
-            except Exception:
-                day_access = []
-            now = int(datetime.now().strftime('%H'))
-            if len(day_access) > 0:
-                for x in day_access:
-                    x = x.split("-")
-                    try:
-                        if int(x[0]) <= int(now) < int(x[1]):
-                            return True
-                    except Exception:
-                        continue
+            if datetime.strptime(certificate.date_from, '%Y-%m-%dT%H:%M:%S') < datetime.now() < datetime.strptime(certificate.date_to, '%Y-%m-%dT%H:%M:%S'):
+                try:
+                    day_access = certificate.access_table[date.today().weekday()].split(";")
+                except Exception:
+                    day_access = []
+                now = int(datetime.now().strftime('%H'))
+                if len(day_access) > 0:
+                    for x in day_access:
+                        x = x.split("-")
+                        try:
+                            if int(x[0]) <= int(now) < int(x[1]):
+                                return True
+                        except Exception:
+                            continue
     return False
 
 
@@ -115,11 +116,9 @@ if __name__ == '__main__':
                                 client_sock.send("Access denied")
                             else:
                                 key = '-----BEGIN PUBLIC KEY-----\n' + request.json()['public_key'][0] + '\n-----END PUBLIC KEY-----'
-                                print key
                                 public_key = RSA.importKey(key)
                                 verifier = PKCS1_v1_5.new(public_key)
                                 if verifier.verify(SHA256.new(certificate.lock_key), base64.standard_b64decode(signature_lock_key)):
-                                    print "ok"
                                     if Check_access(certificate):
                                         with open("log.log", "a") as log:
                                             log.write(datetime.now().strftime(

@@ -36,7 +36,7 @@ def api_login(request):
             if (data[0] == password):
                 cursor.execute("UPDATE USERS SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
                 db.commit()
-                if data[1] == "1":
+                if data[1] == 1:
                     return JsonResponse({"status": "root", "token": token})
                 else:
                     return JsonResponse({"status": "ok", "token": token})
@@ -385,6 +385,78 @@ def api_admin_deactivation(request):
                 cursor.execute(
                     "UPDATE LOCKS_KEYS SET ISACTUAL='%s' WHERE ID_KEY='%s' " % (
                         datetime.now().strftime('%Y-%m-%d %H:%M:%S'), certificate_id))
+                db.commit()
+                return JsonResponse({"status": "ok"})
+            else:
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
+
+@csrf_exempt
+def api_admin_register_waiting(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN, IS_ADMIN FROM USERS WHERE login='%s'" % login)
+            token_from_DB = cursor.fetchall()
+            for row in token_from_DB:
+                token_db = row[0]
+                admin = row[1]
+            if (token_db == token) and admin == 1:
+                cursor.execute(
+                    "SELECT users.LOGIN, users.NAME, users.SURNAME from users WHERE users.ISACTIVATED=1")
+                dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                        in cursor.fetchall()]
+                return JsonResponse({"data": dict_all_certificate})
+            else:
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
+
+@csrf_exempt
+def api_admin_cetificate_waiting(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN, IS_ADMIN FROM USERS WHERE login='%s'" % login)
+            token_from_DB = cursor.fetchall()
+            for row in token_from_DB:
+                token_db = row[0]
+                admin = row[1]
+            if (token_db == token) and admin == 1:
+                cursor.execute(
+                    "SELECT locks.NAME as 'LOCK_NAME', users.LOGIN as 'LOGIN',users.NAME as 'USER_NAME',users.SURNAME as 'USER_SUERNAME' from wait_locks_keys LEFT JOIN locks ON locks.ID_LOCK=wait_locks_keys.ID_LOCK LEFT JOIN users ON users.ID_USER=wait_locks_keys.ID_USER")
+                dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                        in cursor.fetchall()]
+                return JsonResponse({"data": dict_all_certificate})
+            else:
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
+
+@csrf_exempt
+def api_change_password(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+        passwd = request.POST.get('newpasswd')
+        newpasswd = request.POST.get('newpasswd')
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN, PASSWORD FROM USERS WHERE login='%s'" % login)
+            token_from_DB = cursor.fetchall()
+            for row in token_from_DB:
+                token_db = row[0]
+                passwd_db = row[1]
+            if (token_db == token) and passwd_db == passwd:
+                cursor = db.cursor()
+                cursor.execute(
+                    "UPDATE USERS SET PASSWORD='%s' WHERE LOGIN='%s' " % (
+                        newpasswd, login))
                 db.commit()
                 return JsonResponse({"status": "ok"})
             else:
