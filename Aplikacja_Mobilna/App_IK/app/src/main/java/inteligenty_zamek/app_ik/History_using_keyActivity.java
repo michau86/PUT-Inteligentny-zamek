@@ -22,10 +22,6 @@ public class History_using_keyActivity extends BaseActivity
             private String[] navMenuTitles;
             private TypedArray navMenuIcons;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +34,6 @@ public class History_using_keyActivity extends BaseActivity
         Typeface fontFamily = Typeface.createFromAsset(this.getAssets(), "fonts/fontawesome.ttf");
         TextView sampleText = (TextView) this.findViewById(R.id.TextView_sortingIco);
         sampleText.setTypeface(fontFamily);
-
 
         ListView resultsListView = (ListView) this.findViewById(R.id.ListView_History);
         //hasmap przechowujący elemety do wyświetlenia
@@ -54,7 +49,7 @@ public class History_using_keyActivity extends BaseActivity
 
 
         //TODO zmiana koloru czcionki nieautoryzowany dostęp
-String buffor;
+        String buffor;
         //iterator elementow (przepisanie z hashmap do adaptera[listitems] elementow)
         Iterator it = Keys.entrySet().iterator();
         while (it.hasNext())
@@ -75,24 +70,8 @@ String buffor;
             listItems.add(resultsMap);
         }
 
-
-
         resultsListView.setAdapter(adapter);
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
 
 }
 

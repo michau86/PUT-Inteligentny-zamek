@@ -49,7 +49,6 @@ public class RegisterActivity extends Activity {
     //funkcja zwracajaca czy adres ip jest poprawny
     public static boolean isValidIP(final String ip) {
         String PATTERN = "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$";
-
         return ip.matches(PATTERN);
     }
 
@@ -87,7 +86,7 @@ public class RegisterActivity extends Activity {
 
         TextView ipserwerregister = (TextView) this.findViewById(R.id.ipserwertextview);
 
-        ipserwerregister.setText( ((SessionContainer) getApplication()).getSerwerIP());
+        ipserwerregister.setText( ((GlobalClassContainer) getApplication()).getSerwerIP());
         final Button register = (Button) findViewById(R.id.button_Register);
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -118,7 +117,7 @@ public class RegisterActivity extends Activity {
                 User user=new User();
                 user.setLogin(login.getText().toString());
                 user.setName(name.getText().toString());
-                user.setPassword(((SessionContainer) getApplication()).bin2hex(((SessionContainer) getApplication()).getHash(password.getText().toString())));
+                user.setPassword(((GlobalClassContainer) getApplication()).bin2hex(((GlobalClassContainer) getApplication()).getHash(password.getText().toString())));
                 user.setSurname(surname.getText().toString());
 
                 //warunek sprawdzajacy czy wszystkie pola sa wypelnione
@@ -209,7 +208,7 @@ public class RegisterActivity extends Activity {
             if (pair.getPublic()!= null) {stringKey = Base64.encodeToString(pair.getPublic().getEncoded(), Base64.DEFAULT);
 
             }
-                String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/register/";
+                String adres="http://"+ ((GlobalClassContainer) getApplication()).getSerwerIP()+":8080/api/register/";
 
                 HttpPost httppost = new HttpPost(adres);
             try{
@@ -232,7 +231,6 @@ public class RegisterActivity extends Activity {
 
                 runOnUiThread(new Runnable() {
                     public void run() {
-
                         Toast.makeText(RegisterActivity.this, "problem z polaczneniem z serwerem", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -240,13 +238,10 @@ public class RegisterActivity extends Activity {
 
                 runOnUiThread(new Runnable() {
                     public void run() {
-
                         Toast.makeText(RegisterActivity.this, "problem z polaczneniem z serwerem", Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
-
             return null;
         }
 
@@ -255,18 +250,14 @@ public class RegisterActivity extends Activity {
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
             JSONObject jObj = null;
-
             try {
                 if(response!=null) {
                     jObj = new JSONObject(response);
-
                     if (jObj.getString("status").equals("REGISTER OK")) {
                         String stringKey="";
                         stringKey = Base64.encodeToString(pair.getPrivate().getEncoded(), Base64.DEFAULT);
-                        ((SessionContainer) getApplication()).writeToFile(stringKey,RegisterActivity.this,"X"+user.getLogin());
-                        ((SessionContainer) getApplication()).setPrivatekye(pair.getPrivate());
-
-
+                        ((GlobalClassContainer) getApplication()).writeToFile(stringKey,RegisterActivity.this,"X"+user.getLogin());
+                        ((GlobalClassContainer) getApplication()).setPrivatekye(pair.getPrivate());
                         final Toast toast =Toast.makeText(RegisterActivity.this, "nastapiła poprawna rejestracja", Toast.LENGTH_LONG);
                         toast.show();
                         new CountDownTimer(toastDelay, 1000)
@@ -274,8 +265,6 @@ public class RegisterActivity extends Activity {
                             public void onTick(long millisUntilFinished) {toast.show();}
                             public void onFinish() {toast.show();}
                         }.start();
-
-
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
 
@@ -284,16 +273,12 @@ public class RegisterActivity extends Activity {
                         textView.setVisibility(View.VISIBLE);
                         TextView textView2 = (TextView) findViewById(R.id.warning_ico1);
                         textView2.setVisibility(View.VISIBLE);
-
                     }
                 }
             } catch (JSONException e) {
-
             }
         }
-
     }
-
 
     public static KeyPair generateKeyPair() throws Exception {
         KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
@@ -302,8 +287,6 @@ public class RegisterActivity extends Activity {
 
         return pair;
     }
-
-
 }
 
 

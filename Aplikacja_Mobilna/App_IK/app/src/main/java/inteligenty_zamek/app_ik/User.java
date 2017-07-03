@@ -6,80 +6,65 @@ import org.json.JSONException;
 
 
 public class User {
-    public String getLogin() {
-        return login;
-    }
 
-    public String getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
-    }
 
     public String idUser;
-    public Certyficat[] getCertyficateList() {
-        return certyficateList;
-    }
-
-    public Lock[] getLockslist() {
-        return lockslist;
-    }
-
-    public void setLockslist(Lock[] lockslist) {
-        this.lockslist = lockslist;
-    }
-
     public Lock[] lockslist;
-    public void setCertyficateList(Certyficat[] certyficateList) {
-        this.certyficateList = certyficateList;
-    }
-
     public  Certyficat[] certyficateList;
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
     private String login;
     private String name;
     private String surname;
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     private String password;
     private  boolean isAdmin;
 
+    public String getLogin() {
+        return login;
+    }
+    public String getIdUser() {
+        return idUser;
+    }
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+    public Certyficat[] getCertyficateList() {
+        return certyficateList;
+    }
+    public Lock[] getLockslist() {
+        return lockslist;
+    }
+    public void setLockslist(Lock[] lockslist) {
+        this.lockslist = lockslist;
+    }
+    public void setCertyficateList(Certyficat[] certyficateList) {
+        this.certyficateList = certyficateList;
+    }
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getSurname() {
+        return surname;
+    }
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
     public void addCertyficatList(JSONArray arrJson)
     {
         certyficateList=new Certyficat[arrJson.length()];
@@ -110,9 +95,7 @@ public class User {
             }catch(JSONException e)
             {}
         }
-
     }
-
     public void addLockList(JSONArray arrJson)
     {
         lockslist=new Lock[arrJson.length()];

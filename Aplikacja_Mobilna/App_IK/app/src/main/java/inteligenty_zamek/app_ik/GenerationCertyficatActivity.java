@@ -71,7 +71,7 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
         aa2.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
         spin2.setAdapter(aa2);
-         User user=((SessionContainer) getApplication()).getUser();
+         User user=((GlobalClassContainer) getApplication()).getUser();
         new HTTPRequestDownloadKey(user).execute();
         new HTTPRequestDownloadUser(user).execute();
         final Button register = (Button) findViewById(R.id.buttonRangeGenerateCertyficat);
@@ -96,16 +96,10 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
                         int lokposition=spiner1.getSelectedItemPosition();
                 int userposition=spiner2.getSelectedItemPosition();
                 String namestring=name.getText().toString();
-            new HTTPRequest(((SessionContainer) getApplication()).getUser() ,fromstring ,tostring,lokposition,userposition,namestring ).execute();
-
-
+            new HTTPRequest(((GlobalClassContainer) getApplication()).getUser() ,fromstring ,tostring,lokposition,userposition,namestring ).execute();
             }
         });
-
-
     }
-
-
 
     public void onItemSelected(AdapterView<?> parent, View v, int position,
                                long id) {
@@ -113,15 +107,8 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
         viewFlipper.setDisplayedChild(position);
 
     }
-
     public void onNothingSelected(AdapterView<?> parent) {
-
-
-
-
     }
-
-
 
     public class HTTPRequestDownloadKey extends AsyncTask<Void, Void, String> {
         User user;
@@ -133,7 +120,7 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
         protected String doInBackground(Void... params) {
             HttpClient httpclient = new DefaultHttpClient();
 
-            String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/download/all_locks/";
+            String adres="http://"+ ((GlobalClassContainer) getApplication()).getSerwerIP()+":8080/api/download/all_locks/";
 
             HttpPost httppost = new HttpPost(adres);
 
@@ -142,7 +129,7 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                 nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
 
-                nameValuePairs.add(new BasicNameValuePair("token",  ((SessionContainer) getApplication()).getSession()));
+                nameValuePairs.add(new BasicNameValuePair("token",  ((GlobalClassContainer) getApplication()).getSession()));
 
 
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -171,7 +158,7 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 jObj = new JSONObject(response);
 
                 JSONArray arrJson = jObj.getJSONArray("data");
-                ((SessionContainer) getApplication()).getUser().addLockList(arrJson);
+                ((GlobalClassContainer) getApplication()).getUser().addLockList(arrJson);
 
                 runOnUiThread(new Runnable() {
                     @Override
@@ -180,7 +167,7 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                         final ArrayList<String> listkey = new ArrayList<String>();
                         final SpinnerAdapter spinerListKeyAdapter=new SpinnerAdapter(GenerationCertyficatActivity.this, R.layout.spinner_row,  listkey,  listkey);
                         spiner1.setAdapter(spinerListKeyAdapter);
-                        Lock[] list=((SessionContainer) getApplication()).getUser().getLockslist();
+                        Lock[] list=((GlobalClassContainer) getApplication()).getUser().getLockslist();
                         for(int i=0; i<list.length; i++)
                         {
                             spinerListKeyAdapter.add(list[i].getName());
@@ -194,8 +181,6 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
             }
         }
     }
-
-
 
     public class HTTPRequest extends AsyncTask<Void, Void, String> {
         User user;
@@ -213,7 +198,7 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
             HttpClient httpclient = new DefaultHttpClient();
 
 
-            String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/admin/generate_new_certificate/";
+            String adres="http://"+ ((GlobalClassContainer) getApplication()).getSerwerIP()+":8080/api/admin/generate_new_certificate/";
 
             HttpPost httppost = new HttpPost(adres);
 
@@ -221,16 +206,16 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 // Add your data
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                 nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
-               nameValuePairs.add(new BasicNameValuePair("token",  ((SessionContainer) getApplication()).getSession()));
-                nameValuePairs.add(new BasicNameValuePair("user_id",  ((SessionContainer) getApplication()).userlist[((SessionContainer) getApplication()).getBuffor2()].getIdUser()));
-                nameValuePairs.add(new BasicNameValuePair("lock_id",  ((SessionContainer) getApplication()).getUser().getLockslist()[((SessionContainer) getApplication()).getBuffor1()].getIdKey()));
+               nameValuePairs.add(new BasicNameValuePair("token",  ((GlobalClassContainer) getApplication()).getSession()));
+                nameValuePairs.add(new BasicNameValuePair("user_id",  ((GlobalClassContainer) getApplication()).getUserlist()[((GlobalClassContainer) getApplication()).getBuffor2()].getIdUser()));
+                nameValuePairs.add(new BasicNameValuePair("lock_id",  ((GlobalClassContainer) getApplication()).getUser().getLockslist()[((GlobalClassContainer) getApplication()).getBuffor1()].getIdKey()));
 
                 nameValuePairs.add(new BasicNameValuePair("from_date",from ));
                 nameValuePairs.add(new BasicNameValuePair("to_date",to ));
 
 
-                if( ((SessionContainer) getApplication()).getMondayList()!=null) {
-                    ArrayList<String> list=((SessionContainer) getApplication()).getMondayList();
+                if( ((GlobalClassContainer) getApplication()).getMondayList()!=null) {
+                    ArrayList<String> list=((GlobalClassContainer) getApplication()).getMondayList();
                     String result="";
                     for (String s : list)
                     {
@@ -240,8 +225,8 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 }
                 else {nameValuePairs.add(new BasicNameValuePair("monday", " "));}
 
-                if( ((SessionContainer) getApplication()).getTuesdayList()!=null) {
-                    ArrayList<String> list=((SessionContainer) getApplication()).getTuesdayList();
+                if( ((GlobalClassContainer) getApplication()).getTuesdayList()!=null) {
+                    ArrayList<String> list=((GlobalClassContainer) getApplication()).getTuesdayList();
                     String result="";
                     for (String s : list)
                     {
@@ -252,8 +237,8 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 else {nameValuePairs.add(new BasicNameValuePair("tuesday", " "));}
 
 
-                if( ((SessionContainer) getApplication()).getWednesdayList()!=null) {
-                    ArrayList<String> list=((SessionContainer) getApplication()).getWednesdayList();
+                if( ((GlobalClassContainer) getApplication()).getWednesdayList()!=null) {
+                    ArrayList<String> list=((GlobalClassContainer) getApplication()).getWednesdayList();
                     String result="";
                     for (String s : list)
                     {
@@ -264,8 +249,8 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 else {nameValuePairs.add(new BasicNameValuePair("wednesday", " "));}
 
 
-                if( ((SessionContainer) getApplication()).getThurstdayList()!=null) {
-                    ArrayList<String> list=((SessionContainer) getApplication()).getThurstdayList();
+                if( ((GlobalClassContainer) getApplication()).getThurstdayList()!=null) {
+                    ArrayList<String> list=((GlobalClassContainer) getApplication()).getThurstdayList();
                     String result="";
                     for (String s : list)
                     {
@@ -276,8 +261,8 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 else {nameValuePairs.add(new BasicNameValuePair("thursday", " "));}
 
 
-                if( ((SessionContainer) getApplication()).getFridyList()!=null) {
-                    ArrayList<String> list=((SessionContainer) getApplication()).getFridyList();
+                if( ((GlobalClassContainer) getApplication()).getFridyList()!=null) {
+                    ArrayList<String> list=((GlobalClassContainer) getApplication()).getFridyList();
                     String result="";
                     for (String s : list)
                     {
@@ -287,8 +272,8 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 }
                 else {nameValuePairs.add(new BasicNameValuePair("friday", " "));}
 
-                if( ((SessionContainer) getApplication()).getSaturdayList()!=null) {
-                    ArrayList<String> list=((SessionContainer) getApplication()).getSaturdayList();
+                if( ((GlobalClassContainer) getApplication()).getSaturdayList()!=null) {
+                    ArrayList<String> list=((GlobalClassContainer) getApplication()).getSaturdayList();
                     String result="";
                     for (String s : list)
                     {
@@ -298,8 +283,8 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 }
                 else {nameValuePairs.add(new BasicNameValuePair("saturday", " "));}
 
-                if( ((SessionContainer) getApplication()).getSundayList()!=null) {
-                    ArrayList<String> list=((SessionContainer) getApplication()).getSundayList();
+                if( ((GlobalClassContainer) getApplication()).getSundayList()!=null) {
+                    ArrayList<String> list=((GlobalClassContainer) getApplication()).getSundayList();
                     String result="";
                     for (String s : list)
                     {
@@ -348,10 +333,6 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
         }
     }
 
-
-
-
-
     public class HTTPRequestDownloadUser extends AsyncTask<Void, Void, String> {
         User user;
 
@@ -362,7 +343,7 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
         protected String doInBackground(Void... params) {
             HttpClient httpclient = new DefaultHttpClient();
 
-            String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/download/all_user/";
+            String adres="http://"+ ((GlobalClassContainer) getApplication()).getSerwerIP()+":8080/api/download/all_user/";
 
             HttpPost httppost = new HttpPost(adres);
 
@@ -371,7 +352,7 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                 nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
 
-                nameValuePairs.add(new BasicNameValuePair("token",  ((SessionContainer) getApplication()).getSession()));
+                nameValuePairs.add(new BasicNameValuePair("token",  ((GlobalClassContainer) getApplication()).getSession()));
 
 
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -400,7 +381,7 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 jObj = new JSONObject(response);
 
                 JSONArray arrJson = jObj.getJSONArray("data");
-                ((SessionContainer) getApplication()).addUserList(arrJson);
+                ((GlobalClassContainer) getApplication()).addUserList(arrJson);
 
                 runOnUiThread(new Runnable() {
                     @Override
@@ -409,7 +390,7 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                         final ArrayList<String> listkey = new ArrayList<String>();
                         final SpinnerAdapter spinerListKeyAdapter=new SpinnerAdapter(GenerationCertyficatActivity.this, R.layout.spinner_row,  listkey,  listkey);
                         spiner1.setAdapter(spinerListKeyAdapter);
-                        User[] list=((SessionContainer) getApplication()).getUserlist();
+                        User[] list=((GlobalClassContainer) getApplication()).getUserlist();
                         for(int i=0; i<list.length; i++)
                         {
                             spinerListKeyAdapter.add(list[i].getLogin());

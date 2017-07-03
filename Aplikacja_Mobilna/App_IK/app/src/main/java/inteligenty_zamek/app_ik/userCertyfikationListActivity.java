@@ -32,7 +32,6 @@ public class userCertyfikationListActivity extends BaseActivity {
         navMenuIcons =getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles,navMenuIcons);
 
-
         Typeface fontFamily = Typeface.createFromAsset(this.getAssets(), "fonts/fontawesome.ttf");
         TextView sampleText = (TextView) this.findViewById(R.id.TextView_sortingIco);
         sampleText.setTypeface(fontFamily);
@@ -60,13 +59,9 @@ public class userCertyfikationListActivity extends BaseActivity {
             listItems.add(resultsMap);
         }
         resultsListView.setAdapter(adapter);
-
-
         resultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
-
                 Intent myIntent = new Intent(view.getContext(), certyficatActivity.class);
                 startActivityForResult(myIntent, 0);
 

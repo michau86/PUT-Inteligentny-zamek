@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -96,7 +95,7 @@ public class Managment_certyficationActivity extends BaseActivity
             public void onClick(View viewIn) {
                 try {
 
-                    User user=((SessionContainer) getApplication()).getUser();
+                    User user=((GlobalClassContainer) getApplication()).getUser();
                     new Managment_certyficationActivity.HTTPRequest(user).execute();
                 } catch (Exception except) {
 
@@ -122,7 +121,7 @@ public class Managment_certyficationActivity extends BaseActivity
                protected String doInBackground(Void... params) {
                    HttpClient httpclient = new DefaultHttpClient();
 
-                   String adres="http://"+ ((SessionContainer) getApplication()).getSerwerIP()+":8080/api/download/all_certifacate/";
+                   String adres="http://"+ ((GlobalClassContainer) getApplication()).getSerwerIP()+":8080/api/download/all_certifacate/";
 
                    HttpPost httppost = new HttpPost(adres);
 
@@ -131,7 +130,7 @@ public class Managment_certyficationActivity extends BaseActivity
                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                        nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
 
-                       nameValuePairs.add(new BasicNameValuePair("token",  ((SessionContainer) getApplication()).getSession()));
+                       nameValuePairs.add(new BasicNameValuePair("token",  ((GlobalClassContainer) getApplication()).getSession()));
                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
                        // Execute HTTP Post Request
@@ -158,8 +157,8 @@ public class Managment_certyficationActivity extends BaseActivity
                        jObj = new JSONObject(response);
 
                        JSONArray arrJson = jObj.getJSONArray("data");
-                       ((SessionContainer) getApplication()).writeToFile(response,Managment_certyficationActivity.this,((SessionContainer) getApplication()).getUser().getLogin());
-                       ((SessionContainer) getApplication()).getUser().addCertyficatList(arrJson);
+                       ((GlobalClassContainer) getApplication()).writeToFile(response,Managment_certyficationActivity.this,((GlobalClassContainer) getApplication()).getUser().getLogin());
+                       ((GlobalClassContainer) getApplication()).getUser().addCertyficatList(arrJson);
 
 
 

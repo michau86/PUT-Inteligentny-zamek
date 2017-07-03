@@ -19,10 +19,6 @@ public class GenerateCertyficatRangeActivity extends Activity {
     final ArrayList<String> saturdayList = new ArrayList<String>();
     final ArrayList<String> sundayList = new ArrayList<String>();
 
-
-
-
-
     Spinner spiner1,spiner2,spiner3,spiner4,spiner5,spiner6,spiner7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,9 +122,6 @@ public class GenerateCertyficatRangeActivity extends Activity {
                 spinerSundayAdapter.notifyDataSetChanged();
             }
         });
-
-
-
     }
 
     @Override
@@ -136,72 +129,67 @@ public class GenerateCertyficatRangeActivity extends Activity {
 
         CheckBox monday = (CheckBox)findViewById(R.id.checkBoxPoniedzialek);
         if(monday.isEnabled()) {
-            ((SessionContainer) getApplication()).setMondayList(mondayList);
+            ((GlobalClassContainer) getApplication()).setMondayList(mondayList);
         }
         else
         {
-            ((SessionContainer) getApplication()).setMondayList(null);
+            ((GlobalClassContainer) getApplication()).setMondayList(null);
         }
 
         CheckBox tuesday= (CheckBox)findViewById(R.id.checkBoxWtorek);
         if(tuesday.isEnabled()) {
-            ((SessionContainer) getApplication()).setTuesdayList(tuesdayList);
+            ((GlobalClassContainer) getApplication()).setTuesdayList(tuesdayList);
         }
         else
         {
-            ((SessionContainer) getApplication()).setTuesdayList(null);
+            ((GlobalClassContainer) getApplication()).setTuesdayList(null);
         }
 
 
         CheckBox wednesday= (CheckBox)findViewById(R.id.checkBoxSroda);
         if(wednesday.isEnabled()) {
-            ((SessionContainer) getApplication()).setWednesdayList(wednesdayList);
+            ((GlobalClassContainer) getApplication()).setWednesdayList(wednesdayList);
         }
         else
         {
-            ((SessionContainer) getApplication()).setWednesdayList(null);
+            ((GlobalClassContainer) getApplication()).setWednesdayList(null);
         }
 
         CheckBox thurstday= (CheckBox)findViewById(R.id.checkBoxCzwartek);
         if(thurstday.isEnabled()) {
-            ((SessionContainer) getApplication()).setThurstdayList(thurstdayList);
+            ((GlobalClassContainer) getApplication()).setThurstdayList(thurstdayList);
         }
         else
         {
-            ((SessionContainer) getApplication()).setThurstdayList(null);
+            ((GlobalClassContainer) getApplication()).setThurstdayList(null);
         }
-
 
         CheckBox friday= (CheckBox)findViewById(R.id.checkBoxPiatek);
         if(friday.isEnabled()) {
-            ((SessionContainer) getApplication()).setFridyList(fridayList);
+            ((GlobalClassContainer) getApplication()).setFridyList(fridayList);
         }
         else
         {
-            ((SessionContainer) getApplication()).setFridyList(null);
+            ((GlobalClassContainer) getApplication()).setFridyList(null);
         }
 
 
         CheckBox saturday= (CheckBox)findViewById(R.id.checkBoxSobota);
         if(saturday.isEnabled()) {
-            ((SessionContainer) getApplication()).setSaturdayList(saturdayList);
+            ((GlobalClassContainer) getApplication()).setSaturdayList(saturdayList);
         }
         else
         {
-            ((SessionContainer) getApplication()).setSaturdayList(null);
+            ((GlobalClassContainer) getApplication()).setSaturdayList(null);
         }
-
-
         CheckBox sunday= (CheckBox)findViewById(R.id.checkBoxNiedziela);
         if(sunday.isEnabled()) {
-            ((SessionContainer) getApplication()).setSundayList(sundayList);
+            ((GlobalClassContainer) getApplication()).setSundayList(sundayList);
         }
         else
         {
-            ((SessionContainer) getApplication()).setSundayList(null);
+            ((GlobalClassContainer) getApplication()).setSundayList(null);
         }
-
-
         this.finish();
     }
 

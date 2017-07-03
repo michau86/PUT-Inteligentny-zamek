@@ -8,7 +8,7 @@ from Crypto import Random
 from datetime import datetime
 
 username = "root"
-userpassword = "inteligentnyzamek"
+userpassword = "1234"
 databasename = "inteligentny_zamek_db"
 databaseaddres = "127.0.0.1"
 

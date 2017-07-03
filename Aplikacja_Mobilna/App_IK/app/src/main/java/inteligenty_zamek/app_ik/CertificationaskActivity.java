@@ -13,7 +13,6 @@ import java.util.Map;
 
 public class CertificationaskActivity extends BaseActivity
          {
-
              private String[] navMenuTitles;
              private TypedArray navMenuIcons;
 
@@ -22,10 +21,8 @@ public class CertificationaskActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_certyficationask);
         navMenuTitles= getResources().getStringArray(R.array.nav_drawer_items);
-
         navMenuIcons =getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles,navMenuIcons);
-
         ListView resultsListView = (ListView) this.findViewById(R.id.ListView_key_generate_certyfiaction);
 
         //hasmap przechowujący elemety do wyświetlenia
@@ -49,9 +46,7 @@ public class CertificationaskActivity extends BaseActivity
             resultsMap.put("Second Line", pair.getValue().toString());
             listItems.add(resultsMap);
         }
-
         resultsListView.setAdapter(adapter);
-
     }
 
 
