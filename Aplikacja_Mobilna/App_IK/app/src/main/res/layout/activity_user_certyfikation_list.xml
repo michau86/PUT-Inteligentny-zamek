@@ -35,7 +35,7 @@
                 android:background="@color/color_background_input"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/activity_main_text2"
+                android:hint="@string/activity_main_text2"
                 android:textColor="@color/color_text_ico"
                 android:textSize="14sp" />
 

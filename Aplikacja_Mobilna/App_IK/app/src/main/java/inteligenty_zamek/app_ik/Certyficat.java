@@ -4,7 +4,7 @@ package inteligenty_zamek.app_ik;
  * Created by damian on 10.05.2017.
  */
 
-public class Certyficat {
+public class Certyficat implements Comparable<Certyficat>{
     public String mac_addres;
     String isActual,isPermanent;
     String monday,tuesday,wednesday,thurstday,friday,sunday,saturday,from,to,name,surname;
@@ -160,4 +160,12 @@ public class Certyficat {
     public void setId_user(String id_user) {
         this.id_user = id_user;
     }
+
+    @Override
+    public int compareTo(Certyficat o) {
+        // usually toString should not be used,
+        // instead one of the attributes or more in a comparator chain
+        return lockName.compareTo(o.getLockName());
+    }
+
 }

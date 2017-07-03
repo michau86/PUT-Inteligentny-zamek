@@ -6,12 +6,15 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -35,7 +38,7 @@ import java.util.List;
 
 public class Managment_certyficationActivity extends BaseActivity
        {
-
+           int toastDelay=4000;
            private String[] navMenuTitles;
            private TypedArray navMenuIcons;
            ListView listView;
@@ -212,7 +215,24 @@ public class Managment_certyficationActivity extends BaseActivity
                        JSONArray arrJson = jObj.getJSONArray("data");
                        ((GlobalClassContainer) getApplication()).writeToFile(response,Managment_certyficationActivity.this,((GlobalClassContainer) getApplication()).getUser().getLogin());
                        ((GlobalClassContainer) getApplication()).getUser().addCertyficatList(arrJson);
+
+                       final Toast toast =Toast.makeText(Managment_certyficationActivity.this, "dodano certyfikaty", Toast.LENGTH_LONG);
+                       toast.show();
+                       new CountDownTimer(toastDelay, 1000)
+                       {
+                           public void onTick(long millisUntilFinished) {toast.show();}
+                           public void onFinish() {toast.show();}
+                       }.start();
+
                    } catch (JSONException e) {
+
+                       final Toast toast =Toast.makeText(Managment_certyficationActivity.this, "brak certyfikatow", Toast.LENGTH_LONG);
+                       toast.show();
+                       new CountDownTimer(toastDelay, 1000)
+                       {
+                           public void onTick(long millisUntilFinished) {toast.show();}
+                           public void onFinish() {toast.show();}
+                       }.start();
                    }
                }
            }

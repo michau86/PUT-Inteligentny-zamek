@@ -22,6 +22,9 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.InvalidParameterSpecException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -30,6 +33,8 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+
+
 
 
 public class GlobalClassContainer extends Application {
@@ -172,6 +177,10 @@ public class GlobalClassContainer extends Application {
         String decryptString = new String(cipher.doFinal(cipherText), "UTF-8");
         return decryptString;
     }
+
+
+
+
     //funkcje odpowiedzialne za szyfrowanie i deszyfrowanie (asymetryczne)
     public String encryption(String strNormalText){
         String seedValue = "sdfushdfgkjklvsdlmiosaddfyemno";
