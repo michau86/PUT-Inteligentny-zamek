@@ -98,7 +98,13 @@ public class LoginActivity extends Activity{
                     String sessionencrypt=((GlobalClassContainer) getApplication()).decryption(jObj.getString("token"));
                     ((GlobalClassContainer) getApplication()).writeToFile(sessionencrypt,LoginActivity.this,"session");
                     String privatekeystring=((GlobalClassContainer) getApplication()).readFromFile(LoginActivity.this,"*"+((GlobalClassContainer) getApplication()).getUser().getLogin());
-                    byte[] encodedKey     = Base64.decode(privatekeystring, Base64.DEFAULT);
+                    String privatekeystringDecrytp="";
+                    try {
+                      privatekeystringDecrytp = ((GlobalClassContainer) getApplication()).decryptMsg(privatekeystring.getBytes("UTF-8"), ((GlobalClassContainer) getApplication()).generateKey());
+                   }catch(Exception e){}
+                       //deszyfrowanie i podanie w stringu
+
+                    byte[] encodedKey     = Base64.decode(privatekeystringDecrytp , Base64.DEFAULT);
                     PrivateKey priv=null;
                     try {
                         KeyFactory kf = KeyFactory.getInstance("RSA"); // or "EC" or whatever
@@ -158,6 +164,7 @@ public class LoginActivity extends Activity{
         sampleText.setTypeface(fontFamily);
 
         String session=((GlobalClassContainer) getApplication()).readFromFile(this,"session");
+        //TODO troche bez sensu to cos jest nie tak (sesja)
         if(session!="NULL")
         {
             String sessiondecrypt=((GlobalClassContainer) getApplication()).decryption("Input Encrypted String");

@@ -52,7 +52,7 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1175">
+            <state relative-caret-position="-981">
               <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
@@ -62,7 +62,7 @@
       <file leaf-file-name="BaseActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/BaseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
+            <state relative-caret-position="231">
               <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
               <folding>
                 <element signature="method#onCreate#0;class#BaseActivity#0" expanded="false" />
@@ -77,16 +77,16 @@
       <file leaf-file-name="GlobalClassContainer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GlobalClassContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
+            <state relative-caret-position="405">
+              <caret line="165" column="72" selection-start-line="165" selection-start-column="25" selection-end-line="165" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#setDefaultValue#0;class#GlobalClassContainer#0" expanded="false" />
                 <element signature="method#getHash#0;class#GlobalClassContainer#0" expanded="false" />
                 <element signature="method#bin2hex#0;class#GlobalClassContainer#0" expanded="false" />
                 <element signature="method#writeToFile#0;class#GlobalClassContainer#0" expanded="false" />
                 <element signature="method#readFromFile#0;class#GlobalClassContainer#0" expanded="false" />
                 <element signature="method#addUserList#0;class#GlobalClassContainer#0" expanded="false" />
+                <element signature="method#generateKey#0;class#GlobalClassContainer#0" expanded="false" />
                 <element signature="method#encryption#0;class#GlobalClassContainer#0" expanded="false" />
                 <element signature="method#decryption#0;class#GlobalClassContainer#0" expanded="false" />
                 <element signature="method#encrypt#0;class#GlobalClassContainer#0" expanded="false" />
@@ -102,6 +102,8 @@
                 <element signature="method#setSaturdayList#0;class#GlobalClassContainer#0" expanded="false" />
                 <element signature="method#setCertyficatadminlist#0;class#GlobalClassContainer#0" expanded="false" />
                 <element signature="method#setCertyficatlist#0;class#GlobalClassContainer#0" expanded="false" />
+                <marker date="1499091799479" expanded="false" signature="1939:2335" ph="{...}" />
+                <marker date="1499091799479" expanded="false" signature="5546:5792" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -124,11 +126,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RegisterActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/RegisterActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="265" column="66" selection-start-line="265" selection-start-column="66" selection-end-line="265" selection-end-column="66" />
+            <state relative-caret-position="259">
+              <caret line="268" column="109" selection-start-line="268" selection-start-column="109" selection-end-line="268" selection-end-column="164" />
               <folding>
                 <element signature="method#generateKeyPair#0;class#RegisterActivity#0" expanded="false" />
               </folding>
@@ -149,13 +151,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="98" column="119" selection-start-line="98" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+            <state relative-caret-position="25">
+              <caret line="104" column="58" selection-start-line="104" selection-start-column="58" selection-end-line="104" selection-end-column="58" />
               <folding>
-                <marker date="1499088280674" expanded="false" signature="10041:10349" ph="{...}" />
+                <element signature="method#doInBackground#0;class#HTTPRequest#0;class#LoginActivity#0" expanded="false" />
+                <marker date="1499095672562" expanded="false" signature="10486:10794" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -2087,10 +2090,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/main_key_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Managment_certyficationActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GlobalClassContainer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/BaseActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GlobalClassContainer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/RegisterActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/LoginActivity.java" />
       </list>
     </option>
   </component>
@@ -2882,7 +2885,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.056792874" sideWeight="0.30686694" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2962138" sideWeight="0.69313306" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30957684" sideWeight="0.69313306" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37768242" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37750557" sideWeight="0.47854078" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.48712447" order="9" side_tool="false" content_ui="tabs" />
@@ -2891,6 +2894,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18937768" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.63432837" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959394" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -2905,7 +2909,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.63432837" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2965,7 +2968,7 @@
           <option name="timeStamp" value="93" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="107" />
+      <option name="time" value="108" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app-java">
@@ -3350,50 +3353,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GlobalClassContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#setDefaultValue#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#getHash#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#bin2hex#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#writeToFile#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#readFromFile#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#addUserList#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#encryption#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#decryption#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#encrypt#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#decrypt#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#getRawKey#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#encrypt#1;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#decrypt#1;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#toByte#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#toHex#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#appendHex#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#setWednesdayList#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#setThurstdayList#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#setSaturdayList#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#setCertyficatadminlist#0;class#GlobalClassContainer#0" expanded="false" />
-            <element signature="method#setCertyficatlist#0;class#GlobalClassContainer#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
-          <folding>
-            <element signature="method#onCreate#0;class#BaseActivity#0" expanded="false" />
-            <element signature="method#onPostCreate#0;class#BaseActivity#0" expanded="false" />
-            <element signature="method#onConfigurationChanged#0;class#BaseActivity#0" expanded="false" />
-            <element signature="method#sign#0;class#BaseActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Managment_certyficationActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-348">
@@ -3411,28 +3370,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1175">
+        <state relative-caret-position="-981">
           <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/LoginActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="98" column="119" selection-start-line="98" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+        <state relative-caret-position="231">
+          <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
           <folding>
-            <marker date="1499088280674" expanded="false" signature="10041:10349" ph="{...}" />
+            <element signature="method#onCreate#0;class#BaseActivity#0" expanded="false" />
+            <element signature="method#onPostCreate#0;class#BaseActivity#0" expanded="false" />
+            <element signature="method#onConfigurationChanged#0;class#BaseActivity#0" expanded="false" />
+            <element signature="method#sign#0;class#BaseActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GlobalClassContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="165" column="72" selection-start-line="165" selection-start-column="25" selection-end-line="165" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getHash#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#bin2hex#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#writeToFile#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#readFromFile#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#addUserList#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#generateKey#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#encryption#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#decryption#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#encrypt#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#decrypt#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#getRawKey#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#encrypt#1;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#decrypt#1;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#toByte#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#toHex#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#appendHex#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#setWednesdayList#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#setThurstdayList#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#setSaturdayList#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#setCertyficatadminlist#0;class#GlobalClassContainer#0" expanded="false" />
+            <element signature="method#setCertyficatlist#0;class#GlobalClassContainer#0" expanded="false" />
+            <marker date="1499091799479" expanded="false" signature="1939:2335" ph="{...}" />
+            <marker date="1499091799479" expanded="false" signature="5546:5792" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/RegisterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="265" column="66" selection-start-line="265" selection-start-column="66" selection-end-line="265" selection-end-column="66" />
+        <state relative-caret-position="259">
+          <caret line="268" column="109" selection-start-line="268" selection-start-column="109" selection-end-line="268" selection-end-column="164" />
           <folding>
             <element signature="method#generateKeyPair#0;class#RegisterActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="104" column="58" selection-start-line="104" selection-start-column="58" selection-end-line="104" selection-end-column="58" />
+          <folding>
+            <element signature="method#doInBackground#0;class#HTTPRequest#0;class#LoginActivity#0" expanded="false" />
+            <marker date="1499095672562" expanded="false" signature="10486:10794" ph="{...}" />
           </folding>
         </state>
       </provider>

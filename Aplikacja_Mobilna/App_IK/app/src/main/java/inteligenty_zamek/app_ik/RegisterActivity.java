@@ -41,6 +41,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.crypto.SecretKey;
+
 public class RegisterActivity extends Activity {
 
     private KeyPair pair = null;
@@ -256,7 +258,17 @@ public class RegisterActivity extends Activity {
                     if (jObj.getString("status").equals("REGISTER OK")) {
                         String stringKey="";
                         stringKey = Base64.encodeToString(pair.getPrivate().getEncoded(), Base64.DEFAULT);
-                        ((GlobalClassContainer) getApplication()).writeToFile(stringKey,RegisterActivity.this,"*"+user.getLogin());
+                       //TODO szyforwanie klucza
+
+
+                      //  byte[] bytes = text.getBytes("UTF-8");
+                      //  String text = new String(bytes, "UTF-8");
+                        try{
+
+                        ((GlobalClassContainer) getApplication()).writeToFile(
+                                new String(  ((GlobalClassContainer) getApplication()).encryptMsg(stringKey, ((GlobalClassContainer) getApplication()).generateKey()), "UTF-8"  )
+                        , RegisterActivity.this,"*"+user.getLogin());
+                        }catch (Exception e){}
                         ((GlobalClassContainer) getApplication()).setPrivatekye(pair.getPrivate());
                         final Toast toast =Toast.makeText(RegisterActivity.this, "nastapiła poprawna rejestracja", Toast.LENGTH_LONG);
                         toast.show();
