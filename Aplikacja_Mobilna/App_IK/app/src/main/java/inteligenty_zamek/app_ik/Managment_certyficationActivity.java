@@ -3,8 +3,10 @@ package inteligenty_zamek.app_ik;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,6 +30,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class Managment_certyficationActivity extends BaseActivity
@@ -115,15 +118,56 @@ public class Managment_certyficationActivity extends BaseActivity
             @Override
             public void onClick(View viewIn) {
                 // TODO obsluga przycisku wgrywajacego certyfikat z pliku
-                //wybranie pliku
+                Intent intent = new Intent()
+                        .setType("*/*")
+                        .setAction(Intent.ACTION_GET_CONTENT);
 
-                //zapisanie pliku
-                ((GlobalClassContainer) getApplication()).writeToFile("tresc",Managment_certyficationActivity.this,"guest");
+                startActivityForResult(Intent.createChooser(intent, "Select a file"), 123);
+
+
 
             }
         });
 
+
+
+
     }
+        //przeciazenie funkcji odpwoeidzialnrj za obrobke wskazanego pliku
+
+           @Override
+           protected void onActivityResult(int requestCode, int resultCode, Intent data ) {
+               super.onActivityResult(requestCode, resultCode, data);
+               if(requestCode==123 && resultCode==RESULT_OK) {
+                   Uri selectedfile = data.getData();
+                   JSONArray arrJson=null;
+                    try {
+                        JSONObject jObj = new JSONObject(((GlobalClassContainer) getApplication()).readFromFile(this, selectedfile.toString()));
+                        String readcertyficat=((GlobalClassContainer) getApplication()).readFromFile(this,((GlobalClassContainer) getApplication()).getUser().getLogin());
+                        JSONObject jObj2 = new JSONObject(readcertyficat);
+
+                        JSONObject merged = new JSONObject();
+                        JSONObject[] objs = new JSONObject[] { jObj, jObj2 };
+                        for (JSONObject obj : objs) {
+                            Iterator it = obj.keys();
+                            while (it.hasNext()) {
+                                String key = (String)it.next();
+                                merged.put(key, obj.get(key));
+                            }
+                        }
+
+                       arrJson = merged.getJSONArray("data");
+                    }catch(Exception e) {}
+                //TODO zrobienie zapisywania do pliku, przetestowanie
+                 //  ((GlobalClassContainer) getApplication()).writeToFile(response,Managment_certyficationActivity.this,((GlobalClassContainer) getApplication()).getUser().getLogin());
+                   ((GlobalClassContainer) getApplication()).getUser().addCertyficatList(arrJson);
+
+                   //zapisanie pliku
+                   ((GlobalClassContainer) getApplication()).writeToFile("tresc",Managment_certyficationActivity.this,"guest");
+               }
+           }
+
+
            @Override
            public void onBackPressed() {
            }
@@ -155,7 +199,6 @@ public class Managment_certyficationActivity extends BaseActivity
                    } catch (IOException e) {
                        // TODO Auto-generated catch block
                    }
-
                    return null;
                }
 

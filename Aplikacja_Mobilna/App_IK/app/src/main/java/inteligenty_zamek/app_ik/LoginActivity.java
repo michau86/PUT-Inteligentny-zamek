@@ -220,6 +220,9 @@ public class LoginActivity extends Activity{
         final Button guest = (Button) findViewById(R.id.button_guest);
         guest.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                User user=new User();
+                user.setLogin("guest");
+                ((GlobalClassContainer) getApplication()).setUser(user);
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(intent);
             }
