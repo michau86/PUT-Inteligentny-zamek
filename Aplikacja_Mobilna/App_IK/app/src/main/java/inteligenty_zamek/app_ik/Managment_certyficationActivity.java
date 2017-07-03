@@ -42,30 +42,34 @@ public class Managment_certyficationActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_managment_certyfication);
         navMenuTitles= getResources().getStringArray(R.array.nav_drawer_items);
-
         navMenuIcons =getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles,navMenuIcons);
-
-
+        //ustawienie fontu dla ikon pobierania z serwera oraz pobrania z telefonu
         Typeface fontFamily = Typeface.createFromAsset(this.getAssets(), "fonts/fontawesome.ttf");
-        TextView sampleText = (TextView) this.findViewById(R.id.TextView_download_serwer);
-        sampleText.setTypeface(fontFamily);
-        TextView sampleText2 = (TextView) this.findViewById(R.id.TextView_download_file);
-        sampleText2.setTypeface(fontFamily);
+        TextView ico_download_serwer = (TextView) this.findViewById(R.id.TextView_download_serwer);
+        ico_download_serwer.setTypeface(fontFamily);
+        TextView ico_download_file = (TextView) this.findViewById(R.id.TextView_download_file);
+        ico_download_file.setTypeface(fontFamily);
 
+        //lista
         ListView resultsListView = (ListView) this.findViewById(R.id.ListView_Managment_Certyfivation);
-
-        String list_item[] = {getString(R.string.activity_managmentCertyfication2),getString(R.string.activity_managmentCertyfication3),getString(R.string.activity_managmentCertyfication4) };
-
-        ArrayList<String> list = new ArrayList<String>();
-        list.addAll( Arrays.asList(list_item) );
+        //tablica tringow dla uzytkownika zalogowanego
+         ArrayList<String> list = new ArrayList<String>();
+        //ustawienie listview dla zuytkownika niezalogowanego
+        if(((GlobalClassContainer) getApplication()).getIsadmin()<0)
+        {
+            ico_download_serwer.setText("");
+            list.addAll( Arrays.asList(getString(R.string.activity_managmentCertyfication2)) );
+        }
+        //ustawienie listview dla uzytkownika zalogowanego
+        else {
+            String list_item[] = {getString(R.string.activity_managmentCertyfication2),getString(R.string.activity_managmentCertyfication3),getString(R.string.activity_managmentCertyfication4) };
+            list.addAll(Arrays.asList(list_item));
+        }
         ArrayAdapter<String> adapter ;
-
-
         adapter = new ArrayAdapter<String>(this, R.layout.admin_panel_key_list, list);
-
         resultsListView.setAdapter(adapter);
-
+        //wyszukanie listy oraz ustwaienie akcji dotyczacych klikniec na poszcegolne elementy
         listView = (ListView) findViewById(R.id.ListView_Managment_Certyfivation);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -74,32 +78,48 @@ public class Managment_certyficationActivity extends BaseActivity
                     Intent myIntent = new Intent(view.getContext(), userCertyfikationListActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
-
-                if (position == 1) {
-                    Intent myIntent = new Intent(view.getContext(), CertificationaskActivity.class);
-                    startActivityForResult(myIntent, 0);
-                }
-                if (position == 2) {
+                if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0)
+                {
+                    if (position == 1) {
+                        Intent myIntent = new Intent(view.getContext(), CertificationaskActivity.class);
+                        startActivityForResult(myIntent, 0);
+                    }
+                    if (position == 2) {
                     Intent myIntent = new Intent(view.getContext(), GenerationCertyfikatForGuestActivity.class);
                     startActivityForResult(myIntent, 0);
+                    }
                 }
-
-
             }
 
             });
 
+        //akcja dotyczaca klikniecia na ikone sciagnij z serwera
         textView= (TextView) findViewById(R.id.TextView_download_serwer);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View viewIn) {
                 try {
-
-                    User user=((GlobalClassContainer) getApplication()).getUser();
+                    if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0){
+                        User user = ((GlobalClassContainer) getApplication()).getUser();
                     new Managment_certyficationActivity.HTTPRequest(user).execute();
-                } catch (Exception except) {
-
                 }
+                } catch (Exception except) {
+                }
+            }
+        });
+
+
+        //akcja dotyczaca kliknieca na ikonke sciagnij z pliku
+        textView= (TextView) findViewById(R.id.TextView_download_file);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View viewIn) {
+                // TODO obsluga przycisku wgrywajacego certyfikat z pliku
+                //wybranie pliku
+
+                //zapisanie pliku
+                ((GlobalClassContainer) getApplication()).writeToFile("tresc",Managment_certyficationActivity.this,"guest");
+
             }
         });
 
@@ -107,9 +127,6 @@ public class Managment_certyficationActivity extends BaseActivity
            @Override
            public void onBackPressed() {
            }
-
-
-
 
            public class HTTPRequest extends AsyncTask<Void, Void, String> {
                User user;
@@ -120,24 +137,18 @@ public class Managment_certyficationActivity extends BaseActivity
                @Override
                protected String doInBackground(Void... params) {
                    HttpClient httpclient = new DefaultHttpClient();
-
                    String adres="http://"+ ((GlobalClassContainer) getApplication()).getSerwerIP()+":8080/api/download/all_certifacate/";
-
                    HttpPost httppost = new HttpPost(adres);
-
                    try {
                        // Add your data
                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                        nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
-
                        nameValuePairs.add(new BasicNameValuePair("token",  ((GlobalClassContainer) getApplication()).getSession()));
                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
                        // Execute HTTP Post Request
                        HttpResponse response = httpclient.execute(httppost);
                        HttpEntity entity = response.getEntity();
                        String responseString = EntityUtils.toString(entity, "UTF-8");
-
                        return responseString;
                    } catch (ClientProtocolException e) {
                        // TODO Auto-generated catch block
@@ -155,22 +166,13 @@ public class Managment_certyficationActivity extends BaseActivity
                    JSONObject jObj = null;
                    try {
                        jObj = new JSONObject(response);
-
                        JSONArray arrJson = jObj.getJSONArray("data");
                        ((GlobalClassContainer) getApplication()).writeToFile(response,Managment_certyficationActivity.this,((GlobalClassContainer) getApplication()).getUser().getLogin());
                        ((GlobalClassContainer) getApplication()).getUser().addCertyficatList(arrJson);
-
-
-
                    } catch (JSONException e) {
-
                    }
                }
            }
-
-
-
-
 
        }
 

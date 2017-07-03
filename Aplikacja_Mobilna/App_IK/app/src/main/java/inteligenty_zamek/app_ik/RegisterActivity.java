@@ -256,7 +256,7 @@ public class RegisterActivity extends Activity {
                     if (jObj.getString("status").equals("REGISTER OK")) {
                         String stringKey="";
                         stringKey = Base64.encodeToString(pair.getPrivate().getEncoded(), Base64.DEFAULT);
-                        ((GlobalClassContainer) getApplication()).writeToFile(stringKey,RegisterActivity.this,"X"+user.getLogin());
+                        ((GlobalClassContainer) getApplication()).writeToFile(stringKey,RegisterActivity.this,"*"+user.getLogin());
                         ((GlobalClassContainer) getApplication()).setPrivatekye(pair.getPrivate());
                         final Toast toast =Toast.makeText(RegisterActivity.this, "nastapiła poprawna rejestracja", Toast.LENGTH_LONG);
                         toast.show();

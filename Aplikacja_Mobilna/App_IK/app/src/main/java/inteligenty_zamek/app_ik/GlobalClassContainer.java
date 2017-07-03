@@ -44,12 +44,25 @@ public class GlobalClassContainer extends Application {
     private final static String HEX = "0123456789ABCDEF";
     private int isadmin=-1;
 
-
-    public int getIsadmin() {
-        return isadmin;
-    }
-    public void setIsadmin(int isadmin) {
-        this.isadmin = isadmin;
+    //ustawia domsylne wartosci (uzywane przy wylogowaniu)
+    public void setDefaultValue()
+    {
+        session="";
+        user=null;
+        certyficatlist=null;
+        privatekye=null;
+        certyficatadminlist="";
+        userlist=null;
+        mondayList=null;
+        tuesdayList=null;
+        wednesdayList=null;
+        thurstdayList=null;
+        fridyList=null;
+        saturdayList=null;
+        sundayList=null;
+        buffor1=0;
+        buffor2=0;
+        isadmin=-1;
     }
     public byte[] getHash(String password) {
         MessageDigest digest=null;
@@ -197,6 +210,12 @@ public class GlobalClassContainer extends Application {
     }
 
     //getery i setteryt
+    public int getIsadmin() {
+        return isadmin;
+    }
+    public void setIsadmin(int isadmin) {
+        this.isadmin = isadmin;
+    }
     public int getBuffor1() {
         return buffor1;
     }

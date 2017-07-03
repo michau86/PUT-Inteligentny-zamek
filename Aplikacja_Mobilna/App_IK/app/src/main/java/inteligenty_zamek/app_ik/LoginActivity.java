@@ -65,15 +65,26 @@ public class LoginActivity extends Activity{
 
                  return responseString;
             } catch (ClientProtocolException e) {
-                // TODO Auto-generated catch block
+                final Toast toast =Toast.makeText(LoginActivity.this, "wystapił problem podczas połącenia z serwerem", Toast.LENGTH_LONG);
+                toast.show();
+                new CountDownTimer(toastDelay, 1000)
+                {
+                    public void onTick(long millisUntilFinished) {toast.show();}
+                    public void onFinish() {toast.show();}
+                }.start();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
+                final Toast toast =Toast.makeText(LoginActivity.this, "wystapił problem podczas połącenia z serwerem", Toast.LENGTH_LONG);
+                toast.show();
+                new CountDownTimer(toastDelay, 1000)
+                {
+                    public void onTick(long millisUntilFinished) {toast.show();}
+                    public void onFinish() {toast.show();}
+                }.start();
             }
-
             return null;
         }
 
-        //akcja po otrzyman iu odpowiedzi z serwera
+        //akcja po otrzymaniu odpowiedzi z serwera
         @Override
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
@@ -86,7 +97,7 @@ public class LoginActivity extends Activity{
                     ((GlobalClassContainer) getApplication()).setSession(jObj.getString("token"));
                     String sessionencrypt=((GlobalClassContainer) getApplication()).decryption(jObj.getString("token"));
                     ((GlobalClassContainer) getApplication()).writeToFile(sessionencrypt,LoginActivity.this,"session");
-                    String privatekeystring=((GlobalClassContainer) getApplication()).readFromFile(LoginActivity.this,"X"+((GlobalClassContainer) getApplication()).getUser().getLogin());
+                    String privatekeystring=((GlobalClassContainer) getApplication()).readFromFile(LoginActivity.this,"*"+((GlobalClassContainer) getApplication()).getUser().getLogin());
                     byte[] encodedKey     = Base64.decode(privatekeystring, Base64.DEFAULT);
                     PrivateKey priv=null;
                     try {

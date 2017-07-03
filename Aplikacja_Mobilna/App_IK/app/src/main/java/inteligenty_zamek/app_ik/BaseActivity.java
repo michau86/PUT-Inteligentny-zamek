@@ -79,13 +79,10 @@ public class BaseActivity extends ActionBarActivity
                     break;}
                 else
                     if(((GlobalClassContainer) getApplication()).getIsadmin()==0 && i==2){i++;}
-
                 navDrawerItems.add(new NavDrawerItem(navMenuTitles[i],navMenuIcons.getResourceId(i, -1)));
             }
         }
-
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-
         adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
@@ -113,9 +110,6 @@ public class BaseActivity extends ActionBarActivity
 
     }
 
-   /* public void onNavigationDrawerItemSelected(int position) {
-
-    }*/
 
     private class SlideMenuClickListener implements
             ListView.OnItemClickListener {
@@ -142,7 +136,6 @@ public class BaseActivity extends ActionBarActivity
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -176,6 +169,7 @@ public class BaseActivity extends ActionBarActivity
                 }
                 else
                 {
+                    ((GlobalClassContainer) getApplication()).setDefaultValue();
                     Intent intent3 = new Intent(this, LoginActivity.class);
                     startActivity(intent3);
                     finish();
@@ -193,7 +187,6 @@ public class BaseActivity extends ActionBarActivity
                     new HTTPRequest(user).execute();
                     break;
                 }
-
                 break;
             case 4:
                 User user=((GlobalClassContainer) getApplication()).getUser();
@@ -269,6 +262,7 @@ public class BaseActivity extends ActionBarActivity
                     ((GlobalClassContainer) getApplication()).setSession("");
                     runOnUiThread(new Runnable() {
                         public void run() {
+                            ((GlobalClassContainer) getApplication()).setDefaultValue();
                             Intent intent4 = new Intent(BaseActivity.this, LoginActivity.class);
                             startActivity(intent4);
                             finish();
@@ -277,7 +271,7 @@ public class BaseActivity extends ActionBarActivity
                 }
                 else
                 {
-                // error z logoutu
+                // TODO error z logoutu
                 }
             } catch (JSONException e) {
             }
