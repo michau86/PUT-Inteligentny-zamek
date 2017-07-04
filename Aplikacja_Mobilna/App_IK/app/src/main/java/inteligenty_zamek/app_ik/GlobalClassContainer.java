@@ -3,6 +3,8 @@ package inteligenty_zamek.app_ik;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
+
+import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
 import org.json.JSONException;
 import java.io.BufferedReader;
@@ -13,6 +15,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
@@ -148,7 +152,6 @@ public class GlobalClassContainer extends Application {
         }
 
     }
-
     public int searchcertyficat(String name)
     {
         for(int i=0; i<user.getCertyficateList().length; i++ )
@@ -170,9 +173,12 @@ public class GlobalClassContainer extends Application {
     public static byte[] encryptMsg(String message, SecretKey secret)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidParameterSpecException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException
     {
-        Cipher cipher = null;
-        cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.ENCRYPT_MODE, secret);
+
+        String key = "Bar12345Bar12345Bar12345Bar12345";
+
+        SecretKeySpec aesKey = new SecretKeySpec(key.getBytes(), "AES");
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, aesKey);
         byte[] cipherText = cipher.doFinal(message.getBytes("UTF-8"));
         return cipherText;
     }
@@ -180,12 +186,33 @@ public class GlobalClassContainer extends Application {
     public static String decryptMsg(byte[] cipherText, SecretKey secret)
             throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidParameterSpecException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException
     {
-        Cipher cipher = null;
-        cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.DECRYPT_MODE, secret);
-        String decryptString = new String(cipher.doFinal(cipherText), "UTF-8");
+        if(cipherText!=null)
+        {
+            Log.i("decrypt","aaaaaaa1");
+        }
+
+
+        String key = "Bar12345Bar12345Bar12345Bar12345";
+        SecretKeySpec aesKey = new SecretKeySpec(key.getBytes(), "AES");
+        Log.i("decrypt","aaaaaaa2");
+
+        Cipher cipher = Cipher.getInstance("AES");
+        Log.i("decrypt","aaaaaaa3");
+
+        cipher.init(Cipher.DECRYPT_MODE, aesKey);
+        Log.i("decrypt","aaaaaaa4");
+        byte [] a=cipher.doFinal(cipherText);
+
+
+        if(a!=null){Log.i("decryptb","aaaaaaaaaaaaaaaaaaaaaaa");}
+
+        String decryptString = new String(a, "UTF-8");
+        Log.i("decrypta",decryptString);
         return decryptString;
     }
+
+
+
 
 
 

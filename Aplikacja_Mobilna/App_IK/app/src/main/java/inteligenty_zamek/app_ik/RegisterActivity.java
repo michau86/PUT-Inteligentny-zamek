@@ -260,14 +260,19 @@ public class RegisterActivity extends Activity {
                         stringKey = Base64.encodeToString(pair.getPrivate().getEncoded(), Base64.DEFAULT);
                        //TODO szyforwanie klucza
 
-
+                        Log.i("aaaaaaaaaaregister",stringKey);
                       //  byte[] bytes = text.getBytes("UTF-8");
                       //  String text = new String(bytes, "UTF-8");
                         try{
+AESHelper as=new AESHelper();
+                           // String encryptedString = as.encrypt("kluuucz",stringKey);
+                           // String decryptedString = as.decrypt("kluuucz","Input Encrypted String");
 
+                        Log.i("aaaaaaaaaco ja zapisuje", as.encrypt(stringKey,"kluuucz"));
+                            Log.i("aaaaaa","po tym");
                         ((GlobalClassContainer) getApplication()).writeToFile(
-                                new String(  ((GlobalClassContainer) getApplication()).encryptMsg(stringKey, ((GlobalClassContainer) getApplication()).generateKey()), "UTF-8"  )
-                        , RegisterActivity.this,"*"+user.getLogin());
+                                as.encrypt(stringKey,"kluuucz")
+                                , RegisterActivity.this,"*"+user.getLogin());
                         }catch (Exception e){}
                         ((GlobalClassContainer) getApplication()).setPrivatekye(pair.getPrivate());
                         final Toast toast =Toast.makeText(RegisterActivity.this, "nastapiła poprawna rejestracja", Toast.LENGTH_LONG);

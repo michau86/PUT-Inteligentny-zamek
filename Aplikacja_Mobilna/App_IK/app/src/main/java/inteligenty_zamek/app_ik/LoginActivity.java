@@ -108,16 +108,23 @@ public class LoginActivity extends Activity{
                     jObj = new JSONObject(response);
 
                 if (jObj.getString("status").equals("ok") || jObj.getString("status").equals("root")) {
+
                     ((GlobalClassContainer) getApplication()).setSession(jObj.getString("token"));
                     String sessionencrypt=((GlobalClassContainer) getApplication()).decryption(jObj.getString("token"));
                     ((GlobalClassContainer) getApplication()).writeToFile(sessionencrypt,LoginActivity.this,"session");
-                    String privatekeystring=((GlobalClassContainer) getApplication()).readFromFile(LoginActivity.this,"*"+((GlobalClassContainer) getApplication()).getUser().getLogin());
-                    String privatekeystringDecrytp="";
+                    String privatekeystring= ((GlobalClassContainer) getApplication()).readFromFile(LoginActivity.this,"*"+((GlobalClassContainer) getApplication()).getUser().getLogin());
+                    String privatekeystringDecrytp="x";
+                    Log.i("aaaaaaaa","weszlo1");
                     try {
-                      privatekeystringDecrytp = ((GlobalClassContainer) getApplication()).decryptMsg(privatekeystring.getBytes("UTF-8"), ((GlobalClassContainer) getApplication()).generateKey());
-                   }catch(Exception e){}
-                       //deszyfrowanie i podanie w stringu
 
+                        AESHelper as=new AESHelper();
+                        // String encryptedString = as.encrypt("kluuucz",stringKey);
+                        // String decryptedString = as.decrypt("kluuucz","Input Encrypted String");
+                      privatekeystringDecrytp = as.decrypt(privatekeystring,"kluuucz");
+                    }catch(Exception e){}
+
+                    Log.i("aaaaaaaaaaencry",privatekeystringDecrytp);
+                    Log.i("aaaaaaaadecryp",privatekeystring);
                     byte[] encodedKey     = Base64.decode(privatekeystringDecrytp , Base64.DEFAULT);
                     PrivateKey priv=null;
                     try {
@@ -161,7 +168,6 @@ public class LoginActivity extends Activity{
                                 }.start();
                             }
                         });
-
                     }
                     else {
                         TextView textView = (TextView) findViewById(R.id.warning_icologin);
