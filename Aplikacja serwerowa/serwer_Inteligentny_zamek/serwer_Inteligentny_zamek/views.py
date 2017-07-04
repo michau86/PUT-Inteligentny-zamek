@@ -10,7 +10,7 @@ import datetime as dt
 from datetime import date
 
 username = "root"
-userpassword = "1234"
+userpassword = "inteligentnyzamek"
 databasename = "inteligentny_zamek_db"
 databaseaddres = "127.0.0.1"
 
@@ -516,7 +516,7 @@ def api_change_password(request):
     if request.method == 'POST':
         login = request.POST.get('login')
         token = request.POST.get('token')
-        passwd = request.POST.get('newpasswd')
+        passwd = request.POST.get('passwd')
         newpasswd = request.POST.get('newpasswd')
         try:
             cursor = db.cursor()
@@ -525,6 +525,7 @@ def api_change_password(request):
             for row in token_from_DB:
                 token_db = row[0]
                 passwd_db = row[1]
+
             if (token_db == token) and passwd_db == passwd:
                 cursor = db.cursor()
                 cursor.execute(
