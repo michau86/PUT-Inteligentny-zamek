@@ -18,7 +18,5 @@ public class GenerationCertyfikatForGuestActivity extends BaseActivity {
         navMenuIcons =getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles,navMenuIcons);
 
-
-
     }
 }

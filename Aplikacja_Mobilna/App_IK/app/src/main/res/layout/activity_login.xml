@@ -119,11 +119,11 @@
         android:id="@+id/warning_icologin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/EditText_login"
-        android:layout_alignEnd="@+id/textView40"
-        android:layout_marginEnd="17dp"
+        android:layout_marginEnd="19dp"
         android:text="&#xf071;"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_above="@+id/EditText_login"
+        android:layout_toStartOf="@+id/errorlogin" />
 
     <TextView
         android:id="@+id/errorlogin"

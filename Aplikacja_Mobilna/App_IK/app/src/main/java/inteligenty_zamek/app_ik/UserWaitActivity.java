@@ -22,14 +22,9 @@ public class UserWaitActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_wait);
-
-
         navMenuTitles= getResources().getStringArray(R.array.nav_drawer_items);
         navMenuIcons =getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles,navMenuIcons);
-
-
-
         ListView resultsListView = (ListView) this.findViewById(R.id.listView_user_wait_Keys);
         //hasmap przechowujący elemety do wyświetlenia
         HashMap<String, String> Keys = new HashMap<>();

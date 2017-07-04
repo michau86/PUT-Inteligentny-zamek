@@ -10,7 +10,7 @@ import datetime as dt
 from datetime import date
 
 username = "root"
-userpassword = "inteligentnyzamek"
+userpassword = "1234"
 databasename = "inteligentny_zamek_db"
 databaseaddres = "127.0.0.1"
 
