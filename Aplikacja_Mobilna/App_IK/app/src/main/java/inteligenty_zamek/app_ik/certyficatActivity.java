@@ -92,10 +92,7 @@ public class certyficatActivity extends BaseActivity {
 
 
                 if (((GlobalClassContainer) getApplication()).getIsadmin()>=0) {
-                    Log.i("aaaa",cert.getIdKey());
-                    Log.i("aaaa",((GlobalClassContainer) getApplication()).getSession());
-                    Log.i("aaaa",user.getLogin());
-                   new HTTPRequest(user.getLogin(), ((GlobalClassContainer) getApplication()).getSession(), cert.getIdKey()).execute();
+                     new HTTPRequest(user.getLogin(), ((GlobalClassContainer) getApplication()).getSession(), cert.getIdKey()).execute();
                 }
                 else
                 {

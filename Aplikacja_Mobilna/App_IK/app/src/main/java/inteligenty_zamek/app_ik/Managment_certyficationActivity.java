@@ -125,7 +125,6 @@ public class Managment_certyficationActivity extends BaseActivity
                         .setAction(Intent.ACTION_GET_CONTENT);
 
                 startActivityForResult(Intent.createChooser(intent, "Select a file"), 123);
-
             }
         });
 
