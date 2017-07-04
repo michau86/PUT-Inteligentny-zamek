@@ -55,7 +55,7 @@ public class certyficatActivity extends BaseActivity {
          value = ""; // nazwa certyfikatu
         if(b != null)
         {value = b.getString("name");}
-
+        Log.i("aaa",value);
         //wyszukanie certyfikatu po nazwie
         int index=((GlobalClassContainer) getApplication()).searchcertyficat(value);
         //jezeli znalazl to ustawia wartosci:

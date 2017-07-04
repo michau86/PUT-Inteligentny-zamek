@@ -163,7 +163,7 @@ public class MainActivity extends BaseActivity {
        Keys = new LinkedHashMap<>();
         try {
             for (int i = 0; i < ((GlobalClassContainer) getApplication()).getUser().getCertyficateList().length; i++) {
-                Keys.put(((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockName(), ((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockLocalization());
+                Keys.put(((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockLocalization(),((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockName());
             }
         }catch (Exception e) {
 
@@ -179,7 +179,7 @@ public class MainActivity extends BaseActivity {
 
         //iterator elementow (przepisanie z hashmap do adaptera[listitems] elementow)
         for (Object o : Keys.entrySet()) {
-            HashMap<String, String> resultsMap = new HashMap<>();
+            LinkedHashMap<String, String> resultsMap = new LinkedHashMap<>();
             Map.Entry pair = (Map.Entry) o;
             resultsMap.put("First Line", pair.getKey().toString());
             resultsMap.put("Second Line", pair.getValue().toString());
@@ -192,6 +192,7 @@ public class MainActivity extends BaseActivity {
 
                 //ustalenie id certyfikatu z listy certyfikatow
                 String keyname= Keys.values().toArray()[position].toString();
+                Log.i("aaa",keyname);
                 int index=((GlobalClassContainer) getApplication()).searchcertyficat(keyname);
 
 
@@ -203,7 +204,13 @@ public class MainActivity extends BaseActivity {
                 User us=((GlobalClassContainer) getApplication()).getUser();
 
                 String signature="";
-                try {
+                Log.i("aaaa",us.getCertyficateList()[index].getLok_key());
+                Log.i("aaaa",us.getCertyficateList()[index].getIdKey());
+                Log.i("aaaa",us.getLogin());
+                Log.i("aaaa",((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[index].getMac_addres());
+
+
+                  try {
                      signature = sign(us.getCertyficateList()[index].getLok_key(), ((GlobalClassContainer) getApplication()).getPrivatekye());
                 }catch(Exception e){}
                 String tosend=us.getCertyficateList()[index].getIdKey()+";"+us.getLogin()+";"+signature;

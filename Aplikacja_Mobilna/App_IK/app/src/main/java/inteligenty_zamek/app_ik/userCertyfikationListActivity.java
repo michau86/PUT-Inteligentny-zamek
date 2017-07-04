@@ -94,7 +94,7 @@ public class userCertyfikationListActivity extends BaseActivity {
 
 
 
-                b.putString("name", Keys.values().toArray()[position].toString()); //Your id
+                b.putString("name", Keys.values().toArray()[position].toString());
                 myIntent.putExtras(b);
 
                 startActivityForResult(myIntent, 0);
