@@ -43,6 +43,8 @@ public class userCertyfikationListActivity extends BaseActivity {
     LinkedHashMap<String, String> Keys;
     CharSequence csk="";
     boolean flag=true;
+    LinkedHashMap<String, String> resultsMap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +80,8 @@ public class userCertyfikationListActivity extends BaseActivity {
         Iterator it = Keys.entrySet().iterator();
         while (it.hasNext())
         {
-            LinkedHashMap<String, String> resultsMap = new LinkedHashMap<>();
+            Log.i("aaaaaaa","tutaj1");
+            resultsMap = new LinkedHashMap<>();
             Map.Entry pair = (Map.Entry)it.next();
             resultsMap.put("First Line", pair.getKey().toString());
             resultsMap.put("Second Line", pair.getValue().toString());
@@ -94,7 +97,7 @@ public class userCertyfikationListActivity extends BaseActivity {
 
 
 
-                b.putString("name", Keys.values().toArray()[position].toString());
+                b.putString("name", listItems.get(position).values().toArray()[1].toString());
                 myIntent.putExtras(b);
 
                 startActivityForResult(myIntent, 0);
@@ -108,7 +111,7 @@ public class userCertyfikationListActivity extends BaseActivity {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 csk=cs;
-                HashMap<String, String> Keys = new HashMap<>();
+                Keys = new LinkedHashMap<>();
                 listItems = new ArrayList<>();
                 adapter = new SimpleAdapter(userCertyfikationListActivity.this, listItems, R.layout.main_key_list,
                         new String[]{"First Line", "Second Line"},
@@ -121,7 +124,8 @@ public class userCertyfikationListActivity extends BaseActivity {
                 Iterator it = Keys.entrySet().iterator();
                 while (it.hasNext())
                 {
-                    HashMap<String, String> resultsMap = new HashMap<>();
+                    Log.i("aaaaaaa","tutaj2");
+                     resultsMap = new LinkedHashMap<>();
                     Map.Entry pair = (Map.Entry)it.next();
                     if(
                             pair.getKey().toString().toLowerCase().contains(cs.toString().toLowerCase())
@@ -174,7 +178,7 @@ public class userCertyfikationListActivity extends BaseActivity {
                     flag=false;
                 }
 
-                LinkedHashMap<String, String> Keys =new LinkedHashMap<>();
+                 Keys =new LinkedHashMap<>();
                 listItems = new ArrayList<>();
                 adapter = new SimpleAdapter(userCertyfikationListActivity.this, listItems, R.layout.main_key_list,
                         new String[]{"First Line", "Second Line"},
@@ -188,7 +192,8 @@ public class userCertyfikationListActivity extends BaseActivity {
 
                 while (it.hasNext())
                 {
-                    HashMap<String, String> resultsMap = new HashMap<>();
+                    Log.i("aaaaaaa","tutaj3");
+                    resultsMap = new LinkedHashMap<>();
                     Map.Entry pair = (Map.Entry)it.next();
                     if(
                             pair.getKey().toString().toLowerCase().contains(csk.toString().toLowerCase())

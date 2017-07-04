@@ -44,6 +44,7 @@ public class MainActivity extends BaseActivity {
     SimpleAdapter adapter;
     ListView resultsListView;
     LinkedHashMap<String, String> Keys;
+    LinkedHashMap<String, String> resultsMap;
     boolean flag=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class MainActivity extends BaseActivity {
                     flag=false;
                 }
 
-                LinkedHashMap<String, String> Keys =new LinkedHashMap<>();
+                Keys =new LinkedHashMap<>();
                 listItems = new ArrayList<>();
                 adapter = new SimpleAdapter(MainActivity.this, listItems, R.layout.main_key_list,
                         new String[]{"First Line", "Second Line"},
@@ -89,7 +90,7 @@ public class MainActivity extends BaseActivity {
 
                 while (it.hasNext())
                 {
-                    HashMap<String, String> resultsMap = new HashMap<>();
+                    resultsMap = new LinkedHashMap<>();
                     Map.Entry pair = (Map.Entry)it.next();
                     if(
                             pair.getKey().toString().toLowerCase().contains(csk.toString().toLowerCase())
@@ -125,7 +126,7 @@ public class MainActivity extends BaseActivity {
                 Iterator it = Keys.entrySet().iterator();
                 while (it.hasNext())
                 {
-                    HashMap<String, String> resultsMap = new HashMap<>();
+                    resultsMap= new LinkedHashMap<>();
                     Map.Entry pair = (Map.Entry)it.next();
                     if(
                             pair.getKey().toString().toLowerCase().contains(cs.toString().toLowerCase())
@@ -158,7 +159,6 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-
         //hasmap przechowujący elemety do wyświetlenia
        Keys = new LinkedHashMap<>();
         try {
@@ -179,7 +179,7 @@ public class MainActivity extends BaseActivity {
 
         //iterator elementow (przepisanie z hashmap do adaptera[listitems] elementow)
         for (Object o : Keys.entrySet()) {
-            LinkedHashMap<String, String> resultsMap = new LinkedHashMap<>();
+             resultsMap = new LinkedHashMap<>();
             Map.Entry pair = (Map.Entry) o;
             resultsMap.put("First Line", pair.getKey().toString());
             resultsMap.put("Second Line", pair.getValue().toString());
@@ -191,8 +191,8 @@ public class MainActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 //ustalenie id certyfikatu z listy certyfikatow
-                String keyname= Keys.values().toArray()[position].toString();
-                Log.i("aaa",keyname);
+                String keyname= listItems.get(position).values().toArray()[1].toString();
+                Log.i("aaaaa",keyname);
                 int index=((GlobalClassContainer) getApplication()).searchcertyficat(keyname);
 
 

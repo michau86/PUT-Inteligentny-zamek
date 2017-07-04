@@ -5,7 +5,9 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.LoginFilter;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,21 +67,32 @@ public class LoginActivity extends Activity{
 
                  return responseString;
             } catch (ClientProtocolException e) {
-                final Toast toast =Toast.makeText(LoginActivity.this, "wystapił problem podczas połącenia z serwerem", Toast.LENGTH_LONG);
-                toast.show();
-                new CountDownTimer(toastDelay, 1000)
-                {
-                    public void onTick(long millisUntilFinished) {toast.show();}
-                    public void onFinish() {toast.show();}
-                }.start();
+                Log.i("heloo","there1");
+                LoginActivity.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        final Toast toast =Toast.makeText(LoginActivity.this, "wystapił problem podczas połącenia z serwerem", Toast.LENGTH_LONG);
+                        toast.show();
+                        new CountDownTimer(toastDelay, 1000)
+                        {
+                            public void onTick(long millisUntilFinished) {toast.show();}
+                            public void onFinish() {toast.show();}
+                        }.start();
+                    }
+                });
+
             } catch (IOException e) {
-                final Toast toast =Toast.makeText(LoginActivity.this, "wystapił problem podczas połącenia z serwerem", Toast.LENGTH_LONG);
-                toast.show();
-                new CountDownTimer(toastDelay, 1000)
-                {
-                    public void onTick(long millisUntilFinished) {toast.show();}
-                    public void onFinish() {toast.show();}
-                }.start();
+                Log.i("heloo","there");
+                LoginActivity.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        final Toast toast =Toast.makeText(LoginActivity.this, "wystapił problem podczas połącenia z serwerem", Toast.LENGTH_LONG);
+                        toast.show();
+                        new CountDownTimer(toastDelay, 1000)
+                        {
+                            public void onTick(long millisUntilFinished) {toast.show();}
+                            public void onFinish() {toast.show();}
+                        }.start();
+                    }
+                });
             }
             return null;
         }
@@ -91,7 +104,8 @@ public class LoginActivity extends Activity{
             JSONObject jObj = null;
 
             try {
-                jObj = new JSONObject(response);
+                if(response!=null) {
+                    jObj = new JSONObject(response);
 
                 if (jObj.getString("status").equals("ok") || jObj.getString("status").equals("root")) {
                     ((GlobalClassContainer) getApplication()).setSession(jObj.getString("token"));
@@ -135,13 +149,19 @@ public class LoginActivity extends Activity{
                 {
                     if(jObj.getString("status").equals("not activated"))
                     {
-                        final Toast toast =Toast.makeText(LoginActivity.this, "konto musi zostac aktywowane przez administratora", Toast.LENGTH_LONG);
-                        toast.show();
-                        new CountDownTimer(toastDelay, 1000)
-                        {
-                            public void onTick(long millisUntilFinished) {toast.show();}
-                            public void onFinish() {toast.show();}
-                        }.start();
+
+                        LoginActivity.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                final Toast toast =Toast.makeText(LoginActivity.this, "konto musi zostac aktywowane przez administratora", Toast.LENGTH_LONG);
+                                toast.show();
+                                new CountDownTimer(toastDelay, 1000)
+                                {
+                                    public void onTick(long millisUntilFinished) {toast.show();}
+                                    public void onFinish() {toast.show();}
+                                }.start();
+                            }
+                        });
+
                     }
                     else {
                         TextView textView = (TextView) findViewById(R.id.warning_icologin);
@@ -150,7 +170,20 @@ public class LoginActivity extends Activity{
                         textView2.setVisibility(View.VISIBLE);
                     }
                 }
+                }
             } catch (JSONException e) {
+                Log.i("heloo","there3");
+                LoginActivity.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        final Toast toast =Toast.makeText(LoginActivity.this, "wystapił problem podczas połącenia z serwerem", Toast.LENGTH_LONG);
+                        toast.show();
+                        new CountDownTimer(toastDelay, 1000)
+                        {
+                            public void onTick(long millisUntilFinished) {toast.show();}
+                            public void onFinish() {toast.show();}
+                        }.start();
+                    }
+                });
             }
         }
     }
