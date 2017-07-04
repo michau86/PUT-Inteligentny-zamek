@@ -20,9 +20,9 @@ url_access_decision = server_address + 'api/RPI/access_decision/'
 def Check_access(certificate):
     if certificate.isactual is None:
         if datetime.strptime(certificate.date_from, '%Y-%m-%dT%H:%M:%S') < datetime.now() < datetime.strptime(certificate.date_to, '%Y-%m-%dT%H:%M:%S'):
-			if certificate.ispernament == 1:
-				return True
-			else:
+	    if certificate.ispernament == 1:
+		return True
+	    else:
                 try:
                     day_access = certificate.access_table[date.today().weekday()].split(";")
                 except Exception:

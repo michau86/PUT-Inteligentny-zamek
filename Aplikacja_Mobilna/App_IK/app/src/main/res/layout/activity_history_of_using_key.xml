@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:paddingLeft="20dp"
-                android:text="Historia użyca zamków"
+                android:text="Historia użycia zamków"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 

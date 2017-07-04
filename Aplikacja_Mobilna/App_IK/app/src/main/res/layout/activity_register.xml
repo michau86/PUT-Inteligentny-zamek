@@ -208,10 +208,10 @@
         android:id="@+id/textView36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="adres serwera"
-        android:layout_marginTop="14dp"
+        android:layout_alignEnd="@+id/textView9"
         android:layout_below="@+id/editTextSurname"
-        android:layout_alignEnd="@+id/textView9" />
+        android:layout_marginTop="14dp"
+        android:text="adres serwera" />
 
     <TextView
         android:id="@+id/textView9"
