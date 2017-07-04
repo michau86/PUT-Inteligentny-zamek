@@ -149,6 +149,15 @@ public class GlobalClassContainer extends Application {
 
     }
 
+    public int searchcertyficat(String name)
+    {
+        for(int i=0; i<user.getCertyficateList().length; i++ )
+        {
+            if(user.getCertyficateList()[i].getLockName().equals(name))
+            {return i;}
+        }
+        return -1;
+    }
     //funkcje odpowiedzialne za szyfrowanie i deszyforwanie symetryczne
     // TODO wpisac jakis konkretny klucz
     public static SecretKey generateKey()

@@ -114,7 +114,6 @@ public class Managment_certyficationActivity extends BaseActivity
             }
         });
 
-
         //akcja dotyczaca kliknieca na ikonke sciagnij z pliku
         textView= (TextView) findViewById(R.id.TextView_download_file);
         textView.setOnClickListener(new View.OnClickListener() {
@@ -127,13 +126,8 @@ public class Managment_certyficationActivity extends BaseActivity
 
                 startActivityForResult(Intent.createChooser(intent, "Select a file"), 123);
 
-
-
             }
         });
-
-
-
 
     }
         //przeciazenie funkcji odpwoeidzialnrj za obrobke wskazanego pliku
@@ -141,32 +135,21 @@ public class Managment_certyficationActivity extends BaseActivity
            @Override
            protected void onActivityResult(int requestCode, int resultCode, Intent data ) {
                super.onActivityResult(requestCode, resultCode, data);
+               JSONArray arrJson=null;
                if(requestCode==123 && resultCode==RESULT_OK) {
                    Uri selectedfile = data.getData();
-                   JSONArray arrJson=null;
+                    arrJson =null;
                     try {
                         JSONObject jObj = new JSONObject(((GlobalClassContainer) getApplication()).readFromFile(this, selectedfile.toString()));
                         String readcertyficat=((GlobalClassContainer) getApplication()).readFromFile(this,((GlobalClassContainer) getApplication()).getUser().getLogin());
-                        JSONObject jObj2 = new JSONObject(readcertyficat);
+                        arrJson = new JSONArray(readcertyficat);
+                        arrJson.put(jObj);
 
-                        JSONObject merged = new JSONObject();
-                        JSONObject[] objs = new JSONObject[] { jObj, jObj2 };
-                        for (JSONObject obj : objs) {
-                            Iterator it = obj.keys();
-                            while (it.hasNext()) {
-                                String key = (String)it.next();
-                                merged.put(key, obj.get(key));
-                            }
-                        }
-
-                       arrJson = merged.getJSONArray("data");
                     }catch(Exception e) {}
-                //TODO zrobienie zapisywania do pliku, przetestowanie
-                 //  ((GlobalClassContainer) getApplication()).writeToFile(response,Managment_certyficationActivity.this,((GlobalClassContainer) getApplication()).getUser().getLogin());
-                   ((GlobalClassContainer) getApplication()).getUser().addCertyficatList(arrJson);
-
+                //TODO  przetestowanie
+                        User user = ((GlobalClassContainer) getApplication()).getUser();
                    //zapisanie pliku
-                   ((GlobalClassContainer) getApplication()).writeToFile("tresc",Managment_certyficationActivity.this,"guest");
+                   ((GlobalClassContainer) getApplication()).writeToFile(arrJson.toString(),Managment_certyficationActivity.this,user.getLogin());
                }
            }
 
@@ -213,7 +196,7 @@ public class Managment_certyficationActivity extends BaseActivity
                    try {
                        jObj = new JSONObject(response);
                        JSONArray arrJson = jObj.getJSONArray("data");
-                       ((GlobalClassContainer) getApplication()).writeToFile(response,Managment_certyficationActivity.this,((GlobalClassContainer) getApplication()).getUser().getLogin());
+                       ((GlobalClassContainer) getApplication()).writeToFile(arrJson.toString(),Managment_certyficationActivity.this,((GlobalClassContainer) getApplication()).getUser().getLogin());
                        ((GlobalClassContainer) getApplication()).getUser().addCertyficatList(arrJson);
 
                        final Toast toast =Toast.makeText(Managment_certyficationActivity.this, "dodano certyfikaty", Toast.LENGTH_LONG);

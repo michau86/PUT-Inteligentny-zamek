@@ -59,7 +59,7 @@ public class userCertyfikationListActivity extends BaseActivity {
         Keys= new LinkedHashMap<>();
         try {
             for (int i = 0; i < ((GlobalClassContainer) getApplication()).getUser().getCertyficateList().length; i++) {
-                Keys.put(((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockName(), ((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockLocalization());
+                Keys.put( ((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockLocalization(),((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockName());
             }
         }catch (Exception e) {
 
@@ -70,7 +70,7 @@ public class userCertyfikationListActivity extends BaseActivity {
         listItems = new ArrayList<>();
         adapter = new SimpleAdapter(this, listItems, R.layout.main_key_list,
                 new String[]{"First Line", "Second Line"},
-                new int[]{R.id.TextView_listNameKey, R.id.TextView_listPlaceKey});
+                new int[]{R.id.TextView_listPlaceKey, R.id.TextView_listNameKey});
 
 
 
@@ -78,7 +78,7 @@ public class userCertyfikationListActivity extends BaseActivity {
         Iterator it = Keys.entrySet().iterator();
         while (it.hasNext())
         {
-            HashMap<String, String> resultsMap = new HashMap<>();
+            LinkedHashMap<String, String> resultsMap = new LinkedHashMap<>();
             Map.Entry pair = (Map.Entry)it.next();
             resultsMap.put("First Line", pair.getKey().toString());
             resultsMap.put("Second Line", pair.getValue().toString());
@@ -89,6 +89,14 @@ public class userCertyfikationListActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent myIntent = new Intent(view.getContext(), certyficatActivity.class);
+
+                Bundle b = new Bundle();
+
+
+
+                b.putString("name", Keys.values().toArray()[position].toString()); //Your id
+                myIntent.putExtras(b);
+
                 startActivityForResult(myIntent, 0);
 
             }
@@ -104,10 +112,10 @@ public class userCertyfikationListActivity extends BaseActivity {
                 listItems = new ArrayList<>();
                 adapter = new SimpleAdapter(userCertyfikationListActivity.this, listItems, R.layout.main_key_list,
                         new String[]{"First Line", "Second Line"},
-                        new int[]{R.id.TextView_listNameKey, R.id.TextView_listPlaceKey});
+                        new int[]{R.id.TextView_listPlaceKey, R.id.TextView_listNameKey});
                 try {
                     for (int i = 0; i < ((GlobalClassContainer) getApplication()).getUser().getCertyficateList().length; i++) {
-                        Keys.put(((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockName(), ((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockLocalization());
+                        Keys.put(((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockLocalization(),((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockName() );
                     }
                 }catch (Exception e) {}
                 Iterator it = Keys.entrySet().iterator();
@@ -150,6 +158,7 @@ public class userCertyfikationListActivity extends BaseActivity {
         //przycisk dopowiedzialny za sortowanie
         TextView  textView= (TextView) findViewById(R.id.TextView_sortingIco);
         textView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View viewIn) {
 
@@ -169,11 +178,10 @@ public class userCertyfikationListActivity extends BaseActivity {
                 listItems = new ArrayList<>();
                 adapter = new SimpleAdapter(userCertyfikationListActivity.this, listItems, R.layout.main_key_list,
                         new String[]{"First Line", "Second Line"},
-                        new int[]{R.id.TextView_listNameKey, R.id.TextView_listPlaceKey});
+                        new int[]{R.id.TextView_listPlaceKey, R.id.TextView_listNameKey});
                 try {
                     for (int i = 0; i < ((GlobalClassContainer) getApplication()).getUser().getCertyficateList().length; i++) {
-                        Keys.put(((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockName(), ((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockLocalization());
-
+                        Keys.put(((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockLocalization(),((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLockName() );
                     }
                 }catch (Exception e) {}
                 Iterator it = Keys.entrySet().iterator();

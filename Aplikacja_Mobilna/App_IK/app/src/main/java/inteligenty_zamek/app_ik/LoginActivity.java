@@ -115,8 +115,8 @@ public class LoginActivity extends Activity{
                         JSONObject  json= null;
                         try {
                             String readfromcertyficat=((GlobalClassContainer) getApplication()).readFromFile(LoginActivity.this, user.getLogin());
-                            json = new JSONObject(readfromcertyficat);
-                            JSONArray arrJson = json.getJSONArray("data");
+
+                            JSONArray arrJson = new JSONArray(readfromcertyficat);
                             ((GlobalClassContainer) getApplication()).getUser().addCertyficatList(arrJson);
                         } catch (Exception e) {}
 
