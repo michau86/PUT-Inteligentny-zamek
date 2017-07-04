@@ -73,7 +73,7 @@ public class SetingsActivity extends BaseActivity  {
                         new HTTPRequest(us.getLogin(), ((GlobalClassContainer) getApplication()).getSession(), passwd_hash, new_passwd_hash).execute();
                     }
                     else{
-                        if(!passwd.getText().toString().equals("")) {
+                        if(!isValidPassword(passwd.getText().toString())) {
                             Tooltip tooltip = new Tooltip.Builder(passwd)
                                     .setText("hasło musi spełniać warunki:\n-długość minimum 8 znaków\n-posiadać duzy znak\n-posiadać znak specjalny (!@#$%^)\nposiadać cyfrę\n ")
                                     .setTextColor(Color.WHITE)
