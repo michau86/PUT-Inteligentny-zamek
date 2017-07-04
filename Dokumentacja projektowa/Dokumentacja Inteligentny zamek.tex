@@ -960,6 +960,14 @@
 \chapter{Implementacja}
 	Postêpy prac oraz kod Ÿród³owy znajduje siê w repozytorium GitHub pod adresem: 
 	
-	\centering\huge\textcolor{blue}{\href{https://github.com/wapet1995/PUT-Inteligentny-zamek}{Inteligentny Zamek}}
+	{\centering\huge\textcolor{blue}{\href{https://github.com/wapet1995/PUT-Inteligentny-zamek}{Inteligentny Zamek}}}
 	
+\chapter{Podsumowanie projektu}
+	Projekt nie zosta³ w pe³ni zrealizowany wed³ug zak³adanej dokumentacji. Du¿ym problemem okaza³o siê generowanie certyfikatu dla goœci. Tworz¹c dostêp trudno by³o utworzyæ parê kluczy prywatny --- publiczny, tak aby ka¿dy u¿ytkownik mia³ inny, a przy tym nie narusza³ bezpieczeñstwa kluczy twórcy dostêpu. Zosta³ zastosowany w takim wypadku uniwersalny klucz dla goœci, to znaczy ka¿dy z nich ma taki sam klucz. Jest to zagro¿enie dla systemu o tyle, ¿e nie jest w stanie potwierdziæ kto faktycznie wys³a³ dany certyfikat.
+	
+	Nie zosta³a zrealizowana funkcja zwi¹zana z kluczem awaryjnym nale¿¹cym do administratora ze wzglêdu na wymagane przy tym zmiany w innych elementach systemu. Nie zosta³o to w pe³ni przemyœlane na odpowiednim etapie projektowania.
+	
+	Ze wzglêdów ekonomicznych nie zastosowano w projekcie alternatywnego zasilania UPS, lecz nie jest to czynnoœæ wymagaj¹c¹ szczególnej uwagi podczas realizacji zadania projektowego.
+	
+	Podsumowuj¹c ca³oœciowo projekt, system dzia³a prawid³owo, lecz nie posiada pe³nej funkcjonalnoœci zak³adaj na pocz¹tku. Podczas tworzenia projektu nauczyliœmy siê przede wszystkim dokumentowaæ system. Jest to bardzo przydatna umiejêtnoœæ, pozwalaj¹ca wykryæ b³êdy zanim przyst¹pi siê do implementacji. Dziêki pracy nad zadaniem wzmocniliœmy umiejêtnoœci zwi¹zane z prac¹ zespo³ow¹, mimo ¿e zespó³ sk³ada³ siê tylko z dwóch osób, jak równie¿ mogliœmy poszerzyæ znajomoœæ na temat pracy ze sprzêtem (tu Raspberry Pi), programowania aplikacji mobilnych oraz tworzenia systemów serwerowych.
 \end{document}

@@ -10,7 +10,7 @@ import datetime as dt
 from datetime import date
 
 username = "root"
-userpassword = "1234"
+userpassword = "inteligentnyzamek"
 databasename = "inteligentny_zamek_db"
 databaseaddres = "127.0.0.1"
 
@@ -36,9 +36,7 @@ def api_login(request):
             cursor.execute("SELECT PASSWORD, IS_ADMIN, ISACTIVATED FROM USERS WHERE login='%s'" % username)
             data = cursor.fetchone()
             if data[2] == 0:
-                print "active"
                 if data[0] == password:
-                    print "passwd"
                     cursor.execute("UPDATE USERS SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
                     db.commit()
                     if data[1] == 1:
@@ -123,7 +121,7 @@ def api_download_all_certificate(request):
             if (token_from_DB == token):
 
                 cursor.execute(
-                    "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s')" % login)
+                    "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s') and (NOW() BETWEEN FROM_DATE AND TO_DATE) and ISACTUAL is NULL" % login)
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                         in cursor.fetchall()]
                 if len(dict_all_certificate) == 0:
