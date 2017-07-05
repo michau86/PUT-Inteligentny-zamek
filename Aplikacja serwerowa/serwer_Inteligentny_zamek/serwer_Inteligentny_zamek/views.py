@@ -71,7 +71,7 @@ def api_register(request):
             return JsonResponse({"status": "ERROR LOGIN"})
         else:
             try:
-                record = [login, password, name, surname, '0', publickkey, '0']
+                record = [login, password, name, surname, '0', publickkey, '1']
                 cursor.execute(
                     'INSERT INTO USERS (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN,PUBLIC_KEY, ISACTIVATED) VALUES(%s,%s,%s,%s,%s,%s,%s)',
                     record)
