@@ -337,7 +337,7 @@ def api_admin_history(request):
             if (token_db == token) and admin == 1:
                 cursor = db.cursor()
                 cursor.execute(
-                    "SELECT `DATE`, `ACCESS`, locks_keys.NAME, locks_keys.SURNAME FROM `access_to_locks`, locks_keys WHERE locks_keys.ID_KEY = access_to_locks.ID_KEY")
+                    "SELECT DATE, ACCESS, locks_keys.NAME, locks_keys.SURNAME, locks.NAME as 'ZAMEK' FROM access_to_locks, locks_keys, locks WHERE locks_keys.ID_KEY = access_to_locks.ID_KEY and locks.ID_LOCK = access_to_locks.ID_KEY ORDER BY DATE DESC")
                 dict_history = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                 in cursor.fetchall()]
                 if len(dict_history) == 0:

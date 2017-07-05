@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
@@ -14,7 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <TextView
                 android:id="@+id/textView8"
@@ -128,7 +130,7 @@
 
                 <EditText
                     android:id="@+id/editText2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="154dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
@@ -139,23 +141,39 @@
 
                 <EditText
                     android:id="@+id/editText10"
-                    android:layout_width="wrap_content"
+                    android:layout_width="165dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:hint="do"
                     android:inputType="date"
-                    android:paddingLeft="10dp" />
+                    android:paddingLeft="10dp"
+                    android:singleLine="false" />
 
                 <Button
                     android:id="@+id/button7"
                     android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Button" />
+                    android:text="Filtruj" />
 
             </LinearLayout>
+
+            <ListView
+                android:id="@+id/ListView_History"
+                style="@android:style/Widget.DeviceDefault.ExpandableListView"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_weight="0.27"
+                android:background="@color/color_background_input"
+                android:fastScrollAlwaysVisible="false"
+                android:fastScrollEnabled="false"
+                android:footerDividersEnabled="false"
+                android:headerDividersEnabled="false"
+                android:scrollbars="none|horizontal|vertical"
+                android:smoothScrollbar="true"
+                tools:scrollbars="none|horizontal" />
 
             <View
                 android:id="@+id/view13"
@@ -164,12 +182,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="20dp"
                 android:background="@color/color_border_list" />
-
-            <ListView
-                android:id="@+id/ListView_History"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:background="@color/color_background_input" />
 
             <View
                 android:id="@+id/view14"
