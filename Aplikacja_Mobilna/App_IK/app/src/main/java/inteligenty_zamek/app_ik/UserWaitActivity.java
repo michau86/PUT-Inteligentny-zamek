@@ -39,7 +39,8 @@ public class UserWaitActivity extends BaseActivity {
     int toastDelay = 4000;
     JSONArray arrJson;
     List<LinkedHashMap<String, String>> listItems = new ArrayList<>();
-
+    SimpleAdapter adapter;
+     ListView resultsListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +98,7 @@ public class UserWaitActivity extends BaseActivity {
                 jObj = new JSONObject(response);
                 if (!jObj.getString("data").equals("empty")) {
                     arrJson = jObj.getJSONArray("data");
-                    final ListView resultsListView = (ListView) UserWaitActivity.this.findViewById(R.id.listView_user_wait_Keys);
+                  resultsListView  = (ListView) UserWaitActivity.this.findViewById(R.id.listView_user_wait_Keys);
                     //hasmap przechowujący elemety do wyświetlenia
                     LinkedHashMap<String, String> Keys = new LinkedHashMap<>();
                     for (int i = 0; i < arrJson.length(); i++) {
@@ -107,7 +108,7 @@ public class UserWaitActivity extends BaseActivity {
                         }
                     }
                     //stworzenie adaptera
-                    SimpleAdapter adapter = new SimpleAdapter(UserWaitActivity.this, listItems, R.layout.user_wait_key_list,
+                   adapter  = new SimpleAdapter(UserWaitActivity.this, listItems, R.layout.user_wait_key_list,
                             new String[]{"First Line", "Second Line"},
                             new int[]{R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey}) {
                         public View getView(final int position, View convertView, ViewGroup parent) {
@@ -123,6 +124,7 @@ public class UserWaitActivity extends BaseActivity {
                                             User user = ((GlobalClassContainer) getApplication()).getUser();
                                             new UserWaitActivity.HTTPRequestDecision(user, listItems.get(position).values().toArray()[0].toString(), "1").execute();
                                             listItems.remove(position);
+                                            resultsListView.setAdapter(adapter);
                                         }
                                     } catch (Exception except) {
                                     }
@@ -139,6 +141,7 @@ public class UserWaitActivity extends BaseActivity {
                                             User user = ((GlobalClassContainer) getApplication()).getUser();
                                             new UserWaitActivity.HTTPRequestDecision(user, listItems.get(position).values().toArray()[0].toString(), "0").execute();
                                             listItems.remove(position);
+                                            resultsListView.setAdapter(adapter);
                                         }
                                     } catch (Exception except) {
                                     }
