@@ -70,11 +70,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/editText2"
-                    android:layout_width="154dp"
+                    android:layout_width="112dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
@@ -85,7 +85,7 @@
 
                 <EditText
                     android:id="@+id/editText10"
-                    android:layout_width="165dp"
+                    android:layout_width="109dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
@@ -97,7 +97,7 @@
 
                 <Button
                     android:id="@+id/button7"
-                    android:layout_width="260dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:text="Filtruj" />
@@ -165,8 +165,7 @@
                 android:id="@+id/ListView_History"
                 style="@android:style/Widget.DeviceDefault.ExpandableListView"
                 android:layout_width="match_parent"
-                android:layout_height="800dp"
-                android:layout_weight="0.27"
+                android:layout_height="match_parent"
                 android:background="@color/color_background_input"
                 android:fastScrollAlwaysVisible="false"
                 android:fastScrollEnabled="false"
