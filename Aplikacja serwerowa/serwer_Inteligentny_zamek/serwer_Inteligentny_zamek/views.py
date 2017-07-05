@@ -414,12 +414,11 @@ def api_admin_register_waiting(request):
             if (token_db == token) and admin == 1:
                 cursor.execute(
                     "SELECT users.LOGIN, users.NAME, users.SURNAME FROM users WHERE users.ISACTIVATED=1")
-                dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
-                                        in cursor.fetchall()]
+                dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]
                 if len(dict_all_certificate) > 0:
                     return JsonResponse({"data": dict_all_certificate})
                 else:
-                    return JsonResponse({"data": ""})
+                    return JsonResponse({"data": "empty"})
             else:
                 return JsonResponse({"status": "invalid"})
         except Exception:
@@ -442,14 +441,14 @@ def api_admin_register_decision(request):
                 admin = row[1]
             if (token_db == token) and admin == 1:
                 cursor = db.cursor()
-                cursor.execute("SELECT LOGIN FROM USERS WHERE login='%s' and ISACTIVED=1" % user_login)
+                cursor.execute("SELECT LOGIN FROM USERS WHERE login='%s' and ISACTIVATED=1" % user_login)
                 login_from_DB = cursor.fetchall()
                 if len(login_from_DB) > 0:
                     cursor = db.cursor()
-                    if decision == "True":
+                    if decision == "1":
                         cursor.execute(
                             "UPDATE USERS SET ISACTIVATED=0 WHERE LOGIN='%s' " % (user_login))
-                    elif decision == "False":
+                    elif decision == "0":
                         cursor.execute("DELETE FROM users WHERE LOGIN='%s'" % user_login)
                     else:
                         return JsonResponse({"status": "invalid"})
