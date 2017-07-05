@@ -68,6 +68,43 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="154dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="od"
+                    android:inputType="date"
+                    android:paddingLeft="10dp" />
+
+                <EditText
+                    android:id="@+id/editText10"
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="do"
+                    android:inputType="date"
+                    android:paddingLeft="10dp"
+                    android:singleLine="false" />
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Filtruj" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
@@ -123,48 +160,11 @@
                 android:elevation="0dp"
                 android:text="Wybierz zakres do wyświetlenia" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/editText2"
-                    android:layout_width="154dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:hint="od"
-                    android:inputType="date"
-                    android:paddingLeft="10dp" />
-
-                <EditText
-                    android:id="@+id/editText10"
-                    android:layout_width="165dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:hint="do"
-                    android:inputType="date"
-                    android:paddingLeft="10dp"
-                    android:singleLine="false" />
-
-                <Button
-                    android:id="@+id/button7"
-                    android:layout_width="260dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="Filtruj" />
-
-            </LinearLayout>
-
             <ListView
                 android:id="@+id/ListView_History"
                 style="@android:style/Widget.DeviceDefault.ExpandableListView"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="800dp"
                 android:layout_weight="0.27"
                 android:background="@color/color_background_input"
                 android:fastScrollAlwaysVisible="false"
@@ -173,7 +173,7 @@
                 android:headerDividersEnabled="false"
                 android:scrollbars="none|horizontal|vertical"
                 android:smoothScrollbar="true"
-                tools:scrollbars="none|horizontal" />
+                />
 
             <View
                 android:id="@+id/view13"

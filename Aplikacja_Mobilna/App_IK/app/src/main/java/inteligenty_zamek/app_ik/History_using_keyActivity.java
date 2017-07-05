@@ -76,7 +76,7 @@ public class History_using_keyActivity extends BaseActivity  {
                 new History_using_keyActivity.HTTPRequest(user).execute();
             }
         } catch (Exception except) {}
-        
+
        EditText inputSearch = (EditText) findViewById(R.id.editText_Search);
         inputSearch.addTextChangedListener(new TextWatcher() {
 
