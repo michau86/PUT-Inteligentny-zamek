@@ -4,8 +4,12 @@ import android.content.res.TypedArray;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -39,8 +43,12 @@ public class UserWaitActivity extends BaseActivity {
     int toastDelay = 4000;
     JSONArray arrJson;
     List<LinkedHashMap<String, String>> listItems = new ArrayList<>();
+    List<LinkedHashMap<String, String>> listItems2 = new ArrayList<>();
     SimpleAdapter adapter;
-     ListView resultsListView;
+    ListView resultsListView;
+    CharSequence csk;
+    LinkedHashMap<String, String> Keys;
+    LinkedHashMap<String, String> resultsMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +63,107 @@ public class UserWaitActivity extends BaseActivity {
                 new UserWaitActivity.HTTPRequest(user).execute();
             }
         } catch (Exception except) {}
+
+
+
+        EditText inputSearch = (EditText) findViewById(R.id.editText_Search);
+        inputSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                csk=cs;
+                Keys = new LinkedHashMap<>();
+                listItems2 = new ArrayList<>();
+                adapter  = new SimpleAdapter(UserWaitActivity.this, listItems2, R.layout.user_wait_key_list,
+                        new String[]{"First Line", "Second Line"},
+                        new int[]{R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey}){
+                    public View getView(final int position, View convertView, ViewGroup parent) {
+                        View itemView = super.getView(position, convertView, parent);
+                        //akceptuj
+                        View myTaskButton = itemView.findViewById(R.id.button6);
+                        myTaskButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //akcja do butonu akceptuj
+                                try {
+                                    if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0) {
+                                        User user = ((GlobalClassContainer) getApplication()).getUser();
+                                        new UserWaitActivity.HTTPRequestDecision(user, listItems2.get(position).values().toArray()[0].toString(), "1").execute();
+                                        listItems2.remove(position);
+                                        resultsListView.setAdapter(adapter);
+                                    }
+                                } catch (Exception except) {
+                                }
+                            }
+                        });
+                        //odrzuc
+                        View myTaskButton2 = itemView.findViewById(R.id.button5);
+                        myTaskButton2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //akcja do butonu odrzuc
+                                try {
+                                    if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0) {
+                                        User user = ((GlobalClassContainer) getApplication()).getUser();
+                                        new UserWaitActivity.HTTPRequestDecision(user, listItems2.get(position).values().toArray()[0].toString(), "0").execute();
+                                        listItems2.remove(position);
+                                        resultsListView.setAdapter(adapter);
+                                    }
+                                } catch (Exception except) {
+                                }
+                            }
+                        });
+                        return itemView;
+                    }
+                };
+                try {
+                    for (int i = 0; i < listItems.size(); i++) {
+                        Keys.put(listItems.get(i).values().toArray()[0].toString(), listItems.get(i).values().toArray()[1].toString());
+
+                    }
+                }catch (Exception e) {}
+                Iterator it = Keys.entrySet().iterator();
+                while (it.hasNext())
+                {
+                    resultsMap = new LinkedHashMap<>();
+                    Map.Entry pair = (Map.Entry)it.next();
+                    if(
+                            pair.getKey().toString().toLowerCase().contains(cs.toString().toLowerCase())
+                                    || pair.getValue().toString().toLowerCase().contains(cs.toString().toLowerCase())
+                            ) {
+
+                        resultsMap.put("First Line", pair.getKey().toString());
+                        resultsMap.put("Second Line", pair.getValue().toString());
+                        listItems2.add(resultsMap);
+                    }
+                    else if(cs.toString()=="")
+                    {
+
+
+                        resultsMap.put("First Line", pair.getKey().toString());
+                        resultsMap.put("Second Line", pair.getValue().toString());
+                        listItems2.add(resultsMap);
+                    }
+                }
+                resultsListView.setAdapter(adapter);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+                                          int arg3) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+
+
+
     }
 
     public class HTTPRequest extends AsyncTask<Void, Void, String> {
@@ -100,7 +209,7 @@ public class UserWaitActivity extends BaseActivity {
                     arrJson = jObj.getJSONArray("data");
                   resultsListView  = (ListView) UserWaitActivity.this.findViewById(R.id.listView_user_wait_Keys);
                     //hasmap przechowujący elemety do wyświetlenia
-                    LinkedHashMap<String, String> Keys = new LinkedHashMap<>();
+                   Keys = new LinkedHashMap<>();
                     for (int i = 0; i < arrJson.length(); i++) {
                         try {
                             Keys.put(arrJson.getJSONObject(i).getString("LOGIN"), arrJson.getJSONObject(i).getString("NAME") + " " + arrJson.getJSONObject(i).getString("SURNAME"));
@@ -108,7 +217,7 @@ public class UserWaitActivity extends BaseActivity {
                         }
                     }
                     //stworzenie adaptera
-                   adapter  = new SimpleAdapter(UserWaitActivity.this, listItems, R.layout.user_wait_key_list,
+                   adapter  = new SimpleAdapter(UserWaitActivity.this, listItems2, R.layout.user_wait_key_list,
                             new String[]{"First Line", "Second Line"},
                             new int[]{R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey}) {
                         public View getView(final int position, View convertView, ViewGroup parent) {
@@ -122,8 +231,8 @@ public class UserWaitActivity extends BaseActivity {
                                     try {
                                         if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0) {
                                             User user = ((GlobalClassContainer) getApplication()).getUser();
-                                            new UserWaitActivity.HTTPRequestDecision(user, listItems.get(position).values().toArray()[0].toString(), "1").execute();
-                                            listItems.remove(position);
+                                            new UserWaitActivity.HTTPRequestDecision(user, listItems2.get(position).values().toArray()[0].toString(), "1").execute();
+                                            listItems2.remove(position);
                                             resultsListView.setAdapter(adapter);
                                         }
                                     } catch (Exception except) {
@@ -139,8 +248,8 @@ public class UserWaitActivity extends BaseActivity {
                                     try {
                                         if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0) {
                                             User user = ((GlobalClassContainer) getApplication()).getUser();
-                                            new UserWaitActivity.HTTPRequestDecision(user, listItems.get(position).values().toArray()[0].toString(), "0").execute();
-                                            listItems.remove(position);
+                                            new UserWaitActivity.HTTPRequestDecision(user, listItems2.get(position).values().toArray()[0].toString(), "0").execute();
+                                            listItems2.remove(position);
                                             resultsListView.setAdapter(adapter);
                                         }
                                     } catch (Exception except) {
@@ -154,12 +263,13 @@ public class UserWaitActivity extends BaseActivity {
                     //iterator elementow (przepisanie z hashmap do adaptera[listitems] elementow)
                     Iterator it = Keys.entrySet().iterator();
                     while (it.hasNext()) {
-                        LinkedHashMap<String, String> resultsMap = new LinkedHashMap<>();
+                        resultsMap  = new LinkedHashMap<>();
                         Map.Entry pair = (Map.Entry) it.next();
                         resultsMap.put("First Line", pair.getKey().toString());
                         resultsMap.put("Second Line", pair.getValue().toString());
                         listItems.add(resultsMap);
                     }
+                    listItems2=listItems;
                     resultsListView.setAdapter(adapter);
 
                     final Toast toast = Toast.makeText(UserWaitActivity.this, "Pobrano listę oczekujących użytkowników na rejestrację", Toast.LENGTH_LONG);

@@ -8,9 +8,10 @@
 
     <!-- The main content view -->
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -191,7 +192,7 @@
                 android:background="@color/color_border_list" />
 
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
     <!-- The navigation drawer -->
 
