@@ -89,7 +89,11 @@ public class UserWaitActivity extends BaseActivity {
                                     if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0) {
                                         User user = ((GlobalClassContainer) getApplication()).getUser();
                                         new UserWaitActivity.HTTPRequestDecision(user, listItems2.get(position).values().toArray()[0].toString(), "1").execute();
+
+                                        listItems.remove(listItems2.get(position));
                                         listItems2.remove(position);
+
+                                        //z listitems 1 remowe
                                         resultsListView.setAdapter(adapter);
                                     }
                                 } catch (Exception except) {
@@ -106,7 +110,9 @@ public class UserWaitActivity extends BaseActivity {
                                     if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0) {
                                         User user = ((GlobalClassContainer) getApplication()).getUser();
                                         new UserWaitActivity.HTTPRequestDecision(user, listItems2.get(position).values().toArray()[0].toString(), "0").execute();
+                                        listItems.remove(listItems2.get(position));
                                         listItems2.remove(position);
+                                        //to samo
                                         resultsListView.setAdapter(adapter);
                                     }
                                 } catch (Exception except) {
@@ -217,7 +223,7 @@ public class UserWaitActivity extends BaseActivity {
                         }
                     }
                     //stworzenie adaptera
-                   adapter  = new SimpleAdapter(UserWaitActivity.this, listItems2, R.layout.user_wait_key_list,
+                   adapter  = new SimpleAdapter(UserWaitActivity.this, listItems, R.layout.user_wait_key_list,
                             new String[]{"First Line", "Second Line"},
                             new int[]{R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey}) {
                         public View getView(final int position, View convertView, ViewGroup parent) {
@@ -231,8 +237,11 @@ public class UserWaitActivity extends BaseActivity {
                                     try {
                                         if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0) {
                                             User user = ((GlobalClassContainer) getApplication()).getUser();
-                                            new UserWaitActivity.HTTPRequestDecision(user, listItems2.get(position).values().toArray()[0].toString(), "1").execute();
-                                            listItems2.remove(position);
+                                            new UserWaitActivity.HTTPRequestDecision(user, listItems.get(position).values().toArray()[0].toString(), "1").execute();
+
+                                            listItems2.remove(listItems.get(position));
+                                            listItems.remove(position);
+
                                             resultsListView.setAdapter(adapter);
                                         }
                                     } catch (Exception except) {
@@ -248,8 +257,9 @@ public class UserWaitActivity extends BaseActivity {
                                     try {
                                         if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0) {
                                             User user = ((GlobalClassContainer) getApplication()).getUser();
-                                            new UserWaitActivity.HTTPRequestDecision(user, listItems2.get(position).values().toArray()[0].toString(), "0").execute();
-                                            listItems2.remove(position);
+                                            new UserWaitActivity.HTTPRequestDecision(user, listItems.get(position).values().toArray()[0].toString(), "0").execute();
+                                            listItems2.remove(listItems.get(position));
+                                            listItems.remove(position);
                                             resultsListView.setAdapter(adapter);
                                         }
                                     } catch (Exception except) {
