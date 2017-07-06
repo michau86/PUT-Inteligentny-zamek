@@ -64,7 +64,7 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
 
         try{
            lock = getIntent().getStringExtra("lock");
-            login = getIntent().getStringExtra("name");
+            login = getIntent().getStringExtra("login");
         }catch(Exception e){}
 
         ArrayAdapter aa = new ArrayAdapter(
@@ -198,10 +198,11 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
                         Lock[] list=((GlobalClassContainer) getApplication()).getUser().getLockslist();
                         for(int i=0; i<list.length; i++)
                         {
-                            if(lock.equals(list[i].getName().toString()))
-                            {
-                                spiner1.setSelection(i);
-                            }
+                            try {
+                                if (lock.equals(list[i].getName().toString())) {
+                                    spiner1.setSelection(i);
+                                }
+                            }catch(Exception e){}
                             spinerListKeyAdapter.add(list[i].getName());
                             spinerListKeyAdapter.notifyDataSetChanged();
                         }
@@ -435,10 +436,11 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
                         User[] list=((GlobalClassContainer) getApplication()).getUserlist();
                         for(int i=0; i<list.length; i++)
                         {
-                            if(login.equals(list[i].getName().toString()))
-                            {
-                                spiner1.setSelection(i);
-                            }
+                            try {
+                                if (login.equals(list[i].getName().toString())) {
+                                    spiner1.setSelection(i);
+                                }
+                            }catch(Exception e){}
                             spinerListKeyAdapter.add(list[i].getLogin());
                             spinerListKeyAdapter.notifyDataSetChanged();
                         }

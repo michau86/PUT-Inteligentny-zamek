@@ -50,15 +50,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="GenerationCertyficatActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GenerationCertyficatActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GenerationCertyficatActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
+            <state relative-caret-position="476">
+              <caret line="442" column="49" selection-start-line="442" selection-start-column="49" selection-end-line="442" selection-end-column="49" />
               <folding>
                 <element signature="method#onItemSelected#0;class#GenerationCertyficatActivity#0" expanded="false" />
-                <marker date="1499312541210" expanded="false" signature="5776:5791" ph="&lt;~&gt;" />
-                <marker date="1499312541210" expanded="false" signature="15454:15469" ph="&lt;~&gt;" />
+                <element signature="e#7081#8222#0" expanded="true" />
+                <element signature="e#8221#8222#0" expanded="true" />
+                <marker date="1499314136466" expanded="false" signature="5777:5792" ph="&lt;~&gt;" />
+                <marker date="1499314136466" expanded="false" signature="15524:15539" ph="&lt;~&gt;" />
               </folding>
             </state>
           </provider>
@@ -90,7 +92,7 @@
       <file leaf-file-name="userCertyfikationListActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/userCertyfikationListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
+            <state relative-caret-position="-2846">
               <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -99,24 +101,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CertyficatWaitActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CertyficatWaitActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/CertyficatWaitActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1673">
-              <caret line="103" column="42" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
+            <state relative-caret-position="198">
+              <caret line="101" column="62" selection-start-line="101" selection-start-column="62" selection-end-line="101" selection-end-column="62" />
               <folding>
-                <element signature="e#3473#5263#0" expanded="true" />
-                <element signature="e#5262#5263#0" expanded="true" />
-                <element signature="e#5438#6502#0" expanded="true" />
-                <element signature="e#6501#6502#0" expanded="true" />
-                <element signature="method#beforeTextChanged#0;class#2599:8390" expanded="false" />
-                <element signature="method#afterTextChanged#0;class#2599:8390" expanded="false" />
-                <element signature="e#9027#9042#0" expanded="true" />
-                <element signature="e#12568#14220#0" expanded="true" />
-                <element signature="e#14219#14220#0" expanded="true" />
-                <element signature="e#14407#15602#0" expanded="true" />
-                <element signature="e#15601#15602#0" expanded="true" />
-                <element signature="e#18740#18755#0" expanded="true" />
+                <element signature="e#3473#5258#0" expanded="true" />
+                <element signature="e#5257#5258#0" expanded="true" />
+                <element signature="e#5433#6497#0" expanded="true" />
+                <element signature="e#6496#6497#0" expanded="true" />
+                <element signature="method#beforeTextChanged#0;class#2599:8385" expanded="false" />
+                <element signature="method#afterTextChanged#0;class#2599:8385" expanded="false" />
+                <element signature="e#9022#9037#0" expanded="true" />
+                <element signature="e#12563#14210#0" expanded="true" />
+                <element signature="e#14209#14210#0" expanded="true" />
+                <element signature="e#14397#15592#0" expanded="true" />
+                <element signature="e#15591#15592#0" expanded="true" />
+                <element signature="e#18730#18745#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2094,9 +2096,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/UserWaitActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GlobalClassContainer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/CertificationaskActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GenerationCertyficatActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/userCertyfikationListActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/CertyficatWaitActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GenerationCertyficatActivity.java" />
       </list>
     </option>
   </component>
@@ -2879,7 +2881,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.49356222" order="6" side_tool="false" content_ui="tabs" />
@@ -2887,8 +2889,8 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2583519" sideWeight="0.38432837" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2583519" sideWeight="0.61567163" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2583519" sideWeight="0.38699362" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2583519" sideWeight="0.6130064" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37750557" sideWeight="0.47854078" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.48712447" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42873052" sideWeight="0.46190986" order="13" side_tool="false" content_ui="tabs" />
@@ -3413,18 +3415,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GenerationCertyficatActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-          <folding>
-            <element signature="method#onItemSelected#0;class#GenerationCertyficatActivity#0" expanded="false" />
-            <marker date="1499312541210" expanded="false" signature="5776:5791" ph="&lt;~&gt;" />
-            <marker date="1499312541210" expanded="false" signature="15454:15469" ph="&lt;~&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GlobalClassContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1875">
@@ -3455,9 +3445,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/CertyficatWaitActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="101" column="62" selection-start-line="101" selection-start-column="62" selection-end-line="101" selection-end-column="62" />
+          <folding>
+            <element signature="e#3473#5258#0" expanded="true" />
+            <element signature="e#5257#5258#0" expanded="true" />
+            <element signature="e#5433#6497#0" expanded="true" />
+            <element signature="e#6496#6497#0" expanded="true" />
+            <element signature="method#beforeTextChanged#0;class#2599:8385" expanded="false" />
+            <element signature="method#afterTextChanged#0;class#2599:8385" expanded="false" />
+            <element signature="e#9022#9037#0" expanded="true" />
+            <element signature="e#12563#14210#0" expanded="true" />
+            <element signature="e#14209#14210#0" expanded="true" />
+            <element signature="e#14397#15592#0" expanded="true" />
+            <element signature="e#15591#15592#0" expanded="true" />
+            <element signature="e#18730#18745#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/userCertyfikationListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="-2846">
           <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -3465,23 +3476,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/CertyficatWaitActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/GenerationCertyficatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1673">
-          <caret line="103" column="42" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
+        <state relative-caret-position="476">
+          <caret line="442" column="49" selection-start-line="442" selection-start-column="49" selection-end-line="442" selection-end-column="49" />
           <folding>
-            <element signature="e#3473#5263#0" expanded="true" />
-            <element signature="e#5262#5263#0" expanded="true" />
-            <element signature="e#5438#6502#0" expanded="true" />
-            <element signature="e#6501#6502#0" expanded="true" />
-            <element signature="method#beforeTextChanged#0;class#2599:8390" expanded="false" />
-            <element signature="method#afterTextChanged#0;class#2599:8390" expanded="false" />
-            <element signature="e#9027#9042#0" expanded="true" />
-            <element signature="e#12568#14220#0" expanded="true" />
-            <element signature="e#14219#14220#0" expanded="true" />
-            <element signature="e#14407#15602#0" expanded="true" />
-            <element signature="e#15601#15602#0" expanded="true" />
-            <element signature="e#18740#18755#0" expanded="true" />
+            <element signature="method#onItemSelected#0;class#GenerationCertyficatActivity#0" expanded="false" />
+            <element signature="e#7081#8222#0" expanded="true" />
+            <element signature="e#8221#8222#0" expanded="true" />
+            <marker date="1499314136466" expanded="false" signature="5777:5792" ph="&lt;~&gt;" />
+            <marker date="1499314136466" expanded="false" signature="15524:15539" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
