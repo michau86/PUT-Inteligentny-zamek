@@ -225,6 +225,11 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
                 nameValuePairs.add(new BasicNameValuePair("user_id",  ((GlobalClassContainer) getApplication()).getUserlist()[iduser].getIdUser()));
                 nameValuePairs.add(new BasicNameValuePair("lock_id",  ((GlobalClassContainer) getApplication()).getUser().getLockslist()[idloks].getIdKey()));
 
+
+                nameValuePairs.add(new BasicNameValuePair("name",  ((GlobalClassContainer) getApplication()).getUserlist()[iduser].getName()));
+
+                nameValuePairs.add(new BasicNameValuePair("surname",  ((GlobalClassContainer) getApplication()).getUserlist()[iduser].getSurname()));
+
                 nameValuePairs.add(new BasicNameValuePair("from_date",from ));
                 nameValuePairs.add(new BasicNameValuePair("to_date",to ));
 
