@@ -96,7 +96,7 @@ public class userCertyfikationListActivity extends BaseActivity {
                 Bundle b = new Bundle();
 
 
-
+                b.putString("lock", listItems.get(position).values().toArray()[0].toString());
                 b.putString("name", listItems.get(position).values().toArray()[1].toString());
                 myIntent.putExtras(b);
 
@@ -143,6 +143,22 @@ public class userCertyfikationListActivity extends BaseActivity {
                     }
                 }
                 resultsListView.setAdapter(adapter);
+                resultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> parent, View view,
+                                            int position, long id) {
+                        Intent myIntent = new Intent(view.getContext(), certyficatActivity.class);
+
+                        Bundle b = new Bundle();
+
+
+                        b.putString("lock", listItems.get(position).values().toArray()[0].toString());
+                        b.putString("name", listItems.get(position).values().toArray()[1].toString());
+                        myIntent.putExtras(b);
+
+                        startActivityForResult(myIntent, 0);
+
+                    }
+                });
             }
 
             @Override
