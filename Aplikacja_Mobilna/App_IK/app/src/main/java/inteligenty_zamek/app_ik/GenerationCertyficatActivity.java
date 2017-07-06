@@ -38,6 +38,12 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
     String[] items = { "Certyfikat dla użytkownika", "Certyfikat dla gościa"};
     ViewFlipper viewFlipper;
     Spinner spin,spin2;
+    Spinner spiner1;
+    ArrayList<String> listkey;
+    SpinnerAdapter spinerListKeyAdapter;
+    Spinner spiner2;
+    ArrayList<String> listkey2;
+     SpinnerAdapter spinerListKeyAdapter2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +60,32 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
         spin.setOnItemSelectedListener(this);
         spin2.setOnItemSelectedListener(this);
 
+        String lockname = "";
+        lockname=getIntent().getStringExtra("Lock_name");
+        String login = "";
+        login=getIntent().getStringExtra("login");
+
+
+         spiner1= (Spinner) findViewById(R.id.spinnerLoks);
+        listkey = new ArrayList<String>();
+        spinerListKeyAdapter =new SpinnerAdapter(GenerationCertyficatActivity.this, R.layout.spinner_row,  listkey,  listkey);
+        spiner1.setAdapter(spinerListKeyAdapter);
+
+        spiner2  = (Spinner) findViewById(R.id.spinnerUser);
+        listkey2 = new ArrayList<String>();
+        spinerListKeyAdapter2=new SpinnerAdapter(GenerationCertyficatActivity.this, R.layout.spinner_row,  listkey2,  listkey2);
+        spiner2.setAdapter(spinerListKeyAdapter2);
+       try {
+           if (!lockname.equals("") || lockname != null) {
+               spinerListKeyAdapter.add(lockname);
+               spinerListKeyAdapter.notifyDataSetChanged();
+               spiner1.setSelection(0);
+
+               spinerListKeyAdapter2.add(login);
+               spinerListKeyAdapter2.notifyDataSetChanged();
+               spiner2.setSelection(0);
+           }
+       }catch(Exception e){}
         ArrayAdapter aa = new ArrayAdapter(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -163,10 +195,7 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Spinner spiner1 = (Spinner) findViewById(R.id.spinnerLoks);
-                        final ArrayList<String> listkey = new ArrayList<String>();
-                        final SpinnerAdapter spinerListKeyAdapter=new SpinnerAdapter(GenerationCertyficatActivity.this, R.layout.spinner_row,  listkey,  listkey);
-                        spiner1.setAdapter(spinerListKeyAdapter);
+
                         Lock[] list=((GlobalClassContainer) getApplication()).getUser().getLockslist();
                         for(int i=0; i<list.length; i++)
                         {
@@ -386,15 +415,12 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Spinner spiner1 = (Spinner) findViewById(R.id.spinnerUser);
-                        final ArrayList<String> listkey = new ArrayList<String>();
-                        final SpinnerAdapter spinerListKeyAdapter=new SpinnerAdapter(GenerationCertyficatActivity.this, R.layout.spinner_row,  listkey,  listkey);
-                        spiner1.setAdapter(spinerListKeyAdapter);
+
                         User[] list=((GlobalClassContainer) getApplication()).getUserlist();
                         for(int i=0; i<list.length; i++)
                         {
-                            spinerListKeyAdapter.add(list[i].getLogin());
-                            spinerListKeyAdapter.notifyDataSetChanged();
+                            spinerListKeyAdapter2.add(list[i].getLogin());
+                            spinerListKeyAdapter2.notifyDataSetChanged();
                         }
                     }
                 });

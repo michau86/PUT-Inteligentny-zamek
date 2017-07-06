@@ -90,7 +90,7 @@ public class UserWaitActivity extends BaseActivity {
                                         User user = ((GlobalClassContainer) getApplication()).getUser();
                                         new UserWaitActivity.HTTPRequestDecision(user, listItems2.get(position).values().toArray()[0].toString(), "1").execute();
 
-                                        listItems.remove(listItems2.get(position));
+                                        listItems2.remove(listItems.get(position));
                                         listItems2.remove(position);
 
                                         //z listitems 1 remowe
@@ -110,7 +110,6 @@ public class UserWaitActivity extends BaseActivity {
                                     if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0) {
                                         User user = ((GlobalClassContainer) getApplication()).getUser();
                                         new UserWaitActivity.HTTPRequestDecision(user, listItems2.get(position).values().toArray()[0].toString(), "0").execute();
-                                        listItems.remove(listItems2.get(position));
                                         listItems2.remove(position);
                                         //to samo
                                         resultsListView.setAdapter(adapter);
