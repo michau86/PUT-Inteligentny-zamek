@@ -3,9 +3,8 @@ package inteligenty_zamek.app_ik;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.AsyncTask;
-import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -32,7 +31,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -291,9 +289,6 @@ public class CertyficatWaitActivity extends BaseActivity{
                                             listItems2.remove(listItems.get(position));
                                             listItems.remove(position);
                                             resultsListView.setAdapter(adapter);
-
-                                            Intent myIntent = new Intent(CertyficatWaitActivity.this, GenerationCertyficatActivity.class);
-                                            startActivityForResult(myIntent, 0);
                                         }
                                     } catch (Exception except) {
                                     }
