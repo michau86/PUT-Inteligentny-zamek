@@ -41,6 +41,7 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
     Spinner spin,spin2;
     TextView name;
     TextView surname;
+    String nam,surnam;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,13 +51,17 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
         set(navMenuTitles,navMenuIcons);
 
         viewFlipper = (ViewFlipper) findViewById(R.id.myViewFlipper);
-        name = (TextView) this.findViewById(R.id.warning_icologin);
-        surname = (TextView) this.findViewById(R.id.warning_icologin);
+        name = (TextView) this.findViewById(R.id.editText7);
+        surname = (TextView) this.findViewById(R.id.editText8);
         viewFlipper.setDisplayedChild(0);
         spin = (Spinner) findViewById(R.id.spinnerChangeAdminGenerationCertyficat);
         spin2 = (Spinner) findViewById(R.id.spinnerChangeAdminGenerationCertyficat2);
         spin.setOnItemSelectedListener(this);
         spin2.setOnItemSelectedListener(this);
+        //String s=""
+        //try{
+        //    = getIntent().getStringExtra("EXTRA_SESSION_ID");
+        //}catch(Exception e){}
 
         ArrayAdapter aa = new ArrayAdapter(
                 this,
@@ -100,6 +105,8 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
                 int lokposition=spiner1.getSelectedItemPosition();
                 int userposition=spiner2.getSelectedItemPosition();
                 String namestring=name.getText().toString();
+               nam= name.getText().toString();
+                surnam=surname.getText().toString();
                 new HTTPRequest(((GlobalClassContainer) getApplication()).getUser() ,fromstring ,tostring,lokposition,userposition,namestring ).execute();
 
 
@@ -223,17 +230,15 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
 
             try {
                 // Add your data
-              final List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+               List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                 nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
                 nameValuePairs.add(new BasicNameValuePair("token",  ((GlobalClassContainer) getApplication()).getSession()));
                 nameValuePairs.add(new BasicNameValuePair("user_id",  ((GlobalClassContainer) getApplication()).getUserlist()[iduser].getIdUser()));
                 nameValuePairs.add(new BasicNameValuePair("lock_id",  ((GlobalClassContainer) getApplication()).getUser().getLockslist()[idloks].getIdKey()));
-                GenerationCertyficatActivity.this.runOnUiThread(new Runnable() {
-                    public void run() {
-                        nameValuePairs.add(new BasicNameValuePair("name", name.getText().toString() ));
-                        nameValuePairs.add(new BasicNameValuePair("surname", surname.getText().toString() ));
-                    }
-                });
+
+                        nameValuePairs.add(new BasicNameValuePair("name", nam ));
+                        nameValuePairs.add(new BasicNameValuePair("surname", surnam ));
+
 
 
                 nameValuePairs.add(new BasicNameValuePair("from_date",from ));
