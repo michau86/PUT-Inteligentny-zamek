@@ -101,7 +101,7 @@ public class CertyficatWaitActivity extends BaseActivity{
                                         intent.putExtra("Lock_name", lockName.get(listItems.get(position).values().toArray()[0]));
                                         intent.putExtra("login", login.get(listItems.get(position).values().toArray()[1]));
                                         listItems.remove(listItems2.get(position));
-                                        listItems2.remove(position);
+                                        //listItems2.remove(position);
                                         Log.i("aaaaaaaa","no wchodzii2");
                                         //z listitems 1 remowe
                                         resultsListView.setAdapter(adapter);
