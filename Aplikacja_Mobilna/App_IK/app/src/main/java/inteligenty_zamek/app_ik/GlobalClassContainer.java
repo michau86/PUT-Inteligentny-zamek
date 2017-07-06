@@ -147,6 +147,7 @@ public class GlobalClassContainer extends Application {
                 userlist[i] = new User();
                 userlist[i].setLogin( arrJson.getJSONObject(i).getString("LOGIN"));
                 userlist[i].setIdUser(arrJson.getJSONObject(i).getString("ID_USER"));
+
             }catch(JSONException e)
             {}
         }

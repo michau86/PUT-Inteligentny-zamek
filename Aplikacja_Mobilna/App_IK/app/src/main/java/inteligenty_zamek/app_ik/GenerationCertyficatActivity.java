@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import org.apache.http.HttpEntity;
@@ -38,6 +39,8 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
     String[] items = { "Certyfikat dla użytkownika", "Certyfikat dla gościa"};
     ViewFlipper viewFlipper;
     Spinner spin,spin2;
+    TextView name;
+    TextView surname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +50,8 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
         set(navMenuTitles,navMenuIcons);
 
         viewFlipper = (ViewFlipper) findViewById(R.id.myViewFlipper);
-
+        name = (TextView) this.findViewById(R.id.warning_icologin);
+        surname = (TextView) this.findViewById(R.id.warning_icologin);
         viewFlipper.setDisplayedChild(0);
         spin = (Spinner) findViewById(R.id.spinnerChangeAdminGenerationCertyficat);
         spin2 = (Spinner) findViewById(R.id.spinnerChangeAdminGenerationCertyficat2);
@@ -219,16 +223,18 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
 
             try {
                 // Add your data
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+              final List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                 nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
                 nameValuePairs.add(new BasicNameValuePair("token",  ((GlobalClassContainer) getApplication()).getSession()));
                 nameValuePairs.add(new BasicNameValuePair("user_id",  ((GlobalClassContainer) getApplication()).getUserlist()[iduser].getIdUser()));
                 nameValuePairs.add(new BasicNameValuePair("lock_id",  ((GlobalClassContainer) getApplication()).getUser().getLockslist()[idloks].getIdKey()));
+                GenerationCertyficatActivity.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        nameValuePairs.add(new BasicNameValuePair("name", name.getText().toString() ));
+                        nameValuePairs.add(new BasicNameValuePair("surname", surname.getText().toString() ));
+                    }
+                });
 
-
-                nameValuePairs.add(new BasicNameValuePair("name",  ((GlobalClassContainer) getApplication()).getUserlist()[iduser].getName()));
-
-                nameValuePairs.add(new BasicNameValuePair("surname",  ((GlobalClassContainer) getApplication()).getUserlist()[iduser].getSurname()));
 
                 nameValuePairs.add(new BasicNameValuePair("from_date",from ));
                 nameValuePairs.add(new BasicNameValuePair("to_date",to ));
@@ -315,8 +321,7 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
                 else {nameValuePairs.add(new BasicNameValuePair("sunday", " "));}
 
                 nameValuePairs.add(new BasicNameValuePair("is_pernament","0" ));
-                nameValuePairs.add(new BasicNameValuePair("name","" ));
-                nameValuePairs.add(new BasicNameValuePair("surname"," " ));
+
 
 
 
