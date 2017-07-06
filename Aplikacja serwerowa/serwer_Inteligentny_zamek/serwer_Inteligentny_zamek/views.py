@@ -362,10 +362,13 @@ def api_admin_download_all_certificate(request):
                 admin = row[1]
             if (token_db == token) and admin == 1:
                 cursor.execute(
-                    "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK ")
+                    "SELECT LOCKS_KEYS.*, USERS.NAME as USER_NAME, USERS.SURNAME as USER_SURNAME, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS LEFT JOIN LOCKS ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK LEFT JOIN users ON locks_keys.ID_USER = users.ID_USER ORDER BY LOCK_NAME")
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                         in cursor.fetchall()]
-                return JsonResponse({"data": dict_all_certificate})
+                if len(dict_all_certificate) > 0:
+                    return JsonResponse({"data": dict_all_certificate})
+                else:
+                    return JsonResponse({"data": "empty"})
             else:
                 return JsonResponse({"status": "invalid"})
         except Exception:
@@ -473,7 +476,7 @@ def api_admin_cetificate_waiting(request):
                 admin = row[1]
             if (token_db == token) and admin == 1:
                 cursor.execute(
-                    "SELECT locks.NAME AS 'LOCK_NAME', users.ID_USER, users.LOGIN AS 'LOGIN',users.NAME AS 'USER_NAME',users.SURNAME AS 'USER_SUERNAME' FROM wait_locks_keys LEFT JOIN locks ON locks.ID_LOCK=wait_locks_keys.ID_LOCK LEFT JOIN users ON users.ID_USER=wait_locks_keys.ID_USER")
+                    "SELECT wait_locks_keys.ID_KEY, locks.NAME AS 'LOCK_NAME', users.ID_USER, users.LOGIN AS 'LOGIN',users.NAME AS 'USER_NAME',users.SURNAME AS 'USER_SUERNAME' FROM wait_locks_keys LEFT JOIN locks ON locks.ID_LOCK=wait_locks_keys.ID_LOCK LEFT JOIN users ON users.ID_USER=wait_locks_keys.ID_USER")
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                         in cursor.fetchall()]
                 if len(dict_all_certificate) > 0:
