@@ -87,7 +87,7 @@ CharSequence csk;
                 listItems2 = new ArrayList<>();
                 adapter = new SimpleAdapter(CertificationaskActivity.this, listItems2, R.layout.main_key_list,
                         new String[]{"First Line", "Second Line"},
-                        new int[]{R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey});
+                        new int[]{R.id.TextView_listPlaceKey, R.id.TextView_listNameKey});
 
 
 
@@ -225,13 +225,14 @@ CharSequence csk;
                     //stworzenie adaptera
                     adapter = new SimpleAdapter(CertificationaskActivity.this, listItems, R.layout.main_key_list,
                             new String[]{"First Line", "Second Line"},
-                            new int[]{R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey});
+                            new int[]{R.id.TextView_listPlaceKey, R.id.TextView_listNameKey});
 
                     //iterator elementow (przepisanie z hashmap do adaptera[listitems] elementow)
                     Iterator it = Keys.entrySet().iterator();
                     while (it.hasNext()) {
                         resultsMap = new LinkedHashMap<>();
                         Map.Entry pair = (Map.Entry) it.next();
+                        Log.i("aaaaa",pair.getKey().toString());
                         resultsMap.put("First Line", pair.getKey().toString());
                         resultsMap.put("Second Line", pair.getValue().toString());
                         listItems.add(resultsMap);

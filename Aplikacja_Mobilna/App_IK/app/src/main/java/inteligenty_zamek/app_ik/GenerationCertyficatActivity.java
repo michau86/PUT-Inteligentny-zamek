@@ -39,9 +39,10 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
     String[] items = { "Certyfikat dla użytkownika", "Certyfikat dla gościa"};
     ViewFlipper viewFlipper;
     Spinner spin,spin2;
-    TextView name;
+    TextView name2;
     TextView surname;
     String nam,surnam;
+    int pozlock=-1,pozus=-1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +52,7 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
         set(navMenuTitles,navMenuIcons);
 
         viewFlipper = (ViewFlipper) findViewById(R.id.myViewFlipper);
-        name = (TextView) this.findViewById(R.id.editText7);
+        name2 = (TextView) this.findViewById(R.id.editText7);
         surname = (TextView) this.findViewById(R.id.editText8);
         viewFlipper.setDisplayedChild(0);
         spin = (Spinner) findViewById(R.id.spinnerChangeAdminGenerationCertyficat);
@@ -105,7 +106,7 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
                 int lokposition=spiner1.getSelectedItemPosition();
                 int userposition=spiner2.getSelectedItemPosition();
                 String namestring=name.getText().toString();
-               nam= name.getText().toString();
+               nam= name2.getText().toString();
                 surnam=surname.getText().toString();
                 new HTTPRequest(((GlobalClassContainer) getApplication()).getUser() ,fromstring ,tostring,lokposition,userposition,namestring ).execute();
 
