@@ -38,12 +38,6 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
     String[] items = { "Certyfikat dla użytkownika", "Certyfikat dla gościa"};
     ViewFlipper viewFlipper;
     Spinner spin,spin2;
-    Spinner spiner1;
-    ArrayList<String> listkey;
-    SpinnerAdapter spinerListKeyAdapter;
-    Spinner spiner2;
-    ArrayList<String> listkey2;
-     SpinnerAdapter spinerListKeyAdapter2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,32 +54,6 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
         spin.setOnItemSelectedListener(this);
         spin2.setOnItemSelectedListener(this);
 
-        String lockname = "";
-        lockname=getIntent().getStringExtra("Lock_name");
-        String login = "";
-        login=getIntent().getStringExtra("login");
-
-
-         spiner1= (Spinner) findViewById(R.id.spinnerLoks);
-        listkey = new ArrayList<String>();
-        spinerListKeyAdapter =new SpinnerAdapter(GenerationCertyficatActivity.this, R.layout.spinner_row,  listkey,  listkey);
-        spiner1.setAdapter(spinerListKeyAdapter);
-
-        spiner2  = (Spinner) findViewById(R.id.spinnerUser);
-        listkey2 = new ArrayList<String>();
-        spinerListKeyAdapter2=new SpinnerAdapter(GenerationCertyficatActivity.this, R.layout.spinner_row,  listkey2,  listkey2);
-        spiner2.setAdapter(spinerListKeyAdapter2);
-       try {
-           if (!lockname.equals("") || lockname != null) {
-               spinerListKeyAdapter.add(lockname);
-               spinerListKeyAdapter.notifyDataSetChanged();
-               spiner1.setSelection(0);
-
-               spinerListKeyAdapter2.add(login);
-               spinerListKeyAdapter2.notifyDataSetChanged();
-               spiner2.setSelection(0);
-           }
-       }catch(Exception e){}
         ArrayAdapter aa = new ArrayAdapter(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -103,7 +71,7 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
         aa2.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
         spin2.setAdapter(aa2);
-         User user=((GlobalClassContainer) getApplication()).getUser();
+        User user=((GlobalClassContainer) getApplication()).getUser();
         new HTTPRequestDownloadKey(user).execute();
         new HTTPRequestDownloadUser(user).execute();
         final Button register = (Button) findViewById(R.id.buttonRangeGenerateCertyficat);
@@ -120,27 +88,40 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
             public void onClick(View v) {
                 EditText from=(EditText) findViewById(R.id.inputfromAdmingenerate);
                 EditText to=(EditText) findViewById(R.id.inputtoadminGenerateKey);
-                        final Spinner spiner1 = (Spinner) findViewById(R.id.spinnerLoks);
-                        final Spinner spiner2 = (Spinner) findViewById(R.id.spinnerUser);
-                        EditText name=(EditText) findViewById(R.id.inputName);
+                final Spinner spiner1 = (Spinner) findViewById(R.id.spinnerLoks);
+                final Spinner spiner2 = (Spinner) findViewById(R.id.spinnerUser);
+                EditText name=(EditText) findViewById(R.id.inputName);
                 String fromstring=from.getText().toString();
                 String tostring=to.getText().toString();
-                        int lokposition=spiner1.getSelectedItemPosition();
+                int lokposition=spiner1.getSelectedItemPosition();
                 int userposition=spiner2.getSelectedItemPosition();
                 String namestring=name.getText().toString();
-            new HTTPRequest(((GlobalClassContainer) getApplication()).getUser() ,fromstring ,tostring,lokposition,userposition,namestring ).execute();
+                new HTTPRequest(((GlobalClassContainer) getApplication()).getUser() ,fromstring ,tostring,lokposition,userposition,namestring ).execute();
+
+
             }
         });
+
+
     }
+
+
 
     public void onItemSelected(AdapterView<?> parent, View v, int position,
                                long id) {
-if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
+        if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
         viewFlipper.setDisplayedChild(position);
 
     }
+
     public void onNothingSelected(AdapterView<?> parent) {
+
+
+
+
     }
+
+
 
     public class HTTPRequestDownloadKey extends AsyncTask<Void, Void, String> {
         User user;
@@ -195,7 +176,10 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        Spinner spiner1 = (Spinner) findViewById(R.id.spinnerLoks);
+                        final ArrayList<String> listkey = new ArrayList<String>();
+                        final SpinnerAdapter spinerListKeyAdapter=new SpinnerAdapter(GenerationCertyficatActivity.this, R.layout.spinner_row,  listkey,  listkey);
+                        spiner1.setAdapter(spinerListKeyAdapter);
                         Lock[] list=((GlobalClassContainer) getApplication()).getUser().getLockslist();
                         for(int i=0; i<list.length; i++)
                         {
@@ -210,6 +194,8 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
             }
         }
     }
+
+
 
     public class HTTPRequest extends AsyncTask<Void, Void, String> {
         User user;
@@ -235,7 +221,7 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 // Add your data
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                 nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
-               nameValuePairs.add(new BasicNameValuePair("token",  ((GlobalClassContainer) getApplication()).getSession()));
+                nameValuePairs.add(new BasicNameValuePair("token",  ((GlobalClassContainer) getApplication()).getSession()));
                 nameValuePairs.add(new BasicNameValuePair("user_id",  ((GlobalClassContainer) getApplication()).getUserlist()[((GlobalClassContainer) getApplication()).getBuffor2()].getIdUser()));
                 nameValuePairs.add(new BasicNameValuePair("lock_id",  ((GlobalClassContainer) getApplication()).getUser().getLockslist()[((GlobalClassContainer) getApplication()).getBuffor1()].getIdKey()));
 
@@ -324,8 +310,8 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 else {nameValuePairs.add(new BasicNameValuePair("sunday", " "));}
 
                 nameValuePairs.add(new BasicNameValuePair("is_pernament","0" ));
-                nameValuePairs.add(new BasicNameValuePair("name","Damian" ));
-                nameValuePairs.add(new BasicNameValuePair("surname","F" ));
+                nameValuePairs.add(new BasicNameValuePair("name","" ));
+                nameValuePairs.add(new BasicNameValuePair("surname"," " ));
 
 
 
@@ -361,6 +347,10 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
 
         }
     }
+
+
+
+
 
     public class HTTPRequestDownloadUser extends AsyncTask<Void, Void, String> {
         User user;
@@ -415,12 +405,15 @@ if(position==1){spin2.setSelection(1);} else {spin.setSelection(0);}
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        Spinner spiner1 = (Spinner) findViewById(R.id.spinnerUser);
+                        final ArrayList<String> listkey = new ArrayList<String>();
+                        final SpinnerAdapter spinerListKeyAdapter=new SpinnerAdapter(GenerationCertyficatActivity.this, R.layout.spinner_row,  listkey,  listkey);
+                        spiner1.setAdapter(spinerListKeyAdapter);
                         User[] list=((GlobalClassContainer) getApplication()).getUserlist();
                         for(int i=0; i<list.length; i++)
                         {
-                            spinerListKeyAdapter2.add(list[i].getLogin());
-                            spinerListKeyAdapter2.notifyDataSetChanged();
+                            spinerListKeyAdapter.add(list[i].getLogin());
+                            spinerListKeyAdapter.notifyDataSetChanged();
                         }
                     }
                 });
