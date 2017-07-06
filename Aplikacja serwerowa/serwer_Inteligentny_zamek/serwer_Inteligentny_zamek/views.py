@@ -145,11 +145,11 @@ def api_download_all_locks(request):
             token_from_DB = cursor.fetchone()[0]
             if (token_from_DB == token):
                 cursor.execute(
-                    "SELECT NAME, LOCALIZATION AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS, ID_LOCK FROM LOCKS  ")
+                    "SELECT NAME, LOCKS.LOCALIZATION, MAC_ADDRESS, ID_LOCK FROM LOCKS  ")
                 dict_all_locks = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                   in cursor.fetchall()]
                 if len(dict_all_locks) == 0:
-                    return JsonResponse({"data": "invalid"})
+                    return JsonResponse({"data": "empty"})
                 else:
                     return JsonResponse({"data": dict_all_locks})
 
@@ -473,10 +473,13 @@ def api_admin_cetificate_waiting(request):
                 admin = row[1]
             if (token_db == token) and admin == 1:
                 cursor.execute(
-                    "SELECT locks.NAME AS 'LOCK_NAME', users.LOGIN AS 'LOGIN',users.NAME AS 'USER_NAME',users.SURNAME AS 'USER_SUERNAME' FROM wait_locks_keys LEFT JOIN locks ON locks.ID_LOCK=wait_locks_keys.ID_LOCK LEFT JOIN users ON users.ID_USER=wait_locks_keys.ID_USER")
+                    "SELECT locks.NAME AS 'LOCK_NAME', users.ID_USER, users.LOGIN AS 'LOGIN',users.NAME AS 'USER_NAME',users.SURNAME AS 'USER_SUERNAME' FROM wait_locks_keys LEFT JOIN locks ON locks.ID_LOCK=wait_locks_keys.ID_LOCK LEFT JOIN users ON users.ID_USER=wait_locks_keys.ID_USER")
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                         in cursor.fetchall()]
-                return JsonResponse({"data": dict_all_certificate})
+                if len(dict_all_certificate) > 0:
+                    return JsonResponse({"data": dict_all_certificate})
+                else:
+                    return JsonResponse({"data": "empty"})
             else:
                 return JsonResponse({"status": "invalid"})
         except Exception:
