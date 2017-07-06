@@ -99,7 +99,7 @@ public class CertyficatWaitActivity extends BaseActivity{
                                             Log.i("aaaaaaaa","no wchodzii");
                                         Intent intent = new Intent(getBaseContext(), GenerationCertyficatActivity.class);
                                         intent.putExtra("lock", lockName.get(listItems.get(position).values().toArray()[0]));
-                                        intent.putExtra("login", login.get(listItems.get(position).values().toArray()[1]));
+                                        intent.putExtra("", login.get(listItems.get(position).values().toArray()[1]));
                                         listItems.remove(listItems2.get(position));
                                         //listItems2.remove(position);
                                         Log.i("aaaaaaaa","no wchodzii2");
@@ -261,9 +261,10 @@ public class CertyficatWaitActivity extends BaseActivity{
 
                                             new CertyficatWaitActivity.HTTPRequestDecision(user, listItems.get(position).values().toArray()[0].toString(), idcert.get(s)).execute();
                                             Intent intent = new Intent(CertyficatWaitActivity.this, GenerationCertyficatActivity.class);
-                                            intent.putExtra("lock", lockName.get(s));
+                                            intent.putExtra("Lock_name", lockName.get(s));
                                             intent.putExtra("login", login.get(s));
                                             listItems2.remove(listItems.get(position));
+
                                             Log.i("aaaaaaa",login.get(s));
                                             //listItems.remove(position);
                                             resultsListView.setAdapter(adapter);

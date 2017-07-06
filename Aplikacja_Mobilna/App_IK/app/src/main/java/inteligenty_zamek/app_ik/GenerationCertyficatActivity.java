@@ -64,7 +64,7 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
 
         try{
            lock = getIntent().getStringExtra("lock");
-            login = getIntent().getStringExtra("login");
+            login = getIntent().getStringExtra("name");
         }catch(Exception e){}
 
         ArrayAdapter aa = new ArrayAdapter(
