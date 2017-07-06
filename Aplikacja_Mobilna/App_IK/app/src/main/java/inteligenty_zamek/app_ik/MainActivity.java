@@ -1,24 +1,23 @@
 package inteligenty_zamek.app_ik;
 
 import android.bluetooth.BluetoothAdapter;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -215,6 +214,18 @@ public class MainActivity extends BaseActivity {
                 }catch(Exception e){}
                 String tosend=us.getCertyficateList()[index].getIdKey()+";"+us.getLogin()+";"+signature;
                 new Connect_and_send_message(((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[index].getMac_addres(), tosend).execute();          //B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
+                final Toast toast = Toast.makeText(MainActivity.this, "Wysłano certyfikat", Toast.LENGTH_LONG);
+                toast.show();
+                new CountDownTimer(2000, 1000) {
+                    public void onTick(long millisUntilFinished) {
+                        toast.show();
+                    }
+
+                    public void onFinish() {
+                        toast.show();
+                    }
+                }.start();
+
             }
         });
     }
