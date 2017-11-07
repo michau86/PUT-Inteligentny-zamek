@@ -1,5 +1,8 @@
 package inteligenty_zamek.app_ik;
 
+import android.content.Context;
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -9,13 +12,15 @@ public class User {
 
 
     public String idUser;
-    public Lock[] lockslist;
+    public Lock[] lockslist=null;
     public  Certyficat[] certyficateList;
-    private String login;
+    private String login=" ";
     private String name;
     private String surname;
     private String password;
+    private String passwordHash="";
     private  boolean isAdmin;
+    private String privateKey="";
 
     public String getLogin() {
         return login;
@@ -26,10 +31,41 @@ public class User {
     public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
-    public Certyficat[] getCertyficateList() {
+    public Certyficat[] getCertyficateList(Context context) {
+        if(certyficateList==null)
+        {
+            try {
+                String readfromcertyficat = fileReadWriteApi.readFromFile(login, context);
+                JSONArray arrJson = new JSONArray(readfromcertyficat);
+                addCertyficatList(arrJson);
+            } catch (Exception e) {
+                return null;
+            }
+        }
         return certyficateList;
     }
-    public Lock[] getLockslist() {
+    public String getPasswordHash()
+    {
+        if(passwordHash=="")
+        {
+            passwordHash=CyptographyApi.bin2hex(CyptographyApi.getHash(password));
+        }
+        return passwordHash;
+    }
+    public Lock[] getLockslist(String login) {
+
+/*
+        if(lockslist==null)
+        {
+            try {
+                String readfromcertyficat=fileReadWriteApi.readFromFile(login);
+                Log.i("HHHH","Tut3");
+                Log.i("HHHH", readfromcertyficat);
+                JSONArray arrJson = new JSONArray(readfromcertyficat);
+                addCertyficatList(arrJson);
+            } catch (Exception e) {return null;}
+*/
+        //}
         return lockslist;
     }
     public void setLockslist(Lock[] lockslist) {

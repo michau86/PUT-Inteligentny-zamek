@@ -2,6 +2,7 @@ package inteligenty_zamek.app_ik;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import org.apache.commons.codec.binary.Base64;
@@ -43,7 +44,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class GlobalClassContainer extends Application {
 
-    //zmienne
+    private SharedPreferences sharedPref;
     private String session;
     private User user;
     private Certyficat[] certyficatlist;
@@ -61,7 +62,7 @@ public class GlobalClassContainer extends Application {
     private int buffor1,buffor2;
     private final static String HEX = "0123456789ABCDEF";
     private int isadmin=-1;
-
+    public Context context;
     //ustawia domsylne wartosci (uzywane przy wylogowaniu)
     public void setDefaultValue()
     {
@@ -82,6 +83,8 @@ public class GlobalClassContainer extends Application {
         buffor2=0;
         isadmin=-1;
     }
+
+    //////////////////// do usuniecia
     public byte[] getHash(String password) {
         MessageDigest digest=null;
         try {
@@ -102,6 +105,9 @@ public class GlobalClassContainer extends Application {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(filepath, Context.MODE_PRIVATE));
             outputStreamWriter.write(data);
             outputStreamWriter.close();
+            Log.i("HHHH","po zapisie do pliku");
+            Log.i("HHHH",filepath);
+            Log.i("HHHH","powyzej nazwa pliku");
         }
         catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
@@ -138,7 +144,21 @@ public class GlobalClassContainer extends Application {
 
         return ret;
     }
-    //funkcja odpowiedzialna za dodawanie użytkownikow do listy
+
+
+    public void loadDataFromSharedPreferences()
+    {
+        user=new User();
+        sharedPref = this.getSharedPreferences(this.getString(R.string.SPName),Context.MODE_PRIVATE);
+      user.setLogin(sharedPref.getString("login", ""));
+      try {
+          user.setPassword(CyptographyApi.decrypt(sharedPref.getString("password", "")));
+      }catch(Exception e){}
+        serwerIP=sharedPref.getString("ipserwer", "");
+      try {
+          session = CyptographyApi.decrypt(sharedPref.getString("token", ""));
+      }catch (Exception e){}
+    }
     public void addUserList(JSONArray arrJson)
     {
         userlist=new User[arrJson.length()];
@@ -153,173 +173,22 @@ public class GlobalClassContainer extends Application {
         }
 
     }
-    public int searchcertyficat(String name)
-    {
-        for(int i=0; i<user.getCertyficateList().length; i++ )
-        {
-            if(user.getCertyficateList()[i].getLockName().equals(name))
-            {return i;}
-        }
-        return -1;
-    }
-    //funkcje odpowiedzialne za szyfrowanie i deszyforwanie symetryczne
-    // TODO wpisac jakis konkretny klucz
-    public static SecretKey generateKey()
-            throws NoSuchAlgorithmException, InvalidKeySpecException
-    {
-        return  new SecretKeySpec("safdsags".getBytes(), "AES");
-    }
-
-    //szyfrowanie
-    public static byte[] encryptMsg(String message, SecretKey secret)
-            throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidParameterSpecException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException
-    {
-
-        String key = "Bar12345Bar12345Bar12345Bar12345";
-
-        SecretKeySpec aesKey = new SecretKeySpec(key.getBytes(), "AES");
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.ENCRYPT_MODE, aesKey);
-        byte[] cipherText = cipher.doFinal(message.getBytes("UTF-8"));
-        return cipherText;
-    }
-    //deszyfrowanie
-    public static String decryptMsg(byte[] cipherText, SecretKey secret)
-            throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidParameterSpecException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException
-    {
-        if(cipherText!=null)
-        {
-            Log.i("decrypt","aaaaaaa1");
-        }
 
 
-        String key = "Bar12345Bar12345Bar12345Bar12345";
-        SecretKeySpec aesKey = new SecretKeySpec(key.getBytes(), "AES");
-        Log.i("decrypt","aaaaaaa2");
-
-        Cipher cipher = Cipher.getInstance("AES");
-        Log.i("decrypt","aaaaaaa3");
-
-        cipher.init(Cipher.DECRYPT_MODE, aesKey);
-        Log.i("decrypt","aaaaaaa4");
-        byte [] a=cipher.doFinal(cipherText);
-
-
-        if(a!=null){Log.i("decryptb","aaaaaaaaaaaaaaaaaaaaaaa");}
-
-        String decryptString = new String(a, "UTF-8");
-        Log.i("decrypta",decryptString);
-        return decryptString;
-    }
-
-
-
-
-
-
-
-    //funkcje odpowiedzialne za szyfrowanie i deszyfrowanie (asymetryczne)
-    public String encryption(String strNormalText){
-        String seedValue = "sdfushdfgkjklvsdlmiosaddfyemno";
-        String normalTextEnc="";
-        try {
-            normalTextEnc = encrypt(seedValue, strNormalText);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return normalTextEnc;
-    }
-    public String decryption(String strEncryptedText){
-        String seedValue = "sdfushdfgkjklvsdlmiosaddfyemno";
-        String strDecryptedText="";
-        try {
-            strDecryptedText = decrypt(seedValue, strEncryptedText);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return strDecryptedText;
-    }
-    private static String encrypt(String seed, String cleartext) throws Exception {
-        byte[] rawKey = getRawKey(seed.getBytes());
-        byte[] result = encrypt(rawKey, cleartext.getBytes());
-        return toHex(result);
-    }
-    private static String decrypt(String seed, String encrypted) throws Exception {
-        byte[] rawKey = getRawKey(seed.getBytes());
-        byte[] enc = toByte(encrypted);
-        byte[] result = decrypt(rawKey, enc);
-        return new String(result);
-    }
-    private static byte[] getRawKey(byte[] seed) throws Exception {
-        KeyGenerator kgen = KeyGenerator.getInstance("AES");
-        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG","Crypto");
-        sr.setSeed(seed);
-        kgen.init(128, sr); // 192 and 256 bits may not be available
-        SecretKey skey = kgen.generateKey();
-        byte[] raw = skey.getEncoded();
-        return raw;
-    }
-    private static byte[] encrypt(byte[] raw, byte[] clear) throws Exception {
-        SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
-        Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
-        byte[] encrypted = cipher.doFinal(clear);
-        return encrypted;
-    }
-    private static byte[] decrypt(byte[] raw, byte[] encrypted) throws Exception {
-        SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
-        Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.DECRYPT_MODE, skeySpec);
-        byte[] decrypted = cipher.doFinal(encrypted);
-        return decrypted;
-    }
-    private static byte[] toByte(String hexString) {
-        int len = hexString.length()/2;
-        byte[] result = new byte[len];
-        for (int i = 0; i < len; i++)
-            result[i] = Integer.valueOf(hexString.substring(2*i, 2*i+2), 16).byteValue();
-        return result;
-    }
-    private static String toHex(byte[] buf) {
-        if (buf == null)
-            return "";
-        StringBuffer result = new StringBuffer(2*buf.length);
-        for (int i = 0; i < buf.length; i++) {
-            appendHex(result, buf[i]);
-        }
-        return result.toString();
-    }
-    private static void appendHex(StringBuffer sb, byte b) {
-        sb.append(HEX.charAt((b>>4)&0x0f)).append(HEX.charAt(b&0x0f));
-    }
-
-    //getery i setteryt
     public int getIsadmin() {
+
+        if (isadmin<0)
+        {
+            loadDataFromSharedPreferences();
+        }
         return isadmin;
     }
-    public void setIsadmin(int isadmin) {
-        this.isadmin = isadmin;
-    }
-    public int getBuffor1() {
-        return buffor1;
-    }
-    public void setBuffor1(int buffor1) {
-        this.buffor1 = buffor1;
-    }
-    public int getBuffor2() {
-        return buffor2;
-    }
-    public void setBuffor2(int buffor2) {
-        this.buffor2 = buffor2;
-    }
+
     public ArrayList<String> getMondayList() {
         return mondayList;
     }
     public User[] getUserlist() {
         return userlist;
-    }
-    public void setUserlist(User[] userlist) {
-        this.userlist = userlist;
     }
     public void setMondayList(ArrayList<String> mondayList) {
         this.mondayList = mondayList;
@@ -360,29 +229,14 @@ public class GlobalClassContainer extends Application {
     public void setSundayList(ArrayList<String> sundayList) {
         this.sundayList = sundayList;
     }
-    public String getCertyficatadminlist() {
-        return certyficatadminlist;
-    }
-    public void setCertyficatadminlist(String certyficatadminlist) {
-        this.certyficatadminlist = certyficatadminlist;
-    }
     public PrivateKey getPrivatekye() {
         return privatekye;
     }
     public void setPrivatekye(PrivateKey privatekye) {
         this.privatekye = privatekye;
     }
-    public Certyficat[] getCertyficatlist() {
-        return certyficatlist;
-    }
-    public void setCertyficatlist(Certyficat[] certyficatlist) {
-        this.certyficatlist = certyficatlist;
-    }
     public String getSerwerIP() {
         return serwerIP;
-    }
-    public void setSerwerIP(String serwerIP) {
-        this.serwerIP = serwerIP;
     }
     public String getSession() {
         return session;

@@ -14,7 +14,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-
+    <string name="defaultIPSerwer">192.168.8.100</string>
+    <string name="SPName">InteligentKeySharedPreferences</string>
 
     <!-- activity_main  -->
     <string name="icon_SortingAsc">&#xf160;</string>

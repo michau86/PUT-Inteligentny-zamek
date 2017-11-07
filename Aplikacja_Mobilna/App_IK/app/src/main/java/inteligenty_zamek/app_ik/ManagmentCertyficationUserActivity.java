@@ -64,7 +64,7 @@ public class ManagmentCertyficationUserActivity extends BaseActivity {
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles, navMenuIcons);
-
+/*
 
         Typeface fontFamily = Typeface.createFromAsset(this.getAssets(), "fonts/fontawesome.ttf");
         TextView sampleText = (TextView) this.findViewById(R.id.TextView_sortingIco);
@@ -311,6 +311,6 @@ public class ManagmentCertyficationUserActivity extends BaseActivity {
                     }
                 }.start();
             }
-        }
+        }*/
     }
 }

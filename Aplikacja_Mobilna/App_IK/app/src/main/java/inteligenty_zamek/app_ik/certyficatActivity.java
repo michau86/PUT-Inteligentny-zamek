@@ -47,10 +47,10 @@ public class certyficatActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_certyficat);
 
-        navMenuTitles= getResources().getStringArray(R.array.nav_drawer_items);
-        navMenuIcons =getResources().obtainTypedArray(R.array.nav_drawer_icons);
-        set(navMenuTitles,navMenuIcons);
-
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        set(navMenuTitles, navMenuIcons);
+/*
         Bundle b = getIntent().getExtras();
          value = ""; // nazwa certyfikatu
         if(b != null)
@@ -348,7 +348,7 @@ public class certyficatActivity extends BaseActivity {
             }
         }
     }
-
-
+*/
+    }
 
 }

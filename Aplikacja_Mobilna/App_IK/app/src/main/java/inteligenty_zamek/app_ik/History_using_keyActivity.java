@@ -62,7 +62,7 @@ public class History_using_keyActivity extends BaseActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_of_using_key);
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-
+/*
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles, navMenuIcons);
         resultsListView = (ListView) History_using_keyActivity.this.findViewById(R.id.ListView_History);
@@ -172,11 +172,11 @@ public class History_using_keyActivity extends BaseActivity  {
                  adapter = new SimpleAdapter(History_using_keyActivity.this, listItems2, R.layout.history_using_key_list,
                         new String[]{"First Line", "Second Line", "Third Line"},
                         new int[]{R.id.history_icon, R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey});
-                try {
-                    for (int i = 0; i < ((GlobalClassContainer) getApplication()).getUser().getCertyficateList().length; i++) {
-                        Keys.put(listItems2.get(i).values().toArray()[0].toString(), listItems2.get(i).values().toArray()[1].toString() );
+               // try {
+                 //   for (int i = 0; i < ((GlobalClassContainer) getApplication()).getUser().getCertyficateList(this).length; i++) {
+                  //      Keys.put(listItems2.get(i).values().toArray()[0].toString(), listItems2.get(i).values().toArray()[1].toString() );
                     }
-                }catch (Exception e) {}
+               // }catch (Exception e) {}
                 Iterator it = Keys.entrySet().iterator();
 
                 while (it.hasNext())
@@ -322,5 +322,8 @@ public class History_using_keyActivity extends BaseActivity  {
             }
         }
     }
-}
+}*/
+    }
+    }
+
 

@@ -14,7 +14,7 @@ public class Certyficat implements Comparable<Certyficat>{
     String id_lock;
     String lok_key;
     String id_user;
-
+    public byte status;
     //konstyruktor
     public Certyficat(String isActual, String isPermanent, String monday, String tuesday, String wednesday, String thurstday, String friday, String sunday, String saturday, String from, String to, String name, String surname, String idKey, String lockName, String lockLocalization, String id_lock, String lok_key, String id_user, String mac_addres) {
         this.isActual = isActual;
@@ -37,6 +37,7 @@ public class Certyficat implements Comparable<Certyficat>{
         this.lok_key = lok_key;
         this.id_user = id_user;
         this.mac_addres=mac_addres;
+        this.status=0;
     }
 
     //gettery i settery

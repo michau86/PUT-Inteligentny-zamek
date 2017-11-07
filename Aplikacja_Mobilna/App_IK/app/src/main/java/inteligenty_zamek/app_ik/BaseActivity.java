@@ -1,6 +1,8 @@
 package inteligenty_zamek.app_ik;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.AsyncTask;
@@ -14,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -171,6 +174,15 @@ public class BaseActivity extends ActionBarActivity
                 {
                     ((GlobalClassContainer) getApplication()).setDefaultValue();
                     Intent intent3 = new Intent(this, LoginActivity.class);
+                    SharedPreferences sharedPref;
+                    sharedPref = this.getSharedPreferences(this.getString(R.string.SPName), Context.MODE_PRIVATE);
+                       SharedPreferences.Editor editor = sharedPref.edit();
+                          editor.putString("ipserwer", "");
+                      editor.putString("login", "");
+                          editor.putString("password", "");
+                    editor.putString("token", "");
+                    editor.commit();
+                    Log.i("HHH","tutaj base");
                     startActivity(intent3);
                     finish();
                 }
