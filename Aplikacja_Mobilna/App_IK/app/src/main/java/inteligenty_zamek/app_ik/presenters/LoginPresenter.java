@@ -1,25 +1,26 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.presenters;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.CountDownTimer;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.security.CryptoPrimitive;
-import java.security.KeyFactory;
-import java.security.PrivateKey;
-import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.HashMap;
+
+import inteligenty_zamek.app_ik.API.CyptographyApi;
+import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
+import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
+import inteligenty_zamek.app_ik.Views.LoginActivity;
+import inteligenty_zamek.app_ik.Views.MainActivity;
+import inteligenty_zamek.app_ik.R;
+import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.models.LoginModel;
 
 
 
@@ -78,20 +79,12 @@ public class LoginPresenter {
                     SharedPreferences sharedPref = view.getSharedPreferences(view.getString(R.string.SPName), Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
 
-
-
-                   // String sessionencrypt= DontWork.decryption(jObj.getString("token"));
-                   // fileReadWriteApi.writeToFile(sessionencrypt,view,"session");
                     try{
                     editor.putString("token", CyptographyApi.encrypt(jObj.getString("token")));
                     editor.commit();
                     }catch(Exception e){}
-                    //container.setPrivatekye(priv);
-                    //zaszyfrować
 
-                    //JSONObject  json= null;
                     model.setUserCertyficat();
-
 
                     if(jObj.getString("status").equals("ok"))
                     {
@@ -113,6 +106,7 @@ public class LoginPresenter {
                 }
                 else
                 {
+
                     if(jObj.getString("status").equals("not activated"))
                     {
 
@@ -140,6 +134,7 @@ public class LoginPresenter {
                 }
 
         } catch (JSONException e) {
+
             view.runOnUiThread(new Runnable() {
                 public void run() {
                     final Toast toast =Toast.makeText(view, "wystapił problem podczas połącenia z serwerem", Toast.LENGTH_LONG);

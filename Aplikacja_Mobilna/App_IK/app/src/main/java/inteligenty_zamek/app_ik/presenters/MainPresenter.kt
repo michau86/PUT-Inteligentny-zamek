@@ -1,15 +1,14 @@
-package inteligenty_zamek.app_ik
+package inteligenty_zamek.app_ik.presenters
 
-import android.util.Log
-import android.app.Application;
 import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.os.CountDownTimer
-import android.support.v4.content.ContextCompat.startActivity
-import android.widget.SimpleAdapter
 import android.widget.Toast
-import java.util.*
-import java.util.Map
+import inteligenty_zamek.app_ik.*
+import inteligenty_zamek.app_ik.API.Connect_and_send_message
+import inteligenty_zamek.app_ik.Views.MainActivity
+import inteligenty_zamek.app_ik.models.MainModel
+import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
 
 /**
  * Created by Damian on 26.10.2017.
@@ -64,10 +63,10 @@ class MainPresenter ( val view: MainActivity) {
     }
 
 
-       fun  updateList(cs: CharSequence):MainListAdapter
+       fun  updateList(cs: CharSequence): MainListAdapter
         {
           model!!.putKeys(view,cs);
-         return MainListAdapter(view,model);
+         return MainListAdapter(view, model);
         }
 
 

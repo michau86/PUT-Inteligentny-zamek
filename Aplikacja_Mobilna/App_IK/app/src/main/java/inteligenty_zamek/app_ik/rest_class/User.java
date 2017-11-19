@@ -1,11 +1,14 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.rest_class;
 
 import android.content.Context;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import inteligenty_zamek.app_ik.API.CyptographyApi;
+import inteligenty_zamek.app_ik.API.fileReadWriteApi;
+import inteligenty_zamek.app_ik.rest_class.Certyficat;
+import inteligenty_zamek.app_ik.rest_class.Lock;
 
 
 public class User {
@@ -48,7 +51,7 @@ public class User {
     {
         if(passwordHash=="")
         {
-            passwordHash=CyptographyApi.bin2hex(CyptographyApi.getHash(password));
+            passwordHash= CyptographyApi.bin2hex(CyptographyApi.getHash(password));
         }
         return passwordHash;
     }

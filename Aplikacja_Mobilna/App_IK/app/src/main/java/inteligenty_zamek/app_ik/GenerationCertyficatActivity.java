@@ -31,6 +31,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
+import inteligenty_zamek.app_ik.rest_class.Lock;
+import inteligenty_zamek.app_ik.rest_class.User;
+
 public class GenerationCertyficatActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     private String[] navMenuTitles;

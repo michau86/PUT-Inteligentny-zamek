@@ -1,16 +1,11 @@
-package inteligenty_zamek.app_ik
+package inteligenty_zamek.app_ik.Views
 
 import android.app.Activity
-import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.Typeface
-import android.os.AsyncTask
 import android.os.CountDownTimer
 import android.os.Bundle
-import android.util.Base64
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
@@ -19,27 +14,10 @@ import android.widget.TextView
 import android.widget.Toast
 
 import com.tooltip.Tooltip
-
-import org.apache.http.HttpEntity
-import org.apache.http.HttpResponse
-import org.apache.http.NameValuePair
-import org.apache.http.client.ClientProtocolException
-import org.apache.http.client.HttpClient
-import org.apache.http.client.entity.UrlEncodedFormEntity
-import org.apache.http.client.methods.HttpPost
-import org.apache.http.impl.client.DefaultHttpClient
-import org.apache.http.message.BasicNameValuePair
-import org.apache.http.util.EntityUtils
-import org.json.JSONException
-import org.json.JSONObject
-
-import java.io.IOException
-import java.security.KeyPair
-import java.security.KeyPairGenerator
-import java.security.SecureRandom
-import java.util.ArrayList
-import java.util.regex.Matcher
-import java.util.regex.Pattern
+import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
+import inteligenty_zamek.app_ik.R
+import inteligenty_zamek.app_ik.presenters.RegisterPresenter
+import inteligenty_zamek.app_ik.API.Valdiation
 
 class RegisterActivity : Activity() {
 
@@ -50,7 +28,7 @@ class RegisterActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        presenter=RegisterPresenter(this)
+        presenter= RegisterPresenter(this)
 
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
         val sampleText = this.findViewById(R.id.warning_ico1) as TextView

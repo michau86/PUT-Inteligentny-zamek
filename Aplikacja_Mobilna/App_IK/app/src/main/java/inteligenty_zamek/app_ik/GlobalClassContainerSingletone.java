@@ -2,6 +2,8 @@ package inteligenty_zamek.app_ik;
 
 import java.security.PrivateKey;
 
+import inteligenty_zamek.app_ik.rest_class.User;
+
 /**
  * Created by Damian on 26.10.2017.
  */

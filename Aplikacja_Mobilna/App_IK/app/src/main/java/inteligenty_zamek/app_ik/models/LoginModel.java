@@ -1,12 +1,11 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
-import org.json.JSONArray;
+import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.API.Valdiation;
 
 /**
  * Created by Damian on 26.10.2017.

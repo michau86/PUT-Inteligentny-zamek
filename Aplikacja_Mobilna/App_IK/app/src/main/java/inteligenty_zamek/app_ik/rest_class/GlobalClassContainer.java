@@ -1,11 +1,10 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.rest_class;
 
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
 import org.json.JSONException;
 import java.io.BufferedReader;
@@ -14,32 +13,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.InvalidParameterSpecException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-
-
+import inteligenty_zamek.app_ik.API.CyptographyApi;
+import inteligenty_zamek.app_ik.R;
 
 
 public class GlobalClassContainer extends Application {
@@ -96,7 +77,7 @@ public class GlobalClassContainer extends Application {
         digest.reset();
         return digest.digest(password.getBytes());
     }
-    static String bin2hex(byte[] data) {
+    public static String bin2hex(byte[] data) {
         return String.format("%0" + (data.length*2) + "X", new BigInteger(1, data));
     }
     //metody odpowiedzialne za zapisywanie dfo pliku

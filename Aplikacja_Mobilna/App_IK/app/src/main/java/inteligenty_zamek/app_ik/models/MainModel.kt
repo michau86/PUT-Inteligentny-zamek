@@ -1,8 +1,8 @@
-package inteligenty_zamek.app_ik
+package inteligenty_zamek.app_ik.models
 
 import android.content.Context
-import android.support.annotation.IntegerRes
-import android.util.Log
+import inteligenty_zamek.app_ik.rest_class.Certyficat
+import inteligenty_zamek.app_ik.rest_class.User
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.LinkedHashMap
@@ -11,7 +11,7 @@ import java.util.LinkedHashMap
  * Created by Damian on 26.10.2017.
  */
 
-class MainModel(val user:User)
+class MainModel(val user: User)
 {
     public var Keys: LinkedHashMap<Int, Certyficat>?=LinkedHashMap()
     public var resultsMap: LinkedHashMap<String, String>?=null
@@ -33,7 +33,6 @@ class MainModel(val user:User)
             }
 
         }
-
 
     }
 }

@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.API;
 
 import android.util.Base64;
 
@@ -84,7 +84,7 @@ public final class CyptographyApi {
         digest.reset();
         return digest.digest(password.getBytes());
     }
-    static String bin2hex(byte[] data) {
+    public static String bin2hex(byte[] data) {
         return String.format("%0" + (data.length*2) + "X", new BigInteger(1, data));
     }
 

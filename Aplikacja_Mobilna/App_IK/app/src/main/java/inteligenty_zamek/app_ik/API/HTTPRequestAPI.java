@@ -1,12 +1,8 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.API;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -20,6 +16,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
+
+import inteligenty_zamek.app_ik.presenters.LoginPresenter;
+import inteligenty_zamek.app_ik.presenters.RegisterPresenter;
 
 
 public class HTTPRequestAPI extends

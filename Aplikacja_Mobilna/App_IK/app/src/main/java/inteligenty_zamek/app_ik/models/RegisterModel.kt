@@ -1,12 +1,13 @@
-package inteligenty_zamek.app_ik
+package inteligenty_zamek.app_ik.models
 
+import inteligenty_zamek.app_ik.rest_class.User
 import java.security.KeyPair
 
 /**
  * Created by Damian on 07.11.2017.
  */
 public class RegisterModel{
-var user:User?=null
+var user: User?=null
 var ip:String?=null
     var pair: KeyPair? = null
    val toastDelay = 4000

@@ -1,33 +1,25 @@
-package inteligenty_zamek.app_ik
+package inteligenty_zamek.app_ik.Views
 
-import android.bluetooth.BluetoothAdapter
 import android.content.Context
-import android.content.ContextWrapper
-import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.TypedArray
 import android.graphics.Typeface
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.TextView
-import android.widget.Toast
+import inteligenty_zamek.app_ik.BaseActivity
+import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
+import inteligenty_zamek.app_ik.R
+import inteligenty_zamek.app_ik.presenters.MainPresenter
 
-import java.util.ArrayList
 import java.util.Arrays
 import java.util.Collections
-import java.util.HashMap
-import java.util.LinkedHashMap
-import java.util.Map
 
 
 //opis dostania się do obiektu z listy certyfikatow
@@ -61,7 +53,7 @@ class MainActivity : BaseActivity() {
         sampleText.typeface = fontFamily
         resultsListView = this.findViewById(R.id.listView_Keys) as ListView
         preferences = this.getSharedPreferences(this.getString(R.string.SPName), Context.MODE_PRIVATE)
-        presenter=MainPresenter(this)
+        presenter= MainPresenter(this)
         resultsListView!!.adapter=presenter!!.updateList("")
 
 

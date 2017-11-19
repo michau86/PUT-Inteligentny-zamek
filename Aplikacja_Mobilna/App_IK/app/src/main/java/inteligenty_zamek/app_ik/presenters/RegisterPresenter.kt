@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik
+package inteligenty_zamek.app_ik.presenters
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,6 @@ import android.util.Base64
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import org.apache.http.message.BasicNameValuePair
 import org.json.JSONException
 import org.json.JSONObject
 import java.security.KeyPair
@@ -15,7 +14,14 @@ import java.security.KeyPairGenerator
 import java.security.SecureRandom
 import java.util.HashMap
 import android.app.Activity
-
+import inteligenty_zamek.app_ik.*
+import inteligenty_zamek.app_ik.API.CyptographyApi
+import inteligenty_zamek.app_ik.API.HTTPRequestAPI
+import inteligenty_zamek.app_ik.API.Valdiation
+import inteligenty_zamek.app_ik.API.fileReadWriteApi
+import inteligenty_zamek.app_ik.Views.LoginActivity
+import inteligenty_zamek.app_ik.models.RegisterModel
+import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
 
 
 /**
@@ -94,19 +100,17 @@ public class RegisterPresenter (val view:Context) {
             toSend.put("surname", surname)
             toSend.put("publickkey", stringKey)
 
-           model!!.setRegisterValue(login,password,name,surname,ip)
-
-
+            model!!.setRegisterValue(login,password,name,surname,ip)
 
             val sharedPref = view.getSharedPreferences(view.getString(R.string.SPName), Context.MODE_PRIVATE)
             val editor = sharedPref.edit()
-
             editor.putString("login",login)
             editor.putString("ipserwer",ip)
-            editor.putString("password",CyptographyApi.encrypt(password))
+            editor.putString("password", CyptographyApi.encrypt(password))
             editor.putString("name",name)
             editor.putString("surname",surname)
             editor.commit()
+
             try {
                 HTTPRequestAPI(this, "http://" + ip + ":8080/api/login/", 2, toSend).execute()
             } catch (e: Exception) {

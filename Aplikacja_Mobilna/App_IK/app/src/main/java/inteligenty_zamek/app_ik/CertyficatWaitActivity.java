@@ -36,6 +36,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
+import inteligenty_zamek.app_ik.rest_class.User;
+
 public class CertyficatWaitActivity extends BaseActivity{
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;

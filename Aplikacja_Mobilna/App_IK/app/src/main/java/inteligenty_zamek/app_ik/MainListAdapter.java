@@ -1,19 +1,15 @@
 package inteligenty_zamek.app_ik;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import java.security.cert.Certificate;
-import java.util.List;
-import java.util.Map;
+import inteligenty_zamek.app_ik.models.MainModel;
+import inteligenty_zamek.app_ik.rest_class.Certyficat;
 
 /**
  * Created by Damian on 07.11.2017.

@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.rest_class;
 
 /**
  * Created by damian on 10.05.2017.
