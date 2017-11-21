@@ -32,7 +32,7 @@
         <activity android:name=".SetingsActivity" />
         <activity android:name=".History_using_keyActivity" />
         <activity android:name=".CertificationaskActivity" />
-        <activity android:name=".BaseActivity" />
+        <activity android:name=".Navigation.BaseActivity" />
         <activity android:name=".userCertyfikationListActivity" />
         <activity android:name=".certyficatActivity" />
         <activity android:name=".GenerationCertyfikatForGuestActivity" />

@@ -34,6 +34,7 @@ import java.util.List;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.rest_class.Lock;
 import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 
 public class GenerationCertyficatActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 

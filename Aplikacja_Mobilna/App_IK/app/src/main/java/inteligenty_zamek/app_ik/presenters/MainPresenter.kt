@@ -6,9 +6,11 @@ import android.os.CountDownTimer
 import android.widget.Toast
 import inteligenty_zamek.app_ik.*
 import inteligenty_zamek.app_ik.API.Connect_and_send_message
+import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.Views.MainActivity
 import inteligenty_zamek.app_ik.models.MainModel
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
+import inteligenty_zamek.app_ik.Navigation.BaseActivity
 
 /**
  * Created by Damian on 26.10.2017.
@@ -43,7 +45,7 @@ class MainPresenter ( val view: MainActivity) {
             /////////////////////////////////
             //////////////////////////////
             ///////////////////////////
-            signature = BaseActivity.sign(model!!.Keys!!.get(index)!!.getLok_key(), (view as GlobalClassContainer).privatekye)
+            signature = CyptographyApi.sign(model!!.Keys!!.get(index)!!.getLok_key(), (view as GlobalClassContainer).privatekye)
         } catch (e: Exception) {
         }
 

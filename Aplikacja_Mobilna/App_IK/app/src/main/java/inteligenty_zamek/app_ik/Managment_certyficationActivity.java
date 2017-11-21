@@ -37,6 +37,7 @@ import java.util.List;
 import inteligenty_zamek.app_ik.API.fileReadWriteApi;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 
 public class Managment_certyficationActivity extends BaseActivity
        {

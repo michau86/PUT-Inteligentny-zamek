@@ -19,6 +19,7 @@ import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
 import inteligenty_zamek.app_ik.Views.LoginActivity;
 import inteligenty_zamek.app_ik.Views.MainActivity;
 import inteligenty_zamek.app_ik.R;
+import inteligenty_zamek.app_ik.rest_class.GlobalContainer;
 import inteligenty_zamek.app_ik.rest_class.User;
 import inteligenty_zamek.app_ik.models.LoginModel;
 
@@ -38,8 +39,10 @@ public class LoginPresenter {
 
     public void isLogin()
     {
-        if(model.session!=null && model.session!="")
+        if(model.getIsLogin()==true)
         {
+            GlobalContainer.isAdmin=model.getstatus();
+            GlobalContainer.isLogin=true;
             Intent intent = new Intent(view,MainActivity.class);
             view.startActivity(intent);
         }
@@ -81,6 +84,8 @@ public class LoginPresenter {
 
                     try{
                     editor.putString("token", CyptographyApi.encrypt(jObj.getString("token")));
+                    editor.putBoolean("isLogin", true);
+                    GlobalContainer.isLogin=true;
                     editor.commit();
                     }catch(Exception e){}
 

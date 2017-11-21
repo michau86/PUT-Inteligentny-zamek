@@ -26,6 +26,17 @@ public class LoginModel {
         return false;
     }
 
+    public boolean getstatus()
+    {
+        sharedPref = context.getSharedPreferences("InteligentKeySharedPreferences",Context.MODE_PRIVATE);
+        return sharedPref.getBoolean("isadmin",false);
+    }
+
+    public boolean getIsLogin()
+    {
+        sharedPref = context.getSharedPreferences("InteligentKeySharedPreferences",Context.MODE_PRIVATE);
+        return sharedPref.getBoolean("isLogin",false);
+    }
     private User user;
 
     public boolean setUser(User user)
@@ -68,9 +79,7 @@ public class LoginModel {
     {
         this.context=context;
         sharedPref = context.getSharedPreferences("InteligentKeySharedPreferences",Context.MODE_PRIVATE);
-
         session=sharedPref.getString("token", "");
-        Log.i("HHH",session);
         setings=sharedPref.getString("ipserwer", "");
     }
 

@@ -4,6 +4,7 @@ import android.content.res.TypedArray;
 import android.os.Bundle;
 
 import inteligenty_zamek.app_ik.rest_class.Certyficat;
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 
 public class certyficatActivity extends BaseActivity {
 

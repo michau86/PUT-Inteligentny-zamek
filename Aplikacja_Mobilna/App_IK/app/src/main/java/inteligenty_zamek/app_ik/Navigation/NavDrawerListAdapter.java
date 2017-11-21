@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.Navigation;
 
 import java.util.ArrayList;
 
@@ -6,12 +6,16 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import inteligenty_zamek.app_ik.R;
+import inteligenty_zamek.app_ik.rest_class.GlobalContainer;
 
 public class NavDrawerListAdapter extends BaseAdapter {
 
@@ -52,8 +56,10 @@ public class NavDrawerListAdapter extends BaseAdapter {
 
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
         txtTitle.setText(navDrawerItems.get(position).getTitle());
-
-
+        if(position== GlobalContainer.menuSelectedNumber) {
+        //////////trzeba ustalić jakiś kolor
+            convertView.setBackgroundColor(context.getResources().getColor(R.color.higlightmenu));
+}
 
         return convertView;
     }

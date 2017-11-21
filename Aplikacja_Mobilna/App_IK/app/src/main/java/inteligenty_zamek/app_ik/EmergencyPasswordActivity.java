@@ -2,7 +2,6 @@ package inteligenty_zamek.app_ik;
 
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -13,6 +12,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 
 public class EmergencyPasswordActivity extends BaseActivity {
 

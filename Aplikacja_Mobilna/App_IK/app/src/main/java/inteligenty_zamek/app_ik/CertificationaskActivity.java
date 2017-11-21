@@ -37,6 +37,7 @@ import java.util.Map;
 
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 
 public class CertificationaskActivity extends BaseActivity {
     private String[] navMenuTitles;

@@ -17,6 +17,7 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 import inteligenty_zamek.app_ik.presenters.LoginPresenter;
 import inteligenty_zamek.app_ik.presenters.RegisterPresenter;
 
@@ -64,7 +65,11 @@ public class HTTPRequestAPI extends
             RegisterPresenter rp=RegisterPresenter.class.cast(presenter);
             rp.registerResult(response);
         }
-
+        if (apiNumber==0)
+        {
+            BaseActivity ba=BaseActivity.class.cast(presenter);
+            ba.logoutresponse(response);
+        }
     }
 
     public String performPostCall(String requestURL,

@@ -34,9 +34,10 @@ import java.util.regex.Pattern;
 
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 
 
-public class SetingsActivity extends BaseActivity  {
+public class SetingsActivity extends BaseActivity {
 
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;

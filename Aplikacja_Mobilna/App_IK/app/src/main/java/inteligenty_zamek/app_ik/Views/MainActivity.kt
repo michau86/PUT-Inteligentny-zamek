@@ -13,7 +13,7 @@ import android.widget.EditText
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.TextView
-import inteligenty_zamek.app_ik.BaseActivity
+import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.presenters.MainPresenter

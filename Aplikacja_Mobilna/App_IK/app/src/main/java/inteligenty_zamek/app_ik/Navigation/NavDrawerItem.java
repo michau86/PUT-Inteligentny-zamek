@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.Navigation;
 
 public class NavDrawerItem {
     private String title;

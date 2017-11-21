@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.Navigation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,8 +8,8 @@ import android.content.res.TypedArray;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
@@ -35,16 +35,24 @@ import java.io.IOException;
 import java.security.PrivateKey;
 import java.security.Signature;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import inteligenty_zamek.app_ik.API.CyptographyApi;
+import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
+import inteligenty_zamek.app_ik.Admin_PanelActivity;
+import inteligenty_zamek.app_ik.Managment_certyficationActivity;
+import inteligenty_zamek.app_ik.R;
+import inteligenty_zamek.app_ik.SetingsActivity;
 import inteligenty_zamek.app_ik.Views.LoginActivity;
 import inteligenty_zamek.app_ik.Views.MainActivity;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
+import inteligenty_zamek.app_ik.rest_class.GlobalContainer;
 import inteligenty_zamek.app_ik.rest_class.User;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-public class BaseActivity extends ActionBarActivity
+public class BaseActivity extends AppCompatActivity
 {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -75,12 +83,12 @@ public class BaseActivity extends ActionBarActivity
 
             }}else{
             for(int i=0;i<navMenuTitles.length;i++){
-                if(((GlobalClassContainer) getApplication()).getIsadmin()<0 && i>1){i=navMenuTitles.length;
+                if(GlobalContainer.isLogin==false && i>1){i=navMenuTitles.length;
                     navDrawerItems.add(new NavDrawerItem("wyjdz",navMenuIcons.getResourceId(i, -1)));
 
                     break;}
                 else
-                    if(((GlobalClassContainer) getApplication()).getIsadmin()==0 && i==2){i++;}
+                    if(GlobalContainer.isAdmin==false && i==2){i++;}
                 navDrawerItems.add(new NavDrawerItem(navMenuTitles[i],navMenuIcons.getResourceId(i, -1)));
             }
         }
@@ -88,7 +96,6 @@ public class BaseActivity extends ActionBarActivity
         adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
-
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -108,7 +115,7 @@ public class BaseActivity extends ActionBarActivity
                 supportInvalidateOptionsMenu();
             }
         };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
 
     }
 
@@ -145,25 +152,27 @@ public class BaseActivity extends ActionBarActivity
     }
 
     private void displayView(int position) {
+        GlobalContainer.menuSelectedNumber=position;
+
         switch (position) {
             case 0:
-                Intent intent = new Intent(this, MainActivity.class);
+               Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
                 break;
             case 1:
-                    Intent intent1 = new Intent(this, Managment_certyficationActivity.class);
-                    startActivity(intent1);
-                    finish();
 
+                Intent intent1 = new Intent(this, Managment_certyficationActivity.class);
+                startActivity(intent1);
+                finish();
                 break;
             case 2:
-                if(((GlobalClassContainer) getApplication()).getIsadmin()>0) {
+                if(GlobalContainer.isAdmin==true) {
                     Intent intent2 = new Intent(this, Admin_PanelActivity.class);
                     startActivity(intent2);
                     finish();
                 }
-                else if(((GlobalClassContainer) getApplication()).getIsadmin()==0)
+                else if(GlobalContainer.isLogin==true)
                 {
                     Intent intent3 = new Intent(this, SetingsActivity.class);
                     startActivity(intent3);
@@ -175,33 +184,34 @@ public class BaseActivity extends ActionBarActivity
                     Intent intent3 = new Intent(this, LoginActivity.class);
                     SharedPreferences sharedPref;
                     sharedPref = this.getSharedPreferences(this.getString(R.string.SPName), Context.MODE_PRIVATE);
-                       SharedPreferences.Editor editor = sharedPref.edit();
-                          editor.putString("ipserwer", "");
-                      editor.putString("login", "");
-                          editor.putString("password", "");
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("ipserwer", "");
+                    editor.putString("login", "");
+                    editor.putString("password", "");
                     editor.putString("token", "");
+                    editor.putBoolean("isadmin",false);
+                    editor.putBoolean("isLogin",false);
                     editor.commit();
-                    Log.i("HHH","tutaj base");
                     startActivity(intent3);
                     finish();
                 }
                 break;
             case 3:
-                if(((GlobalClassContainer) getApplication()).getIsadmin()>0) {
+                if(GlobalContainer.isAdmin==true) {
                     Intent intent3 = new Intent(this, SetingsActivity.class);
                     startActivity(intent3);
                     finish();
                 }
-                else if(((GlobalClassContainer) getApplication()).getIsadmin()==0)
+                else
                 {
                     User user=((GlobalClassContainer) getApplication()).getUser();
-                    new HTTPRequest(user).execute();
+                    logout(user,((GlobalClassContainer) getApplication()).getSerwerIP());
                     break;
                 }
                 break;
             case 4:
                 User user=((GlobalClassContainer) getApplication()).getUser();
-                new HTTPRequest(user).execute();
+                logout(user,((GlobalClassContainer) getApplication()).getSerwerIP());
                 break;
             default:
                 break;
@@ -229,89 +239,66 @@ public class BaseActivity extends ActionBarActivity
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    public class HTTPRequest extends AsyncTask<Void, Void, String> {
-        User user;
-        boolean choise;
-        public HTTPRequest(User x){
-            user=x;
-        }
-        @Override
-        protected String doInBackground(Void... params) {
-            HttpClient httpclient = new DefaultHttpClient();
-            String adres="http://"+ ((GlobalClassContainer) getApplication()).getSerwerIP()+":8080/api/logout/";
-            HttpPost httppost = new HttpPost(adres);
+private void logout(User user,String ipserwer)
+{
+    Log.i("HHHH","przycisk wyloguj");
+    HashMap toSend = new HashMap();
+    toSend.put("login", user.getLogin());
+    toSend.put("token", ((GlobalClassContainer) getApplication()).getSession());
+    try {
+        new HTTPRequestAPI(this, "http://" + ipserwer + ":8080/api/logout/", 0, toSend).execute();
+    }catch (Exception e)
+    {
 
-            try {
-                // Add your data
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-                nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
-                nameValuePairs.add(new BasicNameValuePair("token", ((GlobalClassContainer) getApplication()).getSession()));
-                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+    }
 
-                // Execute HTTP Post Request
-                HttpResponse response = httpclient.execute(httppost);
-                HttpEntity entity = response.getEntity();
-                String responseString = EntityUtils.toString(entity, "UTF-8");
+}
 
-                return responseString;
-            } catch (ClientProtocolException e) {
-                // TODO Auto-generated catch block
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-            }
-            return null;
-        }
-
-        //akcja po otrzyman iu odpowiedzi z serwera
-        @Override
-        protected void onPostExecute(String response) {
-            super.onPostExecute(response);
-            JSONObject jObj = null;
-            try {
-                jObj = new JSONObject(response);
-                if (jObj.getString("status").equals("logout")) {
-                    ((GlobalClassContainer) getApplication()).setSession("");
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            ((GlobalClassContainer) getApplication()).setDefaultValue();
-                            Intent intent4 = new Intent(BaseActivity.this, LoginActivity.class);
-                            startActivity(intent4);
-                            finish();
-                        }
-                    });
+public void logoutresponse(String response)
+{
+    Log.i("HHHH","otrzymane response");
+    Log.i("HHHH",response);
+    JSONObject jObj = null;
+    try {
+        jObj = new JSONObject(response);
+        if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("invalid")) {
+            GlobalContainer.isAdmin=false;
+            GlobalContainer.isLogin=false;
+            GlobalContainer.menuSelectedNumber=0;
+            SharedPreferences sharedPref = this.getSharedPreferences(this.getString(R.string.SPName), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("token", "");
+            editor.putString("password","");
+            editor.putBoolean("isLogin", false);
+            editor.putBoolean("isadmin",false);
+            editor.commit();
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    ((GlobalClassContainer) getApplication()).setDefaultValue();
+                    Intent intent4 = new Intent(BaseActivity.this, LoginActivity.class);
+                    startActivity(intent4);
+                    finish();
                 }
-                else
-                {
-                // TODO error z logoutu
-                }
-            } catch (JSONException e) {
-            }
+            });
         }
+        else
+        {
+            // TODO error z logoutu
+        }
+    } catch (JSONException e) {
     }
+}
 
-    public static String sign(String plainText, PrivateKey privateKey) throws Exception {
-        Signature privateSignature = Signature.getInstance("SHA256withRSA");
-        privateSignature.initSign(privateKey);
-        privateSignature.update(plainText.getBytes(UTF_8));
-        byte[] signature = privateSignature.sign();
-        return Base64.encodeToString(signature,Base64.DEFAULT);
-    }
 
-    /*
-    public static boolean verify(String plainText, String signature, PublicKey publicKey) throws Exception {
-        Signature publicSignature = Signature.getInstance("SHA256withRSA");
-        publicSignature.initVerify(publicKey);
-        publicSignature.update(plainText.getBytes(UTF_8));
-        byte[] signatureBytes = Base64.decode(signature,Base64.DEFAULT);
-        return publicSignature.verify(signatureBytes);
-    }
 
-    public static KeyPair generateKeyPair() throws Exception {
-        KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
-        generator.initialize(1024, new SecureRandom());
-        KeyPair pair = generator.generateKeyPair();
-        return pair;
-    }
-*/
+
+
+
+
+
+
+
+
+
 }
 

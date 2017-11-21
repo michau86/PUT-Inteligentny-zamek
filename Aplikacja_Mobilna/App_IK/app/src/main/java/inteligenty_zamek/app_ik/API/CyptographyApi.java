@@ -10,7 +10,9 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
 import java.security.SecureRandom;
+import java.security.Signature;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -21,8 +23,18 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 public final class CyptographyApi {
     private static String key="kluuucz";
+
+    public static String sign(String plainText, PrivateKey privateKey) throws Exception {
+        Signature privateSignature = Signature.getInstance("SHA256withRSA");
+        privateSignature.initSign(privateKey);
+        privateSignature.update(plainText.getBytes(UTF_8));
+        byte[] signature = privateSignature.sign();
+        return Base64.encodeToString(signature,Base64.DEFAULT);
+    }
 
     public static String encrypt(String value)
             throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException

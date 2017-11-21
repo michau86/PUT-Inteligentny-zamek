@@ -26,6 +26,7 @@ import inteligenty_zamek.app_ik.R;
 public class GlobalClassContainer extends Application {
 
     private SharedPreferences sharedPref;
+
     private String session;
     private User user;
     private Certyficat[] certyficatlist;
