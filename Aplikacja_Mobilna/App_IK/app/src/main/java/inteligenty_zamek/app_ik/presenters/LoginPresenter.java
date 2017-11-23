@@ -39,6 +39,8 @@ public class LoginPresenter {
 
     public void isLogin()
     {
+        CyptographyApi.symulation();
+
         if(model.getIsLogin()==true)
         {
             GlobalContainer.isAdmin=model.getstatus();
