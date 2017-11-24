@@ -5,12 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,29 +16,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.security.PrivateKey;
-import java.security.Signature;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-import inteligenty_zamek.app_ik.API.CyptographyApi;
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
-import inteligenty_zamek.app_ik.Admin_PanelActivity;
+import inteligenty_zamek.app_ik.Views.Admin_PanelActivity;
 import inteligenty_zamek.app_ik.Managment_certyficationActivity;
 import inteligenty_zamek.app_ik.R;
 import inteligenty_zamek.app_ik.SetingsActivity;
@@ -49,8 +32,6 @@ import inteligenty_zamek.app_ik.Views.MainActivity;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer;
 import inteligenty_zamek.app_ik.rest_class.User;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class BaseActivity extends AppCompatActivity
 {

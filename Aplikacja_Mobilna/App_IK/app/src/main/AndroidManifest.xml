@@ -27,7 +27,7 @@
         </activity>
         <activity android:name=".Views.RegisterActivity" />
         <activity android:name=".Views.MainActivity" />
-        <activity android:name=".Admin_PanelActivity" />
+        <activity android:name=".Views.Admin_PanelActivity" />
         <activity android:name=".Managment_certyficationActivity" />
         <activity android:name=".SetingsActivity" />
         <activity android:name=".History_using_keyActivity" />

@@ -36,15 +36,12 @@ class MainPresenter ( val view: MainActivity) {
             val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
             view.startActivity(enableBtIntent)
         }
-     //   val us = (application as GlobalClassContainer).user
 
         var signature = ""
 
 
         try {
-            /////////////////////////////////
-            //////////////////////////////
-            ///////////////////////////
+
             signature = CyptographyApi.sign(model!!.Keys!!.get(index)!!.getLok_key(), (view as GlobalClassContainer).privatekye)
         } catch (e: Exception) {
         }
