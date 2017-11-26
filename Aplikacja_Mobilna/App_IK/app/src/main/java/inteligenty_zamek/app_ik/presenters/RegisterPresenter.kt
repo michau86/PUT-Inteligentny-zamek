@@ -49,7 +49,7 @@ public class RegisterPresenter (val view:Context) {
                     } catch (e: Exception) {
                     }
 
-                    (view as GlobalClassContainer).privatekye = model!!.pair!!.private
+                    (view.applicationContext as GlobalClassContainer).privatekye = model!!.pair!!.private
                     val toast = Toast.makeText(view, "nastapiła poprawna rejestracja", Toast.LENGTH_LONG)
                     toast.show()
                     object : CountDownTimer(model!!.toastDelay.toLong(), 1000) {
@@ -112,7 +112,7 @@ public class RegisterPresenter (val view:Context) {
             editor.commit()
 
             try {
-                HTTPRequestAPI(this, "http://" + ip + ":8080/api/login/", 2, toSend).execute()
+                HTTPRequestAPI(this, "http://" + ip + ":8080/api/register/", 2, toSend).execute()
             } catch (e: Exception) {
 
                 /////////////tu lepiej true i wyswietlić error z view

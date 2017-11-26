@@ -39,7 +39,7 @@ public class LoginPresenter {
 
     public void isLogin()
     {
-        CyptographyApi.symulation();
+        //CyptographyApi.symulation();
 
         if(model.getIsLogin()==true)
         {

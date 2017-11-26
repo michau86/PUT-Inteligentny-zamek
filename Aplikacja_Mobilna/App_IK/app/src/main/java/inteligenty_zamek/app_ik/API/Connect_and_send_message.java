@@ -43,7 +43,7 @@ public class Connect_and_send_message extends AsyncTask<Object, Object, Boolean>
             }
         }
 
-        connectDevice(true);
+        connectDevice(false);
         Long tsLong = System.currentTimeMillis()/1000;
         while(bluetooth_maneger.getState() != Bluetooth_maneger.STATE_CONNECTED){
             if (tsLong + 15 < System.currentTimeMillis()/1000)
@@ -87,7 +87,7 @@ public class Connect_and_send_message extends AsyncTask<Object, Object, Boolean>
     private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what) {
+           switch (msg.what) {
                 case 3:
                     byte[] writeBuf = (byte[]) msg.obj;
                     // construct a string from the buffer

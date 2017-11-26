@@ -19,6 +19,7 @@ var ip:String?=null
     public fun setRegisterValue(login:String,password:String,name:String,surname:String,ip:String)
     {
     this.ip=ip
+        this.user=User()
         this.user!!.login=login
         this.user!!.password=password
         this.user!!.name=name
