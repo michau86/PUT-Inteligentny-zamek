@@ -1,49 +1,19 @@
 package inteligenty_zamek.app_ik;
 
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 
 
-
-
-public class History_using_keyActivity extends BaseActivity  {
+public class History_using_keyActivity extends BaseActivity {
 
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
@@ -62,7 +32,7 @@ public class History_using_keyActivity extends BaseActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_of_using_key);
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-
+/*
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles, navMenuIcons);
         resultsListView = (ListView) History_using_keyActivity.this.findViewById(R.id.ListView_History);
@@ -172,11 +142,11 @@ public class History_using_keyActivity extends BaseActivity  {
                  adapter = new SimpleAdapter(History_using_keyActivity.this, listItems2, R.layout.history_using_key_list,
                         new String[]{"First Line", "Second Line", "Third Line"},
                         new int[]{R.id.history_icon, R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey});
-                try {
-                    for (int i = 0; i < ((GlobalClassContainer) getApplication()).getUser().getCertyficateList().length; i++) {
-                        Keys.put(listItems2.get(i).values().toArray()[0].toString(), listItems2.get(i).values().toArray()[1].toString() );
+               // try {
+                 //   for (int i = 0; i < ((GlobalClassContainer) getApplication()).getUser().getCertyficateList(this).length; i++) {
+                  //      Keys.put(listItems2.get(i).values().toArray()[0].toString(), listItems2.get(i).values().toArray()[1].toString() );
                     }
-                }catch (Exception e) {}
+               // }catch (Exception e) {}
                 Iterator it = Keys.entrySet().iterator();
 
                 while (it.hasNext())
@@ -322,5 +292,8 @@ public class History_using_keyActivity extends BaseActivity  {
             }
         }
     }
-}
+}*/
+    }
+    }
+
 

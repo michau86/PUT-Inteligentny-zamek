@@ -10,6 +10,8 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
+import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
+
 public class GenerateCertyficatRangeActivity extends Activity {
     final ArrayList<String> mondayList = new ArrayList<String>();
     final ArrayList<String> tuesdayList = new ArrayList<String>();

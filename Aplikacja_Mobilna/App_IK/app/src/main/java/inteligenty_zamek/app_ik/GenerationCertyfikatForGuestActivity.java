@@ -1,8 +1,9 @@
 package inteligenty_zamek.app_ik;
 
 import android.content.res.TypedArray;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 
 public class GenerationCertyfikatForGuestActivity extends BaseActivity {
 

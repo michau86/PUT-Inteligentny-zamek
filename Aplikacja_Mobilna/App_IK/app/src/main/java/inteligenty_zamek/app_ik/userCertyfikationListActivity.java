@@ -1,32 +1,16 @@
 package inteligenty_zamek.app_ik;
 
-import android.content.Intent;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.ArraySet;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
-
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 
 
 public class userCertyfikationListActivity extends BaseActivity {
@@ -53,7 +37,7 @@ public class userCertyfikationListActivity extends BaseActivity {
         navMenuTitles= getResources().getStringArray(R.array.nav_drawer_items);
         navMenuIcons =getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles,navMenuIcons);
-
+/*
         Typeface fontFamily = Typeface.createFromAsset(this.getAssets(), "fonts/fontawesome.ttf");
         TextView sampleText = (TextView) this.findViewById(R.id.TextView_sortingIco);
         sampleText.setTypeface(fontFamily);
@@ -223,7 +207,7 @@ public class userCertyfikationListActivity extends BaseActivity {
                 }
                 resultsListView.setAdapter(adapter);
             }
-        });
+        });*/
     }
 
 

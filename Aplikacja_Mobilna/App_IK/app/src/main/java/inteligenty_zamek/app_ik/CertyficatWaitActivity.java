@@ -36,7 +36,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CertyficatWaitActivity extends BaseActivity{
+import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
+import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
+
+public class CertyficatWaitActivity extends BaseActivity {
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
     int toastDelay = 4000;

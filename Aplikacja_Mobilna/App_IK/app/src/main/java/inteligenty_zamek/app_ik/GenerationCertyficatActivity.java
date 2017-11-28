@@ -31,6 +31,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
+import inteligenty_zamek.app_ik.rest_class.Lock;
+import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
+
 public class GenerationCertyficatActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     private String[] navMenuTitles;
@@ -195,7 +200,8 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
                         final ArrayList<String> listkey = new ArrayList<String>();
                         final SpinnerAdapter spinerListKeyAdapter=new SpinnerAdapter(GenerationCertyficatActivity.this, R.layout.spinner_row,  listkey,  listkey);
                         spiner1.setAdapter(spinerListKeyAdapter);
-                        Lock[] list=((GlobalClassContainer) getApplication()).getUser().getLockslist();
+                        String usrLog=((GlobalClassContainer) getApplication()).getUser().getLogin();
+                        Lock[] list=((GlobalClassContainer) getApplication()).getUser().getLockslist(usrLog);
                         for(int i=0; i<list.length; i++)
                         {
                             try {
@@ -243,7 +249,8 @@ public class GenerationCertyficatActivity extends BaseActivity implements Adapte
                 nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
                 nameValuePairs.add(new BasicNameValuePair("token",  ((GlobalClassContainer) getApplication()).getSession()));
                 nameValuePairs.add(new BasicNameValuePair("user_id",  ((GlobalClassContainer) getApplication()).getUserlist()[iduser].getIdUser()));
-                nameValuePairs.add(new BasicNameValuePair("lock_id",  ((GlobalClassContainer) getApplication()).getUser().getLockslist()[idloks].getIdKey()));
+                String login=((GlobalClassContainer) getApplication()).getUser().getLogin();
+                nameValuePairs.add(new BasicNameValuePair("lock_id",  ((GlobalClassContainer) getApplication()).getUser().getLockslist(login)[idloks].getIdKey()));
 
                         nameValuePairs.add(new BasicNameValuePair("name", nam ));
                         nameValuePairs.add(new BasicNameValuePair("surname", surnam ));

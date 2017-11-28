@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,8 +32,12 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
+
+import inteligenty_zamek.app_ik.API.fileReadWriteApi;
+import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
+import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 
 public class Managment_certyficationActivity extends BaseActivity
        {
@@ -57,6 +60,8 @@ public class Managment_certyficationActivity extends BaseActivity
         TextView ico_download_file = (TextView) this.findViewById(R.id.TextView_download_file);
         ico_download_file.setTypeface(fontFamily);
 
+
+
         //lista
         ListView resultsListView = (ListView) this.findViewById(R.id.ListView_Managment_Certyfivation);
         //tablica tringow dla uzytkownika zalogowanego
@@ -64,7 +69,7 @@ public class Managment_certyficationActivity extends BaseActivity
         //ustawienie listview dla zuytkownika niezalogowanego
         if(((GlobalClassContainer) getApplication()).getIsadmin()<0)
         {
-            ico_download_serwer.setText("");
+          //  ico_download_serwer.setText("");
             list.addAll( Arrays.asList(getString(R.string.activity_managmentCertyfication2)) );
         }
         //ustawienie listview dla uzytkownika zalogowanego
@@ -104,13 +109,13 @@ public class Managment_certyficationActivity extends BaseActivity
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View viewIn) {
-                try {
-                    if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0){
+             //   try {
+                    //if (((GlobalClassContainer) getApplication()).getIsadmin() >= 0){
                         User user = ((GlobalClassContainer) getApplication()).getUser();
                     new Managment_certyficationActivity.HTTPRequest(user).execute();
-                }
-                } catch (Exception except) {
-                }
+                //}
+               // } catch (Exception except) {
+                //}
             }
         });
 
@@ -168,17 +173,25 @@ public class Managment_certyficationActivity extends BaseActivity
                    HttpClient httpclient = new DefaultHttpClient();
                    String adres="http://"+ ((GlobalClassContainer) getApplication()).getSerwerIP()+":8080/api/download/all_certifacate/";
                    HttpPost httppost = new HttpPost(adres);
+                  Log.i("HHH","jestem");
+                   Log.i("HHH",adres);
+                  Log.i("HHH",user.getLogin());
+
                    try {
                        // Add your data
                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                        nameValuePairs.add(new BasicNameValuePair("login", user.getLogin()));
                        nameValuePairs.add(new BasicNameValuePair("token",  ((GlobalClassContainer) getApplication()).getSession()));
+                       Log.i("HHH",((GlobalClassContainer) getApplication()).getSession());
+
                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                        // Execute HTTP Post Request
                        HttpResponse response = httpclient.execute(httppost);
                        HttpEntity entity = response.getEntity();
                        String responseString = EntityUtils.toString(entity, "UTF-8");
+                       Log.i("HHH","jestem2");
                        return responseString;
+
                    } catch (ClientProtocolException e) {
                        // TODO Auto-generated catch block
                    } catch (IOException e) {
@@ -195,7 +208,7 @@ public class Managment_certyficationActivity extends BaseActivity
                    try {
                        jObj = new JSONObject(response);
                        JSONArray arrJson = jObj.getJSONArray("data");
-                       ((GlobalClassContainer) getApplication()).writeToFile(arrJson.toString(),Managment_certyficationActivity.this,((GlobalClassContainer) getApplication()).getUser().getLogin());
+                       fileReadWriteApi.writeToFile(arrJson.toString(),Managment_certyficationActivity.this,((GlobalClassContainer) getApplication()).getUser().getLogin());
                        ((GlobalClassContainer) getApplication()).getUser().addCertyficatList(arrJson);
 
                        final Toast toast =Toast.makeText(Managment_certyficationActivity.this, "dodano certyfikaty", Toast.LENGTH_LONG);

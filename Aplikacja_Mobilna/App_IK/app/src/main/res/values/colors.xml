@@ -10,4 +10,5 @@
     <color name="color_primary">#171717</color>
     <color name="color_text_dim">#6c6c6c</color>
     <color name="drawer_background">#a6a6a6</color>
+    <color name="higlightmenu">#00ffff</color>
 </resources>
