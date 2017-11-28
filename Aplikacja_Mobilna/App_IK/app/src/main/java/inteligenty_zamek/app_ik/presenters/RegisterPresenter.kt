@@ -14,11 +14,10 @@ import java.security.KeyPairGenerator
 import java.security.SecureRandom
 import java.util.HashMap
 import android.app.Activity
+import android.util.Log
+import android.widget.EditText
 import inteligenty_zamek.app_ik.*
-import inteligenty_zamek.app_ik.API.CyptographyApi
-import inteligenty_zamek.app_ik.API.HTTPRequestAPI
-import inteligenty_zamek.app_ik.API.Valdiation
-import inteligenty_zamek.app_ik.API.fileReadWriteApi
+import inteligenty_zamek.app_ik.API.*
 import inteligenty_zamek.app_ik.Views.LoginActivity
 import inteligenty_zamek.app_ik.models.RegisterModel
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
@@ -45,11 +44,10 @@ public class RegisterPresenter (val view:Context) {
 
                     try {
                         fileReadWriteApi.writeToFile(
-                                CyptographyApi.encrypt(stringKey), view, "*" + model!!.user!!.login)
+                                CyptographyApi.encrypt(stringKey,model!!.user!!.password), view, "*" + model!!.user!!.login)
                     } catch (e: Exception) {
                     }
 
-                    (view.applicationContext as GlobalClassContainer).privatekye = model!!.pair!!.private
                     val toast = Toast.makeText(view, "nastapiła poprawna rejestracja", Toast.LENGTH_LONG)
                     toast.show()
                     object : CountDownTimer(model!!.toastDelay.toLong(), 1000) {
@@ -78,11 +76,12 @@ public class RegisterPresenter (val view:Context) {
         }
 
     }
+
     public fun sendData(login: String, password: String, name: String, surname: String, ip: String): Boolean {
 
         var stringKey = ""
         try {
-           model!!.pair = this.generateKeyPair()
+            model!!.pair = this.generateKeyPair()
         } catch (e: Exception) {
         }
 
@@ -93,30 +92,32 @@ public class RegisterPresenter (val view:Context) {
 
         //warunek sprawdzajacy poprawnosc loginu ip i hasla
         if (Valdiation.isCorrectIP(ip) && Valdiation.isCorrectLogin(login) && Valdiation.isCorrectPassword(password)) {
+
+            model!!.setRegisterValue(login, password, name, surname, ip)
             val toSend: HashMap<String, String> = HashMap()
             toSend.put("login", login)
-            toSend.put("password", password)
+            toSend.put("password", model!!.user!!.passwordHash)
             toSend.put("name", name)
             toSend.put("surname", surname)
             toSend.put("publickkey", stringKey)
 
-            model!!.setRegisterValue(login,password,name,surname,ip)
 
-            val sharedPref = view.getSharedPreferences(view.getString(R.string.SPName), Context.MODE_PRIVATE)
-            val editor = sharedPref.edit()
-            editor.putString("login",login)
-            editor.putString("ipserwer",ip)
-            editor.putString("password", CyptographyApi.encrypt(password))
-            editor.putString("name",name)
-            editor.putString("surname",surname)
-            editor.commit()
+
+            val value = HashMap<Int, String>()
+
+
+            value.put(1, ip)
+            value.put(5, login)
+            value.put(6, name)
+            value.put(7, surname)
+            value.put(2,password)
+            sharedPreferenceApi.set(view, value)
 
             try {
                 HTTPRequestAPI(this, "http://" + ip + ":8080/api/register/", 2, toSend).execute()
             } catch (e: Exception) {
-
-                /////////////tu lepiej true i wyswietlić error z view
-                return false
+                Log.i("HHHH","zwraca false");
+                    return false
             }
 
             return true
@@ -124,11 +125,14 @@ public class RegisterPresenter (val view:Context) {
         return false
 
     }
+
     fun generateKeyPair(): KeyPair {
         val generator = KeyPairGenerator.getInstance("RSA")
         generator.initialize(1024, SecureRandom())
         return generator.generateKeyPair()
     }
+
+
 
 }
 

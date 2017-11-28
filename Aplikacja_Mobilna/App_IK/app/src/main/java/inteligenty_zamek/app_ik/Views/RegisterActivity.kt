@@ -14,16 +14,18 @@ import android.widget.TextView
 import android.widget.Toast
 
 import com.tooltip.Tooltip
+import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.presenters.RegisterPresenter
 import inteligenty_zamek.app_ik.API.Valdiation
+import inteligenty_zamek.app_ik.API.sharedPreferenceApi
+import java.util.HashMap
 
 class RegisterActivity : Activity() {
 
 
     private var presenter : RegisterPresenter?= null
-    private var  preferences: SharedPreferences?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +43,15 @@ class RegisterActivity : Activity() {
 
         ////////////////////////////////////////////////////////
         ////ustawienie domyślnych wartośći//////////////////////
-        val ipserwerregister = this.findViewById(R.id.ipserwertextview) as TextView
-        ipserwerregister.text = (application as GlobalClassContainer).serwerIP
+        val login = findViewById(R.id.editText_Login) as EditText
+        val name = findViewById(R.id.editTextName) as EditText
+        val surname = findViewById(R.id.editTextSurname) as EditText
+        val ipserwer = findViewById(R.id.ipserwertextview) as EditText
+
+        ipserwer.setText(sharedPreferenceApi.getString(this, 1))
+        login.setText(sharedPreferenceApi.getString(this, 5))
+        name.setText(sharedPreferenceApi.getString(this, 6))
+        surname.setText(sharedPreferenceApi.getString(this, 7))
 
 
 
@@ -82,8 +91,21 @@ class RegisterActivity : Activity() {
 
 
 
-                            presenter!!.sendData( login.text.toString(), password.text.toString(),
-                                    name.text.toString(),surname.text.toString(),ipserwer.text.toString())
+                            if(!presenter!!.sendData( login.text.toString(), password.text.toString(),
+                                    name.text.toString(),surname.text.toString(),ipserwer.text.toString()))
+                            {
+                                val toast = Toast.makeText(this@RegisterActivity, "wystąpił problem z połaczeniem", Toast.LENGTH_LONG)
+                                toast.show()
+                                object : CountDownTimer(presenter!!.model!!.toastDelay.toLong(), 1000) {
+                                    override fun onTick(millisUntilFinished: Long) {
+                                        toast.show()
+                                    }
+
+                                    override fun onFinish() {
+                                        toast.show()
+                                    }
+                                }.start()
+                            }
 
 
 
@@ -146,15 +168,34 @@ class RegisterActivity : Activity() {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        val value = HashMap<Int, String>()
+        val login = findViewById(R.id.editText_Login) as EditText
+        val name = findViewById(R.id.editTextName) as EditText
+        val surname = findViewById(R.id.editTextSurname) as EditText
+        val ipserwer = findViewById(R.id.ipserwertextview) as EditText
 
+        value.put(1, ipserwer.text.toString())
+        value.put(5, login.text.toString())
+        value.put(6, name.text.toString())
+        value.put(7, surname.text.toString())
+        sharedPreferenceApi.set(this, value)
+    }
 
+    override fun onResume() {
+        super.onResume()
 
+        val login = findViewById(R.id.editText_Login) as EditText
+        val name = findViewById(R.id.editTextName) as EditText
+        val surname = findViewById(R.id.editTextSurname) as EditText
+        val ipserwer = findViewById(R.id.ipserwertextview) as EditText
 
-
-
-
-
-
+        ipserwer.setText(sharedPreferenceApi.getString(this, 1))
+        login.setText(sharedPreferenceApi.getString(this, 5))
+        name.setText(sharedPreferenceApi.getString(this, 6))
+        surname.setText(sharedPreferenceApi.getString(this, 7))
+    }
 
 
 }

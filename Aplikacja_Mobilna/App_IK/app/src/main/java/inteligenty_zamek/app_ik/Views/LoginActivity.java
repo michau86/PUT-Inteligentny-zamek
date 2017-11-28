@@ -10,7 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 import inteligenty_zamek.app_ik.API.CyptographyApi;
+import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.R;
 import inteligenty_zamek.app_ik.rest_class.User;
@@ -18,14 +21,12 @@ import inteligenty_zamek.app_ik.presenters.LoginPresenter;
 
 public class LoginActivity extends Activity{
 
-    private SharedPreferences sharedPref;
     private LoginPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        sharedPref = this.getSharedPreferences(this.getString(R.string.SPName),Context.MODE_PRIVATE);
         presenter=new LoginPresenter(this);
         Typeface fontFamily = Typeface.createFromAsset(this.getAssets(), "fonts/fontawesome.ttf");
         TextView sampleText = (TextView) this.findViewById(R.id.warning_icologin);
@@ -33,7 +34,7 @@ public class LoginActivity extends Activity{
         presenter.onTakeView(this);
 
         EditText ipserwer=  (EditText) findViewById(R.id.iptextview);
-        String ipserwerstring=sharedPref.getString("ipserwer", "");
+        String ipserwerstring= sharedPreferenceApi.INSTANCE.getString(this,1);
         if(ipserwerstring==""){ipserwerstring=getString(R.string.defaultIPSerwer);}
         ipserwer.setText(ipserwerstring);
 
@@ -45,6 +46,7 @@ public class LoginActivity extends Activity{
                 EditText login=(EditText)findViewById(R.id.EditText_login);
                 EditText password=(EditText)findViewById(R.id.EditText_password);
                 EditText ipserwer=  (EditText) findViewById(R.id.iptextview);
+
 
                     User user = new User();
                     user.setLogin(login.getText().toString());
@@ -79,6 +81,8 @@ public class LoginActivity extends Activity{
                 ((GlobalClassContainer) getApplication()).setUser(user);
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
+
             }
         });
         presenter.isLogin();
@@ -88,17 +92,18 @@ public class LoginActivity extends Activity{
     @Override
     protected void onPause() {
         super.onPause();
-        sharedPref = this.getSharedPreferences(this.getString(R.string.SPName),Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
+        HashMap<Integer, String> value=new HashMap<>();
         EditText ipserwer=  (EditText) findViewById(R.id.iptextview);
-        editor.putString("ipserwer", ipserwer.getText().toString());
+       // EditText password=  (EditText) findViewById(R.id.EditText_password);
         EditText login=  (EditText) findViewById(R.id.EditText_login);
-        editor.putString("login", login.getText().toString());
-        EditText password=  (EditText) findViewById(R.id.EditText_password);
-        try {
-            editor.putString("password", CyptographyApi.encrypt(password.getText().toString()));
-        }catch (Exception e){}
-        editor.commit();
+
+        value.put(1,ipserwer.getText().toString());
+       // try {
+
+        //    value.put(2, password.getText().toString());
+       // }catch (Exception e){}
+        value.put(5, login.getText().toString());
+        sharedPreferenceApi.INSTANCE.set(this,value);
     }
 
 
@@ -106,16 +111,16 @@ public class LoginActivity extends Activity{
     protected void onResume() {
         super.onResume();
 
-        sharedPref = this.getSharedPreferences(this.getString(R.string.SPName),Context.MODE_PRIVATE);
-        EditText ipserwer=  (EditText) findViewById(R.id.iptextview);
-        EditText login=  (EditText) findViewById(R.id.EditText_login);
-        EditText password=  (EditText) findViewById(R.id.EditText_password);
-        ipserwer.setText(sharedPref.getString("ipserwer", ""));
-        login.setText(sharedPref.getString("login", ""));
-        try {
-            password.setText(CyptographyApi.decrypt(sharedPref.getString("password", "")));
-        }catch (Exception e){}
-        }
+        EditText ipserwer = (EditText) findViewById(R.id.iptextview);
+        EditText login = (EditText) findViewById(R.id.EditText_login);
+        //EditText password=  (EditText) findViewById(R.id.EditText_password);
 
+        ipserwer.setText(sharedPreferenceApi.INSTANCE.getString(this, 1));
+        login.setText(sharedPreferenceApi.INSTANCE.getString(this, 5));
+        // try {
+        //     password.setText(sharedPreferenceApi.INSTANCE.getString(this,2));
+        // }catch (Exception e){}
+        // }
 
+    }
 }

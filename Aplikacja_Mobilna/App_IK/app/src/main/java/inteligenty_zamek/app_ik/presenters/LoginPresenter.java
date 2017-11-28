@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import inteligenty_zamek.app_ik.API.CyptographyApi;
+import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
 import inteligenty_zamek.app_ik.Views.LoginActivity;
@@ -39,7 +40,7 @@ public class LoginPresenter {
 
     public void isLogin()
     {
-        //CyptographyApi.symulation();
+
 
         if(model.getIsLogin()==true)
         {
@@ -47,6 +48,7 @@ public class LoginPresenter {
             GlobalContainer.isLogin=true;
             Intent intent = new Intent(view,MainActivity.class);
             view.startActivity(intent);
+            view.finish();
         }
 
     }
@@ -59,6 +61,13 @@ public class LoginPresenter {
             HashMap toSend = new HashMap();
             toSend.put("username", user.getLogin());
             toSend.put("password", user.getPasswordHash());
+
+            HashMap <Integer,String> value=new HashMap<>();
+            value.put(1,ipserwer);
+            value.put(5,user.getLogin());
+            value.put(2,user.getPassword());
+            sharedPreferenceApi.INSTANCE.set(view,value);
+
             try {
                 new HTTPRequestAPI(this, "http://" + ipserwer + ":8080/api/login/", 1, toSend).execute();
             }catch (Exception e)
@@ -80,29 +89,25 @@ public class LoginPresenter {
                 jObj = new JSONObject(result);
                 if (jObj.getString("status").equals("ok") || jObj.getString("status").equals("root")) {
 
-
-                    SharedPreferences sharedPref = view.getSharedPreferences(view.getString(R.string.SPName), Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPref.edit();
-
                     try{
-                    editor.putString("token", CyptographyApi.encrypt(jObj.getString("token")));
-                    editor.putBoolean("isLogin", true);
+                    HashMap<Integer,String> value=new HashMap<>();
+                    value.put(3,jObj.getString("token"));
+                    sharedPreferenceApi.INSTANCE.set(view,value);
+                    sharedPreferenceApi.INSTANCE.set(view,true,1);
                     GlobalContainer.isLogin=true;
-                    editor.commit();
+
                     }catch(Exception e){}
 
                     model.setUserCertyficat();
 
                     if(jObj.getString("status").equals("ok"))
                     {
-                        editor.putBoolean("isadmin", false);
-                        editor.commit();
+                        sharedPreferenceApi.INSTANCE.set(view,false,2);
                         model.getUserClass().setAdmin(false);
                     }
                     else
                     {
-                        editor.putBoolean("isadmin", true);
-                        editor.commit();
+                        sharedPreferenceApi.INSTANCE.set(view,true,2);
                         model.getUserClass().setAdmin(true);
                     }
 
@@ -138,7 +143,20 @@ public class LoginPresenter {
                             }
 
                     }
-                }
+                }else{
+                view.runOnUiThread(new Runnable() {
+                    public void run() {
+                        final Toast toast =Toast.makeText(view, "wystapil problem podczas polaczenia z serwerem", Toast.LENGTH_LONG);
+                        toast.show();
+                        new CountDownTimer(toastDelay, 1000)
+                        {
+                            public void onTick(long millisUntilFinished) {toast.show();}
+                            public void onFinish() {toast.show();}
+                        }.start();
+                    }
+                });
+
+            }
 
         } catch (JSONException e) {
 

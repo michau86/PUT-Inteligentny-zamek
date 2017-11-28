@@ -32,7 +32,7 @@ import javax.crypto.spec.SecretKeySpec;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public final class CyptographyApi {
-    private static String key="kluuucz";
+    private static String aplicationKey="kluuucz";
 
     static String pHex="87A8E61DB4B6663CFFBBD19C651959998CEEF608660DD0F2" +
             "5D2CEED4435E3B00E00DF8F1D61957D4FAF7DF4561B2AA30" +
@@ -163,19 +163,27 @@ public final class CyptographyApi {
         return Base64.encodeToString(signature,Base64.DEFAULT);
     }
 
+    public static String encrypt(String value,String Key)
+            throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException
+    {
+        byte[] value_bytes = value.getBytes("UTF-8");
+        byte[] key_bytes = getKeyBytes(Key);
+        return Base64.encodeToString(encrypt(value_bytes, key_bytes, key_bytes), 0);
+    }
+
     public static String encrypt(String value)
             throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException
     {
         byte[] value_bytes = value.getBytes("UTF-8");
-        byte[] key_bytes = getKeyBytes(key);
+        byte[] key_bytes = getKeyBytes(aplicationKey);
         return Base64.encodeToString(encrypt(value_bytes, key_bytes, key_bytes), 0);
     }
+
 
     public static String encrypt(String value,byte[] secretKey)
             throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException
     {
         byte[] value_bytes = value.getBytes("UTF-8");
-        Log.i("HHHH","7,75");
         return Base64.encodeToString(encrypt(value_bytes, secretKey, new byte[16]), 0);
     }
 
@@ -213,9 +221,19 @@ public final class CyptographyApi {
             throws GeneralSecurityException, IOException
     {
         byte[] value_bytes = Base64.decode(value, 0);
-        byte[] key_bytes = getKeyBytes(key);
+        byte[] key_bytes = getKeyBytes(aplicationKey);
         return new String(decrypt(value_bytes, key_bytes, key_bytes), "UTF-8");
     }
+    public static String decrypt(String value, String key)
+            throws GeneralSecurityException, IOException
+    {
+        byte[] value_bytes = Base64.decode(value, 0);
+        byte[] key_bytes = getKeyBytes(key);
+        try {
+            return new String(decrypt(value_bytes, key_bytes, key_bytes), "UTF-8");
+        }catch(Exception ex){return null;}
+    }
+
 
     public static byte[] decrypt(byte[] ArrayOfByte1, byte[] ArrayOfByte2, byte[] ArrayOfByte3)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException
@@ -225,7 +243,9 @@ public final class CyptographyApi {
 
         // decrypt
         localCipher.init(2, new SecretKeySpec(ArrayOfByte2, "AES"), new IvParameterSpec(ArrayOfByte3));
-        return localCipher.doFinal(ArrayOfByte1);
+        try {
+            return localCipher.doFinal(ArrayOfByte1);
+        }catch(Exception e){return null;}
     }
 
     private static byte[] getKeyBytes(String paramString)

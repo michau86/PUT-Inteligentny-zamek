@@ -210,9 +210,7 @@ public class Managment_certyficationActivity extends BaseActivity
                        JSONArray arrJson = jObj.getJSONArray("data");
                        fileReadWriteApi.writeToFile(arrJson.toString(),Managment_certyficationActivity.this,((GlobalClassContainer) getApplication()).getUser().getLogin());
                        ((GlobalClassContainer) getApplication()).getUser().addCertyficatList(arrJson);
-Log.i("HHHH","nazwa");
-Log.i("HHHH",((GlobalClassContainer) getApplication()).getUser().getLogin());
-Log.i("HHHH",arrJson.toString());
+
                        final Toast toast =Toast.makeText(Managment_certyficationActivity.this, "dodano certyfikaty", Toast.LENGTH_LONG);
                        toast.show();
                        new CountDownTimer(toastDelay, 1000)

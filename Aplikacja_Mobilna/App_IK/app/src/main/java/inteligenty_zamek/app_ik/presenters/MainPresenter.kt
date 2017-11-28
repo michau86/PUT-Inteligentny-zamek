@@ -11,6 +11,7 @@ import inteligenty_zamek.app_ik.Views.MainActivity
 import inteligenty_zamek.app_ik.models.MainModel
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
+import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 
 /**
  * Created by Damian on 26.10.2017.
@@ -21,12 +22,7 @@ class MainPresenter ( val view: MainActivity) {
     var csk: CharSequence = ""
 
     init {
-
-        if ((view.applicationContext as GlobalClassContainer).user == null) {
-            (view.applicationContext as GlobalClassContainer).loadDataFromSharedPreferences()
-        }
-
-        model = MainModel((view.applicationContext as GlobalClassContainer).user)
+        model = MainModel(GlobalContainer.getUser(view))
     }
 
     fun sendCertyficate(index:Int)
@@ -42,7 +38,7 @@ class MainPresenter ( val view: MainActivity) {
 
         try {
 
-            signature = CyptographyApi.sign(model!!.Keys!!.get(index)!!.getLok_key(), (view as GlobalClassContainer).privatekye)
+            signature = CyptographyApi.sign(model!!.Keys!!.get(index)!!.getLok_key(), GlobalContainer.getPrivateKey(view))
         } catch (e: Exception) {
         }
 

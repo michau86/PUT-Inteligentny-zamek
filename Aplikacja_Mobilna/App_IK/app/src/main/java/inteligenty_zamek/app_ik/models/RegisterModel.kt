@@ -14,7 +14,7 @@ var ip:String?=null
 
     public fun RegisterModel()
     {
-     // tutaj wczytanie domyślnych z shared preferences
+
     }
     public fun setRegisterValue(login:String,password:String,name:String,surname:String,ip:String)
     {

@@ -132,12 +132,12 @@ public class GlobalClassContainer extends Application {
     {
         user=new User();
         sharedPref = this.getSharedPreferences(this.getString(R.string.SPName),Context.MODE_PRIVATE);
-      user.setLogin(sharedPref.getString("login", ""));
-      try {
+        user.setLogin(sharedPref.getString("login", ""));
+        try {
           user.setPassword(CyptographyApi.decrypt(sharedPref.getString("password", "")));
-      }catch(Exception e){}
+        }catch(Exception e){}
         serwerIP=sharedPref.getString("ipserwer", "");
-      try {
+        try {
           session = CyptographyApi.decrypt(sharedPref.getString("token", ""));
       }catch (Exception e){}
     }

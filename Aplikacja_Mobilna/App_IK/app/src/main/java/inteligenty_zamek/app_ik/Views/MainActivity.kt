@@ -1,6 +1,7 @@
 package inteligenty_zamek.app_ik.Views
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.os.Bundle
@@ -17,6 +18,7 @@ import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.presenters.MainPresenter
+import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 
 import java.util.Arrays
 import java.util.Collections
@@ -33,8 +35,7 @@ class MainActivity : BaseActivity() {
 
 
 
-    var adaptermain: SimpleAdapter?=null
-   
+
     internal var resultsListView: ListView?=null
 
     internal var flag = true
@@ -58,7 +59,7 @@ class MainActivity : BaseActivity() {
 
 
 
-        (this.application!! as GlobalClassContainer)!!.loadDataFromSharedPreferences()
+        GlobalContainer.loadDataFromSharedPreferences(this)
         sampleText.setOnClickListener {
             if (flag == false) {
                 Arrays.sort((application as GlobalClassContainer).user.getCertyficateList(this), Collections.reverseOrder<Any>())
@@ -83,7 +84,6 @@ class MainActivity : BaseActivity() {
             }
         })
 
-        //do przeniesienia zawartość z srodka
         resultsListView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
            presenter!!.sendCertyficate(position)
         }
@@ -92,7 +92,9 @@ class MainActivity : BaseActivity() {
 
 
     override fun onBackPressed() {
-
+       //val intent = Intent(this@MainActivity, LoginActivity::class.java)
+       // startActivity(intent)
+        this.finish()
     }
 
 

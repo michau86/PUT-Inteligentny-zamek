@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
+import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.Views.Admin_PanelActivity;
 import inteligenty_zamek.app_ik.Managment_certyficationActivity;
 import inteligenty_zamek.app_ik.R;
@@ -166,8 +167,6 @@ public class BaseActivity extends AppCompatActivity
                     SharedPreferences sharedPref;
                     sharedPref = this.getSharedPreferences(this.getString(R.string.SPName), Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("ipserwer", "");
-                    editor.putString("login", "");
                     editor.putString("password", "");
                     editor.putString("token", "");
                     editor.putBoolean("isadmin",false);
@@ -185,14 +184,14 @@ public class BaseActivity extends AppCompatActivity
                 }
                 else
                 {
-                    User user=((GlobalClassContainer) getApplication()).getUser();
-                    logout(user,((GlobalClassContainer) getApplication()).getSerwerIP());
+                    User user=GlobalContainer.getUser(this);
+                    logout(user, sharedPreferenceApi.INSTANCE.getString(this,1));
                     break;
                 }
                 break;
             case 4:
-                User user=((GlobalClassContainer) getApplication()).getUser();
-                logout(user,((GlobalClassContainer) getApplication()).getSerwerIP());
+                User user=GlobalContainer.getUser(this);
+                logout(user, sharedPreferenceApi.INSTANCE.getString(this,1));
                 break;
             default:
                 break;
@@ -225,7 +224,7 @@ private void logout(User user,String ipserwer)
     Log.i("HHHH","przycisk wyloguj");
     HashMap toSend = new HashMap();
     toSend.put("login", user.getLogin());
-    toSend.put("token", ((GlobalClassContainer) getApplication()).getSession());
+    toSend.put("token", sharedPreferenceApi.INSTANCE.getString(this,3));
     try {
         new HTTPRequestAPI(this, "http://" + ipserwer + ":8080/api/logout/", 0, toSend).execute();
     }catch (Exception e)
