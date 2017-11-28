@@ -20,8 +20,8 @@ import inteligenty_zamek.app_ik.R;
 public final class GlobalContainer {
 
     public static int menuSelectedNumber=0;
-    public static boolean isAdmin=false;
-    public static boolean isLogin=false;
+  //  public static boolean isAdmin=false;
+  //  public static boolean isLogin=false;
     private static User user=null;
     private static PrivateKey privatekye=null;
 

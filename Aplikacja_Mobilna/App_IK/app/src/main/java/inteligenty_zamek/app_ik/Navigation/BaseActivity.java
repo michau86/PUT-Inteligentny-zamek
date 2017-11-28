@@ -25,7 +25,7 @@ import java.util.HashMap;
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.Views.Admin_PanelActivity;
-import inteligenty_zamek.app_ik.Managment_certyficationActivity;
+import inteligenty_zamek.app_ik.Views.Managment_certyficationActivity;
 import inteligenty_zamek.app_ik.R;
 import inteligenty_zamek.app_ik.SetingsActivity;
 import inteligenty_zamek.app_ik.Views.LoginActivity;
@@ -65,12 +65,12 @@ public class BaseActivity extends AppCompatActivity
 
             }}else{
             for(int i=0;i<navMenuTitles.length;i++){
-                if(GlobalContainer.isLogin==false && i>1){i=navMenuTitles.length;
+                if(sharedPreferenceApi.INSTANCE.getBoolean(this,1)==false && i>1){i=navMenuTitles.length;
                     navDrawerItems.add(new NavDrawerItem("wyjdz",navMenuIcons.getResourceId(i, -1)));
 
                     break;}
                 else
-                    if(GlobalContainer.isAdmin==false && i==2){i++;}
+                    if(sharedPreferenceApi.INSTANCE.getBoolean(this,2)==false && i==2){i++;}
                 navDrawerItems.add(new NavDrawerItem(navMenuTitles[i],navMenuIcons.getResourceId(i, -1)));
             }
         }
@@ -149,12 +149,12 @@ public class BaseActivity extends AppCompatActivity
                 finish();
                 break;
             case 2:
-                if(GlobalContainer.isAdmin==true) {
+                if(sharedPreferenceApi.INSTANCE.getBoolean(this,2)==true) {
                     Intent intent2 = new Intent(this, Admin_PanelActivity.class);
                     startActivity(intent2);
                     finish();
                 }
-                else if(GlobalContainer.isLogin==true)
+                else if(sharedPreferenceApi.INSTANCE.getBoolean(this,1)==true)
                 {
                     Intent intent3 = new Intent(this, SetingsActivity.class);
                     startActivity(intent3);
@@ -177,7 +177,7 @@ public class BaseActivity extends AppCompatActivity
                 }
                 break;
             case 3:
-                if(GlobalContainer.isAdmin==true) {
+                if(sharedPreferenceApi.INSTANCE.getBoolean(this,1)==true) {
                     Intent intent3 = new Intent(this, SetingsActivity.class);
                     startActivity(intent3);
                     finish();
@@ -242,16 +242,15 @@ public void logoutresponse(String response)
     try {
         jObj = new JSONObject(response);
         if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("invalid")) {
-            GlobalContainer.isAdmin=false;
-            GlobalContainer.isLogin=false;
+            sharedPreferenceApi.INSTANCE.set(this,false,2);
+            sharedPreferenceApi.INSTANCE.set(this,false,1);
             GlobalContainer.menuSelectedNumber=0;
-            SharedPreferences sharedPref = this.getSharedPreferences(this.getString(R.string.SPName), Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putString("token", "");
-            editor.putString("password","");
-            editor.putBoolean("isLogin", false);
-            editor.putBoolean("isadmin",false);
-            editor.commit();
+           HashMap<Integer,String> value=new HashMap<>();
+           value.put(2,"");
+           value.put(3,"");
+           sharedPreferenceApi.INSTANCE.set(this,value);
+
+            // editor.commit();
             runOnUiThread(new Runnable() {
                 public void run() {
                     ((GlobalClassContainer) getApplication()).setDefaultValue();

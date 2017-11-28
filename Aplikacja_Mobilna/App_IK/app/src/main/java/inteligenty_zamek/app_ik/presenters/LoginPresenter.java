@@ -44,8 +44,8 @@ public class LoginPresenter {
 
         if(model.getIsLogin()==true)
         {
-            GlobalContainer.isAdmin=model.getstatus();
-            GlobalContainer.isLogin=true;
+           // GlobalContainer.isAdmin=model.getstatus();
+           // GlobalContainer.isLogin=true;
             Intent intent = new Intent(view,MainActivity.class);
             view.startActivity(intent);
             view.finish();
@@ -94,7 +94,7 @@ public class LoginPresenter {
                     value.put(3,jObj.getString("token"));
                     sharedPreferenceApi.INSTANCE.set(view,value);
                     sharedPreferenceApi.INSTANCE.set(view,true,1);
-                    GlobalContainer.isLogin=true;
+
 
                     }catch(Exception e){}
 

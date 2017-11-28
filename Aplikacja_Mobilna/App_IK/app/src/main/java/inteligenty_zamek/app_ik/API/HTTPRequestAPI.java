@@ -19,6 +19,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 import inteligenty_zamek.app_ik.presenters.LoginPresenter;
+import inteligenty_zamek.app_ik.presenters.Managment_certyficationPresenter;
 import inteligenty_zamek.app_ik.presenters.RegisterPresenter;
 
 
@@ -55,21 +56,29 @@ public class HTTPRequestAPI extends
 
 
         //API LOGIN  wyjatkowo przechodzi do kolejnego widoku
-        if(apiNumber==1)
+        switch(apiNumber)
         {
-        LoginPresenter lp= LoginPresenter.class.cast(presenter);
-            lp.loginResult(response);
+            case 0:
+                BaseActivity ba=BaseActivity.class.cast(presenter);
+                ba.logoutresponse(response);
+                break;
+            case 1:
+                LoginPresenter lp= LoginPresenter.class.cast(presenter);
+                lp.loginResult(response);
+                break;
+            case 2:
+                RegisterPresenter rp=RegisterPresenter.class.cast(presenter);
+                rp.registerResult(response);
+                break;
+            case 3:
+                Managment_certyficationPresenter mp=Managment_certyficationPresenter.class.cast(presenter);
+                mp.downloadResult(response);
+                break;
         }
-        if(apiNumber==2)
-        {
-            RegisterPresenter rp=RegisterPresenter.class.cast(presenter);
-            rp.registerResult(response);
-        }
-        if (apiNumber==0)
-        {
-            BaseActivity ba=BaseActivity.class.cast(presenter);
-            ba.logoutresponse(response);
-        }
+
+
+
+
     }
 
     public String performPostCall(String requestURL,

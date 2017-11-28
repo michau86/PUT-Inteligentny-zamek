@@ -60,13 +60,18 @@ object sharedPreferenceApi
     public fun getBoolean(context : Context, choise:Int): Boolean
     {
         when(choise) {
-            1->{sharedPref = context.getSharedPreferences(context.getString(R.string.SPName), Context.MODE_PRIVATE)
-                return sharedPref!!.getBoolean("isadmin", false);}
-            2->{sharedPref = context.getSharedPreferences(context.getString(R.string.SPName), Context.MODE_PRIVATE)
-                return sharedPref!!.getBoolean("isLogin", false);}
+            1 -> {
+                sharedPref = context.getSharedPreferences(context.getString(R.string.SPName), Context.MODE_PRIVATE)
+                return sharedPref!!.getBoolean("isLogin", false);
+            }
 
+            2 -> {
+                sharedPref = context.getSharedPreferences(context.getString(R.string.SPName), Context.MODE_PRIVATE)
+                return sharedPref!!.getBoolean("isadmin", false);
+            }
         }
-        return false;
+
+        return false
     }
 
     /**

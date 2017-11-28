@@ -62,10 +62,10 @@ class MainActivity : BaseActivity() {
         GlobalContainer.loadDataFromSharedPreferences(this)
         sampleText.setOnClickListener {
             if (flag == false) {
-                Arrays.sort((application as GlobalClassContainer).user.getCertyficateList(this), Collections.reverseOrder<Any>())
+                Arrays.sort(GlobalContainer.getUser(this).getCertyficateList(this), Collections.reverseOrder<Any>())
                 flag = true
             } else {
-                Arrays.sort((application as GlobalClassContainer).user.getCertyficateList(this))
+                Arrays.sort(GlobalContainer.getUser(this).getCertyficateList(this))
                 flag = false
             }
             resultsListView!!.adapter = presenter!!.updateList("")
@@ -92,8 +92,6 @@ class MainActivity : BaseActivity() {
 
 
     override fun onBackPressed() {
-       //val intent = Intent(this@MainActivity, LoginActivity::class.java)
-       // startActivity(intent)
         this.finish()
     }
 

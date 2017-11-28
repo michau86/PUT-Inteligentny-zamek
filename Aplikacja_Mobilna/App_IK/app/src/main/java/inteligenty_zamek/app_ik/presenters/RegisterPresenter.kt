@@ -77,7 +77,7 @@ public class RegisterPresenter (val view:Context) {
 
     }
 
-    public fun sendData(login: String, password: String, name: String, surname: String, ip: String): Boolean {
+    fun sendData(login: String, password: String, name: String, surname: String, ip: String): Boolean {
 
         var stringKey = ""
         try {

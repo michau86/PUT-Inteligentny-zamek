@@ -40,6 +40,18 @@ class MainPresenter ( val view: MainActivity) {
 
             signature = CyptographyApi.sign(model!!.Keys!!.get(index)!!.getLok_key(), GlobalContainer.getPrivateKey(view))
         } catch (e: Exception) {
+            val toast = Toast.makeText(view, "Brak klucza prywatnego", Toast.LENGTH_LONG)
+            toast.show()
+            object : CountDownTimer(2000, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    toast.show()
+                }
+
+                override fun onFinish() {
+                    toast.show()
+                }
+            }.start()
+            return;
         }
 
         val tosend = model!!.Keys!!.get(index)!!.getIdKey() + ";" + model.user.login + ";" + signature

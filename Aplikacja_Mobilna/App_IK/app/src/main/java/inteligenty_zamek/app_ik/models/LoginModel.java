@@ -28,12 +28,12 @@ public class LoginModel {
 
     public boolean getstatus()
     {
-       return sharedPreferenceApi.INSTANCE.getBoolean(context,1);
+       return sharedPreferenceApi.INSTANCE.getBoolean(context,2);
     }
 
     public boolean getIsLogin()
     {
-        return sharedPreferenceApi.INSTANCE.getBoolean(context,2);
+        return sharedPreferenceApi.INSTANCE.getBoolean(context,1);
     }
     private User user;
 
