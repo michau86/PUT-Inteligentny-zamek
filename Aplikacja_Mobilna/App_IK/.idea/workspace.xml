@@ -73,12 +73,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainModel.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainModel.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/models/MainModel.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="244">
               <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sharedPreferenceApi.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/API/sharedPreferenceApi.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3456">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding>
+                <element signature="e#788#822#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1992,7 +2004,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Managment_certyficationActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/presenters/RegisterPresenter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/rest_class/GlobalContainer.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/API/sharedPreferenceApi.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/presenters/LoginPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Navigation/BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/models/Managment_certyficationModel.kt" />
@@ -2002,6 +2013,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/presenters/Managment_certyficationPresenter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/models/LoginModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/models/MainModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/API/sharedPreferenceApi.kt" />
       </list>
     </option>
   </component>
@@ -2725,7 +2737,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511900689016" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511902143481" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2773,7 +2785,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511900689017" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511902143481" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2956,7 +2968,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511900689018" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511902143483" />
       </method>
     </configuration>
     <list size="3">
@@ -3036,7 +3048,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1924" height="1056" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49356222" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.4914712" order="6" side_tool="false" content_ui="tabs" />
@@ -3054,7 +3065,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31403118" sideWeight="0.5138593" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29023606" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29023606" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959394" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3977813" sideWeight="0.48507464" order="3" side_tool="false" content_ui="tabs" />
@@ -3437,18 +3448,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/API/sharedPreferenceApi.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#788#822#1" expanded="true" />
-            <element signature="e#1823#1857#1" expanded="true" />
-            <element signature="e#2039#2073#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/presenters/LoginPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -3509,6 +3508,16 @@
         <state relative-caret-position="244">
           <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/API/sharedPreferenceApi.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3456">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#788#822#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -57,7 +57,16 @@ object sharedPreferenceApi
 
     }
 
-    public fun getBoolean(context : Context, choise:Int): Boolean
+    /**
+ *
+ * This function i using to get value from Shared PReferences
+ *
+ * @param context
+ * @param choise is a number using to get concrete value
+ * 1->user is login
+ * 2->user is admin,
+ */
+    fun getBoolean(context : Context, choise:Int): Boolean
     {
         when(choise) {
             1 -> {
@@ -127,6 +136,16 @@ object sharedPreferenceApi
         editor!!.commit()
     }
 
+    /**
+     *
+     * This function i using to set value to Shared PReferences
+     *
+     * @param context
+     * @param value value to send
+     * @param choise is a number using to get concrete value
+     * 1->user is login
+     * 2->user is admin,
+     */
     public fun set(context : Context, value: Boolean, choise: Int)
     {
         if(value==null){return}
