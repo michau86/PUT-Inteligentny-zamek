@@ -2,9 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04813093-1bf2-4d9f-8dfe-2b5fb460e40f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/views.py" afterPath="$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/views.py" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/android_android_25.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/android_android_25.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_animated_vector_drawable_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_animated_vector_drawable_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_appcompat_v7_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_appcompat_v7_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_constraint_constraint_layout_1_0_2.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_constraint_constraint_layout_1_0_2.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_constraint_constraint_layout_solver_1_0_2_jar.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_constraint_constraint_layout_solver_1_0_2_jar.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_design_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_design_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_recyclerview_v7_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_recyclerview_v7_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_annotations_25_2_0_jar.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_annotations_25_2_0_jar.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_compat_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_compat_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_core_ui_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_core_ui_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_core_utils_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_core_utils_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_fragment_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_fragment_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_media_compat_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_media_compat_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_v4_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_v4_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_vector_drawable_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_vector_drawable_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_espresso_espresso_core_2_2_2.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_espresso_espresso_core_2_2_2.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_espresso_espresso_idling_resource_2_2_2.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_espresso_espresso_idling_resource_2_2_2.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_exposed_instrumentation_api_publish_0_5.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_exposed_instrumentation_api_publish_0_5.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_rules_0_5.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_rules_0_5.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_runner_0_5.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_runner_0_5.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_transition_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_transition_25_2_0.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_github_vihtarb_tooltip_0_1_9.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_github_vihtarb_tooltip_0_1_9.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_squareup_javawriter_2_1_1_jar.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_squareup_javawriter_2_1_1_jar.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/javax_annotation_javax_annotation_api_1_2_jar.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/javax_annotation_javax_annotation_api_1_2_jar.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/javax_inject_javax_inject_1_jar.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/javax_inject_javax_inject_1_jar.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/org_apache_http_legacy_android_25.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/org_apache_http_legacy_android_25.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/org_hamcrest_hamcrest_integration_1_3_jar.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/org_hamcrest_hamcrest_integration_1_3_jar.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/org_hamcrest_hamcrest_library_1_3_jar.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/org_hamcrest_hamcrest_library_1_3_jar.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/misc.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/build.gradle" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/build.gradle" />
+      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/local.properties" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/local.properties" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,7 +44,71 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="125" column="57" lean-forward="true" selection-start-line="125" selection-start-column="57" selection-end-line="125" selection-end-column="57" />
+              <folding>
+                <marker date="1511986996495" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
+                <marker date="1511986996495" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
+                <marker date="1511986996495" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="2772:2881" ph="INSERT INTO USERS... " />
+                <marker date="1511986996495" expanded="true" signature="3407:3447" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="3676:3722" ph="UPDATE USERS... " />
+                <marker date="1511986996495" expanded="true" signature="4223:4263" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="4400:4671" ph="SELECT LOCKS... LOCKS_KEYS" />
+                <marker date="1511986996495" expanded="true" signature="4565:4607" ph="SELECT ID_US... USERS" />
+                <marker date="1511986996495" expanded="true" signature="5426:5466" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="5620:5684" ph="SELECT NAME,... LOCKS" />
+                <marker date="1511986996495" expanded="true" signature="6429:6469" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="6623:6654" ph="SELECT LOGIN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="7490:7711" ph="SELECT LOCK_... LOCKS_KEYS" />
+                <marker date="1511986996495" expanded="true" signature="7662:7710" ph="SELECT ID_LO... LOCKS" />
+                <marker date="1511986996495" expanded="true" signature="7999:8044" ph="SELECT PUBLI... USERS" />
+                <marker date="1511986996495" expanded="true" signature="8740:8809" ph="INSERT INTO ACCESS_TO_LOCKS... " />
+                <marker date="1511986996495" expanded="true" signature="9361:9401" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="9592:9702" ph="UPDATE LOCKS_KEYS... " />
+                <marker date="1511986996495" expanded="true" signature="9643:9685" ph="SELECT ID_US... USERS" />
+                <marker date="1511986996495" expanded="true" signature="10338:10378" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="10533:10637" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
+                <marker date="1511986996495" expanded="true" signature="10593:10635" ph="SELECT ID_US... USERS" />
+                <marker date="1511986996495" expanded="true" signature="11853:11912" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="12459:12738" ph="INSERT INTO `locks_keys`... " />
+                <marker date="1511986996495" expanded="true" signature="13437:13487" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="13788:14018" ph="SELECT DATE,... access_to_locks" />
+                <marker date="1511986996495" expanded="true" signature="14681:14731" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="14995:15269" ph="SELECT LOCKS... LOCKS_KEYS" />
+                <marker date="1511986996495" expanded="true" signature="16118:16168" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="16469:16522" ph="UPDATE LOCKS_KEYS... " />
+                <marker date="1511986996495" expanded="true" signature="17103:17153" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="17417:17499" ph="SELECT users... users" />
+                <marker date="1511986996495" expanded="true" signature="18392:18442" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="18722:18780" ph="SELECT LOGIN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="19039:19086" ph="UPDATE USERS... " />
+                <marker date="1511986996495" expanded="true" signature="19187:19221" ph="DELETE FROM users... " />
+                <marker date="1511986996495" expanded="true" signature="19805:19855" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="20119:20408" ph="SELECT wait_... wait_locks_keys" />
+                <marker date="1511986996495" expanded="true" signature="21261:21311" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="21591:21643" ph="SELECT ID_KE... wait_locks_keys" />
+                <marker date="1511986996495" expanded="true" signature="21832:21877" ph="DELETE FROM wait_locks_keys... " />
+                <marker date="1511986996495" expanded="true" signature="22456:22506" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="22821:22868" ph="UPDATE USERS... " />
+                <marker date="1511986996495" expanded="true" signature="23884:23958" ph="SELECT TOKEN... USERS" />
+                <marker date="1511986996495" expanded="true" signature="24256:24421" ph="SELECT FROM_... locks_keys" />
+                <marker date="1511986996495" expanded="true" signature="26260:26393" ph="INSERT INTO locks_keys... " />
+                <marker date="1511986996495" expanded="true" signature="26553:26723" ph="SELECT LOCKS... LOCKS_KEYS" />
+                <marker date="1511986996495" expanded="true" signature="28540:28673" ph="INSERT INTO locks_keys... " />
+                <marker date="1511986996495" expanded="true" signature="28833:29003" ph="SELECT LOCKS... LOCKS_KEYS" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -22,9 +117,21 @@
       <projects_view />
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/views.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
     <option name="width" value="1936" />
     <option name="height" value="1066" />
   </component>
@@ -43,60 +150,37 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aplikacja serwerowa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aplikacja serwerowa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aplikacja serwerowa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aplikacja serwerowa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="serwer_Inteligentny_zamek" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aplikacja serwerowa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aplikacja serwerowa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="serwer_Inteligentny_zamek" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="serwer_Inteligentny_zamek" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="Aplikacja serwerowa" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aplikacja serwerowa" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aplikacja serwerowa" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aplikacja serwerowa" type="462c0819:PsiDirectoryNode" />
+              <item name="serwer_Inteligentny_zamek" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aplikacja serwerowa" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aplikacja serwerowa" type="462c0819:PsiDirectoryNode" />
+              <item name="serwer_Inteligentny_zamek" type="462c0819:PsiDirectoryNode" />
+              <item name="serwer_Inteligentny_zamek" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -111,6 +195,15 @@
     </option>
   </component>
   <component name="RunManager">
+    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -125,6 +218,12 @@
       <module name="" />
       <envs />
       <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -162,27 +261,15 @@
       <listeners />
       <method />
     </configuration>
-    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-    </configuration>
-    <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-    </configuration>
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -195,32 +282,41 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -228,5 +324,66 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="125" column="57" lean-forward="true" selection-start-line="125" selection-start-column="57" selection-end-line="125" selection-end-column="57" />
+          <folding>
+            <marker date="1511986996495" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
+            <marker date="1511986996495" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
+            <marker date="1511986996495" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="2772:2881" ph="INSERT INTO USERS... " />
+            <marker date="1511986996495" expanded="true" signature="3407:3447" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="3676:3722" ph="UPDATE USERS... " />
+            <marker date="1511986996495" expanded="true" signature="4223:4263" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="4400:4671" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1511986996495" expanded="true" signature="4565:4607" ph="SELECT ID_US... USERS" />
+            <marker date="1511986996495" expanded="true" signature="5426:5466" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="5620:5684" ph="SELECT NAME,... LOCKS" />
+            <marker date="1511986996495" expanded="true" signature="6429:6469" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="6623:6654" ph="SELECT LOGIN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="7490:7711" ph="SELECT LOCK_... LOCKS_KEYS" />
+            <marker date="1511986996495" expanded="true" signature="7662:7710" ph="SELECT ID_LO... LOCKS" />
+            <marker date="1511986996495" expanded="true" signature="7999:8044" ph="SELECT PUBLI... USERS" />
+            <marker date="1511986996495" expanded="true" signature="8740:8809" ph="INSERT INTO ACCESS_TO_LOCKS... " />
+            <marker date="1511986996495" expanded="true" signature="9361:9401" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="9592:9702" ph="UPDATE LOCKS_KEYS... " />
+            <marker date="1511986996495" expanded="true" signature="9643:9685" ph="SELECT ID_US... USERS" />
+            <marker date="1511986996495" expanded="true" signature="10338:10378" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="10533:10637" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
+            <marker date="1511986996495" expanded="true" signature="10593:10635" ph="SELECT ID_US... USERS" />
+            <marker date="1511986996495" expanded="true" signature="11853:11912" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="12459:12738" ph="INSERT INTO `locks_keys`... " />
+            <marker date="1511986996495" expanded="true" signature="13437:13487" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="13788:14018" ph="SELECT DATE,... access_to_locks" />
+            <marker date="1511986996495" expanded="true" signature="14681:14731" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="14995:15269" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1511986996495" expanded="true" signature="16118:16168" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="16469:16522" ph="UPDATE LOCKS_KEYS... " />
+            <marker date="1511986996495" expanded="true" signature="17103:17153" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="17417:17499" ph="SELECT users... users" />
+            <marker date="1511986996495" expanded="true" signature="18392:18442" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="18722:18780" ph="SELECT LOGIN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="19039:19086" ph="UPDATE USERS... " />
+            <marker date="1511986996495" expanded="true" signature="19187:19221" ph="DELETE FROM users... " />
+            <marker date="1511986996495" expanded="true" signature="19805:19855" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="20119:20408" ph="SELECT wait_... wait_locks_keys" />
+            <marker date="1511986996495" expanded="true" signature="21261:21311" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="21591:21643" ph="SELECT ID_KE... wait_locks_keys" />
+            <marker date="1511986996495" expanded="true" signature="21832:21877" ph="DELETE FROM wait_locks_keys... " />
+            <marker date="1511986996495" expanded="true" signature="22456:22506" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="22821:22868" ph="UPDATE USERS... " />
+            <marker date="1511986996495" expanded="true" signature="23884:23958" ph="SELECT TOKEN... USERS" />
+            <marker date="1511986996495" expanded="true" signature="24256:24421" ph="SELECT FROM_... locks_keys" />
+            <marker date="1511986996495" expanded="true" signature="26260:26393" ph="INSERT INTO locks_keys... " />
+            <marker date="1511986996495" expanded="true" signature="26553:26723" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1511986996495" expanded="true" signature="28540:28673" ph="INSERT INTO locks_keys... " />
+            <marker date="1511986996495" expanded="true" signature="28833:29003" ph="SELECT LOCKS... LOCKS_KEYS" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

@@ -113,25 +113,25 @@ def api_download_all_certificate(request):
         login = request.POST.get('login')
         token = request.POST.get('token')
 
-        try:
-            cursor = db.cursor()
-            cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
-            token_from_DB = cursor.fetchone()[0]
+        # try:
+        cursor = db.cursor()
+        cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
+        token_from_DB = cursor.fetchone()
 
-            if (token_from_DB == token):
+        if (token_from_DB == token):
 
-                cursor.execute(
-                    "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s') and (NOW() BETWEEN FROM_DATE AND TO_DATE) and ISACTUAL is NULL" % login)
-                dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
-                                        in cursor.fetchall()]
-                if len(dict_all_certificate) == 0:
-                    return JsonResponse({"data": ""})
-                else:
-                    return JsonResponse({"data": dict_all_certificate})
+            cursor.execute(
+                "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s') and (NOW() BETWEEN FROM_DATE AND TO_DATE) and ISACTUAL is NULL" % login)
+            dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                    in cursor.fetchall()]
+            if len(dict_all_certificate) == 0:
+                return JsonResponse({"data": ""})
             else:
-                return JsonResponse({"status": "invalid"})
-        except Exception:
-            return JsonResponse({"status": "Invalid"})
+                return JsonResponse({"data": dict_all_certificate})
+        else:
+            return JsonResponse({"status": "invalid"})
+    # except Exception:
+    #    return JsonResponse({"status": "Invalid"})
 
 
 @csrf_exempt
@@ -337,7 +337,7 @@ def api_admin_history(request):
             if (token_db == token) and admin == 1:
                 cursor = db.cursor()
                 cursor.execute(
-                    "SELECT DATE, ACCESS, locks_keys.NAME, locks_keys.SURNAME, locks.NAME as 'ZAMEK' FROM access_to_locks, locks_keys, locks WHERE locks_keys.ID_KEY = access_to_locks.ID_KEY and locks.ID_LOCK = access_to_locks.ID_KEY ORDER BY DATE DESC")
+                    "SELECT DATE, ACCESS, locks_keys.NAME, locks_keys.SURNAME, locks.NAME AS 'ZAMEK' FROM access_to_locks, locks_keys, locks WHERE locks_keys.ID_KEY = access_to_locks.ID_KEY AND locks.ID_LOCK = access_to_locks.ID_KEY ORDER BY DATE DESC")
                 dict_history = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                 in cursor.fetchall()]
                 if len(dict_history) == 0:
@@ -362,7 +362,7 @@ def api_admin_download_all_certificate(request):
                 admin = row[1]
             if (token_db == token) and admin == 1:
                 cursor.execute(
-                    "SELECT LOCKS_KEYS.*, USERS.NAME as USER_NAME, USERS.SURNAME as USER_SURNAME, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS LEFT JOIN LOCKS ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK LEFT JOIN users ON locks_keys.ID_USER = users.ID_USER ORDER BY LOCK_NAME")
+                    "SELECT LOCKS_KEYS.*, USERS.NAME AS USER_NAME, USERS.SURNAME AS USER_SURNAME, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS LEFT JOIN LOCKS ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK LEFT JOIN users ON locks_keys.ID_USER = users.ID_USER ORDER BY LOCK_NAME")
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                         in cursor.fetchall()]
                 if len(dict_all_certificate) > 0:
@@ -417,7 +417,8 @@ def api_admin_register_waiting(request):
             if (token_db == token) and admin == 1:
                 cursor.execute(
                     "SELECT users.LOGIN, users.NAME, users.SURNAME FROM users WHERE users.ISACTIVATED=1")
-                dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]
+                dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                        in cursor.fetchall()]
                 if len(dict_all_certificate) > 0:
                     return JsonResponse({"data": dict_all_certificate})
                 else:
@@ -543,13 +544,15 @@ def api_change_password(request):
         except Exception:
             return JsonResponse({"status": "Invalid"})
 
-def Check_access(day_access,time):
+
+def Check_access(day_access, time):
     if len(day_access) > 0:
         for x in day_access:
             x = x.split("-")
             if int(x[0]) <= int(time) < int(x[1]):
                 return True
     return False
+
 
 @csrf_exempt
 def api_generate_new_quest_certificate(request):
@@ -573,7 +576,7 @@ def api_generate_new_quest_certificate(request):
                 cursor = db.cursor()
                 cursor.execute(
                     "SELECT FROM_DATE, TO_DATE, ISACTUAL, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, IS_PERNAMENT FROM locks_keys WHERE ID_LOCK='%s' and ID_USER='%s'" % (
-                    lock_id, id_user))
+                        lock_id, id_user))
                 certificate_actual = cursor.fetchone()
                 from_date_db = certificate_actual[0]
                 to_date_db = certificate_actual[1]
@@ -591,11 +594,16 @@ def api_generate_new_quest_certificate(request):
                             lock_key += x
                         if period <= 5:
                             period = period * 60
-                        to_date = (datetime.strptime(from_date, '%Y-%m-%dT%H:%M:%S') + dt.timedelta(minutes=period)).strftime('%Y-%m-%d %H:%M:%S')
-                        if datetime.strptime(from_date_db, '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(to_date, '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(to_date_db, '%Y-%m-%dT%H:%M:%S') or is_admin == 1:
-                            record = [lock_id, 132, lock_key, datetime.now().strftime('%Y-%m-%d %H:%M:%S'), to_date, 1, guest_name, guest_surname]
+                        to_date = (datetime.strptime(from_date, '%Y-%m-%dT%H:%M:%S') + dt.timedelta(
+                            minutes=period)).strftime('%Y-%m-%d %H:%M:%S')
+                        if datetime.strptime(from_date_db, '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(to_date,
+                                                                                                     '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(
+                                to_date_db, '%Y-%m-%dT%H:%M:%S') or is_admin == 1:
+                            record = [lock_id, 132, lock_key, datetime.now().strftime('%Y-%m-%d %H:%M:%S'), to_date, 1,
+                                      guest_name, guest_surname]
                             cursor.execute(
-                                'INSERT INTO locks_keys (ID_LOCK, ID_USER, LOCK_KEY, FROM_DATE, TO_DATE, IS_PERNAMENT, NAME, SURNAME) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)', record)
+                                'INSERT INTO locks_keys (ID_LOCK, ID_USER, LOCK_KEY, FROM_DATE, TO_DATE, IS_PERNAMENT, NAME, SURNAME) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',
+                                record)
                             db.commit()
                             cursor.execute(
                                 "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE LOCK_KEY ='%s'" % lock_key)
@@ -614,13 +622,17 @@ def api_generate_new_quest_certificate(request):
                             lock_key += x
                         if period <= 5:
                             period = period * 60
-                        to_date = (datetime.strptime(from_date, '%Y-%m-%dT%H:%M:%S') + dt.timedelta(minutes=period)).strftime('%Y-%m-%d %H:%M:%S')
+                        to_date = (datetime.strptime(from_date, '%Y-%m-%dT%H:%M:%S') + dt.timedelta(
+                            minutes=period)).strftime('%Y-%m-%d %H:%M:%S')
                         day_access = access_table[datetime.strptime(to_date, '%Y-%m-%dT%H:%M:%S').weekday()].split(";")
                         to_date_time = int(to_date.strftime('%H'))
-                        if datetime.strptime(from_date_db, '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(to_date, '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(to_date_db, '%Y-%m-%dT%H:%M:%S') and Check_access(day_access,to_date_time):
-                            record = [lock_id, 132, lock_key, from_date, to_date, 1,guest_name, guest_surname]
+                        if datetime.strptime(from_date_db, '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(to_date,
+                                                                                                     '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(
+                                to_date_db, '%Y-%m-%dT%H:%M:%S') and Check_access(day_access, to_date_time):
+                            record = [lock_id, 132, lock_key, from_date, to_date, 1, guest_name, guest_surname]
                             cursor.execute(
-                                'INSERT INTO locks_keys (ID_LOCK, ID_USER, LOCK_KEY, FROM_DATE, TO_DATE, IS_PERNAMENT, NAME, SURNAME) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)', record)
+                                'INSERT INTO locks_keys (ID_LOCK, ID_USER, LOCK_KEY, FROM_DATE, TO_DATE, IS_PERNAMENT, NAME, SURNAME) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',
+                                record)
                             db.commit()
                             cursor.execute(
                                 "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE LOCK_KEY ='%s'" % lock_key)
