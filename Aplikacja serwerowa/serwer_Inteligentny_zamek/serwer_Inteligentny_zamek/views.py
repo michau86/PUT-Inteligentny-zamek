@@ -27,6 +27,7 @@ def api_login(request):
         random_generator = Random.new().read
         key = RSA.generate(1024, random_generator).publickey().exportKey()
         token = ""
+        print username, password
 
         for x in key.split("\n")[1:-1]:
             token += x
@@ -116,19 +117,24 @@ def api_download_all_certificate(request):
         # try:
         cursor = db.cursor()
         cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
-        token_from_DB = cursor.fetchone()
+        token_from_DB = cursor.fetchone()[0]
+        print login
+        print token
+        print token_from_DB
 
         if (token_from_DB == token):
-
             cursor.execute(
                 "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s') and (NOW() BETWEEN FROM_DATE AND TO_DATE) and ISACTUAL is NULL" % login)
             dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                     in cursor.fetchall()]
             if len(dict_all_certificate) == 0:
+                print 1
                 return JsonResponse({"data": ""})
             else:
+                print 2
                 return JsonResponse({"data": dict_all_certificate})
         else:
+            print 3
             return JsonResponse({"status": "invalid"})
     # except Exception:
     #    return JsonResponse({"status": "Invalid"})
