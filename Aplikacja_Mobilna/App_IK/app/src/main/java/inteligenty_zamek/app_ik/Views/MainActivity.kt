@@ -43,6 +43,7 @@ class MainActivity : BaseActivity() {
     private var presenter : MainPresenter?= null
     private var  preferences: SharedPreferences?=null
     private var context :Context=this
+    private  var csq:CharSequence=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -76,6 +77,7 @@ class MainActivity : BaseActivity() {
         inputSearch.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(cs: CharSequence, arg1: Int, arg2: Int, arg3: Int) {
                 resultsListView!!.adapter = presenter!!.updateList(cs)
+                csq=cs
             }
             override fun beforeTextChanged(arg0: CharSequence, arg1: Int, arg2: Int,
                                            arg3: Int) {
@@ -85,7 +87,8 @@ class MainActivity : BaseActivity() {
         })
 
         resultsListView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-           presenter!!.sendCertyficate(position)
+
+            presenter!!.sendCertyficate(position,csq)
         }
 
     }

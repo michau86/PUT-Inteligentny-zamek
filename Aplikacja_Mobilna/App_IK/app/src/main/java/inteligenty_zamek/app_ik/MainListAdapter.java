@@ -70,6 +70,10 @@ public class MainListAdapter  extends BaseAdapter {
                   icon.setText("bb");
                   icon.setTextColor(Color.RED);
                       }
+                case 3:{
+                    icon.setText("cc");
+                    icon.setTextColor(Color.GREEN);
+                }
             }
           }catch(Exception e){}
 

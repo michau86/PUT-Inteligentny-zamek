@@ -16,6 +16,9 @@ class MainModel(val user: User)
     public var Keys: LinkedHashMap<Int, Certyficat>?=LinkedHashMap()
     public var resultsMap: LinkedHashMap<String, String>?=null
     public var listItems: MutableList<HashMap<String, String>>?= ArrayList()
+    var position:Int=0
+    var i: Byte=0
+    var cs: CharSequence=""
     public fun  getCertyficateList(context :Context): Array<Certyficat>
     {
         return user.getCertyficateList(context)

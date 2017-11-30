@@ -8,6 +8,7 @@ import android.os.Message;
 import android.util.Log;
 
 import inteligenty_zamek.app_ik.API.Bluetooth_maneger;
+import inteligenty_zamek.app_ik.presenters.MainPresenter;
 
 public class Connect_and_send_message extends AsyncTask<Object, Object, Boolean> {
 
@@ -16,10 +17,11 @@ public class Connect_and_send_message extends AsyncTask<Object, Object, Boolean>
     private Bluetooth_maneger bluetooth_maneger = null;
     private String address;
     private String data;
-
-    public Connect_and_send_message(String address, String data) {
+    private MainPresenter presenter;
+    public Connect_and_send_message(String address, String data,MainPresenter presenter) {
         this.address = address;
         this.data = data;
+        this.presenter=presenter;
     }
 
     @Override
@@ -98,6 +100,22 @@ public class Connect_and_send_message extends AsyncTask<Object, Object, Boolean>
                     // construct a string from the valid bytes in the buffer
                     String readMessage = new String(readBuf, 0, msg.arg1);
                     Log.i("Access", readMessage);
+                    if(readMessage=="Access granted")
+                    {
+                    presenter.chagneColorIco((byte)1);
+                    }
+                    else
+                    {
+                        presenter.chagneColorIco((byte)2);
+
+                    }
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            presenter.chagneColorIco((byte)0);
+                        }
+                    }, 4000);
                     break;
             }
         }
