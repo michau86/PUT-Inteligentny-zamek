@@ -3,6 +3,7 @@ package inteligenty_zamek.app_ik.presenters
 import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.Toast
 import inteligenty_zamek.app_ik.*
 import inteligenty_zamek.app_ik.API.Connect_and_send_message
@@ -37,7 +38,6 @@ class MainPresenter ( val view: MainActivity) {
 
 
         try {
-
             signature = CyptographyApi.sign(model!!.Keys!!.get(index)!!.getLok_key(), GlobalContainer.getPrivateKey(view))
         } catch (e: Exception) {
             val toast = Toast.makeText(view, "Brak klucza prywatnego", Toast.LENGTH_LONG)

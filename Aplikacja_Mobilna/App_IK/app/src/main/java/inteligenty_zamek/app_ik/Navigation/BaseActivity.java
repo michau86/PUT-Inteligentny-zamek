@@ -243,7 +243,7 @@ public void logoutresponse(String response)
         if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("invalid")) {
             sharedPreferenceApi.INSTANCE.set(this,false, EnumChoice.isAdmin);
             sharedPreferenceApi.INSTANCE.set(this,false,EnumChoice.isLogin);
-            GlobalContainer.menuSelectedNumber=0;
+            GlobalContainer.setdefault();
            HashMap<EnumChoice,String> value=new HashMap<>();
            value.put(EnumChoice.password,"");
            value.put(EnumChoice.token,"");

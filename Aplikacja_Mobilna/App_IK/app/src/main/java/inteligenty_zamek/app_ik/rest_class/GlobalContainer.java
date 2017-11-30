@@ -2,6 +2,7 @@ package inteligenty_zamek.app_ik.rest_class;
 
 import android.content.Context;
 import android.util.Base64;
+import android.util.Log;
 
 import java.security.KeyFactory;
 import java.security.PrivateKey;
@@ -24,6 +25,13 @@ public final class GlobalContainer {
     private static User user=null;
     private static PrivateKey privatekye=null;
 
+    public static void setdefault()
+    {
+        user=null;
+        privatekye=null;
+        menuSelectedNumber=0;
+    }
+
     public static User getUser(Context context)
     {
         if(user!=null){return user;}
@@ -40,9 +48,10 @@ public final class GlobalContainer {
         if  (privatekye!=null){return privatekye;}
         else
         {
+
             String keyString="";
             try {
-               keyString  = CyptographyApi.decrypt(fileReadWriteApi.readFromFile(user.getLogin(), context), user.getPassword());
+                keyString  = CyptographyApi.decrypt(fileReadWriteApi.readFromFile("*"+getUser(context).getLogin(), context), getUser(context).getPassword());
             }catch (Exception ex){return null;}
 
             byte [] pkcs8EncodedBytes = Base64.decode(keyString, Base64.DEFAULT);
