@@ -9,6 +9,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.HashMap;
 
 import inteligenty_zamek.app_ik.API.CyptographyApi;
+import inteligenty_zamek.app_ik.API.EnumChoice;
 import inteligenty_zamek.app_ik.API.fileReadWriteApi;
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.R;
@@ -20,8 +21,6 @@ import inteligenty_zamek.app_ik.R;
 public final class GlobalContainer {
 
     public static int menuSelectedNumber=0;
-  //  public static boolean isAdmin=false;
-  //  public static boolean isLogin=false;
     private static User user=null;
     private static PrivateKey privatekye=null;
 
@@ -61,8 +60,8 @@ public final class GlobalContainer {
     public static void loadDataFromSharedPreferences(Context context)
     {
         user=new User();
-        user.setLogin(sharedPreferenceApi.INSTANCE.getString(context,sharedPreferenceApi.choise.login));
-        user.setPassword(sharedPreferenceApi.INSTANCE.getString(context,sharedPreferenceApi.choise.password));
+        user.setLogin(sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.login));
+        user.setPassword(sharedPreferenceApi.INSTANCE.getString(context,EnumChoice.password));
 
 
 

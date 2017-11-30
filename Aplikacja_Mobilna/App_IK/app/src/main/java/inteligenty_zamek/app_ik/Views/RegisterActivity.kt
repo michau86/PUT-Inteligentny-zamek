@@ -15,6 +15,7 @@ import android.widget.Toast
 
 import com.tooltip.Tooltip
 import inteligenty_zamek.app_ik.API.CyptographyApi
+import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.presenters.RegisterPresenter
@@ -48,10 +49,10 @@ class RegisterActivity : Activity() {
         val surname = findViewById(R.id.editTextSurname) as EditText
         val ipserwer = findViewById(R.id.ipserwertextview) as EditText
 
-        ipserwer.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.ip))
-        login.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.login))
-        name.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.nameuser))
-        surname.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.surname))
+        ipserwer.setText(sharedPreferenceApi.getString(this, EnumChoice.ip))
+        login.setText(sharedPreferenceApi.getString(this, EnumChoice.login))
+        name.setText(sharedPreferenceApi.getString(this, EnumChoice.nameuser))
+        surname.setText(sharedPreferenceApi.getString(this, EnumChoice.surname))
 
 
 
@@ -170,16 +171,16 @@ class RegisterActivity : Activity() {
 
     override fun onPause() {
         super.onPause()
-        val value = HashMap<sharedPreferenceApi.choise, String>()
+        val value = HashMap<EnumChoice, String>()
         val login = findViewById(R.id.editText_Login) as EditText
         val name = findViewById(R.id.editTextName) as EditText
         val surname = findViewById(R.id.editTextSurname) as EditText
         val ipserwer = findViewById(R.id.ipserwertextview) as EditText
 
-        value.put(sharedPreferenceApi.choise.ip, ipserwer.text.toString())
-        value.put(sharedPreferenceApi.choise.login, login.text.toString())
-        value.put(sharedPreferenceApi.choise.nameuser, name.text.toString())
-        value.put(sharedPreferenceApi.choise.surname, surname.text.toString())
+        value.put(EnumChoice.ip, ipserwer.text.toString())
+        value.put(EnumChoice.login, login.text.toString())
+        value.put(EnumChoice.nameuser, name.text.toString())
+        value.put(EnumChoice.surname, surname.text.toString())
         sharedPreferenceApi.set(this, value)
     }
 
@@ -191,10 +192,10 @@ class RegisterActivity : Activity() {
         val surname = findViewById(R.id.editTextSurname) as EditText
         val ipserwer = findViewById(R.id.ipserwertextview) as EditText
 
-        ipserwer.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.ip))
-        login.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.login))
-        name.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.nameuser))
-        surname.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.surname))
+        ipserwer.setText(sharedPreferenceApi.getString(this, EnumChoice.ip))
+        login.setText(sharedPreferenceApi.getString(this, EnumChoice.login))
+        name.setText(sharedPreferenceApi.getString(this, EnumChoice.nameuser))
+        surname.setText(sharedPreferenceApi.getString(this, EnumChoice.surname))
     }
 
 

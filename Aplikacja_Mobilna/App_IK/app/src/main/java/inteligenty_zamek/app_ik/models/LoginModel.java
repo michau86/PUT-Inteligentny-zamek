@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import inteligenty_zamek.app_ik.API.EnumChoice;
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.rest_class.User;
 import inteligenty_zamek.app_ik.API.Valdiation;
@@ -28,12 +29,12 @@ public class LoginModel {
 
     public boolean getstatus()
     {
-       return sharedPreferenceApi.INSTANCE.getBoolean(context,sharedPreferenceApi.choise.isAdmin);
+       return sharedPreferenceApi.INSTANCE.getBoolean(context,EnumChoice.isAdmin);
     }
 
     public boolean getIsLogin()
     {
-        return sharedPreferenceApi.INSTANCE.getBoolean(context,sharedPreferenceApi.choise.isLogin);
+        return sharedPreferenceApi.INSTANCE.getBoolean(context,EnumChoice.isLogin);
     }
     private User user;
 
@@ -70,8 +71,8 @@ public class LoginModel {
     public LoginModel(Context context)
     {
         this.context=context;
-        session=sharedPreferenceApi.INSTANCE.getString(context,sharedPreferenceApi.choise.token);
-        setings=sharedPreferenceApi.INSTANCE.getString(context,sharedPreferenceApi.choise.ip);
+        session=sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.token);
+        setings=sharedPreferenceApi.INSTANCE.getString(context,EnumChoice.ip);
     }
 
 

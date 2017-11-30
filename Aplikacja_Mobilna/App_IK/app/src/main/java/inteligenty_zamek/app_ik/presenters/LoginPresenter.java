@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import inteligenty_zamek.app_ik.API.CyptographyApi;
+import inteligenty_zamek.app_ik.API.EnumChoice;
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
@@ -44,8 +45,6 @@ public class LoginPresenter {
 
         if(model.getIsLogin()==true)
         {
-           // GlobalContainer.isAdmin=model.getstatus();
-           // GlobalContainer.isLogin=true;
             Intent intent = new Intent(view,MainActivity.class);
             view.startActivity(intent);
             view.finish();
@@ -62,14 +61,14 @@ public class LoginPresenter {
             toSend.put("username", user.getLogin());
             toSend.put("password", user.getPasswordHash());
 
-            HashMap <sharedPreferenceApi.choise,String> value=new HashMap<>();
-            value.put(sharedPreferenceApi.choise.ip,ipserwer);
-            value.put(sharedPreferenceApi.choise.login,user.getLogin());
-            value.put(sharedPreferenceApi.choise.password,user.getPassword());
+            HashMap <EnumChoice,String> value=new HashMap<>();
+            value.put(EnumChoice.ip,ipserwer);
+            value.put(EnumChoice.login,user.getLogin());
+            value.put(EnumChoice.password,user.getPassword());
             sharedPreferenceApi.INSTANCE.set(view,value);
 
             try {
-                new HTTPRequestAPI(this, "http://" + ipserwer + ":8080/api/login/", 1, toSend).execute();
+                new HTTPRequestAPI(this, "http://" + ipserwer + ":8080/api/login/", "loginResult", toSend).execute();
             }catch (Exception e)
             {
                 return false;
@@ -90,10 +89,10 @@ public class LoginPresenter {
                 if (jObj.getString("status").equals("ok") || jObj.getString("status").equals("root")) {
 
                     try{
-                    HashMap<sharedPreferenceApi.choise,String> value=new HashMap<>();
-                    value.put(sharedPreferenceApi.choise.token,jObj.getString("token"));
+                    HashMap<EnumChoice,String> value=new HashMap<>();
+                    value.put(EnumChoice.token,jObj.getString("token"));
                     sharedPreferenceApi.INSTANCE.set(view,value);
-                    sharedPreferenceApi.INSTANCE.set(view,true,sharedPreferenceApi.choise.isLogin);
+                    sharedPreferenceApi.INSTANCE.set(view,true,EnumChoice.isLogin);
 
 
                     }catch(Exception e){}
@@ -102,12 +101,12 @@ public class LoginPresenter {
 
                     if(jObj.getString("status").equals("ok"))
                     {
-                        sharedPreferenceApi.INSTANCE.set(view,false,sharedPreferenceApi.choise.isAdmin);
+                        sharedPreferenceApi.INSTANCE.set(view,false, EnumChoice.isAdmin);
                         model.getUserClass().setAdmin(false);
                     }
                     else
                     {
-                        sharedPreferenceApi.INSTANCE.set(view,true,sharedPreferenceApi.choise.isAdmin);
+                        sharedPreferenceApi.INSTANCE.set(view,true,EnumChoice.isAdmin);
                         model.getUserClass().setAdmin(true);
                     }
 

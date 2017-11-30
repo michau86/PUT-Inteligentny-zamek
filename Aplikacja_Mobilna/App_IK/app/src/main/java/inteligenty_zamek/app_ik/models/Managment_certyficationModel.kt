@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.rest_class.User
@@ -27,11 +28,11 @@ class Managment_certyficationModel(context:Context) {
 
 
     init{
-        login=sharedPreferenceApi.getString(context, sharedPreferenceApi.choise.login)
-        token=sharedPreferenceApi.getString(context,sharedPreferenceApi.choise.token)
-        ipaddres=sharedPreferenceApi.getString(context,sharedPreferenceApi.choise.ip)
+        login=sharedPreferenceApi.getString(context, EnumChoice.login)
+        token=sharedPreferenceApi.getString(context,EnumChoice.token)
+        ipaddres=sharedPreferenceApi.getString(context,EnumChoice.ip)
 
-        if (!sharedPreferenceApi.getBoolean(context,sharedPreferenceApi.choise.isLogin)) {
+        if (!sharedPreferenceApi.getBoolean(context, EnumChoice.isLogin)) {
             list.addAll(Arrays.asList(context.getString(R.string.activity_managmentCertyfication2)))
             islogin=false
         } else {

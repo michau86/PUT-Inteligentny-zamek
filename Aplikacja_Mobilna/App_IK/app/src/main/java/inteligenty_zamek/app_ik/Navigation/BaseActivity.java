@@ -22,6 +22,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import inteligenty_zamek.app_ik.API.EnumChoice;
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.Views.Admin_PanelActivity;
@@ -65,12 +66,12 @@ public class BaseActivity extends AppCompatActivity
 
             }}else{
             for(int i=0;i<navMenuTitles.length;i++){
-                if(sharedPreferenceApi.INSTANCE.getBoolean(this,sharedPreferenceApi.choise.isLogin)==false && i>1){i=navMenuTitles.length;
+                if(sharedPreferenceApi.INSTANCE.getBoolean(this,EnumChoice.isLogin)==false && i>1){i=navMenuTitles.length;
                     navDrawerItems.add(new NavDrawerItem("wyjdz",navMenuIcons.getResourceId(i, -1)));
 
                     break;}
                 else
-                    if(sharedPreferenceApi.INSTANCE.getBoolean(this,sharedPreferenceApi.choise.isAdmin)==false && i==2){i++;}
+                    if(sharedPreferenceApi.INSTANCE.getBoolean(this,EnumChoice.isAdmin)==false && i==2){i++;}
                 navDrawerItems.add(new NavDrawerItem(navMenuTitles[i],navMenuIcons.getResourceId(i, -1)));
             }
         }
@@ -149,12 +150,12 @@ public class BaseActivity extends AppCompatActivity
                 finish();
                 break;
             case 2:
-                if(sharedPreferenceApi.INSTANCE.getBoolean(this,sharedPreferenceApi.choise.isAdmin)==true) {
+                if(sharedPreferenceApi.INSTANCE.getBoolean(this,EnumChoice.isAdmin)==true) {
                     Intent intent2 = new Intent(this, Admin_PanelActivity.class);
                     startActivity(intent2);
                     finish();
                 }
-                else if(sharedPreferenceApi.INSTANCE.getBoolean(this,sharedPreferenceApi.choise.isLogin)==true)
+                else if(sharedPreferenceApi.INSTANCE.getBoolean(this,EnumChoice.isLogin)==true)
                 {
                     Intent intent3 = new Intent(this, SetingsActivity.class);
                     startActivity(intent3);
@@ -177,7 +178,7 @@ public class BaseActivity extends AppCompatActivity
                 }
                 break;
             case 3:
-                if(sharedPreferenceApi.INSTANCE.getBoolean(this,sharedPreferenceApi.choise.isAdmin)==true) {
+                if(sharedPreferenceApi.INSTANCE.getBoolean(this,EnumChoice.isAdmin)==true) {
                     Intent intent3 = new Intent(this, SetingsActivity.class);
                     startActivity(intent3);
                     finish();
@@ -185,13 +186,13 @@ public class BaseActivity extends AppCompatActivity
                 else
                 {
                     User user=GlobalContainer.getUser(this);
-                    logout(user, sharedPreferenceApi.INSTANCE.getString(this,sharedPreferenceApi.choise.ip));
+                    logout(user, sharedPreferenceApi.INSTANCE.getString(this,EnumChoice.ip));
                     break;
                 }
                 break;
             case 4:
                 User user=GlobalContainer.getUser(this);
-                logout(user, sharedPreferenceApi.INSTANCE.getString(this,sharedPreferenceApi.choise.ip));
+                logout(user, sharedPreferenceApi.INSTANCE.getString(this,EnumChoice.ip));
                 break;
             default:
                 break;
@@ -223,9 +224,9 @@ private void logout(User user,String ipserwer)
 {
     HashMap toSend = new HashMap();
     toSend.put("login", user.getLogin());
-    toSend.put("token", sharedPreferenceApi.INSTANCE.getString(this,sharedPreferenceApi.choise.token));
+    toSend.put("token", sharedPreferenceApi.INSTANCE.getString(this,EnumChoice.token));
     try {
-        new HTTPRequestAPI(this, "http://" + ipserwer + ":8080/api/logout/", 0, toSend).execute();
+        new HTTPRequestAPI(this, "http://" + ipserwer + ":8080/api/logout/","logoutresponse" , toSend).execute();
     }catch (Exception e)
     {
 
@@ -240,12 +241,12 @@ public void logoutresponse(String response)
     try {
         jObj = new JSONObject(response);
         if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("invalid")) {
-            sharedPreferenceApi.INSTANCE.set(this,false,sharedPreferenceApi.choise.isAdmin);
-            sharedPreferenceApi.INSTANCE.set(this,false,sharedPreferenceApi.choise.isLogin);
+            sharedPreferenceApi.INSTANCE.set(this,false, EnumChoice.isAdmin);
+            sharedPreferenceApi.INSTANCE.set(this,false,EnumChoice.isLogin);
             GlobalContainer.menuSelectedNumber=0;
-           HashMap<sharedPreferenceApi.choise,String> value=new HashMap<>();
-           value.put(sharedPreferenceApi.choise.password,"");
-           value.put(sharedPreferenceApi.choise.token,"");
+           HashMap<EnumChoice,String> value=new HashMap<>();
+           value.put(EnumChoice.password,"");
+           value.put(EnumChoice.token,"");
            sharedPreferenceApi.INSTANCE.set(this,value);
 
             // editor.commit();

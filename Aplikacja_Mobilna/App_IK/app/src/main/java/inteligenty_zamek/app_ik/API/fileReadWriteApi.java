@@ -26,7 +26,7 @@ public final class fileReadWriteApi {
             outputStreamWriter.close();
         }
         catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
+
         }
     }
 
@@ -55,10 +55,8 @@ public final class fileReadWriteApi {
             }
         }
         catch (FileNotFoundException e) {
-            Log.e("login activity", "File not found: " + e.toString());
             return "NULL";
         } catch (IOException e) {
-            Log.e("login activity", "Can not read file: " + e.toString());
         }
 
         return ret;

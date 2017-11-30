@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 
 import inteligenty_zamek.app_ik.API.CyptographyApi;
+import inteligenty_zamek.app_ik.API.EnumChoice;
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.R;
@@ -34,7 +35,7 @@ public class LoginActivity extends Activity{
         presenter.onTakeView(this);
 
         EditText ipserwer=  (EditText) findViewById(R.id.iptextview);
-        String ipserwerstring= sharedPreferenceApi.INSTANCE.getString(this,sharedPreferenceApi.choise.ip);
+        String ipserwerstring= sharedPreferenceApi.INSTANCE.getString(this, EnumChoice.ip);
         if(ipserwerstring==""){ipserwerstring=getString(R.string.defaultIPSerwer);}
         ipserwer.setText(ipserwerstring);
 
@@ -92,17 +93,17 @@ public class LoginActivity extends Activity{
     @Override
     protected void onPause() {
         super.onPause();
-        HashMap<sharedPreferenceApi.choise, String> value=new HashMap<>();
+        HashMap<EnumChoice, String> value=new HashMap<>();
         EditText ipserwer=  (EditText) findViewById(R.id.iptextview);
        // EditText password=  (EditText) findViewById(R.id.EditText_password);
         EditText login=  (EditText) findViewById(R.id.EditText_login);
 
-        value.put(sharedPreferenceApi.choise.ip,ipserwer.getText().toString());
+        value.put(EnumChoice.ip,ipserwer.getText().toString());
        // try {
 
         //    value.put(2, password.getText().toString());
        // }catch (Exception e){}
-        value.put(sharedPreferenceApi.choise.login, login.getText().toString());
+        value.put(EnumChoice.login, login.getText().toString());
         sharedPreferenceApi.INSTANCE.set(this,value);
     }
 
@@ -115,8 +116,8 @@ public class LoginActivity extends Activity{
         EditText login = (EditText) findViewById(R.id.EditText_login);
         //EditText password=  (EditText) findViewById(R.id.EditText_password);
 
-        ipserwer.setText(sharedPreferenceApi.INSTANCE.getString(this, sharedPreferenceApi.choise.ip));
-        login.setText(sharedPreferenceApi.INSTANCE.getString(this, sharedPreferenceApi.choise.login));
+        ipserwer.setText(sharedPreferenceApi.INSTANCE.getString(this, EnumChoice.ip));
+        login.setText(sharedPreferenceApi.INSTANCE.getString(this, EnumChoice.login));
         // try {
         //     password.setText(sharedPreferenceApi.INSTANCE.getString(this,2));
         // }catch (Exception e){}

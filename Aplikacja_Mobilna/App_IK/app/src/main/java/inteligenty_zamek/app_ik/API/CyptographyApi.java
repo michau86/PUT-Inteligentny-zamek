@@ -78,7 +78,6 @@ public final class CyptographyApi {
             KeyAgree.init(keypair.getPrivate());
 
         }catch (Exception e){}
-        Log.i("HHHH","klucze z valuetosend");
     return Base64.encodeToString(keypair.getPublic().getEncoded(), Base64.DEFAULT);
     }
 
@@ -107,7 +106,6 @@ public final class CyptographyApi {
             KeyAgree.doPhase(originalKey, true);
         }catch(Exception e){}
 
-        Log.i("HHHH","sekret");
 
     }
 /////////////do usuniecia
@@ -121,39 +119,6 @@ public final class CyptographyApi {
     }
 
 
-//////////////////////////
-    public static void symulation()
-    {
-        String aX,bX;
-        ///wygenerowanie publicznej wartosci
-        aX= DHCreateValuetoSend();
-        bX= DHCreateValuetoSend2();
-
-        //wygenerowanie wspólnego sekretu
-        DHgetSecret(bX);
-        DHgetSecret2(aX);
-
-        MessageDigest hash;
-        try {
-
-            hash  = MessageDigest.getInstance("SHA-256");
-
-
-            String mesa=encrypt("czesc jestem",(hash.digest(KeyAgree.generateSecret())));
-            String mesb=encrypt("wesoły romek",(hash.digest(KeyAgree2.generateSecret())));
-
-
-            Log.i("HHHH",decrypt( mesa, (hash.digest(KeyAgree2.generateSecret()) )));
-
-            Log.i("HHHH",decrypt( mesb, (hash.digest(KeyAgree.generateSecret()) )));
-
-
-
-
-        }catch (Exception ex){}
-
-
-    }
 
     public static String sign(String plainText, PrivateKey privateKey) throws Exception {
         Signature privateSignature = Signature.getInstance("SHA256withRSA");
@@ -191,18 +156,13 @@ public final class CyptographyApi {
     public static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException
     {
-        Log.i("HHHH","7,85");
+
         // setup AES cipher in CBC mode with PKCS #5 padding
         Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-        Log.i("HHHH","7,95");
-        // encrypt
 
         new SecretKeySpec(paramArrayOfByte2, "AES");
-        Log.i("HHHH","hmmm1");
         new IvParameterSpec(paramArrayOfByte3);
-        Log.i("HHHH","hmmm2");
         localCipher.init(1, new SecretKeySpec(paramArrayOfByte2, "AES"), new IvParameterSpec(paramArrayOfByte3));
-        Log.i("HHHH","7,99");
         return localCipher.doFinal(paramArrayOfByte1);
     }
 

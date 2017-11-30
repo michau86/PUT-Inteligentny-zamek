@@ -9,12 +9,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.net.ssl.HttpsURLConnection;
 
 import inteligenty_zamek.app_ik.Navigation.BaseActivity;
@@ -29,21 +29,20 @@ public class HTTPRequestAPI extends
 
     String urlString;
     HashMap DataToSend;
-    int apiNumber;
+    String methodName;
     Object presenter;
 
-    public HTTPRequestAPI(Object presenter,String url,int apiNumber,HashMap DataToSend) {
+    public HTTPRequestAPI(Object presenter,String url,String methodName,HashMap DataToSend) {
 
         this.urlString=url;
         this.DataToSend=DataToSend;
-        this.apiNumber=apiNumber;
+        this.methodName=methodName;
         this.presenter=presenter;
     }
 
 
     @Override
     protected String doInBackground(Void... params) {
-        Log.i("HHH dane wysyłane ",DataToSend.toString());
         String response = "";
         try {
             response = performPostCall(urlString, DataToSend);
@@ -55,35 +54,11 @@ public class HTTPRequestAPI extends
     @Override
     protected void onPostExecute(String response) {
 
-        Log.i("HHH dane odebrane ",response);
-        //API LOGIN  wyjatkowo przechodzi do kolejnego widoku
-        switch(apiNumber)
-        {
-            case 0:
-                BaseActivity ba=BaseActivity.class.cast(presenter);
-                ba.logoutresponse(response);
-                break;
-            case 1:
-                LoginPresenter lp= LoginPresenter.class.cast(presenter);
-                lp.loginResult(response);
-                break;
-            case 2:
-                RegisterPresenter rp=RegisterPresenter.class.cast(presenter);
-                rp.registerResult(response);
-                break;
-            case 3:
-                Managment_certyficationPresenter mp=Managment_certyficationPresenter.class.cast(presenter);
-                mp.downloadResult(response);
-                break;
-            case 4:
-                CertificationaskPresenter x=CertificationaskPresenter.class.cast(presenter);
-                //x.downloadResult(response);
-                break;
-        }
-
-
-
-
+        java.lang.reflect.Method method;
+        try {
+            method = presenter.getClass().getMethod(methodName, new Class[] { String.class });
+            method.invoke(presenter, new Object[] { response });
+        }catch(Exception ex){}
     }
 
     public String performPostCall(String requestURL,
@@ -107,7 +82,6 @@ public class HTTPRequestAPI extends
             writer.close();
             os.close();
             int responseCode = conn.getResponseCode();
-            Log.i("BBB",String.valueOf(responseCode));
             if (responseCode == HttpsURLConnection.HTTP_OK) {
                 String line;
                 BufferedReader br = new BufferedReader(new InputStreamReader(

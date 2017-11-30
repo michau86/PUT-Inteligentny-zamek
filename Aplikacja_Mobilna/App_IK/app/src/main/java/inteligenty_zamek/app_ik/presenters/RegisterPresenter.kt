@@ -39,22 +39,17 @@ public class RegisterPresenter (val view:Context) {
                 if (jObj.getString("status") == "REGISTER OK") {
                     var stringKey = ""
                     stringKey = Base64.encodeToString(model!!.pair!!.private.encoded, Base64.DEFAULT)
-                    //TODO szyforwanie klucza
-
-
                     try {
                         fileReadWriteApi.writeToFile(
                                 CyptographyApi.encrypt(stringKey,model!!.user!!.password), view, "*" + model!!.user!!.login)
                     } catch (e: Exception) {
                     }
-
                     val toast = Toast.makeText(view, "nastapiła poprawna rejestracja", Toast.LENGTH_LONG)
                     toast.show()
                     object : CountDownTimer(model!!.toastDelay.toLong(), 1000) {
                         override fun onTick(millisUntilFinished: Long) {
                             toast.show()
                         }
-
                         override fun onFinish() {
                             toast.show()
                         }
@@ -69,7 +64,6 @@ public class RegisterPresenter (val view:Context) {
                         val textView2 = view.findViewById(R.id.warning_ico1) as TextView
                         textView2.visibility = View.VISIBLE
                     }
-
                 }
             }
         } catch (e: JSONException) {
@@ -101,22 +95,17 @@ public class RegisterPresenter (val view:Context) {
             toSend.put("surname", surname)
             toSend.put("publickkey", stringKey)
 
-
-
-            val value = HashMap<sharedPreferenceApi.choise, String>()
-
-
-            value.put(sharedPreferenceApi.choise.ip, ip)
-            value.put(sharedPreferenceApi.choise.login, login)
-            value.put(sharedPreferenceApi.choise.nameuser, name)
-            value.put(sharedPreferenceApi.choise.surname, surname)
-            value.put(sharedPreferenceApi.choise.password,password)
+            val value = HashMap<EnumChoice, String>()
+            value.put(EnumChoice.ip, ip)
+            value.put(EnumChoice.login, login)
+            value.put(EnumChoice.nameuser, name)
+            value.put(EnumChoice.surname, surname)
+            value.put(EnumChoice.password,password)
             sharedPreferenceApi.set(view, value)
 
             try {
-                HTTPRequestAPI(this, "http://" + ip + ":8080/api/register/", 2, toSend).execute()
+                HTTPRequestAPI(this, "http://" + ip + ":8080/api/register/","registerResult" , toSend).execute()
             } catch (e: Exception) {
-                Log.i("HHHH","zwraca false");
                     return false
             }
 
@@ -125,14 +114,11 @@ public class RegisterPresenter (val view:Context) {
         return false
 
     }
-
     fun generateKeyPair(): KeyPair {
         val generator = KeyPairGenerator.getInstance("RSA")
         generator.initialize(1024, SecureRandom())
         return generator.generateKeyPair()
     }
-
-
 
 }
 

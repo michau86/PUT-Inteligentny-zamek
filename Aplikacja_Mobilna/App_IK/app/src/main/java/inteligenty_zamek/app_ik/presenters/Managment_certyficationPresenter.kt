@@ -7,6 +7,7 @@ import android.os.CountDownTimer
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
 import inteligenty_zamek.app_ik.API.fileReadWriteApi
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
@@ -32,7 +33,7 @@ class Managment_certyficationPresenter( val view: Context) {
                 val myIntent = Intent(view, userCertyfikationListActivity::class.java)
                 view.startActivity(myIntent)
             }
-            if (sharedPreferenceApi.getBoolean(view,sharedPreferenceApi.choise.isLogin)) {
+            if (sharedPreferenceApi.getBoolean(view, EnumChoice.isLogin)) {
                 if (position == 1) {
                     val myIntent = Intent(view, CertificationaskActivity::class.java)
                     view.startActivity(myIntent)                }
@@ -55,7 +56,6 @@ class Managment_certyficationPresenter( val view: Context) {
 
             } catch (e: Exception) {
             }
-            //zapisanie pliku
             fileReadWriteApi.writeToFile(model.arrJson!!.toString(), view, GlobalContainer.getUser(view).login)
         }
 
@@ -77,23 +77,18 @@ class Managment_certyficationPresenter( val view: Context) {
         toSend.put("login", model.login)
         toSend.put("token", model.token)
         try {
-            Log.i("HHHH","http://" + model.ipaddres + "8080/api/download/all_certifacate/")
-
-            HTTPRequestAPI(this, "http://" + model.ipaddres + ":8080/api/download/all_certifacate/", 3, toSend).execute()
+            HTTPRequestAPI(this, "http://" + model.ipaddres + ":8080/api/download/all_certifacate/", "downloadResult", toSend).execute()
         } catch (e: Exception) { }
 
     }
 
     fun downloadResult(response:String)
     {
-        Log.i("HHHH",response)
-        var jObj: JSONObject? = null
         try {
-            jObj = JSONObject(response)
+            val jObj: JSONObject = JSONObject(response)
             val arrJson = jObj.getJSONArray("data")
             fileReadWriteApi.writeToFile(arrJson.toString(), view, model.login)
             GlobalContainer.getUser(view).addCertyficatList(arrJson)
-
 
             val toast = Toast.makeText(view, "dodano certyfikaty", Toast.LENGTH_LONG)
             toast.show()
@@ -101,7 +96,6 @@ class Managment_certyficationPresenter( val view: Context) {
                 override fun onTick(millisUntilFinished: Long) {
                     toast.show()
                 }
-
                 override fun onFinish() {
                     toast.show()
                 }
@@ -115,7 +109,6 @@ class Managment_certyficationPresenter( val view: Context) {
                 override fun onTick(millisUntilFinished: Long) {
                     toast.show()
                 }
-
                 override fun onFinish() {
                     toast.show()
                 }
