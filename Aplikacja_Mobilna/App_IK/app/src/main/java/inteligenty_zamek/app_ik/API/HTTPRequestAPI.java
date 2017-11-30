@@ -21,6 +21,7 @@ import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 import inteligenty_zamek.app_ik.presenters.LoginPresenter;
 import inteligenty_zamek.app_ik.presenters.Managment_certyficationPresenter;
 import inteligenty_zamek.app_ik.presenters.RegisterPresenter;
+import inteligenty_zamek.app_ik.sampledata.CertificationaskPresenter;
 
 
 public class HTTPRequestAPI extends
@@ -73,6 +74,10 @@ public class HTTPRequestAPI extends
             case 3:
                 Managment_certyficationPresenter mp=Managment_certyficationPresenter.class.cast(presenter);
                 mp.downloadResult(response);
+                break;
+            case 4:
+                CertificationaskPresenter x=CertificationaskPresenter.class.cast(presenter);
+                //x.downloadResult(response);
                 break;
         }
 

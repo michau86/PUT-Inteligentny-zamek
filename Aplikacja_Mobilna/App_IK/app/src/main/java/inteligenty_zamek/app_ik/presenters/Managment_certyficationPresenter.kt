@@ -1,23 +1,21 @@
 package inteligenty_zamek.app_ik.presenters
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.CountDownTimer
-import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
 import inteligenty_zamek.app_ik.API.fileReadWriteApi
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
-import inteligenty_zamek.app_ik.CertificationaskActivity
+import inteligenty_zamek.app_ik.sampledata.CertificationaskActivity
 import inteligenty_zamek.app_ik.GenerationCertyfikatForGuestActivity
-import inteligenty_zamek.app_ik.Views.MainActivity
-import inteligenty_zamek.app_ik.Views.Managment_certyficationActivity
-import inteligenty_zamek.app_ik.models.MainModel
 import inteligenty_zamek.app_ik.models.Managment_certyficationModel
-import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 import inteligenty_zamek.app_ik.userCertyfikationListActivity
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.HashMap
@@ -43,6 +41,35 @@ class Managment_certyficationPresenter( val view: Context) {
                     view.startActivity(myIntent)                }
             }
         }
+
+    fun readfromfile(requestCode:Int,resultCode:Int,data: Intent)
+    {
+        if (requestCode == 123 && resultCode == Activity.RESULT_OK) {
+            model.selectedfile = data.data
+            model.arrJson = null
+            try {
+                val jObj = JSONObject(fileReadWriteApi.readFromFile(model.selectedfile!!.toString(),view))
+                val readcertyficat = fileReadWriteApi.readFromFile(GlobalContainer.getUser(view).login,view)
+                model.arrJson = JSONArray(readcertyficat)
+                model!!.arrJson!!.put(jObj)
+
+            } catch (e: Exception) {
+            }
+            //zapisanie pliku
+            fileReadWriteApi.writeToFile(model.arrJson!!.toString(), view, GlobalContainer.getUser(view).login)
+        }
+
+    }
+
+    fun isLogin():Boolean
+    {
+        return model.icodownloadSerwerIsVisible
+    }
+
+    fun setAdapter(): ArrayAdapter<String>
+    {
+        return model.adapter
+    }
 
     fun getCertyficat()
     {

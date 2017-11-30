@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import inteligenty_zamek.app_ik.*
 
 import org.apache.http.NameValuePair
 import org.apache.http.client.ClientProtocolException
@@ -30,16 +31,12 @@ import java.util.Arrays
 
 import inteligenty_zamek.app_ik.API.fileReadWriteApi
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
-import inteligenty_zamek.app_ik.CertificationaskActivity
-import inteligenty_zamek.app_ik.GenerationCertyfikatForGuestActivity
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
 import inteligenty_zamek.app_ik.rest_class.User
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
-import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.models.Managment_certyficationModel
 import inteligenty_zamek.app_ik.presenters.Managment_certyficationPresenter
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
-import inteligenty_zamek.app_ik.userCertyfikationListActivity
 
 class Managment_certyficationActivity : BaseActivity() {
     internal var toastDelay = 4000
@@ -62,77 +59,52 @@ class Managment_certyficationActivity : BaseActivity() {
         ico_download_serwer.typeface = fontFamily
         val ico_download_file = this.findViewById(R.id.TextView_download_file) as TextView
         ico_download_file.typeface = fontFamily
-
-
-
         val resultsListView = this.findViewById(R.id.ListView_Managment_Certyfivation) as ListView
-        val list = ArrayList<String>()
-        if (sharedPreferenceApi.getBoolean(this,1)) {
-            list.addAll(Arrays.asList(getString(R.string.activity_managmentCertyfication2)))
-        } else {
-            val list_item = arrayOf(getString(R.string.activity_managmentCertyfication2), getString(R.string.activity_managmentCertyfication3), getString(R.string.activity_managmentCertyfication4))
-            list.addAll(Arrays.asList(*list_item))
-            ico_download_serwer.setText("");
+        //////////////////////model
+        if(!presenter!!.isLogin()) {
+            ico_download_serwer.setText("")
+            ////////
+            resultsListView.adapter = presenter!!.setAdapter()
+
+            //wyszukanie listy oraz ustwaienie akcji dotyczacych klikniec na poszcegolne elementy
+            listView = findViewById(R.id.ListView_Managment_Certyfivation) as ListView
+            listView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+                presenter!!.getAnotherActivity(position)
+            }
+
+
+            //akcja dotyczaca klikniecia na ikone sciagnij z serwera
+            textView = findViewById(R.id.TextView_download_serwer) as TextView
+            textView!!.setOnClickListener {
+                presenter!!.getCertyficat()
+            }
+
+            //akcja dotyczaca kliknieca na ikonke sciagnij z pliku
+            textView = findViewById(R.id.TextView_download_file) as TextView
+            //na razie nie tykam
+            textView!!.setOnClickListener {
+                // TODO obsluga przycisku wgrywajacego certyfikat z pliku
+                val intent = Intent()
+                        .setType("*/*")
+                        .setAction(Intent.ACTION_GET_CONTENT)
+
+                startActivityForResult(Intent.createChooser(intent, "Select a file"), 123)
+            }
         }
-
-        val adapter: ArrayAdapter<String>
-        adapter = ArrayAdapter(this, R.layout.admin_panel_key_list, list)
-        resultsListView.adapter = adapter
-
-
-
-        //wyszukanie listy oraz ustwaienie akcji dotyczacych klikniec na poszcegolne elementy
-        listView = findViewById(R.id.ListView_Managment_Certyfivation) as ListView
-        listView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-        presenter!!.getAnotherActivity(position)
-        }
-
-
-        //akcja dotyczaca klikniecia na ikone sciagnij z serwera
-        textView = findViewById(R.id.TextView_download_serwer) as TextView
-        textView!!.setOnClickListener {
-           presenter!!.getCertyficat()
-        }
-
-        //akcja dotyczaca kliknieca na ikonke sciagnij z pliku
-        textView = findViewById(R.id.TextView_download_file) as TextView
-        //na razie nie tykam
-        textView!!.setOnClickListener {
-            // TODO obsluga przycisku wgrywajacego certyfikat z pliku
-            val intent = Intent()
-                    .setType("*/*")
-                    .setAction(Intent.ACTION_GET_CONTENT)
-
-            startActivityForResult(Intent.createChooser(intent, "Select a file"), 123)
-        }
-
     }
     //przeciazenie funkcji odpwoeidzialnrj za obrobke wskazanego pliku
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
-        var arrJson: JSONArray? = null
-        if (requestCode == 123 && resultCode == Activity.RESULT_OK) {
-            val selectedfile = data.data
-            arrJson = null
-            try {
-                val jObj = JSONObject((application as GlobalClassContainer).readFromFile(this, selectedfile!!.toString()))
-                val readcertyficat = (application as GlobalClassContainer).readFromFile(this, (application as GlobalClassContainer).user.login)
-                arrJson = JSONArray(readcertyficat)
-                arrJson.put(jObj)
 
-            } catch (e: Exception) {
-            }
-
-            //TODO  przetestowanie
-            val user = (application as GlobalClassContainer).user
-            //zapisanie pliku
-            (application as GlobalClassContainer).writeToFile(arrJson!!.toString(), this@Managment_certyficationActivity, user.login)
-        }
     }
 
 
-    override fun onBackPressed() {}
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        this.finish()
+    }
 
 
 
