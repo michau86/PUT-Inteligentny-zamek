@@ -20,7 +20,7 @@ class Managment_certyficationModel(context:Context) {
     var ipaddres:String=""
     val list = ArrayList<String>()
     val adapter: ArrayAdapter<String>
-    var icodownloadSerwerIsVisible:Boolean=true;
+    var islogin:Boolean=true;
     var selectedfile: Uri? =null
     var arrJson: JSONArray? = null
 
@@ -30,12 +30,12 @@ class Managment_certyficationModel(context:Context) {
         token=sharedPreferenceApi.getString(context,3)
         ipaddres=sharedPreferenceApi.getString(context,1)
 
-        if (sharedPreferenceApi.getBoolean(context,1)) {
+        if (!sharedPreferenceApi.getBoolean(context,1)) {
             list.addAll(Arrays.asList(context.getString(R.string.activity_managmentCertyfication2)))
+            islogin=false
         } else {
             val list_item = arrayOf(context.getString(R.string.activity_managmentCertyfication2), context.getString(R.string.activity_managmentCertyfication3), context.getString(R.string.activity_managmentCertyfication4))
             list.addAll(Arrays.asList(*list_item))
-            icodownloadSerwerIsVisible=false
         }
         adapter = ArrayAdapter(context, R.layout.admin_panel_key_list, list)
     }

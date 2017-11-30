@@ -177,7 +177,7 @@ public class BaseActivity extends AppCompatActivity
                 }
                 break;
             case 3:
-                if(sharedPreferenceApi.INSTANCE.getBoolean(this,1)==true) {
+                if(sharedPreferenceApi.INSTANCE.getBoolean(this,2)==true) {
                     Intent intent3 = new Intent(this, SetingsActivity.class);
                     startActivity(intent3);
                     finish();
@@ -221,7 +221,6 @@ public class BaseActivity extends AppCompatActivity
 
 private void logout(User user,String ipserwer)
 {
-    Log.i("HHHH","przycisk wyloguj");
     HashMap toSend = new HashMap();
     toSend.put("login", user.getLogin());
     toSend.put("token", sharedPreferenceApi.INSTANCE.getString(this,3));
@@ -236,8 +235,7 @@ private void logout(User user,String ipserwer)
 
 public void logoutresponse(String response)
 {
-    Log.i("HHHH","otrzymane response");
-    Log.i("HHHH",response);
+
     JSONObject jObj = null;
     try {
         jObj = new JSONObject(response);

@@ -63,7 +63,7 @@ class Managment_certyficationPresenter( val view: Context) {
 
     fun isLogin():Boolean
     {
-        return model.icodownloadSerwerIsVisible
+        return model.islogin
     }
 
     fun setAdapter(): ArrayAdapter<String>

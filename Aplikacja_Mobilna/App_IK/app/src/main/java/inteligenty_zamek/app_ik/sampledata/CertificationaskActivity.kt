@@ -51,7 +51,7 @@ class CertificationaskActivity : BaseActivity() {
     private var adapter: SimpleAdapter?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_certyficationask)
+      /*  setContentView(R.layout.activity_certyficationask)
         navMenuTitles = resources.getStringArray(R.array.nav_drawer_items)
         navMenuIcons = resources.obtainTypedArray(R.array.nav_drawer_icons)
         set(navMenuTitles, navMenuIcons)
@@ -325,6 +325,6 @@ class CertificationaskActivity : BaseActivity() {
                 }.start()
             }
 
-        }
+        }*/
     }
 }

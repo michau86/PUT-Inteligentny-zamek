@@ -61,9 +61,8 @@ class Managment_certyficationActivity : BaseActivity() {
         ico_download_file.typeface = fontFamily
         val resultsListView = this.findViewById(R.id.ListView_Managment_Certyfivation) as ListView
         //////////////////////model
-        if(!presenter!!.isLogin()) {
-            ico_download_serwer.setText("")
-            ////////
+        if(presenter!!.isLogin()) {
+
             resultsListView.adapter = presenter!!.setAdapter()
 
             //wyszukanie listy oraz ustwaienie akcji dotyczacych klikniec na poszcegolne elementy
@@ -90,6 +89,10 @@ class Managment_certyficationActivity : BaseActivity() {
 
                 startActivityForResult(Intent.createChooser(intent, "Select a file"), 123)
             }
+        }
+        else
+        {
+            ico_download_serwer.setText("");
         }
     }
     //przeciazenie funkcji odpwoeidzialnrj za obrobke wskazanego pliku

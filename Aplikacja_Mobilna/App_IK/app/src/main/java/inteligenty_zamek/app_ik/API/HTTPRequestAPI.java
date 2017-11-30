@@ -43,7 +43,7 @@ public class HTTPRequestAPI extends
 
     @Override
     protected String doInBackground(Void... params) {
-
+        Log.i("HHH dane wysyłane ",DataToSend.toString());
         String response = "";
         try {
             response = performPostCall(urlString, DataToSend);
@@ -55,7 +55,7 @@ public class HTTPRequestAPI extends
     @Override
     protected void onPostExecute(String response) {
 
-
+        Log.i("HHH dane odebrane ",response);
         //API LOGIN  wyjatkowo przechodzi do kolejnego widoku
         switch(apiNumber)
         {
