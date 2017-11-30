@@ -65,12 +65,12 @@ public class BaseActivity extends AppCompatActivity
 
             }}else{
             for(int i=0;i<navMenuTitles.length;i++){
-                if(sharedPreferenceApi.INSTANCE.getBoolean(this,1)==false && i>1){i=navMenuTitles.length;
+                if(sharedPreferenceApi.INSTANCE.getBoolean(this,sharedPreferenceApi.choise.isLogin)==false && i>1){i=navMenuTitles.length;
                     navDrawerItems.add(new NavDrawerItem("wyjdz",navMenuIcons.getResourceId(i, -1)));
 
                     break;}
                 else
-                    if(sharedPreferenceApi.INSTANCE.getBoolean(this,2)==false && i==2){i++;}
+                    if(sharedPreferenceApi.INSTANCE.getBoolean(this,sharedPreferenceApi.choise.isAdmin)==false && i==2){i++;}
                 navDrawerItems.add(new NavDrawerItem(navMenuTitles[i],navMenuIcons.getResourceId(i, -1)));
             }
         }
@@ -149,12 +149,12 @@ public class BaseActivity extends AppCompatActivity
                 finish();
                 break;
             case 2:
-                if(sharedPreferenceApi.INSTANCE.getBoolean(this,2)==true) {
+                if(sharedPreferenceApi.INSTANCE.getBoolean(this,sharedPreferenceApi.choise.isAdmin)==true) {
                     Intent intent2 = new Intent(this, Admin_PanelActivity.class);
                     startActivity(intent2);
                     finish();
                 }
-                else if(sharedPreferenceApi.INSTANCE.getBoolean(this,1)==true)
+                else if(sharedPreferenceApi.INSTANCE.getBoolean(this,sharedPreferenceApi.choise.isLogin)==true)
                 {
                     Intent intent3 = new Intent(this, SetingsActivity.class);
                     startActivity(intent3);
@@ -177,7 +177,7 @@ public class BaseActivity extends AppCompatActivity
                 }
                 break;
             case 3:
-                if(sharedPreferenceApi.INSTANCE.getBoolean(this,2)==true) {
+                if(sharedPreferenceApi.INSTANCE.getBoolean(this,sharedPreferenceApi.choise.isAdmin)==true) {
                     Intent intent3 = new Intent(this, SetingsActivity.class);
                     startActivity(intent3);
                     finish();
@@ -185,13 +185,13 @@ public class BaseActivity extends AppCompatActivity
                 else
                 {
                     User user=GlobalContainer.getUser(this);
-                    logout(user, sharedPreferenceApi.INSTANCE.getString(this,1));
+                    logout(user, sharedPreferenceApi.INSTANCE.getString(this,sharedPreferenceApi.choise.ip));
                     break;
                 }
                 break;
             case 4:
                 User user=GlobalContainer.getUser(this);
-                logout(user, sharedPreferenceApi.INSTANCE.getString(this,1));
+                logout(user, sharedPreferenceApi.INSTANCE.getString(this,sharedPreferenceApi.choise.ip));
                 break;
             default:
                 break;
@@ -223,7 +223,7 @@ private void logout(User user,String ipserwer)
 {
     HashMap toSend = new HashMap();
     toSend.put("login", user.getLogin());
-    toSend.put("token", sharedPreferenceApi.INSTANCE.getString(this,3));
+    toSend.put("token", sharedPreferenceApi.INSTANCE.getString(this,sharedPreferenceApi.choise.token));
     try {
         new HTTPRequestAPI(this, "http://" + ipserwer + ":8080/api/logout/", 0, toSend).execute();
     }catch (Exception e)
@@ -240,12 +240,12 @@ public void logoutresponse(String response)
     try {
         jObj = new JSONObject(response);
         if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("invalid")) {
-            sharedPreferenceApi.INSTANCE.set(this,false,2);
-            sharedPreferenceApi.INSTANCE.set(this,false,1);
+            sharedPreferenceApi.INSTANCE.set(this,false,sharedPreferenceApi.choise.isAdmin);
+            sharedPreferenceApi.INSTANCE.set(this,false,sharedPreferenceApi.choise.isLogin);
             GlobalContainer.menuSelectedNumber=0;
-           HashMap<Integer,String> value=new HashMap<>();
-           value.put(2,"");
-           value.put(3,"");
+           HashMap<sharedPreferenceApi.choise,String> value=new HashMap<>();
+           value.put(sharedPreferenceApi.choise.password,"");
+           value.put(sharedPreferenceApi.choise.token,"");
            sharedPreferenceApi.INSTANCE.set(this,value);
 
             // editor.commit();

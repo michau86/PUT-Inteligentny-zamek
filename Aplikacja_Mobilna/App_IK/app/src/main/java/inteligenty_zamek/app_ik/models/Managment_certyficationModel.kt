@@ -15,7 +15,8 @@ import java.util.*
  * Created by Damian on 28.11.2017.
  */
 class Managment_certyficationModel(context:Context) {
-     var login:String=""
+
+    var login:String=""
     var token:String=""
     var ipaddres:String=""
     val list = ArrayList<String>()
@@ -26,11 +27,11 @@ class Managment_certyficationModel(context:Context) {
 
 
     init{
-        login=sharedPreferenceApi.getString(context,5)
-        token=sharedPreferenceApi.getString(context,3)
-        ipaddres=sharedPreferenceApi.getString(context,1)
+        login=sharedPreferenceApi.getString(context, sharedPreferenceApi.choise.login)
+        token=sharedPreferenceApi.getString(context,sharedPreferenceApi.choise.token)
+        ipaddres=sharedPreferenceApi.getString(context,sharedPreferenceApi.choise.ip)
 
-        if (!sharedPreferenceApi.getBoolean(context,1)) {
+        if (!sharedPreferenceApi.getBoolean(context,sharedPreferenceApi.choise.isLogin)) {
             list.addAll(Arrays.asList(context.getString(R.string.activity_managmentCertyfication2)))
             islogin=false
         } else {
@@ -39,10 +40,5 @@ class Managment_certyficationModel(context:Context) {
         }
         adapter = ArrayAdapter(context, R.layout.admin_panel_key_list, list)
     }
-
-
-
-
-
 
 }

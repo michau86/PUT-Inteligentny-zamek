@@ -62,10 +62,10 @@ public class LoginPresenter {
             toSend.put("username", user.getLogin());
             toSend.put("password", user.getPasswordHash());
 
-            HashMap <Integer,String> value=new HashMap<>();
-            value.put(1,ipserwer);
-            value.put(5,user.getLogin());
-            value.put(2,user.getPassword());
+            HashMap <sharedPreferenceApi.choise,String> value=new HashMap<>();
+            value.put(sharedPreferenceApi.choise.ip,ipserwer);
+            value.put(sharedPreferenceApi.choise.login,user.getLogin());
+            value.put(sharedPreferenceApi.choise.password,user.getPassword());
             sharedPreferenceApi.INSTANCE.set(view,value);
 
             try {
@@ -90,10 +90,10 @@ public class LoginPresenter {
                 if (jObj.getString("status").equals("ok") || jObj.getString("status").equals("root")) {
 
                     try{
-                    HashMap<Integer,String> value=new HashMap<>();
-                    value.put(3,jObj.getString("token"));
+                    HashMap<sharedPreferenceApi.choise,String> value=new HashMap<>();
+                    value.put(sharedPreferenceApi.choise.token,jObj.getString("token"));
                     sharedPreferenceApi.INSTANCE.set(view,value);
-                    sharedPreferenceApi.INSTANCE.set(view,true,1);
+                    sharedPreferenceApi.INSTANCE.set(view,true,sharedPreferenceApi.choise.isLogin);
 
 
                     }catch(Exception e){}
@@ -102,12 +102,12 @@ public class LoginPresenter {
 
                     if(jObj.getString("status").equals("ok"))
                     {
-                        sharedPreferenceApi.INSTANCE.set(view,false,2);
+                        sharedPreferenceApi.INSTANCE.set(view,false,sharedPreferenceApi.choise.isAdmin);
                         model.getUserClass().setAdmin(false);
                     }
                     else
                     {
-                        sharedPreferenceApi.INSTANCE.set(view,true,2);
+                        sharedPreferenceApi.INSTANCE.set(view,true,sharedPreferenceApi.choise.isAdmin);
                         model.getUserClass().setAdmin(true);
                     }
 

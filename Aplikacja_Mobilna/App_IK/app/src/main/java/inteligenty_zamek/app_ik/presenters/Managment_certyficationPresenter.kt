@@ -32,7 +32,7 @@ class Managment_certyficationPresenter( val view: Context) {
                 val myIntent = Intent(view, userCertyfikationListActivity::class.java)
                 view.startActivity(myIntent)
             }
-            if (sharedPreferenceApi.getBoolean(view,1)) {
+            if (sharedPreferenceApi.getBoolean(view,sharedPreferenceApi.choise.isLogin)) {
                 if (position == 1) {
                     val myIntent = Intent(view, CertificationaskActivity::class.java)
                     view.startActivity(myIntent)                }

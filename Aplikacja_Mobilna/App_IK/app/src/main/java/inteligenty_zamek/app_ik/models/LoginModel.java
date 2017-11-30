@@ -28,12 +28,12 @@ public class LoginModel {
 
     public boolean getstatus()
     {
-       return sharedPreferenceApi.INSTANCE.getBoolean(context,2);
+       return sharedPreferenceApi.INSTANCE.getBoolean(context,sharedPreferenceApi.choise.isAdmin);
     }
 
     public boolean getIsLogin()
     {
-        return sharedPreferenceApi.INSTANCE.getBoolean(context,1);
+        return sharedPreferenceApi.INSTANCE.getBoolean(context,sharedPreferenceApi.choise.isLogin);
     }
     private User user;
 
@@ -70,8 +70,8 @@ public class LoginModel {
     public LoginModel(Context context)
     {
         this.context=context;
-        session=sharedPreferenceApi.INSTANCE.getString(context,3);
-        setings=sharedPreferenceApi.INSTANCE.getString(context,1);
+        session=sharedPreferenceApi.INSTANCE.getString(context,sharedPreferenceApi.choise.token);
+        setings=sharedPreferenceApi.INSTANCE.getString(context,sharedPreferenceApi.choise.ip);
     }
 
 

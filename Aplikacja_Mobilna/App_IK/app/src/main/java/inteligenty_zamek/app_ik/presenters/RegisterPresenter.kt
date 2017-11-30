@@ -103,14 +103,14 @@ public class RegisterPresenter (val view:Context) {
 
 
 
-            val value = HashMap<Int, String>()
+            val value = HashMap<sharedPreferenceApi.choise, String>()
 
 
-            value.put(1, ip)
-            value.put(5, login)
-            value.put(6, name)
-            value.put(7, surname)
-            value.put(2,password)
+            value.put(sharedPreferenceApi.choise.ip, ip)
+            value.put(sharedPreferenceApi.choise.login, login)
+            value.put(sharedPreferenceApi.choise.nameuser, name)
+            value.put(sharedPreferenceApi.choise.surname, surname)
+            value.put(sharedPreferenceApi.choise.password,password)
             sharedPreferenceApi.set(view, value)
 
             try {

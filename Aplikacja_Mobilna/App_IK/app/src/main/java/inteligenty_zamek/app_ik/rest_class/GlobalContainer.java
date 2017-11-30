@@ -61,8 +61,8 @@ public final class GlobalContainer {
     public static void loadDataFromSharedPreferences(Context context)
     {
         user=new User();
-        user.setLogin(sharedPreferenceApi.INSTANCE.getString(context,5));
-        user.setPassword(sharedPreferenceApi.INSTANCE.getString(context,2));
+        user.setLogin(sharedPreferenceApi.INSTANCE.getString(context,sharedPreferenceApi.choise.login));
+        user.setPassword(sharedPreferenceApi.INSTANCE.getString(context,sharedPreferenceApi.choise.password));
 
 
 

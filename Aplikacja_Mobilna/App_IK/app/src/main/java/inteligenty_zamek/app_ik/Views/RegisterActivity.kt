@@ -48,10 +48,10 @@ class RegisterActivity : Activity() {
         val surname = findViewById(R.id.editTextSurname) as EditText
         val ipserwer = findViewById(R.id.ipserwertextview) as EditText
 
-        ipserwer.setText(sharedPreferenceApi.getString(this, 1))
-        login.setText(sharedPreferenceApi.getString(this, 5))
-        name.setText(sharedPreferenceApi.getString(this, 6))
-        surname.setText(sharedPreferenceApi.getString(this, 7))
+        ipserwer.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.ip))
+        login.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.login))
+        name.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.nameuser))
+        surname.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.surname))
 
 
 
@@ -170,16 +170,16 @@ class RegisterActivity : Activity() {
 
     override fun onPause() {
         super.onPause()
-        val value = HashMap<Int, String>()
+        val value = HashMap<sharedPreferenceApi.choise, String>()
         val login = findViewById(R.id.editText_Login) as EditText
         val name = findViewById(R.id.editTextName) as EditText
         val surname = findViewById(R.id.editTextSurname) as EditText
         val ipserwer = findViewById(R.id.ipserwertextview) as EditText
 
-        value.put(1, ipserwer.text.toString())
-        value.put(5, login.text.toString())
-        value.put(6, name.text.toString())
-        value.put(7, surname.text.toString())
+        value.put(sharedPreferenceApi.choise.ip, ipserwer.text.toString())
+        value.put(sharedPreferenceApi.choise.login, login.text.toString())
+        value.put(sharedPreferenceApi.choise.nameuser, name.text.toString())
+        value.put(sharedPreferenceApi.choise.surname, surname.text.toString())
         sharedPreferenceApi.set(this, value)
     }
 
@@ -191,10 +191,10 @@ class RegisterActivity : Activity() {
         val surname = findViewById(R.id.editTextSurname) as EditText
         val ipserwer = findViewById(R.id.ipserwertextview) as EditText
 
-        ipserwer.setText(sharedPreferenceApi.getString(this, 1))
-        login.setText(sharedPreferenceApi.getString(this, 5))
-        name.setText(sharedPreferenceApi.getString(this, 6))
-        surname.setText(sharedPreferenceApi.getString(this, 7))
+        ipserwer.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.ip))
+        login.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.login))
+        name.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.nameuser))
+        surname.setText(sharedPreferenceApi.getString(this, sharedPreferenceApi.choise.surname))
     }
 
 

@@ -34,7 +34,7 @@ public class LoginActivity extends Activity{
         presenter.onTakeView(this);
 
         EditText ipserwer=  (EditText) findViewById(R.id.iptextview);
-        String ipserwerstring= sharedPreferenceApi.INSTANCE.getString(this,1);
+        String ipserwerstring= sharedPreferenceApi.INSTANCE.getString(this,sharedPreferenceApi.choise.ip);
         if(ipserwerstring==""){ipserwerstring=getString(R.string.defaultIPSerwer);}
         ipserwer.setText(ipserwerstring);
 
@@ -92,17 +92,17 @@ public class LoginActivity extends Activity{
     @Override
     protected void onPause() {
         super.onPause();
-        HashMap<Integer, String> value=new HashMap<>();
+        HashMap<sharedPreferenceApi.choise, String> value=new HashMap<>();
         EditText ipserwer=  (EditText) findViewById(R.id.iptextview);
        // EditText password=  (EditText) findViewById(R.id.EditText_password);
         EditText login=  (EditText) findViewById(R.id.EditText_login);
 
-        value.put(1,ipserwer.getText().toString());
+        value.put(sharedPreferenceApi.choise.ip,ipserwer.getText().toString());
        // try {
 
         //    value.put(2, password.getText().toString());
        // }catch (Exception e){}
-        value.put(5, login.getText().toString());
+        value.put(sharedPreferenceApi.choise.login, login.getText().toString());
         sharedPreferenceApi.INSTANCE.set(this,value);
     }
 
@@ -115,8 +115,8 @@ public class LoginActivity extends Activity{
         EditText login = (EditText) findViewById(R.id.EditText_login);
         //EditText password=  (EditText) findViewById(R.id.EditText_password);
 
-        ipserwer.setText(sharedPreferenceApi.INSTANCE.getString(this, 1));
-        login.setText(sharedPreferenceApi.INSTANCE.getString(this, 5));
+        ipserwer.setText(sharedPreferenceApi.INSTANCE.getString(this, sharedPreferenceApi.choise.ip));
+        login.setText(sharedPreferenceApi.INSTANCE.getString(this, sharedPreferenceApi.choise.login));
         // try {
         //     password.setText(sharedPreferenceApi.INSTANCE.getString(this,2));
         // }catch (Exception e){}

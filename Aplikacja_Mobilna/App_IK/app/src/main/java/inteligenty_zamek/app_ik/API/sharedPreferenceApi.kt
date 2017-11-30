@@ -8,11 +8,18 @@ import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 /**
  * Created by Damian on 28.11.2017.
  */
-object sharedPreferenceApi
-{
-    private var sharedPref: SharedPreferences? = null
-    private var editor:SharedPreferences.Editor? =null
 
+
+
+
+object sharedPreferenceApi {
+    private var sharedPref: SharedPreferences? = null
+    private var editor: SharedPreferences.Editor? = null
+
+    enum class choise
+    {
+        ip,password,token,login,nameuser,surname,isLogin,isAdmin
+    }
 
     /**
      *
@@ -27,29 +34,29 @@ object sharedPreferenceApi
      *6->name
      * 7->surname
      */
-    fun getString(context : Context, choise: Int): String
+    fun getString(context : Context, choise: choise): String
     {
         sharedPref = context.getSharedPreferences(context.getString(R.string.SPName), Context.MODE_PRIVATE)
         when(choise) {
-            1 -> {
+            sharedPreferenceApi.choise.ip -> {
                 return sharedPref!!.getString("ipserwer", "")
             }
-            2 -> {
+            sharedPreferenceApi.choise.password -> {
                 return CyptographyApi.decrypt(sharedPref!!.getString("password", ""));
             }
-            3 -> {
+            sharedPreferenceApi.choise.token -> {
                 try {
                     return CyptographyApi.decrypt(sharedPref!!.getString("sessionToken", ""), GlobalContainer.getUser(context)!!.password);
                 }catch(ex:Exception ){return "";}
                 }
 
-            5-> {
+            sharedPreferenceApi.choise.login-> {
                 return sharedPref!!.getString("login", "");
             }
-            6->{
+            sharedPreferenceApi.choise.nameuser->{
                 return sharedPref!!.getString("name", "");
             }
-            7->{
+            sharedPreferenceApi.choise.surname->{
                 return sharedPref!!.getString("surname", "");
             }
         }
@@ -66,15 +73,15 @@ object sharedPreferenceApi
  * 1->user is login
  * 2->user is admin,
  */
-    fun getBoolean(context : Context, choise:Int): Boolean
+    fun getBoolean(context : Context, choise:choise): Boolean
     {
         when(choise) {
-            1 -> {
+            sharedPreferenceApi.choise.isLogin -> {
                 sharedPref = context.getSharedPreferences(context.getString(R.string.SPName), Context.MODE_PRIVATE)
                 return sharedPref!!.getBoolean("isLogin", false);
             }
 
-            2 -> {
+            sharedPreferenceApi.choise.isAdmin -> {
                 sharedPref = context.getSharedPreferences(context.getString(R.string.SPName), Context.MODE_PRIVATE)
                 return sharedPref!!.getBoolean("isadmin", false);
             }
@@ -97,42 +104,39 @@ object sharedPreferenceApi
      * 7->surname
      *
      */
-    public fun set(context : Context,  value: HashMap<Int,String>) {
+    public fun set(context : Context,  hashMapvalue: HashMap<choise,String>) {
 
-        if(value==null){return}
+        if(hashMapvalue==null){return}
 
         sharedPref = context.getSharedPreferences(context.getString(R.string.SPName), Context.MODE_PRIVATE)
         editor = sharedPref!!.edit()
         var key:Int=1
-        while (key<8)
-        {
-        if(value[key]!=null)
-        {
-            when(key) {
-                1 -> {
-                    editor!!.putString("ipserwer", value[key])
+
+        for ((key, value) in hashMapvalue) {
+            when (key) {
+                sharedPreferenceApi.choise.ip -> {
+                    editor!!.putString("ipserwer", value)
                 }
-                2 -> {
-                    editor!!.putString("password", CyptographyApi.encrypt(value[key]))
+                sharedPreferenceApi.choise.password -> {
+                    editor!!.putString("password", CyptographyApi.encrypt(value))
                 }
-                3 -> {
-                    editor!!.putString("sessionToken", CyptographyApi.encrypt(value[key],GlobalContainer.getUser(context)!!.password))
+                sharedPreferenceApi.choise.token -> {
+                    editor!!.putString("sessionToken", CyptographyApi.encrypt(value, GlobalContainer.getUser(context)!!.password))
                 }
 
-                5-> {
-                    editor!!.putString("login", value[key])
+                sharedPreferenceApi.choise.login -> {
+                    editor!!.putString("login", value)
                 }
-                6->{
-                    editor!!.putString("name", value[key])
+                sharedPreferenceApi.choise.nameuser -> {
+                    editor!!.putString("name", value)
                 }
-                7->{
-                    editor!!.putString("surname", value[key])
+                sharedPreferenceApi.choise.surname -> {
+                    editor!!.putString("surname", value)
                 }
             }
+        }
 
-        }
-            key++
-        }
+
         editor!!.commit()
     }
 
@@ -146,17 +150,17 @@ object sharedPreferenceApi
      * 1->user is login
      * 2->user is admin,
      */
-    public fun set(context : Context, value: Boolean, choise: Int)
+    public fun set(context : Context, value: Boolean, choise: choise)
     {
         if(value==null){return}
 
         when(choise) {
-            1-> {
+            sharedPreferenceApi.choise.isLogin-> {
                 sharedPref = context.getSharedPreferences(context.getString(R.string.SPName), Context.MODE_PRIVATE)
                 editor = sharedPref!!.edit()
                 editor!!.putBoolean("isLogin", value)
             }
-            2->{
+            sharedPreferenceApi.choise.isAdmin->{
                 sharedPref = context.getSharedPreferences(context.getString(R.string.SPName), Context.MODE_PRIVATE)
                 editor = sharedPref!!.edit()
                 editor!!.putBoolean("isadmin", value)
