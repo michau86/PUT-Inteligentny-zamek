@@ -31,7 +31,7 @@
         <activity android:name=".Views.Managment_certyficationActivity" />
         <activity android:name=".SetingsActivity" />
         <activity android:name=".History_using_keyActivity" />
-        <activity android:name=".sampledata.CertificationaskActivity" />
+        <activity android:name=".Views.CertificationaskActivity" />
         <activity android:name=".Navigation.BaseActivity" />
         <activity android:name=".userCertyfikationListActivity" />
         <activity android:name=".certyficatActivity" />

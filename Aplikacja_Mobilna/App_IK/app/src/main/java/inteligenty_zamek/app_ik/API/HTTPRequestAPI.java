@@ -1,7 +1,6 @@
 package inteligenty_zamek.app_ik.API;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,19 +8,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
-
-import inteligenty_zamek.app_ik.Navigation.BaseActivity;
-import inteligenty_zamek.app_ik.presenters.LoginPresenter;
-import inteligenty_zamek.app_ik.presenters.Managment_certyficationPresenter;
-import inteligenty_zamek.app_ik.presenters.RegisterPresenter;
-import inteligenty_zamek.app_ik.sampledata.CertificationaskPresenter;
 
 
 public class HTTPRequestAPI extends

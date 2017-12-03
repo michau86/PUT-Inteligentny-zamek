@@ -241,6 +241,7 @@ public void logoutresponse(String response)
     try {
         jObj = new JSONObject(response);
         if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("invalid")) {
+
             sharedPreferenceApi.INSTANCE.set(this,false, EnumChoice.isAdmin);
             sharedPreferenceApi.INSTANCE.set(this,false,EnumChoice.isLogin);
             GlobalContainer.setdefault();
