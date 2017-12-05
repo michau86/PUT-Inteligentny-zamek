@@ -1,6 +1,7 @@
 package inteligenty_zamek.app_ik.API;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -49,8 +50,12 @@ public class HTTPRequestAPI extends
         java.lang.reflect.Method method;
         try {
             method = presenter.getClass().getMethod(methodName, new Class[] { String.class });
+
+
             method.invoke(presenter, new Object[] { response });
-        }catch(Exception ex){}
+
+        }catch(Exception ex){
+        }
     }
 
     public String performPostCall(String requestURL,

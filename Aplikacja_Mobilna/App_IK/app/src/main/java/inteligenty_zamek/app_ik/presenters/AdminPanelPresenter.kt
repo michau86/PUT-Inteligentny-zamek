@@ -5,6 +5,8 @@ import android.widget.ArrayAdapter
 import inteligenty_zamek.app_ik.*
 import inteligenty_zamek.app_ik.Views.Admin_PanelActivity
 import inteligenty_zamek.app_ik.models.AdminPanelModel
+import inteligenty_zamek.app_ik.sampledata.CertyficatWaitActivity
+import inteligenty_zamek.app_ik.Views.UserWaitActivity
 
 /**
  * Created by Damian on 24.11.2017.

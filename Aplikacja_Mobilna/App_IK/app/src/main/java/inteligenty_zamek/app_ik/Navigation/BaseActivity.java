@@ -236,11 +236,14 @@ private void logout(User user,String ipserwer)
 
 public void logoutresponse(String response)
 {
-
+Log.i("HHHH", "w logout response");
+    Log.i("HHHH", "w logout response");
+    Log.i("HHHH", response);
     JSONObject jObj = null;
     try {
         jObj = new JSONObject(response);
-        if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("invalid")) {
+        if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("Invalid")) {
+            Log.i("HHHH", "w ifie");
 
             sharedPreferenceApi.INSTANCE.set(this,false, EnumChoice.isAdmin);
             sharedPreferenceApi.INSTANCE.set(this,false,EnumChoice.isLogin);
