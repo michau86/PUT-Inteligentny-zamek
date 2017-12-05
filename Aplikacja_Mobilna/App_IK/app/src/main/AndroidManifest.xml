@@ -38,9 +38,9 @@
         <activity android:name=".GenerationCertyfikatForGuestActivity" />
         <activity android:name=".Views.UserWaitActivity" />
         <activity android:name=".EmergencyPasswordActivity" />
-        <activity android:name=".GenerationCertyficatActivity" />
+        <activity android:name=".sampledata.GenerationCertyficatActivity" />
         <activity android:name=".ManagmentCertyficationUserActivity" />
-        <activity android:name=".sampledata.CertyficatWaitActivity" />
+        <activity android:name=".Views.CertyficatWaitActivity" />
         <activity android:name=".GenerateCertyficatRangeActivity"></activity>
     </application>
 
