@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import inteligenty_zamek.app_ik.API.EnumChoice
@@ -86,9 +87,10 @@ class Managment_certyficationPresenter( val view: Context) {
         try {
             val jObj: JSONObject = JSONObject(response)
             val arrJson = jObj.getJSONArray("data")
+            Log.i("HHHH",arrJson.toString())
+
             fileReadWriteApi.writeToFile(arrJson.toString(), view, model.login)
             GlobalContainer.getUser(view).addCertyficatList(arrJson)
-
             val toast = Toast.makeText(view, "dodano certyfikaty", Toast.LENGTH_LONG)
             toast.show()
             object : CountDownTimer(4000.toLong(), 1000) {

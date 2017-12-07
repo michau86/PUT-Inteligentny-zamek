@@ -22,9 +22,9 @@ class GenerationCertyficatPresenter(val view: GenerationCertyficatActivity)
         return model.lockslist!![position]!!.name
     }
 
-    fun getUserName(position:Int): String
+    fun getUserLogin(position:Int): String
     {
-        return model.userlist!![position]!!.name
+        return model.userlist!![position]!!.login
     }
 
     fun downloadKey()

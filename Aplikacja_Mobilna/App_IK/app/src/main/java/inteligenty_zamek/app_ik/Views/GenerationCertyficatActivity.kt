@@ -65,7 +65,7 @@ class GenerationCertyficatActivity : BaseActivity(), AdapterView.OnItemSelectedL
         val addRange = findViewById(R.id.buttonRangeGenerateCertyficat) as Button
         addRange.setOnClickListener {
             val value = HashMap<EnumChoice, String>()
-            value.put(EnumChoice.choiceLogin, presenter!!.getUserName((findViewById(R.id.spinnerUser) as Spinner).selectedItemPosition) )
+            value.put(EnumChoice.choiceLogin, presenter!!.getUserLogin((findViewById(R.id.spinnerUser) as Spinner).selectedItemPosition) )
             value.put(EnumChoice.choiceLock, presenter!!.getLockName((findViewById(R.id.spinnerLoks) as Spinner).selectedItemPosition))
            sharedPreferenceApi.set(this,value)
             val intent = Intent(this@GenerationCertyficatActivity, GenerateCertyficatRangeActivity::class.java)

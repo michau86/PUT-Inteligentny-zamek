@@ -41,8 +41,48 @@ public final class GlobalContainer {
     public static ArrayList<String> sundayList;
 
 
+    public static void setDay(int day,ArrayList<String> value)
+    {
+        switch(day)
+        {
+            case 0:
+            {
+                mondayList=value;
+                break;
+            }
+            case 1:
+            {
+                tuesdayList=value;
+                break;
+            }
+            case 2:
+            {
+                wednesdayList=value;
+                break;
+            }
+            case 3:
+            {
+                thurstdayList=value;
+                break;
+            }
+            case 4:
+            {
+                fridyList=value;
+                break;
+            }
+            case 5:
+            {
+                saturdayList=value;
+                break;
+            }
+            case  6:
+            {
+                sundayList=value;
+                break;
+            }
+        }
 
-
+    }
     public static void setdefault()
     {
         user=null;

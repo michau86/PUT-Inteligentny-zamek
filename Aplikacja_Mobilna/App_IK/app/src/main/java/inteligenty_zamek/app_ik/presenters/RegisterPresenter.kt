@@ -42,7 +42,7 @@ public class RegisterPresenter (val view:Context) {
                     try {
                         fileReadWriteApi.writeToFile(
                                 CyptographyApi.encrypt(stringKey,model!!.user!!.password), view, "*" + model!!.user!!.login)
-                    
+
                     } catch (e: Exception) {
                     }
                     val toast = Toast.makeText(view, "nastapiła poprawna rejestracja", Toast.LENGTH_LONG)
