@@ -98,7 +98,7 @@ public class LoginPresenter {
 
                     }catch(Exception e){}
 
-                    model.setUserCertyficat();
+                    model.setUserCertyficat(view);
 
                     if(jObj.getString("status").equals("ok"))
                     {

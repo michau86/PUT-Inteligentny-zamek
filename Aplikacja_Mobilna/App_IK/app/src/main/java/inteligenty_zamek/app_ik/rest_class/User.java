@@ -1,6 +1,7 @@
 package inteligenty_zamek.app_ik.rest_class;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,7 +24,6 @@ public class User {
     private String password;
     private String passwordHash="";
     private  boolean isAdmin;
-    private String privateKey="";
 
     public String getLogin() {
         return login;
@@ -55,20 +55,20 @@ public class User {
         }
         return passwordHash;
     }
-    public Lock[] getLockslist(String login) {
+    public Lock[] getLockslist(String login, Context context) {
 
-/*
+
         if(lockslist==null)
         {
             try {
-                String readfromcertyficat=fileReadWriteApi.readFromFile(login);
+                String readfromcertyficat=fileReadWriteApi.readFromFile(login,context);
                 Log.i("HHHH","Tut3");
                 Log.i("HHHH", readfromcertyficat);
                 JSONArray arrJson = new JSONArray(readfromcertyficat);
                 addCertyficatList(arrJson);
             } catch (Exception e) {return null;}
-*/
-        //}
+
+        }
         return lockslist;
     }
     public void setLockslist(Lock[] lockslist) {

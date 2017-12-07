@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.sampledata;
 
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import inteligenty_zamek.app_ik.R;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.rest_class.User;
 import inteligenty_zamek.app_ik.Navigation.BaseActivity;

@@ -28,7 +28,7 @@ import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.Views.Admin_PanelActivity;
 import inteligenty_zamek.app_ik.Views.Managment_certyficationActivity;
 import inteligenty_zamek.app_ik.R;
-import inteligenty_zamek.app_ik.SetingsActivity;
+import inteligenty_zamek.app_ik.sampledata.SetingsActivity;
 import inteligenty_zamek.app_ik.Views.LoginActivity;
 import inteligenty_zamek.app_ik.Views.MainActivity;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;

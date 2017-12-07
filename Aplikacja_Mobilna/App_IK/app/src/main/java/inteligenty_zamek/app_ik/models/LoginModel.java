@@ -48,9 +48,9 @@ public class LoginModel {
         return false;
     }
 
-    public void setUserCertyficat()
+    public void setUserCertyficat(Context context)
     {
-            user.getLockslist(user.getLogin());
+            user.getLockslist(user.getLogin(),context);
     }
 
     public String getUserLogin()

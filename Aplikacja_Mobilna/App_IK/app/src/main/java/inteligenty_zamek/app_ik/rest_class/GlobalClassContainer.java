@@ -34,7 +34,7 @@ public class GlobalClassContainer extends Application {
     private PrivateKey privatekye;
     private String certyficatadminlist="";
     private User[] userlist;
-    private ArrayList<String> mondayList;
+    public ArrayList<String> mondayList;
     private ArrayList<String> tuesdayList;
     private ArrayList<String> wednesdayList;
     private ArrayList<String> thurstdayList;

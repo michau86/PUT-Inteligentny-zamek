@@ -2,7 +2,7 @@ package inteligenty_zamek.app_ik.presenters
 
 import android.content.Intent
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
-import inteligenty_zamek.app_ik.sampledata.GenerationCertyficatActivity
+import inteligenty_zamek.app_ik.Views.GenerationCertyficatActivity
 import inteligenty_zamek.app_ik.Views.CertyficatWaitActivity
 import inteligenty_zamek.app_ik.models.CertyficatWaitModel
 import org.json.JSONArray

@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.sampledata;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
+import inteligenty_zamek.app_ik.R;
+import inteligenty_zamek.app_ik.SpinnerAdapter;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 
 public class GenerateCertyficatRangeActivity extends Activity {

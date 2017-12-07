@@ -11,7 +11,9 @@ import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 
 enum class EnumChoice(val value:String)
 {
-    ip("ipserwer"),password("password"),token("sessionToken"),login("login"),nameuser("name"),surname("surname"),isLogin("isLogin"),isAdmin("isadmin")
+    ip("ipserwer"),password("password"),token("sessionToken"),
+    login("login"),nameuser("name"),surname("surname"),
+    isLogin("isLogin"),isAdmin("isadmin"),choiceLogin("choiceLogin"),choiceLock("choiceLock")
 }
 
 

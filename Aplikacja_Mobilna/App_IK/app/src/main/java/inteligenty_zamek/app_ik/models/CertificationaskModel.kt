@@ -5,6 +5,7 @@ import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.Views.CertificationaskActivity
+import inteligenty_zamek.app_ik.rest_class.Lock
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
