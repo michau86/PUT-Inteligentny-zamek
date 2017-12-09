@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik.sampledata
+package inteligenty_zamek.app_ik.Views
 
 import android.app.Activity
 import android.os.Bundle
@@ -8,10 +8,12 @@ import android.widget.EditText
 import android.widget.Spinner
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.SpinnerAdapter
+import inteligenty_zamek.app_ik.presenters.GenerateCertyficatRangePresenter
+
 class GenerateCertyficatRangeActivity : Activity() {
 
 
-    var presenter:GenerateCertyficatRangePresenter?=null
+    var presenter: GenerateCertyficatRangePresenter?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_generate_certyficat_range)

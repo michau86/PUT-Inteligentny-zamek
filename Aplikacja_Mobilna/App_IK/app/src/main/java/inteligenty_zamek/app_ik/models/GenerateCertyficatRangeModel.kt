@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik.sampledata
+package inteligenty_zamek.app_ik.models
 
 import java.util.ArrayList
 

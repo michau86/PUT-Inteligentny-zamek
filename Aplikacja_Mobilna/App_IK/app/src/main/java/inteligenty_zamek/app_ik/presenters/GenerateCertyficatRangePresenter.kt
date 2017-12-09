@@ -1,14 +1,16 @@
-package inteligenty_zamek.app_ik.sampledata
+package inteligenty_zamek.app_ik.presenters
 
+import inteligenty_zamek.app_ik.Views.GenerateCertyficatRangeActivity
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
+import inteligenty_zamek.app_ik.models.GenerateCertyficatRangeModel
 import java.util.ArrayList
 
 /**
  * Created by Damian on 07.12.2017.
  */
-class GenerateCertyficatRangePresenter(view:GenerateCertyficatRangeActivity)
+class GenerateCertyficatRangePresenter(view: GenerateCertyficatRangeActivity)
 {
-   val model:GenerateCertyficatRangeModel= GenerateCertyficatRangeModel()
+   val model: GenerateCertyficatRangeModel = GenerateCertyficatRangeModel()
 
     fun getDayList(day:Int):ArrayList<String>?
     {

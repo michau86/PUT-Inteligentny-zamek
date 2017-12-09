@@ -1,8 +1,9 @@
-package inteligenty_zamek.app_ik;
+package inteligenty_zamek.app_ik.sampledata;
 
 import android.content.res.TypedArray;
 import android.os.Bundle;
 
+import inteligenty_zamek.app_ik.R;
 import inteligenty_zamek.app_ik.rest_class.Certyficat;
 import inteligenty_zamek.app_ik.Navigation.BaseActivity;
 

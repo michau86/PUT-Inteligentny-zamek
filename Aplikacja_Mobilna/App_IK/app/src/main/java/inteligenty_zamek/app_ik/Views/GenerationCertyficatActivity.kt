@@ -16,7 +16,6 @@ import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.SpinnerAdapter
 import inteligenty_zamek.app_ik.rest_class.Lock
-import inteligenty_zamek.app_ik.sampledata.GenerateCertyficatRangeActivity
 import inteligenty_zamek.app_ik.presenters.GenerationCertyficatPresenter
 import java.util.HashMap
 
