@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik.beforeTest
+package inteligenty_zamek.app_ik.inWork
 
 import android.content.Intent
 import android.content.res.TypedArray
@@ -90,10 +90,11 @@ class ManagmentCertyficationUserActivity : BaseActivity() {
         resultsListView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             val myIntent = Intent(view.context, certyficatActivity::class.java)
             val b = Bundle()
-            b.putInt("position", position)
+            b.putInt("position", -1)
             myIntent.putExtras(b)
             startActivityForResult(myIntent, 0)
         }
+        resultsListView!!.adapter=adapter
     }
 
 

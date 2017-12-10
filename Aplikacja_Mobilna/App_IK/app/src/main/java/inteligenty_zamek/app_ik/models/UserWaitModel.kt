@@ -1,5 +1,6 @@
 package inteligenty_zamek.app_ik.models
 
+import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.Views.UserWaitActivity
@@ -25,7 +26,7 @@ class UserWaitModel(val view: UserWaitActivity)
     }
     init{
         login=sharedPreferenceApi.getString(view,EnumChoice.login)
-        token=sharedPreferenceApi.getString(view,EnumChoice.token)
+        token=CyptographyApi.decrypt(sharedPreferenceApi.getString(view,EnumChoice.token))
         ipAddres=sharedPreferenceApi.getString(view,EnumChoice.ip)
     }
 

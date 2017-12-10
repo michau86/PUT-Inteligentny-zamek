@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik.beforeTest
+package inteligenty_zamek.app_ik.inWork
 
 import android.content.Intent
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
@@ -67,9 +67,9 @@ class certyficatPresenter(val view: certyficatActivity)
             val toSend: HashMap<String, String> = HashMap()
             toSend.put("login", model.login)
             toSend.put("token", model.token)
-            toSend.put("certificate_id",model.certyficat!!.id_lock)
+            toSend.put("certificate_id",model.certyficat!!.idKey)
             try {
-                HTTPRequestAPI(this, "http://" + model.ipaddres + "::8080/api/deactivation/", "deleteResult", toSend).execute()
+                HTTPRequestAPI(this, "http://" + model.ipaddres + ":8080/api/deactivation/", "deleteResult", toSend).execute()
             } catch (e: Exception) { }
 
 
@@ -102,7 +102,7 @@ class certyficatPresenter(val view: certyficatActivity)
         val toSend: HashMap<String, String> = HashMap()
         toSend.put("login", model.login)
         toSend.put("token", model.token)
-        toSend.put("certificate_id",model.certyficat!!.id_lock)
+        toSend.put("lock_id",model.certyficat!!.id_lock)
         try {
             HTTPRequestAPI(this, "http://" + model.ipaddres + ":8080/api/request_new_certificate/", "extendResult", toSend).execute()
         } catch (e: Exception) { }
@@ -115,7 +115,7 @@ class certyficatPresenter(val view: certyficatActivity)
             if (JSONObject(response).getString("status") == "ok") {
                 view.showMessage("wysłano prośbę o przedłużenie certyfikatu")
             } else {
-                view.showMessage("Nie powiodło się usunięcie certyfikatu")
+                view.showMessage("Nie powiodło się przedłużenie certyfikatu")
             }
         } catch (e: Exception) { }
     }

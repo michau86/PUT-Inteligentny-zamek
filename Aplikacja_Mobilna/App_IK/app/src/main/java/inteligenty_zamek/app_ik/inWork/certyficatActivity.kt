@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik.beforeTest
+package inteligenty_zamek.app_ik.inWork
 
 import android.content.res.TypedArray
 import android.os.Bundle

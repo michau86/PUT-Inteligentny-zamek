@@ -1,5 +1,6 @@
 package inteligenty_zamek.app_ik.models
 
+import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.Views.GenerationCertyficatActivity
@@ -17,7 +18,8 @@ class GenerationCertyficatModel(view: GenerationCertyficatActivity)
    var lockslist: Array<Lock?>? = null
    var userlist: Array<User?>? = null
    val login:String= sharedPreferenceApi.getString(view, EnumChoice.login)
-   val token:String=sharedPreferenceApi.getString(view,EnumChoice.token)
+   val token:String=CyptographyApi.decrypt(
+           sharedPreferenceApi.getString(view,EnumChoice.token))
    val ipAddres:String=sharedPreferenceApi.getString(view,EnumChoice.ip)
 
 

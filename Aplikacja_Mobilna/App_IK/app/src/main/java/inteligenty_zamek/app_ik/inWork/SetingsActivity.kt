@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik.beforeTest
+package inteligenty_zamek.app_ik.inWork
 
 import android.graphics.Color
 import android.os.Bundle
@@ -12,7 +12,6 @@ import com.tooltip.Tooltip
 import inteligenty_zamek.app_ik.API.Valdiation
 
 import inteligenty_zamek.app_ik.R
-import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
 
 
@@ -62,6 +61,17 @@ class SetingsActivity : BaseActivity() {
                showMessage("wypełnij wszystkie pola")
             }
         }
+
+
+        val change_Key = findViewById(R.id.buttonChangeKey) as Button
+        change_passwd.setOnClickListener {
+
+        presenter.changeKey()
+        }
+
+
+
+
     }
 
     fun showMessage(message:String)

@@ -17,7 +17,9 @@ import java.security.PrivateKey;
 import java.security.SecureRandom;
 import java.security.Signature;
 import java.util.Arrays;
-
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.SecureRandom;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -67,6 +69,15 @@ public final class CyptographyApi {
     static KeyPair keypair2;
     static KeyAgreement KeyAgree2;
     ////////////
+
+    public static KeyPair KeyPairGenerator()  {
+        try {
+            KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
+            generator.initialize(1024, new  SecureRandom());
+            return generator.generateKeyPair();
+        }catch(Exception ex){return null;}
+    }
+
     public static String DHCreateValuetoSend()
     {
         try {

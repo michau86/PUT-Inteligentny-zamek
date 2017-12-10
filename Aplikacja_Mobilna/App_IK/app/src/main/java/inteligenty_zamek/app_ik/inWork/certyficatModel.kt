@@ -1,6 +1,7 @@
-package inteligenty_zamek.app_ik.beforeTest
+package inteligenty_zamek.app_ik.inWork
 
 import android.content.Context
+import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.rest_class.Certyficat
@@ -14,12 +15,16 @@ class certyficatModel(val view:Context, val position:Int)
     var certyficat:Certyficat?=null
     val isLogin=sharedPreferenceApi.getBoolean(view,EnumChoice.isLogin)
     val login= sharedPreferenceApi.getString(view,EnumChoice.login)
-    val token=sharedPreferenceApi.getString(view,EnumChoice.token)
+    val token=CyptographyApi.decrypt(sharedPreferenceApi.getString(view,EnumChoice.token))
     val ipaddres=sharedPreferenceApi.getString(view,EnumChoice.ip)
     init
     {
         if(position>=0)
-        {certyficat=GlobalContainer.getUser(view).certyficateList[position]}
+        {certyficat=GlobalContainer.getUser(view).getCertyficateList(view)[position]}
+        else
+        {
+
+        }
     }
    fun getCertyficatText():String
    {

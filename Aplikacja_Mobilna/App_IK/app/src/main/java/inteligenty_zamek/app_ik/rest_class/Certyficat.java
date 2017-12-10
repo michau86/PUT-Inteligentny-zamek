@@ -1,5 +1,7 @@
 package inteligenty_zamek.app_ik.rest_class;
 
+import android.util.Log;
+
 /**
  * Created by damian on 10.05.2017.
  */
@@ -38,6 +40,8 @@ public class Certyficat implements Comparable<Certyficat>{
         this.id_user = id_user;
         this.mac_addres=mac_addres;
         this.status=0;
+        Log.i("HHHH",id_lock);
+
     }
 
     //gettery i settery

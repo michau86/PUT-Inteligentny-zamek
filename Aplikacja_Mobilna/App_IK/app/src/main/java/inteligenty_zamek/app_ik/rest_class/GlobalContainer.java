@@ -132,16 +132,7 @@ public final class GlobalContainer {
         }
         return user;
     }
-/*
-    public static void addLockLIst(JSONArray obj)
-    {
-        if(user==null)
-        {
-            user=new User();
-        }
-        user.addLockList(obj);
-    }
-*/
+
     public static PrivateKey getPrivateKey(Context context)
     {
         if  (privatekye!=null){return privatekye;}
@@ -164,6 +155,11 @@ public final class GlobalContainer {
             return privatekye;
         }
 
+    }
+
+    public static String getPrivateKeyCertyficat(Context context)
+    {
+        return   fileReadWriteApi.readFromFile("**"+getUser(context).getLogin(), context);
     }
 
     // czy my potrzebujemy?

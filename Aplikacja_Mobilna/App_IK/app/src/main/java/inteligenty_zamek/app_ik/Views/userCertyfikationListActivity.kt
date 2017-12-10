@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik.beforeTest
+package inteligenty_zamek.app_ik.Views
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.widget.*
 
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.R
+import inteligenty_zamek.app_ik.presenters.userCertyfikationListPresenter
 
 
 class userCertyfikationListActivity : BaseActivity() {
@@ -37,15 +38,14 @@ class userCertyfikationListActivity : BaseActivity() {
         presenter = userCertyfikationListPresenter(this)
         //initKey
 
+        presenter!!.setValueToAdapter()
         //stworzenie adaptera
         adapter = SimpleAdapter(this, presenter!!.model.listItems, R.layout.main_key_list,
                 arrayOf("First Line", "Second Line"),
                 intArrayOf(R.id.TextView_listPlaceKey, R.id.TextView_listNameKey))
 
 
-        //iterator elementow (przepisanie z hashmap do adaptera[listitems] elementow)
 
-        presenter!!.setValueToAdapter()
         resultsListView!!.adapter = adapter
         resultsListView!!.setOnItemClickListener(object : AdapterView.OnItemClickListener {
             override

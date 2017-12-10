@@ -32,6 +32,7 @@ public class RegisterPresenter (val view:Context) {
 
 
     fun registerResult(response: String) {
+
         var jObj: JSONObject? = null
         try {
             if (response != null) {
@@ -55,6 +56,8 @@ public class RegisterPresenter (val view:Context) {
                             toast.show()
                         }
                     }.start()
+
+                    // zapis certyfikatu
                     val intent = Intent(view, LoginActivity::class.java)
                     view.startActivity(intent)
 

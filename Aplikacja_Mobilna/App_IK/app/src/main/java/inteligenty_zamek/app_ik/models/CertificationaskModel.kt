@@ -1,6 +1,7 @@
 package inteligenty_zamek.app_ik.models
 
 import android.widget.SimpleAdapter
+import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.R
@@ -19,7 +20,8 @@ class CertificationaskModel(val context: CertificationaskActivity)
 {
 
     val login:String= sharedPreferenceApi.getString(context,EnumChoice.login)
-    val token:String=sharedPreferenceApi.getString(context,EnumChoice.token)
+    val token:String=CyptographyApi.decrypt(
+            sharedPreferenceApi.getString(context,EnumChoice.token))
     val ipAddres:String=sharedPreferenceApi.getString(context, EnumChoice.ip)
     private var listItems: MutableList<LinkedHashMap<String, String>> = ArrayList()
     var locks: Array<Array<String?>>?=null
