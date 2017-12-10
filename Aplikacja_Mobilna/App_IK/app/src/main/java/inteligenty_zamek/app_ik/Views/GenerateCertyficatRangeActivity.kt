@@ -7,7 +7,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Spinner
 import inteligenty_zamek.app_ik.R
-import inteligenty_zamek.app_ik.SpinnerAdapter
+import inteligenty_zamek.app_ik.adapters.SpinnerAdapter
 import inteligenty_zamek.app_ik.presenters.GenerateCertyficatRangePresenter
 
 class GenerateCertyficatRangeActivity : Activity() {

@@ -3,7 +3,6 @@ package inteligenty_zamek.app_ik.beforeTest
 import android.content.Intent
 import android.os.Bundle
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
-import inteligenty_zamek.app_ik.sampledata.certyficatActivity
 import java.util.*
 
 /**
@@ -39,8 +38,7 @@ class userCertyfikationListPresenter(val view: userCertyfikationListActivity)
     {
                 val myIntent = Intent(view, certyficatActivity::class.java)
                 val b = Bundle()
-                b.putString("lock", model.listItems!![position].values.toTypedArray()[0].toString())
-                b.putString("name", model.listItems!![position].values.toTypedArray()[1].toString())
+                b.putInt("position", position)
                 myIntent.putExtras(b)
                 view.startActivityForResult(myIntent, 0)
             }

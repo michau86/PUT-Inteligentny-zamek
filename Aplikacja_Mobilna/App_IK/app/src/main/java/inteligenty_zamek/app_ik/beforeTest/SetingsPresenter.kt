@@ -25,8 +25,7 @@ class SetingsPresenter(val view: SetingsActivity)
 
         try {
             HTTPRequestAPI(this, "http://" + model.ipAddres + ":8080/api/change_password/", "changePasswordResult", toSend).execute()
-        } catch (e: Exception) {
-        }
+        } catch (e: Exception) { }
     }
 
     fun changePasswordResult(response:String)
@@ -34,6 +33,8 @@ class SetingsPresenter(val view: SetingsActivity)
         try {
             if (JSONObject(response).getString("status") == "ok") {
              view.showMessage("Zmieniono hasło")
+                //TODO zmienić szyfrowanie klucza prywatnego (odczytać starym hasłem i zaszyfrować nowym)
+                //natepnie zmienić hasło w sharedPreference
             } else {
                 view.showMessage("Nie powiodła się zmiana hasła")
             }

@@ -8,6 +8,9 @@ import inteligenty_zamek.app_ik.models.AdminPanelModel
 import inteligenty_zamek.app_ik.Views.CertyficatWaitActivity
 import inteligenty_zamek.app_ik.Views.UserWaitActivity
 import inteligenty_zamek.app_ik.Views.GenerationCertyficatActivity
+import inteligenty_zamek.app_ik.beforeChange.History_using_keyActivity
+import inteligenty_zamek.app_ik.beforeTest.ManagmentCertyficationUserActivity
+import inteligenty_zamek.app_ik.beforeChange.EmergencyPasswordActivity
 
 /**
  * Created by Damian on 24.11.2017.

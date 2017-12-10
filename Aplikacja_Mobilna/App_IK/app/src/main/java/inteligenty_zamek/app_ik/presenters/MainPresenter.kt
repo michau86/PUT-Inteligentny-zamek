@@ -5,13 +5,11 @@ import android.content.Intent
 import android.os.CountDownTimer
 import android.util.Log
 import android.widget.Toast
-import inteligenty_zamek.app_ik.*
 import inteligenty_zamek.app_ik.API.Connect_and_send_message
 import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.Views.MainActivity
 import inteligenty_zamek.app_ik.models.MainModel
-import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
-import inteligenty_zamek.app_ik.Navigation.BaseActivity
+import inteligenty_zamek.app_ik.adapters.MainListAdapter
 import inteligenty_zamek.app_ik.rest_class.Certyficat
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 

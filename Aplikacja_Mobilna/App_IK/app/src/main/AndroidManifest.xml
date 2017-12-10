@@ -30,16 +30,16 @@
         <activity android:name=".Views.Admin_PanelActivity" />
         <activity android:name=".Views.Managment_certyficationActivity" />
         <activity android:name=".beforeTest.SetingsActivity" />
-        <activity android:name=".History_using_keyActivity" />
+        <activity android:name=".beforeChange.History_using_keyActivity" />
         <activity android:name=".Views.CertificationaskActivity" />
         <activity android:name=".Navigation.BaseActivity" />
         <activity android:name=".beforeTest.userCertyfikationListActivity" />
-        <activity android:name=".sampledata.certyficatActivity" />
-        <activity android:name=".GenerationCertyfikatForGuestActivity" />
+        <activity android:name=".beforeTest.certyficatActivity" />
+        <activity android:name=".beforeChange.GenerationCertyfikatForGuestActivity" />
         <activity android:name=".Views.UserWaitActivity" />
-        <activity android:name=".EmergencyPasswordActivity" />
+        <activity android:name=".beforeChange.EmergencyPasswordActivity" />
         <activity android:name=".Views.GenerationCertyficatActivity" />
-        <activity android:name=".ManagmentCertyficationUserActivity" />
+        <activity android:name=".beforeTest.ManagmentCertyficationUserActivity" />
         <activity android:name=".Views.CertyficatWaitActivity" />
         <activity android:name=".Views.GenerateCertyficatRangeActivity"></activity>
     </application>

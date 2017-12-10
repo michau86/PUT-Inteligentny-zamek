@@ -62,8 +62,6 @@ public class User {
         {
             try {
                 String readfromcertyficat=fileReadWriteApi.readFromFile(login,context);
-                Log.i("HHHH","Tut3");
-                Log.i("HHHH", readfromcertyficat);
                 JSONArray arrJson = new JSONArray(readfromcertyficat);
                 addCertyficatList(arrJson);
             } catch (Exception e) {return null;}

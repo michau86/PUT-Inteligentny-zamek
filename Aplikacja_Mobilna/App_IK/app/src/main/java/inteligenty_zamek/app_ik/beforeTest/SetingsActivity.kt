@@ -29,7 +29,6 @@ class SetingsActivity : BaseActivity() {
         val presenter= SetingsPresenter(this)
         val change_passwd = findViewById(R.id.button_password_user) as Button
         change_passwd.setOnClickListener {
-            val us = (application as GlobalClassContainer).user
             val passwd = findViewById(R.id.editText3) as EditText
             val new_passwd = findViewById(R.id.editText6) as EditText
             if (passwd.text.toString() != "" && new_passwd.text.toString() != "") {
