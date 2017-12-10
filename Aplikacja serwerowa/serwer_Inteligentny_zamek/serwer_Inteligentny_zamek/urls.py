@@ -5,6 +5,7 @@ urlpatterns = {
     url(r'^api/login/$', views.api_login, name='api_login'),  # logowanie dla admina z jednoczesnym pobraniem listy kluczy awaryjnych
     url(r'^api/register/$', views.api_register, name='api_register'),
     url(r'^api/logout/$', views.api_logout, name='api_logout'),
+    url(r'^api/replace_certificate/$', views.api_replace_certificate, name='api_replace_certificate'),
     url(r'^api/download/all_certifacate/$', views.api_download_all_certificate, name='api_download_all_certificate'),
     url(r'^api/download/all_locks/$', views.api_download_all_locks, name='api_download_all_locks'),
     url(r'^api/deactivation/$', views.api_deactivation, name='api_deactivation'),

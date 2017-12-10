@@ -36,6 +36,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <IncludePath>C:\Users\Maciej_HP\Desktop\curl-7.56.1\curl-7.56.1\include\curl;C:\Users\Maciej_HP\Desktop\gattlib-master\gattlib-master\bluez\bluez5\lib;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <IncludePath>H:\Maciej\studia\Praca_Inzynierska\Biblioteki\gattlib-master\gattlib-master\bluez\bluez5\lib;H:\Maciej\studia\Praca_Inzynierska\Biblioteki\curl-7.56.1\curl-7.56.1\lib;H:\Maciej\studia\Praca_Inzynierska\Biblioteki\gattlib_dev_armhf\gattlib_dev_armhf\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
       <LibraryDependencies>wiringPi</LibraryDependencies>

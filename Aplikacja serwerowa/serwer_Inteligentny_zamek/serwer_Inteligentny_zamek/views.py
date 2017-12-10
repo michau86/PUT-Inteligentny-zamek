@@ -27,7 +27,6 @@ def api_login(request):
         random_generator = Random.new().read
         key = RSA.generate(1024, random_generator).publickey().exportKey()
         token = ""
-        print username, password
 
         for x in key.split("\n")[1:-1]:
             token += x
@@ -97,9 +96,9 @@ def api_logout(request):
             data = cursor.fetchone()[0]
 
             # jezeli token jest poprawny to nastepuje wylogowanie
-            if (data == token):
+            if (data == token and token != None):
                 # aktualizacja tokena na pusty
-                cursor.execute("UPDATE USERS SET TOKEN = '' WHERE LOGIN = '%s'" % (login))
+                cursor.execute("UPDATE USERS SET TOKEN = NULL WHERE LOGIN = '%s'" % (login))
                 db.commit()
                 return JsonResponse({"status": "logout"})
             else:
@@ -107,6 +106,41 @@ def api_logout(request):
         except Exception:
             return JsonResponse({"status": "Invalid"})
 
+@csrf_exempt
+def api_replace_certificate(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+        old_public_key = request.POST.get('old_public_key')
+        new_public_key = request.POST.get('new_public_key')
+
+    #try:
+        cursor = db.cursor()
+        cursor.execute("SELECT TOKEN  FROM USERS WHERE login='%s'" % login)
+        data = cursor.fetchone()[0]
+
+        # jezeli token jest poprawny to nastepuje wylogowanie
+        if (data == token and token != None):
+            random_generator = Random.new().read
+            key = RSA.generate(1024, random_generator).publickey().exportKey()
+            serial = ""
+
+            for x in key.split("\n")[1:-1]:
+                serial += x
+            cursor.execute("UPDATE USERS SET PUBLIC_KEY = '%s', Serial_number = '%s', Validitiy_period = '%s' WHERE LOGIN = '%s' AND PUBLIC_KEY = '%s' " % (new_public_key, serial, datetime.now() , login, old_public_key))
+            db.commit()
+            cursor.execute("SELECT CONCAT(NAME, SURNAME) as User_Name, LOGIN as Issuer_name,  PUBLIC_KEY, Serial_number, Validitiy_period, Version, Signature_Algorithm_Identifier, Hash_Algorithm FROM `users` WHERE `LOGIN` = '%s' AND `TOKEN` = '%s'" % (login, token))
+            db.commit()
+            dict_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                    in cursor.fetchall()]
+            if len(dict_certificate) == 0:
+                return JsonResponse({"status": "invalid"})
+            else:
+                return JsonResponse({"status": "ok", "data": dict_certificate})
+        else:
+            return JsonResponse({"status": "invalid"})
+    #except Exception:
+#    return JsonResponse({"status": "Invalid"})
 
 @csrf_exempt
 def api_download_all_certificate(request):
@@ -114,30 +148,24 @@ def api_download_all_certificate(request):
         login = request.POST.get('login')
         token = request.POST.get('token')
 
-        # try:
-        cursor = db.cursor()
-        cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
-        token_from_DB = cursor.fetchone()[0]
-        print login
-        print token
-        print token_from_DB
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
+            token_from_DB = cursor.fetchone()[0]
 
-        if (token_from_DB == token):
-            cursor.execute(
-                "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s') and (NOW() BETWEEN FROM_DATE AND TO_DATE) and ISACTUAL is NULL" % login)
-            dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
-                                    in cursor.fetchall()]
-            if len(dict_all_certificate) == 0:
-                print 1
-                return JsonResponse({"data": ""})
+            if (token_from_DB == token and token != None):
+                cursor.execute(
+                    "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s') and (NOW() BETWEEN FROM_DATE AND TO_DATE) and ISACTUAL is NULL" % login)
+                dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                        in cursor.fetchall()]
+                if len(dict_all_certificate) == 0:
+                    return JsonResponse({"data": ""})
+                else:
+                    return JsonResponse({"data": dict_all_certificate})
             else:
-                print 2
-                return JsonResponse({"data": dict_all_certificate})
-        else:
-            print 3
-            return JsonResponse({"status": "invalid"})
-    # except Exception:
-    #    return JsonResponse({"status": "Invalid"})
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
 
 
 @csrf_exempt
@@ -149,7 +177,7 @@ def api_download_all_locks(request):
             cursor = db.cursor()
             cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
             token_from_DB = cursor.fetchone()[0]
-            if (token_from_DB == token):
+            if (token_from_DB == token and token != None):
                 cursor.execute(
                     "SELECT NAME, LOCKS.LOCALIZATION, MAC_ADDRESS, ID_LOCK FROM LOCKS  ")
                 dict_all_locks = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
@@ -173,7 +201,7 @@ def api_download_all_user(request):
             cursor = db.cursor()
             cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
             token_from_DB = cursor.fetchone()[0]
-            if (token_from_DB == token):
+            if (token_from_DB == token and token != None):
                 cursor.execute(
                     "SELECT LOGIN,ID_USER FROM USERS  ")
                 dict_all_locks = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
@@ -242,7 +270,7 @@ def api_deactivation(request):
             cursor = db.cursor()
             cursor.execute("SELECT TOKEN FROM USERS WHERE LOGIN='%s'" % login)
             token_from_DB = cursor.fetchone()[0]
-            if (token_from_DB == token):
+            if (token_from_DB == token and token != None):
                 cursor = db.cursor()
                 cursor.execute(
                     "UPDATE LOCKS_KEYS SET ISACTUAL='%s' WHERE ID_USER=(SELECT ID_USER FROM USERS WHERE LOGIN='%s') and ID_KEY='%s' " % (
@@ -267,7 +295,7 @@ def api_request_new_certificate(request):
             cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
             token_from_DB = cursor.fetchone()[0]
 
-            if (token_from_DB == token):
+            if (token_from_DB == token and token != None):
                 cursor.execute(
                     "INSERT INTO WAIT_LOCKS_KEYS(ID_LOCK, ID_USER) VALUES ('%s',(SELECT ID_USER FROM USERS WHERE LOGIN='%s'))" % (
                         lock_id, login))
@@ -307,7 +335,7 @@ def api_admin_generate_new_certificate(request):
                 token_db = row[0]
                 admin = row[1]
                 admin_id = row[2]
-            if (token_db == token) and admin == 1:
+            if (token_db == token and token != None) and admin == 1:
                 random_generator = Random.new().read
                 key = RSA.generate(1024, random_generator).publickey().exportKey()
                 lock_key = ""
@@ -340,7 +368,7 @@ def api_admin_history(request):
             for row in token_from_DB:
                 token_db = row[0]
                 admin = row[1]
-            if (token_db == token) and admin == 1:
+            if (token_db == token and token != None) and admin == 1:
                 cursor = db.cursor()
                 cursor.execute(
                     "SELECT DATE, ACCESS, locks_keys.NAME, locks_keys.SURNAME, locks.NAME AS 'ZAMEK' FROM access_to_locks, locks_keys, locks WHERE locks_keys.ID_KEY = access_to_locks.ID_KEY AND locks.ID_LOCK = access_to_locks.ID_KEY ORDER BY DATE DESC")
@@ -366,7 +394,7 @@ def api_admin_download_all_certificate(request):
             for row in token_from_DB:
                 token_db = row[0]
                 admin = row[1]
-            if (token_db == token) and admin == 1:
+            if (token_db == token and token != None) and admin == 1:
                 cursor.execute(
                     "SELECT LOCKS_KEYS.*, USERS.NAME AS USER_NAME, USERS.SURNAME AS USER_SURNAME, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS LEFT JOIN LOCKS ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK LEFT JOIN users ON locks_keys.ID_USER = users.ID_USER ORDER BY LOCK_NAME")
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
@@ -395,7 +423,7 @@ def api_admin_deactivation(request):
             for row in token_from_DB:
                 token_db = row[0]
                 admin = row[1]
-            if (token_db == token) and admin == 1:
+            if (token_db == token and token != None) and admin == 1:
                 cursor = db.cursor()
                 cursor.execute(
                     "UPDATE LOCKS_KEYS SET ISACTUAL='%s' WHERE ID_KEY='%s' " % (
@@ -420,7 +448,7 @@ def api_admin_register_waiting(request):
             for row in token_from_DB:
                 token_db = row[0]
                 admin = row[1]
-            if (token_db == token) and admin == 1:
+            if (token_db == token and token != None) and admin == 1:
                 cursor.execute(
                     "SELECT users.LOGIN, users.NAME, users.SURNAME FROM users WHERE users.ISACTIVATED=1")
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
@@ -449,7 +477,7 @@ def api_admin_register_decision(request):
             for row in token_from_DB:
                 token_db = row[0]
                 admin = row[1]
-            if (token_db == token) and admin == 1:
+            if (token_db == token and token != None) and admin == 1:
                 cursor = db.cursor()
                 cursor.execute("SELECT LOGIN FROM USERS WHERE login='%s' and ISACTIVATED=1" % user_login)
                 login_from_DB = cursor.fetchall()
@@ -481,7 +509,7 @@ def api_admin_cetificate_waiting(request):
             for row in token_from_DB:
                 token_db = row[0]
                 admin = row[1]
-            if (token_db == token) and admin == 1:
+            if (token_db == token and token != None) and admin == 1:
                 cursor.execute(
                     "SELECT wait_locks_keys.ID_KEY, locks.NAME AS 'LOCK_NAME', users.ID_USER, users.LOGIN AS 'LOGIN',users.NAME AS 'USER_NAME',users.SURNAME AS 'USER_SUERNAME' FROM wait_locks_keys LEFT JOIN locks ON locks.ID_LOCK=wait_locks_keys.ID_LOCK LEFT JOIN users ON users.ID_USER=wait_locks_keys.ID_USER")
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
@@ -509,7 +537,7 @@ def api_admin_cetificate_decision(request):
             for row in token_from_DB:
                 token_db = row[0]
                 admin = row[1]
-            if (token_db == token) and admin == 1:
+            if (token_db == token and token != None) and admin == 1:
                 cursor = db.cursor()
                 cursor.execute("SELECT ID_KEY FROM wait_locks_keys WHERE ID_KEY='%s'" % cetificate_id)
                 login_from_DB = cursor.fetchall()
@@ -538,7 +566,7 @@ def api_change_password(request):
                 token_db = row[0]
                 passwd_db = row[1]
 
-            if (token_db == token) and passwd_db == passwd:
+            if (token_db == token and token != None) and passwd_db == passwd:
                 cursor = db.cursor()
                 cursor.execute(
                     "UPDATE USERS SET PASSWORD='%s' WHERE LOGIN='%s' " % (
@@ -578,7 +606,7 @@ def api_generate_new_quest_certificate(request):
             token_db = data_from_DB[0]
             id_user = data_from_DB[3]
             is_admin = data_from_DB[4]
-            if (token_db == token):
+            if (token_db == token and token != None):
                 cursor = db.cursor()
                 cursor.execute(
                     "SELECT FROM_DATE, TO_DATE, ISACTUAL, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, IS_PERNAMENT FROM locks_keys WHERE ID_LOCK='%s' and ID_USER='%s'" % (
