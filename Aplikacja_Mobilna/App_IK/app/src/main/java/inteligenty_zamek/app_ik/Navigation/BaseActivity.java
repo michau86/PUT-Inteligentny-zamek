@@ -22,13 +22,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import inteligenty_zamek.app_ik.API.CyptographyApi;
 import inteligenty_zamek.app_ik.API.EnumChoice;
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.Views.Admin_PanelActivity;
 import inteligenty_zamek.app_ik.Views.Managment_certyficationActivity;
 import inteligenty_zamek.app_ik.R;
-import inteligenty_zamek.app_ik.beforeTest.SetingsActivity;
+import inteligenty_zamek.app_ik.inWork.SetingsActivity;
 import inteligenty_zamek.app_ik.Views.LoginActivity;
 import inteligenty_zamek.app_ik.Views.MainActivity;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
@@ -224,8 +225,8 @@ private void logout(User user,String ipserwer)
 {
     HashMap toSend = new HashMap();
     toSend.put("login", user.getLogin());
-    toSend.put("token", sharedPreferenceApi.INSTANCE.getString(this,EnumChoice.token));
     try {
+        toSend.put("token", CyptographyApi.decrypt(sharedPreferenceApi.INSTANCE.getString(this,EnumChoice.token)));
         new HTTPRequestAPI(this, "http://" + ipserwer + ":8080/api/logout/","logoutresponse" , toSend).execute();
     }catch (Exception e)
     {

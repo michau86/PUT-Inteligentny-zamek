@@ -14,7 +14,7 @@ import inteligenty_zamek.app_ik.Views.CertificationaskActivity
 import inteligenty_zamek.app_ik.beforeChange.GenerationCertyfikatForGuestActivity
 import inteligenty_zamek.app_ik.models.Managment_certyficationModel
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
-import inteligenty_zamek.app_ik.beforeTest.userCertyfikationListActivity
+import inteligenty_zamek.app_ik.Views.userCertyfikationListActivity
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

@@ -1,6 +1,7 @@
-package inteligenty_zamek.app_ik.beforeTest
+package inteligenty_zamek.app_ik.inWork
 
 import android.content.Context
+import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import java.util.ArrayList
@@ -12,7 +13,7 @@ import java.util.LinkedHashMap
 class ManagmentCertyficationUserModel(view:Context)
 {
     val login:String= sharedPreferenceApi.getString(view, EnumChoice.login)
-    val token:String= sharedPreferenceApi.getString(view, EnumChoice.token)
+    val token:String= CyptographyApi.decrypt(sharedPreferenceApi.getString(view, EnumChoice.token))
     val ipAddres:String= sharedPreferenceApi.getString(view, EnumChoice.ip)
     var Keys: LinkedHashMap<String, String>?=null
     var listItems: MutableList<LinkedHashMap<String, String>> = ArrayList()

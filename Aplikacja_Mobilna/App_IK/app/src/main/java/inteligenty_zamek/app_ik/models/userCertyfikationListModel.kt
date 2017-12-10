@@ -1,4 +1,4 @@
-package inteligenty_zamek.app_ik.beforeTest
+package inteligenty_zamek.app_ik.models
 
 import java.util.HashMap
 import java.util.LinkedHashMap

@@ -65,7 +65,9 @@ public class LoginPresenter {
             HashMap <EnumChoice,String> value=new HashMap<>();
             value.put(EnumChoice.ip,ipserwer);
             value.put(EnumChoice.login,user.getLogin());
-            value.put(EnumChoice.password,user.getPassword());
+            try {
+                value.put(EnumChoice.password, CyptographyApi.encrypt(user.getPassword()));
+            }catch(Exception ex){}
             sharedPreferenceApi.INSTANCE.set(view,value);
 
             try {
@@ -83,7 +85,6 @@ public class LoginPresenter {
     {
 
         JSONObject jObj = null;
-        Log.i("HHHH",result);
         try {
             if(result!=null) {
                 jObj = new JSONObject(result);
@@ -91,7 +92,7 @@ public class LoginPresenter {
 
                     try{
                     HashMap<EnumChoice,String> value=new HashMap<>();
-                    value.put(EnumChoice.token,jObj.getString("token"));
+                    value.put(EnumChoice.token,CyptographyApi.encrypt(jObj.getString("token")));
                     sharedPreferenceApi.INSTANCE.set(view,value);
                     sharedPreferenceApi.INSTANCE.set(view,true,EnumChoice.isLogin);
 

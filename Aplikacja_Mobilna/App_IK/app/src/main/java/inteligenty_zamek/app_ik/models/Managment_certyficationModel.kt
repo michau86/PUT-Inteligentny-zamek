@@ -3,8 +3,10 @@ package inteligenty_zamek.app_ik.models
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.R
@@ -29,7 +31,8 @@ class Managment_certyficationModel(context:Context) {
 
     init{
         login=sharedPreferenceApi.getString(context, EnumChoice.login)
-        token=sharedPreferenceApi.getString(context,EnumChoice.token)
+        Log.i("HHHH",sharedPreferenceApi.getString(context,EnumChoice.token))
+        token= CyptographyApi.decrypt( sharedPreferenceApi.getString(context,EnumChoice.token))
         ipaddres=sharedPreferenceApi.getString(context,EnumChoice.ip)
 
         if (!sharedPreferenceApi.getBoolean(context, EnumChoice.isLogin)) {
