@@ -124,12 +124,11 @@ def api_replace_certificate(request):
             random_generator = Random.new().read
             key = RSA.generate(1024, random_generator).publickey().exportKey()
             serial = ""
-
             for x in key.split("\n")[1:-1]:
                 serial += x
-            cursor.execute("UPDATE USERS SET PUBLIC_KEY = '%s', Serial_number = '%s', Validitiy_period = '%s' WHERE LOGIN = '%s' AND PUBLIC_KEY = '%s' " % (new_public_key, serial, datetime.now() , login, old_public_key))
+            cursor.execute("UPDATE USERS SET PUBLIC_KEY = '%s', Serial_number = '%s', Validitiy_period = '%s' WHERE LOGIN = '%s' AND PUBLIC_KEY = '%s' " % (new_public_key, serial, datetime.now().replace(year=datetime.now().year + 1), login, old_public_key))
             db.commit()
-            cursor.execute("SELECT CONCAT(NAME, SURNAME) as User_Name, LOGIN as Issuer_name,  PUBLIC_KEY, Serial_number, Validitiy_period, Version, Signature_Algorithm_Identifier, Hash_Algorithm FROM `users` WHERE `LOGIN` = '%s' AND `TOKEN` = '%s'" % (login, token))
+            cursor.execute("SELECT CONCAT(NAME, ' ', SURNAME) as User_Name, LOGIN as Issuer_name,  PUBLIC_KEY, Serial_number, Validitiy_period, Version, Signature_Algorithm_Identifier, Hash_Algorithm FROM `users` WHERE `LOGIN` = '%s' AND `TOKEN` = '%s'" % (login, token))
             db.commit()
             dict_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                     in cursor.fetchall()]
