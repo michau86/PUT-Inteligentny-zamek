@@ -28,7 +28,7 @@ import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.Views.Admin_PanelActivity;
 import inteligenty_zamek.app_ik.Views.Managment_certyficationActivity;
 import inteligenty_zamek.app_ik.R;
-import inteligenty_zamek.app_ik.SetingsActivity;
+import inteligenty_zamek.app_ik.beforeTest.SetingsActivity;
 import inteligenty_zamek.app_ik.Views.LoginActivity;
 import inteligenty_zamek.app_ik.Views.MainActivity;
 import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
@@ -236,11 +236,15 @@ private void logout(User user,String ipserwer)
 
 public void logoutresponse(String response)
 {
-
+Log.i("HHHH", "w logout response");
+    Log.i("HHHH", "w logout response");
+    Log.i("HHHH", response);
     JSONObject jObj = null;
     try {
         jObj = new JSONObject(response);
-        if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("invalid")) {
+        if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("Invalid")) {
+            Log.i("HHHH", "w ifie");
+
             sharedPreferenceApi.INSTANCE.set(this,false, EnumChoice.isAdmin);
             sharedPreferenceApi.INSTANCE.set(this,false,EnumChoice.isLogin);
             GlobalContainer.setdefault();

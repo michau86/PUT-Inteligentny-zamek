@@ -4,18 +4,17 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.CountDownTimer
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
 import inteligenty_zamek.app_ik.API.fileReadWriteApi
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
-import inteligenty_zamek.app_ik.sampledata.CertificationaskActivity
-import inteligenty_zamek.app_ik.GenerationCertyfikatForGuestActivity
+import inteligenty_zamek.app_ik.Views.CertificationaskActivity
+import inteligenty_zamek.app_ik.beforeChange.GenerationCertyfikatForGuestActivity
 import inteligenty_zamek.app_ik.models.Managment_certyficationModel
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
-import inteligenty_zamek.app_ik.userCertyfikationListActivity
+import inteligenty_zamek.app_ik.beforeTest.userCertyfikationListActivity
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -87,9 +86,9 @@ class Managment_certyficationPresenter( val view: Context) {
         try {
             val jObj: JSONObject = JSONObject(response)
             val arrJson = jObj.getJSONArray("data")
+
             fileReadWriteApi.writeToFile(arrJson.toString(), view, model.login)
             GlobalContainer.getUser(view).addCertyficatList(arrJson)
-
             val toast = Toast.makeText(view, "dodano certyfikaty", Toast.LENGTH_LONG)
             toast.show()
             object : CountDownTimer(4000.toLong(), 1000) {

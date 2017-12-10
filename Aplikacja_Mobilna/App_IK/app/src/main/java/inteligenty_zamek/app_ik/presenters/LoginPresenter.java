@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -82,7 +83,7 @@ public class LoginPresenter {
     {
 
         JSONObject jObj = null;
-
+        Log.i("HHHH",result);
         try {
             if(result!=null) {
                 jObj = new JSONObject(result);
@@ -97,7 +98,7 @@ public class LoginPresenter {
 
                     }catch(Exception e){}
 
-                    model.setUserCertyficat();
+                    model.setUserCertyficat(view);
 
                     if(jObj.getString("status").equals("ok"))
                     {

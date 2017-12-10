@@ -326,7 +326,6 @@ def api_admin_generate_new_certificate(request):
         is_pernament = request.POST.get('is_pernament')
         name = request.POST.get('name')
         surname = request.POST.get('surname')
-        print "aaa"
         try:
             cursor = db.cursor()
             cursor.execute("SELECT TOKEN, IS_ADMIN, ID_USER FROM USERS WHERE login='%s'" % login)

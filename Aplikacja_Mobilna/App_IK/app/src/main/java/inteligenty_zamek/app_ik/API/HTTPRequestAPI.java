@@ -9,19 +9,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
-
-import inteligenty_zamek.app_ik.Navigation.BaseActivity;
-import inteligenty_zamek.app_ik.presenters.LoginPresenter;
-import inteligenty_zamek.app_ik.presenters.Managment_certyficationPresenter;
-import inteligenty_zamek.app_ik.presenters.RegisterPresenter;
-import inteligenty_zamek.app_ik.sampledata.CertificationaskPresenter;
 
 
 public class HTTPRequestAPI extends
@@ -57,8 +50,12 @@ public class HTTPRequestAPI extends
         java.lang.reflect.Method method;
         try {
             method = presenter.getClass().getMethod(methodName, new Class[] { String.class });
+
+
             method.invoke(presenter, new Object[] { response });
-        }catch(Exception ex){}
+
+        }catch(Exception ex){
+        }
     }
 
     public String performPostCall(String requestURL,

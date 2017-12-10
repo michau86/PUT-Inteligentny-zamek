@@ -5,13 +5,11 @@ import android.content.Intent
 import android.os.CountDownTimer
 import android.util.Log
 import android.widget.Toast
-import inteligenty_zamek.app_ik.*
 import inteligenty_zamek.app_ik.API.Connect_and_send_message
 import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.Views.MainActivity
 import inteligenty_zamek.app_ik.models.MainModel
-import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
-import inteligenty_zamek.app_ik.Navigation.BaseActivity
+import inteligenty_zamek.app_ik.adapters.MainListAdapter
 import inteligenty_zamek.app_ik.rest_class.Certyficat
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 
@@ -58,6 +56,7 @@ class MainPresenter ( val view: MainActivity) {
         }
 
         val tosend = model!!.Keys!!.get(index)!!.getIdKey() + ";" + model.user.login + ";" + signature
+        Log.i("HHHH Dane BT",model!!.Keys!!.get(index)!!.getMac_addres())
         Connect_and_send_message(model!!.Keys!!.get(index)!!.getMac_addres(), tosend,this).execute()          //B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
         val toast = Toast.makeText(view, "Wysłano certyfikat", Toast.LENGTH_LONG)
         toast.show()
