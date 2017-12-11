@@ -19,12 +19,7 @@ class MainModel(val user: User)
     var position:Int=0
     var i: Byte=0
     var cs: CharSequence=""
-    public fun  getCertyficateList(context :Context): Array<Certyficat>
-    {
-        return user.getCertyficateList(context)
-    }
-    public fun putKeys(context:Context, cs:CharSequence) {
-
+    fun putKeys(context:Context, cs:CharSequence) {
         Keys=LinkedHashMap()
         try {
             var j:Int=0;

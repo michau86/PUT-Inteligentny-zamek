@@ -18,12 +18,10 @@ import inteligenty_zamek.app_ik.rest_class.GlobalContainer
  */
 
 class MainPresenter ( val view: MainActivity) {
-    var model: MainModel
-    var csk: CharSequence = ""
 
-    init {
-        model = MainModel(GlobalContainer.getUser(view))
-    }
+    var csk: CharSequence = ""
+       val model = MainModel(GlobalContainer.getUser(view))
+
 
     fun sendCertyficate(index:Int,cs: CharSequence)
     {
@@ -57,7 +55,10 @@ class MainPresenter ( val view: MainActivity) {
         }
 
         val tosend = model!!.Keys!!.get(index)!!.getIdKey() + ";" + model.user.login + ";" + signature
-        Connect_and_send_message(model!!.Keys!!.get(index)!!.getMac_addres(), tosend,this).execute()          //B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
+        Connect_and_send_message(model!!.Keys!!.get(index)!!.getMac_addres(), tosend,this).execute()
+        Log.i("HHHH",model!!.Keys!!.get(index)!!.getMac_addres())//B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
+        Log.i("HHHH",tosend)//B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
+
         val toast = Toast.makeText(view, "Wysłano certyfikat", Toast.LENGTH_LONG)
         toast.show()
         object : CountDownTimer(2000, 1000) {
@@ -74,8 +75,11 @@ class MainPresenter ( val view: MainActivity) {
 
        fun  updateList(cs: CharSequence): MainListAdapter
         {
+            Log.i("HHHH","przed pukey")
           model!!.putKeys(view,cs);
-         return MainListAdapter(view, model);
+            Log.i("HHHH","po pukey")
+
+            return MainListAdapter(view, model);
         }
 
     fun chagneColorIco(position:Int, i: Byte,cs: CharSequence)

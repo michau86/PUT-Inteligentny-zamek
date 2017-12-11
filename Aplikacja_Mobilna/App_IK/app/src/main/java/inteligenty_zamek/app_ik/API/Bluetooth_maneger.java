@@ -14,13 +14,13 @@ import java.util.UUID;
 public class Bluetooth_maneger {
     // Name for the SDP record when creating server socket
     private static final String NAME_SECURE = "BluetoothChatSecure";
-    private static final String NAME_INSECURE = "BluetoothChatInsecure";
+    private static final String NAME_INSECURE = "BluetoothChatSecure";
 
     // Unique UUID for this application
     private static final UUID MY_UUID_SECURE =
             UUID.fromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
     private static final UUID MY_UUID_INSECURE =
-            UUID.fromString("8ce255c0-200a-11e0-ac64-0800200c9a66");
+            UUID.fromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
 
     // Member fields
     private final BluetoothAdapter mAdapter;

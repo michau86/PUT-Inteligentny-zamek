@@ -45,7 +45,7 @@ public class Connect_and_send_message extends AsyncTask<Object, Object, Boolean>
             }
         }
 
-        connectDevice(false);
+        connectDevice(true);
         Long tsLong = System.currentTimeMillis()/1000;
         while(bluetooth_maneger.getState() != Bluetooth_maneger.STATE_CONNECTED){
             if (tsLong + 15 < System.currentTimeMillis()/1000)
@@ -71,16 +71,16 @@ public class Connect_and_send_message extends AsyncTask<Object, Object, Boolean>
     private void sendMessage(String message) {
         // Check that we're actually connected before trying anything
         if (bluetooth_maneger.getState() != Bluetooth_maneger.STATE_CONNECTED) {
-            // TODO informacja o bledzie polaczenia
+            Log.i("aaa123", "error");
             return;
         }
-
+        Log.i("aaa123", "bez err");
         // Check that there's actually something to send
         if (message.length() > 0) {
             // Get the message bytes and tell the BluetoothChatService to write
             byte[] send = message.getBytes();
             bluetooth_maneger.write(send);
-
+            Log.i("aaa123", send.toString());
             // Reset out string buffer to zero and clear the edit text field
             mOutStringBuffer.setLength(0);
         }

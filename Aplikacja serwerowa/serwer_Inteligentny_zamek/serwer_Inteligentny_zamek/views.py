@@ -114,32 +114,32 @@ def api_replace_certificate(request):
         old_public_key = request.POST.get('old_public_key')
         new_public_key = request.POST.get('new_public_key')
 
-    #try:
-        cursor = db.cursor()
-        cursor.execute("SELECT TOKEN  FROM USERS WHERE login='%s'" % login)
-        data = cursor.fetchone()[0]
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN  FROM USERS WHERE login='%s'" % login)
+            data = cursor.fetchone()[0]
 
-        # jezeli token jest poprawny to nastepuje wylogowanie
-        if (data == token and token != None):
-            random_generator = Random.new().read
-            key = RSA.generate(1024, random_generator).publickey().exportKey()
-            serial = ""
-            for x in key.split("\n")[1:-1]:
-                serial += x
-            cursor.execute("UPDATE USERS SET PUBLIC_KEY = '%s', Serial_number = '%s', Validitiy_period = '%s' WHERE LOGIN = '%s' AND PUBLIC_KEY = '%s' " % (new_public_key, serial, datetime.now().replace(year=datetime.now().year + 1), login, old_public_key))
-            db.commit()
-            cursor.execute("SELECT CONCAT(NAME, ' ', SURNAME) as User_Name, LOGIN as Issuer_name,  PUBLIC_KEY, Serial_number, Validitiy_period, Version, Signature_Algorithm_Identifier, Hash_Algorithm FROM `users` WHERE `LOGIN` = '%s' AND `TOKEN` = '%s'" % (login, token))
-            db.commit()
-            dict_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
-                                    in cursor.fetchall()]
-            if len(dict_certificate) == 0:
-                return JsonResponse({"status": "invalid"})
+            # jezeli token jest poprawny to nastepuje wylogowanie
+            if (data == token and token != None):
+                random_generator = Random.new().read
+                key = RSA.generate(1024, random_generator).publickey().exportKey()
+                serial = ""
+                for x in key.split("\n")[1:-1]:
+                    serial += x
+                cursor.execute("UPDATE USERS SET PUBLIC_KEY = '%s', Serial_number = '%s', Validitiy_period = '%s' WHERE LOGIN = '%s' AND PUBLIC_KEY = '%s' " % (new_public_key, serial, datetime.now().replace(year=datetime.now().year + 1), login, old_public_key))
+                db.commit()
+                cursor.execute("SELECT CONCAT(NAME, ' ', SURNAME) as User_Name, LOGIN as Issuer_name,  PUBLIC_KEY, Serial_number, Validitiy_period, Version, Signature_Algorithm_Identifier, Hash_Algorithm FROM `users` WHERE `LOGIN` = '%s' AND `TOKEN` = '%s'" % (login, token))
+                db.commit()
+                dict_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                        in cursor.fetchall()]
+                if len(dict_certificate) == 0:
+                    return JsonResponse({"status": "invalid"})
+                else:
+                    return JsonResponse({"status": "ok", "data": dict_certificate})
             else:
-                return JsonResponse({"status": "ok", "data": dict_certificate})
-        else:
-            return JsonResponse({"status": "invalid"})
-    #except Exception:
-#    return JsonResponse({"status": "Invalid"})
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
 
 @csrf_exempt
 def api_download_all_certificate(request):

@@ -167,8 +167,9 @@ public final class GlobalContainer {
     {
         user=new User();
         user.setLogin(sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.login));
-        user.setPassword(sharedPreferenceApi.INSTANCE.getString(context,EnumChoice.password));
-
+        try {
+            user.setPassword(CyptographyApi.decrypt(sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.password)));
+        }catch (Exception ex){}
     }
 
 }

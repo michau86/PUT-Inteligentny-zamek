@@ -58,6 +58,8 @@ public class LoginPresenter {
 
        if(model.setUser(user) && model.setIPserwer(ipserwer))
         {
+            Log.i("hhhh","na poczatku logowania");
+
             HashMap toSend = new HashMap();
             toSend.put("username", user.getLogin());
             toSend.put("password", user.getPasswordHash());
@@ -65,15 +67,18 @@ public class LoginPresenter {
             HashMap <EnumChoice,String> value=new HashMap<>();
             value.put(EnumChoice.ip,ipserwer);
             value.put(EnumChoice.login,user.getLogin());
+            Log.i("hhhh","przed haslem");
             try {
                 value.put(EnumChoice.password, CyptographyApi.encrypt(user.getPassword()));
             }catch(Exception ex){}
             sharedPreferenceApi.INSTANCE.set(view,value);
-
+            Log.i("hhhh","po hasle");
             try {
                 new HTTPRequestAPI(this, "http://" + ipserwer + ":8080/api/login/", "loginResult", toSend).execute();
+                Log.i("hhhh","httprequest");
             }catch (Exception e)
             {
+                Log.i("hhhh","wywyalilo nan http");
                 return false;
             }
             return true;
@@ -83,37 +88,49 @@ public class LoginPresenter {
 
     public void loginResult(String result)
     {
+        Log.i("hhhh","login result");
 
         JSONObject jObj = null;
         try {
             if(result!=null) {
+                Log.i("hhhh","w ifie");
                 jObj = new JSONObject(result);
                 if (jObj.getString("status").equals("ok") || jObj.getString("status").equals("root")) {
+                    Log.i("hhhh","w ifie2");
 
                     try{
                     HashMap<EnumChoice,String> value=new HashMap<>();
                     value.put(EnumChoice.token,CyptographyApi.encrypt(jObj.getString("token")));
                     sharedPreferenceApi.INSTANCE.set(view,value);
                     sharedPreferenceApi.INSTANCE.set(view,true,EnumChoice.isLogin);
+                        Log.i("hhhh","zapisane SP");
 
 
-                    }catch(Exception e){}
+                    }catch(Exception e){                Log.i("hhhh","error SP");
+                    }
 
                     model.setUserCertyficat(view);
+                    Log.i("hhhh","set certyfic");
 
                     if(jObj.getString("status").equals("ok"))
                     {
                         sharedPreferenceApi.INSTANCE.set(view,false, EnumChoice.isAdmin);
                         model.getUserClass().setAdmin(false);
+                        Log.i("hhhh","w ifie3");
+
                     }
                     else
                     {
                         sharedPreferenceApi.INSTANCE.set(view,true,EnumChoice.isAdmin);
                         model.getUserClass().setAdmin(true);
+                        Log.i("hhhh","w ifie4");
+
                     }
 
                     ((GlobalClassContainer) view.getApplication()).setUser(model.getUserClass());
                     Intent intent = new Intent(view,MainActivity.class);
+                    Log.i("hhhh","przed start activity");
+
                     view.startActivity(intent);
                     view.finish();
                 }

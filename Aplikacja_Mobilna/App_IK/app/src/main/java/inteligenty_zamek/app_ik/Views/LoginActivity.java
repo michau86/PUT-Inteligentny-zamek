@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ public class LoginActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         presenter=new LoginPresenter(this);
+
         Typeface fontFamily = Typeface.createFromAsset(this.getAssets(), "fonts/fontawesome.ttf");
         TextView sampleText = (TextView) this.findViewById(R.id.warning_icologin);
         sampleText.setTypeface(fontFamily);
@@ -43,17 +45,21 @@ public class LoginActivity extends Activity{
         final Button login = (Button) findViewById(R.id.button_login);
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Log.i("hhhh","login button");
 
                 EditText login=(EditText)findViewById(R.id.EditText_login);
                 EditText password=(EditText)findViewById(R.id.EditText_password);
                 EditText ipserwer=  (EditText) findViewById(R.id.iptextview);
-
+                Log.i("hhhh","wczytanie wartosci");
 
                     User user = new User();
                     user.setLogin(login.getText().toString());
                     user.setPassword(password.getText().toString());
-                    if(!presenter.login(user,ipserwer.getText().toString()))
+                Log.i("hhhh","po utworzeniu usera");
+
+                if(!presenter.login(user,ipserwer.getText().toString()))
                     {
+
                     TextView value=(TextView)findViewById(R.id.errorlogin);
                     value.setVisibility(View.VISIBLE);
                     value=(TextView)findViewById(R.id.warning_icologin);
