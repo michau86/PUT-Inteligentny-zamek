@@ -2,45 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04813093-1bf2-4d9f-8dfe-2b5fb460e40f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/views.py" afterPath="$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/views.py" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/android_android_25.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_animated_vector_drawable_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_animated_vector_drawable_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_appcompat_v7_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_appcompat_v7_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_constraint_constraint_layout_1_0_2.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_constraint_constraint_layout_1_0_2.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_constraint_constraint_layout_solver_1_0_2_jar.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_constraint_constraint_layout_solver_1_0_2_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_design_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_design_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_recyclerview_v7_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_recyclerview_v7_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_annotations_25_2_0_jar.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_annotations_25_2_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_compat_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_compat_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_core_ui_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_core_ui_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_core_utils_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_core_utils_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_fragment_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_fragment_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_media_compat_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_media_compat_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_v4_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_v4_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_vector_drawable_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_support_vector_drawable_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_espresso_espresso_core_2_2_2.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_espresso_espresso_core_2_2_2.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_espresso_espresso_idling_resource_2_2_2.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_espresso_espresso_idling_resource_2_2_2.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_exposed_instrumentation_api_publish_0_5.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_exposed_instrumentation_api_publish_0_5.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_rules_0_5.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_rules_0_5.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_runner_0_5.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_test_runner_0_5.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_transition_25_2_0.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_android_support_transition_25_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_github_vihtarb_tooltip_0_1_9.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/com_github_vihtarb_tooltip_0_1_9.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/org_apache_http_legacy_android_25.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/libraries/org_apache_http_legacy_android_25.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/misc.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/API/Bluetooth_maneger.java" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/API/Bluetooth_maneger.java" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/API/Connect_and_send_message.java" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/API/Connect_and_send_message.java" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/Views/LoginActivity.java" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/Views/LoginActivity.java" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/Views/MainActivity.kt" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/Views/MainActivity.kt" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/models/MainModel.kt" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/models/MainModel.kt" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/presenters/LoginPresenter.java" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/presenters/LoginPresenter.java" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/presenters/MainPresenter.kt" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/presenters/MainPresenter.kt" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/rest_class/GlobalContainer.java" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/app/src/main/java/inteligenty_zamek/app_ik/rest_class/GlobalContainer.java" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/build/android-profile/profile-2017-12-10-20-09-40-328.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/build/android-profile/profile-2017-12-10-20-09-40-328.rawproto" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/local.properties" afterPath="$PROJECT_DIR$/../Aplikacja_Mobilna/App_IK/local.properties" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -54,64 +16,67 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="110" column="32" lean-forward="false" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="32" />
+            <state relative-caret-position="306">
+              <caret line="67" column="28" lean-forward="true" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
               <folding>
                 <element signature="e#16#85#0" expanded="true" />
-                <marker date="1512946228477" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
-                <marker date="1512946228477" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
-                <marker date="1512946228477" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="2772:2881" ph="INSERT INTO USERS... " />
-                <marker date="1512946228477" expanded="true" signature="3407:3447" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="3694:3742" ph="UPDATE USERS... " />
-                <marker date="1512946228477" expanded="true" signature="4363:4404" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="4848:4899" ph="UPDATE USERS... " />
-                <marker date="1512946228477" expanded="true" signature="4848:4970" ph="UPDATE USERS... " />
-                <marker date="1512946228477" expanded="true" signature="5138:5362" ph="SELECT FROM USERS" />
-                <marker date="1512946228477" expanded="true" signature="6210:6250" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="6423:6694" ph="SELECT LOCKS... LOCKS_KEYS" />
-                <marker date="1512946228477" expanded="true" signature="6588:6630" ph="SELECT ID_US... USERS" />
-                <marker date="1512946228477" expanded="true" signature="7486:7526" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="7698:7762" ph="SELECT NAME,... LOCKS" />
-                <marker date="1512946228477" expanded="true" signature="8507:8547" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="8719:8750" ph="SELECT LOGIN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="9586:9807" ph="SELECT LOCK_... LOCKS_KEYS" />
-                <marker date="1512946228477" expanded="true" signature="9758:9806" ph="SELECT ID_LO... LOCKS" />
-                <marker date="1512946228477" expanded="true" signature="10095:10140" ph="SELECT PUBLI... USERS" />
-                <marker date="1512946228477" expanded="true" signature="10836:10905" ph="INSERT INTO ACCESS_TO_LOCKS... " />
-                <marker date="1512946228477" expanded="true" signature="11457:11497" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="11706:11816" ph="UPDATE LOCKS_KEYS... " />
-                <marker date="1512946228477" expanded="true" signature="11757:11799" ph="SELECT ID_US... USERS" />
-                <marker date="1512946228477" expanded="true" signature="12452:12492" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="12665:12769" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
-                <marker date="1512946228477" expanded="true" signature="12725:12767" ph="SELECT ID_US... USERS" />
-                <marker date="1512946228477" expanded="true" signature="13965:14024" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="14589:14868" ph="INSERT INTO `locks_keys`... " />
-                <marker date="1512946228477" expanded="true" signature="15567:15617" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="15936:16166" ph="SELECT DATE,... access_to_locks" />
-                <marker date="1512946228477" expanded="true" signature="16829:16879" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="17161:17435" ph="SELECT LOCKS... LOCKS_KEYS" />
-                <marker date="1512946228477" expanded="true" signature="18284:18334" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="18653:18706" ph="UPDATE LOCKS_KEYS... " />
-                <marker date="1512946228477" expanded="true" signature="19287:19337" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="19619:19701" ph="SELECT users... users" />
-                <marker date="1512946228477" expanded="true" signature="20594:20644" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="20942:21000" ph="SELECT LOGIN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="21259:21306" ph="UPDATE USERS... " />
-                <marker date="1512946228477" expanded="true" signature="21407:21441" ph="DELETE FROM users... " />
-                <marker date="1512946228477" expanded="true" signature="22025:22075" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="22357:22646" ph="SELECT wait_... wait_locks_keys" />
-                <marker date="1512946228477" expanded="true" signature="23499:23549" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="23847:23899" ph="SELECT ID_KE... wait_locks_keys" />
-                <marker date="1512946228477" expanded="true" signature="24088:24133" ph="DELETE FROM wait_locks_keys... " />
-                <marker date="1512946228477" expanded="true" signature="24712:24762" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="25095:25142" ph="UPDATE USERS... " />
-                <marker date="1512946228477" expanded="true" signature="26158:26232" ph="SELECT TOKEN... USERS" />
-                <marker date="1512946228477" expanded="true" signature="26548:26713" ph="SELECT FROM_... locks_keys" />
-                <marker date="1512946228477" expanded="true" signature="28552:28685" ph="INSERT INTO locks_keys... " />
-                <marker date="1512946228477" expanded="true" signature="28845:29015" ph="SELECT LOCKS... LOCKS_KEYS" />
-                <marker date="1512946228477" expanded="true" signature="30832:30965" ph="INSERT INTO locks_keys... " />
-                <marker date="1512946228477" expanded="true" signature="31125:31295" ph="SELECT LOCKS... LOCKS_KEYS" />
+                <marker date="1513000276927" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
+                <marker date="1513000276927" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
+                <marker date="1513000276927" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="3055:3149" ph="INSERT INTO USERS... " />
+                <marker date="1513000276927" expanded="true" signature="3055:3167" ph="INSERT INTO USERS... " />
+                <marker date="1513000276927" expanded="true" signature="3055:3203" ph="INSERT INTO USERS... " />
+                <marker date="1513000276927" expanded="true" signature="3315:3520" ph="SELECT CONCA... users" />
+                <marker date="1513000276927" expanded="true" signature="4341:4381" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="4628:4676" ph="UPDATE USERS... " />
+                <marker date="1513000276927" expanded="true" signature="5297:5338" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="5782:5833" ph="UPDATE USERS... " />
+                <marker date="1513000276927" expanded="true" signature="5782:5904" ph="UPDATE USERS... " />
+                <marker date="1513000276927" expanded="true" signature="6072:6296" ph="SELECT FROM USERS" />
+                <marker date="1513000276927" expanded="true" signature="7144:7184" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="7357:7628" ph="SELECT LOCKS... LOCKS_KEYS" />
+                <marker date="1513000276927" expanded="true" signature="7522:7564" ph="SELECT ID_US... USERS" />
+                <marker date="1513000276927" expanded="true" signature="8420:8460" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="8632:8696" ph="SELECT NAME,... LOCKS" />
+                <marker date="1513000276927" expanded="true" signature="9441:9481" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="9653:9684" ph="SELECT LOGIN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="10520:10741" ph="SELECT LOCK_... LOCKS_KEYS" />
+                <marker date="1513000276927" expanded="true" signature="10692:10740" ph="SELECT ID_LO... LOCKS" />
+                <marker date="1513000276927" expanded="true" signature="11029:11074" ph="SELECT PUBLI... USERS" />
+                <marker date="1513000276927" expanded="true" signature="11770:11839" ph="INSERT INTO ACCESS_TO_LOCKS... " />
+                <marker date="1513000276927" expanded="true" signature="12391:12431" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="12640:12750" ph="UPDATE LOCKS_KEYS... " />
+                <marker date="1513000276927" expanded="true" signature="12691:12733" ph="SELECT ID_US... USERS" />
+                <marker date="1513000276927" expanded="true" signature="13386:13426" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="13599:13703" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
+                <marker date="1513000276927" expanded="true" signature="13659:13701" ph="SELECT ID_US... USERS" />
+                <marker date="1513000276927" expanded="true" signature="14899:14958" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="15523:15802" ph="INSERT INTO `locks_keys`... " />
+                <marker date="1513000276927" expanded="true" signature="16501:16551" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="16870:17100" ph="SELECT DATE,... access_to_locks" />
+                <marker date="1513000276927" expanded="true" signature="17763:17813" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="18095:18369" ph="SELECT LOCKS... LOCKS_KEYS" />
+                <marker date="1513000276927" expanded="true" signature="19218:19268" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="19587:19640" ph="UPDATE LOCKS_KEYS... " />
+                <marker date="1513000276927" expanded="true" signature="20221:20271" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="20553:20635" ph="SELECT users... users" />
+                <marker date="1513000276927" expanded="true" signature="21528:21578" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="21876:21934" ph="SELECT LOGIN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="22193:22240" ph="UPDATE USERS... " />
+                <marker date="1513000276927" expanded="true" signature="22341:22375" ph="DELETE FROM users... " />
+                <marker date="1513000276927" expanded="true" signature="22959:23009" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="23291:23580" ph="SELECT wait_... wait_locks_keys" />
+                <marker date="1513000276927" expanded="true" signature="24433:24483" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="24781:24833" ph="SELECT ID_KE... wait_locks_keys" />
+                <marker date="1513000276927" expanded="true" signature="25022:25067" ph="DELETE FROM wait_locks_keys... " />
+                <marker date="1513000276927" expanded="true" signature="25646:25696" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="26029:26076" ph="UPDATE USERS... " />
+                <marker date="1513000276927" expanded="true" signature="27092:27166" ph="SELECT TOKEN... USERS" />
+                <marker date="1513000276927" expanded="true" signature="27482:27647" ph="SELECT FROM_... locks_keys" />
+                <marker date="1513000276927" expanded="true" signature="29486:29619" ph="INSERT INTO locks_keys... " />
+                <marker date="1513000276927" expanded="true" signature="29779:29949" ph="SELECT LOCKS... LOCKS_KEYS" />
+                <marker date="1513000276927" expanded="true" signature="31766:31899" ph="INSERT INTO locks_keys... " />
+                <marker date="1513000276927" expanded="true" signature="32059:32229" ph="SELECT LOCKS... LOCKS_KEYS" />
               </folding>
             </state>
           </provider>
@@ -120,8 +85,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="35" />
+            <state relative-caret-position="85">
+              <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="24" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -162,9 +127,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="73" />
-    <option name="y" value="-21" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1934" />
     <option name="height" value="949" />
   </component>
@@ -338,7 +303,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -346,7 +312,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14010416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -387,60 +353,63 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#16#85#0" expanded="true" />
-            <marker date="1512946228477" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
-            <marker date="1512946228477" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="2772:2881" ph="INSERT INTO USERS... " />
-            <marker date="1512946228477" expanded="true" signature="3407:3447" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="3694:3742" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="4363:4404" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="4848:4899" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="4848:4970" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="5138:5362" ph="SELECT FROM USERS" />
-            <marker date="1512946228477" expanded="true" signature="6210:6250" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="6423:6694" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="6588:6630" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="7486:7526" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="7698:7762" ph="SELECT NAME,... LOCKS" />
-            <marker date="1512946228477" expanded="true" signature="8507:8547" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="8719:8750" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="9586:9807" ph="SELECT LOCK_... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="9758:9806" ph="SELECT ID_LO... LOCKS" />
-            <marker date="1512946228477" expanded="true" signature="10095:10140" ph="SELECT PUBLI... USERS" />
-            <marker date="1512946228477" expanded="true" signature="10836:10905" ph="INSERT INTO ACCESS_TO_LOCKS... " />
-            <marker date="1512946228477" expanded="true" signature="11457:11497" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="11706:11816" ph="UPDATE LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="11757:11799" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="12452:12492" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="12665:12769" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="12725:12767" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="13965:14024" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="14589:14868" ph="INSERT INTO `locks_keys`... " />
-            <marker date="1512946228477" expanded="true" signature="15567:15617" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="15936:16166" ph="SELECT DATE,... access_to_locks" />
-            <marker date="1512946228477" expanded="true" signature="16829:16879" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="17161:17435" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="18284:18334" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="18653:18706" ph="UPDATE LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="19287:19337" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="19619:19701" ph="SELECT users... users" />
-            <marker date="1512946228477" expanded="true" signature="20594:20644" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="20942:21000" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="21259:21306" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="21407:21441" ph="DELETE FROM users... " />
-            <marker date="1512946228477" expanded="true" signature="22025:22075" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="22357:22646" ph="SELECT wait_... wait_locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="23499:23549" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="23847:23899" ph="SELECT ID_KE... wait_locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="24088:24133" ph="DELETE FROM wait_locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="24712:24762" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="25095:25142" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="26158:26232" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="26548:26713" ph="SELECT FROM_... locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="28552:28685" ph="INSERT INTO locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="28845:29015" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="30832:30965" ph="INSERT INTO locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="31125:31295" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
+            <marker date="1513000276927" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="3055:3149" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3055:3167" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3055:3203" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3315:3520" ph="SELECT CONCA... users" />
+            <marker date="1513000276927" expanded="true" signature="4341:4381" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="4628:4676" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="5297:5338" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="5782:5833" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="5782:5904" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="6072:6296" ph="SELECT FROM USERS" />
+            <marker date="1513000276927" expanded="true" signature="7144:7184" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="7357:7628" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="7522:7564" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="8420:8460" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="8632:8696" ph="SELECT NAME,... LOCKS" />
+            <marker date="1513000276927" expanded="true" signature="9441:9481" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="9653:9684" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="10520:10741" ph="SELECT LOCK_... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="10692:10740" ph="SELECT ID_LO... LOCKS" />
+            <marker date="1513000276927" expanded="true" signature="11029:11074" ph="SELECT PUBLI... USERS" />
+            <marker date="1513000276927" expanded="true" signature="11770:11839" ph="INSERT INTO ACCESS_TO_LOCKS... " />
+            <marker date="1513000276927" expanded="true" signature="12391:12431" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="12640:12750" ph="UPDATE LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="12691:12733" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="13386:13426" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="13599:13703" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="13659:13701" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="14899:14958" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="15523:15802" ph="INSERT INTO `locks_keys`... " />
+            <marker date="1513000276927" expanded="true" signature="16501:16551" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="16870:17100" ph="SELECT DATE,... access_to_locks" />
+            <marker date="1513000276927" expanded="true" signature="17763:17813" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="18095:18369" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="19218:19268" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="19587:19640" ph="UPDATE LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="20221:20271" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="20553:20635" ph="SELECT users... users" />
+            <marker date="1513000276927" expanded="true" signature="21528:21578" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="21876:21934" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="22193:22240" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="22341:22375" ph="DELETE FROM users... " />
+            <marker date="1513000276927" expanded="true" signature="22959:23009" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="23291:23580" ph="SELECT wait_... wait_locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="24433:24483" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="24781:24833" ph="SELECT ID_KE... wait_locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="25022:25067" ph="DELETE FROM wait_locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="25646:25696" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="26029:26076" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="27092:27166" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="27482:27647" ph="SELECT FROM_... locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="29486:29619" ph="INSERT INTO locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="29779:29949" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="31766:31899" ph="INSERT INTO locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="32059:32229" ph="SELECT LOCKS... LOCKS_KEYS" />
           </folding>
         </state>
       </provider>
@@ -469,60 +438,63 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#16#85#0" expanded="true" />
-            <marker date="1512946228477" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
-            <marker date="1512946228477" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="2772:2881" ph="INSERT INTO USERS... " />
-            <marker date="1512946228477" expanded="true" signature="3407:3447" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="3694:3742" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="4363:4404" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="4848:4899" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="4848:4970" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="5138:5362" ph="SELECT FROM USERS" />
-            <marker date="1512946228477" expanded="true" signature="6210:6250" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="6423:6694" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="6588:6630" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="7486:7526" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="7698:7762" ph="SELECT NAME,... LOCKS" />
-            <marker date="1512946228477" expanded="true" signature="8507:8547" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="8719:8750" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="9586:9807" ph="SELECT LOCK_... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="9758:9806" ph="SELECT ID_LO... LOCKS" />
-            <marker date="1512946228477" expanded="true" signature="10095:10140" ph="SELECT PUBLI... USERS" />
-            <marker date="1512946228477" expanded="true" signature="10836:10905" ph="INSERT INTO ACCESS_TO_LOCKS... " />
-            <marker date="1512946228477" expanded="true" signature="11457:11497" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="11706:11816" ph="UPDATE LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="11757:11799" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="12452:12492" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="12665:12769" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="12725:12767" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="13965:14024" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="14589:14868" ph="INSERT INTO `locks_keys`... " />
-            <marker date="1512946228477" expanded="true" signature="15567:15617" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="15936:16166" ph="SELECT DATE,... access_to_locks" />
-            <marker date="1512946228477" expanded="true" signature="16829:16879" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="17161:17435" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="18284:18334" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="18653:18706" ph="UPDATE LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="19287:19337" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="19619:19701" ph="SELECT users... users" />
-            <marker date="1512946228477" expanded="true" signature="20594:20644" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="20942:21000" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="21259:21306" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="21407:21441" ph="DELETE FROM users... " />
-            <marker date="1512946228477" expanded="true" signature="22025:22075" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="22357:22646" ph="SELECT wait_... wait_locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="23499:23549" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="23847:23899" ph="SELECT ID_KE... wait_locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="24088:24133" ph="DELETE FROM wait_locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="24712:24762" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="25095:25142" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="26158:26232" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="26548:26713" ph="SELECT FROM_... locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="28552:28685" ph="INSERT INTO locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="28845:29015" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="30832:30965" ph="INSERT INTO locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="31125:31295" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
+            <marker date="1513000276927" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="3055:3149" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3055:3167" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3055:3203" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3315:3520" ph="SELECT CONCA... users" />
+            <marker date="1513000276927" expanded="true" signature="4341:4381" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="4628:4676" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="5297:5338" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="5782:5833" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="5782:5904" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="6072:6296" ph="SELECT FROM USERS" />
+            <marker date="1513000276927" expanded="true" signature="7144:7184" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="7357:7628" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="7522:7564" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="8420:8460" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="8632:8696" ph="SELECT NAME,... LOCKS" />
+            <marker date="1513000276927" expanded="true" signature="9441:9481" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="9653:9684" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="10520:10741" ph="SELECT LOCK_... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="10692:10740" ph="SELECT ID_LO... LOCKS" />
+            <marker date="1513000276927" expanded="true" signature="11029:11074" ph="SELECT PUBLI... USERS" />
+            <marker date="1513000276927" expanded="true" signature="11770:11839" ph="INSERT INTO ACCESS_TO_LOCKS... " />
+            <marker date="1513000276927" expanded="true" signature="12391:12431" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="12640:12750" ph="UPDATE LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="12691:12733" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="13386:13426" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="13599:13703" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="13659:13701" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="14899:14958" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="15523:15802" ph="INSERT INTO `locks_keys`... " />
+            <marker date="1513000276927" expanded="true" signature="16501:16551" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="16870:17100" ph="SELECT DATE,... access_to_locks" />
+            <marker date="1513000276927" expanded="true" signature="17763:17813" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="18095:18369" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="19218:19268" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="19587:19640" ph="UPDATE LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="20221:20271" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="20553:20635" ph="SELECT users... users" />
+            <marker date="1513000276927" expanded="true" signature="21528:21578" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="21876:21934" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="22193:22240" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="22341:22375" ph="DELETE FROM users... " />
+            <marker date="1513000276927" expanded="true" signature="22959:23009" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="23291:23580" ph="SELECT wait_... wait_locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="24433:24483" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="24781:24833" ph="SELECT ID_KE... wait_locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="25022:25067" ph="DELETE FROM wait_locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="25646:25696" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="26029:26076" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="27092:27166" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="27482:27647" ph="SELECT FROM_... locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="29486:29619" ph="INSERT INTO locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="29779:29949" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="31766:31899" ph="INSERT INTO locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="32059:32229" ph="SELECT LOCKS... LOCKS_KEYS" />
           </folding>
         </state>
       </provider>
@@ -531,16 +503,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -558,124 +520,140 @@
           <caret line="129" column="195" lean-forward="false" selection-start-line="129" selection-start-column="195" selection-end-line="129" selection-end-column="195" />
           <folding>
             <element signature="e#16#85#0" expanded="true" />
-            <marker date="1512946228477" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
-            <marker date="1512946228477" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="2772:2881" ph="INSERT INTO USERS... " />
-            <marker date="1512946228477" expanded="true" signature="3407:3447" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="3694:3742" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="4363:4404" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="4848:4899" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="4848:4970" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="5138:5362" ph="SELECT FROM USERS" />
-            <marker date="1512946228477" expanded="true" signature="6210:6250" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="6423:6694" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="6588:6630" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="7486:7526" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="7698:7762" ph="SELECT NAME,... LOCKS" />
-            <marker date="1512946228477" expanded="true" signature="8507:8547" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="8719:8750" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="9586:9807" ph="SELECT LOCK_... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="9758:9806" ph="SELECT ID_LO... LOCKS" />
-            <marker date="1512946228477" expanded="true" signature="10095:10140" ph="SELECT PUBLI... USERS" />
-            <marker date="1512946228477" expanded="true" signature="10836:10905" ph="INSERT INTO ACCESS_TO_LOCKS... " />
-            <marker date="1512946228477" expanded="true" signature="11457:11497" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="11706:11816" ph="UPDATE LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="11757:11799" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="12452:12492" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="12665:12769" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="12725:12767" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="13965:14024" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="14589:14868" ph="INSERT INTO `locks_keys`... " />
-            <marker date="1512946228477" expanded="true" signature="15567:15617" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="15936:16166" ph="SELECT DATE,... access_to_locks" />
-            <marker date="1512946228477" expanded="true" signature="16829:16879" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="17161:17435" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="18284:18334" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="18653:18706" ph="UPDATE LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="19287:19337" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="19619:19701" ph="SELECT users... users" />
-            <marker date="1512946228477" expanded="true" signature="20594:20644" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="20942:21000" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="21259:21306" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="21407:21441" ph="DELETE FROM users... " />
-            <marker date="1512946228477" expanded="true" signature="22025:22075" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="22357:22646" ph="SELECT wait_... wait_locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="23499:23549" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="23847:23899" ph="SELECT ID_KE... wait_locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="24088:24133" ph="DELETE FROM wait_locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="24712:24762" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="25095:25142" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="26158:26232" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="26548:26713" ph="SELECT FROM_... locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="28552:28685" ph="INSERT INTO locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="28845:29015" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="30832:30965" ph="INSERT INTO locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="31125:31295" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
+            <marker date="1513000276927" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="3055:3149" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3055:3167" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3055:3203" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3315:3520" ph="SELECT CONCA... users" />
+            <marker date="1513000276927" expanded="true" signature="4341:4381" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="4628:4676" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="5297:5338" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="5782:5833" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="5782:5904" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="6072:6296" ph="SELECT FROM USERS" />
+            <marker date="1513000276927" expanded="true" signature="7144:7184" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="7357:7628" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="7522:7564" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="8420:8460" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="8632:8696" ph="SELECT NAME,... LOCKS" />
+            <marker date="1513000276927" expanded="true" signature="9441:9481" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="9653:9684" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="10520:10741" ph="SELECT LOCK_... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="10692:10740" ph="SELECT ID_LO... LOCKS" />
+            <marker date="1513000276927" expanded="true" signature="11029:11074" ph="SELECT PUBLI... USERS" />
+            <marker date="1513000276927" expanded="true" signature="11770:11839" ph="INSERT INTO ACCESS_TO_LOCKS... " />
+            <marker date="1513000276927" expanded="true" signature="12391:12431" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="12640:12750" ph="UPDATE LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="12691:12733" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="13386:13426" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="13599:13703" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="13659:13701" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="14899:14958" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="15523:15802" ph="INSERT INTO `locks_keys`... " />
+            <marker date="1513000276927" expanded="true" signature="16501:16551" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="16870:17100" ph="SELECT DATE,... access_to_locks" />
+            <marker date="1513000276927" expanded="true" signature="17763:17813" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="18095:18369" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="19218:19268" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="19587:19640" ph="UPDATE LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="20221:20271" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="20553:20635" ph="SELECT users... users" />
+            <marker date="1513000276927" expanded="true" signature="21528:21578" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="21876:21934" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="22193:22240" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="22341:22375" ph="DELETE FROM users... " />
+            <marker date="1513000276927" expanded="true" signature="22959:23009" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="23291:23580" ph="SELECT wait_... wait_locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="24433:24483" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="24781:24833" ph="SELECT ID_KE... wait_locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="25022:25067" ph="DELETE FROM wait_locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="25646:25696" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="26029:26076" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="27092:27166" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="27482:27647" ph="SELECT FROM_... locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="29486:29619" ph="INSERT INTO locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="29779:29949" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="31766:31899" ph="INSERT INTO locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="32059:32229" ph="SELECT LOCKS... LOCKS_KEYS" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/serwer_Inteligentny_zamek/serwer_Inteligentny_zamek/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="110" column="32" lean-forward="false" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="32" />
+        <state relative-caret-position="306">
+          <caret line="67" column="28" lean-forward="true" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
           <folding>
             <element signature="e#16#85#0" expanded="true" />
-            <marker date="1512946228477" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
-            <marker date="1512946228477" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="2772:2881" ph="INSERT INTO USERS... " />
-            <marker date="1512946228477" expanded="true" signature="3407:3447" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="3694:3742" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="4363:4404" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="4848:4899" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="4848:4970" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="5138:5362" ph="SELECT FROM USERS" />
-            <marker date="1512946228477" expanded="true" signature="6210:6250" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="6423:6694" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="6588:6630" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="7486:7526" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="7698:7762" ph="SELECT NAME,... LOCKS" />
-            <marker date="1512946228477" expanded="true" signature="8507:8547" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="8719:8750" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="9586:9807" ph="SELECT LOCK_... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="9758:9806" ph="SELECT ID_LO... LOCKS" />
-            <marker date="1512946228477" expanded="true" signature="10095:10140" ph="SELECT PUBLI... USERS" />
-            <marker date="1512946228477" expanded="true" signature="10836:10905" ph="INSERT INTO ACCESS_TO_LOCKS... " />
-            <marker date="1512946228477" expanded="true" signature="11457:11497" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="11706:11816" ph="UPDATE LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="11757:11799" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="12452:12492" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="12665:12769" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="12725:12767" ph="SELECT ID_US... USERS" />
-            <marker date="1512946228477" expanded="true" signature="13965:14024" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="14589:14868" ph="INSERT INTO `locks_keys`... " />
-            <marker date="1512946228477" expanded="true" signature="15567:15617" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="15936:16166" ph="SELECT DATE,... access_to_locks" />
-            <marker date="1512946228477" expanded="true" signature="16829:16879" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="17161:17435" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="18284:18334" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="18653:18706" ph="UPDATE LOCKS_KEYS... " />
-            <marker date="1512946228477" expanded="true" signature="19287:19337" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="19619:19701" ph="SELECT users... users" />
-            <marker date="1512946228477" expanded="true" signature="20594:20644" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="20942:21000" ph="SELECT LOGIN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="21259:21306" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="21407:21441" ph="DELETE FROM users... " />
-            <marker date="1512946228477" expanded="true" signature="22025:22075" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="22357:22646" ph="SELECT wait_... wait_locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="23499:23549" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="23847:23899" ph="SELECT ID_KE... wait_locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="24088:24133" ph="DELETE FROM wait_locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="24712:24762" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="25095:25142" ph="UPDATE USERS... " />
-            <marker date="1512946228477" expanded="true" signature="26158:26232" ph="SELECT TOKEN... USERS" />
-            <marker date="1512946228477" expanded="true" signature="26548:26713" ph="SELECT FROM_... locks_keys" />
-            <marker date="1512946228477" expanded="true" signature="28552:28685" ph="INSERT INTO locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="28845:29015" ph="SELECT LOCKS... LOCKS_KEYS" />
-            <marker date="1512946228477" expanded="true" signature="30832:30965" ph="INSERT INTO locks_keys... " />
-            <marker date="1512946228477" expanded="true" signature="31125:31295" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="1012:1078" ph="SELECT PASSW... USERS" />
+            <marker date="1513000276927" expanded="true" signature="1234:1282" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="2359:2399" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="3055:3149" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3055:3167" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3055:3203" ph="INSERT INTO USERS... " />
+            <marker date="1513000276927" expanded="true" signature="3315:3520" ph="SELECT CONCA... users" />
+            <marker date="1513000276927" expanded="true" signature="4341:4381" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="4628:4676" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="5297:5338" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="5782:5833" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="5782:5904" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="6072:6296" ph="SELECT FROM USERS" />
+            <marker date="1513000276927" expanded="true" signature="7144:7184" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="7357:7628" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="7522:7564" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="8420:8460" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="8632:8696" ph="SELECT NAME,... LOCKS" />
+            <marker date="1513000276927" expanded="true" signature="9441:9481" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="9653:9684" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="10520:10741" ph="SELECT LOCK_... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="10692:10740" ph="SELECT ID_LO... LOCKS" />
+            <marker date="1513000276927" expanded="true" signature="11029:11074" ph="SELECT PUBLI... USERS" />
+            <marker date="1513000276927" expanded="true" signature="11770:11839" ph="INSERT INTO ACCESS_TO_LOCKS... " />
+            <marker date="1513000276927" expanded="true" signature="12391:12431" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="12640:12750" ph="UPDATE LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="12691:12733" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="13386:13426" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="13599:13703" ph="INSERT INTO WAIT_LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="13659:13701" ph="SELECT ID_US... USERS" />
+            <marker date="1513000276927" expanded="true" signature="14899:14958" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="15523:15802" ph="INSERT INTO `locks_keys`... " />
+            <marker date="1513000276927" expanded="true" signature="16501:16551" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="16870:17100" ph="SELECT DATE,... access_to_locks" />
+            <marker date="1513000276927" expanded="true" signature="17763:17813" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="18095:18369" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="19218:19268" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="19587:19640" ph="UPDATE LOCKS_KEYS... " />
+            <marker date="1513000276927" expanded="true" signature="20221:20271" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="20553:20635" ph="SELECT users... users" />
+            <marker date="1513000276927" expanded="true" signature="21528:21578" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="21876:21934" ph="SELECT LOGIN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="22193:22240" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="22341:22375" ph="DELETE FROM users... " />
+            <marker date="1513000276927" expanded="true" signature="22959:23009" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="23291:23580" ph="SELECT wait_... wait_locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="24433:24483" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="24781:24833" ph="SELECT ID_KE... wait_locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="25022:25067" ph="DELETE FROM wait_locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="25646:25696" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="26029:26076" ph="UPDATE USERS... " />
+            <marker date="1513000276927" expanded="true" signature="27092:27166" ph="SELECT TOKEN... USERS" />
+            <marker date="1513000276927" expanded="true" signature="27482:27647" ph="SELECT FROM_... locks_keys" />
+            <marker date="1513000276927" expanded="true" signature="29486:29619" ph="INSERT INTO locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="29779:29949" ph="SELECT LOCKS... LOCKS_KEYS" />
+            <marker date="1513000276927" expanded="true" signature="31766:31899" ph="INSERT INTO locks_keys... " />
+            <marker date="1513000276927" expanded="true" signature="32059:32229" ph="SELECT LOCKS... LOCKS_KEYS" />
           </folding>
         </state>
       </provider>

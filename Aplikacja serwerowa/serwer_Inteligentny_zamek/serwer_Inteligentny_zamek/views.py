@@ -67,19 +67,31 @@ def api_register(request):
         # Fetch a single row using fetchone() method.
         data = cursor.fetchone()
         if data is not None:
-            print "aa"
             return JsonResponse({"status": "ERROR LOGIN"})
         else:
             try:
-                record = [login, password, name, surname, '0', publickkey, '1']
+                random_generator = Random.new().read
+                key = RSA.generate(1024, random_generator).publickey().exportKey()
+                serial = ""
+                for x in key.split("\n")[1:-1]:
+                    serial += x
+                record = [login, password, name, surname, '0', publickkey, '1', serial, datetime.now().replace(year=datetime.now().year + 1)]
                 cursor.execute(
-                    'INSERT INTO USERS (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN,PUBLIC_KEY, ISACTIVATED) VALUES(%s,%s,%s,%s,%s,%s,%s)',
+                    'INSERT INTO USERS (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN,PUBLIC_KEY, ISACTIVATED, Serial_number, Validitiy_period) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)',
                     record)
                 db.commit()
-                return JsonResponse({"status": "REGISTER OK"})
+                cursor.execute(
+                    "SELECT CONCAT(NAME, ' ', SURNAME) as User_Name, LOGIN as Issuer_name,  PUBLIC_KEY, Serial_number, Validitiy_period, Version, Signature_Algorithm_Identifier, Hash_Algorithm FROM `users` WHERE `LOGIN` = '%s'" % (
+                    login))
+                db.commit()
+                dict_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                    in cursor.fetchall()]
+                if len(dict_certificate) == 0:
+                    return JsonResponse({"status": "invalid"})
+                else:
+                    return JsonResponse({"status": "ok", "data": dict_certificate})
             except Exception:
                 db.rollback()
-                print  publickkey
                 return JsonResponse({"status": "ERROR"})
 
 
