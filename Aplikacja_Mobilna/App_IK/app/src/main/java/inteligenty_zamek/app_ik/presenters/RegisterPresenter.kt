@@ -64,12 +64,8 @@ class RegisterPresenter (val view:RegisterActivity) {
                     view.startActivity(intent)
 
                 } else {
-                    (view as Activity).runOnUiThread {
-                        val textView = view.findViewById(R.id.loginerrortextview) as TextView
-                        textView.visibility = View.VISIBLE
-                        val textView2 = view.findViewById(R.id.registerTextViewErrorLoginIco) as TextView
-                        textView2.visibility = View.VISIBLE
-                    }
+                    view.showMessage("wystąpił błą podczas rejestracji")
+
                 }
 
         } catch (e: JSONException) {}
