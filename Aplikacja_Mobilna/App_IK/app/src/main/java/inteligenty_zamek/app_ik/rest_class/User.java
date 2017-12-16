@@ -16,15 +16,15 @@ public class User {
 
 
     public String idUser;
-    public Lock[] lockslist=null;
-    public  Certyficat[] certyficateList;
     private String login=" ";
     private String name;
     private String surname;
     private String password;
     private String passwordHash="";
     private  boolean isAdmin;
-
+    private boolean isLogin;
+    private Lock[] lockslist;
+    private Certyficat[] certyficateList ;
     public String getLogin() {
         return login;
     }
@@ -34,6 +34,7 @@ public class User {
     public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
+    ///// do usuniecia
     public Certyficat[] getCertyficateList(Context context) {
         if(certyficateList==null)
         {
@@ -48,6 +49,7 @@ public class User {
         }
         return certyficateList;
     }
+    ////////////////////////
     public String getPasswordHash()
     {
         if(passwordHash=="")
@@ -56,6 +58,8 @@ public class User {
         }
         return passwordHash;
     }
+
+    ///////do usuniecia
     public Lock[] getLockslist(String login, Context context) {
 
 
@@ -76,6 +80,7 @@ public class User {
     public void setCertyficateList(Certyficat[] certyficateList) {
         this.certyficateList = certyficateList;
     }
+    /////////////////////////////////
     public void setLogin(String login) {
         this.login = login;
     }
@@ -97,12 +102,19 @@ public class User {
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
+    public boolean getIsLogin() {
+        return isLogin;
+    }
+    public void setisLogin(boolean login) {
+        isLogin = login;
+    }
     public String getPassword() {
         return password;
     }
     public void setPassword(String password) {
         this.password = password;
     }
+  //do usuniecia
     public void addCertyficatList(JSONArray arrJson)
     {
         certyficateList=new Certyficat[arrJson.length()];
@@ -147,4 +159,5 @@ public class User {
         }
 
     }
+    /////////////////////////
 }

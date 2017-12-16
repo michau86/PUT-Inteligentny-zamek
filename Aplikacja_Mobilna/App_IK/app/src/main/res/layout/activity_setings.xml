@@ -77,8 +77,6 @@
         android:id="@+id/button_password_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
         android:text="zmień" />
 
     <View
@@ -193,8 +191,6 @@
         android:id="@+id/buttonChangeKey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
         android:text="wygeneruj nowy klucz prywatny" />
 
 </LinearLayout>

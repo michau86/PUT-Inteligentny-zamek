@@ -25,13 +25,6 @@ import java.util.Arrays
 import java.util.Collections
 
 
-//opis dostania się do obiektu z listy certyfikatow
-
-//((GlobalClassContainer) getApplication()).getUser().getCertyficateList()[i].getLok_key()
-// gdzie i jest elementem na tej liscie (wedlug tej kolejnosci sa wyswietlane w main)
-//po ostatniej wartosci jest get/set do konkretnej wartosci otrzymanej z jsona
-
-
 class MainActivity : BaseActivity() {
 
 
@@ -46,31 +39,20 @@ class MainActivity : BaseActivity() {
     private var context :Context=this
     private  var csq:CharSequence=""
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.i("hhhh","w main activity begin")
         super.onCreate(savedInstanceState)
-        Log.i("hhhh","1")
-
         setContentView(R.layout.activity_main)
         val navMenuTitles = resources.getStringArray(R.array.nav_drawer_items)
         val navMenuIcons = resources.obtainTypedArray(R.array.nav_drawer_icons)
         set(navMenuTitles, navMenuIcons)
-        Log.i("hhhh","2")
         val sampleText = this.findViewById(R.id.TextView_sortingIco) as TextView
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
         sampleText.typeface = fontFamily
-        Log.i("hhhh","3")
         resultsListView = this.findViewById(R.id.listView_Keys) as ListView
-        Log.i("hhhh","3,5")
         preferences = this.getSharedPreferences(this.getString(R.string.SPName), Context.MODE_PRIVATE)
-        Log.i("hhhh","4")
         presenter= MainPresenter(this)
-        Log.i("hhhh","5")
         resultsListView!!.adapter=presenter!!.updateList("")
-        Log.i("hhhh","4")
 
-Log.i("hhhh","w main activity")
         GlobalContainer.loadDataFromSharedPreferences(this)
-        Log.i("hhhh","po ,load data")
         sampleText.setOnClickListener {
             if (flag == false) {
                 Arrays.sort(GlobalContainer.getUser(this).getCertyficateList(this), Collections.reverseOrder<Any>())

@@ -38,9 +38,14 @@ public class LoginModel {
     }
     private User user;
 
-    public boolean setUser(User user)
+
+
+    public boolean setUser(String login, String password)
     {
-        if(Valdiation.isCorrectLogin(user.getLogin()) && Valdiation.isCorrectPassword(user.getPassword())) {
+        if(Valdiation.isCorrectLogin(login) && Valdiation.isCorrectPassword(password)) {
+            User user=new User();
+            user.setLogin(login);
+            user.setPassword(password);
             this.user = user;
 
             return true;
@@ -48,10 +53,7 @@ public class LoginModel {
         return false;
     }
 
-    public void setUserCertyficat(Context context)
-    {
-            user.getLockslist(user.getLogin(),context);
-    }
+
 
     public String getUserLogin()
     {
@@ -68,6 +70,10 @@ public class LoginModel {
         return user.getPassword();
     }
 
+    public String getUserPasswordHash()
+    {
+        return user.getPasswordHash();
+    }
     public LoginModel(Context context)
     {
         this.context=context;

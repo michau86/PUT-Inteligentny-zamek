@@ -1,138 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="inteligenty_zamek.app_ik.Views.LoginActivity">
+    android:fillViewport="true">
 
 
-    <TextView
-        android:id="@+id/errorlogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Niepoprawny login lub hasło"
-        android:visibility="invisible"
-        android:layout_above="@+id/EditText_login"
-        android:layout_toEndOf="@+id/warning_icologin"
-        android:layout_marginStart="19dp" />
+    <LinearLayout    xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
 
-    <TextView
-        android:id="@+id/warning_icologin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="&#xf071;"
-        android:visibility="invisible"
-        android:layout_alignBaseline="@+id/TextView_Login"
-        android:layout_alignBottom="@+id/TextView_Login"
-        android:layout_toEndOf="@+id/TextView_password"
-        android:layout_marginStart="19dp" />
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        tools:context="inteligenty_zamek.app_ik.Views.LoginActivity">
 
-    <TextView
-        android:id="@+id/TextView_Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="19dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="22dp"
-        android:text="@string/activity_login_text1" />
 
-    <EditText
-        android:id="@+id/EditText_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:background="@color/color_background_input"
-        android:layout_below="@+id/TextView_Login"
-        android:layout_alignStart="@+id/TextView_Login"
-        android:layout_marginTop="10dp" />
 
-    <TextView
-        android:id="@+id/TextView_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/EditText_login"
-        android:layout_alignStart="@+id/EditText_login"
-        android:layout_below="@+id/EditText_login"
-        android:layout_marginTop="16dp"
-        android:text="@string/activity_login_text2" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
 
-    <EditText
-        android:id="@+id/EditText_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView_password"
-        android:layout_alignStart="@+id/TextView_password"
-        android:layout_below="@+id/TextView_password"
-        android:background="@color/color_background_input"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/loginTextViewLogin"
+                    style="@style/_textViewMediumstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_login_text1"
+                    />
 
-    <Button
-        android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_login_text3"
-        android:layout_below="@+id/EditText_password"
-        android:layout_alignLeft="@+id/EditText_password"
-        android:layout_alignStart="@+id/EditText_password"
-        android:layout_marginTop="15dp" />
+                <EditText
+                    android:id="@+id/loginEditTextLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="18dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:text="@string/activity_login_text4"
-        android:layout_alignBaseline="@+id/errorlogin"
-        android:layout_alignBottom="@+id/errorlogin"
-        android:layout_toEndOf="@+id/errorlogin" />
+                <TextView
+                    android:id="@+id/loginTextViewPassword"
+                    style="@style/_textViewMediumstyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/activity_login_text2" />
 
-    <Button
-        android:id="@+id/button_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_login_text5"
-        android:layout_alignBottom="@+id/EditText_password"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+                <EditText
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button_register"
-        android:layout_alignBottom="@+id/button_register"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_toEndOf="@+id/button_register"
-        android:layout_toRightOf="@+id/button_register"
-        android:text="@string/activity_login_text6" />
+                    android:id="@+id/loginEditTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
 
-    <TextView
-        android:id="@+id/textView37"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button_login"
-        android:layout_alignStart="@+id/button_register"
-        android:text="Adres serwera" />
 
-    <EditText
-        android:id="@+id/iptextview"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/textView37"
-        android:layout_below="@+id/textView37"
-        android:background="@color/color_background_input"
-        android:ems="10"
-        android:inputType="textPassword" />
-</RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+
+
+
+                    <TextView
+                        android:id="@+id/loginTextViewWarningIco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:text="@string/activity_login_text7"
+                        android:visibility="invisible"
+                        style="@style/_textViewErrorStyle"
+                        android:padding="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/loginTextViewErrorText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:text="@string/activity_login_text8"
+                        android:visibility="invisible"
+                        style="@style/_textViewErrorStyle"
+                        android:padding="5dp"
+                        />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/loginButtonLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/activity_login_text3"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="45dp"
+                android:layout_weight="1"
+
+
+                >
+
+                <TextView
+                    android:id="@+id/loginTextViewDescribe"
+                    style="@style/_textViewMediumstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/activity_login_text4" />
+
+
+
+                    <Button
+                        android:id="@+id/loginButtonRegister"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_login_text5"
+                        android:layout_marginTop="10dp"
+                        />
+
+                    <Button
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/loginButtonGuest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_login_text6" />
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/loginTextViewSerwerText"
+                        style="@style/_textViewMediumstyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_login_text9"
+
+                        />
+
+                    <EditText
+                        android:id="@+id/loginEditTextIpSerwer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
+</ScrollView>

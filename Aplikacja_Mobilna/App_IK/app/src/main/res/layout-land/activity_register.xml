@@ -12,55 +12,55 @@
         android:id="@+id/textView47"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView5"
-        android:layout_alignEnd="@+id/editText_Login"
+        android:layout_above="@+id/registerTextViewSurname"
+        android:layout_alignEnd="@+id/registerEditTextLogin"
         android:layout_marginLeft="20dp"
         android:text="Login jest już zajęty"
         android:visibility="invisible"
         android:textColor="@android:color/white" />
 
     <TextView
-        android:id="@+id/TextView1"
+        android:id="@+id/registerTextViewLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="34dp"
         android:layout_marginStart="34dp"
         android:layout_marginTop="19dp"
         android:text="@string/activity_register_text1"
-        android:layout_below="@+id/textView6"
+        android:layout_below="@+id/registerTextVierTitle"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <EditText
-        android:id="@+id/editText_Login"
+        android:id="@+id/registerEditTextLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_below="@+id/TextView1"
-        android:layout_alignLeft="@+id/TextView1"
-        android:layout_alignStart="@+id/TextView1"
+        android:layout_below="@+id/registerTextViewLogin"
+        android:layout_alignLeft="@+id/registerTextViewLogin"
+        android:layout_alignStart="@+id/registerTextViewLogin"
         android:background="@color/color_background_input"
         />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/registerTextViewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_register_text2"
-        android:layout_alignBaseline="@+id/warning_ico2"
-        android:layout_alignBottom="@+id/warning_ico2"
-        android:layout_alignStart="@+id/editText_Login" />
+        android:layout_alignBaseline="@+id/registerTextViewErrorPasswordIco"
+        android:layout_alignBottom="@+id/registerTextViewErrorPasswordIco"
+        android:layout_alignStart="@+id/registerEditTextLogin" />
 
     <EditText
-        android:id="@+id/editText_Password2"
+        android:id="@+id/registerEditTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
         android:background="@color/color_background_input"
-        android:layout_alignBaseline="@+id/button_Register"
-        android:layout_alignBottom="@+id/button_Register"
+        android:layout_alignBaseline="@+id/registerButtonRegister"
+        android:layout_alignBottom="@+id/registerButtonRegister"
         android:layout_alignStart="@+id/editText17" />
 
     <EditText
@@ -81,20 +81,20 @@
         android:background="@color/color_background_input"
         android:ems="10"
         android:inputType="textPassword"
-        android:layout_below="@+id/ipserwertextview"
-        android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/registerEditTextIPAdres"
+        android:layout_alignStart="@+id/registerTextViewPassword"
         android:layout_marginTop="7dp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/registerTextViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_register_text3"
         android:layout_marginRight="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_below="@+id/textView6"
-        android:layout_toLeftOf="@+id/button_Register"
-        android:layout_toStartOf="@+id/button_Register" />
+        android:layout_below="@+id/registerTextVierTitle"
+        android:layout_toLeftOf="@+id/registerButtonRegister"
+        android:layout_toStartOf="@+id/registerButtonRegister" />
 
     <EditText
         android:id="@+id/editText4"
@@ -102,14 +102,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_below="@+id/textView4"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4"
+        android:layout_below="@+id/registerTextViewName"
+        android:layout_alignLeft="@+id/registerTextViewName"
+        android:layout_alignStart="@+id/registerTextViewName"
         android:background="@color/color_background_input"
         />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/registerTextViewSurname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
@@ -119,30 +119,30 @@
         android:layout_alignStart="@+id/editText4" />
 
     <EditText
-        android:id="@+id/ipserwertextview"
+        android:id="@+id/registerEditTextIPAdres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_below="@+id/textView5"
-        android:layout_alignLeft="@+id/textView5"
-        android:layout_alignStart="@+id/textView5"
+        android:layout_below="@+id/registerTextViewSurname"
+        android:layout_alignLeft="@+id/registerTextViewSurname"
+        android:layout_alignStart="@+id/registerTextViewSurname"
         android:background="@color/color_background_input"
         />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/registerTextVierTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView1"
+        android:layout_alignLeft="@+id/registerTextViewLogin"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/TextView1"
+        android:layout_alignStart="@+id/registerTextViewLogin"
         android:layout_marginTop="12dp"
         android:text="@string/activity_register_text5"
         android:textSize="24sp" />
 
     <Button
-        android:id="@+id/button_Register"
+        android:id="@+id/registerButtonRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_register_text6"
@@ -160,19 +160,19 @@
         android:layout_marginLeft="20dp"
         android:text="Login jest już zajęty"
         android:textColor="@android:color/white"
-        android:layout_above="@+id/textView5"
+        android:layout_above="@+id/registerTextViewSurname"
         android:visibility="invisible"
 
-        android:layout_alignEnd="@+id/editText_Login" />
+        android:layout_alignEnd="@+id/registerEditTextLogin" />
 
     <TextView
         android:id="@+id/iperrortextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/warning_ico3"
-        android:layout_alignBottom="@+id/warning_ico3"
+        android:layout_alignBaseline="@+id/registerTextVIewErrorIPIco"
+        android:layout_alignBottom="@+id/registerTextVIewErrorIPIco"
         android:layout_marginStart="6dp"
-        android:layout_toEndOf="@+id/warning_ico3"
+        android:layout_toEndOf="@+id/registerTextVIewErrorIPIco"
         android:text="niepoprawny adres ip"
         android:visibility="invisible"
         android:textColor="@android:color/white" />
@@ -181,8 +181,8 @@
         android:id="@+id/passworderrortextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/warning_ico2"
-        android:layout_alignBottom="@+id/warning_ico2"
+        android:layout_alignBaseline="@+id/registerTextViewErrorPasswordIco"
+        android:layout_alignBottom="@+id/registerTextViewErrorPasswordIco"
         android:layout_alignEnd="@+id/editText5"
 
         android:text="Hasło niepoprawne"
@@ -190,7 +190,7 @@
         android:textColor="@android:color/white" />
 
     <TextView
-        android:id="@+id/warning_ico1"
+        android:id="@+id/registerTextViewErrorLoginIco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView12"
@@ -201,34 +201,34 @@
         android:text="&#xf071;" />
 
     <TextView
-        android:id="@+id/warning_ico2"
+        android:id="@+id/registerTextViewErrorPasswordIco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="&#xf071;"
         android:visibility="invisible"
 
-        android:layout_below="@+id/textView5"
-        android:layout_alignStart="@+id/warning_ico1" />
+        android:layout_below="@+id/registerTextViewSurname"
+        android:layout_alignStart="@+id/registerTextViewErrorLoginIco" />
 
     <TextView
-        android:id="@+id/warning_ico3"
+        android:id="@+id/registerTextVIewErrorIPIco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="&#xf071;"
         android:visibility="invisible"
 
         android:layout_marginEnd="7dp"
-        android:layout_above="@+id/button_Register"
-        android:layout_alignEnd="@+id/textView6" />
+        android:layout_above="@+id/registerButtonRegister"
+        android:layout_alignEnd="@+id/registerTextVierTitle" />
 
     <TextView
         android:id="@+id/textView38"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adres serwera"
-        android:layout_alignBaseline="@+id/warning_ico3"
-        android:layout_alignBottom="@+id/warning_ico3"
-        android:layout_alignStart="@+id/editText_Password2" />
+        android:layout_alignBaseline="@+id/registerTextVIewErrorIPIco"
+        android:layout_alignBottom="@+id/registerTextVIewErrorIPIco"
+        android:layout_alignStart="@+id/registerEditTextPassword" />
 
     <TextView
         android:id="@+id/p"

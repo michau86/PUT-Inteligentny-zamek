@@ -13,16 +13,15 @@ import java.util.LinkedHashMap
 
 class MainModel(val user: User)
 {
-    public var Keys: LinkedHashMap<Int, Certyficat>?=LinkedHashMap()
-    public var resultsMap: LinkedHashMap<String, String>?=null
-    public var listItems: MutableList<HashMap<String, String>>?= ArrayList()
+    var Keys: LinkedHashMap<Int, Certyficat>?=LinkedHashMap()
+    var listItems: MutableList<HashMap<String, String>>?= ArrayList()
     var position:Int=0
     var i: Byte=0
     var cs: CharSequence=""
     fun putKeys(context:Context, cs:CharSequence) {
         Keys=LinkedHashMap()
         try {
-            var j:Int=0;
+            var j=0;
             for (i in 0 until user.getCertyficateList(context).size) {
                 if (user.getCertyficateList(context)[i].lockName.toLowerCase().contains(cs.toString().toLowerCase())
                         ||

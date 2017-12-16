@@ -1,225 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="inteligenty_zamek.app_ik.Views.RegisterActivity">
+    tools:context="inteligenty_zamek.app_ik.Views.RegisterActivity"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:id="@+id/registerLinearLayout"
+    >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp">
+    <TextView
+        android:id="@+id/registerTextViewErrorLoginIco"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/activity_register_text7"
+        android:visibility="invisible"
+        style="@style/_textViewErrorStyle"
+        />
 
 
     <TextView
-        android:id="@+id/TextView1"
+        android:id="@+id/registerTextViewLoginError"
+        style="@style/_textViewErrorStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/activity_register_text8"
+        android:visibility="invisible"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        />
+        </LinearLayout>
+    <TextView
+        android:id="@+id/registerTextViewLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
         android:text="@string/activity_register_text1"
-        android:layout_below="@+id/textView6"
-        android:layout_alignParentStart="true" />
+        style="@style/_textViewMediumstyle"
+
+        />
 
     <EditText
-        android:id="@+id/editText_Login"
-        android:layout_width="200dp"
+        android:id="@+id/registerEditTextLogin"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:background="@color/color_background_input"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        android:layout_below="@+id/TextView1"
-        android:layout_alignStart="@+id/TextView1"
-        android:layout_marginTop="13dp" />
+         />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/registerTextViewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText_Login"
-        android:layout_alignStart="@+id/editText_Login"
-        android:layout_below="@+id/editText_Login"
-        android:layout_marginTop="23dp"
-        android:text="@string/activity_register_text2" />
+        android:text="@string/activity_register_text2"
+       android:layout_marginTop="15dp"
+        style="@style/_textViewMediumstyle"
+        />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <EditText
-        android:id="@+id/editText_Password2"
-        android:layout_width="200dp"
+        android:id="@+id/registerEditTextPassword"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:background="@color/color_background_input"
-        android:ems="10"
         android:inputType="textPassword"
-        android:textSize="24sp"
-        android:layout_below="@+id/textView9"
-        android:layout_alignStart="@+id/editText_Password"
-        android:layout_marginTop="16dp" />
+        android:focusable="true"
+        />
 
-    <EditText
-        android:id="@+id/editText_Password"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_below="@+id/textView2"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="13dp"
-        android:background="@color/color_background_input"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/registerTextViewSeeIco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_register_text9"
+            style="@style/_textViewicStyle"
+            android:layout_alignTop="@+id/registerEditTextPassword"
+            android:layout_alignBottom="@+id/registerEditTextPassword"
+            android:layout_alignRight="@+id/registerEditTextPassword"
+            android:paddingRight="5dp"
+            />
+
+
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/registerTextViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
         android:text="@string/activity_register_text3"
-        android:layout_below="@+id/editText_Password2"
-        android:layout_alignStart="@+id/button_Register" />
+        android:layout_marginTop="15dp"
+        style="@style/_textViewMediumstyle"
+      />
 
     <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="wrap_content"
+        android:id="@+id/registerEditTextName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:background="@color/color_background_input"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        android:layout_below="@+id/textView4"
-        android:layout_alignStart="@+id/textView4"
-        android:layout_marginTop="12dp" />
+        />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/registerTextViewSurname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
         android:text="@string/activity_register_text4"
-        android:layout_below="@+id/editTextName"
-        android:layout_alignStart="@+id/editText_Password2" />
+        android:layout_marginTop="15dp"
+        style="@style/_textViewMediumstyle"
+    />
 
     <EditText
-        android:id="@+id/ipserwertextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:background="@color/color_background_input"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/warning_ico3"
-        android:layout_alignStart="@+id/editTextSurname" />
-
-    <EditText
-        android:id="@+id/editTextSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:background="@color/color_background_input"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        android:layout_below="@+id/textView5"
-        android:layout_alignStart="@+id/textView5"
-        android:layout_marginTop="12dp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView1"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/TextView1"
-        android:layout_marginTop="12dp"
-        android:text="@string/activity_register_text5"
-        android:textSize="24sp" />
+        android:id="@+id/registerEditTextSurname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/button_Register"
+        android:id="@+id/registerButtonRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/activity_register_text6"
-        android:layout_below="@+id/ipserwertextview"
-        android:layout_alignStart="@+id/ipserwertextview"
-        android:layout_marginTop="22dp" />
+        android:text="@string/activity_register_text6" />
 
     <TextView
-        android:id="@+id/loginerrortextview"
+        android:id="@+id/registerTextViewIPAdres"
+        style="@style/_textViewMediumstyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login jest już zajęty"
-        android:textColor="@android:color/white"
-        android:visibility="invisible"
-        android:layout_above="@+id/editText_Login"
-        android:layout_alignEnd="@+id/editText_Login" />
+        android:layout_marginTop="15dp"
+        android:text="@string/activity_register_text10" />
 
-    <TextView
-        android:id="@+id/iperrortextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="niepoprawny adres"
-        android:textColor="@android:color/white"
-        android:visibility="invisible"
-        android:layout_alignBaseline="@+id/warning_ico3"
-        android:layout_alignBottom="@+id/warning_ico3"
-        android:layout_centerHorizontal="true" />
+    <EditText
+        android:id="@+id/registerEditTextIPAdres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/passworderrorTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hasło niepoprawne"
-        android:textColor="@android:color/white"
-        android:visibility="invisible"
-        android:layout_above="@+id/editText_Password"
-        android:layout_alignEnd="@+id/loginerrortextview" />
+    <EditText
+        android:id="@+id/registerEditTextdefault"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
 
-    <TextView
-        android:id="@+id/warning_ico1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="&#xf071;"
-        android:visibility="invisible"
-        android:layout_above="@+id/editText_Login"
-        android:layout_toEndOf="@+id/textView5" />
 
-    <TextView
-        android:id="@+id/warning_ico2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="&#xf071;"
-        android:visibility="invisible"
-        android:layout_above="@+id/editText_Password"
-        android:layout_alignStart="@+id/warning_ico1" />
-
-    <TextView
-        android:id="@+id/warning_ico3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="&#xf071;"
-        android:visibility="invisible"
-        android:layout_alignBaseline="@+id/textView36"
-        android:layout_alignBottom="@+id/textView36"
-        android:layout_toStartOf="@+id/iperrortextview"
-        android:layout_marginEnd="6dp" />
-
-    <TextView
-        android:id="@+id/textView36"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textView9"
-        android:layout_below="@+id/editTextSurname"
-        android:layout_marginTop="14dp"
-        android:text="adres serwera" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Powtórz hasło"
-        android:layout_below="@+id/editText_Password"
-        android:layout_alignStart="@+id/editText_Password2" />
-
-</android.widget.RelativeLayout>
+</android.widget.LinearLayout>
+</ScrollView>
