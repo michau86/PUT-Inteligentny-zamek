@@ -1,9 +1,9 @@
 package inteligenty_zamek.app_ik.inWork
 
 import android.util.Base64
-import inteligenty_zamek.app_ik.API.CyptographyApi
-import inteligenty_zamek.app_ik.API.HTTPRequestAPI
-import inteligenty_zamek.app_ik.API.fileReadWriteApi
+import android.util.Log
+import inteligenty_zamek.app_ik.API.*
+import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 import org.json.JSONObject
 
 
@@ -14,8 +14,19 @@ class SetingsPresenter(val view: SetingsActivity)
 {
         val model= SetingsModel(view)
     init{
-        //TODO wypełnienie pól odnośćnie certyfikatu
+        updateCertyficat()
+    }
+    fun changeIP(ip:String)
+    {
+        val value = java.util.HashMap<EnumChoice, String>()
+        value.put(EnumChoice.ip,ip)
+        sharedPreferenceApi.set(view,value)
+    }
 
+    fun updateCertyficat()
+    {
+        val cert=GlobalContainer.getPublicKey(view)
+        view.updateCertyficat(cert.User_Name,cert.Issuer_name,cert.Validitiy_period,cert.Version,cert.Serial_number,cert.Hash_Algorithm,cert.Signature_Algorithm_Identifier,cert.PUBLIC_KEY)
     }
 
     fun changePassword(newPassword:String)
@@ -48,12 +59,11 @@ class SetingsPresenter(val view: SetingsActivity)
             val toSend: HashMap<String, String> = HashMap()
             toSend.put("login", model.login)
             toSend.put("token", model.token)
-            //TODO odczytanie starego certyfikatu
-            toSend.put("old_public_key", "do odczytanai z certyfikatu")
+            toSend.put("old_public_key", model.publicKey)
             toSend.put("new_public_key", newPublicKey)
 
             try {
-                HTTPRequestAPI(this, "http://" + model.ipAddres + ":8080/api/adreeeeeeeesss", "changeKeyResult", toSend).execute()
+                HTTPRequestAPI(this, "http://" + model.ipAddres + ":8080/api/replace_certificate/", "changeKeyResult", toSend).execute()
             } catch (e: Exception) {
             }
         }
@@ -61,9 +71,23 @@ class SetingsPresenter(val view: SetingsActivity)
 
     fun changeKeyResult(response:String)
     {
-        ///TODO jakas walidacja
-        fileReadWriteApi.writeToFile("klucz publiczny",view,"**"+model.login)
-        //TODO wypełenieni pól w certyfikacie
+        Log.i("HHHH","otrzymane dane")
+        Log.i("hhhh",response)
+
+        if (JSONObject(response).getString("data") != "empty") {
+            val arrJson = JSONObject(response).getJSONArray("data")
+            try {
+                fileReadWriteApi.writeToFile(
+                        arrJson.getJSONObject(0).toString(), view, "**" + model.login)
+                val value = java.util.HashMap<EnumChoice, String>()
+                value.put(EnumChoice.publicKey, arrJson.toString(1))
+                sharedPreferenceApi.set(view, value)
+            } catch (e: Exception) {
+            }
+        }
+
+        GlobalContainer.publicKeyReset()
+        updateCertyficat()
     }
 
 

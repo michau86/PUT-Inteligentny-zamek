@@ -6,6 +6,7 @@ import android.os.CountDownTimer
 import android.view.Gravity
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 
 import com.tooltip.Tooltip
@@ -62,16 +63,48 @@ class SetingsActivity : BaseActivity() {
             }
         }
 
-
         val change_Key = findViewById(R.id.buttonChangeKey) as Button
-        change_passwd.setOnClickListener {
-
+        change_Key.setOnClickListener {
         presenter.changeKey()
         }
 
+        val ipET=findViewById(R.id.settingsEditTextIP) as EditText
+        ipET.setText(presenter.model.ipAddres)
+
+        val ipbuton = findViewById(R.id.settingsButtonChangeIP) as Button
+        ipbuton.setOnClickListener{
+            presenter.changeIP(ipET.text.toString())
+        }
 
 
+    }
 
+    fun updateCertyficat(row1:String,row2:String,row3:String,row4:String,row5:String,row6:String,row7:String,row8:String)
+    {
+        var value =findViewById(R.id.settingsTableRow1) as TextView
+        value.setText(row1)
+
+        value =findViewById(R.id.settingsTableRow2) as TextView
+        value.setText(row2)
+
+
+        value =findViewById(R.id.settingsTableRow3) as TextView
+        value.setText(row3)
+
+        value =findViewById(R.id.settingsTableRow4) as TextView
+        value.setText(row4)
+
+        value =findViewById(R.id.settingsTableRow5) as TextView
+        value.setText(row5)
+
+        value =findViewById(R.id.settingsTableRow6) as TextView
+        value.setText(row6)
+
+        value =findViewById(R.id.settingsTableRow7) as TextView
+        value.setText(row7)
+
+        value =findViewById(R.id.settingsTableRow8) as TextView
+        value.setText(row8)
     }
 
     fun showMessage(message:String)

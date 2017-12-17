@@ -10,6 +10,7 @@ import com.google.gson.JsonParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.security.KeyFactory;
 import java.security.PrivateKey;
@@ -56,11 +57,22 @@ public final class GlobalContainer {
         {
             publickkey= fileReadWriteApi.readFromFile("**" + sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.login),context);
         }
+        String val="";
+        try {
+            JSONArray ob = new JSONArray(publickkey);
+            val=ob.getJSONObject(0).toString();
+        }catch(Exception ex){}
+
         JsonParser parser = new JsonParser();
-        JsonElement mJson =  parser.parse(publickkey);
+        JsonElement mJson =  parser.parse(val);
         Gson gson = new Gson();
         publicKey=gson.fromJson(mJson, PublicKey.class);
         return publicKey;
+    }
+
+    public static void publicKeyReset()
+    {
+publicKey=null;
     }
 
     public static void setDay(int day,ArrayList<String> value)
