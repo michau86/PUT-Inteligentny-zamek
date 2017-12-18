@@ -13,13 +13,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
             android:text="@string/activity_user_Certyfikation_List1"
-            android:textSize="30sp" />
+            style="@style/_textViewBigstyle" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,26 +28,18 @@
 
             <EditText
                 android:id="@+id/editText_Search"
-                android:layout_width="200dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
                 android:hint="@string/activity_main_text2"
                 android:textColor="@color/color_text_ico"
-                android:textSize="14sp" />
-
-            <SearchView
-                android:id="@+id/searchView"
-                android:layout_width="25dp"
-                android:layout_height="match_parent" />
+                style="@style/_editTextStyle" />
 
             <TextView
                 android:id="@+id/textView_sorting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:text="@string/activity_main_text3"
                 android:textColor="@color/color_text_ico" />
 
@@ -56,16 +47,14 @@
                 android:id="@+id/TextView_sortingIco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:text="@string/icon_SortingAsc" />
 
         </LinearLayout>
 
         <View
-            android:id="@+id/view8"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_alignParentTop="true"
             android:layout_marginTop="20dp"
             android:background="@color/color_border_list" />
 
@@ -76,10 +65,8 @@
             android:background="@color/color_background_list" />
 
         <View
-            android:id="@+id/view9"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_alignParentTop="true"
             android:background="@color/color_border_list" />
 
     </LinearLayout>

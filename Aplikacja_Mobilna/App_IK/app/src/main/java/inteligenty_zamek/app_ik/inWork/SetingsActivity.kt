@@ -1,23 +1,32 @@
 package inteligenty_zamek.app_ik.inWork
 
+import android.content.Intent
 import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.Typeface
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.support.v4.content.ContextCompat
+import android.support.v4.content.res.ResourcesCompat
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.Gravity
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-
 import com.tooltip.Tooltip
 import inteligenty_zamek.app_ik.API.Valdiation
-
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
+import inteligenty_zamek.app_ik.Views.MainActivity
 
 
 class SetingsActivity : BaseActivity() {
 
+    private var originalDrawable:Drawable ?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,12 +34,12 @@ class SetingsActivity : BaseActivity() {
         val navMenuTitles = resources.getStringArray(R.array.nav_drawer_items)
         val navMenuIcons = resources.obtainTypedArray(R.array.nav_drawer_icons)
         set(navMenuTitles, navMenuIcons)
-
         val presenter= SetingsPresenter(this)
-        val change_passwd = findViewById(R.id.button_password_user) as Button
+
+        val change_passwd = findViewById(R.id.settingsButtonChangePassword) as Button
         change_passwd.setOnClickListener {
-            val passwd = findViewById(R.id.editText3) as EditText
-            val new_passwd = findViewById(R.id.editText6) as EditText
+            val passwd = findViewById(R.id.settingsEditTextPassword) as EditText
+            val new_passwd = findViewById(R.id.settingsEditTextNewPassword) as EditText
             if (passwd.text.toString() != "" && new_passwd.text.toString() != "") {
                 if (Valdiation.isCorrectPassword(passwd.text.toString()) && Valdiation.isCorrectPassword(new_passwd.text.toString()))
                 {
@@ -47,6 +56,12 @@ class SetingsActivity : BaseActivity() {
                                 .setGravity(Gravity.TOP)
                                 .setCornerRadius(8f)
                                 .show()
+                        val editText = findViewById(R.id.settingsEditTextPassword) as EditText
+                        val drawable: Drawable = editText.getBackground(); // get current EditText drawable
+                        drawable.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
+                        editText.setBackground(drawable);
+
+
                     } else {
                         val tooltip = Tooltip.Builder(new_passwd)
                                 .setText("hasło musi spełniać warunki:\n-długość minimum 8 znaków\n-posiadać duzy znak\n-posiadać znak specjalny (!@#$%^)\nposiadać cyfrę\n ")
@@ -56,6 +71,11 @@ class SetingsActivity : BaseActivity() {
                                 .setGravity(Gravity.TOP)
                                 .setCornerRadius(8f)
                                 .show()
+
+                        val editText = findViewById(R.id.settingsEditTextNewPassword) as EditText
+                        val drawable: Drawable = editText.getBackground(); // get current EditText drawable
+                        drawable.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
+                        editText.setBackground(drawable);
                     }
                 }
             } else {
@@ -63,7 +83,7 @@ class SetingsActivity : BaseActivity() {
             }
         }
 
-        val change_Key = findViewById(R.id.buttonChangeKey) as Button
+        val change_Key = findViewById(R.id.settingsButtonChangeKey) as Button
         change_Key.setOnClickListener {
         presenter.changeKey()
         }
@@ -76,6 +96,87 @@ class SetingsActivity : BaseActivity() {
             presenter.changeIP(ipET.text.toString())
         }
 
+        val password=findViewById(R.id.settingsEditTextNewPassword) as EditText
+        originalDrawable = password.getBackground();
+        password.setOnClickListener(View.OnClickListener {
+            setTooltip(password)
+        })
+        password.setOnFocusChangeListener(View.OnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                setTooltip(password)
+            }
+        })
+
+        val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
+
+
+
+        val eyeOldPassword = this.findViewById(R.id.settingsTextViewSeeIcoOldPassword) as TextView
+        eyeOldPassword.typeface = fontFamily
+        eyeOldPassword.setOnClickListener {
+            if(eyeOldPassword.text.toString().equals("\uf06e"))
+            {
+                eyeOldPassword.text="\uf070"
+                eyeOldPassword.typeface = fontFamily
+                val et=findViewById(R.id.settingsEditTextPassword) as EditText
+                et.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+            else
+            {
+                eyeOldPassword.text="\uf06e"
+                eyeOldPassword.typeface = fontFamily
+
+                val et=findViewById(R.id.settingsEditTextPassword) as EditText
+                et.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+        }
+
+        val eyeNewPassword = this.findViewById(R.id.settingsTextViewSeeIcoNewPassword) as TextView
+        eyeNewPassword.typeface = fontFamily
+        eyeNewPassword.setOnClickListener {
+            if(eyeNewPassword.text.toString().equals("\uf06e"))
+            {
+                eyeNewPassword.text="\uf070"
+                eyeNewPassword.typeface = fontFamily
+                val et=findViewById(R.id.settingsEditTextNewPassword) as EditText
+                et.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+            else
+            {
+                eyeNewPassword.text="\uf06e"
+                eyeNewPassword.typeface = fontFamily
+
+                val et=findViewById(R.id.settingsEditTextNewPassword) as EditText
+                et.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+        }
+
+
+
+        ipET.setOnClickListener(View.OnClickListener {
+            ipET.getBackground().setColorFilter(ResourcesCompat.getColor(getResources(),
+                    R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP)
+        })
+        ipET.setOnFocusChangeListener(View.OnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                ipET.getBackground().setColorFilter(ResourcesCompat.getColor(getResources(),
+                        R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP)
+            }
+        })
+
+
+    }
+
+    fun showErrorIp()
+    {
+        val editText = findViewById(R.id.settingsEditTextIP) as EditText
+        val drawable: Drawable = editText.getBackground();
+        drawable.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
+        editText.setBackground(drawable);
+    }
+
+    fun showErrorNewPassword()
+    {
 
     }
 
@@ -121,7 +222,27 @@ class SetingsActivity : BaseActivity() {
             }
         }.start()
     }
-    override fun onBackPressed() {}
 
+    override fun onBackPressed()
+    {
+        val intent = Intent(this, MainActivity::class.java)
+       this.startActivity(intent)
+    }
+
+    fun setTooltip(password:EditText)
+    {
+        originalDrawable!!.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
+
+        Tooltip.Builder(password)
+                .setText("hasło musi spełniać warunki:\n-długość minimum 8 znaków" +
+                        "\n-posiadać duzy znak\n-posiadać znak specjalny (!@#$%^)\nposiadać cyfrę\n ")
+                .setTextColor(Color.WHITE)
+                .setBackgroundColor(ContextCompat.getColor(this, R.color.color_background_list))
+                .setCancelable(true)
+                .setGravity(Gravity.BOTTOM)
+                .setCornerRadius(8f)
+                .setPadding(20f)
+                .show()
+    }
 
 }

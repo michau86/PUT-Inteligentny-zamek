@@ -21,48 +21,85 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Zmień hasło"
+        android:text="@string/activity_settings1"
         style="@style/_textViewBigstyle" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="stare hasło"
+        android:text="@string/activity_settings2"
         style="@style/_textViewMediumstyle"
         />
 
-    <EditText
-        android:id="@+id/editText3"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword" />
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/settingsEditTextPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/settingsTextViewSeeIcoOldPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_register_text9"
+            style="@style/_textViewicStyle"
+            android:layout_alignTop="@+id/settingsEditTextPassword"
+            android:layout_alignBottom="@+id/settingsEditTextPassword"
+            android:layout_alignRight="@+id/settingsEditTextPassword"
+            android:paddingRight="5dp"
+            />
+
+
+    </RelativeLayout>
+
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="nowe hasło"
+        android:text="@string/activity_settings3"
         style="@style/_textViewMediumstyle"
         />
 
-    <EditText
-        android:id="@+id/editText6"
+    <RelativeLayout
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/settingsEditTextNewPassword"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword" />
 
+        <TextView
+            android:id="@+id/settingsTextViewSeeIcoNewPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_register_text9"
+            style="@style/_textViewicStyle"
+            android:layout_alignTop="@+id/settingsEditTextNewPassword"
+            android:layout_alignBottom="@+id/settingsEditTextNewPassword"
+            android:layout_alignRight="@+id/settingsEditTextNewPassword"
+            android:paddingRight="5dp"
+            />
+    </RelativeLayout>
+
     <Button
-        android:id="@+id/button_password_user"
+        android:id="@+id/settingsButtonChangePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="zmień"
+        android:text="@string/activity_settings4"
         android:layout_marginTop="10dp"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
         android:background="@color/color_border_list" />
 
@@ -71,7 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         style="@style/_textViewBigstyle"
-        android:text="Certyfikat klucza prywatnego"
+        android:text="@string/activity_settings5"
         />
 
 
@@ -83,13 +120,12 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
-                android:text="nazwa właściciela"
+                android:text="@string/activity_settings6"
                 android:padding="5dip" />
             <TextView
                 android:text=""
-                android:gravity=""
-                android:paddingLeft="15dp"
-                android:paddingRight="5dip"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
                 android:id="@+id/settingsTableRow1"
                 android:layout_height="wrap_content"
                 />
@@ -97,13 +133,12 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
-                android:text="nazwa emitenta"
+                android:text="@string/activity_settings7"
                 android:padding="5dip" />
             <TextView
                 android:text=""
-                android:gravity=""
-                android:paddingLeft="15dp"
-                android:paddingRight="5dip"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
                 android:id="@+id/settingsTableRow2"
                 android:layout_height="wrap_content"
                 />
@@ -111,13 +146,13 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
-                android:text="okres ważnośći"
+                android:text="@string/activity_settings8"
                 android:padding="5dip" />
             <TextView
                 android:text=""
                 android:gravity=""
-                android:paddingLeft="15dp"
-                android:paddingRight="5dip"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
                 android:id="@+id/settingsTableRow3"
                 android:layout_height="wrap_content"
                 />
@@ -125,13 +160,13 @@
         <TableRow>
             <TextView
             android:layout_column="1"
-            android:text="wersja"
+            android:text="@string/activity_settings10"
             android:padding="5dip" />
             <TextView
                 android:text=""
                 android:gravity=""
-                android:paddingLeft="15dp"
-                android:paddingRight="5dip"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
                 android:id="@+id/settingsTableRow4"
                 android:layout_height="wrap_content"
                 />
@@ -140,13 +175,13 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
-                android:text="numer seryjny"
+                android:text="@string/activity_settings11"
                 android:padding="5dip" />
             <TextView
                 android:text=""
                 android:gravity=""
-                android:paddingLeft="15dp"
-                android:paddingRight="5dip"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
                 android:id="@+id/settingsTableRow5"
                 android:layout_height="wrap_content"
                 />
@@ -154,13 +189,13 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
-                android:text="Algorytm Hashujący"
+                android:text="@string/activity_settings12"
                 android:padding="5dip" />
             <TextView
                 android:text=""
                 android:gravity=""
-                android:paddingLeft="15dp"
-                android:paddingRight="5dip"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
                 android:id="@+id/settingsTableRow6"
                 android:layout_height="wrap_content"
                 />
@@ -168,13 +203,13 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
-                android:text="Algorytm sygnatury"
+                android:text="@string/activity_settings13"
                 android:padding="5dip" />
             <TextView
                 android:text=""
                 android:gravity=""
-                android:paddingLeft="15dp"
-                android:paddingRight="5dip"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
                 android:id="@+id/settingsTableRow7"
                 android:layout_height="wrap_content"
                 />
@@ -182,13 +217,13 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
-                android:text="klucz publiczny"
+                android:text="@string/activity_settings14"
                 android:padding="5dip" />
             <TextView
                 android:text=""
                 android:gravity=""
-                android:paddingLeft="15dp"
-                android:paddingRight="5dip"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
                 android:id="@+id/settingsTableRow8"
                 android:layout_height="wrap_content"
                 />
@@ -197,10 +232,10 @@
     </TableLayout>
 
     <Button
-        android:id="@+id/buttonChangeKey"
+        android:id="@+id/settingsButtonChangeKey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="wygeneruj nowy klucz prywatny" />
+        android:text="@string/activity_settings15" />
 
     <View
         android:layout_width="match_parent"
@@ -213,7 +248,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         style="@style/_textViewBigstyle"
-        android:text="Adres IP serwera"
+        android:text="@string/activity_settings16"
         />
 
     <EditText
@@ -227,7 +262,7 @@
         android:id="@+id/settingsButtonChangeIP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="zmień"
+        android:text="@string/activity_settings17"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"/>
 

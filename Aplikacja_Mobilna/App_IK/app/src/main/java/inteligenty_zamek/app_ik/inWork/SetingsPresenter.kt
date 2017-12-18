@@ -18,6 +18,12 @@ class SetingsPresenter(val view: SetingsActivity)
     }
     fun changeIP(ip:String)
     {
+        if(!Valdiation.isCorrectIP(ip))
+        {
+          view.showErrorIp()
+            return;
+        }
+
         val value = java.util.HashMap<EnumChoice, String>()
         value.put(EnumChoice.ip,ip)
         sharedPreferenceApi.set(view,value)
@@ -31,6 +37,11 @@ class SetingsPresenter(val view: SetingsActivity)
 
     fun changePassword(newPassword:String)
     {
+
+        if(!Valdiation.isCorrectPassword(newPassword))
+        {
+         return
+        }
         val passwd_hash = CyptographyApi.bin2hex(CyptographyApi.getHash("haslo"))
         val new_passwd_hash= CyptographyApi.bin2hex(CyptographyApi.getHash(newPassword))
 

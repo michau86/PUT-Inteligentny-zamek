@@ -9,36 +9,39 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/_textViewBigstyle"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
-        android:text="Certyfikaty"
-        android:textSize="25sp" />
+        android:text="@string/activity_managmentCertyfication5"
+
+        android:paddingStart="20dp"
+
+        />
 
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentTop="true"
         android:background="@color/color_border_list" />
 
     <TextView
-        android:id="@+id/textView16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/_textViewBigstyle"
         android:background="@color/color_background_list"
         android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
         android:paddingTop="10dp"
-        android:text="Dodaj certyfikat"
-        android:textSize="25sp" />
+        android:text="@string/activity_managmentCertyfication6"
+
+        android:paddingStart="20dp"
+        />
 
 
     <LinearLayout
@@ -50,43 +53,45 @@
 
         <TextView
             android:id="@+id/TextView_download_file"
+            style="@style/_textViewBigstyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:paddingLeft="50dp"
+            android:paddingStart="20dp"
             android:text="@string/icon_download_file"
-            android:textSize="20sp" />
+            />
 
         <TextView
             android:id="@+id/TextView_download_serwer"
+            style="@style/_textViewBigstyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:paddingLeft="100dp"
+            android:focusable="true"
+            android:paddingStart="100dp"
             android:text="@string/icon_download_serwer"
-            android:textSize="20sp" />
+             />
     </LinearLayout>
 
     <View
-        android:id="@+id/view7"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentTop="true"
         android:background="@color/color_border_list" />
 
     <ListView
-        android:id="@+id/ListView_Managment_Certyfivation"
+        android:id="@+id/managmentCertyficationListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/color_background_list"
         android:dividerHeight="1dp"
         android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false" />
+        android:headerDividersEnabled="false"
+
+        />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentTop="true"
         android:background="@color/color_border_list" />
 
 

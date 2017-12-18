@@ -38,13 +38,13 @@ class RegisterActivity : Activity() {
         presenter= RegisterPresenter(this)
 
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
-        var sampleText = this.findViewById(R.id.registerTextViewErrorLoginIco) as TextView
         val login = findViewById(R.id.registerEditTextLogin) as EditText
         val name = findViewById(R.id.registerEditTextName) as EditText
         val surname = findViewById(R.id.registerEditTextSurname) as EditText
         val ipserwer = findViewById(R.id.registerEditTextIPAdres) as EditText
         val password = findViewById(R.id.registerEditTextPassword) as EditText
 
+        var sampleText = this.findViewById(R.id.registerTextViewErrorLoginIco) as TextView
         sampleText.typeface = fontFamily
         sampleText = this.findViewById(R.id.registerTextViewSeeIco) as TextView
         sampleText.typeface = fontFamily
