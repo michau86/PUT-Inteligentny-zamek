@@ -34,9 +34,9 @@ class userCertyfikationListActivity : BaseActivity() {
         set(navMenuTitles, navMenuIcons)
 
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
-        val sampleText = this.findViewById(R.id.TextView_sortingIco) as TextView
+        val sampleText = this.findViewById(R.id.userCertyficationListTextViewSortingIco) as TextView
         sampleText.setTypeface(fontFamily)
-        resultsListView = this.findViewById(R.id.listView_userCertyfication) as ListView
+        resultsListView = this.findViewById(R.id.userCertyficationListListViewUserCertyfication) as ListView
         presenter = userCertyfikationListPresenter(this)
         //initKey
 
@@ -58,7 +58,7 @@ class userCertyfikationListActivity : BaseActivity() {
             }
         })
 
-        val inputSearch = findViewById(R.id.editText_Search) as EditText
+        val inputSearch = findViewById(R.id.userCertyficationListEditTextSearch) as EditText
         inputSearch.addTextChangedListener(object : TextWatcher {
             override
             fun onTextChanged(cs: CharSequence, arg1: Int, arg2: Int, arg3: Int) {
@@ -88,7 +88,7 @@ class userCertyfikationListActivity : BaseActivity() {
 
 
         //przycisk dopowiedzialny za sortowanie
-        val textView = findViewById(R.id.TextView_sortingIco) as TextView
+        val textView = findViewById(R.id.userCertyficationListTextViewSortingIco) as TextView
         textView.setOnClickListener(object : View.OnClickListener {
             override
             fun onClick(viewIn: View) {
