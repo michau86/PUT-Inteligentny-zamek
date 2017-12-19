@@ -1,4 +1,5 @@
 package inteligenty_zamek.app_ik.Views
+import android.content.Intent
 import android.content.res.TypedArray
 import android.graphics.Typeface
 import android.os.Bundle
@@ -19,8 +20,7 @@ class Admin_PanelActivity : BaseActivity() {
         navMenuTitles = resources.getStringArray(R.array.nav_drawer_items)
         navMenuIcons = resources.obtainTypedArray(R.array.nav_drawer_icons)
         set(navMenuTitles, navMenuIcons)
-        val fontFamily = Typeface.createFromAsset(assets, "fonts/fontawesome.ttf")
-        val resultsListView = this.findViewById(R.id.ListView_Admin_Panel) as ListView
+        val resultsListView = this.findViewById(R.id.AdminPanelListViewAdminPanel) as ListView
         val presenter: AdminPanelPresenter=  AdminPanelPresenter(this)
 
 
@@ -34,7 +34,11 @@ class Admin_PanelActivity : BaseActivity() {
 
     }
 
-    override fun onBackPressed() {}
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        this.finish()
+    }
 
 
 }

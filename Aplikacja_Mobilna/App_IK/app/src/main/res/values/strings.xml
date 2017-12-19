@@ -33,7 +33,15 @@
     <string name="activity_managmentCertyfication4">wygeneruj certyfikat dla gościa</string>
     <string name="activity_managmentCertyfication5">Certyfikaty</string>
     <string name="activity_managmentCertyfication6">Dodaj certyfikat</string>
+    <string name="activity_managmentCertyfication7">Wgraj z pliku</string>
+    <string name="activity_managmentCertyfication8">Pobierz z serwera</string>
 
+
+    <!-- activity Certificate -->
+    <string name="activity_certificate1">Certyfikat</string>
+    <string name="activity_certificate2">Ważny w dniach:</string>
+    <string name="activity_certificate3">Usuń certyfikat</string>
+    <string name="activity_certificate4">Przedłuż certyfikat</string>
 
 
     <!-- activity Settings  -->

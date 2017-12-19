@@ -1,6 +1,7 @@
 package inteligenty_zamek.app_ik.Views
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Editable
@@ -114,4 +115,12 @@ class userCertyfikationListActivity : BaseActivity() {
         })
 
     }
+
+
+    override fun onBackPressed() {
+        val intent = Intent(this, Managment_certyficationActivity::class.java)
+        startActivity(intent)
+        this.finish()
+    }
+
 }

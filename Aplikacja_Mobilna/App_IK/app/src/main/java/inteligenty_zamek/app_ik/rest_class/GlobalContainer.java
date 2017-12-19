@@ -37,6 +37,16 @@ public final class GlobalContainer {
     private static Lock[] lockslist=null;
     private static User[] userlist=null;
     private static PublicKey publicKey=null;
+
+    public static Certyficat getCertitificate() {
+        return certitificate;
+    }
+
+    public static void setCertitificate(Certyficat certitificate) {
+        GlobalContainer.certitificate = certitificate;
+    }
+
+    private static Certyficat certitificate=null;
     //listy uzyskane z aktywnośći GenerateCertyficatRange i wykorzystywane w GenerateCertyficat
 
     public static ArrayList<String> mondayList;

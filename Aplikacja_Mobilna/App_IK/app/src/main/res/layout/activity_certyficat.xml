@@ -13,89 +13,92 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+
+        >
 
         <TextView
-            android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="20dp"
-            android:text="Certyfikat"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            style="@style/_textViewBigstyle"
+            android:text="@string/activity_certificate1"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+             />
 
         <View
-            android:id="@+id/view11"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_border_list"
+            />
+
+        <TextView
+            android:id="@+id/certificateTextViewExpiryData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/_textViewMediumstyle"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            />
+
+        <TextView
+            android:id="@+id/certificateTextViewInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/_textViewMediumstyle"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
             android:background="@color/color_border_list" />
 
         <TextView
-            android:id="@+id/textView20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="20dp"
-            android:text="Czas wygaśnięcia" />
+            style="@style/_textViewMediumstyle"
+            android:layout_marginTop="10dp"
+            android:text="@string/activity_certificate2"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+             />
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/certificateTextViewDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="20dp"
-            android:text="Klucz przypisany do użytkownika" />
+            style="@style/_textViewMediumstyle"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            />
 
         <View
-            android:id="@+id/view10"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp"
-            android:background="@color/color_border_list" />
-
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="20dp"
-            android:text="Dostępny w dniach:" />
-
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:text="Poniedziałek: 10-13 i 15-20" />
-
-        <View
-            android:id="@+id/view12"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp"
             android:background="@color/color_border_list" />
 
         <Button
-            android:id="@+id/delete_cert"
-            android:layout_width="200dp"
+            android:id="@+id/certificateButtonDelete"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Usuń certyfikat" />
+            android:layout_marginTop="10dp"
+            android:text="@string/activity_certificate3"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
 
         <Button
-            android:id="@+id/extend_cert"
-            android:layout_width="200dp"
+            android:id="@+id/certificateButtonExtend"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Przedłuż certyfikat" />
+            android:layout_marginTop="10dp"
+            android:text="@string/activity_certificate4"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
 
     </LinearLayout>
 

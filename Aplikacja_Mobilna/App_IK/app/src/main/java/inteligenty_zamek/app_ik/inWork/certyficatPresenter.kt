@@ -37,11 +37,11 @@ class certyficatPresenter(val view: certyficatActivity)
     }
     fun getCertyficatExpiryDateText():String
     {
-    return "czas wygasniecia: " + model.certyficat!!.to
+    return "czas wygasniecia: \n" + model.certyficat!!.to.replace("T","  ")
     }
     fun getCertyficatInfoText():String
     {
-        return  "klucz przypisany do użytkownika: " + model.certyficat!!.name + " " + model.certyficat!!.surname
+        return  "klucz przypisany do użytkownika: \n" + model.certyficat!!.name + " " + model.certyficat!!.surname
     }
     private fun deleteCertyficatFromFile()
     {
