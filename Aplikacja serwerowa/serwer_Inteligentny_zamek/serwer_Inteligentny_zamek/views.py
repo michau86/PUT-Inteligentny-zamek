@@ -30,7 +30,6 @@ def api_login(request):
 
         for x in key.split("\n")[1:-1]:
             token += x
-        # trzeba zapisac do BD
         try:
             cursor = db.cursor()
             cursor.execute("SELECT PASSWORD, IS_ADMIN, ISACTIVATED FROM USERS WHERE login='%s'" % username)
@@ -130,8 +129,6 @@ def api_replace_certificate(request):
             cursor = db.cursor()
             cursor.execute("SELECT TOKEN  FROM USERS WHERE login='%s'" % login)
             data = cursor.fetchone()[0]
-
-            # jezeli token jest poprawny to nastepuje wylogowanie
             if (data == token and token != None):
                 random_generator = Random.new().read
                 key = RSA.generate(1024, random_generator).publickey().exportKey()
@@ -310,6 +307,29 @@ def api_request_new_certificate(request):
                 cursor.execute(
                     "INSERT INTO WAIT_LOCKS_KEYS(ID_LOCK, ID_USER) VALUES ('%s',(SELECT ID_USER FROM USERS WHERE LOGIN='%s'))" % (
                         lock_id, login))
+                db.commit()
+                return JsonResponse({"status": "ok"})
+            else:
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
+
+
+@csrf_exempt
+def api_admin_block_certificate(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+        user_login = request.POST.get('user_login')
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN, IS_ADMIN FROM USERS WHERE login='%s'" % login)
+            data = cursor.fetchone()
+            for row in data:
+                token_db = row[0]
+                isadmin = row[1]
+            if (token_db == token and token != None and isadmin == 1):
+                cursor.execute("UPDATE USERS SET PUBLIC_KEY = NULL, Serial_number = NULL, Validitiy_period = NULL WHERE LOGIN = '%s' " % (user_login))
                 db.commit()
                 return JsonResponse({"status": "ok"})
             else:
@@ -596,99 +616,3 @@ def Check_access(day_access, time):
             if int(x[0]) <= int(time) < int(x[1]):
                 return True
     return False
-
-
-@csrf_exempt
-def api_generate_new_quest_certificate(request):
-    if request.method == 'POST':
-        login = request.POST.get('login')
-        token = request.POST.get('token')
-        lock_id = request.POST.get('lock_id')
-        guest_name = request.POST.get('guest_name')
-        guest_surname = request.POST.get('guest_surname')
-        from_date = request.POST.get('from_date')
-        period = request.POST.get('period')
-
-        try:
-            cursor = db.cursor()
-            cursor.execute("SELECT TOKEN, NAME, SURNAME, ID_USER, IS_ADMIN FROM USERS WHERE login='%s'" % login)
-            data_from_DB = cursor.fetchone()
-            token_db = data_from_DB[0]
-            id_user = data_from_DB[3]
-            is_admin = data_from_DB[4]
-            if (token_db == token and token != None):
-                cursor = db.cursor()
-                cursor.execute(
-                    "SELECT FROM_DATE, TO_DATE, ISACTUAL, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, IS_PERNAMENT FROM locks_keys WHERE ID_LOCK='%s' and ID_USER='%s'" % (
-                        lock_id, id_user))
-                certificate_actual = cursor.fetchone()
-                from_date_db = certificate_actual[0]
-                to_date_db = certificate_actual[1]
-                is_actual = certificate_actual[2]
-                access_table = [certificate_actual[3], certificate_actual[4], certificate_actual[5],
-                                certificate_actual[6], certificate_actual[7], certificate_actual[8],
-                                certificate_actual[9]]
-                is_pernament = certificate_actual[10]
-                if is_actual is not None or is_admin == 1:
-                    if is_pernament == 1 or is_admin == 1:
-                        random_generator = Random.new().read
-                        key = RSA.generate(1024, random_generator).publickey().exportKey()
-                        lock_key = ""
-                        for x in key.split("\n")[1:-1]:
-                            lock_key += x
-                        if period <= 5:
-                            period = period * 60
-                        to_date = (datetime.strptime(from_date, '%Y-%m-%dT%H:%M:%S') + dt.timedelta(
-                            minutes=period)).strftime('%Y-%m-%d %H:%M:%S')
-                        if datetime.strptime(from_date_db, '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(to_date,
-                                                                                                     '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(
-                                to_date_db, '%Y-%m-%dT%H:%M:%S') or is_admin == 1:
-                            record = [lock_id, 132, lock_key, datetime.now().strftime('%Y-%m-%d %H:%M:%S'), to_date, 1,
-                                      guest_name, guest_surname]
-                            cursor.execute(
-                                'INSERT INTO locks_keys (ID_LOCK, ID_USER, LOCK_KEY, FROM_DATE, TO_DATE, IS_PERNAMENT, NAME, SURNAME) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',
-                                record)
-                            db.commit()
-                            cursor.execute(
-                                "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE LOCK_KEY ='%s'" % lock_key)
-                            dict_certificate = [
-                                dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
-                                in cursor.fetchall()]
-                            if len(dict_certificate) == 0:
-                                return JsonResponse({"status": "ok", "data": ""})
-                            else:
-                                return JsonResponse({"status": "ok", "data": dict_certificate})
-                    else:
-                        random_generator = Random.new().read
-                        key = RSA.generate(1024, random_generator).publickey().exportKey()
-                        lock_key = ""
-                        for x in key.split("\n")[1:-1]:
-                            lock_key += x
-                        if period <= 5:
-                            period = period * 60
-                        to_date = (datetime.strptime(from_date, '%Y-%m-%dT%H:%M:%S') + dt.timedelta(
-                            minutes=period)).strftime('%Y-%m-%d %H:%M:%S')
-                        day_access = access_table[datetime.strptime(to_date, '%Y-%m-%dT%H:%M:%S').weekday()].split(";")
-                        to_date_time = int(to_date.strftime('%H'))
-                        if datetime.strptime(from_date_db, '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(to_date,
-                                                                                                     '%Y-%m-%dT%H:%M:%S') <= datetime.strptime(
-                                to_date_db, '%Y-%m-%dT%H:%M:%S') and Check_access(day_access, to_date_time):
-                            record = [lock_id, 132, lock_key, from_date, to_date, 1, guest_name, guest_surname]
-                            cursor.execute(
-                                'INSERT INTO locks_keys (ID_LOCK, ID_USER, LOCK_KEY, FROM_DATE, TO_DATE, IS_PERNAMENT, NAME, SURNAME) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',
-                                record)
-                            db.commit()
-                            cursor.execute(
-                                "SELECT LOCKS_KEYS.*, LOCKS.NAME AS LOCK_NAME, LOCKS.LOCALIZATION, MAC_ADDRESS FROM LOCKS_KEYS  RIGHT JOIN LOCKS  ON LOCKS.ID_LOCK=LOCKS_KEYS.ID_LOCK  WHERE LOCK_KEY ='%s'" % lock_key)
-                            dict_certificate = [
-                                dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
-                                in cursor.fetchall()]
-                            if len(dict_certificate) == 0:
-                                return JsonResponse({"status": "ok", "data": ""})
-                            else:
-                                return JsonResponse({"status": "ok", "data": dict_certificate})
-                return JsonResponse({"status": "denied"})
-            else:
-                return JsonResponse({"status": "invalid"})
-        except Exception:
-            return JsonResponse({"status": "Invalid"})

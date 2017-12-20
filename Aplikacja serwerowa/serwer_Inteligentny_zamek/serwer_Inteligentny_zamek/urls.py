@@ -10,7 +10,6 @@ urlpatterns = {
     url(r'^api/download/all_locks/$', views.api_download_all_locks, name='api_download_all_locks'),
     url(r'^api/deactivation/$', views.api_deactivation, name='api_deactivation'),
     url(r'^api/request_new_certificate/$', views.api_request_new_certificate, name='api_request_new_certificate'),
-    url(r'^api/generate_new_quest_certificate/$', views.api_generate_new_quest_certificate, name='api_generate_new_quest_certificate'),
     url(r'^api/admin/history/$', views.api_admin_history, name='api_admin_history'),
     url(r'^api/admin/generate_new_certificate/$', views.api_admin_generate_new_certificate, name='api_admin_generate_new_certificate'),
     url(r'^api/admin/download/all_certificate/$', views.api_admin_download_all_certificate, name='api_admin_download_all_certificate'),
