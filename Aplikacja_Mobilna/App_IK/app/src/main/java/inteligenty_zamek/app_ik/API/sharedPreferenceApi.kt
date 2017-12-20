@@ -13,7 +13,8 @@ enum class EnumChoice(val value:String)
 {
     ip("ipserwer"),password("password"),token("sessionToken"),
     login("login"),nameuser("name"),surname("surname"),
-    isLogin("isLogin"),isAdmin("isadmin"),choiceLogin("choiceLogin"),choiceLock("choiceLock")
+    isLogin("isLogin"),isAdmin("isadmin"),choiceLogin("choiceLogin"),choiceLock("choiceLock"),
+    publicKey("publicKey")
 }
 
 

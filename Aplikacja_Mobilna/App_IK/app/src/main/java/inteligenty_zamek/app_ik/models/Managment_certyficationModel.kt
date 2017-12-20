@@ -31,7 +31,6 @@ class Managment_certyficationModel(context:Context) {
 
     init{
         login=sharedPreferenceApi.getString(context, EnumChoice.login)
-        Log.i("HHHH",sharedPreferenceApi.getString(context,EnumChoice.token))
         token= CyptographyApi.decrypt( sharedPreferenceApi.getString(context,EnumChoice.token))
         ipaddres=sharedPreferenceApi.getString(context,EnumChoice.ip)
 

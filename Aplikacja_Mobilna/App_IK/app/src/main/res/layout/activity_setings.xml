@@ -6,200 +6,269 @@
     android:layout_height="match_parent" >
 
     <!-- The main content view -->
-
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+
 
     <TextView
-        android:id="@+id/TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
-        android:text="Ustawienia"
-        android:textSize="25sp" />
-
-    <View
-        android:id="@+id/view3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentTop="true"
-        android:background="@color/color_border_list" />
-
-    <TextView
-        android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:text="Zmień hasło"
-        android:textSize="18sp" />
+        android:text="@string/activity_settings1"
+        style="@style/_textViewBigstyle" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
-        android:text="stare hasło" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/color_background_input"
-        android:ems="10"
-        android:inputType="textPassword" />
-
-    <TextView
-        android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:text="nowe hasło" />
+        android:text="@string/activity_settings2"
+        style="@style/_textViewMediumstyle"
+        />
 
-    <EditText
-        android:id="@+id/editText6"
+    <RelativeLayout
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/settingsEditTextPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/settingsTextViewSeeIcoOldPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_register_text9"
+            style="@style/_textViewicStyle"
+            android:layout_alignTop="@+id/settingsEditTextPassword"
+            android:layout_alignBottom="@+id/settingsEditTextPassword"
+            android:layout_alignRight="@+id/settingsEditTextPassword"
+            android:paddingRight="5dp"
+            />
+
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/color_background_input"
-        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:text="@string/activity_settings3"
+        style="@style/_textViewMediumstyle"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/settingsEditTextNewPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/settingsTextViewSeeIcoNewPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_register_text9"
+            style="@style/_textViewicStyle"
+            android:layout_alignTop="@+id/settingsEditTextNewPassword"
+            android:layout_alignBottom="@+id/settingsEditTextNewPassword"
+            android:layout_alignRight="@+id/settingsEditTextNewPassword"
+            android:paddingRight="5dp"
+            />
+    </RelativeLayout>
 
     <Button
-        android:id="@+id/button_password_user"
+        android:id="@+id/settingsButtonChangePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        android:text="zmień" />
+        android:text="@string/activity_settings4"
+        android:layout_marginTop="10dp"/>
 
     <View
-        android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
         android:background="@color/color_border_list" />
 
     <TextView
-        android:id="@+id/textView13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
-        android:text="Certyfikat klucza prywatnego"
-        android:textSize="24sp" />
+        style="@style/_textViewBigstyle"
+        android:text="@string/activity_settings5"
+        />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20sp"
-        android:layout_marginTop="20sp"
-      >
-
-        <TextView
-            android:id="@+id/textView39"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20sp"
-            android:layout_weight="1"
-            android:text="Imie" />
-
-        <TextView
-            android:id="@+id/textView42"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="20sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20sp"
-        android:layout_marginTop="20sp">
-
-        <TextView
-            android:id="@+id/textView46"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Nazwisko" />
-
-        <TextView
-            android:id="@+id/textView50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20sp"
-        android:layout_marginTop="20sp">
-
-        <TextView
-            android:id="@+id/textView48"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Okres ważnośći" />
-
-        <TextView
-            android:id="@+id/textView52"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20sp"
-        android:layout_marginTop="20sp"
+        android:stretchColumns="1"
         >
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/activity_settings6"
+                android:padding="5dip" />
+            <TextView
+                android:text=""
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
+                android:id="@+id/settingsTableRow1"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/activity_settings7"
+                android:padding="5dip" />
+            <TextView
+                android:text=""
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
+                android:id="@+id/settingsTableRow2"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/activity_settings8"
+                android:padding="5dip" />
+            <TextView
+                android:text=""
+                android:gravity=""
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
+                android:id="@+id/settingsTableRow3"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+            android:layout_column="1"
+            android:text="@string/activity_settings10"
+            android:padding="5dip" />
+            <TextView
+                android:text=""
+                android:gravity=""
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
+                android:id="@+id/settingsTableRow4"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
 
-        <TextView
-            android:id="@+id/textView49"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Serial number" />
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/activity_settings11"
+                android:padding="5dip" />
+            <TextView
+                android:text=""
+                android:gravity=""
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
+                android:id="@+id/settingsTableRow5"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/activity_settings12"
+                android:padding="5dip" />
+            <TextView
+                android:text=""
+                android:gravity=""
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
+                android:id="@+id/settingsTableRow6"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/activity_settings13"
+                android:padding="5dip" />
+            <TextView
+                android:text=""
+                android:gravity=""
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
+                android:id="@+id/settingsTableRow7"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/activity_settings14"
+                android:padding="5dip" />
+            <TextView
+                android:text=""
+                android:gravity=""
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dip"
+                android:id="@+id/settingsTableRow8"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
 
-        <TextView
-            android:id="@+id/textView54"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-
-    </LinearLayout>
+    </TableLayout>
 
     <Button
-        android:id="@+id/buttonChangeKey"
+        android:id="@+id/settingsButtonChangeKey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:text="@string/activity_settings15" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:text="wygeneruj nowy klucz prywatny" />
+        android:background="@color/color_border_list" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        style="@style/_textViewBigstyle"
+        android:text="@string/activity_settings16"
+        />
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:id="@+id/settingsEditTextIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
+        android:id="@+id/settingsButtonChangeIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_settings17"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
 </LinearLayout>
 
-
+    </ScrollView>/
     <!-- The navigation drawer -->
 
     <ListView

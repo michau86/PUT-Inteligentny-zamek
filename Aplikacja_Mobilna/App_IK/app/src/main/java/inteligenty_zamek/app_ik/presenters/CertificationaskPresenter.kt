@@ -1,18 +1,15 @@
 package inteligenty_zamek.app_ik.presenters
 
-import android.widget.SimpleAdapter
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
 import inteligenty_zamek.app_ik.Views.CertificationaskActivity
 import inteligenty_zamek.app_ik.models.CertificationaskModel
 import org.json.JSONException
 import org.json.JSONObject
-import java.util.HashMap
+import java.util.*
 
-/**
- * Created by Damian on 2017-11-29.
- */
+
 class CertificationaskPresenter(val view: CertificationaskActivity) {
-    private val model: CertificationaskModel = CertificationaskModel(view)
+    val model: CertificationaskModel = CertificationaskModel(view)
 
     fun initActivity() {
         try {
@@ -29,13 +26,21 @@ class CertificationaskPresenter(val view: CertificationaskActivity) {
 
 
 
-    fun getAdapter(cs:CharSequence):SimpleAdapter
+    fun createValueToAdapter(cs:CharSequence)
     {
-        val a=model.returnAdapter(cs)
-        return a
+       model.createValueToAdapter(cs)
+    }
+
+    fun createValueToAdapter()
+    {
+        model.createValueToAdapter(model.cs)
     }
 
 
+fun sortArray()
+{
+    Collections.reverse(model.lockList!!)
+}
     fun sendRequest(position:Int)
     {
         val key_id = model.getKeyID(position)
@@ -52,15 +57,15 @@ class CertificationaskPresenter(val view: CertificationaskActivity) {
     // funkcje odpowiedzialne za obrobke danych otrzymanych  z HTTPrequestow
     fun initresult(result: String) {
         model.getjsonArrayOfLock(result)
+        model.lockList!!.sortedWith(compareBy( { it.name }))
         view.setCertyficats()
     }
 
     fun resultRequestCertyficat(result:String)
 {
-    var jObj: JSONObject? = null
     try {
-        jObj = JSONObject(result)
-        if (jObj.getString("status") == "ok") {
+
+        if (JSONObject(result).getString("status") == "ok") {
         view.showMessage("Wniosek został wysłany")
         } else {
             view.showMessage("Wystąpił problem podczas wysyłania certyfikatu")

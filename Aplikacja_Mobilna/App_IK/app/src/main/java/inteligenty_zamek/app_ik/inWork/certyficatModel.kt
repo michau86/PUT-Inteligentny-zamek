@@ -23,32 +23,32 @@ class certyficatModel(val view:Context, val position:Int)
         {certyficat=GlobalContainer.getUser(view).getCertyficateList(view)[position]}
         else
         {
-
+            certyficat=GlobalContainer.getCertitificate()
         }
     }
    fun getCertyficatText():String
    {
        var textValue = ""
        if (certyficat!!.monday != "null") {
-           textValue = textValue + "poniedziałek: " + certyficat!!.monday
+           textValue = textValue + "poniedziałek: " + certyficat!!.monday+"\n"
        }
        if (certyficat!!.tuesday != "null") {
-           textValue = textValue + "\nwtorek: " + certyficat!!.tuesday
+           textValue = textValue + "wtorek: " + certyficat!!.tuesday+"\n"
        }
        if (certyficat!!.wednesday != "null") {
-           textValue = textValue + "\nsroda: " + certyficat!!.wednesday
+           textValue = textValue + "sroda: " + certyficat!!.wednesday+"\n"
        }
        if (certyficat!!.thurstday != "null") {
-           textValue = textValue + "\nczwartek: " + certyficat!!.thurstday
+           textValue = textValue + "czwartek: " + certyficat!!.thurstday+"\n"
        }
        if (certyficat!!.friday != "null") {
-           textValue = textValue + "\npiatek: " + certyficat!!.friday
+           textValue = textValue + "piatek: " + certyficat!!.friday+"\n"
        }
        if (certyficat!!.saturday != "null") {
-           textValue = textValue + "\nsobota: " + certyficat!!.saturday
+           textValue = textValue + "sobota: " + certyficat!!.saturday+"\n"
        }
        if (certyficat!!.sunday != "null") {
-           textValue = textValue + "\nniedziela: " + certyficat!!.sunday
+           textValue = textValue + "niedziela: " + certyficat!!.sunday+"\n"
        }
        return textValue
    }

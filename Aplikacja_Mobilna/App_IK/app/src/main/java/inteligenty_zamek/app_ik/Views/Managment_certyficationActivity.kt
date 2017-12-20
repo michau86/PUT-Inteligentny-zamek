@@ -53,20 +53,16 @@ class Managment_certyficationActivity : BaseActivity() {
         navMenuIcons = resources.obtainTypedArray(R.array.nav_drawer_icons)
         set(navMenuTitles, navMenuIcons)
         presenter=Managment_certyficationPresenter(this)
-        //ustawienie fontu dla ikon pobierania z serwera oraz pobrania z telefonu
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
         val ico_download_serwer = this.findViewById(R.id.TextView_download_serwer) as TextView
         ico_download_serwer.typeface = fontFamily
         val ico_download_file = this.findViewById(R.id.TextView_download_file) as TextView
         ico_download_file.typeface = fontFamily
-        val resultsListView = this.findViewById(R.id.ListView_Managment_Certyfivation) as ListView
-        //////////////////////model
+        val resultsListView = this.findViewById(R.id.managmentCertyficationListView) as ListView
         if(presenter!!.isLogin()) {
-
             resultsListView.adapter = presenter!!.setAdapter()
-
             //wyszukanie listy oraz ustwaienie akcji dotyczacych klikniec na poszcegolne elementy
-            listView = findViewById(R.id.ListView_Managment_Certyfivation) as ListView
+            listView = findViewById(R.id.managmentCertyficationListView) as ListView
             listView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
                 presenter!!.getAnotherActivity(position)
             }
@@ -95,13 +91,25 @@ class Managment_certyficationActivity : BaseActivity() {
             ico_download_serwer.setText("");
         }
     }
-    //przeciazenie funkcji odpwoeidzialnrj za obrobke wskazanego pliku
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
 
     }
 
+    fun showMessage(message:String)
+    {
+        val toast = Toast.makeText(this, message, Toast.LENGTH_LONG)
+        toast.show()
+        object : CountDownTimer(GlobalContainer.toastDelay.toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                toast.show()
+            }
+            override fun onFinish() {
+                toast.show()
+            }
+        }.start()
+    }
 
     override fun onBackPressed() {
         val intent = Intent(this, MainActivity::class.java)

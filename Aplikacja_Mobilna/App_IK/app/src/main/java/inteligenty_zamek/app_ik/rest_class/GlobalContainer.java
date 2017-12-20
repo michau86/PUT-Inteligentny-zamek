@@ -4,8 +4,13 @@ import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.security.KeyFactory;
 import java.security.PrivateKey;
@@ -25,13 +30,25 @@ import inteligenty_zamek.app_ik.R;
 
 public final class GlobalContainer {
 
+    public static int toastDelay=2000;
     public static int menuSelectedNumber=0;
-    private static User user=null;
+    public static User user=null;
     private static PrivateKey privatekye=null;
-    public static Lock[] lockslist=null;
-    public static User[] userlist=null;
+    private static Lock[] lockslist=null;
+    private static User[] userlist=null;
+    private static PublicKey publicKey=null;
 
+    public static Certyficat getCertitificate() {
+        return certitificate;
+    }
+
+    public static void setCertitificate(Certyficat certitificate) {
+        GlobalContainer.certitificate = certitificate;
+    }
+
+    private static Certyficat certitificate=null;
     //listy uzyskane z aktywnośći GenerateCertyficatRange i wykorzystywane w GenerateCertyficat
+
     public static ArrayList<String> mondayList;
     public static ArrayList<String> tuesdayList;
     public static ArrayList<String> wednesdayList;
@@ -40,6 +57,33 @@ public final class GlobalContainer {
     public static ArrayList<String>  saturdayList;
     public static ArrayList<String> sundayList;
 
+
+    public static PublicKey getPublicKey(Context context)
+    {
+        if(publicKey!=null){return publicKey;}
+        String publickkey;
+        publickkey=sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.publicKey);
+        if(publickkey.equals(""))
+        {
+            publickkey= fileReadWriteApi.readFromFile("**" + sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.login),context);
+        }
+        String val="";
+        try {
+            JSONArray ob = new JSONArray(publickkey);
+            val=ob.getJSONObject(0).toString();
+        }catch(Exception ex){}
+
+        JsonParser parser = new JsonParser();
+        JsonElement mJson =  parser.parse(val);
+        Gson gson = new Gson();
+        publicKey=gson.fromJson(mJson, PublicKey.class);
+        return publicKey;
+    }
+
+    public static void publicKeyReset()
+    {
+publicKey=null;
+    }
 
     public static void setDay(int day,ArrayList<String> value)
     {
@@ -162,7 +206,6 @@ public final class GlobalContainer {
         return   fileReadWriteApi.readFromFile("**"+getUser(context).getLogin(), context);
     }
 
-    // czy my potrzebujemy?
     public static void loadDataFromSharedPreferences(Context context)
     {
         user=new User();
@@ -170,6 +213,8 @@ public final class GlobalContainer {
         try {
             user.setPassword(CyptographyApi.decrypt(sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.password)));
         }catch (Exception ex){}
+        user.setAdmin(sharedPreferenceApi.INSTANCE.getBoolean(context,EnumChoice.isAdmin));
+        user.setisLogin(sharedPreferenceApi.INSTANCE.getBoolean(context,EnumChoice.isAdmin));
     }
 
 }

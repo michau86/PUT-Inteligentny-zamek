@@ -36,8 +36,6 @@ public final class fileReadWriteApi {
         String ret = "";
 
         try {
-
-
             InputStream inputStream =  context.openFileInput(filepath);
 
             if ( inputStream != null ) {
@@ -45,11 +43,9 @@ public final class fileReadWriteApi {
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                 String receiveString = "";
                 StringBuilder stringBuilder = new StringBuilder();
-
                 while ( (receiveString = bufferedReader.readLine()) != null ) {
                     stringBuilder.append(receiveString);
                 }
-
                 inputStream.close();
                 ret = stringBuilder.toString();
             }

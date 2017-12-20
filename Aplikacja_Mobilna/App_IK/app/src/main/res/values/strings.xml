@@ -19,10 +19,11 @@
 
     <!-- activity_main  -->
     <string name="icon_SortingAsc">&#xf160;</string>
+
     <string name="acivity_main_text1">Lista dostępnych zamków do otwarcia</string>
     <string name="activity_main_text2">wyszukaj...</string>
     <string name="activity_main_text3">sortuj</string>
-
+    <string name="title_activity_main">MainActivity</string>
     <!-- activity managment certyfication  -->
     <string name="icon_download_serwer">&#xf0ed;</string>
     <string name="icon_download_file">&#xf15b;</string>
@@ -30,6 +31,36 @@
     <string name="activity_managmentCertyfication2">Lista twoich certyfikatów</string>
     <string name="activity_managmentCertyfication3">wnioskuj o certyfikat</string>
     <string name="activity_managmentCertyfication4">wygeneruj certyfikat dla gościa</string>
+    <string name="activity_managmentCertyfication5">Certyfikaty</string>
+    <string name="activity_managmentCertyfication6">Dodaj certyfikat</string>
+    <string name="activity_managmentCertyfication7">Wgraj z pliku</string>
+    <string name="activity_managmentCertyfication8">Pobierz z serwera</string>
+
+
+    <!-- activity Certificate -->
+    <string name="activity_certificate1">Certyfikat</string>
+    <string name="activity_certificate2">Ważny w dniach:</string>
+    <string name="activity_certificate3">Usuń certyfikat</string>
+    <string name="activity_certificate4">Przedłuż certyfikat</string>
+
+
+    <!-- activity Settings  -->
+    <string name="activity_settings1">Zmień hasło</string>
+    <string name="activity_settings2">stare hasło</string>
+    <string name="activity_settings3">nowe hasło</string>
+    <string name="activity_settings4">zmień</string>
+    <string name="activity_settings5">Certyfikat klucza prywatnego</string>
+    <string name="activity_settings6">nazwa właściciela</string>
+    <string name="activity_settings7">nazwa emitenta</string>
+    <string name="activity_settings8">okres ważnośći</string>
+    <string name="activity_settings10">wersja</string>
+    <string name="activity_settings11">numer seryjny</string>
+    <string name="activity_settings12">Algorytm Hashujący</string>
+    <string name="activity_settings13">Algorytm sygnatury</string>
+    <string name="activity_settings14">klucz publiczny</string>
+    <string name="activity_settings15">wygeneruj nowy klucz prywatny</string>
+    <string name="activity_settings16">Adres IP serwera</string>
+    <string name="activity_settings17">zmień</string>
 
 
     <!-- activity_login   -->
@@ -39,7 +70,10 @@
     <string name="activity_login_text4">Jeśli nie posiadasz konta zarejestruj się lub przejdź do trybu gościa</string>
     <string name="activity_login_text5">Zarejestruj się</string>
     <string name="activity_login_text6">Gość</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="activity_login_text7">&#xf071;</string>
+    <string name="activity_login_text8">Błędny login lub hasło</string>
+    <string name="activity_login_text9">Adres serwera</string>
+
 
     <!-- activity_register   -->
     <string name="activity_register_text1">Login</string>
@@ -48,6 +82,13 @@
     <string name="activity_register_text4">Nazwisko</string>
     <string name="activity_register_text5">Rejestracja</string>
     <string name="activity_register_text6">Zarejestruj</string>
+    <string name="activity_register_text7">&#xf071;</string>
+    <string name="activity_register_text8">Popraw czerwone pola</string>
+    <string name="activity_register_text9">&#xf06e;</string>
+    <string name="activity_register_text10">adres serwera</string>
+
+
+
 
     <!-- activity admin panel  -->
     <string name="activity_admin_panel1">Historia użycia zamków</string>

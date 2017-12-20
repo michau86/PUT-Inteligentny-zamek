@@ -1,12 +1,79 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Base application theme.
 
     <style name="AppTheme" parent="Theme.AppCompat">
-        <!-- Customize your theme here. -->
+
         <item name="colorPrimary">#2196F3</item>
         <item name="colorPrimaryDark">#1565C0</item>
         <item name="colorAccent">#E91E63</item>
     </style>
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat"/>
+    <style name="AppTheme" parent="AppBaseTheme" >
+
+        <item name="android:colorPrimary">@color/color_primary</item>
+    </style>
+
+    -->
+
+
+
+
+    <style name="AppTheme" parent="android:Theme.Material">
+        <item name="android:buttonStyle">@style/_buttonStyle</item>
+        <item name="android:editTextStyle">@style/_editTextStyle</item>
+    </style>
+
+    <style name="_buttonStyle" parent="android:Widget.Material.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:width">200dp</item>
+    </style>
+    <style name="_editTextStyle" parent="android:Widget.Material.EditText">
+        <item name="android:textSize">15sp</item>
+        <item name="android:minWidth">250dp</item>
+        <item name="android:backgroundTint">@color/inpuLneColor</item>
+        <item name="android:width">2dp</item>
+    </style>
+
+    <style name="_textViewMediumstyle" parent="android:Widget.Material.TextView">
+        <item name="android:textSize">15sp</item>
+        <item name="android:padding">5dp</item>
+
+    </style>
+
+
+    <style name="_textViewListStyle" parent="android:Widget.Material.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">10dp</item>
+
+    </style>
+
+    <style name="_textViewBigstyle" parent="android:Widget.Material.TextView">
+        <item name="android:textSize">25sp</item>
+        <item name="android:padding">5dp</item>
+
+    </style>
+
+    <style name="_textViewErrorStyle" parent="android:Widget.Material.TextView">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/errorColor</item>
+    </style>
+
+    <style name="_textViewicStyle" parent="android:Widget.Material.TextView">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+
+    <style name="_textViewSmallstyle" parent="android:Widget.Material.TextView">
+        <item name="android:textSize">5sp</item>
+    </style>
+
+
+    <style name="MyEditTextTheme" parent="android:Widget.Material.EditText">
+        <item name="android:backgroundTint">@color/color_background_list</item>
+
+    </style>
+
 
 </resources>

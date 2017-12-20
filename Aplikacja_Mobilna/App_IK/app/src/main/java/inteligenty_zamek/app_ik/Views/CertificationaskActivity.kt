@@ -1,14 +1,13 @@
 package inteligenty_zamek.app_ik.Views
 
 import android.content.res.TypedArray
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.AdapterView
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.R
@@ -32,15 +31,47 @@ class CertificationaskActivity : BaseActivity() {
         presenter = CertificationaskPresenter(this)
         presenter!!.initActivity()
 
+        val sort = findViewById(R.id.TextView_sortingIco) as TextView
+        val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
+        sort.typeface = fontFamily
+
+
+        sort.setOnClickListener(object : View.OnClickListener {
+            override
+            fun onClick(viewIn: View) {
+                presenter!!.sortArray()
+                presenter!!.createValueToAdapter()
+                val  adapter = SimpleAdapter(this@CertificationaskActivity, presenter!!.model.listItems, R.layout.main_key_list,
+                        arrayOf("First Line", "Second Line"),
+                        intArrayOf(R.id.TextView_listPlaceKey, R.id.TextView_listNameKey))
+                resultsListView!!.adapter = adapter
+                resultsListView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+                    presenter!!.sendRequest(position)
+                }
+
+                if(sort.text.equals("\uf160"))
+                {
+                    sort.text="\uf161"
+                }
+                else
+                {
+                    sort.text= "\uf160"
+                }
+
+            }})
+
+
 
             val inputSearch = findViewById(R.id.editText_Search) as EditText
             inputSearch.addTextChangedListener(object : TextWatcher {
 
                 override fun onTextChanged(cs: CharSequence, arg1: Int, arg2: Int, arg3: Int) {
-
                     resultsListView = this@CertificationaskActivity.findViewById(R.id.ListView_key_generate_certyfiaction) as ListView
-                    resultsListView!!.adapter = presenter!!.getAdapter(cs)
-
+                    presenter!!.createValueToAdapter(cs)
+                    val  adapter = SimpleAdapter(this@CertificationaskActivity, presenter!!.model.listItems, R.layout.main_key_list,
+                            arrayOf("First Line", "Second Line"),
+                            intArrayOf(R.id.TextView_listPlaceKey, R.id.TextView_listNameKey))
+                    resultsListView!!.adapter = adapter
                     resultsListView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
                         presenter!!.sendRequest(position)
                     }
@@ -71,8 +102,10 @@ class CertificationaskActivity : BaseActivity() {
         }.start()}
     fun setCertyficats()
     {
-        val adapter=  presenter!!.getAdapter("")
-
+        presenter!!.createValueToAdapter("")
+        val  adapter = SimpleAdapter(this@CertificationaskActivity, presenter!!.model.listItems, R.layout.main_key_list,
+                arrayOf("First Line", "Second Line"),
+                intArrayOf(R.id.TextView_listPlaceKey, R.id.TextView_listNameKey))
         resultsListView!!.adapter=adapter
         resultsListView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             //ustalenie id certyfikatu z listy certyfikatow

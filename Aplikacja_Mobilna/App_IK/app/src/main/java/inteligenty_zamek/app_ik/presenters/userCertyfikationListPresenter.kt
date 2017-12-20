@@ -2,6 +2,7 @@ package inteligenty_zamek.app_ik.presenters
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import inteligenty_zamek.app_ik.Views.userCertyfikationListActivity
 import inteligenty_zamek.app_ik.inWork.certyficatActivity
 import inteligenty_zamek.app_ik.models.userCertyfikationListModel
@@ -20,17 +21,16 @@ class userCertyfikationListPresenter(val view: userCertyfikationListActivity)
     }
     fun setKeys()
     {
-        if (!model.flag)
-        {
-        Arrays.sort(GlobalContainer.getUser(view).getCertyficateList(view), Collections.reverseOrder())
-        }
-        else
-        {
-        Arrays.sort(GlobalContainer.getUser(view).getCertyficateList(view))
-        }
-
-
         model.Keys = LinkedHashMap()
+        if(GlobalContainer.getUser(view).getCertyficateList(view)==null) {return;}
+            if (!model.flag) {
+                Arrays.sort(GlobalContainer.getUser(view).getCertyficateList(view), Collections.reverseOrder())
+            } else {
+                Arrays.sort(GlobalContainer.getUser(view).getCertyficateList(view))
+            }
+
+
+
         try {
             for (i in 0 until GlobalContainer.getUser(view).getCertyficateList(view).size) {
                 model.Keys!!.put(GlobalContainer.getUser(view).getCertyficateList(view)[i].getLockLocalization(), GlobalContainer.getUser(view).getCertyficateList(view)[i].getLockName())
@@ -59,6 +59,8 @@ class userCertyfikationListPresenter(val view: userCertyfikationListActivity)
                     while (it.hasNext()) {
                         resultsMap = LinkedHashMap()
                         val pair = it.next() as Map.Entry<*,*>
+
+
                         if (pair.key.toString().toLowerCase().contains(model.cs.toString().toLowerCase()) || pair.value.toString().toLowerCase().contains(model.cs.toString().toLowerCase())) {
                             resultsMap.put("First Line", pair.key.toString())
                             resultsMap.put("Second Line", pair.value.toString())
@@ -74,8 +76,8 @@ class userCertyfikationListPresenter(val view: userCertyfikationListActivity)
 
     fun sortList()
     {
-        setKeys()
         model.flag=!model.flag
+        setKeys()
         setValueToAdapter()
     }
 

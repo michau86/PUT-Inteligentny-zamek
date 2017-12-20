@@ -12,25 +12,22 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
         android:text="@string/activity_admin_panel_text1"
-        android:textSize="25sp" />
+        style="@style/_textViewBigstyle" />
 
 
     <View
-        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentTop="true"
         android:background="@color/color_border_list" />
 
     <ListView
-        android:id="@+id/ListView_Admin_Panel"
+        android:id="@+id/AdminPanelListViewAdminPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/color_background_list"
@@ -41,7 +38,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentTop="true"
         android:background="@color/color_border_list" />
 
 

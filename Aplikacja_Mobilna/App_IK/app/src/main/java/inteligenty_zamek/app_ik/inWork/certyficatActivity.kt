@@ -26,26 +26,26 @@ class certyficatActivity : BaseActivity() {
         val presenter= certyficatPresenter(this)
 
         if (presenter.isCertyficat()) {
-            val tx1 = this.findViewById(R.id.textView20) as TextView
+            val tx1 = this.findViewById(R.id.certificateTextViewExpiryData) as TextView
             tx1.text = presenter.getCertyficatExpiryDateText()
-            val tx2 = this.findViewById(R.id.textView22) as TextView
+            val tx2 = this.findViewById(R.id.certificateTextViewInfo) as TextView
             tx2.text =presenter.getCertyficatInfoText()
-            val tx3 = this.findViewById(R.id.textView24) as TextView
+            val tx3 = this.findViewById(R.id.certificateTextViewDate) as TextView
             tx3.text = presenter.getCertyficatText()
 
         } else {
-            val button = findViewById(R.id.extend_cert) as Button
+            val button = findViewById(R.id.certificateButtonExtend) as Button
             button.visibility = View.INVISIBLE
         }
 
         //akcja po nacisniecu usun certyfikat
-        val delete = findViewById(R.id.delete_cert) as Button
+        val delete = findViewById(R.id.certificateButtonDelete) as Button
         delete.setOnClickListener {
             presenter.deleteCertyficat()
         }
 
         //akcja po nacisnieciu przedluż certyfikat
-        val extend = findViewById(R.id.extend_cert) as Button
+        val extend = findViewById(R.id.certificateButtonExtend) as Button
         extend.setOnClickListener {
             presenter.extendCertyficat()
         }

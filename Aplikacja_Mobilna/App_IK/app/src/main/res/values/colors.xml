@@ -11,4 +11,6 @@
     <color name="color_text_dim">#6c6c6c</color>
     <color name="drawer_background">#a6a6a6</color>
     <color name="higlightmenu">#00ffff</color>
+    <color name="errorColor">#ff8080</color>
+    <color name="inpuLneColor">#D2D2D2</color>
 </resources>

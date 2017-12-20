@@ -66,6 +66,7 @@ public class GlobalClassContainer extends Application {
         isadmin=-1;
     }
 
+
     //////////////////// do usuniecia
     public byte[] getHash(String password) {
         MessageDigest digest=null;

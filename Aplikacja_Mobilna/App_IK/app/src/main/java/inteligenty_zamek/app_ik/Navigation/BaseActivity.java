@@ -1,5 +1,6 @@
 package inteligenty_zamek.app_ik.Navigation;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,20 +9,16 @@ import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import inteligenty_zamek.app_ik.API.CyptographyApi;
 import inteligenty_zamek.app_ik.API.EnumChoice;
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
@@ -36,7 +33,7 @@ import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer;
 import inteligenty_zamek.app_ik.rest_class.User;
 
-public class BaseActivity extends AppCompatActivity
+public class BaseActivity extends Activity
 {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -81,22 +78,22 @@ public class BaseActivity extends AppCompatActivity
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.app_name,
                 R.string.app_name
         ) {
             public void onDrawerClosed(View view) {
-                getSupportActionBar().setTitle(mTitle);
+                getActionBar().setTitle(mTitle);
 
-                supportInvalidateOptionsMenu();
+               // InvalidateOptionsMenu();
             }
 
             public void onDrawerOpened(View drawerView) {
-                getSupportActionBar().setTitle(mDrawerTitle);
-                supportInvalidateOptionsMenu();
+                getActionBar().setTitle(mDrawerTitle);
+               // InvalidateOptionsMenu();
             }
         };
         mDrawerLayout.addDrawerListener(mDrawerToggle);

@@ -11,6 +11,7 @@ import inteligenty_zamek.app_ik.API.HTTPRequestAPI
 import inteligenty_zamek.app_ik.API.fileReadWriteApi
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.Views.CertificationaskActivity
+import inteligenty_zamek.app_ik.Views.Managment_certyficationActivity
 import inteligenty_zamek.app_ik.beforeChange.GenerationCertyfikatForGuestActivity
 import inteligenty_zamek.app_ik.models.Managment_certyficationModel
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
@@ -23,7 +24,7 @@ import java.util.HashMap
 /**
  * Created by Damian on 28.11.2017.
  */
-class Managment_certyficationPresenter( val view: Context) {
+class Managment_certyficationPresenter( val view: Managment_certyficationActivity) {
     var model: Managment_certyficationModel=Managment_certyficationModel(view)
 
 
@@ -89,30 +90,11 @@ class Managment_certyficationPresenter( val view: Context) {
 
             fileReadWriteApi.writeToFile(arrJson.toString(), view, model.login)
             GlobalContainer.getUser(view).addCertyficatList(arrJson)
-            val toast = Toast.makeText(view, "dodano certyfikaty", Toast.LENGTH_LONG)
-            toast.show()
-            object : CountDownTimer(4000.toLong(), 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    toast.show()
-                }
-                override fun onFinish() {
-                    toast.show()
-                }
-            }.start()
+
+            view.showMessage("dodano certyfikaty")
 
         } catch (e: JSONException) {
-
-            val toast = Toast.makeText(view, "brak certyfikatow", Toast.LENGTH_LONG)
-            toast.show()
-            object : CountDownTimer(4000.toLong(), 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    toast.show()
-                }
-                override fun onFinish() {
-                    toast.show()
-                }
-            }.start()
-
+            view.showMessage("brak certyfikatow")
     }
 
 }
