@@ -43,6 +43,13 @@
     <string name="activity_certificate3">Usuń certyfikat</string>
     <string name="activity_certificate4">Przedłuż certyfikat</string>
 
+    <!-- activity CertificationAsk -->
+    <string name="activity_certyficationAsk1">Wnioskuj o certyfikat</string>
+    <string name="activity_certyficationAsk2">Wybierz z listy zamek, do którego chcesz wysłać prośbę o wygenerowanie certyfikatu</string>
+    <string name="activity_certyficationAsk3">wyszukaj...</string>
+    <string name="activity_certyficationAsk4">sortuj</string>
+
+
 
     <!-- activity Settings  -->
     <string name="activity_settings1">Zmień hasło</string>
@@ -67,7 +74,7 @@
     <string name="activity_login_text1">Login</string>
     <string name="activity_login_text2">Hasło</string>
     <string name="activity_login_text3">Zaloguj się</string>
-    <string name="activity_login_text4">Jeśli nie posiadasz konta zarejestruj się lub przejdź do trybu gościa</string>
+    <string name="activity_login_text4">Jeśli nie posiadasz konta zarejestruj się</string>
     <string name="activity_login_text5">Zarejestruj się</string>
     <string name="activity_login_text6">Gość</string>
     <string name="activity_login_text7">&#xf071;</string>
@@ -103,7 +110,7 @@
     <string name="activity_user_Certyfikation_List1">Lista twoich certyfikatów</string>
 
 
-    <!-- activity Certyficat   -->
+
 
 
     <!-- drawer  -->

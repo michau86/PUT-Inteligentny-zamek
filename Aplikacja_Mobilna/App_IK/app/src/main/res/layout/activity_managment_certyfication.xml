@@ -7,6 +7,10 @@
 
     <!-- The main content view -->
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -123,7 +127,7 @@
 
 </LinearLayout>
 
-
+    </ScrollView>
 
     <!-- The navigation drawer -->
 

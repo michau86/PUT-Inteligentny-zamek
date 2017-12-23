@@ -66,7 +66,6 @@ public class BaseActivity extends Activity
             for(int i=0;i<navMenuTitles.length;i++){
                 if(sharedPreferenceApi.INSTANCE.getBoolean(this,EnumChoice.isLogin)==false && i>1){i=navMenuTitles.length;
                     navDrawerItems.add(new NavDrawerItem("wyjdz",navMenuIcons.getResourceId(i, -1)));
-
                     break;}
                 else
                     if(sharedPreferenceApi.INSTANCE.getBoolean(this,EnumChoice.isAdmin)==false && i==2){i++;}
