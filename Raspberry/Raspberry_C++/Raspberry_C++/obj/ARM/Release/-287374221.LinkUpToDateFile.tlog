@@ -1,1 +1,0 @@
-g++ -o "/home/pi/projects/Raspberry_C++/bin/ARM/Release/Raspberry_C++.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /home/pi/projects/Raspberry_C++/obj/ARM/Release/Inteligenty_zamek.o /home/pi/projects/Raspberry_C++/obj/ARM/Release/Servo.o -lwiringPi
