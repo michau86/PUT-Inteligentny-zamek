@@ -33,7 +33,7 @@ class userCertyfikationListPresenter(val view: userCertyfikationListActivity)
 
         try {
             for (i in 0 until GlobalContainer.getUser(view).getCertyficateList(view).size) {
-                model.Keys!!.put(GlobalContainer.getUser(view).getCertyficateList(view)[i].getLockLocalization(), GlobalContainer.getUser(view).getCertyficateList(view)[i].getLockName())
+                model.Keys!!.put(GlobalContainer.getUser(view).getCertyficateList(view)[i].lockLocalization, GlobalContainer.getUser(view).getCertyficateList(view)[i].lockName)
             }
         } catch (e: Exception) {}
     }
@@ -52,7 +52,7 @@ class userCertyfikationListPresenter(val view: userCertyfikationListActivity)
     }
     fun setValueToAdapter()
     {
-                    val it = model!!.Keys!!.entries.iterator()
+                    val it = model.Keys!!.entries.iterator()
                     model.listItems= ArrayList()
                     var resultsMap: LinkedHashMap<String, String>
 

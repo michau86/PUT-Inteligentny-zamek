@@ -1,5 +1,6 @@
 package inteligenty_zamek.app_ik.presenters
 
+import android.util.Log
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
 import inteligenty_zamek.app_ik.Views.CertificationaskActivity
 import inteligenty_zamek.app_ik.models.CertificationaskModel
@@ -63,6 +64,8 @@ fun sortArray()
 
     fun resultRequestCertyficat(result:String)
 {
+
+
     try {
 
         if (JSONObject(result).getString("status") == "ok") {

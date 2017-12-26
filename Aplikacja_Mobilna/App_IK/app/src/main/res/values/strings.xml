@@ -29,7 +29,7 @@
     <string name="icon_download_file">&#xf15b;</string>
     <string name="activity_managmentCertyfication1">Dodaj Certyfikat</string>
     <string name="activity_managmentCertyfication2">Lista twoich certyfikatów</string>
-    <string name="activity_managmentCertyfication3">wnioskuj o certyfikat</string>
+    <string name="activity_managmentCertyfication3">Wnioskuj o certyfikat</string>
     <string name="activity_managmentCertyfication4">wygeneruj certyfikat dla gościa</string>
     <string name="activity_managmentCertyfication5">Certyfikaty</string>
     <string name="activity_managmentCertyfication6">Dodaj certyfikat</string>
@@ -81,6 +81,19 @@
     <string name="activity_login_text8">Błędny login lub hasło</string>
     <string name="activity_login_text9">Adres serwera</string>
 
+    <!-- user wait key list -->
+    <string name="userWaitKeyList_text1">Akceptuj</string>
+    <string name="userWaitKeyList_text2">Odrzuć</string>
+
+    <!-- activity_user_wait -->
+    <string name="activity_user_wait_text1">Lista oczekujących użytkowników na zarejestrowanie</string>
+    <string name="activity_user_wait_text2">Wyszukaj...</string>
+
+
+    <!-- activity_certificat_wait -->
+    <string name="activity_certificat_wait_text1">Lista oczekujących certyfikatów na zaakceptowanie</string>
+    <string name="activity_certificat_wait_text2">Wyszukaj...</string>
+    <string name="activity_certificat_wait_text3">sortuj</string>
 
     <!-- activity_register   -->
     <string name="activity_register_text1">Login</string>

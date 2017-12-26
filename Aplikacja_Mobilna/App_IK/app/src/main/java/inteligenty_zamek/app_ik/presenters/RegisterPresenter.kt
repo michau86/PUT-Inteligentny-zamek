@@ -78,23 +78,23 @@ class RegisterPresenter (val view:RegisterActivity) {
        var validation=false
         if(!Valdiation.isCorrectPassword(password))
         {
-            view.tooltip(2);
+            view.tooltip(2)
             validation=true
         }
         if(name.equals(""))
         {
-            view.tooltip(4);
+            view.tooltip(4)
             validation=true
 
         }
         if(surname.equals(""))
         {
-            view.tooltip(5);
+            view.tooltip(5)
             validation=true
 
         }
         if(!Valdiation.isCorrectIP(ip)) {
-            view.tooltip(3);
+            view.tooltip(3)
             validation=true
         }
 
@@ -121,7 +121,7 @@ class RegisterPresenter (val view:RegisterActivity) {
             model.setRegisterValue(login, password, name, surname, ip)
             val toSend: HashMap<String, String> = HashMap()
             toSend.put("login", login)
-            toSend.put("password", model!!.user!!.passwordHash)
+            toSend.put("password", model.user!!.passwordHash)
             toSend.put("name", name)
             toSend.put("surname", surname)
             toSend.put("publickkey", stringKey)

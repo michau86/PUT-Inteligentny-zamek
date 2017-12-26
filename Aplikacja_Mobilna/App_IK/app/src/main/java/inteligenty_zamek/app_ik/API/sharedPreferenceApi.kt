@@ -27,7 +27,7 @@ object sharedPreferenceApi {
     fun getBoolean(context : Context, choise:EnumChoice): Boolean
     {
         sharedPref = context.getSharedPreferences(context.getString(R.string.SPName), Context.MODE_PRIVATE)
-        return sharedPref!!.getBoolean(choise.value, false);
+        return sharedPref!!.getBoolean(choise.value, false)
     }
 
     fun getString(context : Context, choise: EnumChoice): String

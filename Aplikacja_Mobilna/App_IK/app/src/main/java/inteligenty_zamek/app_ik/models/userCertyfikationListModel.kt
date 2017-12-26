@@ -6,8 +6,7 @@ import java.util.LinkedHashMap
 /**
  * Created by Damian on 08.12.2017.
  */
-class userCertyfikationListModel()
-{
+class userCertyfikationListModel {
     var Keys: LinkedHashMap<String, String>?=null
     var listItems: MutableList<HashMap<String, String>>?=null
     var flag=true

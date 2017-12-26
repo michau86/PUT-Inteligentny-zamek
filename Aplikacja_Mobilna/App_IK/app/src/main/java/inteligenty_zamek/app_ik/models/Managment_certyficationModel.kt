@@ -24,7 +24,7 @@ class Managment_certyficationModel(context:Context) {
     var ipaddres:String=""
     val list = ArrayList<String>()
     val adapter: ArrayAdapter<String>
-    var islogin:Boolean=true;
+    var islogin:Boolean=true
     var selectedfile: Uri? =null
     var arrJson: JSONArray? = null
 

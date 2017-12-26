@@ -10,10 +10,13 @@
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+
     >
 
     <TextView
@@ -30,7 +33,6 @@
 
 
     <View
-        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/color_border_list" />
@@ -53,7 +55,9 @@
         android:layout_height="wrap_content"
         android:background="@color/color_background_list"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="visible"
+        android:id="@+id/managmentCertificationLinearLayoutDownloadFile"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,7 +73,6 @@
             android:text="@string/icon_download_file"
             />
             <TextView
-                style="@style/_textViewListStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -78,10 +81,13 @@
                 />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:id="@+id/managmentCertificationLinearLayoutDownloadSerwer"
+            >
         <TextView
             android:id="@+id/TextView_download_serwer"
             style="@style/_textViewListStyle"
@@ -93,7 +99,6 @@
             android:text="@string/icon_download_serwer"
             />
         <TextView
-            style="@style/_textViewListStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -108,16 +113,44 @@
         android:layout_height="1dp"
         android:background="@color/color_border_list" />
 
-    <ListView
-        android:id="@+id/managmentCertyficationListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/color_background_list"
-        android:dividerHeight="1dp"
-        android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false"
+
+
 
         />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_border_list" />
+
+    <TextView
+        android:id="@+id/managmentCertificationTextViewList"
+        android:background="@color/color_background_list"
+        style="@style/_textViewListStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        android:text="@string/activity_managmentCertyfication2"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_border_list" />
+
+
+    <TextView
+        android:id="@+id/managmentCertificationTextViewExtend"
+        android:background="@color/color_background_list"
+        style="@style/_textViewListStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        android:text="@string/activity_managmentCertyfication3"/>
+
+
 
     <View
         android:layout_width="match_parent"

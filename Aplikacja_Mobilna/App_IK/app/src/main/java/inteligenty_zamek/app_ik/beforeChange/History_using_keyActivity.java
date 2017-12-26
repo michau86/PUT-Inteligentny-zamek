@@ -58,7 +58,7 @@ public class History_using_keyActivity extends BaseActivity {
                 listItems2 = new ArrayList<>();
                 adapter = new SimpleAdapter(History_using_keyActivity.this, listItems2, R.layout.history_using_key_list,
                         new String[]{"First Line", "Second Line", "Third Line"},
-                        new int[]{R.id.history_icon, R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey});
+                        new int[]{R.id.history_icon, R.id.title, R.id.describe});
                 try {
                     for (int i = 0; i < listItems.size(); i++) {
                         Keys.put(listItems.get(i).values().toArray()[1].toString(), listItems.get(i).values().toArray()[2].toString());
@@ -142,7 +142,7 @@ public class History_using_keyActivity extends BaseActivity {
                 Keys =new LinkedHashMap<>();
                  adapter = new SimpleAdapter(History_using_keyActivity.this, listItems2, R.layout.history_using_key_list,
                         new String[]{"First Line", "Second Line", "Third Line"},
-                        new int[]{R.id.history_icon, R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey});
+                        new int[]{R.id.history_icon, R.id.title, R.id.describe});
                // try {
                  //   for (int i = 0; i < ((GlobalClassContainer) getApplication()).getUser().getCertyficateList(this).length; i++) {
                   //      Keys.put(listItems2.get(i).values().toArray()[0].toString(), listItems2.get(i).values().toArray()[1].toString() );
@@ -243,7 +243,7 @@ public class History_using_keyActivity extends BaseActivity {
                 listItems = new ArrayList<>();
                 adapter = new SimpleAdapter(History_using_keyActivity.this, listItems, R.layout.history_using_key_list,
                         new String[]{"First Line", "Second Line", "Third Line"},
-                        new int[]{R.id.history_icon, R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey});
+                        new int[]{R.id.history_icon, R.id.title, R.id.describe});
 
 
                 //TODO zmiana koloru czcionki nieautoryzowany dostęp

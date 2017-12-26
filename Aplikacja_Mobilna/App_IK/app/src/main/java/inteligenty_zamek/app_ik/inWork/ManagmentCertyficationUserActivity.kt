@@ -45,7 +45,7 @@ class ManagmentCertyficationUserActivity : BaseActivity() {
 
 
 
-        inputSearch = findViewById(R.id.editText_Search) as EditText
+        inputSearch = findViewById(R.id.userWaitEditText) as EditText
         inputSearch!!.addTextChangedListener(object : TextWatcher {
 
             override fun onTextChanged(cs: CharSequence, arg1: Int, arg2: Int, arg3: Int) {

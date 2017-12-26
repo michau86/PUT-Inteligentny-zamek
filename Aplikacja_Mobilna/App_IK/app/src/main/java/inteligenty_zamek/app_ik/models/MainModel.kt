@@ -21,13 +21,13 @@ class MainModel(val user: User)
     fun putKeys(context:Context, cs:CharSequence) {
         Keys=LinkedHashMap()
         try {
-            var j=0;
+            var j=0
             for (i in 0 until user.getCertyficateList(context).size) {
                 if (user.getCertyficateList(context)[i].lockName.toLowerCase().contains(cs.toString().toLowerCase())
                         ||
                         user.getCertyficateList(context)[i].lockLocalization.toLowerCase().contains(cs.toString().toLowerCase())
                         ) {
-                    Keys!!.put(j, user.getCertyficateList(context)[i]);
+                    Keys!!.put(j, user.getCertyficateList(context)[i])
                     j++
                 }
 

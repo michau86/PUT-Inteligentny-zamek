@@ -1,40 +1,16 @@
 package inteligenty_zamek.app_ik.Views
 
-import android.app.Activity
 import android.content.Intent
 import android.content.res.TypedArray
 import android.graphics.Typeface
-import android.os.AsyncTask
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ListView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import inteligenty_zamek.app_ik.*
 
-import org.apache.http.NameValuePair
-import org.apache.http.client.ClientProtocolException
-import org.apache.http.client.entity.UrlEncodedFormEntity
-import org.apache.http.client.methods.HttpPost
-import org.apache.http.impl.client.DefaultHttpClient
-import org.apache.http.message.BasicNameValuePair
-import org.apache.http.util.EntityUtils
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
-
-import java.io.IOException
-import java.util.ArrayList
-import java.util.Arrays
-
-import inteligenty_zamek.app_ik.API.fileReadWriteApi
-import inteligenty_zamek.app_ik.API.sharedPreferenceApi
-import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
-import inteligenty_zamek.app_ik.rest_class.User
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
-import inteligenty_zamek.app_ik.models.Managment_certyficationModel
 import inteligenty_zamek.app_ik.presenters.Managment_certyficationPresenter
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 
@@ -42,8 +18,7 @@ class Managment_certyficationActivity : BaseActivity() {
     internal var toastDelay = 4000
     private var navMenuTitles: Array<String>? = null
     private var navMenuIcons: TypedArray? = null
-    private var listView: ListView? =null
-    private var textView: TextView?=null
+    private var LinearLayout: LinearLayout?=null
     private var presenter:Managment_certyficationPresenter?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,26 +33,30 @@ class Managment_certyficationActivity : BaseActivity() {
         ico_download_serwer.typeface = fontFamily
         val ico_download_file = this.findViewById(R.id.TextView_download_file) as TextView
         ico_download_file.typeface = fontFamily
-        val resultsListView = this.findViewById(R.id.managmentCertyficationListView) as ListView
+
         if(presenter!!.isLogin()) {
-            resultsListView.adapter = presenter!!.setAdapter()
-            //wyszukanie listy oraz ustwaienie akcji dotyczacych klikniec na poszcegolne elementy
-            listView = findViewById(R.id.managmentCertyficationListView) as ListView
-            listView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-                presenter!!.getAnotherActivity(position)
+
+            val CertificationList = this.findViewById(R.id.managmentCertificationTextViewList) as TextView
+            val CertificationAsk = this.findViewById(R.id.managmentCertificationTextViewExtend) as TextView
+
+            CertificationList.setOnClickListener {
+                presenter!!.goToCertifiationList()
             }
 
-
+            CertificationAsk.setOnClickListener {
+                presenter!!.goToCertificationAsk()
+            }
             //akcja dotyczaca klikniecia na ikone sciagnij z serwera
-            textView = findViewById(R.id.TextView_download_serwer) as TextView
-            textView!!.setOnClickListener {
+
+            LinearLayout = findViewById(R.id.managmentCertificationLinearLayoutDownloadSerwer) as LinearLayout
+            LinearLayout!!.setOnClickListener {
                 presenter!!.getCertyficat()
             }
 
             //akcja dotyczaca kliknieca na ikonke sciagnij z pliku
-            textView = findViewById(R.id.TextView_download_file) as TextView
+            LinearLayout = findViewById(R.id.managmentCertificationLinearLayoutDownloadFile) as LinearLayout
             //na razie nie tykam
-            textView!!.setOnClickListener {
+            LinearLayout!!.setOnClickListener {
                 // TODO obsluga przycisku wgrywajacego certyfikat z pliku
                 val intent = Intent()
                         .setType("*/*")
@@ -85,16 +64,15 @@ class Managment_certyficationActivity : BaseActivity() {
 
                 startActivityForResult(Intent.createChooser(intent, "Select a file"), 123)
             }
+
+
+
+
         }
         else
         {
-            ico_download_serwer.setText("");
+            ico_download_serwer.text = ""
         }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        super.onActivityResult(requestCode, resultCode, data)
-
     }
 
     fun showMessage(message:String)

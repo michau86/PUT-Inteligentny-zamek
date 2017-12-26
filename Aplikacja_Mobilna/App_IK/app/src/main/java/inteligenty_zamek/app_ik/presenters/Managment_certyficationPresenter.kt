@@ -28,20 +28,21 @@ class Managment_certyficationPresenter( val view: Managment_certyficationActivit
     var model: Managment_certyficationModel=Managment_certyficationModel(view)
 
 
-        fun getAnotherActivity(position : Int) {
-            if (position == 0) {
-                val myIntent = Intent(view, userCertyfikationListActivity::class.java)
-                view.startActivity(myIntent)
-            }
-            if (sharedPreferenceApi.getBoolean(view, EnumChoice.isLogin)) {
-                if (position == 1) {
-                    val myIntent = Intent(view, CertificationaskActivity::class.java)
-                    view.startActivity(myIntent)                }
-                if (position == 2) {
-                    val myIntent = Intent(view, GenerationCertyfikatForGuestActivity::class.java)
-                    view.startActivity(myIntent)                }
-            }
-        }
+
+    fun goToCertifiationList()
+    {
+        val myIntent = Intent(view, userCertyfikationListActivity::class.java)
+        view.startActivity(myIntent)
+    }
+
+    fun goToCertificationAsk()
+    {
+        val myIntent = Intent(view, CertificationaskActivity::class.java)
+        view.startActivity(myIntent)
+    }
+
+
+
 
     fun readfromfile(requestCode:Int,resultCode:Int,data: Intent)
     {
@@ -52,7 +53,7 @@ class Managment_certyficationPresenter( val view: Managment_certyficationActivit
                 val jObj = JSONObject(fileReadWriteApi.readFromFile(model.selectedfile!!.toString(),view))
                 val readcertyficat = fileReadWriteApi.readFromFile(GlobalContainer.getUser(view).login,view)
                 model.arrJson = JSONArray(readcertyficat)
-                model!!.arrJson!!.put(jObj)
+                model.arrJson!!.put(jObj)
 
             } catch (e: Exception) {
             }

@@ -1,22 +1,18 @@
 package inteligenty_zamek.app_ik.Views
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.ListView
-import android.widget.SimpleAdapter
 import android.widget.TextView
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
-import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.presenters.MainPresenter
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
@@ -65,7 +61,7 @@ class MainActivity : BaseActivity() {
         }
 
 
-        val inputSearch = findViewById(R.id.editText_Search) as EditText
+        val inputSearch = findViewById(R.id.userWaitEditText) as EditText
         inputSearch.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(cs: CharSequence, arg1: Int, arg2: Int, arg3: Int) {
                 resultsListView!!.adapter = presenter!!.updateList(cs)

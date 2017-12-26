@@ -48,18 +48,7 @@ class ManagmentCertyficationUserPresenter(val view: ManagmentCertyficationUserAc
 
     fun sortList()
     {
-        if (!!model.flag) {
-
-
-           // Arrays.sort(model.Keys, Collections.reverseOrder())
-           // model.Keys!!.toSortedMap().
-            //Arrays.sort(model!!.Keys, Collections.reverseOrder())
-            model.flag = true
-        } else {
-
-            //  Arrays.sort((application as GlobalClassContainer).getUser().getCertyficateList())
-            model.flag = false
-        }
+        model.flag = model.flag
 
         updateList(model.cs)
 

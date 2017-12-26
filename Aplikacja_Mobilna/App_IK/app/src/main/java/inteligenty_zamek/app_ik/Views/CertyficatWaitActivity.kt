@@ -1,30 +1,40 @@
 package inteligenty_zamek.app_ik.Views
 
 import android.content.res.TypedArray
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.SimpleAdapter
-import android.widget.Toast
+import android.widget.*
 
 import java.util.LinkedHashMap
 
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
+import inteligenty_zamek.app_ik.adapters.TwoButtonAdapter
+import inteligenty_zamek.app_ik.adapters.userWatModel
 import inteligenty_zamek.app_ik.presenters.CertyficatWaitPresenter
 
 class CertyficatWaitActivity : BaseActivity() {
     private var navMenuTitles: Array<String>? = null
     private var navMenuIcons: TypedArray? = null
     private var toastDelay = 4000
-    private var adapter: SimpleAdapter?=null
-    private var resultsListView: ListView?=null
+
     var presenter: CertyficatWaitPresenter?=null
+    private var itemList:ArrayList<userWatModel>?= ArrayList()
+    private var recyclerView: RecyclerView? = null
+    private var adapter: TwoButtonAdapter? = null
+    private var firstUse=false
+
+
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -33,9 +43,31 @@ class CertyficatWaitActivity : BaseActivity() {
         navMenuTitles = resources.getStringArray(R.array.nav_drawer_items)
         navMenuIcons = resources.obtainTypedArray(R.array.nav_drawer_icons)
         set(navMenuTitles, navMenuIcons)
-        resultsListView = this@CertyficatWaitActivity.findViewById(R.id.listView_user_wait_Keys) as ListView
         presenter= CertyficatWaitPresenter(this)
-        val inputSearch = findViewById(R.id.editText_Search) as EditText
+
+        val sort = findViewById(R.id.certificatWaitTextViewSortingIco) as TextView
+        val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
+        sort.typeface = fontFamily
+
+        sort.setOnClickListener(object : View.OnClickListener {
+            override
+            fun onClick(viewIn: View) {
+                presenter!!.sortArray()
+
+                if(sort.text.equals("\uf160"))
+                {
+                    sort.text="\uf161"
+                }
+                else
+                {
+                    sort.text= "\uf160"
+                }
+
+            }})
+
+
+
+        val inputSearch = findViewById(R.id.certificatWaitEditText) as EditText
         inputSearch.addTextChangedListener(object : TextWatcher
         {
 
@@ -54,29 +86,32 @@ class CertyficatWaitActivity : BaseActivity() {
         })
     }
 
-    fun setAdapter(listItems: MutableList<LinkedHashMap<String, String>> )
+    fun setAdapter(listitem: LinkedHashMap<String, ArrayList<String>>)
     {
-        adapter = object : SimpleAdapter(this@CertyficatWaitActivity, listItems, R.layout.user_wait_key_list,
-                arrayOf("First Line", "Second Line"),
-                intArrayOf(R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey)) {
-                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
-                val itemView = super.getView(position, convertView, parent)
-                //akceptuj
-                val myTaskButton = itemView.findViewById(R.id.button6)
-                myTaskButton.setOnClickListener {
-                    //akcja do butonu akceptuj
-                  presenter!!.acceptButton(position)
-                }
-                //odrzuc
-                val myTaskButton2 = itemView.findViewById(R.id.button5)
-                myTaskButton2.setOnClickListener {
-                    //akcja do butonu odrzuc
-                    presenter!!.removeButton(position)
-                }
-                return itemView
-            }
+        itemList =ArrayList()
+        recyclerView = (findViewById(R.id.certificatWaitRecyclerView) as RecyclerView)
+
+
+        adapter = TwoButtonAdapter(itemList, presenter)
+        val mLayoutManager = LinearLayoutManager(applicationContext)
+        recyclerView!!.setLayoutManager(mLayoutManager)
+        recyclerView!!.setItemAnimator(DefaultItemAnimator())
+        recyclerView!!.setAdapter(adapter)
+        if(!firstUse)
+        {firstUse=true
+            recyclerView!!.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))}
+        adapter!!.notifyDataSetChanged()
+
+
+        val it = listitem.entries.iterator()
+        while (it.hasNext()) {
+            val pair = it.next() as java.util.Map.Entry<*, *>
+            val Array:ArrayList<String> =pair.value  as ArrayList<String>
+            val item = userWatModel(Array[0], "dla użytkownika:\nLogin "+ Array[1]+
+                    "\nImie i nazwisko  "+Array[2]+" "+Array[3])
+            itemList!!.add(item)
         }
-        resultsListView!!.adapter = adapter
+
     }
 
     fun showMessage(message:String)

@@ -1,42 +1,70 @@
 package inteligenty_zamek.app_ik.Views
 
-import android.content.res.TypedArray
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
-import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.SimpleAdapter
-import android.widget.Toast
 import java.util.LinkedHashMap
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.presenters.UserWaitPresenter
+import android.support.v7.widget.RecyclerView
+import inteligenty_zamek.app_ik.adapters.TwoButtonAdapter
+import android.support.v7.widget.DefaultItemAnimator
+import inteligenty_zamek.app_ik.adapters.userWatModel
+import android.support.v7.widget.DividerItemDecoration
+import android.view.View
+import android.widget.*
+
 
 class UserWaitActivity : BaseActivity() {
 
 
-    private var navMenuTitles: Array<String>? = null
-    private var navMenuIcons: TypedArray? = null
+
     private var toastDelay = 4000
-    var adapter: SimpleAdapter? = null
-    var resultsListView: ListView? = null
+
+    private var itemList:ArrayList<userWatModel>?= ArrayList()
+    private var recyclerView: RecyclerView? = null
+    private var adapter: TwoButtonAdapter? = null
+    private var firstUse=false
     var presenter: UserWaitPresenter? = null
     var view: UserWaitActivity?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_wait)
-        navMenuTitles = resources.getStringArray(R.array.nav_drawer_items)
-        navMenuIcons = resources.obtainTypedArray(R.array.nav_drawer_icons)
+        val navMenuTitles = resources.getStringArray(R.array.nav_drawer_items)
+        val  navMenuIcons = resources.obtainTypedArray(R.array.nav_drawer_icons)
         set(navMenuTitles, navMenuIcons)
-        resultsListView = this@UserWaitActivity.findViewById(R.id.listView_user_wait_Keys) as ListView
+
         presenter = UserWaitPresenter(this)
         presenter!!.initAvtivity()
         view=this
-        val inputSearch = findViewById(R.id.editText_Search) as EditText
+
+        val sort = findViewById(R.id.userWaitTextViewSortingIco) as TextView
+        val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
+        sort.typeface = fontFamily
+
+
+        sort.setOnClickListener(object : View.OnClickListener {
+            override
+            fun onClick(viewIn: View) {
+                presenter!!.sortArray()
+
+                if(sort.text.equals("\uf160"))
+                {
+                    sort.text="\uf161"
+                }
+                else
+                {
+                    sort.text= "\uf160"
+                }
+
+            }})
+
+
+        val inputSearch = findViewById(R.id.userWaitEditText) as EditText
         inputSearch.addTextChangedListener(object : TextWatcher {
 
             override fun onTextChanged(cs: CharSequence, arg1: Int, arg2: Int, arg3: Int) {
@@ -59,37 +87,48 @@ class UserWaitActivity : BaseActivity() {
 
     }
 
+fun acceptButton(position:Int)
+{
+    presenter!!.acceptButton(position)
+}
 
-    fun setAdapter(listitem: MutableList<LinkedHashMap<String, String>>) {
-        adapter = object : SimpleAdapter(this, listitem, R.layout.user_wait_key_list,
-                arrayOf("First Line", "Second Line"),
-                intArrayOf(R.id.TextView_liistNameKey, R.id.TextView_listPlaceKey)) {
+    fun deleteButton(position:Int)
+    {
+        presenter!!.removeButton(position)
+    }
 
-                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
+    fun setAdapter(listitem: LinkedHashMap<String, String>) {
 
-                val itemView = super.getView(position, convertView, parent)
+        itemList =ArrayList()
+        recyclerView = (findViewById(R.id.userWaitRecyclerView) as RecyclerView)
 
-                val myTaskButton = itemView.findViewById(R.id.button6)
-                myTaskButton.setOnClickListener {
 
-                    presenter!!.acceptButton(position)
-
-                }
-                val myTaskButton2 = itemView.findViewById(R.id.button5)
-                myTaskButton2.setOnClickListener {
-                    //////to do presenteraaa
-                    presenter!!.removeButton(position)
-                }
-
-                return itemView
-            }
-
+        val it = listitem.entries.iterator()
+        while (it.hasNext()) {
+            val pair = it.next() as java.util.Map.Entry<*, *>
+            val item = userWatModel(pair.key.toString(),pair.value.toString())
+            itemList!!.add(item)
         }
 
-        resultsListView!!.adapter = adapter
+        adapter = TwoButtonAdapter(itemList, presenter)
+        val mLayoutManager = LinearLayoutManager(applicationContext)
+        recyclerView!!.setLayoutManager(mLayoutManager)
+        recyclerView!!.setItemAnimator(DefaultItemAnimator())
+        recyclerView!!.setAdapter(adapter)
+       if(!firstUse)
+       {firstUse=true
+        recyclerView!!.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))}
+        adapter!!.notifyDataSetChanged()
+
+
+
 
     }
 
+    fun deleteFromRecycler(position:Int)
+    {
+    adapter!!.removeAt(position)
+    }
 
     fun showMessage(message: String) {
         val toast = Toast.makeText(this@UserWaitActivity, message, Toast.LENGTH_LONG)

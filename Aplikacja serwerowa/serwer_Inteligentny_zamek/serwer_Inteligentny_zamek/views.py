@@ -302,17 +302,19 @@ def api_request_new_certificate(request):
             cursor = db.cursor()
             cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
             token_from_DB = cursor.fetchone()[0]
-
             if (token_from_DB == token and token != None):
                 cursor.execute(
                     "INSERT INTO WAIT_LOCKS_KEYS(ID_LOCK, ID_USER) VALUES ('%s',(SELECT ID_USER FROM USERS WHERE LOGIN='%s'))" % (
                         lock_id, login))
                 db.commit()
                 return JsonResponse({"status": "ok"})
+                print "ok"
             else:
                 return JsonResponse({"status": "invalid"})
+
         except Exception:
             return JsonResponse({"status": "Invalid"})
+
 
 
 @csrf_exempt
@@ -545,6 +547,7 @@ def api_admin_cetificate_waiting(request):
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                         in cursor.fetchall()]
                 if len(dict_all_certificate) > 0:
+                    print dict_all_certificate
                     return JsonResponse({"data": dict_all_certificate})
                 else:
                     return JsonResponse({"data": "empty"})

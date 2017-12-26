@@ -21,7 +21,7 @@ class SetingsPresenter(val view: SetingsActivity)
         if(!Valdiation.isCorrectIP(ip))
         {
           view.showErrorIp()
-            return;
+            return
         }
 
         val value = java.util.HashMap<EnumChoice, String>()
@@ -60,12 +60,12 @@ class SetingsPresenter(val view: SetingsActivity)
 
         var newPublicKey = ""
         try {
-            model!!.pair = CyptographyApi.KeyPairGenerator()
+            model.pair = CyptographyApi.KeyPairGenerator()
         } catch (e: Exception) {
         }
 
-        if (model!!.pair!!.public != null) {
-            newPublicKey = Base64.encodeToString(model!!.pair!!.public.encoded, Base64.DEFAULT)
+        if (model.pair!!.public != null) {
+            newPublicKey = Base64.encodeToString(model.pair!!.public.encoded, Base64.DEFAULT)
 
             val toSend: HashMap<String, String> = HashMap()
             toSend.put("login", model.login)

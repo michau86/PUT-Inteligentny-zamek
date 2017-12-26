@@ -81,7 +81,7 @@ class GenerationCertyficatPresenter(val view: GenerationCertyficatActivity)
         toSend.put("token", model.token)
 
         toSend.put("user_id", model.userlist!![userposition]!!.getIdUser())
-        toSend.put("lock_id", model.lockslist!![lockposition]!!.getIdKey())
+        toSend.put("lock_id", model.lockslist!![lockposition]!!.idKey)
         toSend.put("name", namesUser)
         toSend.put("surname",surnameUser)
         toSend.put("from_date", fromDate)

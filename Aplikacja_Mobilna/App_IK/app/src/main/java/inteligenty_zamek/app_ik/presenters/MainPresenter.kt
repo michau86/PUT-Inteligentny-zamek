@@ -25,7 +25,7 @@ class MainPresenter ( val view: MainActivity) {
 
     fun sendCertyficate(index:Int,cs: CharSequence)
     {
-       chagneColorIco(index,1,cs);
+       chagneColorIco(index,1,cs)
 
         val mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
         if (!mBluetoothAdapter.isEnabled) {
@@ -37,7 +37,7 @@ class MainPresenter ( val view: MainActivity) {
 
 
         try {
-            signature = CyptographyApi.sign(model!!.Keys!!.get(index)!!.getLok_key(), GlobalContainer.getPrivateKey(view))
+            signature = CyptographyApi.sign(model.Keys!!.get(index)!!.lok_key, GlobalContainer.getPrivateKey(view))
       //dołożenie doo sygnatury certyfikatu
         } catch (e: Exception) {
             val toast = Toast.makeText(view, "Brak klucza prywatnego", Toast.LENGTH_LONG)
@@ -51,12 +51,12 @@ class MainPresenter ( val view: MainActivity) {
                     toast.show()
                 }
             }.start()
-            return;
+            return
         }
 
-        val tosend = model!!.Keys!!.get(index)!!.getIdKey() + ";" + model.user.login + ";" + signature
-        Connect_and_send_message(model!!.Keys!!.get(index)!!.getMac_addres(), tosend,this).execute()
-        Log.i("HHHH",model!!.Keys!!.get(index)!!.getMac_addres())//B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
+        val tosend = model.Keys!!.get(index)!!.idKey + ";" + model.user.login + ";" + signature
+        Connect_and_send_message(model.Keys!!.get(index)!!.getMac_addres(), tosend,this).execute()
+        Log.i("HHHH", model.Keys!!.get(index)!!.getMac_addres())//B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
         Log.i("HHHH",tosend)//B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
 
         val toast = Toast.makeText(view, "Wysłano certyfikat", Toast.LENGTH_LONG)
@@ -76,10 +76,10 @@ class MainPresenter ( val view: MainActivity) {
        fun  updateList(cs: CharSequence): MainListAdapter
         {
             Log.i("HHHH","przed pukey")
-          model!!.putKeys(view,cs);
+          model.putKeys(view,cs)
             Log.i("HHHH","po pukey")
 
-            return MainListAdapter(view, model);
+            return MainListAdapter(view, model)
         }
 
     fun chagneColorIco(position:Int, i: Byte,cs: CharSequence)
