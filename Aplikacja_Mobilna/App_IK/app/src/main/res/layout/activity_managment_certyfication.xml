@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
         <TextView
-            android:id="@+id/TextView_download_file"
+            android:id="@+id/managmentCertificationTextViewDownloadFile"
             style="@style/_textViewListStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
             android:id="@+id/managmentCertificationLinearLayoutDownloadSerwer"
             >
         <TextView
-            android:id="@+id/TextView_download_serwer"
+            android:id="@+id/managmentCertificationTextViewDownloadSerwer"
             style="@style/_textViewListStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

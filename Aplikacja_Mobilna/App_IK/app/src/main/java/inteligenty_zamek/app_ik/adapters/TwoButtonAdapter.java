@@ -4,6 +4,7 @@ package inteligenty_zamek.app_ik.adapters;
  * Created by Damian on 23.12.2017.
  */
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -57,6 +58,7 @@ public class TwoButtonAdapter extends RecyclerView.Adapter<TwoButtonAdapter.MyVi
             userWatModel movie = moviesList.get(position);
             holder.name.setText(movie.getTitle());
             holder.place.setText(movie.getDescribe());
+
             holder.aceptButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

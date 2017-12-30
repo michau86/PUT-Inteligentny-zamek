@@ -9,11 +9,19 @@ import android.widget.Spinner
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.adapters.SpinnerAdapter
 import inteligenty_zamek.app_ik.presenters.GenerateCertyficatRangePresenter
+import android.widget.TimePicker
+import android.app.TimePickerDialog
+import android.content.Context
+import android.view.View
+import inteligenty_zamek.app_ik.API.Valdiation
+import java.util.*
 
-class GenerateCertyficatRangeActivity : Activity() {
+
+class GenerateCertyficatRangeActivity : Activity()   {
 
 
     var presenter: GenerateCertyficatRangePresenter?=null
+    val context:Context=this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_generate_certyficat_range)
@@ -53,11 +61,71 @@ class GenerateCertyficatRangeActivity : Activity() {
 
         val monday = findViewById(R.id.buttonAddRangeMonday) as Button
         monday.setOnClickListener {
+
             val from = findViewById(R.id.inputfromPoniedzialek) as EditText
             val to = findViewById(R.id.inputtoPoniedzialek) as EditText
-            spinerMondayAdapter.add(from.text.toString() + "-" + to.text.toString())
-            spinerMondayAdapter.notifyDataSetChanged()
+            if(Valdiation.biggerThanTime(from.text.toString(),to.text.toString())) {
+                spinerMondayAdapter.add(from.text.toString() + "-" + to.text.toString())
+                spinerMondayAdapter.notifyDataSetChanged()
+            }
+            else
+            {
+                //show eror
+            }
         }
+
+
+
+
+
+
+
+
+
+
+        (findViewById(R.id.inputfromPoniedzialek) as EditText)  .setOnClickListener(object : View.OnClickListener {
+
+            override fun onClick(v: View) {
+                // TODO Auto-generated method stub
+                val mcurrentTime = Calendar.getInstance()
+                val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
+                val minute = mcurrentTime.get(Calendar.MINUTE)
+                val mTimePicker: TimePickerDialog
+                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute -> (findViewById(R.id.inputfromPoniedzialek) as EditText) .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                mTimePicker.setTitle("wybierz godzine")
+                mTimePicker.show()
+
+            }
+        })
+
+        (findViewById(R.id.inputtoPoniedzialek) as EditText)  .setOnClickListener(object : View.OnClickListener {
+
+            override fun onClick(v: View) {
+                // TODO Auto-generated method stub
+                val mcurrentTime = Calendar.getInstance()
+                val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
+                val minute = mcurrentTime.get(Calendar.MINUTE)
+                val mTimePicker: TimePickerDialog
+                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
+                { timePicker, selectedHour, selectedMinute ->
+                    (findViewById(R.id.inputtoPoniedzialek) as EditText)
+                        .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                mTimePicker.setTitle("wybierz godzine")
+                mTimePicker.show()
+
+            }
+        })
+
+
+
+
+
+
+
+
+
+
+
 
         val tuesday = findViewById(R.id.buttonAddRangeTuesday) as Button
         tuesday.setOnClickListener {
@@ -106,6 +174,7 @@ class GenerateCertyficatRangeActivity : Activity() {
             spinerSundayAdapter.add(from.text.toString() + "-" + to.text.toString())
             spinerSundayAdapter.notifyDataSetChanged()
         }
+
     }
 
     override fun onBackPressed() {

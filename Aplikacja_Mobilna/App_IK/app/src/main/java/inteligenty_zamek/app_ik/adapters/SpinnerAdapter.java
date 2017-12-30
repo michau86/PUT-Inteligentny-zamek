@@ -3,6 +3,7 @@ package inteligenty_zamek.app_ik.adapters;
 import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.intellij.lang.annotations.JdkConstants;
 
 import inteligenty_zamek.app_ik.R;
 
@@ -45,13 +48,20 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
         spnItemName = (TextView) rowView.findViewById(R.id.spnItemName);
         spnItemDel = (TextView) rowView.findViewById(R.id.spnItemDel);
 
+
+
+        Typeface fontFamily = Typeface.createFromAsset(context.getAssets(), "fonts/fontawesome.ttf");
+        spnItemDel.setTypeface(fontFamily);
+        spnItemDel.setText("\uf1f8");
         spnItemName.setText(iName.get(position)+"");
+
+
+
 
         spnItemDel.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "usunięty", Toast.LENGTH_SHORT).show();
                 //iName[position] = null;
                 iName.remove(position);
                 notifyDataSetChanged();

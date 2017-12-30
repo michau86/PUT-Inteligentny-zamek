@@ -12,7 +12,6 @@ import inteligenty_zamek.app_ik.API.fileReadWriteApi
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.Views.CertificationaskActivity
 import inteligenty_zamek.app_ik.Views.Managment_certyficationActivity
-import inteligenty_zamek.app_ik.beforeChange.GenerationCertyfikatForGuestActivity
 import inteligenty_zamek.app_ik.models.Managment_certyficationModel
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 import inteligenty_zamek.app_ik.Views.userCertyfikationListActivity

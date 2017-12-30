@@ -29,9 +29,9 @@ class Managment_certyficationActivity : BaseActivity() {
         set(navMenuTitles, navMenuIcons)
         presenter=Managment_certyficationPresenter(this)
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
-        val ico_download_serwer = this.findViewById(R.id.TextView_download_serwer) as TextView
+        val ico_download_serwer = this.findViewById(R.id.managmentCertificationTextViewDownloadSerwer) as TextView
         ico_download_serwer.typeface = fontFamily
-        val ico_download_file = this.findViewById(R.id.TextView_download_file) as TextView
+        val ico_download_file = this.findViewById(R.id.managmentCertificationTextViewDownloadFile) as TextView
         ico_download_file.typeface = fontFamily
 
         if(presenter!!.isLogin()) {
@@ -64,9 +64,6 @@ class Managment_certyficationActivity : BaseActivity() {
 
                 startActivityForResult(Intent.createChooser(intent, "Select a file"), 123)
             }
-
-
-
 
         }
         else

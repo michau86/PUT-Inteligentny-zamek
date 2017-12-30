@@ -123,6 +123,7 @@ class CertyficatWaitPresenter(val view: CertyficatWaitActivity): ITwoButtonList
         try {
             HTTPRequestAPI(this, "http://" + model.ipAddres + ":8080/api/admin/certificate_decision/", "AcceptDecision", toSend).execute()
         } catch (e: Exception) { }
+
     }
 
     fun AcceptDecision(result:String)

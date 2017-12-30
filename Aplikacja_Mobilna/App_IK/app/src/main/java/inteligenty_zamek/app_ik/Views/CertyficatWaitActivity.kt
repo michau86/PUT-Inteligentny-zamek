@@ -86,6 +86,12 @@ class CertyficatWaitActivity : BaseActivity() {
         })
     }
 
+    fun upd()
+    {
+        adapter!!.notifyDataSetChanged()
+    }
+
+
     fun setAdapter(listitem: LinkedHashMap<String, ArrayList<String>>)
     {
         itemList =ArrayList()
@@ -111,7 +117,8 @@ class CertyficatWaitActivity : BaseActivity() {
                     "\nImie i nazwisko  "+Array[2]+" "+Array[3])
             itemList!!.add(item)
         }
-
+        val item = userWatModel("test ", "teest")
+        itemList!!.add(item)
     }
 
     fun showMessage(message:String)

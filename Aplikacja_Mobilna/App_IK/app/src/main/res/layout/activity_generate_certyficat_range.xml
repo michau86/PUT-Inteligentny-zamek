@@ -18,21 +18,18 @@
 
 
             <TextView
-                android:id="@+id/textView41"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:paddingStart="0dp"
                 android:paddingTop="20dp"
                 android:text="Zakres obowiązywania certyfikatu"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+               style="@style/_textViewBigstyle" />
 
             <!-- poniedzialek -->
             <View
-                android:id="@+id/view23"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_alignParentTop="true"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/color_border_list" />
@@ -41,84 +38,79 @@
                 android:id="@+id/checkBoxPoniedzialek"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="18dp"
                 android:text="Poniedziałek" />
 
-            <TextView
-                android:id="@+id/textView43"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Od:" />
+                >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Od:"
+                style="@style/_textViewMediumstyle"
+                />
 
             <EditText
                 android:id="@+id/inputfromPoniedzialek"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:padding="5dp" />
+                android:layout_marginStart="5dp"
+
+                />
 
             <TextView
-                android:id="@+id/textView44"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Do:" />
+                android:paddingStart="20dp"
+                android:text="Do:"
+                style="@style/_textViewMediumstyle"/>
 
             <EditText
                 android:id="@+id/inputtoPoniedzialek"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:padding="5dp" />
-
+                android:layout_marginStart="5dp"
+                />
+            </LinearLayout>
             <Button
                 android:id="@+id/buttonAddRangeMonday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Dodaj zakres" />
+                android:text="Dodaj zakres"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginStart="20dp">
 
                 <TextView
-                    android:id="@+id/textView45"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingLeft="20dp"
-                    android:text="Zakresy juz dodane" />
+                    android:text="Zakresy juz dodane"
+                    style="@style/_textViewMediumstyle"/>
 
                 <Spinner
                     android:id="@+id/spinnerMonday"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
 
 
                 <View
-                    android:id="@+id/view50"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_alignParentTop="true"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/color_border_list" />
