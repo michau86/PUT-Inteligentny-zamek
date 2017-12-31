@@ -35,11 +35,42 @@
                 android:background="@color/color_border_list" />
 
             <CheckBox
-                android:id="@+id/checkBoxPoniedzialek"
+                android:id="@+id/generationCertificateRangeCheckBoxMonday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:text="Poniedziałek" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+
+                >
+                <TextView
+                    android:id="@+id/generationCertificateRangeTextViewErrorIcoMonday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="@string/activity_register_text7"
+                    android:visibility="invisible"
+                    style="@style/_textViewErrorStyle"
+                    android:padding="5dp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/generationCertificateRangeTextViewErrorTextMonday"
+                    style="@style/_textViewErrorStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="niepoprawny zakres czasu"
+                    android:visibility="invisible"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,7 +87,7 @@
                 />
 
             <EditText
-                android:id="@+id/inputfromPoniedzialek"
+                android:id="@+id/generationCertificateRangeEditTextFromMonday"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -71,14 +102,14 @@
                 style="@style/_textViewMediumstyle"/>
 
             <EditText
-                android:id="@+id/inputtoPoniedzialek"
+                android:id="@+id/generationCertificateRangeEditTextToMonday"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 />
             </LinearLayout>
             <Button
-                android:id="@+id/buttonAddRangeMonday"
+                android:id="@+id/generationCertificateRangeButtonAddRangeMonday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -97,10 +128,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Zakresy juz dodane"
-                    style="@style/_textViewMediumstyle"/>
+                    style="@style/_textViewMediumstyle"
+                    android:layout_marginTop="10dp"/>
 
                 <Spinner
-                    android:id="@+id/spinnerMonday"
+                    android:id="@+id/generationCertificateRangeSpinnerMonday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -108,483 +140,696 @@
 
 
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@color/color_border_list" />
+        <!-- wtorek -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/color_border_list" />
 
-            <!--wtorek-->
-            <CheckBox
-                android:id="@+id/checkBoxWtorek"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Wtorek" />
+        <CheckBox
+            android:id="@+id/generationCertificateRangeCheckBoxTuesday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:text="Wtorek" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+
+            >
+            <TextView
+                android:id="@+id/generationCertificateRangeTextViewErrorIcoTuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="@string/activity_register_text7"
+                android:visibility="invisible"
+                style="@style/_textViewErrorStyle"
+                android:padding="5dp"
+                />
+
 
             <TextView
-                android:id="@+id/textView51"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Od:" />
+                android:id="@+id/generationCertificateRangeTextViewErrorTextTuesday"
+                style="@style/_textViewErrorStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="niepoprawny zakres czasu"
+                android:visibility="invisible"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                />
+        </LinearLayout>
 
-            <EditText
-                android:id="@+id/inputfromWtorek"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:padding="5dp" />
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            >
             <TextView
-                android:id="@+id/textView53"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Do:" />
-
-            <EditText
-                android:id="@+id/inputtoWtorek"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:padding="5dp" />
-
-            <Button
-                android:id="@+id/buttonAddRangeTuesday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Dodaj zakres" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView55"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingLeft="20dp"
-                    android:text="Zakresy juz dodane" />
-
-                <Spinner
-                    android:id="@+id/spinnerTuesday"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-
-            <!--Sroda-->
-            <CheckBox
-                android:id="@+id/checkBoxSroda"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Srodak" />
-
-                <TextView
-                    android:id="@+id/textView61"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:paddingLeft="20dp"
-                    android:text="Od:" />
-
-                <EditText
-                    android:id="@+id/inputfromSroda"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/color_background_input"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:padding="5dp" />
-
-                <TextView
-                    android:id="@+id/safsdg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:paddingLeft="20dp"
-                    android:text="Do:" />
-
-                <EditText
-                    android:id="@+id/inputtoSroda"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/color_background_input"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:padding="5dp" />
-
-                <Button
-                    android:id="@+id/buttonAddRangeSroda"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Dodaj zakres" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView65"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="20dp"
-                        android:text="Zakresy juz dodane" />
-
-                    <Spinner
-                        android:id="@+id/spinnerSroda"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-            </LinearLayout>
-
-            <!--Czwartek-->
-            <CheckBox
-                android:id="@+id/checkBoxCzwartek"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Czwartek" />
-
-            <TextView
-                android:id="@+id/textView71"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Od:" />
+                android:layout_marginStart="20dp"
+                android:text="Od:"
+                style="@style/_textViewMediumstyle"
+                />
 
             <EditText
-                android:id="@+id/inputfromCzwartek"
-                android:layout_width="match_parent"
+                android:id="@+id/generationCertificateRangeEditTextFromTuesday"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:padding="5dp" />
+                android:layout_marginStart="5dp"
+
+                />
 
             <TextView
-                android:id="@+id/textView63"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Do:" />
-
-            <EditText
-                android:id="@+id/inputtoCzwartek"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:padding="5dp" />
-
-            <Button
-                android:id="@+id/buttonAddRangeCzwartek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Dodaj zakres" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView75"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingLeft="20dp"
-                    android:text="Zakresy juz dodane" />
-
-                <Spinner
-                    android:id="@+id/spinnerCzwartek"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-            <!--Piatek-->
-            <CheckBox
-                android:id="@+id/checkBoxPiatek"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Piatek" />
-
-            <TextView
-                android:id="@+id/textView81"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Od:" />
+                android:paddingStart="20dp"
+                android:text="Do:"
+                style="@style/_textViewMediumstyle"/>
 
             <EditText
-                android:id="@+id/inputfrompiatek"
-                android:layout_width="match_parent"
+                android:id="@+id/generationCertificateRangeEditTextToTuesday"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:padding="5dp" />
+                android:layout_marginStart="5dp"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/generationCertificateRangeButtonAddRangeTuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Dodaj zakres"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
 
             <TextView
-                android:id="@+id/textView83"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Do:" />
-
-            <EditText
-                android:id="@+id/inputtopiatek"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:padding="5dp" />
-
-            <Button
-                android:id="@+id/buttonAddRangePiatek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Dodaj zakres" />
+                android:text="Zakresy juz dodane"
+                style="@style/_textViewMediumstyle"
+                android:layout_marginTop="10dp"/>
 
-            <LinearLayout
+            <Spinner
+                android:id="@+id/generationCertificateRangeSpinnerTuesday"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView85"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingLeft="20dp"
-                    android:text="Zakresy juz dodane" />
-
-                <Spinner
-                    android:id="@+id/spinnerPiatek"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-            <!--sobota-->
-            <CheckBox
-                android:id="@+id/checkBoxSobota"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Sobota" />
-
-            <TextView
-                android:id="@+id/textView91"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Od:" />
-
-            <EditText
-                android:id="@+id/inputfromSobota"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:padding="5dp" />
-
-            <TextView
-                android:id="@+id/fsadf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Do:" />
-
-            <EditText
-                android:id="@+id/inputtoSobota"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:padding="5dp" />
-
-            <Button
-                android:id="@+id/buttonAddRangeSobota"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Dodaj zakres" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView95"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingLeft="20dp"
-                    android:text="Zakresy juz dodane" />
-
-                <Spinner
-                    android:id="@+id/spinnerSobota"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-            <!--Niedziela-->
-            <CheckBox
-                android:id="@+id/checkBoxNiedziela"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Niedziela" />
-
-            <TextView
-                android:id="@+id/textView101"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Od:" />
-
-            <EditText
-                android:id="@+id/inpiutfromNiedziela"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:padding="5dp" />
-
-            <TextView
-                android:id="@+id/textView103"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="Do:" />
-
-            <EditText
-                android:id="@+id/inputtoNiedziela"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_background_input"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:padding="5dp" />
-
-            <Button
-                android:id="@+id/buttonAddRangeNiedziela"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Dodaj zakres" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView105"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingLeft="20dp"
-                    android:text="Zakresy juz dodane" />
-
-                <Spinner
-                    android:id="@+id/spinnerNiedziela"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-
-
-
-
-
-
-            <View
-                android:id="@+id/view24"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/color_border_list" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
+
+
+
+
+        <!-- środa -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/color_border_list" />
+
+        <CheckBox
+            android:id="@+id/generationCertificateRangeCheckBoxWednesday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:text="Środa" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+
+            >
+            <TextView
+                android:id="@+id/generationCertificateRangeTextViewErrorIcoWednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="@string/activity_register_text7"
+                android:visibility="invisible"
+                style="@style/_textViewErrorStyle"
+                android:padding="5dp"
+                />
+
+
+            <TextView
+                android:id="@+id/generationCertificateRangeTextViewErrorTextWednesday"
+                style="@style/_textViewErrorStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="niepoprawny zakres czasu"
+                android:visibility="invisible"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Od:"
+                style="@style/_textViewMediumstyle"
+                />
+
+            <EditText
+                android:id="@+id/generationCertificateRangeEditTextFromWednesday"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="Do:"
+                style="@style/_textViewMediumstyle"/>
+
+            <EditText
+                android:id="@+id/generationCertificateRangeEditTextToWednesday"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/generationCertificateRangeButtonAddRangeWednesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Dodaj zakres"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zakresy juz dodane"
+                style="@style/_textViewMediumstyle"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:id="@+id/generationCertificateRangeSpinnerWednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+        <!-- Czwartek -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/color_border_list" />
+
+        <CheckBox
+            android:id="@+id/generationCertificateRangeCheckBoxThursday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:text="Czwartek" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+
+            >
+            <TextView
+                android:id="@+id/generationCertificateRangeTextViewErrorIcoThursday"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="@string/activity_register_text7"
+                android:visibility="invisible"
+                style="@style/_textViewErrorStyle"
+                android:padding="5dp"
+                />
+
+
+            <TextView
+                android:id="@+id/generationCertificateRangeTextViewErrorTextThursday"
+                style="@style/_textViewErrorStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="niepoprawny zakres czasu"
+                android:visibility="invisible"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Od:"
+                style="@style/_textViewMediumstyle"
+                />
+
+            <EditText
+                android:id="@+id/generationCertificateRangeEditTextFromThursday"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="Do:"
+                style="@style/_textViewMediumstyle"/>
+
+            <EditText
+                android:id="@+id/generationCertificateRangeEditTextToThursday"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/generationCertificateRangeButtonAddRangeThursday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Dodaj zakres"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zakresy juz dodane"
+                style="@style/_textViewMediumstyle"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:id="@+id/generationCertificateRangeSpinnerThursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+        <!-- piatek -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/color_border_list" />
+
+        <CheckBox
+            android:id="@+id/generationCertificateRangeCheckBoxFriday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:text="Piątek" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+
+            >
+            <TextView
+                android:id="@+id/generationCertificateRangeTextViewErrorIcoFriday"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="@string/activity_register_text7"
+                android:visibility="invisible"
+                style="@style/_textViewErrorStyle"
+                android:padding="5dp"
+                />
+
+
+            <TextView
+                android:id="@+id/generationCertificateRangeTextViewErrorTextFriday"
+                style="@style/_textViewErrorStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="niepoprawny zakres czasu"
+                android:visibility="invisible"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Od:"
+                style="@style/_textViewMediumstyle"
+                />
+
+            <EditText
+                android:id="@+id/generationCertificateRangeEditTextFromFriday"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="Do:"
+                style="@style/_textViewMediumstyle"/>
+
+            <EditText
+                android:id="@+id/generationCertificateRangeEditTextToFriday"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/generationCertificateRangeButtonAddRangeFriday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Dodaj zakres"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zakresy juz dodane"
+                style="@style/_textViewMediumstyle"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:id="@+id/generationCertificateRangeSpinnerFriday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+        <!-- sobota -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/color_border_list" />
+
+        <CheckBox
+            android:id="@+id/generationCertificateRangeCheckBoxSaturday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:text="Sobota" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+
+            >
+            <TextView
+                android:id="@+id/generationCertificateRangeTextViewErrorIcoSaturday"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="@string/activity_register_text7"
+                android:visibility="invisible"
+                style="@style/_textViewErrorStyle"
+                android:padding="5dp"
+                />
+
+
+            <TextView
+                android:id="@+id/generationCertificateRangeTextViewErrorTextSaturday"
+                style="@style/_textViewErrorStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="niepoprawny zakres czasu"
+                android:visibility="invisible"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Od:"
+                style="@style/_textViewMediumstyle"
+                />
+
+            <EditText
+                android:id="@+id/generationCertificateRangeEditTextFromSaturday"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="Do:"
+                style="@style/_textViewMediumstyle"/>
+
+            <EditText
+                android:id="@+id/generationCertificateRangeEditTextToSaturday"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/generationCertificateRangeButtonAddRangeSaturday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Dodaj zakres"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zakresy juz dodane"
+                style="@style/_textViewMediumstyle"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:id="@+id/generationCertificateRangeSpinnerSaturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+
+        <!-- niedziela -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/color_border_list" />
+
+        <CheckBox
+            android:id="@+id/generationCertificateRangeCheckBoxSunday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:text="Niedziela" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+
+            >
+            <TextView
+                android:id="@+id/generationCertificateRangeTextViewErrorIcoSunday"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="@string/activity_register_text7"
+                android:visibility="invisible"
+                style="@style/_textViewErrorStyle"
+                android:padding="5dp"
+                />
+
+
+            <TextView
+                android:id="@+id/generationCertificateRangeTextViewErrorTextSunday"
+                style="@style/_textViewErrorStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="niepoprawny zakres czasu"
+                android:visibility="invisible"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Od:"
+                style="@style/_textViewMediumstyle"
+                />
+
+            <EditText
+                android:id="@+id/generationCertificateRangeEditTextFromSunday"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="Do:"
+                style="@style/_textViewMediumstyle"/>
+
+            <EditText
+                android:id="@+id/generationCertificateRangeEditTextToSunday"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/generationCertificateRangeButtonAddRangeSunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Dodaj zakres"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zakresy juz dodane"
+                style="@style/_textViewMediumstyle"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:id="@+id/generationCertificateRangeSpinnerSunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/color_border_list" />
+
+        </LinearLayout>
+
     </ScrollView>
 
     <!-- The navigation drawer -->

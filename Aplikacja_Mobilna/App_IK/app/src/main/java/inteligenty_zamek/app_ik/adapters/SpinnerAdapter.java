@@ -20,15 +20,14 @@ import inteligenty_zamek.app_ik.R;
 public class SpinnerAdapter extends ArrayAdapter<String> {
     Context context;
     ArrayList<String> iName;
-    ArrayList<String> iAbout;
-
+    boolean removeText=false;
     TextView spnItemName,spnItemDel;
-    ImageView spnItemIcon;
 
     public SpinnerAdapter(Context context, int textViewResourceId, ArrayList<String> objects, ArrayList<String> iName){
         super(context,textViewResourceId,objects);
         this.context = context;
         this.iName = iName;
+
     }
 
     @Override
@@ -38,6 +37,9 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
+
+
+
         return getCustomView(position, convertView, parent);
     }
 
