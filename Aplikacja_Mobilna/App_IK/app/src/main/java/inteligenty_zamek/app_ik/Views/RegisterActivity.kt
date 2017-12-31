@@ -54,7 +54,7 @@ class RegisterActivity : Activity() {
             sampleText.text="\uf070"
             sampleText.typeface = fontFamily
             val et=findViewById(R.id.registerEditTextPassword) as EditText
-            et.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            et.transformationMethod = HideReturnsTransformationMethod.getInstance()
         }
         else
         {
@@ -62,7 +62,7 @@ class RegisterActivity : Activity() {
             sampleText.typeface = fontFamily
 
             val et=findViewById(R.id.registerEditTextPassword) as EditText
-            et.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            et.transformationMethod = PasswordTransformationMethod.getInstance()
         }
         }
 
@@ -73,52 +73,52 @@ class RegisterActivity : Activity() {
                 setTooltip(password)
             })
 
-        password.setOnFocusChangeListener(View.OnFocusChangeListener { v, hasFocus ->
+        password.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 setTooltip(password)
             }
-        })
+        }
 ////////////////////////////////////////////////////////////////////////////////
 /////////// name
 
         name.setOnClickListener(View.OnClickListener {
-            name.getBackground().setColorFilter(ResourcesCompat.getColor(getResources(),
+            name.background.setColorFilter(ResourcesCompat.getColor(resources,
                     R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP)
         })
 
-        name.setOnFocusChangeListener(View.OnFocusChangeListener { v, hasFocus ->
+        name.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-                name.getBackground().setColorFilter(ResourcesCompat.getColor(getResources(),
+                name.background.setColorFilter(ResourcesCompat.getColor(resources,
                         R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP)
             }
-        })
+        }
 
 //////////////////////////////////////////////////////////////////////////////
 /////surname
         surname.setOnClickListener(View.OnClickListener {
-            surname.getBackground().setColorFilter(ResourcesCompat.getColor(getResources(),
+            surname.background.setColorFilter(ResourcesCompat.getColor(resources,
                     R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP)
         })
 
-        surname.setOnFocusChangeListener(View.OnFocusChangeListener { v, hasFocus ->
+        surname.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-                surname.getBackground().setColorFilter(ResourcesCompat.getColor(getResources(),
+                surname.background.setColorFilter(ResourcesCompat.getColor(resources,
                         R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP)
             }
-        })
+        }
 /////////////////////////////////////////////////////////////////////////////
 //////ip
         ipserwer.setOnClickListener(View.OnClickListener {
-            ipserwer.getBackground().setColorFilter(ResourcesCompat.getColor(getResources(),
+            ipserwer.background.setColorFilter(ResourcesCompat.getColor(resources,
                     R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP)
         })
 
-        ipserwer.setOnFocusChangeListener(View.OnFocusChangeListener { v, hasFocus ->
+        ipserwer.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-                ipserwer.getBackground().setColorFilter(ResourcesCompat.getColor(getResources(),
+                ipserwer.background.setColorFilter(ResourcesCompat.getColor(resources,
                         R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP)
             }
-        })
+        }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -129,13 +129,13 @@ class RegisterActivity : Activity() {
                         name.text.toString(), surname.text.toString(), ipserwer.text.toString())
             }
 
-        originalDrawable = password.getBackground();
-        }
+        originalDrawable = password.background
+    }
 
 
 fun setTooltip(password:EditText)
 {
-    originalDrawable!!.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
+    originalDrawable!!.setColorFilter(ResourcesCompat.getColor(resources, R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
 
     Tooltip.Builder(password)
             .setText("hasło musi spełniać warunki:\n-długość minimum 8 znaków" +
@@ -155,45 +155,45 @@ fun setTooltip(password:EditText)
         textView.visibility = View.VISIBLE
 
 
-        val params = textView.getLayoutParams()
+        val params = textView.layoutParams
         params.height = ViewGroup.LayoutParams.WRAP_CONTENT
-        textView.setLayoutParams(params)
+        textView.layoutParams = params
 
         textView = findViewById(R.id.registerTextViewErrorLoginIco) as TextView
         textView.visibility = View.VISIBLE
-        textView.setLayoutParams(params)
+        textView.layoutParams = params
 
         when(i) {
 
             2-> {
 
                 val et=findViewById(R.id.registerEditTextPassword)
-                val drawable:Drawable = et.getBackground(); // get current EditText drawable
-                drawable.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
-                et.setBackground(drawable); // set the new drawable to EditTex
+                val drawable:Drawable = et.background // get current EditText drawable
+                drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+                et.background = drawable // set the new drawable to EditTex
             }
 
             3-> {
                 val et=findViewById(R.id.registerEditTextIPAdres)
-                val drawable:Drawable = et.getBackground();
-                drawable.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
-                et.setBackground(drawable); // set the new drawable to EditTex
+                val drawable:Drawable = et.background
+                drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+                et.background = drawable // set the new drawable to EditTex
             }
 
             4->
             {
                 val et=findViewById(R.id.registerEditTextName)
-                val drawable:Drawable = et.getBackground();
-                drawable.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
-                et.setBackground(drawable); // set the new drawable to EditTex
+                val drawable:Drawable = et.background
+                drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+                et.background = drawable // set the new drawable to EditTex
             }
 
             5->
             {
                 val et=findViewById(R.id.registerEditTextSurname)
-                val drawable:Drawable = et.getBackground();
-                drawable.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
-                et.setBackground(drawable); // set the new drawable to EditTex
+                val drawable:Drawable = et.background
+                drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+                et.background = drawable // set the new drawable to EditTex
             }
 
         }

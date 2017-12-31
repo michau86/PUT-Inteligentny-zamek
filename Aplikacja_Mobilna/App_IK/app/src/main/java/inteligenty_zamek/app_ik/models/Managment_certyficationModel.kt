@@ -24,7 +24,7 @@ class Managment_certyficationModel(context:Context) {
     var ipaddres:String=""
     val list = ArrayList<String>()
     val adapter: ArrayAdapter<String>
-    var islogin:Boolean=true;
+    var islogin:Boolean=true
     var selectedfile: Uri? =null
     var arrJson: JSONArray? = null
 
@@ -33,14 +33,8 @@ class Managment_certyficationModel(context:Context) {
         login=sharedPreferenceApi.getString(context, EnumChoice.login)
         token= CyptographyApi.decrypt( sharedPreferenceApi.getString(context,EnumChoice.token))
         ipaddres=sharedPreferenceApi.getString(context,EnumChoice.ip)
-
-        if (!sharedPreferenceApi.getBoolean(context, EnumChoice.isLogin)) {
-            list.addAll(Arrays.asList(context.getString(R.string.activity_managmentCertyfication2)))
-            islogin=false
-        } else {
-            val list_item = arrayOf(context.getString(R.string.activity_managmentCertyfication2), context.getString(R.string.activity_managmentCertyfication3), context.getString(R.string.activity_managmentCertyfication4))
+            val list_item = arrayOf(context.getString(R.string.activity_managmentCertyfication2), context.getString(R.string.activity_managmentCertyfication3))
             list.addAll(Arrays.asList(*list_item))
-        }
         adapter = ArrayAdapter(context, R.layout.admin_panel_key_list, list)
     }
 

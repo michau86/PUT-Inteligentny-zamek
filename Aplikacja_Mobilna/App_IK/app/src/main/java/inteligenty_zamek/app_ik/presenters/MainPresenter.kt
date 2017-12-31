@@ -19,13 +19,18 @@ import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 
 class MainPresenter ( val view: MainActivity) {
 
-    var csk: CharSequence = ""
-       val model = MainModel(GlobalContainer.getUser(view))
 
+    val model = MainModel(GlobalContainer.getUser(view))
+
+    fun chagneColorIco(icoColor:Byte)
+    {
+        view.changeIco(model.position,icoColor)
+    }
 
     fun sendCertyficate(index:Int,cs: CharSequence)
     {
-       chagneColorIco(index,1,cs);
+       model.position=index
+       view.changeIco(index,1)
 
         val mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
         if (!mBluetoothAdapter.isEnabled) {
@@ -37,7 +42,7 @@ class MainPresenter ( val view: MainActivity) {
 
 
         try {
-            signature = CyptographyApi.sign(model!!.Keys!!.get(index)!!.getLok_key(), GlobalContainer.getPrivateKey(view))
+            signature = CyptographyApi.sign(model.Keys!!.get(index)!!.lok_key, GlobalContainer.getPrivateKey(view))
       //dołożenie doo sygnatury certyfikatu
         } catch (e: Exception) {
             val toast = Toast.makeText(view, "Brak klucza prywatnego", Toast.LENGTH_LONG)
@@ -51,13 +56,12 @@ class MainPresenter ( val view: MainActivity) {
                     toast.show()
                 }
             }.start()
-            return;
+            return
         }
 
-        val tosend = model!!.Keys!!.get(index)!!.getIdKey() + ";" + model.user.login + ";" + signature
-        Connect_and_send_message(model!!.Keys!!.get(index)!!.getMac_addres(), tosend,this).execute()
-        Log.i("HHHH",model!!.Keys!!.get(index)!!.getMac_addres())//B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
-        Log.i("HHHH",tosend)//B8:27:EB:FC:73:A2  64:B3:10:B4:81:DD
+        val tosend = model.Keys!!.get(index)!!.idKey + ";" + model.user.login + ";" + signature
+        Connect_and_send_message(model.Keys!!.get(index)!!.getMac_addres(), tosend,this).execute()
+
 
         val toast = Toast.makeText(view, "Wysłano certyfikat", Toast.LENGTH_LONG)
         toast.show()
@@ -73,33 +77,19 @@ class MainPresenter ( val view: MainActivity) {
     }
 
 
-       fun  updateList(cs: CharSequence): MainListAdapter
-        {
-            Log.i("HHHH","przed pukey")
-          model!!.putKeys(view,cs);
-            Log.i("HHHH","po pukey")
 
-            return MainListAdapter(view, model);
+
+
+       fun  updateList(cs: CharSequence)//: MainListAdapter
+        {
+          model.putKeys(view,cs)
+            view.setAdapter(model.Keys!!)
+
         }
 
-    fun chagneColorIco(position:Int, i: Byte,cs: CharSequence)
-    {
-        val a:Certyficat? = model.Keys!!.get(position)
-        a!!.status=i
-        model.Keys!!.put(position,  a )
-        view.resultsListView!!.adapter= updateList(cs)
-        model.position=position
-        model.i=i
-        model.cs=cs
-    }
 
-    fun chagneColorIco(i: Byte)
-    {
-        val a:Certyficat? = model.Keys!!.get(model.position)
-        a!!.status=i
-        model.Keys!!.put(model.position,  a )
-        view.resultsListView!!.adapter= updateList(model.cs)
-    }
+
+
 
 
     }

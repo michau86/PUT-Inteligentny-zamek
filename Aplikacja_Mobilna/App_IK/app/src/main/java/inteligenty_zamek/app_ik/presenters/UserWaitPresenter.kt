@@ -3,19 +3,19 @@ package inteligenty_zamek.app_ik.presenters
 import android.util.Log
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
 import inteligenty_zamek.app_ik.Views.UserWaitActivity
+import inteligenty_zamek.app_ik.adapters.ITwoButtonList
 import inteligenty_zamek.app_ik.models.UserWaitModel
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import java.util.ArrayList
-import java.util.HashMap
-import java.util.LinkedHashMap
+import java.util.*
 import java.util.Map
+import kotlin.collections.LinkedHashMap
 
 /**
  * Created by Damian on 04.12.2017.
  */
-class UserWaitPresenter(val view: UserWaitActivity) {
+class UserWaitPresenter(val view: UserWaitActivity) :ITwoButtonList {
 
     var model: UserWaitModel = UserWaitModel(view)
     fun initAvtivity() {
@@ -23,36 +23,22 @@ class UserWaitPresenter(val view: UserWaitActivity) {
         val toSend: HashMap<String, String> = HashMap()
         toSend.put("login", model.login)
         toSend.put("token", model.token)
-        Log.i("HHHH", "0,1")
-
         try {
-
-
             HTTPRequestAPI(this, "http://" + model.ipAddres + ":8080/api/admin/register_waiting/", "initresult", toSend).execute()
-        } catch (e: Exception) {
-        }
-
-
+        } catch (e: Exception) { }
     }
 
     fun initresult(result: String) {
         try {
-            Log.i("HHHH", "result")
-
             if (JSONObject(result).getString("data") != "empty") {
-
                 var arrJson: JSONArray = JSONObject(result).getJSONArray("data")
                 model.Keys = LinkedHashMap()
                 for (i in 0 until arrJson.length()) {
                     try {
-                        model!!.Keys!!.put(arrJson.getJSONObject(i).getString("LOGIN"), arrJson.getJSONObject(i).getString("NAME") + " " + arrJson.getJSONObject(i).getString("SURNAME"))
-                    } catch (ignored: JSONException) {
-                    }
-
+                        model.Keys!!.put(arrJson.getJSONObject(i).getString("LOGIN"), arrJson.getJSONObject(i).getString("NAME") + " " + arrJson.getJSONObject(i).getString("SURNAME"))
+                    } catch (ignored: JSONException) { }
                 }
-
                 updateListInSearch("")
-
                 view.showMessage("Pobrano listę oczekujących użytkowników na rejestrację")
 
             } else {
@@ -63,38 +49,60 @@ class UserWaitPresenter(val view: UserWaitActivity) {
         }
     }
 
+    fun sortArray()
+    {
+        if(model.sortedflag) {
+           model.Keys= LinkedHashMap(model.Keys!!.toList().sortedBy { (key, value) -> key }.toMap())
+        }
+        else {
+            model.Keys= LinkedHashMap(model.Keys!!.toList().sortedByDescending { (key, value) -> key }.toMap())
+        }
+        model.sortedflag=!model.sortedflag
+        updateListInSearch(model.cs)
+
+    }
     fun updateListInSearch( cs:CharSequence)
     {
-        model.listItems = ArrayList()
         model.cs=cs
         val it = model.Keys!!.entries.iterator()
-
+        model.resultsMap = LinkedHashMap()
+        model.loginMap=LinkedHashMap()
+        var i:Int=0
         while (it.hasNext()) {
-            model.resultsMap = LinkedHashMap()
+
             val pair = it.next() as Map.Entry<*, *>
             if (pair.key.toString().toLowerCase().contains(cs.toString().toLowerCase()) || pair.value.toString().toLowerCase().contains(cs.toString().toLowerCase()))
             {
-                model!!.resultsMap!!.put("First Line", pair.key.toString())
-                model!!.resultsMap!!.put("Second Line", pair.value.toString())
-                model!!.listItems.add(model!!.resultsMap!!)
+                if(pair.key.toString()!=null) {
+                    model.resultsMap!!.put(pair.key.toString(), pair.value.toString())
+                    model.loginMap!!.put(i, pair.key.toString())
+                    i++
+                }
             } else if (cs.toString() === "") {
-                model!!.resultsMap!!.put("First Line", pair.key.toString())
-                model!!.resultsMap!!.put("Second Line", pair.value.toString())
-                model!!.listItems.add(model!!.resultsMap!!)
+                if(pair.key.toString()!=null) {
+                    model.resultsMap!!.put(pair.key.toString(), pair.value.toString())
+                    model.loginMap!!.put(i, pair.key.toString())
+                    i++
+                }
             }
         }
-       view.setAdapter(model!!.listItems)
+       view.setAdapter(model.resultsMap!!)
     }
 
     fun removefromKeys()
     {
-        model!!.Keys!!.remove(model.getLoginFromListItem(model.indexOfKeysToRemove))
-        updateListInSearch(model.cs)
+        model.Keys!!.remove(model.getLoginFromListItem(model.indexOfKeysToRemove))
+        model.resultsMap!!.remove(model.getLoginFromListItem(model.indexOfKeysToRemove))
+        model.updateLoginMap()
     }
 
-   fun acceptButton(position:Int)
+    override
+    fun acceptButton(position:Int)
    {
        val toSend: HashMap<String, String> = HashMap()
+
+
+
        toSend.put("login", model.login)
        toSend.put("token", model.token)
        toSend.put("decision","1")
@@ -110,7 +118,7 @@ class UserWaitPresenter(val view: UserWaitActivity) {
         try {
             if (JSONObject(result).getString("status") == "ok"){
                 removefromKeys()
-              view.showMessage("Zaakceptowano rejestrację użytkownika")
+                view.deleteFromRecycler(model.indexOfKeysToRemove)
             }
             else
             {
@@ -123,6 +131,7 @@ class UserWaitPresenter(val view: UserWaitActivity) {
 
 
     }
+    override
     fun removeButton(position:Int)
     {
         val toSend: HashMap<String, String> = HashMap()
@@ -141,8 +150,10 @@ class UserWaitPresenter(val view: UserWaitActivity) {
         try {
             jObj = JSONObject(result)
             if (jObj.getString("status") == "ok"){
+
                 removefromKeys()
-                view.showMessage("Odmówiono rejestracji użytkownika")
+                view.deleteFromRecycler(model.indexOfKeysToRemove)
+                model.indexOfKeysToRemove=-1;
             }
             else
             {

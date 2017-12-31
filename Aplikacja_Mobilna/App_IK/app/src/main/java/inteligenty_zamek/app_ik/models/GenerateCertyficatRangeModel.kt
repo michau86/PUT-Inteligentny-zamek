@@ -5,8 +5,7 @@ import java.util.ArrayList
 /**
  * Created by Damian on 07.12.2017.
  */
-class GenerateCertyficatRangeModel()
-{
+class GenerateCertyficatRangeModel {
     var mondayList = ArrayList<String>()
     var tuesdayList = ArrayList<String>()
     var wednesdayList = ArrayList<String>()

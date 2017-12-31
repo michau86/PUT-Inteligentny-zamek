@@ -27,7 +27,7 @@ import inteligenty_zamek.app_ik.rest_class.GlobalContainer;
 import inteligenty_zamek.app_ik.rest_class.User;
 import inteligenty_zamek.app_ik.presenters.LoginPresenter;
 
-public class LoginActivity extends Activity{
+public class  LoginActivity extends Activity{
 
     private LoginPresenter presenter;
     private Context context;
@@ -73,19 +73,7 @@ public class LoginActivity extends Activity{
             }
         });
 
-        /* akcja do przycisku gosc */
-        final Button guest = (Button) findViewById(R.id.loginButtonGuest);
-        guest.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-               /*) User user=new User();
-                user.setLogin("guest");
-                ((GlobalClassContainer) getApplication()).setUser(user);
-                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent);
-                finish();*/
 
-            }
-        });
         presenter.isLogin();
     }
 

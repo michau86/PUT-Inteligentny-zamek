@@ -8,18 +8,26 @@ import android.view.View
 import android.widget.*
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
-
-import java.util.ArrayList
-
 import inteligenty_zamek.app_ik.rest_class.User
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.R
-import inteligenty_zamek.app_ik.adapters.SpinnerAdapter
 import inteligenty_zamek.app_ik.rest_class.Lock
 import inteligenty_zamek.app_ik.presenters.GenerationCertyficatPresenter
-import java.util.HashMap
+import android.app.DatePickerDialog
+import android.graphics.PorterDuff
+import android.graphics.Typeface
+import android.graphics.drawable.Drawable
+import android.support.v4.content.res.ResourcesCompat
+import android.view.ViewGroup
+import android.widget.EditText
+import inteligenty_zamek.app_ik.adapters.SpinnerWithoutDeleteAdapter
+import java.text.SimpleDateFormat
+import java.util.*
 
-class GenerationCertyficatActivity : BaseActivity(), AdapterView.OnItemSelectedListener {
+
+
+
+class GenerationCertyficatActivity : BaseActivity() {
 
     private var navMenuTitles: Array<String>? = null
     private var navMenuIcons: TypedArray? = null
@@ -38,64 +46,147 @@ class GenerationCertyficatActivity : BaseActivity(), AdapterView.OnItemSelectedL
         navMenuTitles = resources.getStringArray(R.array.nav_drawer_items)
         navMenuIcons = resources.obtainTypedArray(R.array.nav_drawer_icons)
         set(navMenuTitles, navMenuIcons)
-        viewFlipper = findViewById(R.id.myViewFlipper) as ViewFlipper
 
-        viewFlipper!!.displayedChild = 0
-        spin = findViewById(R.id.spinnerChangeAdminGenerationCertyficat) as Spinner
-        spin2 = findViewById(R.id.spinnerChangeAdminGenerationCertyficat2) as Spinner
-        spin!!.onItemSelectedListener = this
-        spin2!!.onItemSelectedListener = this
+        spin = findViewById(R.id.generationCertyficatspinnerUser) as Spinner
 
-        presenter= GenerationCertyficatPresenter(this)
+        presenter = GenerationCertyficatPresenter(this)
 
         val arrayAdapterFroLoginUser = ArrayAdapter(this, android.R.layout.simple_spinner_item, items)
-        val arrayAdapterForGuestUser = ArrayAdapter(this, android.R.layout.simple_spinner_item, items)
         arrayAdapterFroLoginUser.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spin!!.adapter = arrayAdapterFroLoginUser
-        arrayAdapterForGuestUser.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spin2!!.adapter = arrayAdapterForGuestUser
-
+        context=this
 
         //pobranie listy zamków oraz użytkowników
         presenter!!.downloadKey()
         presenter!!.downloadUsers()
 
 
-        val addRange = findViewById(R.id.buttonRangeGenerateCertyficat) as Button
+        val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
+        var sampleText = this.findViewById(R.id.generationCertificateTextViewErrorIco) as TextView
+        sampleText.typeface = fontFamily
+
+
+
+
+        val addRange = findViewById(R.id.generationCertyficatButtonRange) as Button
         addRange.setOnClickListener {
             val value = HashMap<EnumChoice, String>()
-            value.put(EnumChoice.choiceLogin, presenter!!.getUserLogin((findViewById(R.id.spinnerUser) as Spinner).selectedItemPosition) )
-            value.put(EnumChoice.choiceLock, presenter!!.getLockName((findViewById(R.id.spinnerLoks) as Spinner).selectedItemPosition))
-           sharedPreferenceApi.set(this,value)
+            value.put(EnumChoice.choiceLogin, presenter!!.getUserLogin((findViewById(R.id.generationCertyficatspinnerUser) as Spinner).selectedItemPosition))
+            value.put(EnumChoice.choiceLock, presenter!!.getLockName((findViewById(R.id.generationCertificateSpinnerLoks) as Spinner).selectedItemPosition))
+            sharedPreferenceApi.set(this, value)
             val intent = Intent(this@GenerationCertyficatActivity, GenerateCertyficatRangeActivity::class.java)
             startActivity(intent)
         }
 
-        val generate = findViewById(R.id.generujAdmin) as Button
+        val generate = findViewById(R.id.generationCertificateButtonSend) as Button
         generate.setOnClickListener {
-            val fromDate = (findViewById(R.id.inputfromAdmingenerate) as EditText).toString()
-            val toDate = (findViewById(R.id.inputtoadminGenerateKey) as EditText).toString()
-            val lockposition = (findViewById(R.id.spinnerLoks) as Spinner).selectedItemPosition
-            val userposition = (findViewById(R.id.spinnerUser) as Spinner).selectedItemPosition
-            val nameCertyficat = (findViewById(R.id.inputName) as EditText).text.toString()
-            val userName = (this.findViewById(R.id.editText7) as TextView).text.toString()
-            val surname = (this.findViewById(R.id.editText8) as TextView).text.toString()
-            presenter!!.generateCertyficat(fromDate,toDate ,lockposition,userposition,userName,surname)
+            val fromDate = (findViewById(R.id.generationCertificateEditTextFrom) as EditText).text.toString()
+            val toDate = (findViewById(R.id.generationCertificateEditTextTo) as EditText).text.toString()
+            val lockposition = (findViewById(R.id.generationCertificateSpinnerLoks) as Spinner).selectedItemPosition
+            val userposition = (findViewById(R.id.generationCertyficatspinnerUser) as Spinner).selectedItemPosition
+            val userName = (this.findViewById(R.id.generationCertificateEditTextName) as TextView).text.toString()
+            val surname = (this.findViewById(R.id.generationCertificateEditTextSurname) as TextView).text.toString()
+            presenter!!.generateCertyficat(fromDate, toDate, lockposition, userposition, userName, surname)
         }
+
+
+        val myCalendar = Calendar.getInstance()
+
+        val from = findViewById(R.id.generationCertificateEditTextFrom) as EditText
+        val dateFrom = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            // TODO Auto-generated method stub
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH, monthOfYear)
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            val myFormat = "yyyy-MM-dd"; //In which you need put here
+            val sdf = SimpleDateFormat(myFormat, Locale.GERMAN);
+            from.setText(sdf.format(myCalendar.getTime()));
+
+        }
+
+
+
+        from.setOnClickListener(object : View.OnClickListener {
+
+            override fun onClick(v: View) {
+                // TODO Auto-generated method stub
+          val data=    DatePickerDialog(this@GenerationCertyficatActivity, dateFrom, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH))
+
+                      data.datePicker.minDate=System.currentTimeMillis() - 1000
+                      data.show()
+                from.background.setColorFilter(ResourcesCompat.getColor(resources,
+                        R.color.inpuLneColor, context!!.theme), PorterDuff.Mode.SRC_ATOP)
+            }
+
+        })
+
+
+
+        val to = findViewById(R.id.generationCertificateEditTextTo) as EditText
+        val dateTo = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            // TODO Auto-generated method stub
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH, monthOfYear)
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            val myFormat = "yyyy-MM-dd"; //In which you need put here
+            val sdf = SimpleDateFormat(myFormat, Locale.GERMAN);
+            to.setText(sdf.format(myCalendar.getTime()));
+
+        }
+
+
+        to.setOnClickListener(object : View.OnClickListener {
+
+            override fun onClick(v: View) {
+                // TODO Auto-generated method stub
+                val data=    DatePickerDialog(this@GenerationCertyficatActivity, dateTo, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH))
+
+                data.datePicker.minDate=System.currentTimeMillis() - 1000
+                data.show()
+                to.background.setColorFilter(ResourcesCompat.getColor(resources,
+                        R.color.inpuLneColor, context!!.theme), PorterDuff.Mode.SRC_ATOP)
+            }
+        })
+
     }
 
 
-    override fun onItemSelected(parent: AdapterView<*>, v: View, position: Int,
-                                id: Long) {
-        if (position == 1) {
-           spin2!!.setSelection(1)
-        } else {
-            spin!!.setSelection(0)
-        }
-        viewFlipper!!.displayedChild = position
-    }
+fun setDateError()
+{
+    val et1=findViewById(R.id.generationCertificateEditTextFrom)
+    val drawable: Drawable = et1.background // get current EditText drawable
+    drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+    et1.background = drawable
 
-    override fun onNothingSelected(parent: AdapterView<*>) {}
+    val et2=findViewById(R.id.generationCertificateEditTextTo)
+    val drawable2: Drawable = et2.background // get current EditText drawable
+    drawable2.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+    et2.background = drawable2
+
+
+    var textView = findViewById(R.id.generationCertificateTextViewErrorText) as TextView
+    textView.visibility = View.VISIBLE
+
+
+    val params = textView.layoutParams
+    params.height = ViewGroup.LayoutParams.WRAP_CONTENT
+    textView.layoutParams = params
+
+    textView = findViewById(R.id.generationCertificateTextViewErrorIco) as TextView
+    textView.visibility = View.VISIBLE
+    textView.layoutParams = params
+
+
+
+}
+
+
+
+
 
     fun setSpinnerLockList(locklist:Array<Lock?>? )
         {
@@ -103,12 +194,10 @@ class GenerationCertyficatActivity : BaseActivity(), AdapterView.OnItemSelectedL
             runOnUiThread {
                   lock = sharedPreferenceApi.getString(this,EnumChoice.choiceLock)
 
-                val spiner1 = findViewById(R.id.spinnerLoks) as Spinner
-                val spinner2=findViewById(R.id.spinnerloks2) as Spinner
+                val spiner1 = findViewById(R.id.generationCertificateSpinnerLoks) as Spinner
                 val listkey = ArrayList<String>()
-                val spinerListKeyAdapter = SpinnerAdapter(this@GenerationCertyficatActivity, R.layout.spinner_row, listkey, listkey)
+                val spinerListKeyAdapter = SpinnerWithoutDeleteAdapter(this@GenerationCertyficatActivity, R.layout.spinner_row, listkey, listkey)
                 spiner1.adapter = spinerListKeyAdapter
-                spinner2.adapter=spinerListKeyAdapter
                 val list = locklist
                 for (i in list!!.indices) {
                     try {
@@ -129,9 +218,11 @@ class GenerationCertyficatActivity : BaseActivity(), AdapterView.OnItemSelectedL
             runOnUiThread {
                 login =  sharedPreferenceApi.getString(this,EnumChoice.choiceLogin)
 
-                val spiner1 = findViewById(R.id.spinnerUser) as Spinner
+                val spiner1 = findViewById(R.id.generationCertyficatspinnerUser) as Spinner
                 val listkey = ArrayList<String>()
-                val spinerListKeyAdapter = SpinnerAdapter(this@GenerationCertyficatActivity, R.layout.spinner_row, listkey, listkey)
+
+
+                val spinerListKeyAdapter = SpinnerWithoutDeleteAdapter (this@GenerationCertyficatActivity, R.layout.spinner_row2, listkey, listkey)
                 spiner1.adapter = spinerListKeyAdapter
                 val list = userlist
                 for (i in list!!.indices) {

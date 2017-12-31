@@ -4,21 +4,10 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="20dp">
+    >
 
     <!-- The main content view -->
 
-    <ViewFlipper
-        android:id="@+id/myViewFlipper"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -30,67 +19,92 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView19"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:paddingLeft="20dp"
+                        android:paddingStart="20dp"
                         android:text="Generowanie Certyfikatu"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
+                       style="@style/_textViewBigstyle" />
 
                     <TextView
-                        android:id="@+id/textView25"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:paddingLeft="20dp"
+                        android:paddingStart="20dp"
                         android:text="Dane użytkownika"
-                        android:textSize="24sp" />
+                        style="@style/_textViewMediumstyle" />
 
                     <TextView
-                        android:id="@+id/textView26"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:paddingLeft="20dp"
-                        android:text="Imie" />
+                        android:paddingStart="20dp"
+                        android:text="Imie"
+                        style="@style/_textViewMediumstyle"
+                        />
 
                     <EditText
-                        android:id="@+id/editText7"
-                        android:layout_width="260dp"
+                        android:id="@+id/generationCertificateEditTextName"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="5dp"
-                        android:background="@color/color_background_input"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:padding="5dp" />
+                        android:layout_marginEnd="20dp"
+
+                        style="@style/_editTextStyle"/>
 
                     <TextView
-                        android:id="@+id/textView27"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:paddingLeft="20dp"
-                        android:text="Nazwisko" />
+                        android:paddingStart="20dp"
+                        android:text="Nazwisko"
+                        style="@style/_textViewMediumstyle"/>
 
                     <EditText
-                        android:id="@+id/editText8"
-                        android:layout_width="260dp"
+                        android:id="@+id/generationCertificateEditTextSurname"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+
                         android:layout_marginTop="5dp"
-                        android:background="@color/color_background_input"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:padding="5dp" />
+                        style="@style/_editTextStyle" />
 
                     <View
-                        android:id="@+id/view21"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/color_border_list" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="20dp"
+
+                            android:text="Wybór użytkownika"
+                            style="@style/_textViewMediumstyle"/>
+
+                        <Spinner
+                            android:id="@+id/generationCertyficatspinnerUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minHeight="80dp"
+                             />
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
                         android:layout_marginTop="20dp"
                         android:background="@color/color_border_list" />
 
@@ -98,343 +112,150 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
 
                         <TextView
-                            android:id="@+id/textView21"
-                            android:layout_width="100dp"
+                            android:layout_width="180dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.26"
-                            android:paddingLeft="20dp"
-                            android:text="Wybór uprawnień" />
+                            android:paddingStart="20dp"
+                            android:text="Wybór zamka:"
+                            style="@style/_textViewMediumstyle"/>
 
                         <Spinner
-                            android:id="@+id/spinnerChangeAdminGenerationCertyficat"
+                            android:id="@+id/generationCertificateSpinnerLoks"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp" />
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/color_border_list" />
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
                         android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
+
+                        >
+                        <TextView
+                            android:id="@+id/generationCertificateTextViewErrorIco"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:text="@string/activity_register_text7"
+                            android:visibility="invisible"
+                            style="@style/_textViewErrorStyle"
+                            />
+
 
                         <TextView
-                            android:id="@+id/textView21"
+                            android:id="@+id/generationCertificateTextViewErrorText"
+                            style="@style/_textViewErrorStyle"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.26"
-                            android:paddingLeft="20dp"
-                            android:text="Wybór użytkownika" />
-
-                        <Spinner
-                            android:id="@+id/spinnerUser"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="80dp" />
-
+                            android:layout_height="0dp"
+                            android:text="@string/activity_register_text8"
+                            android:visibility="invisible"
+                            android:paddingLeft="10dp"
+                            android:paddingBottom="10dp"
+                            />
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/textView32"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:text="Czas ważności certyfikatu" />
-
-                    <TextView
-                        android:id="@+id/textView34"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:paddingLeft="20dp"
-                        android:text="Od:" />
-
-                    <EditText
-                        android:id="@+id/inputfromAdmingenerate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/color_background_input"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:padding="5dp" />
+                        android:paddingStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Czas ważności certyfikatu"
+                        style="@style/_textViewMediumstyle"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:paddingLeft="20dp"
-                        android:text="Do:" />
+                        android:paddingStart="20dp"
+                        android:text="Od:"
+                        style="@style/_textViewMediumstyle"/>
 
                     <EditText
-                        android:id="@+id/inputtoadminGenerateKey"
+                        android:id="@+id/generationCertificateEditTextFrom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+
                         android:layout_marginTop="5dp"
-                        android:background="@color/color_background_input"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:padding="5dp" />
+                        style="@style/_editTextStyle"
+                        android:clickable="true"
+                        android:focusable="true"
+                        />
 
                     <TextView
-                        android:id="@+id/textView35"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nazwa Certyfikatu" />
+                        android:layout_marginTop="20dp"
+                        android:paddingStart="20dp"
+                        android:text="Do:"
+                        style="@style/_textViewMediumstyle"/>
 
                     <EditText
-                        android:id="@+id/inputName"
+                        android:id="@+id/generationCertificateEditTextTo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="5dp"
-                        android:background="@color/color_background_input"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:padding="5dp" />
+                        android:layout_marginEnd="20dp"
 
-                    <Button
-                        android:id="@+id/buttonRangeGenerateCertyficat"
+                        style="@style/_editTextStyle"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/color_border_list" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+
+                <Button
+                        android:id="@+id/generationCertyficatButtonRange"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
                         android:layout_marginTop="20dp"
                         android:text="Zakres obowiązywania certyfikatu" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView21"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.26"
-                            android:paddingLeft="20dp"
-                            android:text="Wybór zamka:" />
-
-                        <Spinner
-                            android:id="@+id/spinnerLoks"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="80dp" />
-
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/generujAdmin"
-                        android:layout_width="130dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:padding="10dp"
-                        android:text="Wygeneruj" />
-
-                </LinearLayout>
-
-
-            </ScrollView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView19"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:paddingLeft="20dp"
-                        android:text="Generowanie Certyfikatu"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView25"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:paddingLeft="20dp"
-                        android:text="Dane użytkownika"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/textView26"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:paddingLeft="20dp"
-                        android:text="Imie" />
-
-                    <EditText
-                        android:id="@+id/editText7"
-                        android:layout_width="260dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/color_background_input"
-                        android:ems="10"
-                        android:inputType="textPassword"
-                        android:padding="5dp" />
-
-                    <TextView
-                        android:id="@+id/textView27"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:paddingLeft="20dp"
-                        android:text="Nazwisko" />
-
-                    <EditText
-                        android:id="@+id/editText8"
-                        android:layout_width="260dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/color_background_input"
-                        android:ems="10"
-                        android:inputType="textPassword"
-                        android:padding="5dp" />
-
                     <View
-                        android:id="@+id/view21"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_alignParentTop="true"
                         android:layout_marginTop="20dp"
                         android:background="@color/color_border_list" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView21"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.26"
-                            android:paddingLeft="20dp"
-                            android:text="Wybór uprawnień" />
-
-                        <Spinner
-                            android:id="@+id/spinnerChangeAdminGenerationCertyficat2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp" />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView21"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.26"
-                            android:paddingLeft="20dp"
-                            android:text="Lista czasów:" />
-
-                        <Spinner
-                            android:id="@+id/spinner"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="80dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView21"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.26"
-                            android:paddingLeft="20dp"
-                            android:text="Wybór zamka:" />
-
-                        <Spinner
-                            android:id="@+id/spinnerloks2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="80dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="1"
-                            android:text="Od:" />
-
-                        <EditText
-                            android:id="@+id/editText11"
-                            android:layout_width="260dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="@color/color_background_input"
-                            android:ems="10"
-                            android:inputType="textPassword"
-                            android:padding="5dp" />
-                    </LinearLayout>
-
                     <Button
-                        android:id="@+id/button8"
-                        android:layout_width="130dp"
+                        android:id="@+id/generationCertificateButtonSend"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:padding="10dp"
-                        android:text="Wygeneruj" />
-
+                        android:layout_marginBottom="20dp"
+                        android:text="Wygeneruj certyfikat" />
+                </LinearLayout>
                 </LinearLayout>
 
 
             </ScrollView>
-        </LinearLayout>
 
 
-    </ViewFlipper>
+
+
+
 
     <ListView
         android:id="@+id/left_drawer"

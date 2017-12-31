@@ -7,6 +7,7 @@ import inteligenty_zamek.app_ik.models.GenerationCertyficatModel
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 import org.json.JSONException
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 import java.util.HashMap
 
 /**
@@ -76,16 +77,25 @@ class GenerationCertyficatPresenter(val view: GenerationCertyficatActivity)
     fun generateCertyficat( fromDate:String, toDate:String, lockposition:Int, userposition:Int, namesUser:String, surnameUser:String)
     {
 
+        val date1 =  SimpleDateFormat("yyyy-MM-dd").parse(fromDate)
+        val date2 =  SimpleDateFormat("yyyy-MM-dd").parse(toDate)
+
+       if(date1.compareTo(date2)>0)
+       {
+           view.setDateError()
+           return;
+       }
+
         val toSend: HashMap<String, String> = HashMap()
         toSend.put("login", model.login)
         toSend.put("token", model.token)
 
         toSend.put("user_id", model.userlist!![userposition]!!.getIdUser())
-        toSend.put("lock_id", model.lockslist!![lockposition]!!.getIdKey())
+        toSend.put("lock_id", model.lockslist!![lockposition]!!.idKey)
         toSend.put("name", namesUser)
         toSend.put("surname",surnameUser)
-        toSend.put("from_date", fromDate)
-        toSend.put("to_date", toDate)
+        toSend.put("from_date", fromDate+" 00:00:00")
+        toSend.put("to_date", toDate+" 00:00:00")
 
 
         if (GlobalContainer.mondayList != null) {

@@ -57,9 +57,9 @@ class SetingsActivity : BaseActivity() {
                                 .setCornerRadius(8f)
                                 .show()
                         val editText = findViewById(R.id.settingsEditTextPassword) as EditText
-                        val drawable: Drawable = editText.getBackground(); // get current EditText drawable
-                        drawable.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
-                        editText.setBackground(drawable);
+                        val drawable: Drawable = editText.background // get current EditText drawable
+                        drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+                        editText.background = drawable
 
 
                     } else {
@@ -73,9 +73,9 @@ class SetingsActivity : BaseActivity() {
                                 .show()
 
                         val editText = findViewById(R.id.settingsEditTextNewPassword) as EditText
-                        val drawable: Drawable = editText.getBackground(); // get current EditText drawable
-                        drawable.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
-                        editText.setBackground(drawable);
+                        val drawable: Drawable = editText.background // get current EditText drawable
+                        drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+                        editText.background = drawable
                     }
                 }
             } else {
@@ -97,15 +97,15 @@ class SetingsActivity : BaseActivity() {
         }
 
         val password=findViewById(R.id.settingsEditTextNewPassword) as EditText
-        originalDrawable = password.getBackground();
+        originalDrawable = password.background
         password.setOnClickListener(View.OnClickListener {
             setTooltip(password)
         })
-        password.setOnFocusChangeListener(View.OnFocusChangeListener { v, hasFocus ->
+        password.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 setTooltip(password)
             }
-        })
+        }
 
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
 
@@ -119,7 +119,7 @@ class SetingsActivity : BaseActivity() {
                 eyeOldPassword.text="\uf070"
                 eyeOldPassword.typeface = fontFamily
                 val et=findViewById(R.id.settingsEditTextPassword) as EditText
-                et.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                et.transformationMethod = HideReturnsTransformationMethod.getInstance()
             }
             else
             {
@@ -127,7 +127,7 @@ class SetingsActivity : BaseActivity() {
                 eyeOldPassword.typeface = fontFamily
 
                 val et=findViewById(R.id.settingsEditTextPassword) as EditText
-                et.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                et.transformationMethod = PasswordTransformationMethod.getInstance()
             }
         }
 
@@ -139,7 +139,7 @@ class SetingsActivity : BaseActivity() {
                 eyeNewPassword.text="\uf070"
                 eyeNewPassword.typeface = fontFamily
                 val et=findViewById(R.id.settingsEditTextNewPassword) as EditText
-                et.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                et.transformationMethod = HideReturnsTransformationMethod.getInstance()
             }
             else
             {
@@ -147,22 +147,22 @@ class SetingsActivity : BaseActivity() {
                 eyeNewPassword.typeface = fontFamily
 
                 val et=findViewById(R.id.settingsEditTextNewPassword) as EditText
-                et.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                et.transformationMethod = PasswordTransformationMethod.getInstance()
             }
         }
 
 
 
         ipET.setOnClickListener(View.OnClickListener {
-            ipET.getBackground().setColorFilter(ResourcesCompat.getColor(getResources(),
+            ipET.background.setColorFilter(ResourcesCompat.getColor(resources,
                     R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP)
         })
-        ipET.setOnFocusChangeListener(View.OnFocusChangeListener { v, hasFocus ->
+        ipET.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-                ipET.getBackground().setColorFilter(ResourcesCompat.getColor(getResources(),
+                ipET.background.setColorFilter(ResourcesCompat.getColor(resources,
                         R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP)
             }
-        })
+        }
 
 
     }
@@ -170,9 +170,9 @@ class SetingsActivity : BaseActivity() {
     fun showErrorIp()
     {
         val editText = findViewById(R.id.settingsEditTextIP) as EditText
-        val drawable: Drawable = editText.getBackground();
-        drawable.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
-        editText.setBackground(drawable);
+        val drawable: Drawable = editText.background
+        drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+        editText.background = drawable
     }
 
     fun showErrorNewPassword()
@@ -183,29 +183,29 @@ class SetingsActivity : BaseActivity() {
     fun updateCertyficat(row1:String,row2:String,row3:String,row4:String,row5:String,row6:String,row7:String,row8:String)
     {
         var value =findViewById(R.id.settingsTableRow1) as TextView
-        value.setText(row1)
+        value.text = row1
 
         value =findViewById(R.id.settingsTableRow2) as TextView
-        value.setText(row2)
+        value.text = row2
 
 
         value =findViewById(R.id.settingsTableRow3) as TextView
-        value.setText(row3)
+        value.text = row3
 
         value =findViewById(R.id.settingsTableRow4) as TextView
-        value.setText(row4)
+        value.text = row4
 
         value =findViewById(R.id.settingsTableRow5) as TextView
-        value.setText(row5)
+        value.text = row5
 
         value =findViewById(R.id.settingsTableRow6) as TextView
-        value.setText(row6)
+        value.text = row6
 
         value =findViewById(R.id.settingsTableRow7) as TextView
-        value.setText(row7)
+        value.text = row7
 
         value =findViewById(R.id.settingsTableRow8) as TextView
-        value.setText(row8)
+        value.text = row8
     }
 
     fun showMessage(message:String)
@@ -231,7 +231,7 @@ class SetingsActivity : BaseActivity() {
 
     fun setTooltip(password:EditText)
     {
-        originalDrawable!!.setColorFilter(ResourcesCompat.getColor(getResources(), R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP); // change the drawable color
+        originalDrawable!!.setColorFilter(ResourcesCompat.getColor(resources, R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
 
         Tooltip.Builder(password)
                 .setText("hasło musi spełniać warunki:\n-długość minimum 8 znaków" +

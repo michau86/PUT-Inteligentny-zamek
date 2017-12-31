@@ -52,7 +52,7 @@ class certyficatPresenter(val view: certyficatActivity)
             for (i in 0 until arrJson.length()) {
                 val jsonObj = arrJson.getJSONObject(i)
                 val k = jsonObj.getString("LOCK_KEY")
-                if (k == model!!.certyficat!!.lok_key) {
+                if (k == model.certyficat!!.lok_key) {
                     arrJson.remove(i)
                     break
                 }

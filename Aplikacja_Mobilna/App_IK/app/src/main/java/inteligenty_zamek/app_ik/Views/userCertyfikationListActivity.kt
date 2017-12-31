@@ -36,7 +36,7 @@ class userCertyfikationListActivity : BaseActivity() {
 
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
         val sampleText = this.findViewById(R.id.userCertyficationListTextViewSortingIco) as TextView
-        sampleText.setTypeface(fontFamily)
+        sampleText.typeface = fontFamily
         resultsListView = this.findViewById(R.id.userCertyficationListListViewUserCertyfication) as ListView
         presenter = userCertyfikationListPresenter(this)
         //initKey
@@ -50,14 +50,14 @@ class userCertyfikationListActivity : BaseActivity() {
 
 
         resultsListView!!.adapter = adapter
-        resultsListView!!.setOnItemClickListener(object : AdapterView.OnItemClickListener {
+        resultsListView!!.onItemClickListener = object : AdapterView.OnItemClickListener {
             override
             fun onItemClick(parent: AdapterView<*>, view: View,
                             position: Int, id: Long) {
                 presenter!!.goToCertyficat(position)
                 resultsListView!!.adapter = adapter
             }
-        })
+        }
 
         val inputSearch = findViewById(R.id.userCertyficationListEditTextSearch) as EditText
         inputSearch.addTextChangedListener(object : TextWatcher {
