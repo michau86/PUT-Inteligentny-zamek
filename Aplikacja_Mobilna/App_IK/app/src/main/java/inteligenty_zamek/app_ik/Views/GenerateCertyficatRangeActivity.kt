@@ -122,7 +122,13 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
                 val minute = mcurrentTime.get(Calendar.MINUTE)
                 val mTimePicker: TimePickerDialog
-                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute -> (findViewById(R.id.generationCertificateRangeEditTextFromMonday) as EditText) .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
+                    timePicker, selectedHour, selectedMinute ->
+                    (findViewById(R.id.generationCertificateRangeEditTextFromMonday) as EditText)
+                            .setText(selectedHour.toString()+":"
+                                    +if(selectedMinute.toString().length==1)
+                            {"0"+selectedMinute.toString()}
+                            else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -147,7 +153,11 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToMonday) as EditText)
-                        .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                        .setText(selectedHour.toString()+":"+
+
+                                if(selectedMinute.toString().length==1)
+                                {"0"+selectedMinute.toString()}
+                                else{selectedMinute.toString()}) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -193,7 +203,13 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
                 val minute = mcurrentTime.get(Calendar.MINUTE)
                 val mTimePicker: TimePickerDialog
-                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute -> (findViewById(R.id.generationCertificateRangeEditTextFromTuesday) as EditText) .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
+                    timePicker, selectedHour, selectedMinute ->
+                    (findViewById(R.id.generationCertificateRangeEditTextFromTuesday) as EditText)
+                            .setText(selectedHour.toString()+":"+
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -218,7 +234,10 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToTuesday) as EditText)
-                            .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                            .setText(selectedHour.toString()+":"+
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -265,7 +284,13 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
                 val minute = mcurrentTime.get(Calendar.MINUTE)
                 val mTimePicker: TimePickerDialog
-                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute -> (findViewById(R.id.generationCertificateRangeEditTextFromWednesday) as EditText) .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
+                    timePicker, selectedHour, selectedMinute ->
+                    (findViewById(R.id.generationCertificateRangeEditTextFromWednesday) as EditText)
+                            .setText(selectedHour.toString()+":" +
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -290,7 +315,10 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToWednesday) as EditText)
-                            .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                            .setText(selectedHour.toString()+":" +
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -337,7 +365,13 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
                 val minute = mcurrentTime.get(Calendar.MINUTE)
                 val mTimePicker: TimePickerDialog
-                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute -> (findViewById(R.id.generationCertificateRangeEditTextFromThursday) as EditText) .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
+                    timePicker, selectedHour, selectedMinute ->
+                    (findViewById(R.id.generationCertificateRangeEditTextFromThursday) as EditText)
+                            .setText(selectedHour.toString()+":"+
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -362,7 +396,10 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToThursday) as EditText)
-                            .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                            .setText(selectedHour.toString()+":"+
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -409,7 +446,13 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
                 val minute = mcurrentTime.get(Calendar.MINUTE)
                 val mTimePicker: TimePickerDialog
-                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute -> (findViewById(R.id.generationCertificateRangeEditTextFromFriday) as EditText) .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
+                    timePicker, selectedHour, selectedMinute ->
+                    (findViewById(R.id.generationCertificateRangeEditTextFromFriday) as EditText)
+                            .setText(selectedHour.toString()+":"+
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -434,7 +477,10 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToFriday) as EditText)
-                            .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                            .setText(selectedHour.toString()+":"+
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -481,7 +527,13 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
                 val minute = mcurrentTime.get(Calendar.MINUTE)
                 val mTimePicker: TimePickerDialog
-                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute -> (findViewById(R.id.generationCertificateRangeEditTextFromSaturday) as EditText) .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
+                    timePicker, selectedHour, selectedMinute ->
+                    (findViewById(R.id.generationCertificateRangeEditTextFromSaturday) as EditText)
+                            .setText(selectedHour.toString()+":" +
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -506,7 +558,10 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToSaturday) as EditText)
-                            .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                            .setText(selectedHour.toString()+":"+
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -521,6 +576,7 @@ class GenerateCertyficatRangeActivity : Activity()   {
             val from = findViewById(R.id.generationCertificateRangeEditTextFromSunday) as EditText
             val to = findViewById(R.id.generationCertificateRangeEditTextToSunday) as EditText
             if(Valdiation.biggerThanTime(from.text.toString(),to.text.toString())) {
+
                 spinerSundayAdapter.add(from.text.toString() + "-" + to.text.toString())
                 spinerSundayAdapter.notifyDataSetChanged()
 
@@ -554,7 +610,13 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
                 val minute = mcurrentTime.get(Calendar.MINUTE)
                 val mTimePicker: TimePickerDialog
-                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute -> (findViewById(R.id.generationCertificateRangeEditTextFromSunday) as EditText) .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
+                    timePicker, selectedHour, selectedMinute ->
+                    (findViewById(R.id.generationCertificateRangeEditTextFromSunday) as EditText)
+                            .setText(selectedHour.toString()+":"+
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
@@ -579,7 +641,11 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToSunday) as EditText)
-                            .setText(selectedHour.toString()+":"+selectedMinute.toString() ) }, hour, minute, true)
+                            .setText(selectedHour.toString()+":"+
+
+                                    if(selectedMinute.toString().length==1)
+                                    {"0"+selectedMinute.toString()}
+                                    else{selectedMinute.toString()} ) }, hour, minute, true)
                 mTimePicker.setTitle("wybierz godzine")
                 mTimePicker.show()
 
