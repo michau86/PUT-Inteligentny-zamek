@@ -19,20 +19,23 @@ url_access_decision = server_address + 'api/RPI/access_decision/'
 
 def Check_access(certificate):
     if certificate.isactual is None:
-        if datetime.strptime(certificate.date_from, '%Y-%m-%dT%H:%M:%S') < datetime.now() < datetime.strptime(certificate.date_to, '%Y-%m-%dT%H:%M:%S'):
-	    if certificate.ispernament == 1:
-		return True
-	    else:
+        if datetime.strptime(certificate.date_from, '%Y-%m-%dT%H:%M:%S') < datetime.now() < datetime.strptime(
+                certificate.date_to, '%Y-%m-%dT%H:%M:%S'):
+            if certificate.ispernament == 1:
+                return True
+            else:
                 try:
                     day_access = certificate.access_table[date.today().weekday()].split(";")
                 except Exception:
                     day_access = []
-                now = int(datetime.now().strftime('%H'))
+                now = datetime.now()
                 if len(day_access) > 0:
                     for x in day_access:
                         x = x.split("-")
                         try:
-                            if int(x[0]) <= int(now) < int(x[1]):
+                            x0 = x[0].split(":")
+                            x1 = x[1].split(":")
+                            if datetime.now().replace(hour=int(x0[0]), minute=int(x0[1])) <= now < datetime.now().replace(hour=int(x1[0]), minute=int(x1[1])):
                                 return True
                         except Exception:
                             continue
@@ -42,8 +45,6 @@ def Check_access(certificate):
 if __name__ == '__main__':
     while True:
         try:
-            with open('/sys/class/bluetooth/hci0/address') as mac:
-                mac = mac.read().split("\n")[0]
             with open("log.log", "a") as log:
                 log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "\tStart working" + "\n")
             server_sock = BluetoothSocket(RFCOMM)
@@ -60,6 +61,7 @@ if __name__ == '__main__':
                               profiles=[SERIAL_PORT_PROFILE])
 
             servo = Servo.Servo()
+            mac = "B8:27:EB:FC:73:A2"
             print "Waiting for connection on RFCOMM channel %d" % port
             while True:
                 try:
@@ -67,6 +69,7 @@ if __name__ == '__main__':
                     with open("log.log", "a") as log:
                         log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ":\tAccepted connection from " + str(
                             client_info[0]) + "\n")
+                    print client_info[0]
 
                     data = client_sock.recv(1024)
                     try:
@@ -165,12 +168,3 @@ if __name__ == '__main__':
             with open("log.log", "a") as log:
                 log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "\tExit with KeyboardInterrupt" + "\n")
             break
-
-        '''except Exception:
-                servo.Destroy()
-                server_sock.close()
-                client_sock.close()
-                with open("log.log", "a") as log:
-                    log.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "\tError for unknow reson" + "\n")
-                print "Error for unknow reson"
-                break'''
