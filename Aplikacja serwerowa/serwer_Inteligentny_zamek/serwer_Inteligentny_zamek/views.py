@@ -35,6 +35,8 @@ def api_login(request):
             cursor.execute("SELECT PASSWORD, IS_ADMIN, ISACTIVATED FROM USERS WHERE login='%s'" % username)
             data = cursor.fetchone()
             if data[2] == 0:
+                print password
+                print data[0]
                 if data[0] == password:
                     cursor.execute("UPDATE USERS SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
                     db.commit()
@@ -467,6 +469,53 @@ def api_admin_deactivation(request):
         except Exception:
             return JsonResponse({"status": "Invalid"})
 
+def api_admin_deactivation_user_account(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+        user_id = request.POST.get('user_id')
+
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN, IS_ADMIN FROM USERS WHERE login='%s'" % login)
+            token_from_DB = cursor.fetchall()
+            for row in token_from_DB:
+                token_db = row[0]
+                admin = row[1]
+            if (token_db == token and token != None) and admin == 1:
+                cursor = db.cursor()
+                cursor.execute(
+                    "UPDATE USERS SET ISACTIVATED='2' WHERE ID_USER='%s' " % (user_id))
+                db.commit()
+                return JsonResponse({"status": "ok"})
+            else:
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
+
+def api_admin_deactivation_user_certificate(request):
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        token = request.POST.get('token')
+        user_id = request.POST.get('user_id')
+
+        try:
+            cursor = db.cursor()
+            cursor.execute("SELECT TOKEN, IS_ADMIN FROM USERS WHERE login='%s'" % login)
+            token_from_DB = cursor.fetchall()
+            for row in token_from_DB:
+                token_db = row[0]
+                admin = row[1]
+            if (token_db == token and token != None) and admin == 1:
+                cursor = db.cursor()
+                cursor.execute(
+                    "UPDATE USERS SET VAaliditiy_period='%s' WHERE ID_USER='%s' " % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), user_id))
+                db.commit()
+                return JsonResponse({"status": "ok"})
+            else:
+                return JsonResponse({"status": "invalid"})
+        except Exception:
+            return JsonResponse({"status": "Invalid"})
 
 @csrf_exempt
 def api_admin_register_waiting(request):
