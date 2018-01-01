@@ -5,6 +5,7 @@ import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.fileReadWriteApi
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
+import inteligenty_zamek.app_ik.rest_class.PublicKey
 import java.security.KeyPair
 
 /**
@@ -17,5 +18,16 @@ class SetingsModel(view: SetingsActivity)
     val ipAddres:String=sharedPreferenceApi.getString(view,EnumChoice.ip)
     var pair: KeyPair? = null
     val password= CyptographyApi.decrypt(sharedPreferenceApi.getString(view,EnumChoice.password))
-    val publicKey= GlobalContainer.getPublicKey(view).PUBLIC_KEY
+    val publicKey:String
+    init
+    {
+        if(GlobalContainer.getPublicKey(view)!=null)
+        {
+            publicKey= GlobalContainer.getPublicKey(view).PUBLIC_KEY
+        }
+        else
+        {
+            publicKey = ""
+        }
+    }
 }
