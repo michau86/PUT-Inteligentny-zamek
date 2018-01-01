@@ -610,12 +610,3 @@ def api_change_password(request):
                 return JsonResponse({"status": "invalid"})
         except Exception:
             return JsonResponse({"status": "Invalid"})
-
-
-def Check_access(day_access, time):
-    if len(day_access) > 0:
-        for x in day_access:
-            x = x.split("-")
-            if int(x[0]) <= int(time) < int(x[1]):
-                return True
-    return False
