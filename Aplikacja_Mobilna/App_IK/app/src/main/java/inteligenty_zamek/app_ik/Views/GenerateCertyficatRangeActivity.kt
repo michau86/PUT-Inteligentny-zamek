@@ -125,7 +125,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
                     timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextFromMonday) as EditText)
-                            .setText(selectedHour.toString()+":"
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}
                                     +if(selectedMinute.toString().length==1)
                             {"0"+selectedMinute.toString()}
                             else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -153,8 +155,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToMonday) as EditText)
-                        .setText(selectedHour.toString()+":"+
-
+                        .setText(
+                                if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                else{selectedHour.toString()+":"}+
                                 if(selectedMinute.toString().length==1)
                                 {"0"+selectedMinute.toString()}
                                 else{selectedMinute.toString()}) }, hour, minute, true)
@@ -206,7 +209,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
                     timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextFromTuesday) as EditText)
-                            .setText(selectedHour.toString()+":"+
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -234,7 +239,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToTuesday) as EditText)
-                            .setText(selectedHour.toString()+":"+
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -287,7 +294,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
                     timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextFromWednesday) as EditText)
-                            .setText(selectedHour.toString()+":" +
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -315,7 +324,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToWednesday) as EditText)
-                            .setText(selectedHour.toString()+":" +
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -368,7 +379,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
                     timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextFromThursday) as EditText)
-                            .setText(selectedHour.toString()+":"+
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -396,7 +409,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToThursday) as EditText)
-                            .setText(selectedHour.toString()+":"+
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -449,7 +464,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
                     timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextFromFriday) as EditText)
-                            .setText(selectedHour.toString()+":"+
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -477,7 +494,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToFriday) as EditText)
-                            .setText(selectedHour.toString()+":"+
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -530,7 +549,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
                     timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextFromSaturday) as EditText)
-                            .setText(selectedHour.toString()+":" +
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -558,7 +579,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToSaturday) as EditText)
-                            .setText(selectedHour.toString()+":"+
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -613,7 +636,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener {
                     timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextFromSunday) as EditText)
-                            .setText(selectedHour.toString()+":"+
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)
@@ -641,8 +666,9 @@ class GenerateCertyficatRangeActivity : Activity()   {
                 mTimePicker = TimePickerDialog(context, TimePickerDialog.OnTimeSetListener
                 { timePicker, selectedHour, selectedMinute ->
                     (findViewById(R.id.generationCertificateRangeEditTextToSunday) as EditText)
-                            .setText(selectedHour.toString()+":"+
-
+                            .setText(
+                                    if(selectedHour.toString().length==1){"0"+selectedHour.toString()+":"}
+                                    else{selectedHour.toString()+":"}+
                                     if(selectedMinute.toString().length==1)
                                     {"0"+selectedMinute.toString()}
                                     else{selectedMinute.toString()} ) }, hour, minute, true)

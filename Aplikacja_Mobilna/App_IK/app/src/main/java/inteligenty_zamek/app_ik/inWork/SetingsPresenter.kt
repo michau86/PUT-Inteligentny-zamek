@@ -32,8 +32,10 @@ class SetingsPresenter(val view: SetingsActivity)
     fun updateCertyficat()
     {
         val cert=GlobalContainer.getPublicKey(view)
-        view.updateCertyficat(cert.User_Name,cert.Issuer_name,cert.Validitiy_period,cert.Version,cert.Serial_number,cert.Hash_Algorithm,cert.Signature_Algorithm_Identifier,cert.PUBLIC_KEY)
-    }
+        if(cert!=null) {
+            view.updateCertyficat(cert.User_Name, cert.Issuer_name, cert.Validitiy_period, cert.Version, cert.Serial_number, cert.Hash_Algorithm, cert.Signature_Algorithm_Identifier, cert.PUBLIC_KEY)
+        }
+        }
 
     fun changePassword(newPassword:String)
     {

@@ -40,7 +40,6 @@ public class Certyficat implements Comparable<Certyficat>{
         this.id_user = id_user;
         this.mac_addres=mac_addres;
         this.status=0;
-        Log.i("HHHH",id_lock);
 
     }
 

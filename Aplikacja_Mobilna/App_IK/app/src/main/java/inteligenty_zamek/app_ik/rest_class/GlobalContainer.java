@@ -65,8 +65,10 @@ public final class GlobalContainer {
         publickkey=sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.publicKey);
         if(publickkey.equals(""))
         {
-            publickkey= fileReadWriteApi.readFromFile("**" + sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.login),context);
-        }
+            try {
+                publickkey = fileReadWriteApi.readFromFile("**" + sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.login), context);
+            }catch (Exception ex){return null;}
+            }
         String val="";
         try {
             JSONArray ob = new JSONArray(publickkey);
