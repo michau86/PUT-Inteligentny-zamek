@@ -236,18 +236,19 @@ def api_RPI_download_cetificate(request):
         try:
             cursor = db.cursor()
             cursor.execute(
-                "SELECT LOCK_KEY, FROM_DATE, TO_DATE, ISACTUAL, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, IS_PERNAMENT FROM LOCKS_KEYS WHERE ID_KEY='%s' and  ID_LOCK=(SELECT ID_LOCK FROM LOCKS WHERE MAC_ADDRESS='%s')" % (
+                "SELECT LOCK_KEY, FROM_DATE, TO_DATE, ISACTUAL, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, IS_PERNAMENT  FROM LOCKS_KEYS WHERE ID_KEY='%s' and  ID_LOCK=(SELECT ID_LOCK FROM LOCKS WHERE MAC_ADDRESS='%s')" % (
                     certificate_id, RPI_MAC))
             dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                     in cursor.fetchall()]
             cursor2 = db.cursor()
-            cursor2.execute("SELECT PUBLIC_KEY FROM USERS WHERE LOGIN='%s'" % login_user)
-            public_key = cursor2.fetchone()
+            cursor2.execute("SELECT PUBLIC_KEY, LOGIN as Issuer_name, CONCAT(NAME, ' ', SURNAME) as User_Name, Serial_number, Validitiy_period, Version, Signature_Algorithm_Identifier, Hash_Algorithm FROM USERS WHERE LOGIN='%s'" % login_user)
+            certificate_pki = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
+                                    in cursor.fetchall()]
 
             if len(dict_all_certificate) == 0:
                 return JsonResponse({"data": "invalid"})
             else:
-                return JsonResponse({"data": dict_all_certificate, "public_key": public_key})
+                return JsonResponse({"data": dict_all_certificate, "certificatePKI": certificate_pki})
         except Exception:
             print "Error: api_RPI_download_cetificate"
             return JsonResponse({"data": "invalid"})
