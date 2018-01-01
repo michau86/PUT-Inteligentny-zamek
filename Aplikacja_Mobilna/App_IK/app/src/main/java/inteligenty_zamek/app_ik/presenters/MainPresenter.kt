@@ -5,8 +5,7 @@ import android.content.Intent
 import android.os.CountDownTimer
 import android.util.Log
 import android.widget.Toast
-import inteligenty_zamek.app_ik.API.Connect_and_send_message
-import inteligenty_zamek.app_ik.API.CyptographyApi
+import inteligenty_zamek.app_ik.API.*
 import inteligenty_zamek.app_ik.Views.MainActivity
 import inteligenty_zamek.app_ik.models.MainModel
 import inteligenty_zamek.app_ik.adapters.MainListAdapter
@@ -32,10 +31,12 @@ class MainPresenter ( val view: MainActivity) {
        model.position=index
        view.changeIco(index,1)
 
+
         val mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
         if (!mBluetoothAdapter.isEnabled) {
             val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
             view.startActivity(enableBtIntent)
+            return
         }
 
         var signature = ""
@@ -43,7 +44,6 @@ class MainPresenter ( val view: MainActivity) {
 
         try {
             signature = CyptographyApi.sign(model.Keys!!.get(index)!!.lok_key, GlobalContainer.getPrivateKey(view))
-      //dołożenie doo sygnatury certyfikatu
         } catch (e: Exception) {
             val toast = Toast.makeText(view, "Brak klucza prywatnego", Toast.LENGTH_LONG)
             toast.show()
@@ -58,11 +58,30 @@ class MainPresenter ( val view: MainActivity) {
             }.start()
             return
         }
+        var tosend=""
+            try {
+                tosend = model.Keys!!.get(index)!!.idKey + ";" + model.user.login + ";" + signature +
+                        ";" + fileReadWriteApi.readFromFile(
+                        "**" + sharedPreferenceApi.getString(view, EnumChoice.login), view)
+            }catch(ex:Exception)
+            {
+                val toast = Toast.makeText(view, "Brak certyfikatu klucza publicznego", Toast.LENGTH_LONG)
+                toast.show()
+                object : CountDownTimer(2000, 1000) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        toast.show()
+                    }
 
-        val tosend = model.Keys!!.get(index)!!.idKey + ";" + model.user.login + ";" + signature
+                    override fun onFinish() {
+                        toast.show()
+                    }
+                }.start()
+                return
+            }
         Connect_and_send_message(model.Keys!!.get(index)!!.getMac_addres(), tosend,this).execute()
 
-
+        Log.i("HHHHH to send",tosend)
+        Log.i("HHHH mac adres  ",model.Keys!!.get(index)!!.getMac_addres())
         val toast = Toast.makeText(view, "Wysłano certyfikat", Toast.LENGTH_LONG)
         toast.show()
         object : CountDownTimer(2000, 1000) {
