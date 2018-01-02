@@ -242,8 +242,8 @@ def api_RPI_download_cetificate(request):
                                     in cursor.fetchall()]
             cursor2 = db.cursor()
             cursor2.execute("SELECT PUBLIC_KEY, LOGIN as Issuer_name, CONCAT(NAME, ' ', SURNAME) as User_Name, Serial_number, Validitiy_period, Version, Signature_Algorithm_Identifier, Hash_Algorithm FROM USERS WHERE LOGIN='%s'" % login_user)
-            certificate_pki = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
-                                    in cursor.fetchall()]
+            certificate_pki = [dict((cursor2.description[i][0], value) for i, value in enumerate(row)) for row
+                                    in cursor2.fetchall()]
 
             if len(dict_all_certificate) == 0:
                 return JsonResponse({"data": "invalid"})
@@ -470,6 +470,7 @@ def api_admin_deactivation(request):
         except Exception:
             return JsonResponse({"status": "Invalid"})
 
+@csrf_exempt
 def api_admin_deactivation_user_account(request):
     if request.method == 'POST':
         login = request.POST.get('login')
@@ -494,6 +495,7 @@ def api_admin_deactivation_user_account(request):
         except Exception:
             return JsonResponse({"status": "Invalid"})
 
+@csrf_exempt
 def api_admin_deactivation_user_certificate(request):
     if request.method == 'POST':
         login = request.POST.get('login')
@@ -510,7 +512,7 @@ def api_admin_deactivation_user_certificate(request):
             if (token_db == token and token != None) and admin == 1:
                 cursor = db.cursor()
                 cursor.execute(
-                    "UPDATE USERS SET VAaliditiy_period='%s' WHERE ID_USER='%s' " % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), user_id))
+                    "UPDATE USERS SET Validitiy_period='%s' WHERE ID_USER='%s' " % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), user_id))
                 db.commit()
                 return JsonResponse({"status": "ok"})
             else:
