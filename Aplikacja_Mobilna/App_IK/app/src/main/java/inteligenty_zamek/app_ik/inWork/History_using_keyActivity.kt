@@ -3,46 +3,22 @@ package inteligenty_zamek.app_ik.inWork
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Typeface
-import android.os.AsyncTask
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.*
-
-import org.apache.http.NameValuePair
-import org.apache.http.client.ClientProtocolException
-import org.apache.http.client.entity.UrlEncodedFormEntity
-import org.apache.http.client.methods.HttpPost
-import org.apache.http.impl.client.DefaultHttpClient
-import org.apache.http.message.BasicNameValuePair
-import org.apache.http.util.EntityUtils
 import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
-
-import java.io.IOException
 import java.util.ArrayList
-import java.util.Arrays
-import java.util.Collections
 import java.util.LinkedHashMap
-
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.adapters.HistoryListAdapter
-import inteligenty_zamek.app_ik.adapters.TwoButtonAdapter
-import inteligenty_zamek.app_ik.adapters.userWatModel
 import inteligenty_zamek.app_ik.models.HistoryListElement
-import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer
-import inteligenty_zamek.app_ik.rest_class.User
-import java.security.AccessController.getContext
-import java.util.Map
+
 
 
 class History_using_keyActivity : BaseActivity() {

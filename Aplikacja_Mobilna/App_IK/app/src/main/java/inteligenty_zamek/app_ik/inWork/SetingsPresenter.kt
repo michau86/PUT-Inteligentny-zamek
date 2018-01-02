@@ -37,14 +37,14 @@ class SetingsPresenter(val view: SetingsActivity)
         }
         }
 
-    fun changePassword(newPassword:String)
+    fun changePassword(newPassword:String, oldPassword:String)
     {
 
         if(!Valdiation.isCorrectPassword(newPassword))
         {
          return
         }
-        val passwd_hash = CyptographyApi.bin2hex(CyptographyApi.getHash("haslo"))
+        val passwd_hash = CyptographyApi.bin2hex(CyptographyApi.getHash(oldPassword))
         val new_passwd_hash= CyptographyApi.bin2hex(CyptographyApi.getHash(newPassword))
 
         val toSend: HashMap<String, String> = HashMap()
