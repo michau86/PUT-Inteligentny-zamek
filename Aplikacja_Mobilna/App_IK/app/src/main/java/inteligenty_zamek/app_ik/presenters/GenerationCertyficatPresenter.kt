@@ -1,9 +1,12 @@
 package inteligenty_zamek.app_ik.presenters
 
 
+import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
+import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.Views.GenerationCertyficatActivity
 import inteligenty_zamek.app_ik.models.GenerationCertyficatModel
+import inteligenty_zamek.app_ik.rest_class.Certyficat
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 import org.json.JSONException
 import org.json.JSONObject
@@ -17,6 +20,25 @@ class GenerationCertyficatPresenter(val view: GenerationCertyficatActivity)
 {
     val model: GenerationCertyficatModel = GenerationCertyficatModel(view)
 
+    fun chekCertificate()
+    {
+        val bundle = view.intent.extras
+        if (bundle != null)
+        {
+            if(bundle.getBoolean("haveCertificate"))
+            {
+                model.certificate=GlobalContainer.obj as Certyficat
+            }
+
+           view.setDefaultValueFromCertificate(model.certificate!!.userName,
+                   model.certificate!!.userSurname,model.certificate!!.to)
+            val value = HashMap<EnumChoice, String>()
+            value.put(EnumChoice.choiceLock, model.certificate!!.lockName)
+            value.put(EnumChoice.choiceLogin,getLoginUserFromID(model.certificate!!.id_user))
+            sharedPreferenceApi.set(view,value)
+
+        }
+    }
 
     fun getLockName(position:Int): String
     {
@@ -67,11 +89,27 @@ class GenerationCertyficatPresenter(val view: GenerationCertyficatActivity)
         try {
             val arrJson = JSONObject(result).getJSONArray("data")
             model.addUserList(arrJson)
+            chekCertificate()
             view.setSpinnerUsersList(model.userlist)
+            view.setSpinnerLockList(model.lockslist)
         } catch (e: JSONException) { }
+
+
     }
 
 
+    fun getLoginUserFromID(idUser:String):String {
+        val list = model.userlist
+        for (i in list!!.indices) {
+            try {
+                if (idUser == list[i]!!.idUser) {
+                   return list[i]!!.name.toString()
+                }
+            } catch (e: Exception) {
+            }
+        }
+        return ""
+    }
     fun generateCertyficat( fromDate:String, toDate:String, lockposition:Int, userposition:Int, namesUser:String, surnameUser:String)
     {
 

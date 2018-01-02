@@ -41,7 +41,7 @@
         <activity android:name=".Views.UserWaitActivity" />
         <activity android:name=".beforeChange.EmergencyPasswordActivity" />
         <activity android:name=".Views.GenerationCertyficatActivity" />
-        <activity android:name=".inWork.ManagmentCertyficationUserActivity" />
+        <activity android:name=".Views.ManagmentCertyficationUserActivity" />
         <activity android:name=".Views.CertyficatWaitActivity" />
         <activity android:name=".Views.GenerateCertyficatRangeActivity"></activity>
     </application>

@@ -58,8 +58,7 @@ class GenerationCertyficatActivity : BaseActivity() {
         context=this
 
         //pobranie listy zamków oraz użytkowników
-        presenter!!.downloadKey()
-        presenter!!.downloadUsers()
+
 
 
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
@@ -153,9 +152,19 @@ class GenerationCertyficatActivity : BaseActivity() {
             }
         })
 
+
+
+        presenter!!.downloadKey()
+        presenter!!.downloadUsers()
+
     }
 
-
+    fun setDefaultValueFromCertificate(userName:String , userSurname:String, from:String )
+    {
+        (findViewById(R.id.generationCertificateEditTextFrom) as EditText).setText(from)
+        (findViewById(R.id.generationCertificateEditTextName) as EditText).setText(userName)
+        (findViewById(R.id.generationCertificateEditTextSurname) as EditText).setText(userSurname)
+    }
     fun showMessage(message:String)
     {
         val toast = Toast.makeText(this@GenerationCertyficatActivity, message, Toast.LENGTH_LONG)

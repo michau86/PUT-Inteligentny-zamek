@@ -16,6 +16,8 @@ public class Certyficat implements Comparable<Certyficat>{
     String id_lock;
     String lok_key;
     String id_user;
+    public String userName;
+    public String userSurname;
     public byte status;
     //konstyruktor
     public Certyficat(String isActual, String isPermanent, String monday, String tuesday, String wednesday, String thurstday, String friday, String sunday, String saturday, String from, String to, String name, String surname, String idKey, String lockName, String lockLocalization, String id_lock, String lok_key, String id_user, String mac_addres) {

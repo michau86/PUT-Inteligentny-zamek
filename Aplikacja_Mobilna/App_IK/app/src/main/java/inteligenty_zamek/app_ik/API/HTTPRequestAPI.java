@@ -50,8 +50,6 @@ public class HTTPRequestAPI extends
         java.lang.reflect.Method method;
         try {
             method = presenter.getClass().getMethod(methodName, String.class);
-
-
             method.invoke(presenter, response);
 
         }catch(Exception ex){
