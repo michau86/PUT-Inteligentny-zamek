@@ -828,6 +828,15 @@
             android:layout_marginTop="20dp"
             android:background="@color/color_border_list" />
 
+            <Button
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/generationCertificateRangeButtonBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kontynuj generownie certfikatu" />
+
         </LinearLayout>
 
     </ScrollView>

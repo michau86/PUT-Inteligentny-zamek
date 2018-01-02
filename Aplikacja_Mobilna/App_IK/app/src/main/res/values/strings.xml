@@ -57,17 +57,17 @@
     <string name="activity_settings3">nowe hasło</string>
     <string name="activity_settings4">zmień</string>
     <string name="activity_settings5">Certyfikat klucza prywatnego</string>
-    <string name="activity_settings6">nazwa właściciela</string>
-    <string name="activity_settings7">nazwa emitenta</string>
-    <string name="activity_settings8">okres ważnośći</string>
-    <string name="activity_settings10">wersja</string>
-    <string name="activity_settings11">numer seryjny</string>
+    <string name="activity_settings6">Nazwa właściciela</string>
+    <string name="activity_settings7">Nazwa emitenta</string>
+    <string name="activity_settings8">Okres ważnośći</string>
+    <string name="activity_settings10">Wersja</string>
+    <string name="activity_settings11">Numer seryjny</string>
     <string name="activity_settings12">Algorytm Hashujący</string>
     <string name="activity_settings13">Algorytm sygnatury</string>
-    <string name="activity_settings14">klucz publiczny</string>
-    <string name="activity_settings15">wygeneruj nowy klucz prywatny</string>
+    <string name="activity_settings14">Klucz publiczny</string>
+    <string name="activity_settings15">Wygeneruj nowy klucz prywatny</string>
     <string name="activity_settings16">Adres IP serwera</string>
-    <string name="activity_settings17">zmień</string>
+    <string name="activity_settings17">Zmień</string>
 
 
     <!-- activity_login   -->

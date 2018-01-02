@@ -17,6 +17,7 @@ import android.app.DatePickerDialog
 import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.os.CountDownTimer
 import android.support.v4.content.res.ResourcesCompat
 import android.view.ViewGroup
 import android.widget.EditText
@@ -154,6 +155,20 @@ class GenerationCertyficatActivity : BaseActivity() {
 
     }
 
+
+    fun showMessage(message:String)
+    {
+        val toast = Toast.makeText(this@GenerationCertyficatActivity, message, Toast.LENGTH_LONG)
+        toast.show()
+        object : CountDownTimer(2000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                toast.show()
+            }
+            override fun onFinish() {
+                toast.show()
+            }
+        }.start()
+    }
 
 fun setDateError()
 {

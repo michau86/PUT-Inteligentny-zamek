@@ -68,9 +68,7 @@ class GenerationCertyficatPresenter(val view: GenerationCertyficatActivity)
             val arrJson = JSONObject(result).getJSONArray("data")
             model.addUserList(arrJson)
             view.setSpinnerUsersList(model.userlist)
-        } catch (e: JSONException) {
-
-        }
+        } catch (e: JSONException) { }
     }
 
 
@@ -183,10 +181,25 @@ class GenerationCertyficatPresenter(val view: GenerationCertyficatActivity)
 
         try {
 
-            HTTPRequestAPI(this, "http://" + model.ipAddres + ":8080/api/admin/generate_new_certificate/", "downloadUsersResult", toSend).execute()
+            HTTPRequestAPI(this, "http://" + model.ipAddres + ":8080/api/admin/generate_new_certificate/", "generateResult", toSend).execute()
         } catch (e: Exception) {
         }
     }
 
+
+    fun generateResult(result:String)
+    {
+        val ob=JSONObject(result)
+        if(ob.getString("status").equals("ok")) {
+            GlobalContainer.mondayList = null
+            GlobalContainer.tuesdayList = null
+            GlobalContainer.wednesdayList = null
+            GlobalContainer.thurstdayList = null
+            GlobalContainer.fridyList = null
+            GlobalContainer.saturdayList = null
+            GlobalContainer.sundayList = null
+            view.showMessage("Wygenerowano certyfikat")
+        }
+    }
 
 }

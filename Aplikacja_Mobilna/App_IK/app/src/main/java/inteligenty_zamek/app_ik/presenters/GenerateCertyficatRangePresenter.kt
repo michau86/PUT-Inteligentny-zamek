@@ -65,5 +65,13 @@ class GenerateCertyficatRangePresenter(view: GenerateCertyficatRangeActivity)
 
     }
 
+    fun getDefaultValue()
+    {
+        if(GlobalContainer.mondayList!=null)
+        {
+            model.mondayList=GlobalContainer.mondayList
+        }
+    }
+
 
 }
