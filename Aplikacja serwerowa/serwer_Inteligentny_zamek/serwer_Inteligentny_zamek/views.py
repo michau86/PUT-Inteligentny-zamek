@@ -253,6 +253,23 @@ def api_RPI_download_cetificate(request):
             print "Error: api_RPI_download_cetificate"
             return JsonResponse({"data": "invalid"})
 
+@csrf_exempt
+def api_RPI_people_counter(request):
+    if request.method == 'POST':
+        counter = request.POST.get('counter')
+        RPI_MAC = request.POST.get('mac')
+
+        try:
+            cursor = db.cursor()
+            cursor.execute(
+                "UPDATE locks SET People_inside='%s' WHERE MAC_ADDRESS='%s'" % (
+                    counter, RPI_MAC))
+            db.commit()
+            return JsonResponse({"status": "ok"})
+        except Exception:
+            print "Error: api_RPI_people_counter"
+            return JsonResponse({"status": "invalid"})
+
 
 @csrf_exempt
 def api_RPI_access_decision(request):

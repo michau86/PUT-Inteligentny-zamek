@@ -21,6 +21,7 @@ urlpatterns = {
     url(r'^api/change_password/$', views.api_change_password, name='api_change_password'),
     url(r'^api/RPI/download/cerificate/$', views.api_RPI_download_cetificate, name='api_RPI_download_cetificate'),
     url(r'^api/RPI/access_decision/$', views.api_RPI_access_decision, name='api_RPI_access_decision'),
+    url(r'^api/RPI/people_counter/$', views.api_RPI_people_counter, name='api_RPI_people_counter'),
     url(r'^api/download/all_user/$', views.api_download_all_user, name='api_download_all_user'),
     url(r'^api/admin/deactivation_user_accout/$', views.api_admin_deactivation_user_account, name='api_admin_deactivation_user_account'),
     url(r'^api/admin/deactivation_user_certificate/$', views.api_admin_deactivation_user_certificate, name='api_admin_deactivation_user_certificate'),
