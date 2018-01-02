@@ -2,9 +2,8 @@ package inteligenty_zamek.app_ik.presenters
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import inteligenty_zamek.app_ik.Views.userCertyfikationListActivity
-import inteligenty_zamek.app_ik.inWork.certyficatActivity
+import inteligenty_zamek.app_ik.Views.certyficatActivity
 import inteligenty_zamek.app_ik.models.userCertyfikationListModel
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 import java.util.*

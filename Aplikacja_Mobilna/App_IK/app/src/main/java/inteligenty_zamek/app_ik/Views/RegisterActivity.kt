@@ -1,5 +1,4 @@
 package inteligenty_zamek.app_ik.Views
-
 import android.app.Activity
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -25,11 +24,7 @@ import java.util.HashMap
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 
-
-
 class RegisterActivity : Activity() {
-
-
     private var presenter : RegisterPresenter?= null
     private var originalDrawable:Drawable ?=null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -132,7 +127,6 @@ class RegisterActivity : Activity() {
         originalDrawable = password.background
     }
 
-
 fun setTooltip(password:EditText)
 {
     originalDrawable!!.setColorFilter(ResourcesCompat.getColor(resources, R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
@@ -153,12 +147,9 @@ fun setTooltip(password:EditText)
     {
         var textView = findViewById(R.id.registerTextViewLoginError) as TextView
         textView.visibility = View.VISIBLE
-
-
         val params = textView.layoutParams
         params.height = ViewGroup.LayoutParams.WRAP_CONTENT
         textView.layoutParams = params
-
         textView = findViewById(R.id.registerTextViewErrorLoginIco) as TextView
         textView.visibility = View.VISIBLE
         textView.layoutParams = params
@@ -166,7 +157,6 @@ fun setTooltip(password:EditText)
         when(i) {
 
             2-> {
-
                 val et=findViewById(R.id.registerEditTextPassword)
                 val drawable:Drawable = et.background // get current EditText drawable
                 drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
@@ -195,11 +185,8 @@ fun setTooltip(password:EditText)
                 drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
                 et.background = drawable // set the new drawable to EditTex
             }
-
         }
-
     }
-
 
     fun setDefaultValue(ip:String,log:String,nameuser:String,surnam:String)
     {
@@ -212,7 +199,6 @@ fun setTooltip(password:EditText)
         name.setText(nameuser)
         surname.setText(surnam)
     }
-
 
     fun showMessage(message:String)
     {
@@ -253,7 +239,6 @@ fun setTooltip(password:EditText)
         name.setText(sharedPreferenceApi.getString(this, EnumChoice.nameuser))
         surname.setText(sharedPreferenceApi.getString(this, EnumChoice.surname))
     }
-
 
 }
 

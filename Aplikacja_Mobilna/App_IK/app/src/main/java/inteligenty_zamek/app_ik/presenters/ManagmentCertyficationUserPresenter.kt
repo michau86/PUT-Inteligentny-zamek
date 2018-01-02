@@ -5,7 +5,7 @@ import android.os.Bundle
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
 import inteligenty_zamek.app_ik.Views.ManagmentCertyficationUserActivity
 import inteligenty_zamek.app_ik.models.ManagmentCertyficationUserModel
-import inteligenty_zamek.app_ik.inWork.certyficatActivity
+import inteligenty_zamek.app_ik.Views.certyficatActivity
 import inteligenty_zamek.app_ik.rest_class.Certyficat
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 import org.json.JSONException

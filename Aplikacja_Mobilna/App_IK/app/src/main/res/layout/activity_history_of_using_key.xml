@@ -17,121 +17,129 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="1">
+            >
 
             <TextView
-                android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:paddingLeft="20dp"
+                android:paddingStart="20dp"
                 android:text="Historia użycia zamków"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                style="@style/_textViewBigstyle" />
 
             <View
-                android:id="@+id/view17"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_alignParentTop="true"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/color_border_list" />
 
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="30dp"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/historyUsingKeyLinearLayoutSorting"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/historyUsingKeyTextViewShowHideText"
+            style="@style/_textViewMediumstyle"
+            android:text="rozwiń wyszukiwanie"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/_textViewMediumstyle"
+            android:id="@+id/historyUsingKeyTextViewShowHideIco"
+            android:text="&#xf107;"
+            />
+
+    </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView29"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Wbierz z listy dostępnych zamków" />
+                    android:text="Wybierz z listy dostępnych zamków"
+                    style="@style/_textViewMediumstyle"/>
 
                 <Spinner
                     android:id="@+id/spinner2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                     />
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/view16"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="20dp"
-                android:background="@color/color_border_list" />
 
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wybierz zakres do wyświetlenia"
+        style="@style/_textViewMediumstyle"
+        android:layout_marginTop="10dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/editText2"
                     android:layout_width="112dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
-                    android:ems="10"
                     android:hint="od"
-                    android:inputType="date"
-                    android:paddingLeft="10dp" />
+                     />
 
                 <EditText
                     android:id="@+id/editText10"
                     android:layout_width="109dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:hint="do"
-                    android:inputType="date"
-                    android:paddingLeft="10dp"
-                    android:singleLine="false" />
 
-                <Button
-                    android:id="@+id/button7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="Filtruj" />
+                    android:hint="do"
+                     />
+
+
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+    <LinearLayout
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/userWaitEditText"
-                    android:layout_width="200dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@color/color_background_input"
-                    android:ems="10"
-                    android:inputType="textPersonName"
+                    android:id="@+id/HistoryEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:hint="@string/activity_main_text2"
-                    android:textColor="@color/color_text_ico"
-                    android:textSize="14sp" />
-
-                <SearchView
-                    android:id="@+id/searchView"
-                    android:layout_width="25dp"
-                    android:layout_height="match_parent" />
+                     />
 
                 <TextView
                     android:id="@+id/textView_sorting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="5dp"
                     android:text="@string/activity_main_text3"
                     android:textColor="@color/color_text_ico" />
 
@@ -139,55 +147,36 @@
                     android:id="@+id/TextView_sortingIco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="5dp"
                     android:text="@string/icon_SortingAsc" />
 
             </LinearLayout>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="filtruj"
+        />
+
+
+</LinearLayout>
+
+
             <View
-                android:id="@+id/view18"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_alignParentTop="true"
                 android:layout_marginTop="20dp"
                 android:background="@color/color_border_list" />
 
-            <TextView
-                android:id="@+id/textView31"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/historyUsingKeyRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:elevation="0dp"
-                android:text="Wybierz zakres do wyświetlenia" />
-
-            <ListView
-                android:id="@+id/ListView_History"
-                style="@android:style/Widget.DeviceDefault.ExpandableListView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/color_background_input"
-                android:fastScrollAlwaysVisible="false"
-                android:fastScrollEnabled="false"
-                android:footerDividersEnabled="false"
-                android:headerDividersEnabled="false"
-                android:scrollbars="none|horizontal|vertical"
-                android:smoothScrollbar="true"
-                />
+                android:layout_height="match_parent" />
 
             <View
-                android:id="@+id/view13"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="20dp"
-                android:background="@color/color_border_list" />
-
-            <View
-                android:id="@+id/view14"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentTop="true"
                 android:background="@color/color_border_list" />
 
         </LinearLayout>

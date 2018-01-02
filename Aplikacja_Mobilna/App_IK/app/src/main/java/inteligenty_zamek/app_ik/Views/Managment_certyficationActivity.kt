@@ -92,9 +92,6 @@ class Managment_certyficationActivity : BaseActivity() {
         this.finish()
     }
 
-
-
-
 }
 
 

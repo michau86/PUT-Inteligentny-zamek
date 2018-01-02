@@ -17,9 +17,6 @@ import inteligenty_zamek.app_ik.presenters.userCertyfikationListPresenter
 
 class userCertyfikationListActivity : BaseActivity() {
 
-
-   //
-    //var inputSearch: EditText?=null
     var adapter: SimpleAdapter?=null
     var resultsListView: ListView?=null
     var presenter: userCertyfikationListPresenter?=null
@@ -46,8 +43,6 @@ class userCertyfikationListActivity : BaseActivity() {
         adapter = SimpleAdapter(this, presenter!!.model.listItems, R.layout.main_key_list,
                 arrayOf("First Line", "Second Line"),
                 intArrayOf(R.id.TextView_listPlaceKey, R.id.TextView_listNameKey))
-
-
 
         resultsListView!!.adapter = adapter
         resultsListView!!.onItemClickListener = object : AdapterView.OnItemClickListener {
@@ -100,7 +95,6 @@ class userCertyfikationListActivity : BaseActivity() {
                         intArrayOf(R.id.TextView_listPlaceKey, R.id.TextView_listNameKey))
                 resultsListView!!.adapter = adapter
 
-
                 if(textView.text.equals("\uf160"))
                 {
                     textView.text="\uf161"
@@ -110,17 +104,12 @@ class userCertyfikationListActivity : BaseActivity() {
                     textView.text= "\uf160"
                 }
             }
-
-
         })
-
     }
-
 
     override fun onBackPressed() {
         val intent = Intent(this, Managment_certyficationActivity::class.java)
         startActivity(intent)
         this.finish()
     }
-
 }

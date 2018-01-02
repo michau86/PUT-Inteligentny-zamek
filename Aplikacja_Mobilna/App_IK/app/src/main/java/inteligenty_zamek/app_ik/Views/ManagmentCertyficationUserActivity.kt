@@ -1,5 +1,4 @@
 package inteligenty_zamek.app_ik.Views
-
 import android.content.res.TypedArray
 import android.graphics.Typeface
 import android.os.Bundle
@@ -24,7 +23,6 @@ class ManagmentCertyficationUserActivity : BaseActivity() {
     var resultsListView: ListView?=null
     internal var inputSearch: EditText?=null
 
-
     var presenter: ManagmentCertyficationUserPresenter?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +33,6 @@ class ManagmentCertyficationUserActivity : BaseActivity() {
         set(navMenuTitles, navMenuIcons)
         resultsListView = this@ManagmentCertyficationUserActivity.findViewById(R.id.listView_userCertyfication) as ListView
 
-
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
         val sampleText = this.findViewById(R.id.TextView_sortingIco) as TextView
         sampleText.typeface = fontFamily
@@ -43,30 +40,21 @@ class ManagmentCertyficationUserActivity : BaseActivity() {
         presenter= ManagmentCertyficationUserPresenter(this)
         presenter!!.initActivity()
 
-
-
         inputSearch = findViewById(R.id.userWaitEditText) as EditText
         inputSearch!!.addTextChangedListener(object : TextWatcher {
 
             override fun onTextChanged(cs: CharSequence, arg1: Int, arg2: Int, arg3: Int) {
             presenter!!.updateList(cs)
             }
-
             override fun beforeTextChanged(arg0: CharSequence, arg1: Int, arg2: Int,
                                            arg3: Int) {
                 // TODO Auto-generated method stub
 
             }
-
             override fun afterTextChanged(arg0: Editable) {
                 // TODO Auto-generated method stub
             }
         })
-
-
-
-
-
 
         //przycisk dopowiedzialny za sortowanie
         val textView = findViewById(R.id.TextView_sortingIco) as TextView
@@ -80,11 +68,8 @@ class ManagmentCertyficationUserActivity : BaseActivity() {
             {
                 textView.text= "\uf160"
             }
-
         presenter!!.sortList()
         }
-
-
     }
 
     fun setAdapter()
@@ -100,7 +85,5 @@ class ManagmentCertyficationUserActivity : BaseActivity() {
         }
         resultsListView!!.adapter=adapter!!
     }
-
-
 
 }

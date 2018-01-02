@@ -32,11 +32,11 @@
         <activity android:name=".Views.Admin_PanelActivity" />
         <activity android:name=".Views.Managment_certyficationActivity" />
         <activity android:name=".inWork.SetingsActivity" />
-        <activity android:name=".beforeChange.History_using_keyActivity" />
+        <activity android:name=".inWork.History_using_keyActivity" />
         <activity android:name=".Views.CertificationaskActivity" />
         <activity android:name=".Navigation.BaseActivity" />
         <activity android:name=".Views.userCertyfikationListActivity" />
-        <activity android:name=".inWork.certyficatActivity" />
+        <activity android:name=".Views.certyficatActivity" />
         <activity android:name=".beforeChange.GenerationCertyfikatForGuestActivity" />
         <activity android:name=".Views.UserWaitActivity" />
         <activity android:name=".beforeChange.EmergencyPasswordActivity" />

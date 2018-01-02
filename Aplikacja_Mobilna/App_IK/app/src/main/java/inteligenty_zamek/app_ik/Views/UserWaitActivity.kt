@@ -1,5 +1,4 @@
 package inteligenty_zamek.app_ik.Views
-
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -18,13 +17,8 @@ import android.support.v7.widget.DividerItemDecoration
 import android.view.View
 import android.widget.*
 
-
 class UserWaitActivity : BaseActivity() {
-
-
-
     private var toastDelay = 4000
-
     private var itemList:ArrayList<userWatModel>?= ArrayList()
     private var recyclerView: RecyclerView? = null
     private var adapter: TwoButtonAdapter? = null
@@ -46,7 +40,6 @@ class UserWaitActivity : BaseActivity() {
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
         sort.typeface = fontFamily
 
-
         sort.setOnClickListener(object : View.OnClickListener {
             override
             fun onClick(viewIn: View) {
@@ -62,7 +55,6 @@ class UserWaitActivity : BaseActivity() {
                 }
 
             }})
-
 
         val inputSearch = findViewById(R.id.userWaitEditText) as EditText
         inputSearch.addTextChangedListener(object : TextWatcher {
@@ -82,9 +74,6 @@ class UserWaitActivity : BaseActivity() {
                 // TODO Auto-generated method stub
             }
         })
-
-
-
     }
 
 fun acceptButton(position:Int)
@@ -119,10 +108,6 @@ fun acceptButton(position:Int)
        {firstUse=true
         recyclerView!!.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))}
         adapter!!.notifyDataSetChanged()
-
-
-
-
     }
 
     fun deleteFromRecycler(position:Int)
@@ -143,7 +128,5 @@ fun acceptButton(position:Int)
             }
         }.start()
     }
-
-
 
 }
