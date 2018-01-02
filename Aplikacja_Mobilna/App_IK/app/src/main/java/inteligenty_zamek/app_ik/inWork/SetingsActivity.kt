@@ -43,7 +43,7 @@ class SetingsActivity : BaseActivity() {
             if (passwd.text.toString() != "" && new_passwd.text.toString() != "") {
                 if (Valdiation.isCorrectPassword(passwd.text.toString()) && Valdiation.isCorrectPassword(new_passwd.text.toString()))
                 {
-                  presenter.changePassword(new_passwd.text.toString())
+                  presenter.changePassword(new_passwd.text.toString(),passwd.text.toString())
                 }
                 else
                 {

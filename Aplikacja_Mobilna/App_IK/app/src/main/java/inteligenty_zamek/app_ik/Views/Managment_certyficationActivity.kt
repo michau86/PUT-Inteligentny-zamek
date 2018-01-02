@@ -31,8 +31,8 @@ class Managment_certyficationActivity : BaseActivity() {
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
         val ico_download_serwer = this.findViewById(R.id.managmentCertificationTextViewDownloadSerwer) as TextView
         ico_download_serwer.typeface = fontFamily
-        val ico_download_file = this.findViewById(R.id.managmentCertificationTextViewDownloadFile) as TextView
-        ico_download_file.typeface = fontFamily
+       // val ico_download_file = this.findViewById(R.id.managmentCertificationTextViewDownloadFile) as TextView
+       // ico_download_file.typeface = fontFamily
 
         if(presenter!!.isLogin()) {
 
@@ -91,9 +91,6 @@ class Managment_certyficationActivity : BaseActivity() {
         startActivity(intent)
         this.finish()
     }
-
-
-
 
 }
 

@@ -38,6 +38,8 @@ public final class GlobalContainer {
     private static User[] userlist=null;
     private static PublicKey publicKey=null;
 
+    public static Object obj;
+
     public static Certyficat getCertitificate() {
         return certitificate;
     }

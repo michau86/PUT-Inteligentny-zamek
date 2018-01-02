@@ -4,6 +4,7 @@ import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.Views.GenerationCertyficatActivity
+import inteligenty_zamek.app_ik.rest_class.Certyficat
 import inteligenty_zamek.app_ik.rest_class.Lock
 import inteligenty_zamek.app_ik.rest_class.User
 import org.json.JSONArray
@@ -21,7 +22,7 @@ class GenerationCertyficatModel(view: GenerationCertyficatActivity)
    val token:String=CyptographyApi.decrypt(
            sharedPreferenceApi.getString(view,EnumChoice.token))
    val ipAddres:String=sharedPreferenceApi.getString(view,EnumChoice.ip)
-
+   var certificate:Certyficat?=null
 
 
    fun addLockList(arrJson: JSONArray) {
