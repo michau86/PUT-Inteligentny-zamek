@@ -45,6 +45,16 @@ def Check_access(certificate):
     return False
 
 
+def Compare_PKI_Certificate(cert, cert_original):
+    if cert.publickey == cert_original.publickey and \
+            cert.signature_algorithm_identifier == cert_original.signature_algorithm_identifier and \
+            cert.serial_number == cert_original.serial_number and \
+            cert.validitiy_period == cert_original.validitiy_period:
+        return True
+    else:
+        return False
+
+
 if __name__ == '__main__':
     while True:
         try:
@@ -79,8 +89,8 @@ if __name__ == '__main__':
                         id_certificate = data.split(";")[0]
                         login = data.split(";")[1]
                         signature_lock_key = data.split(";")[2]
-                        cert_json = daya.split(";")[3]
-                        cert_json = json.load(cert_json)
+                        cert_json = data.split(";")[3]
+                        cert_json = json.loads(cert_json)
                         certificatePKI = Models.CertificatePKI(publickey=cert_json["PUBLIC_KEY"],
                                                                signature_algorithm_identifier=cert_json[
                                                                    "Signature_Algorithm_Identifier"],
@@ -123,6 +133,7 @@ if __name__ == '__main__':
                                                              friday=request.json()['data'][0]['FRIDAY'],
                                                              saturday=request.json()['data'][0]['SATURDAY'],
                                                              sunday=request.json()['data'][0]['SUNDAY'])
+
                             certificatePKI_original = Models.CertificatePKI(
                                 publickey=request.json()['certificatePKI'][0]['PUBLIC_KEY'],
                                 signature_algorithm_identifier=request.json()['certificatePKI'][0][
@@ -133,7 +144,7 @@ if __name__ == '__main__':
                                 hash_algorithm=request.json()['certificatePKI'][0]['Hash_Algorithm'],
                                 serial_number=request.json()['certificatePKI'][0]['Serial_number'],
                                 user_name=request.json()['certificatePKI'][0]['User_Name'])
-                            if certificatePKI.publickey is None:
+                            if certificatePKI_original.publickey is None:
                                 with open("log.log", "a") as log:
                                     log.write(datetime.now().strftime(
                                         '%Y-%m-%d %H:%M:%S') + ":\tAccess denied to lock : public key false" + "\n")
@@ -142,13 +153,14 @@ if __name__ == '__main__':
                                                               'desicion': "0"})
                                 client_sock.send("Access denied")
                             else:
-                                key = '-----BEGIN PUBLIC KEY-----\n' + request.json()['public_key'][
-                                    0] + '\n-----END PUBLIC KEY-----'
+                                key = '-----BEGIN PUBLIC KEY-----\n' + certificatePKI_original.publickey + '\n-----END PUBLIC KEY-----'
                                 public_key = RSA.importKey(key)
                                 verifier = PKCS1_v1_5.new(public_key)
                                 if verifier.verify(SHA256.new(certificate.lock_key),
                                                    base64.standard_b64decode(signature_lock_key)):
-                                    if Check_access(certificate):
+                                    if Check_access(certificate) and Compare_PKI_Certificate(certificatePKI,
+                                                                                             certificatePKI_original) and datetime.now() < datetime.strptime(
+                                            certificatePKI_original.validitiy_period, '%Y-%m-%dT%H:%M:%S'):
                                         with open("log.log", "a") as log:
                                             log.write(datetime.now().strftime(
                                                 '%Y-%m-%d %H:%M:%S') + ":\tAccess granted to lock" + "\n")
