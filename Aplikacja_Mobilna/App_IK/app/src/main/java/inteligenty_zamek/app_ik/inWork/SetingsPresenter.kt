@@ -103,7 +103,7 @@ class SetingsPresenter(val view: SetingsActivity)
                 val stringKey = Base64.encodeToString(model.pair!!.private.encoded, Base64.DEFAULT)
                 fileReadWriteApi.writeToFile(
                         CyptographyApi.encrypt(stringKey,model.password), view, "*" + model.login)
-
+                GlobalContainer.setPrivateKey(model.pair!!.private)
             }catch (ex:Exception){}
 
         }
