@@ -1,0 +1,58 @@
+\def\TytulPolski    {Projekt i wykonanie systemu kontroli ruchu i zarządzania dostępem do pomieszczeń}
+\def\TytulAngielski {Design and implementation of movement control and access to spaces managment system }
+ 
+% Nazwa systemu informatycznego
+\def\NazwaSys {Inteligentny zamek}
+
+\def\Promotor    {dr inż. Ewa Idzikowska}
+\def\StudentA     {Maciej Marciniak}
+\def\AlbumA       {121996}
+\def\StudentB     {Damian Filipowicz}
+\def\AlbumB       {122002}
+
+%Kierunek:
+\def\Kierunek {Informatyka}
+ 
+%Specjalnosc:
+\def\Specjalnosc {Bezpieczeństwo systemów informatycznych} 
+
+%Poziom studiów: 
+\def\PoziomStudiow {I stopnia}
+%\def\PoziomStudiow {II stopnia}
+
+%Forma studiów:
+\def\FormaStudiow {stacjonarne}
+%\def\FormaStudiow {niestacjonarne}
+
+
+% Kierunek:      Informatyka - studia stacjonarne I stopnia
+%                Informatyka - studia niestacjonarne I stopnia
+% Specjalność:   Technologie informatyczne
+%        
+
+% Zmiana nazw w opisie tabel i rysunków
+\AtBeginDocument{
+    \renewcommand*{\tablename}{Tabela}
+    \renewcommand*{\figurename}{Rys.} 
+		% TO DO: Spis tablic -> Spis tabel
+}
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
+% Jeżeli kody programów zawierają polskie litery należy dodać odpowiedni znak poniżej
+\lstset{literate=%
+    {ż}{{\.z}}1
+    {ą}{{\c{a}}}1
+    {ę}{{\c{e}}}1
+		{ó}{{\'o}}1
+		{ć}{{\'c}}1
+		{ś}{{\'s}}1
+}
+        
+
+
