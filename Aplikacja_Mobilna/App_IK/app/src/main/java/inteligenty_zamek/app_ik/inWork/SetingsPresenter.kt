@@ -84,8 +84,7 @@ class SetingsPresenter(val view: SetingsActivity)
 
     fun changeKeyResult(response:String)
     {
-        Log.i("HHHH","otrzymane dane")
-        Log.i("hhhh",response)
+
 
         if (JSONObject(response).getString("data") != "empty") {
             val arrJson = JSONObject(response).getJSONArray("data")
@@ -95,8 +94,18 @@ class SetingsPresenter(val view: SetingsActivity)
                 val value = java.util.HashMap<EnumChoice, String>()
                 value.put(EnumChoice.publicKey, arrJson.toString(1))
                 sharedPreferenceApi.set(view, value)
-            } catch (e: Exception) {
-            }
+
+
+
+            } catch (e: Exception) { }
+
+            try{
+                val stringKey = Base64.encodeToString(model.pair!!.private.encoded, Base64.DEFAULT)
+                fileReadWriteApi.writeToFile(
+                        CyptographyApi.encrypt(stringKey,model.password), view, "*" + model.login)
+
+            }catch (ex:Exception){}
+
         }
 
         GlobalContainer.publicKeyReset()
