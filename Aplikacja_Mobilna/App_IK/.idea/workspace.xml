@@ -54,22 +54,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SetingsActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/SetingsActivity.kt">
+      <file leaf-file-name="History_using_keyPresenter.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/History_using_keyPresenter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="35" column="40" lean-forward="false" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+            <state relative-caret-position="272">
+              <caret line="155" column="22" lean-forward="false" selection-start-line="155" selection-start-column="22" selection-end-line="155" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SetingsModel.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/SetingsModel.kt">
+      <file leaf-file-name="MainActivity.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Views/MainActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="17" column="73" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="17" selection-end-column="73" />
+            <state relative-caret-position="350">
+              <caret line="52" column="40" lean-forward="false" selection-start-line="51" selection-start-column="7" selection-end-line="52" selection-end-column="40" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainPresenter.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/presenters/MainPresenter.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="45" column="104" lean-forward="true" selection-start-line="45" selection-start-column="104" selection-end-line="45" selection-end-column="104" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GlobalContainer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/rest_class/GlobalContainer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="184" column="24" lean-forward="false" selection-start-line="184" selection-start-column="24" selection-end-line="184" selection-end-column="24" />
+              <folding>
+                <element signature="e#4994#4995#0" expanded="true" />
+                <element signature="e#5025#5026#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,18 +100,18 @@
       <file leaf-file-name="SetingsPresenter.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/SetingsPresenter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="106" column="35" lean-forward="false" selection-start-line="106" selection-start-column="35" selection-end-line="106" selection-end-column="35" />
+            <state relative-caret-position="397">
+              <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterPresenter.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/presenters/RegisterPresenter.kt">
+      <file leaf-file-name="GenerationCertyficatPresenter.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/presenters/GenerationCertyficatPresenter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="46" column="120" lean-forward="true" selection-start-line="43" selection-start-column="19" selection-end-line="46" selection-end-column="120" />
+            <state relative-caret-position="261">
+              <caret line="118" column="15" lean-forward="false" selection-start-line="118" selection-start-column="10" selection-end-line="118" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -1995,7 +2018,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_setings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/rest_class/Certyficat.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/rest_class/GlobalContainer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/ManagmentCertyficationUserActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_user_certyfikation_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_certyficationask.xml" />
@@ -2032,6 +2054,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/models/HistoryListElement.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/History_using_keyActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/History_using_keyPresenter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/rest_class/GlobalContainer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/SetingsPresenter.kt" />
       </list>
     </option>
@@ -2830,7 +2853,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514942338927" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514943477004" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2878,7 +2901,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514942338927" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514943477004" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3061,7 +3084,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514942338928" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514943477005" />
       </method>
     </configuration>
     <list size="3">
@@ -3157,7 +3180,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" x="1387" y="573" width="243" height="155" />
+      <window_info id="Documentation" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" x="1387" y="573" width="243" height="155" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20682302" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36445445" sideWeight="0.4551282" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.47806355" order="13" side_tool="false" content_ui="tabs" />
@@ -3262,30 +3285,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/beforeChange/EmergencyPasswordActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1150">
-          <caret line="60" column="46" lean-forward="false" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/models/UserWaitModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-418">
-          <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/presenters/UserWaitPresenter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="63" column="8" lean-forward="false" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/adapters/MainListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -3359,14 +3358,6 @@
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Views/MainActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="52" column="40" lean-forward="false" selection-start-line="51" selection-start-column="7" selection-end-line="52" selection-end-column="40" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/history_using_key_list.xml">
@@ -3566,14 +3557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Views/GenerationCertyficatActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2822">
-          <caret line="146" column="0" lean-forward="true" selection-start-line="92" selection-start-column="6" selection-end-line="153" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/rest_class/Lock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-600">
@@ -3624,14 +3607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/History_using_keyPresenter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1397">
-          <caret line="159" column="13" lean-forward="true" selection-start-line="159" selection-start-column="13" selection-end-line="159" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/History_using_keyModel.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
@@ -3669,6 +3644,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/SetingsModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="17" column="73" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="17" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/SetingsActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -3679,24 +3662,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/presenters/RegisterPresenter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
+        <state relative-caret-position="156">
           <caret line="46" column="120" lean-forward="true" selection-start-line="43" selection-start-column="19" selection-end-line="46" selection-end-column="120" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/SetingsModel.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Views/GenerationCertyficatActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="17" column="73" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="17" selection-end-column="73" />
+        <state relative-caret-position="161">
+          <caret line="143" column="18" lean-forward="false" selection-start-line="143" selection-start-column="16" selection-end-line="143" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/presenters/GenerationCertyficatPresenter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="118" column="15" lean-forward="false" selection-start-line="118" selection-start-column="10" selection-end-line="118" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/History_using_keyPresenter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="155" column="22" lean-forward="false" selection-start-line="155" selection-start-column="22" selection-end-line="155" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Views/MainActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="52" column="40" lean-forward="false" selection-start-line="51" selection-start-column="7" selection-end-line="52" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/presenters/MainPresenter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="45" column="104" lean-forward="true" selection-start-line="45" selection-start-column="104" selection-end-line="45" selection-end-column="104" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/rest_class/GlobalContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="184" column="24" lean-forward="false" selection-start-line="184" selection-start-column="24" selection-end-line="184" selection-end-column="24" />
+          <folding>
+            <element signature="e#4994#4995#0" expanded="true" />
+            <element signature="e#5025#5026#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/inWork/SetingsPresenter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="106" column="35" lean-forward="false" selection-start-line="106" selection-start-column="35" selection-end-line="106" selection-end-column="35" />
+        <state relative-caret-position="397">
+          <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
           <folding />
         </state>
       </provider>

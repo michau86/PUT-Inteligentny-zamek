@@ -180,7 +180,10 @@ publicKey=null;
         }
         return user;
     }
-
+    public static void setPrivateKey(PrivateKey priv)
+    {
+        privatekye=priv;
+    }
     public static PrivateKey getPrivateKey(Context context)
     {
         if  (privatekye!=null){return privatekye;}
