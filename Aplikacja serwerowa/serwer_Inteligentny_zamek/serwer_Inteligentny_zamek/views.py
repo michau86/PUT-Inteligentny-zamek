@@ -392,8 +392,19 @@ def api_admin_generate_new_certificate(request):
 
                 for x in key.split("\n")[1:-1]:
                     lock_key += x
-                #cursor.execute("SELECT * FROM USERS WHERE USER_ID='%s' and ID_LOCK='%s' and ISACTUAL n" % (user_id, lock_id))
-                cursor.execute(
+
+                print user_id
+                print lock_id
+                cursor.execute("SELECT * FROM locks_keys WHERE ID_LOCK='%s' and ID_USER='%s' and ISACTUAL IS NULL and TO_DATE >= NOW()" % (lock_id, user_id))
+                data = cursor.fetchone()
+                print data
+                if data is not None:
+                    cursor.execute(
+                        "UPDATE `locks_keys` SET `LOCK_KEY`='%s',`FROM_DATE`='%s',`TO_DATE`='%s',`MONDAY`='%s',`TUESDAY`='%s',`WEDNESDAY`='%s',`THURSDAY`='%s',`FRIDAY`='%s',`SATURDAY`='%s',`SUNDAY`='%s',`IS_PERNAMENT`='%s',`NAME`='%s',`SURNAME`='%s' WHERE ID_LOCK='%s' and ID_USER='%s' and ISACTUAL IS NULL and TO_DATE >= NOW()" % (
+                            lock_key, from_date, to_date, monday, tuesday, wednesday, thursday, friday,
+                            saturday, sunday, is_pernament, name, surname, lock_id, user_id))
+                else:
+                    cursor.execute(
                     "INSERT INTO `locks_keys`(`ID_LOCK`, `ID_USER`, `LOCK_KEY`, `FROM_DATE`, `TO_DATE`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`, `IS_PERNAMENT`, `NAME`, `SURNAME`) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')" % (
                         lock_id, user_id, lock_key, from_date, to_date, monday, tuesday, wednesday, thursday, friday,
                         saturday,
