@@ -6,8 +6,6 @@ import MySQLdb
 from Crypto.PublicKey import RSA
 from Crypto import Random
 from datetime import datetime
-import datetime as dt
-from datetime import date
 
 username = "root"
 userpassword = "inteligentnyzamek"
@@ -213,7 +211,7 @@ def api_download_all_user(request):
             token_from_DB = cursor.fetchone()[0]
             if (token_from_DB == token and token != None):
                 cursor.execute(
-                    "SELECT LOGIN,ID_USER FROM USERS  ")
+                    "SELECT LOGIN,ID_USER, CONCAT(NAME, ' ', SURNAME) as Name FROM USERS  ")
                 dict_all_locks = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                   in cursor.fetchall()]
                 if len(dict_all_locks) == 0:
@@ -394,6 +392,7 @@ def api_admin_generate_new_certificate(request):
 
                 for x in key.split("\n")[1:-1]:
                     lock_key += x
+                #cursor.execute("SELECT * FROM USERS WHERE USER_ID='%s' and ID_LOCK='%s' and ISACTUAL n" % (user_id, lock_id))
                 cursor.execute(
                     "INSERT INTO `locks_keys`(`ID_LOCK`, `ID_USER`, `LOCK_KEY`, `FROM_DATE`, `TO_DATE`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`, `IS_PERNAMENT`, `NAME`, `SURNAME`) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')" % (
                         lock_id, user_id, lock_key, from_date, to_date, monday, tuesday, wednesday, thursday, friday,
