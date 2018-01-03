@@ -8,6 +8,7 @@ import inteligenty_zamek.app_ik.API.Valdiation
 import inteligenty_zamek.app_ik.models.HistoryListElement
 import org.json.JSONException
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 import java.util.LinkedHashMap
 import java.util.Map
 
@@ -148,9 +149,12 @@ class History_using_keyPresenter(val view:History_using_keyActivity)
         {
             var i=0
             var toWhile=model.listItems!!.size
+            val date1 =  SimpleDateFormat("yyyy-MM-dd").parse(from)
+            val date2 =  SimpleDateFormat("yyyy-MM-dd").parse(to)
             while (i<toWhile){
-                if (Valdiation.biggerThanTime( model.listItems!![i].date,from)  &&
-                        !Valdiation.biggerThanTime( model.listItems!![i].date,to))
+                if (SimpleDateFormat("yyyy-MM-dd").parse(model.listItems!![i].date).compareTo(date2)>0
+                    ||
+                        date1.compareTo(SimpleDateFormat("yyyy-MM-dd").parse(model.listItems!![i].date))>0)
                 {
                     model.listItems!!.removeAt(i)
                     i--
