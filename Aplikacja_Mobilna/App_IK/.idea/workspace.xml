@@ -58,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Views/GenerationCertyficatActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1459">
-              <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+              <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -67,8 +67,8 @@
       <file leaf-file-name="GenerateCertyficatRangeActivity.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Views/GenerateCertyficatRangeActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="694" column="0" lean-forward="false" selection-start-line="694" selection-start-column="0" selection-end-line="694" selection-end-column="0" />
+            <state relative-caret-position="116">
+              <caret line="676" column="39" lean-forward="false" selection-start-line="676" selection-start-column="39" selection-end-line="676" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -2810,7 +2810,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514944652797" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514944778680" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2858,7 +2858,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514944652797" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514944778680" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3041,7 +3041,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514944652799" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514944778681" />
       </method>
     </configuration>
     <list size="3">
@@ -3672,15 +3672,15 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Views/GenerationCertyficatActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1459">
-          <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/inteligenty_zamek/app_ik/Views/GenerateCertyficatRangeActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="694" column="0" lean-forward="false" selection-start-line="694" selection-start-column="0" selection-end-line="694" selection-end-column="0" />
+        <state relative-caret-position="116">
+          <caret line="676" column="39" lean-forward="false" selection-start-line="676" selection-start-column="39" selection-end-line="676" selection-end-column="39" />
           <folding />
         </state>
       </provider>

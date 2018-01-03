@@ -675,22 +675,6 @@ class GenerateCertyficatRangeActivity : Activity()   {
 
         val backButton = findViewById(R.id.generationCertificateRangeButtonBack) as Button
         backButton.setOnClickListener {
-            val value:BooleanArray= BooleanArray(7)
-            val monday = findViewById(R.id.generationCertificateRangeCheckBoxMonday) as CheckBox
-            value[0]=monday.isEnabled
-            val tuesday = findViewById(R.id.generationCertificateRangeCheckBoxTuesday) as CheckBox
-            value[1]=tuesday.isEnabled
-            val wednesday = findViewById(R.id.generationCertificateRangeCheckBoxWednesday) as CheckBox
-            value[2]=wednesday.isEnabled
-            val thurstday = findViewById(R.id.generationCertificateRangeCheckBoxThursday) as CheckBox
-            value[3]=thurstday.isEnabled
-            val friday = findViewById(R.id.generationCertificateRangeCheckBoxFriday) as CheckBox
-            value[4]=friday.isEnabled
-            val saturday = findViewById(R.id.generationCertificateRangeCheckBoxSaturday) as CheckBox
-            value[5]=saturday.isEnabled
-            val sunday = findViewById(R.id.generationCertificateRangeCheckBoxSunday) as CheckBox
-            value[6]=sunday.isEnabled
-            presenter!!.setValue(value)
             onBackPressed()
         }
 
