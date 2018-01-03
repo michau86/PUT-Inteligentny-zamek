@@ -35,7 +35,7 @@
                 android:background="@color/color_border_list" />
 
 <LinearLayout
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="30dp"
     android:orientation="vertical"
     android:clickable="true"
@@ -69,23 +69,43 @@
     </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Wybierz z listy dostępnych zamków"
                     style="@style/_textViewMediumstyle"/>
 
                 <Spinner
-                    android:id="@+id/spinner2"
+                    android:id="@+id/historyUsingKeySpinnerLock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                      />
 
             </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Wybierz z listy dostępnych użytkowników"
+            style="@style/_textViewMediumstyle"/>
+
+        <Spinner
+            android:id="@+id/historyUsingKeySpinnerUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
 
 
     <TextView
@@ -101,20 +121,20 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/historyUsingKeyEditTextFrom"
                     android:layout_width="112dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:paddingStart="5dp"
                     android:hint="od"
                      />
 
                 <EditText
-                    android:id="@+id/editText10"
+                    android:id="@+id/historyUsingKeyEditTextTo"
                     android:layout_width="109dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-
                     android:hint="do"
                      />
 
@@ -123,37 +143,39 @@
             </LinearLayout>
 
     <LinearLayout
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/HistoryEditText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/activity_main_text2"
-                     />
-
                 <TextView
-                    android:id="@+id/textView_sorting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
                     android:text="@string/activity_main_text3"
-                    android:textColor="@color/color_text_ico" />
+                    style="@style/_textViewMediumstyle"
+                    />
 
                 <TextView
-                    android:id="@+id/TextView_sortingIco"
+                    android:id="@+id/historyUsingKeytextViewSortingIco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="@string/icon_SortingAsc" />
+                    android:text="@string/icon_SortingAsc"
+                    style="@style/_textViewMediumstyle"/>
+
+
+
 
             </LinearLayout>
+    <CheckBox
+        android:id="@+id/historyUsingKeyChekBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tylko nieautoryzowane próby"
+        android:layout_marginTop="10dp"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/historyUsingKeyButtonFiltr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="filtruj"

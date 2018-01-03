@@ -141,7 +141,6 @@ public class BaseActivity extends Activity
                 finish();
                 break;
             case 1:
-
                 Intent intent1 = new Intent(this, Managment_certyficationActivity.class);
                 startActivity(intent1);
                 finish();
@@ -233,14 +232,11 @@ private void logout(User user,String ipserwer)
 
 public void logoutresponse(String response)
 {
-Log.i("HHHH", "w logout response");
-    Log.i("HHHH", "w logout response");
-    Log.i("HHHH", response);
+
     JSONObject jObj = null;
     try {
         jObj = new JSONObject(response);
         if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("Invalid")) {
-            Log.i("HHHH", "w ifie");
 
             sharedPreferenceApi.INSTANCE.set(this,false, EnumChoice.isAdmin);
             sharedPreferenceApi.INSTANCE.set(this,false,EnumChoice.isLogin);
@@ -267,17 +263,5 @@ Log.i("HHHH", "w logout response");
     } catch (JSONException e) {
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 }
 

@@ -18,5 +18,8 @@ class History_using_keyModel(view:Context)
     val ipAddres:String= sharedPreferenceApi.getString(view, EnumChoice.ip)
     var Keys:LinkedHashMap<Int, HistoryListElement>?=null
     var listItems :ArrayList<HistoryListElement>?=null
+    var keyList:ArrayList<String>?=null
+    var userList:ArrayList<String>?=null
+    var userLinkedHasmap:LinkedHashMap<String,String>?=null
 
 }

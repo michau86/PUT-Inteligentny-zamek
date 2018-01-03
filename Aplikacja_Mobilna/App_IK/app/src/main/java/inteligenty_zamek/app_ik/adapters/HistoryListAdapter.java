@@ -64,8 +64,10 @@ this.context=context;
 
         }
         holder.title.setText(item.getTitle());
-        holder.row1.setText(item.getFirstElement());
-        holder.row2.setText(item.getSecondElement());
+        holder.row1.setText(item.getText()+": "+item.getName()+" "+item.getSurname());
+        holder.row2.setText("Dla zamka: "+item.getKey()+"\ndata zdarzenia: "+
+        item.getDate()+" "+item.getDateHour()
+        );
     }
 
        @Override
