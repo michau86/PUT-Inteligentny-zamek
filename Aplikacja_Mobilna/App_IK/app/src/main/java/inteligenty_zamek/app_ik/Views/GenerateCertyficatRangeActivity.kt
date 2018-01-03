@@ -59,9 +59,6 @@ class GenerateCertyficatRangeActivity : Activity()   {
         spiner7.adapter = spinerSundayAdapter
         //dodawniae nowej wartosci
 
-
-
-
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
         var textView = findViewById(R.id.generationCertificateRangeTextViewErrorIcoMonday) as TextView
         textView.typeface = fontFamily
@@ -77,10 +74,6 @@ class GenerateCertyficatRangeActivity : Activity()   {
         textView.typeface = fontFamily
         textView = findViewById(R.id.generationCertificateRangeTextViewErrorIcoSunday) as TextView
         textView.typeface = fontFamily
-
-
-
-
 
 
         //MONDAY
