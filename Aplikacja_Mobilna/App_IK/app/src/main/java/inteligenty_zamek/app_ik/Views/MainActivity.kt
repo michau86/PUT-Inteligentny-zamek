@@ -57,9 +57,11 @@ class MainActivity : BaseActivity() {
         GlobalContainer.loadDataFromSharedPreferences(this)
         sampleText.setOnClickListener {
             if (flag == false) {
+                sampleText.setText("\uF161")
                 Arrays.sort(GlobalContainer.getUser(this).getCertyficateList(this), Collections.reverseOrder<Any>())
                 flag = true
             } else {
+                sampleText.setText("\uF160")
                 Arrays.sort(GlobalContainer.getUser(this).getCertyficateList(this))
                 flag = false
             }

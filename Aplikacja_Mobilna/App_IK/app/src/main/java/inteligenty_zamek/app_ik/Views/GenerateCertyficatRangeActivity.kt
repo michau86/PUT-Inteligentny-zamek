@@ -691,9 +691,7 @@ class GenerateCertyficatRangeActivity : Activity()   {
             val sunday = findViewById(R.id.generationCertificateRangeCheckBoxSunday) as CheckBox
             value[6]=sunday.isEnabled
             presenter!!.setValue(value)
-            val myIntent = Intent(this, GenerationCertyficatActivity::class.java)
-            this.startActivity(myIntent)
-            this.finish()
+            onBackPressed()
         }
 
 

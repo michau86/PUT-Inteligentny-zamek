@@ -159,6 +159,8 @@ class GenerationCertyficatActivity : BaseActivity() {
 
     }
 
+
+
     fun setDefaultValueFromCertificate(userName:String , userSurname:String, from:String )
     {
         (findViewById(R.id.generationCertificateEditTextFrom) as EditText).setText(from)
