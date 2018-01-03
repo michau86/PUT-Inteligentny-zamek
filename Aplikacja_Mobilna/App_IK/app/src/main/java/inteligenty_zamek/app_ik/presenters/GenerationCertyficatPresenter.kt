@@ -1,9 +1,11 @@
 package inteligenty_zamek.app_ik.presenters
 
 
+import android.content.Intent
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
+import inteligenty_zamek.app_ik.Views.Admin_PanelActivity
 import inteligenty_zamek.app_ik.Views.GenerationCertyficatActivity
 import inteligenty_zamek.app_ik.models.GenerationCertyficatModel
 import inteligenty_zamek.app_ik.rest_class.Certyficat
@@ -236,7 +238,10 @@ class GenerationCertyficatPresenter(val view: GenerationCertyficatActivity)
             GlobalContainer.fridyList = null
             GlobalContainer.saturdayList = null
             GlobalContainer.sundayList = null
-            view.showMessage("Wygenerowano certyfikat")
+
+            val myIntent = Intent(view, Admin_PanelActivity::class.java)
+            view.startActivity(myIntent)
+            view.finish()
         }
     }
 
