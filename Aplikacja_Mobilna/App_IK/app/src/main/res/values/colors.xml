@@ -15,4 +15,5 @@
     <color name="acceptColor">#cffb75</color>
     <color name="waitingColor">#d0cf08</color>
     <color name="inpuLneColor">#D2D2D2</color>
+    <color name="deactivationtColor">#8CB3FB</color>
 </resources>

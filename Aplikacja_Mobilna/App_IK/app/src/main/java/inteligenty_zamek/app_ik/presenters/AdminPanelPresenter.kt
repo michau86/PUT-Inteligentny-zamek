@@ -11,6 +11,7 @@ import inteligenty_zamek.app_ik.Views.GenerationCertyficatActivity
 import inteligenty_zamek.app_ik.inWork.History_using_keyActivity
 import inteligenty_zamek.app_ik.Views.ManagmentCertyficationUserActivity
 import inteligenty_zamek.app_ik.beforeChange.EmergencyPasswordActivity
+import inteligenty_zamek.app_ik.inWork.UserListActivity
 
 /**
  * Created by Damian on 24.11.2017.
@@ -42,7 +43,7 @@ class AdminPanelPresenter ( val view: Admin_PanelActivity) {
                 view.startActivity(intent)}
             4-> {intent = Intent(view, CertyficatWaitActivity::class.java)
                 view.startActivity(intent)}
-            5->{intent = Intent(view, EmergencyPasswordActivity::class.java)
+            5->{intent = Intent(view, UserListActivity::class.java)
                 view.startActivity(intent)}
         }
 

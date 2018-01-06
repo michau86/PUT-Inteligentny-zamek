@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import inteligenty_zamek.app_ik.API.EnumChoice
@@ -77,6 +78,8 @@ class Managment_certyficationPresenter( val view: Managment_certyficationActivit
         toSend.put("login", model.login)
         toSend.put("token", model.token)
         try {
+            Log.i("HHHH","http://" + model.ipaddres + ":8080/api/download/all_certifacate/");
+
             HTTPRequestAPI(this, "http://" + model.ipaddres + ":8080/api/download/all_certifacate/", "downloadResult", toSend).execute()
         } catch (e: Exception) { }
 

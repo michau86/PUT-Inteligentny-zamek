@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".rest_class.GlobalClassContainer"
         android:allowBackup="true"
@@ -43,7 +44,8 @@
         <activity android:name=".Views.GenerationCertyficatActivity" />
         <activity android:name=".Views.ManagmentCertyficationUserActivity" />
         <activity android:name=".Views.CertyficatWaitActivity" />
-        <activity android:name=".Views.GenerateCertyficatRangeActivity"></activity>
+        <activity android:name=".Views.GenerateCertyficatRangeActivity" />
+        <activity android:name=".inWork.UserListActivity"></activity>
     </application>
 
 </manifest>
