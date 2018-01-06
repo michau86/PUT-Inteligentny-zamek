@@ -33,8 +33,6 @@ def api_login(request):
             cursor.execute("SELECT PASSWORD, IS_ADMIN, ISACTIVATED FROM USERS WHERE login='%s'" % username)
             data = cursor.fetchone()
             if data[2] == 0:
-                print password
-                print data[0]
                 if data[0] == password:
                     cursor.execute("UPDATE USERS SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
                     db.commit()
@@ -397,11 +395,8 @@ def api_admin_generate_new_certificate(request):
                 for x in key.split("\n")[1:-1]:
                     lock_key += x
 
-                print user_id
-                print lock_id
                 cursor.execute("SELECT * FROM locks_keys WHERE ID_LOCK='%s' and ID_USER='%s' and ISACTUAL IS NULL and TO_DATE >= NOW()" % (lock_id, user_id))
                 data = cursor.fetchone()
-                print data
                 if data is not None:
                     cursor.execute(
                         "UPDATE `locks_keys` SET `LOCK_KEY`='%s',`FROM_DATE`='%s',`TO_DATE`='%s',`MONDAY`='%s',`TUESDAY`='%s',`WEDNESDAY`='%s',`THURSDAY`='%s',`FRIDAY`='%s',`SATURDAY`='%s',`SUNDAY`='%s',`IS_PERNAMENT`='%s',`NAME`='%s',`SURNAME`='%s' WHERE ID_LOCK='%s' and ID_USER='%s' and ISACTUAL IS NULL and TO_DATE >= NOW()" % (
