@@ -246,6 +246,12 @@
         android:layout_marginTop="20dp"
         android:background="@color/color_border_list" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Impor/Eksport klucza prywatnego"
+        android:layout_marginTop="20dp"
+        style="@style/_textViewBigstyle"/>
 
         <TextView
             android:layout_width="match_parent"
