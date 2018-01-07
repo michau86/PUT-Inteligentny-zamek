@@ -5,6 +5,9 @@ import android.util.Log
 import inteligenty_zamek.app_ik.API.*
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 import org.json.JSONObject
+import android.support.v4.app.ActivityCompat.startActivityForResult
+import android.content.Intent
+import net.rdrei.android.dirchooser.DirectoryChooserActivity
 
 
 /**
@@ -128,6 +131,42 @@ class SetingsPresenter(val view: SetingsActivity)
                 view.showMessage("Nie powiodła się zmiana hasła")
             }
         } catch (e: Exception) { }
+    }
+
+
+    fun exportKey(path:String,password:String)
+    {
+        val privateKey =fileReadWriteApi.readFromFile("*" + model.login,view)
+        val publicCert= fileReadWriteApi.readFromFile(
+                "**" + sharedPreferenceApi.getString(view, EnumChoice.login),view)
+
+        val str = "{\"public\":"+publicCert+", \"private\": \""+privateKey+"\"}"
+
+         val toSend=  CyptographyApi.encrypt(str,password)
+
+        fileReadWriteApi.writeToFile(toSend,view,path,true)
+       // Log.i("HHHH path",path)
+    }
+    fun importKey(path:String,password:String)
+    {
+
+        val v=fileReadWriteApi.readFromFile(path.replace("/storage","").replace("sdcard0","sdcard"),view,true)
+
+       val result= CyptographyApi.decrypt(v,password)
+
+       val json: JSONObject= JSONObject(result)
+        Log.i("HHHH",json.getString("private").toString())
+        Log.i("HHHH",json.getJSONObject("public").toString())
+
+         fileReadWriteApi.writeToFile(
+                json.getString("private").toString(), view, "*" + model.login)
+
+        fileReadWriteApi.writeToFile(
+                json.getJSONObject("public").toString(), view, "**" + model.login)
+
+       GlobalContainer.publicKeyReset()
+        updateCertyficat()
+
     }
 
 }
