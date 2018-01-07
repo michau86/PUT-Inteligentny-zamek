@@ -23,14 +23,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         >
-        <activity android:name=".Views.LoginActivity">
+        <activity android:name=".Views.LoginActivity" android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.RegisterActivity" />
+        <activity android:name=".Views.RegisterActivity" android:theme="@style/AppTheme"/>
         <activity android:name="net.rdrei.android.dirchooser.DirectoryChooserActivity"  />
         <activity android:name=".Views.MainActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".Views.Admin_PanelActivity" android:theme="@style/AppTheme"/>

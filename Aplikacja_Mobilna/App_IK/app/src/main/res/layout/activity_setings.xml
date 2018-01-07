@@ -251,7 +251,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hasło do importu eksportu klucza"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            style="@style/_textViewMediumstyle"/>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -290,7 +291,7 @@
           android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Importuj"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:paddingEnd="5dp"
         android:layout_marginEnd="20dp"
             />
@@ -300,7 +301,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Eksportuj"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:paddingEnd="5dp"
             />
 

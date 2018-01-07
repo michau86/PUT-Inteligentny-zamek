@@ -114,6 +114,27 @@ class SetingsActivity : BaseActivity() {
             }
         }
 
+
+        val passwordKey = findViewById(R.id.settingsEditTextPasswordKey) as EditText
+        passwordKey.setOnClickListener(View.OnClickListener {
+            val editText = findViewById(R.id.settingsEditTextPasswordKey) as EditText
+            val drawable: Drawable = editText.background
+            drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+            editText.background = drawable
+            setTooltip(passwordKey)
+        })
+        passwordKey.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                val editText = findViewById(R.id.settingsEditTextPasswordKey) as EditText
+                val drawable: Drawable = editText.background
+                drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.inpuLneColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+                editText.background = drawable
+                setTooltip(passwordKey)
+            }
+        }
+
+
+
         val fontFamily = Typeface.createFromAsset(this.assets, "fonts/fontawesome.ttf")
 
 
@@ -220,6 +241,15 @@ class SetingsActivity : BaseActivity() {
         drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
         editText.background = drawable
     }
+
+
+    fun showErrorPasswordKey() {
+        val editText = findViewById(R.id.settingsEditTextPasswordKey) as EditText
+        val drawable: Drawable = editText.background
+        drawable.setColorFilter(ResourcesCompat.getColor(resources, R.color.errorColor, this.theme), PorterDuff.Mode.SRC_ATOP) // change the drawable color
+        editText.background = drawable
+    }
+
 
     fun showErrorNewPassword() {
 
@@ -336,5 +366,7 @@ class SetingsActivity : BaseActivity() {
                 .setPadding(20f)
                 .show()
     }
+
+
 
 }

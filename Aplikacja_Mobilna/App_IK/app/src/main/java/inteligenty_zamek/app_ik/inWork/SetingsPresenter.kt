@@ -136,37 +136,52 @@ class SetingsPresenter(val view: SetingsActivity)
 
     fun exportKey(path:String,password:String)
     {
-        val privateKey =fileReadWriteApi.readFromFile("*" + model.login,view)
-        val publicCert= fileReadWriteApi.readFromFile(
-                "**" + sharedPreferenceApi.getString(view, EnumChoice.login),view)
+        if(!Valdiation.isCorrectPassword(password))
+        {
+            view.showMessage("niepoprawne hasło")
+            view.showErrorPasswordKey()
+        }
+        try {
+            val privateKey = fileReadWriteApi.readFromFile("*" + model.login, view)
+            val publicCert = fileReadWriteApi.readFromFile(
+                    "**" + sharedPreferenceApi.getString(view, EnumChoice.login), view)
 
-        val str = "{\"public\":"+publicCert+", \"private\": \""+privateKey+"\"}"
+            val str = "{\"public\":" + publicCert + ", \"private\": \"" + privateKey + "\"}"
 
-         val toSend=  CyptographyApi.encrypt(str,password)
+            val toSend = CyptographyApi.encrypt(str, password)
 
-        fileReadWriteApi.writeToFile(toSend,view,path,true)
-       // Log.i("HHHH path",path)
+            fileReadWriteApi.writeToFile(toSend, view, path, true)
+            view.showMessage("poprawnie wyeksporotwano certyfikat")
+        }catch (ex:Exception){
+            view.showMessage("niepoprawne hasło")
+            view.showErrorPasswordKey()
+        }
     }
     fun importKey(path:String,password:String)
     {
+        try {
+            val v = fileReadWriteApi.readFromFile(path, view, true)
 
-        val v=fileReadWriteApi.readFromFile(path.replace("/storage","").replace("sdcard0","sdcard"),view,true)
+            val result = CyptographyApi.decrypt(v, password)
 
-       val result= CyptographyApi.decrypt(v,password)
+            val json: JSONObject = JSONObject(result)
+            Log.i("HHHH", json.getString("private").toString())
+            Log.i("HHHH", json.getJSONObject("public").toString())
 
-       val json: JSONObject= JSONObject(result)
-        Log.i("HHHH",json.getString("private").toString())
-        Log.i("HHHH",json.getJSONObject("public").toString())
+            fileReadWriteApi.writeToFile(
+                    json.getString("private").toString(), view, "*" + model.login)
 
-         fileReadWriteApi.writeToFile(
-                json.getString("private").toString(), view, "*" + model.login)
+            fileReadWriteApi.writeToFile(
+                    json.getJSONObject("public").toString(), view, "**" + model.login)
 
-        fileReadWriteApi.writeToFile(
-                json.getJSONObject("public").toString(), view, "**" + model.login)
+            GlobalContainer.publicKeyReset()
+            updateCertyficat()
+            view.showMessage("poprawnie zimportowano certyfikat")
 
-       GlobalContainer.publicKeyReset()
-        updateCertyficat()
-
+        }catch (ex:Exception){
+            view.showMessage("niepoprawne hasło")
+            view. showErrorPasswordKey()
+        }
     }
 
 }
