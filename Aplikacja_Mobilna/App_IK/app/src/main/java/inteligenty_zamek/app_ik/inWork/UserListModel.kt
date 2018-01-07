@@ -31,12 +31,16 @@ class UserListModel(view: UserListActivity)
 
         for (i in 0 until arrJson.length()) {
             try {
-                 userlist!!.add(
+                Log.i("hhhh",arrJson.getJSONObject(i).getInt("Status").toString())
+                Log.i("hhhh",arrJson.getJSONObject(i).getString("Status"))
+
+                userlist!!.add(
                          User(
                          arrJson.getJSONObject(i).getString("LOGIN"),
                          arrJson.getJSONObject(i).getString("Name"),
                          arrJson.getJSONObject(i).getString("ID_USER"),
-                                 arrJson.getJSONObject(i).getBoolean("Status"),arrJson.getJSONObject(i).getString("Validitiy_period")
+                                 if( arrJson.getJSONObject(i).getInt("Status")==0){true}else{false},
+                                 arrJson.getJSONObject(i).getString("Validitiy_period")
                  )
                 )
                 userlist2!!.add(
@@ -45,7 +49,7 @@ class UserListModel(view: UserListActivity)
                                 arrJson.getJSONObject(i).getString("LOGIN"),
                                arrJson.getJSONObject(i).getString("Name"),
                                 arrJson.getJSONObject(i).getString("ID_USER"),
-                                arrJson.getJSONObject(i).getBoolean("Status"),
+                                if( arrJson.getJSONObject(i).getInt("Status")==0){true}else{false},
                                 arrJson.getJSONObject(i).getString("Validitiy_period")
                         )
                 )

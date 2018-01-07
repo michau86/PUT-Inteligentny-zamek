@@ -31,7 +31,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
     private Object context;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name,place,ico;
-        public LinearLayout linearClick;
+        public RecyclerView linearClick;
 
 
 
@@ -40,7 +40,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
             place  = (TextView) view.findViewById(R.id.TextView_listPlaceKey);
             name = (TextView) view.findViewById(R.id.TextView_listNameKey);
             ico = (TextView) view.findViewById(R.id.icoKey);
-
+            linearClick= (RecyclerView) view.findViewById(R.id.userListRecyclerViewUserCertyfication);
         }
     }
 
@@ -71,14 +71,14 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
         holder.ico.setText("\uf007");
         holder.ico.setTextColor(ContextCompat.getColor(((UserListActivity) context), R.color.acceptColor));
 
-        if(listKey.isActive)
+        if(!listKey.isActive)
         {
             holder.name.setTextColor(ContextCompat.getColor(((UserListActivity) context), R.color.deactivationtColor));
             holder.ico.setTextColor(ContextCompat.getColor(((UserListActivity) context), R.color.deactivationtColor));
             holder.ico.setText("\uf235");
         }
 
-       /* holder.linearClick.setOnClickListener(new View.OnClickListener() {
+      /*  holder.linearClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

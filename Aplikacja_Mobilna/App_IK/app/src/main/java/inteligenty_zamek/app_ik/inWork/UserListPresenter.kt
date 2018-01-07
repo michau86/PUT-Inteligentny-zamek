@@ -43,12 +43,14 @@ class UserListPresenter(val view:UserListActivity)
     fun sort(sort:Boolean)
     {
         if(sort) {
-            model.userlist2!!.sortedWith(compareBy({ it.login }))
+           Collections.sort(model.userlist2!!)
         }
         else
         {
-            Collections.reverse(model.userlist2);
+            //Collections.sort(model.userlist2!!), Collections.reverseOrder<Any>())
+                     Collections.reverse(model.userlist2);
         }
+        setValueToAdapter()
     }
 
     fun setValueToAdapter()
@@ -86,7 +88,7 @@ class UserListPresenter(val view:UserListActivity)
                     if(item.isActive) {
                         model.userlist2!!.add(item)
                     }
-                }
+               }
                 else
                 {
                     model.userlist2!!.add(item)

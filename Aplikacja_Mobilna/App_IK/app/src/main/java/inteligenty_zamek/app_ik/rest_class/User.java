@@ -14,7 +14,7 @@ import inteligenty_zamek.app_ik.rest_class.Certyficat;
 import inteligenty_zamek.app_ik.rest_class.Lock;
 
 
-public class User {
+public class User implements Comparable<User>{
 
 
     public String idUser;
@@ -179,5 +179,8 @@ public class User {
         }
 
     }
-    /////////////////////////
+    @Override
+    public int compareTo(User o) {
+        return login.compareTo(o.login);
+    }
 }

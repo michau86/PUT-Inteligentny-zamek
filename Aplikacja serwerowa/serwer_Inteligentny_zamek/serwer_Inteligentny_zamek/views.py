@@ -201,7 +201,6 @@ def api_download_all_locks(request):
 @csrf_exempt
 def api_download_all_user(request):
     if request.method == 'POST':
-        print "w downloadUser"
         login = request.POST.get('login')
         token = request.POST.get('token')
         try:
