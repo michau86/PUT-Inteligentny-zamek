@@ -2,6 +2,7 @@ package inteligenty_zamek.app_ik.inWork
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.R
@@ -22,6 +23,20 @@ class UserActivity :  BaseActivity() {
         tit.setText(presenter.model.user.login)
 
         val dat=findViewById(R.id.userTextViewDate) as TextView
-        dat.setText(presenter.model.user.validitiy_period)
+        dat.setText(presenter.model.user.validitiy_period.replace("T"," "))
+
+        if(!presenter.model.user.isActive)
+        {
+            val button=findViewById(R.id.userButtonBlockKey) as Button
+            val button2=findViewById(R.id.userButtonBlockUser) as Button
+            button.isEnabled=false
+            button2.isEnabled=false
+        }
+        presenter.chekDate()
+    }
+    fun blockButton()
+    {
+        val button=findViewById(R.id.userButtonBlockKey) as Button
+        button.isEnabled=false
     }
 }
