@@ -24,14 +24,14 @@ import inteligenty_zamek.app_ik.rest_class.Certyficat;
 import inteligenty_zamek.app_ik.rest_class.User;
 
 
-public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyViewHolder> {
+public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyViewHolder>  {
 
 
     private List<User> itemList;
     private Object context;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name,place,ico;
-        public RecyclerView linearClick;
+        public LinearLayout linearClick;
 
 
 
@@ -40,7 +40,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
             place  = (TextView) view.findViewById(R.id.TextView_listPlaceKey);
             name = (TextView) view.findViewById(R.id.TextView_listNameKey);
             ico = (TextView) view.findViewById(R.id.icoKey);
-            linearClick= (RecyclerView) view.findViewById(R.id.userListRecyclerViewUserCertyfication);
+            linearClick= (LinearLayout) view.findViewById(R.id.mainListLinearLayout);
         }
     }
 
@@ -50,6 +50,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
         this.context =context;
     }
 
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -57,6 +58,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
 
         return new MyViewHolder(itemView);
     }
+
+
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
@@ -78,14 +81,14 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
             holder.ico.setText("\uf235");
         }
 
-      /*  holder.linearClick.setOnClickListener(new View.OnClickListener() {
+        holder.linearClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                ((UserListActivity) context).listClick(position);
 
+                ((UserListActivity) context).listClick(position);
             }
-        });*/
+        });
 
     }
 

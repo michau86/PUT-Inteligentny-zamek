@@ -1,7 +1,9 @@
 package inteligenty_zamek.app_ik.inWork
 
+import android.content.Intent
 import android.util.Log
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI
+import inteligenty_zamek.app_ik.Views.userCertyfikationListActivity
 import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 import org.json.JSONException
 import org.json.JSONObject
@@ -104,7 +106,8 @@ class UserListPresenter(val view:UserListActivity)
     fun goToUserView(position:Int)
     {
     GlobalContainer.obj=model.userlist2!!.get(position)
-        ////przejscie do widoku XD
+        val myIntent = Intent(view, UserActivity::class.java)
+        view.startActivity(myIntent)
     }
 
 }

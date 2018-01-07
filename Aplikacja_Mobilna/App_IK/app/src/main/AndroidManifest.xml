@@ -45,7 +45,8 @@
         <activity android:name=".Views.ManagmentCertyficationUserActivity" />
         <activity android:name=".Views.CertyficatWaitActivity" />
         <activity android:name=".Views.GenerateCertyficatRangeActivity" />
-        <activity android:name=".inWork.UserListActivity"></activity>
+        <activity android:name=".inWork.UserListActivity" />
+        <activity android:name=".inWork.UserActivity"></activity>
     </application>
 
 </manifest>
