@@ -27,16 +27,37 @@ class UserActivity :  BaseActivity() {
 
         if(!presenter.model.user.isActive)
         {
-            val button=findViewById(R.id.userButtonBlockKey) as Button
-            val button2=findViewById(R.id.userButtonBlockUser) as Button
-            button.isEnabled=false
-            button2.isEnabled=false
+           blockButtonAll()
         }
-        presenter.chekDate()
+        else {
+            presenter.chekDate()
+        }
+        val userButton = findViewById(R.id.userButtonBlockUser) as Button
+        userButton.setOnClickListener {
+           presenter.blockUser()
+        }
+
+        val keyButton = findViewById(R.id.userButtonBlockKey) as Button
+        keyButton.setOnClickListener {
+            presenter.blockKey()
+        }
+
     }
     fun blockButton()
     {
         val button=findViewById(R.id.userButtonBlockKey) as Button
         button.isEnabled=false
     }
+
+    fun blockButtonAll()
+    {
+        val button=findViewById(R.id.userButtonBlockKey) as Button
+        val button2=findViewById(R.id.userButtonBlockUser) as Button
+        button.isEnabled=false
+        button2.isEnabled=false
+
+    }
+
+
+
 }

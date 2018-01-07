@@ -15,7 +15,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import inteligenty_zamek.app_ik.R;
 import inteligenty_zamek.app_ik.Views.MainActivity;
@@ -71,8 +75,29 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
 
         Typeface typeface = Typeface.createFromAsset(holder.itemView.getContext().getAssets(), "fonts/fontawesome.ttf");
         holder.ico.setTypeface(typeface);
-        holder.ico.setText("\uf007");
+        holder.ico.setText("\uf21b");
         holder.ico.setTextColor(ContextCompat.getColor(((UserListActivity) context), R.color.acceptColor));
+
+        Calendar myCalendar = Calendar.getInstance();
+
+        String myFormat = "yyyy-MM-dd hh:mm:ss"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.GERMAN);
+
+
+        try {
+            Date date1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(sdf.format(myCalendar.getTime()));
+            Date date2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(listKey.validitiy_period.replace("T", " "));
+
+            if (date1.compareTo(date2) > 0) {
+                holder.name.setTextColor(ContextCompat.getColor(((UserListActivity) context), R.color.deactivationtColor));
+                holder.ico.setTextColor(ContextCompat.getColor(((UserListActivity) context), R.color.deactivationtColor));
+                holder.ico.setText("\uf007");
+            }
+        }catch (Exception ex){
+            holder.name.setTextColor(ContextCompat.getColor(((UserListActivity) context), R.color.deactivationtColor));
+            holder.ico.setTextColor(ContextCompat.getColor(((UserListActivity) context), R.color.deactivationtColor));
+            holder.ico.setText("\uf007");
+        }
 
         if(!listKey.isActive)
         {

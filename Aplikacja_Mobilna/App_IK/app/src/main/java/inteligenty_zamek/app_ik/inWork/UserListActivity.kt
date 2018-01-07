@@ -111,6 +111,10 @@ class UserListActivity : BaseActivity() {
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter!!.downloadUsers()
+    }
 
     override fun onBackPressed() {
         val intent = Intent(this, Admin_PanelActivity::class.java)
