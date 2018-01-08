@@ -64,21 +64,14 @@ public final class GlobalContainer {
     {
         if(publicKey!=null){return publicKey;}
         String publickkey;
-        publickkey=sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.publicKey);
-        if(publickkey.equals(""))
-        {
+
             try {
                 publickkey = fileReadWriteApi.readFromFile("**" + sharedPreferenceApi.INSTANCE.getString(context, EnumChoice.login), context);
             }catch (Exception ex){return null;}
-            }
-        String val="";
-        try {
-            JSONArray ob = new JSONArray(publickkey);
-            val=ob.getJSONObject(0).toString();
-        }catch(Exception ex){}
+
 
         JsonParser parser = new JsonParser();
-        JsonElement mJson =  parser.parse(val);
+        JsonElement mJson =  parser.parse(publickkey);
         Gson gson = new Gson();
         publicKey=gson.fromJson(mJson, PublicKey.class);
         return publicKey;

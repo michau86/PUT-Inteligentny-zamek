@@ -209,7 +209,7 @@ def api_download_all_user(request):
             token_from_DB = cursor.fetchone()[0]
             if (token_from_DB == token and token != None):
                 cursor.execute(
-                    "SELECT LOGIN,ID_USER, CONCAT(NAME, ' ', SURNAME) as Name FROM USERS  ")
+                    "SELECT LOGIN,ID_USER, CONCAT(NAME, ' ', SURNAME) as Name, ISACTIVATED as Status, Validitiy_period FROM USERS  ")
                 dict_all_locks = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                   in cursor.fetchall()]
                 if len(dict_all_locks) == 0:
@@ -220,6 +220,9 @@ def api_download_all_user(request):
             return JsonResponse({"status": "Invalid"})
         except Exception:
             return JsonResponse({"status": "Invalid"})
+
+
+
 
 
 @csrf_exempt

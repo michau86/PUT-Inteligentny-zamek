@@ -15,6 +15,7 @@ class certyficatModel(val view:Context, val position:Int)
 {
     var certyficat:Certyficat?=null
     val isLogin=sharedPreferenceApi.getBoolean(view,EnumChoice.isLogin)
+    val isAdmin=sharedPreferenceApi.getBoolean(view,EnumChoice.isAdmin)
     val login= sharedPreferenceApi.getString(view,EnumChoice.login)
     val token=CyptographyApi.decrypt(sharedPreferenceApi.getString(view,EnumChoice.token))
     val ipaddres=sharedPreferenceApi.getString(view,EnumChoice.ip)

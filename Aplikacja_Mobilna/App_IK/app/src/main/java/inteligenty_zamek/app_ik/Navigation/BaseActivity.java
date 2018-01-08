@@ -77,8 +77,9 @@ public class BaseActivity extends Activity
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+            getActionBar().setHomeButtonEnabled(true);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.app_name,
@@ -159,18 +160,8 @@ public class BaseActivity extends Activity
                 }
                 else
                 {
-                    ((GlobalClassContainer) getApplication()).setDefaultValue();
-                    Intent intent3 = new Intent(this, LoginActivity.class);
-                    SharedPreferences sharedPref;
-                    sharedPref = this.getSharedPreferences(this.getString(R.string.SPName), Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("password", "");
-                    editor.putString("token", "");
-                    editor.putBoolean("isadmin",false);
-                    editor.putBoolean("isLogin",false);
-                    editor.commit();
-                    startActivity(intent3);
-                    finish();
+                    User user=GlobalContainer.getUser(this);
+                    logout(user, sharedPreferenceApi.INSTANCE.getString(this,EnumChoice.ip));
                 }
                 break;
             case 3:
@@ -232,11 +223,11 @@ private void logout(User user,String ipserwer)
 
 public void logoutresponse(String response)
 {
-
+Log.i("HHHH",response);
     JSONObject jObj = null;
     try {
         jObj = new JSONObject(response);
-        if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("Invalid")) {
+        if (jObj.getString("status").equals("logout") || jObj.getString("status").equals("invalid")) {
 
             sharedPreferenceApi.INSTANCE.set(this,false, EnumChoice.isAdmin);
             sharedPreferenceApi.INSTANCE.set(this,false,EnumChoice.isLogin);

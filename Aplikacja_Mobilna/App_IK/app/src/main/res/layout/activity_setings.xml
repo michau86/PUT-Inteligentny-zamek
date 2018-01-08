@@ -240,6 +240,78 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_settings15" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/color_border_list" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Impor/Eksport klucza prywatnego"
+        android:layout_marginTop="20dp"
+        style="@style/_textViewBigstyle"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hasło do importu eksportu klucza"
+            android:layout_marginTop="10dp"
+            style="@style/_textViewMediumstyle"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+
+        <EditText
+            android:id="@+id/settingsEditTextPasswordKey"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/settingsTextViewSeeIcoOldPasswordKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_register_text9"
+            style="@style/_textViewicStyle"
+            android:layout_alignTop="@+id/settingsEditTextPasswordKey"
+            android:layout_alignBottom="@+id/settingsEditTextPasswordKey"
+            android:layout_alignRight="@+id/settingsEditTextPasswordKey"
+            android:paddingRight="5dp"
+            />
+
+
+    </RelativeLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal">
+    <Button
+        android:id="@+id/settingsButtonImport"
+          android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Importuj"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+        android:layout_marginEnd="20dp"
+            />
+
+        <Button
+            android:id="@+id/settingsButtonExport"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Eksportuj"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            />
+
+x</LinearLayout>
 
     <View
         android:layout_width="match_parent"

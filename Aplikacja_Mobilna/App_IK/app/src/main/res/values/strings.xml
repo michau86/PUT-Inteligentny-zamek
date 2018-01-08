@@ -50,7 +50,6 @@
     <string name="activity_certyficationAsk4">sortuj</string>
 
 
-
     <!-- activity Settings  -->
     <string name="activity_settings1">Zmień hasło</string>
     <string name="activity_settings2">stare hasło</string>
@@ -108,8 +107,6 @@
     <string name="activity_register_text10">adres serwera</string>
 
 
-
-
     <!-- activity admin panel  -->
     <string name="activity_admin_panel1">Historia użycia zamków</string>
     <string name="activity_admin_panel2">Generowanie nowego certyfikatu</string>
@@ -121,9 +118,6 @@
 
     <!-- activity user Certyfikation List  -->
     <string name="activity_user_Certyfikation_List1">Lista twoich certyfikatów</string>
-
-
-
 
 
     <!-- drawer  -->

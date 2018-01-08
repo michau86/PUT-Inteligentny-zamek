@@ -127,7 +127,7 @@ class certyficatPresenter(val view: certyficatActivity)
 
     fun extendCertyficat()
     {
-        if(model.fromAdminPanel)
+        if(model.fromAdminPanel|| model.isAdmin)
         {
             GlobalContainer.obj=model.certyficat
             val myIntent = Intent(view, GenerationCertyficatActivity::class.java)

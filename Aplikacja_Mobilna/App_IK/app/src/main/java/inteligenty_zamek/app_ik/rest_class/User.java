@@ -6,13 +6,15 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.text.SimpleDateFormat;
+
 import inteligenty_zamek.app_ik.API.CyptographyApi;
 import inteligenty_zamek.app_ik.API.fileReadWriteApi;
 import inteligenty_zamek.app_ik.rest_class.Certyficat;
 import inteligenty_zamek.app_ik.rest_class.Lock;
 
 
-public class User {
+public class User implements Comparable<User>{
 
 
     public String idUser;
@@ -24,6 +26,7 @@ public class User {
     private  boolean isAdmin;
     private boolean isLogin;
     private Lock[] lockslist;
+    public String validitiy_period;
     private Certyficat[] certyficateList ;
     public String getLogin() {
         return login;
@@ -35,6 +38,23 @@ public class User {
         this.idUser = idUser;
     }
     ///// do usuniecia
+    public boolean isActive;
+    public User()
+    {
+
+    }
+
+
+
+    public User(String login, String name, String id, boolean isActive,String time)
+    {
+        this.login=login;
+                this.name=name;
+                        this.idUser=id;
+                        this.isActive=isActive;
+                        this.validitiy_period=time;
+    }
+
     public Certyficat[] getCertyficateList(Context context) {
         if(certyficateList==null)
         {
@@ -159,5 +179,8 @@ public class User {
         }
 
     }
-    /////////////////////////
+    @Override
+    public int compareTo(User o) {
+        return login.compareTo(o.login);
+    }
 }

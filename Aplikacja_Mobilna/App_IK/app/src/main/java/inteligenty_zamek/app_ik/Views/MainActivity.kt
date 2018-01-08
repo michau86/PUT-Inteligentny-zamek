@@ -69,6 +69,8 @@ class MainActivity : BaseActivity() {
         }
 
 
+
+
         val inputSearch = findViewById(R.id.mainEditText) as EditText
         inputSearch.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(cs: CharSequence, arg1: Int, arg2: Int, arg3: Int) {
