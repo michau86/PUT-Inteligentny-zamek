@@ -27,7 +27,7 @@ public class User implements Comparable<User>{
     private boolean isLogin;
     private Lock[] lockslist;
     public String validitiy_period;
-    private Certyficat[] certyficateList ;
+    public Certyficat[] certyficateList ;
     public String getLogin() {
         return login;
     }
@@ -163,7 +163,10 @@ public class User implements Comparable<User>{
                         arrJson.getJSONObject(i).getString("MAC_ADDRESS")
                 );
             }catch(JSONException e)
-            {}
+            {
+
+
+            }
         }
     }
     public void addLockList(JSONArray arrJson)

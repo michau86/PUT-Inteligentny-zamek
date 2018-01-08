@@ -98,6 +98,8 @@ class Managment_certyficationPresenter( val view: Managment_certyficationActivit
 
         } catch (e: JSONException) {
             view.showMessage("brak certyfikatow")
+            GlobalContainer.getUser(view).certyficateList=null
+            fileReadWriteApi.writeToFile("", view, model.login)
     }
 
 }
