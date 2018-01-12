@@ -1,12 +1,30 @@
 \newpage\section{Wstęp}\label{sec:wstep}
- 
+
 \subsection{Cel i zakres pracy}
 % Odpowiedź na pytanie: Do czego system służy?
 % Przedswić zadania szczegółowe z karty tematu 
+	Celem utworzenia projektu oraz implementacja systemu kontroli ruchu oraz zarządzania dostępem do pomiesczeń jest zmiana sposobu zarządzania pomieszceniami w budynkach z starszych modeli opartych na fizycznych zamkach z kluczami bądź systemów opartych na kartach magnetycznych na system posługujący się urządzeniami mobilnymi. Głównymi celam naszego systemu jest usprawnienie w uzyskiwaniu dostępu do pomieszcezń dzięki wyeliminowaniu koniecznośći posiadania przy sobie wielu kluczy fizycznych oraz sytuacji w któych użytkownik zapomniał klucza lub karty magnetycznej i nie mógł uzyskać dostępu poprzez możliwość przenoszenia uprawnień między telefonami. Dodatkowo nasz projekt ma usprawniać takie elementy jak zarządzanie dostępem do wielu pomieszceń oraz kontrolą osób przebywających w dadnym poieszczenu.
+W kwesti bezpieczeńśtwa systemu naszym zadaniem było spełnienie wymagania dotyczacych zabezpieczeń systemu poprzez zastosowanie szeregu funkcji kryptograficznych przy procesie uwierzytelniania jak i
+przy generowaniu kluczy takich jak np. funkcje skrótu, SSH, algorytmów szyfrowania
+asymetrycznego, oraz zastosowania infrastruktury klucza publicznego.
 
+Zakres pracy w tworzeniu projektu orz implementacji obejmował takie elementy jak:
+\begin{itemize}
+\item Projekt i implementacja aplikacji mobilnej do zarządzania systemem od strony użytkownika oraz administratora
+\item Projekt i implementacja interfejsu graficznego aplikacji mobilnej
+\item Implementacja wewnętrznego PKI od strony klienta systemu
+\item Projekt i implementacja strony dla administratora z podglądaem historii zamków w sieci lokalnej
+\item ....
+\end{itemize}
 \subsection{Plan pracy}
 % Spis tresci napisany słownie
+Plan pracy został podzielony na trzy etapy. 
+\begin{itemize}
+\item Pierwszy  etap polegał na udoskonaleniu projektu który był wykonywany w ramach przedmiotu projekt zespołowy  oraz omówieniu szczegółów kluczowych wykonywanych w dalszej częśći.
 
+\item Drugi etap polegał na implementacji danego projektu w 
+
+\item Trzecim i ostatnim etapem było przetestowanie  działania całego systemu oraz naprawienie wykrytych błędów.
+\end{itemize}
 \subsection{Metodyka pracy grupowej}
-
- 
+Metodyka użyta  podczas pracy grupowej była oparta na metodykach zwinnych takich jak SCRUM z co 2 tygodniowymi spotkaniami omawiajacymi bieżące postępy w pracy oraz ewentualne problemy wynikające z danej specyfiki systemu oraz środowisk użytych podczas implementacji. W dalszych rozdziałach zostały szczegółowo omówione kwestie projektu implementacji oraz testowania.
