@@ -115,7 +115,88 @@ W ramach zajęć projektowych oraz laboratoryjnych o nazwe Projekt Zespołowy pr
 	Urządzenie sterujące zamkiem
 	???????????????????????????????????????????????????????????????????????????????
 	
-	Baza danych została wykonana w następujaćy sposób: 
+Baza danych składała się z 5 tabel o następujących wartośćiac
+	
+	\begin{itemize}
+		\item \textbf{USERS} --- przechowuje dane użytkowników oraz dane niezbędne przy weryfikacji logowania,
+		\item \textbf{LOCKS} --- zawiera informacje na temat dostępnych w systemie zamków,
+		\item \textbf{ACCESS\_TO\_LOCKS} --- archiwizuje próby użycia certyfikatów,
+		\item \textbf{LOCKS\_KEYS} --- zawiera wszystkie klucze dostępowe użytkowników,
+		\item \textbf{WAIT\_LOCKS\_KEYS} --- przetrzymuje klucze dostępowe oczekujące na zatwierdzenie przez administratora.
+	\end{itemize}
+	
+	Wiersz tabeli USERS zawierał:
+	\begin{itemize}
+		\item \textbf{ID\_USER} --- unikalny identyfikator (klucz główny) użytkownika składający się z 10 cyfr,
+		\item \textbf{LOGIN} --- unikalna nazwa użytkownika niezbędna podczas logowania, zawierająca nie więcej niż 255 znaków,
+		\item \textbf{PASSWORD} --- hasło zapisane w postaci skrótu, potrzebne do autoryzacji dostępu użytkownikowi,
+		\item \textbf{PUBLIC\_KEY} --- klucz publiczny użytkownika potrzebny do podpisu cyfrowego,
+		\item \textbf{NAME} - imię użytkownika,
+		\item \textbf{SURNAME} --- nazwisko użytkownika,
+		\item \textbf{IS\_ADMIN} --- pole boolowskie wskazujące czy dany użytkownik jest administratorem czy nie,
+		\item \textbf{TOKEN} --- generowany ciąg pseudolosowy klucz sesji logowania,
+		\item  \textbf{ISACTIVATED} --- pole boolowskie oznaczające, czy dane konto jest zaakceptowane (aktywowane) przez administratora.
+	\end{itemize}
+	
+	Zamek opisywany był poprzez kolumny:
+	\begin{itemize}
+		\item \textbf{ID\_LOCK} --- unikalny identyfikator (klucz główny) zamka składający się z 10 cyfr,
+		\item \textbf{NAME} --- unikalna nazwa zamka,
+		\item \textbf{MAC\_ADDRESS} --- adres fizyczny urządzenia sterującego zamkiem,
+		\item \textbf{LOCALIZATION} --- nieobowiązkowe pole opisujące fizyczne położenie zamka,
+		\item  \textbf{ADMIN\_KEY} --- wartość klucza awaryjnego dla administratora.
+	\end{itemize}
+	\newpage
+	
+	Klucz dostępowy składał się z:
+	\begin{itemize}
+		\item \textbf{ID\_KEY} --- unikalny identyfikator (klucz główny) klucza dostępowego składający się z 10 cyfr,
+		\item \textbf{ID\_LOCK} --- klucz obcy do tabeli przechowującej dostępne zamki,
+		\item \textbf{ID\_USER} --- klucz obcy do tabeli przechowującej dane użytkownika, jest to pole służące do określenia kto utworzył klucz dostępu,
+		\item \textbf{KEY} --- unikalna wartość certyfikatu dostępu,
+		\item \textbf{FROM} --- data od której obowiązuje klucz,
+		\item \textbf{TO} --- data do której obowiązuje klucz,
+		\item \textbf{ISACTUAL} --- data wygaśnięcia klucza, jeśli równa TO, oznacza to że klucz utracił ważność z powodu czasu, jeśli różna oznacza, to że zablokowano z innego powodu ważność,
+		\item \textbf{MONDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w poniedziałki,
+		\item \textbf{TUESDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp we wtorki,
+		\item \textbf{WEDNESDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w środy,
+		\item \textbf{THURSDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w czwartki,
+		\item \textbf{FRIDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w piątki,
+		\item \textbf{SATURDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w soboty,
+		\item \textbf{SUNDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w niedziele,
+		\item \textbf{IS\_PERNAMENT} --- zmienna boolowska oznaczająca czy dostęp jest zawsze,
+		\item \textbf{NAME} - imię osoby, której dotyczy certyfikat,
+		\item \textbf{SURNAME} --- nazwisko osoby, której dotyczy certyfikat.
+	\end{itemize}
+	
+	W tabeli archiwizującej akcje na zamku znajdowały się takie dane jak:
+	\begin{itemize}
+		\item \textbf{ID} --- unikalny identyfikator (klucz główny) akcji wykonanej na certyfikacie składający się z 10 cyfr,
+		\item \textbf{ID\_KEY} --- klucz obcy do tabeli przechowującej klucze dostępowe, dzięki tej informacji możemy uzyskać dane o zamku, który został otwierany jak również do kogo należał klucz,
+		\item \textbf{DATE} --- dokładna data z godziną użycia klucza dostępowego,
+		\item \textbf{ACCESS} --- binarna flaga informująca czy dostęp został przyznany czy odmówiony.
+	\end{itemize}
+	
+	Tabela WAIT\_LOCKS\_KEYS składa się z:
+	\begin{itemize}
+		\item \textbf{ID\_KEY} --- unikalny identyfikator (klucz główny) oczekującego certyfikatu,
+		\item \textbf{ID\_LOCK} --- klucz obcy do tabeli LOCKS, oznacza zamek do którego jest zgłaszana prośba dostępu,
+		\item \textbf{ID\_USER} --- klucz obcy do tabeli USERS, oznacza użytkownika który zgłasza prośbę o dostęp do zamka.
+	\end{itemize}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 		\begin{figure}[!h]
 		\centering
