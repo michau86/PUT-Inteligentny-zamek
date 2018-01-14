@@ -1,5 +1,45 @@
 % 
 \newpage\section{Zarys idei systemu \textsl{\NazwaSys}}\label{sec:ideasystemu}
 \subsection{Schemat ideowy systemu \textsl{\NazwaSys}}
+
 \subsection{Opis składowych systemu}
+Nasz system składa się z 5 elementów.
+
+Pierwszym z nich jest Urządzenei sterujące  w którego skład wchodzą  Raspberry
+Pi 3 oraz serwomechanizm/zamek elektroniczny, jest weryfikacja klucza cyfrowego
+przesyłanego przez urzadzenie mobilne oraz otwieranie zamka przy pozytywnym
+wyniku weryfikacji.
+Oprogramowanie mikrokomputera obejmuje system Linux raspbian-jessie oraz
+szereg podprogramów napisanych w jezyku Python. Skrypty programów łacza sie
+do serwera w celu pobrania informacji o poprawnosci i dacie waznosci certyfikatu
+dostepu. Jesli dane beda poprawne to zostaje wysterowany serwomechanizm (lub
+wysłany impuls do elektrozamka), który otwiera zamek, w przeciwnym przypadku
+uzytkownik zostanie poinformowany o odmowie dostepu, a nieudana próba dostania
+sie do systemu zarejestrowana zostanie w bazie danych wraz z danymi własciciela
+klucza.
+
+Drugim elementem jest 
+Aplikacja mobilna napisana na platforme Android która ma na celu
+przechowywanie w pamieci smartfona kluczy cyfrowych uzytkownika oraz mozliwosc
+interakcji uzytkownika z systemem.
+
+Kolejnym z elementów jest serwer wraz z stroną internetową.
+Rola serwera w tym systemie jest przechowywanie danych dostepowych w
+bazie danych MySQL oraz wykonywanie operacji zleconych przez administratora bądż użytkownika systemu. Dodatkowo serwer obsługuje strone internetową która wyświetla na bieżąco historię uzycia zamków w systemie.
+
+Przedostatnim elementem składowym systemu jest baza danych która przechowuje wszystkie kluczwoem informacje systemu oraz udostępnia je serwerowi.
+
+Ostatnim z skłądowych systemu jest oprogramowanie zliczajaće ilość sobó w danym pomieszceniu wraz z kamerą której zadnaiem jest obliczanie informacji o aktualnyej liczbie osBó w danym pomieszczeniu. 
+
+
 \subsection{Podmioty systemu} 
+W pracy inżynierskiej można wyodrębnić następujące podmioty:
+	\begin{itemize}
+	\item \textbf{Użytkownik niezalogowany} --- jest to użytkownik któy posiada aplikacje mobilną na swoim urządzeniu lecz nie wykonał procesu logowania,
+	\item \textbf{Użytkownik niezarejestrowany} --- jest to użytkownik któy wysłał prośbę o zarejestrowanie lecz nie jest ona jeszcze zatwierdzona,
+	\item \textbf{Użytkownik zalogowany} --- jest to uzytkownik któy przeszedł poprawnie proces logowania. Posiada on ograniczoną funkcjonalność aplikacji
+	\item \textbf{Administrator} --- jest to użytkownik zalogowany który posiada uprawnienia administratora co wiaże się z pełnym dostępem do funkcji aplikacji mobilnej,
+	\item \textbf{Serwer} --- jest to oprogramowanie zarządzajaće całym systemem,
+	\item \textbf{Urządzenie sterujące} --- jest to oprogramowanie zarządzajaće dostępem fizycznym do pomieszczeń,
+	\item \textbf{Oprogramowanie zliczające} --- jest to oprogramowanie zwracajaće w czasie rzeczywistym ilość osóB przebywających w danym pomieszczeniu,
+\end{itemize}
