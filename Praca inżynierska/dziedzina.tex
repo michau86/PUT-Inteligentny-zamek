@@ -5,18 +5,22 @@
 Rozdział zawierać będzie objaśnienia używanych zwrotów i pojęć umożliwiających poprawne interpretowanie dalszych tekstów. Następnie opisany zostanie stan wiedzy związanej z tematyką pracy, to znaczy omówienie wybranych rozwiązań systemów tak zwanych inteligentnych zamków. W zestawieniu porównane zostaną również zaproponowane w pracy dyplomowej rozwiązania.
 \subsection{Pojęcia i definicje}
 W dokumencie tym posługiwać się będziemy następującymi pojęciami:
-	\begin{itemize*}
-	\item \textbf{Klucz dostępowy} --- jest to klucz publiczny z pary kluczy prywatny---publiczny. Używany jest on do odszyfrowania wiadomości wysłanej z aplikacji mobilnej do urządzenia sterującego,
+\begin{itemize*}
+	\item \textbf{Klucz dostępowy} --- jest to  klucz określający dostęp do pomieszczenia dla użytkownika w konkretnych dniach oraz godzinach,
 	\item \textbf{Klucz szyfrujący} 
-	--- jest to klucz prywatny wygenerowany podczas tworzenia pary kluczy publiczny prywatny. Używane jest on do szyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
-    \item \textbf{Para kluczy szyfrujących}
-    --- jest to para kluczy (prywatny oraz publiczny) generowanych podczas rejestracji oraz wymiany klucza dostępowego,
+	--- jest to klucz prywatny wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używany jest on do szyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
+	\item \textbf{Klucz deszyfrujący }
+	--- jest to klucz publiczny wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używane jest on do odszyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
 	\item \textbf{Inteligentny zamek}
 	--- system obsługujący otwieranie elektrozamka bądź serwomechanizmu,
-    \item \textbf{Konto}
+	\item \textbf{Konto}
 	--- reprezentacja użytkownika w systemie za pomocą takich danych jak login hasło, imię, nazwisko.
 	\item \textbf{Administrator}
-	--- jest to fizyczna osoba posiadającą dla swojego konta uprawnienia administratora co wiąże się z pełnym dostępem do systemu.					
+	--- jest to fizyczna osoba posiadającą dla swojego konta uprawnienia administratora co wiąże się z pełnym dostępem do systemu,
+	\item \textbf{Certyfikat dostępowy}
+	--- jest to certyfikat przechowujący informacje takie jak dane użytkownik, do jakiego pomieszczenia oraz w jakich dniach i godzinach	ma dostęp
+	\item \textbf{Certyfikat klucza szyfrującego}
+	-- jest to certyfikat przechowujący dane o użytkowniku, ważności klucza szyfrującego oraz sam klucz deszyfrujący.
 \end{itemize*}
 
 \newpage
@@ -80,7 +84,7 @@ W ramach zajęć projektowych oraz laboratoryjnych o nazwę Projekt Zespołowy p
 	\begin{itemize*}
 		\item Logowanie użytkowników,
 		\item Rejestracja użytkowników,
-		\item Rejestracja wraz z tworzeniem pary kluczy dostępowych publiczny---prywatny,
+		\item Rejestracja wraz z tworzeniem certyfikatu klucza szyfrującego,
 		\item Generowanie nowego certyfikatu,
 		\item Pobieranie certyfikatów z serwera,
 		\item Zarządzanie certyfikatami użytkownika,
