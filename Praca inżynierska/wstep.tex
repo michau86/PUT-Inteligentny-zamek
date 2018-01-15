@@ -1,5 +1,6 @@
 % !TeX spellcheck = pl_PL
 \newpage\section{Wstęp}\label{sec:wstep}
+Wstęp pracy zawiera krótki opis celu i zakresu planowanego projektu. 
 
 \subsection{Cel i zakres pracy}
 % Odpowiedź na pytanie: Do czego system służy?
@@ -22,7 +23,11 @@ Czwarty rozdział dotyczy przybliżenia użytych technologi raz z uzasadnieniem.
 
 Główny rozdział pracy dotyczy projektu systemu. W dziale opisane są w pierwszej kolejności diagramy UML (przypadków użycia, sekwencji, bazy danych oraz klas), które są odzwierciedleniem dalszej implementacji. Następnie przybliżony zostaje uproszczony schemat elektryczny urządzenia sterującego zamkiem fizycznym oraz moduł zliczający ludzi. Kolejne punkty opisują szczegółowo komunikacją pomiędzy urządzeniami oraz interfejs graficzny aplikacji mobilnej i strony internetowej. Kończąc tematykę projektu zostaną przybliżone dokładniej zaprojektowane mechanizmy zapewniające bezpieczeństwo ze względu na podstawowe zasady: poufność, dostępność i integralność.
 
+Po omówieniu projektu zostanie opisana implementacja systemu. Dział ten przybliży wybrane, kluczowe fragmenty programów oraz dokładniej określi metodykę powstałego kodu. 
 
+Następny dział pracy skupi się na bezpieczeństwie systemu. Omówione zostaną szczegółowo zastosowane metody kryptograficzne oraz zostanie przeprowadzona analiza podatności względem listy najczęstszych podatności OWASP Top 10. Podsumowując dział zostaną zaproponowane możliwości poprawy  bezpieczeństwa systemu, których nie uwzględniono w fazie projektu, ani potem implementacji.
+
+Ostatnim rozdziałem przed podsumowaniem jest omówienie przeprowadzanych testów pod względem poprawności działania systemu. Jednocześnie zostanie graficznie przedstawione działanie każdego modułu.
 
 %Plan pracy został podzielony na trzy etapy. 
 %\begin{itemize}
@@ -36,7 +41,7 @@ Główny rozdział pracy dotyczy projektu systemu. W dziale opisane są w pierws
 \newpage
 \subsection{Metodyka pracy grupowej}
 %Metodyka użyta  podczas pracy grupowej była oparta na metodykach zwinnych takich jak SCRUM z co 2 tygodniowymi spotkaniami omawiającymi bieżące postępy w pracy oraz ewentualne problemy wynikające z danej specyfiki systemu oraz środowisk użytych podczas implementacji. W dalszych rozdziałach zostały szczegółowo omówione kwestie projektu implementacji oraz testowania.
-Metodyka użyta podczas pracy grupowej była oparta o model kaskaodowy składajaćy się z etapów takich jak:
+Metodyka użyta podczas pracy grupowej była oparta o model kaskadowy składający się z etapów takich jak:
 \begin{itemize}
 	\item Planowanie systemu
 	\item Analiza systemu
@@ -45,4 +50,5 @@ Metodyka użyta podczas pracy grupowej była oparta o model kaskaodowy składaja
 	\item Testowanie
 	\item Wdrożenie i pielęgnacja produktu
 \end{itemize}
-Uzasadnieniem wyboru takiej metodyki jest fakt używania takich metodyk podczas dużych projektów inżynierskich oraz brak koniecznośći pokazywania fragmentów działająćego systemu podczas tworzenia pracy inżynierskiej. W początkowej fazie ważniejsze było dla nas określenie specyfiki wymagań systemu oraz sam projekt aniżeli implementacja systemu.
+
+Uzasadnieniem wyboru takiej metodyki jest fakt używania takich metodyk podczas dużych projektów inżynierskich oraz brak konieczności pokazywania fragmentów działającego systemu podczas tworzenia pracy inżynierskiej. W początkowej fazie ważniejsze było dla nas określenie specyfiki wymagań systemu oraz zaprojektowanie, aniżeli implementacja systemu.
