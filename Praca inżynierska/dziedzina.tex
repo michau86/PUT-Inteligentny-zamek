@@ -3,13 +3,25 @@
 \subsection{Pojęcia i definicje}
 W dokumencie tym posługiwać się będziemy następującymi pojęciami:
 
-Klucz dostępowy - jest to klucz publiczny z pary kluczy prywartny publiczny. Używany jest on do odszyfrowania wiadomości wysłanej z aplikacji mobilnej do urządzenia sterujacego.
 
-Klucz szyfrujący jest to klucz prywatny wygenerowany podczas tworzenia pary kluczy publiczny prywatny. Używane jest on do szyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego
+	\begin{itemize}
+	\item \textbf{Klucz dostępowy} --- jest to klucz publiczny z pary kluczy prywartny publiczny. Używany jest on do odszyfrowania wiadomości wysłanej z aplikacji mobilnej do urządzenia sterujacego,
+	
+	\item \textbf{Klucz szyfrujący} 
+	--- jest to klucz prywatny wygenerowany podczas tworzenia pary kluczy publiczny prywatny. Używane jest on do szyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
+	
+    \item \textbf{Para kluczy szyfrujących}
+    --- jest to para kluczy (prywatny oraz publiczny) generowanych podczas rejestracji oraz wymiany klucza dostepowego,
+	
+	\item \textbf{Inteligentny zamek}
+	--- system obsługujący otwieranie elektrozamka bądz serwomechanizmu,
+    \item \textbf{Konto}
+	--- reprezentacja użytkownika w systemie za pomocą takich danych jak login hasło, imie, nazwisko.
+	\item \textbf{Administrator}
+	---jest to fizyczna osoba posiadająća dla swojego konta uprawnienia administratora co wiąże się z pełnym dostępem do systemu.					
+\end{itemize}
 
-para kluczy szyfrujących- jest to para kluczy (prywatny oraz publiczny) generowanych podczas rejestracji oraz wymiany klucza dostepowego.
 
-Inteligentny zamek - system obsługujący otwieranie elektrozamka bądz serwomechanizmu.
 
 \newpage
 \subsection{Stan wiedzy}
@@ -76,6 +88,7 @@ Tabela \ref{tab:porownanie3} zawiera porównanie firm pod względem dziennika zd
 \newpage
 \subsection{Stan pracy wykonany w ramach zajęć \newline przedmiotowych} 
 W ramach zajęć projektowych oraz laboratoryjnych o nazwe Projekt Zespołowy prowadzonych z mgr. Michałem Apolinarskim oraz dr Ewą Idzikowską zostały wykonane następujace fragmenty systemu:
+	
 	Aplikacja mobilna została wykonana dla wersji andorida minimum 4.4 KitKat w stopniu umożliwiającym takie funkcjonalnośći jak:
 	\begin{itemize}
 		\item Logowanie
@@ -87,121 +100,22 @@ W ramach zajęć projektowych oraz laboratoryjnych o nazwe Projekt Zespołowy pr
 		\item Zarządzanie prośbami o rejestracje
 		\item Wnioskowanie o certyfikat nowy
 	\end{itemize}
-		Dodatkowo zostało napisane api do obsługi połączenia bluetooth oraz w każdym widoku któy korzystał z połaczenia z serwerem były napisane fragmenty kodu. Funkcje te oraz kod zostały napisane bez uwzględnienia wzorców architektoniczncych (wszystko co dotyczyło danego widoku było w jednej klasie), posiadały szereg błędów powodujaćych niestabilne działąnie systemu oraz posiadały metody z systemu android które były określane przez środowisko android stuido jako "deprecated" co mogło przy nowszych wersjach androida powodować wadliwe działanie systemu. Z racji pisania pod wersje systemu android 4.4 wygląd różni się od tego który został zaimplementowany w pracy inżynierskiej. Ponieżej przedstawiono wygląd aplikacji w stanie początkowym(????).
+		Dodatkowo zostało napisane api do obsługi połączenia bluetooth oraz w każdym widoku któy korzystał z połaczenia z serwerem były napisane fragmenty kodu. Funkcje te oraz kod zostały napisane bez uwzględnienia wzorców architektoniczncych (wszystko co dotyczyło danego widoku było w jednej klasie), posiadały szereg błędów powodujaćych niestabilne działąnie systemu oraz posiadały metody z systemu android które były określane przez środowisko android stuido jako "deprecated" co mogło przy nowszych wersjach androida powodować wadliwe działanie systemu. Z racji pisania pod wersje systemu android 4.4 wygląd różni się od tego który został zaimplementowany w pracy inżynierskiej.
 		 
 	
 	
-    Aplikacja serwerowa posiadałą następujące rest api
-    \begin{itemize}
-    	\item api służące do pobierania certyfikatu
-    	\item api służące do informowania o statusie certyfikatu
-    	\item api służące do logowania użytkownika
-    	\item api służące do rejstracji uzytkownika
-    	\item api służące do wylogowania użytkownika
-    	\item api służące do pobrania wszystkich certyfikatów użytkowników
-    	\item api służące do pobrania listy wszystkich zamków
-    	\item api służące do pobrania listy wszystkich uzytkownikóW systemu
-    	\item api służące do zmiany hasła
-    	\item api służące do pobrania histori użycia zamków
-    	\item api służące do pobrania listy oczekujących certyfikatów
-    	\item api służące do pobrania listy oczekujących użytkowników na zarejestrowanie
-    	\item api służące do generowania nowego certyfikatu
-    	\item api służące do określenia decyzji administratorwa w stosunku do danego oczekującego certyfikatu
-    	\item api służące do określenia decyzji administratorwa w stosunku do danego oczekującego użytkownika na zarejestrowanie 
-    \end{itemize}   
-	Wszystkei te api zwracały odpowiednio albo odpowiednie dane albo wartość Invalid. Ponadto posiadały szereg niedopatrzeń powodujących wadliwe działanie systemu w szcególnych przypadkach. 
+   Aplikacja serwerowa została wykonanan w stopniu umożliwiającym podstawowoe funkcje takie jak:
+   		\begin{itemize}
+   		\item Logowanie
+   		\item Rejestracja
+   		\item Zapisywanie nowego certyfikatu
+   		\item udostępnianie certyfikatóW
+   		\item pobieranie list certyfikatów, próśb o certyfikaty oraz rejestracji
+   	\end{itemize}
+	Wszystkie te funkcje zwracały odpowiednio albo pożądane dane albo wartość 'Invalid' co powodowało wyświetlania błędnych komunikaótw uzytkownikowi z racji nierozróżniania braku dostępu od błędnie wykonanego skyptu.
 	
-	Urządzenie sterujące zamkiem
-	???????????????????????????????????????????????????????????????????????????????
-	
-Baza danych składała się z 5 tabel o następujących wartośćiac
-	
-	\begin{itemize}
-		\item \textbf{USERS} --- przechowuje dane użytkowników oraz dane niezbędne przy weryfikacji logowania,
-		\item \textbf{LOCKS} --- zawiera informacje na temat dostępnych w systemie zamków,
-		\item \textbf{ACCESS\_TO\_LOCKS} --- archiwizuje próby użycia certyfikatów,
-		\item \textbf{LOCKS\_KEYS} --- zawiera wszystkie klucze dostępowe użytkowników,
-		\item \textbf{WAIT\_LOCKS\_KEYS} --- przetrzymuje klucze dostępowe oczekujące na zatwierdzenie przez administratora.
-	\end{itemize}
-	
-	Wiersz tabeli USERS zawierał:
-	\begin{itemize}
-		\item \textbf{ID\_USER} --- unikalny identyfikator (klucz główny) użytkownika składający się z 10 cyfr,
-		\item \textbf{LOGIN} --- unikalna nazwa użytkownika niezbędna podczas logowania, zawierająca nie więcej niż 255 znaków,
-		\item \textbf{PASSWORD} --- hasło zapisane w postaci skrótu, potrzebne do autoryzacji dostępu użytkownikowi,
-		\item \textbf{PUBLIC\_KEY} --- klucz publiczny użytkownika potrzebny do podpisu cyfrowego,
-		\item \textbf{NAME} - imię użytkownika,
-		\item \textbf{SURNAME} --- nazwisko użytkownika,
-		\item \textbf{IS\_ADMIN} --- pole boolowskie wskazujące czy dany użytkownik jest administratorem czy nie,
-		\item \textbf{TOKEN} --- generowany ciąg pseudolosowy klucz sesji logowania,
-		\item  \textbf{ISACTIVATED} --- pole boolowskie oznaczające, czy dane konto jest zaakceptowane (aktywowane) przez administratora.
-	\end{itemize}
-	
-	Zamek opisywany był poprzez kolumny:
-	\begin{itemize}
-		\item \textbf{ID\_LOCK} --- unikalny identyfikator (klucz główny) zamka składający się z 10 cyfr,
-		\item \textbf{NAME} --- unikalna nazwa zamka,
-		\item \textbf{MAC\_ADDRESS} --- adres fizyczny urządzenia sterującego zamkiem,
-		\item \textbf{LOCALIZATION} --- nieobowiązkowe pole opisujące fizyczne położenie zamka,
-		\item  \textbf{ADMIN\_KEY} --- wartość klucza awaryjnego dla administratora.
-	\end{itemize}
-	\newpage
-	
-	Klucz dostępowy składał się z:
-	\begin{itemize}
-		\item \textbf{ID\_KEY} --- unikalny identyfikator (klucz główny) klucza dostępowego składający się z 10 cyfr,
-		\item \textbf{ID\_LOCK} --- klucz obcy do tabeli przechowującej dostępne zamki,
-		\item \textbf{ID\_USER} --- klucz obcy do tabeli przechowującej dane użytkownika, jest to pole służące do określenia kto utworzył klucz dostępu,
-		\item \textbf{KEY} --- unikalna wartość certyfikatu dostępu,
-		\item \textbf{FROM} --- data od której obowiązuje klucz,
-		\item \textbf{TO} --- data do której obowiązuje klucz,
-		\item \textbf{ISACTUAL} --- data wygaśnięcia klucza, jeśli równa TO, oznacza to że klucz utracił ważność z powodu czasu, jeśli różna oznacza, to że zablokowano z innego powodu ważność,
-		\item \textbf{MONDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w poniedziałki,
-		\item \textbf{TUESDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp we wtorki,
-		\item \textbf{WEDNESDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w środy,
-		\item \textbf{THURSDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w czwartki,
-		\item \textbf{FRIDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w piątki,
-		\item \textbf{SATURDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w soboty,
-		\item \textbf{SUNDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w niedziele,
-		\item \textbf{IS\_PERNAMENT} --- zmienna boolowska oznaczająca czy dostęp jest zawsze,
-		\item \textbf{NAME} - imię osoby, której dotyczy certyfikat,
-		\item \textbf{SURNAME} --- nazwisko osoby, której dotyczy certyfikat.
-	\end{itemize}
-	
-	W tabeli archiwizującej akcje na zamku znajdowały się takie dane jak:
-	\begin{itemize}
-		\item \textbf{ID} --- unikalny identyfikator (klucz główny) akcji wykonanej na certyfikacie składający się z 10 cyfr,
-		\item \textbf{ID\_KEY} --- klucz obcy do tabeli przechowującej klucze dostępowe, dzięki tej informacji możemy uzyskać dane o zamku, który został otwierany jak również do kogo należał klucz,
-		\item \textbf{DATE} --- dokładna data z godziną użycia klucza dostępowego,
-		\item \textbf{ACCESS} --- binarna flaga informująca czy dostęp został przyznany czy odmówiony.
-	\end{itemize}
-	
-	Tabela WAIT\_LOCKS\_KEYS składa się z:
-	\begin{itemize}
-		\item \textbf{ID\_KEY} --- unikalny identyfikator (klucz główny) oczekującego certyfikatu,
-		\item \textbf{ID\_LOCK} --- klucz obcy do tabeli LOCKS, oznacza zamek do którego jest zgłaszana prośba dostępu,
-		\item \textbf{ID\_USER} --- klucz obcy do tabeli USERS, oznacza użytkownika który zgłasza prośbę o dostęp do zamka.
-	\end{itemize}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		\begin{figure}[!h]
-		\centering
-		\includegraphics[width=16cm]{Obrazy/Diagram_relacjOld.png}
-		\label{diagram:diagram relacji}
-	\end{figure}
+	Urządzenie sterujące zamkiem zostało napisane w języku python i pozwalało na odbieranie danych z aplikacji mobilnej oraz posiadało funckje odpowiedzialną za otwieranie zamka.
+ 
 
 	W ramach przedmiotu ochrona danych zostały zaimplementowane w systemie fragmenty PKI takie jak:
 	   \begin{itemize}
