@@ -5,24 +5,35 @@
 % Odpowiedź na pytanie: Do czego system służy?
 % Przedswić zadania szczegółowe z karty tematu  
 
-	Celem pracy jest projekt i implementacja systemu kontroli ruchu oraz zarządzania dostępem do pomieszczeń. System ma na celu zamianę sposobu zarządzania dostępem w budynkach z starszych modeli opartych na fizycznych zamkach z kluczami fizycznymi, bądź systemów opartych na kartach magnetycznych na system posługujący się urządzeniami mobilnymi z system operacyjnym android. Głównym celem jest usprawnienie w uzyskiwaniu dostępu do pomieszczeń dzięki wyeliminowaniu konieczności posiadania przy sobie wielu kluczy fizycznych oraz sytuacji, w których użytkownik zapomniał klucza lub karty magnetycznej i nie mógł uzyskać dostępu poprzez możliwość przenoszenia uprawnień między telefonami. Dodatkowo nasz projekt ma usprawniać takie elementy jak zarządzanie dostępem do wielu pomieszczeń oraz kontrolą osób przebywających w danym pomieszczeniu.
+	Celem pracy jest projekt i implementacja systemu kontroli ruchu oraz zarządzania dostępem do pomieszczeń. System ma na celu zamianę sposobu zarządzania dostępem w budynkach z starszych modeli opartych na fizycznych zamkach z kluczami fizycznymi, bądź systemów opartych na kartach magnetycznych na system posługujący się urządzeniami mobilnymi z system operacyjnym android. Głównym celem jest usprawnienie w uzyskiwaniu dostępu do pomieszczeń dzięki wyeliminowaniu konieczności posiadania przy sobie wielu kluczy fizycznych oraz sytuacji, w których użytkownik zapomniałby klucza lub karty magnetycznej i nie mógł uzyskać dostępu. Rozwiązaniem tych problemów jest możliwość przenoszenia kluczy (uprawnień) między telefonami. Dodatkowo nasz projekt ma usprawniać takie elementy, jak zarządzanie dostępem do wielu pomieszczeń oraz kontrolę osób przebywających w danym pomieszczeniu poprzez moduł zliczania osób wchodzących i wychodzących.
 	
-W kwestii bezpieczeństwa systemu naszym zadaniem było spełnienie wymagania dotyczących zabezpieczeń systemu poprzez zastosowanie szeregu funkcji kryptograficznych przy procesie uwierzytelniania jak i
-przy generowaniu kluczy takich jak np. funkcje skrótu, SSH, algorytmów szyfrowania
-asymetrycznego oraz zastosowania infrastruktury klucza publicznego.
+W kwestii bezpieczeństwa systemu naszym zadaniem było spełnienie wymagań dotyczących zabezpieczeń systemu poprzez zastosowanie szeregu funkcji kryptograficznych przy procesie uwierzytelniania jak i przy generowaniu kluczy takich jak np. funkcje skrótu, SSH, algorytmów szyfrowania asymetrycznego oraz zastosowania infrastruktury klucza publicznego.
 
-Zakres pracy w tworzeniu projektu orz implementacji obejmował takie elementy jak zaprojektowanie oraz stworzenie aplikacji klienckjiek, aplikacji serwerowej, oprogramowania do zliczania osób w pomieszceniu, oprogramowania służącego do przyznawania fizycznego dostępu do pomiezcenia oraz strony internetowej.
+Zakres pracy w tworzeniu projektu orz implementacji obejmował takie elementy jak zaprojektowanie oraz stworzenie aplikacji klienckiej oraz serwerowej, oprogramowania do zliczania osób w pomieszczeniu, oprogramowania służącego do nadzorowania fizycznego dostępu do pomieszczenia, jak również strony internetowej jako panel administracyjny administratora systemu.
 
+\newpage
 \subsection{Plan pracy}
 % Spis tresci napisany słownie
-Plan pracy został podzielony na trzy etapy. 
-\begin{itemize}
-\item Pierwszy  etap polegał na udoskonaleniu projektu który był wykonywany w ramach przedmiotu projekt zespołowy  oraz omówieniu szczegółów kluczowych wykonywanych w dalszej części.
+Praca w pierwszej kolejności przedstawia dziedzinę projektu, którego dotyczy. Zostaną wyjaśnione używane pojęcia oraz nazwy własne umożliwiające poprawną interpretację opisanych działań. Po objaśnieniu terminologii, nasz projekt zostanie porównany z istniejącymi rozwiązaniami podobnego typu oraz zostaną wyciągnięte wnioski na temat niedopracowania lub możliwości poprawy danych rozwiązań jakie zastosowano projektując opisywany w pracy system. Kończąc prezentację dziedziny zostanie opisany stan wykonania pracy w ramach zajęć przedmiotowych w trakcie trwania studiów inżynierskich.
 
-\item Drugi etap polegał na implementacji danego projektu w 
+Następny rozdział ma na celu przedstawić ogólny zarys systemu. Opisany zostanie schemat połączeń poszczególnych modułów, interfejsów komunikacyjnych oraz wykaz wszystkich elementów składowych, wraz z możliwymi użytkownikami.
 
-\item Trzecim i ostatnim etapem było przetestowanie  działania całego systemu oraz naprawienie wykrytych błędów.
-\end{itemize}
+Czwarty rozdział dotyczy przybliżenia użytych technologi raz z uzasadnieniem. Opis wyszczególnia zastosowane narzędzia do implementacji każdego z modułów oraz umożliwiające pracę zespołową.
+
+Główny rozdział pracy dotyczy projektu systemu. W dziale opisane są w pierwszej kolejności diagramy UML (przypadków użycia, sekwencji, bazy danych oraz klas), które są odzwierciedleniem dalszej implementacji. Następnie przybliżony zostaje uproszczony schemat elektryczny urządzenia sterującego zamkiem fizycznym oraz moduł zliczający ludzi. Kolejne punkty opisują szczegółowo komunikacją pomiędzy urządzeniami oraz interfejs graficzny aplikacji mobilnej i strony internetowej. Kończąc tematykę projektu zostaną przybliżone dokładniej zaprojektowane mechanizmy zapewniające bezpieczeństwo ze względu na podstawowe zasady: poufność, dostępność i integralność.
+
+
+
+%Plan pracy został podzielony na trzy etapy. 
+%\begin{itemize}
+%\item Pierwszy  etap polegał na udoskonaleniu projektu który był wykonywany w ramach przedmiotu projekt zespołowy  oraz omówieniu szczegółów kluczowych wykonywanych w dalszej części.
+
+%\item Drugi etap polegał na implementacji danego projektu w 
+
+%\item Trzecim i ostatnim etapem było przetestowanie  działania całego systemu oraz naprawienie wykrytych błędów.
+%\end{itemize}
+
+\newpage
 \subsection{Metodyka pracy grupowej}
 %Metodyka użyta  podczas pracy grupowej była oparta na metodykach zwinnych takich jak SCRUM z co 2 tygodniowymi spotkaniami omawiającymi bieżące postępy w pracy oraz ewentualne problemy wynikające z danej specyfiki systemu oraz środowisk użytych podczas implementacji. W dalszych rozdziałach zostały szczegółowo omówione kwestie projektu implementacji oraz testowania.
 Metodyka użyta podczas pracy grupowej była oparta o model kaskaodowy składajaćy się z etapów takich jak:
