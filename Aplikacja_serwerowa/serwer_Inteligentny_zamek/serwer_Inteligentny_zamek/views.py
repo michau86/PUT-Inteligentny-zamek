@@ -6,7 +6,9 @@ import MySQLdb
 from Crypto.PublicKey import RSA
 from Crypto import Random
 from datetime import datetime
-
+from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect
+from django.contrib import auth
 username = "root"
 userpassword = "inteligentnyzamek"
 databasename = "inteligentny_zamek_db"
@@ -15,13 +17,13 @@ databaseaddres = "127.0.0.1"
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
 
+
 # api do logowania
 @csrf_exempt
 def api_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-
         random_generator = Random.new().read
         key = RSA.generate(1024, random_generator).publickey().exportKey()
         token = ""
