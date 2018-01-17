@@ -1,7 +1,88 @@
-{% extends 'base.html' %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      xmlns:margin-top="http://www.w3.org/1999/xhtml">
+<meta http-equiv="refresh" content="10">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body style="background: #303030">
 
-{% block title %}Login{% endblock %}
+<div class="row" style="background: #212121" >
+<div class="col-lg-2"  >
+</div>
+<div class="col-lg-8"  style="padding-bottom: 5" >
+<h1 style="color: WHITE">Inteligentny Zamek</h1>
+<div style="position: absolute;right:10;top:20">
+<a class="fa fa-sign-out"  style="font-size:30px;color: WHITE;" href="{% url 'logout' %}"></a>
+</div>
+</div>
+
+</div>
+
+<div class="row" style="margin-top: 20" >
+  <div class="col-lg-2">
+  </div>
+
+
+  <div class="col-lg-8">
+  <h2 style="color: #c0c0c0">Tabela z historią użycia zamków:</h2>
+<table class="table table-hover">
+    <thead>
+      <tr style="color: WHITE">
+        <th>Data</th>
+        <th>Imie</th>
+        <th>Nazwisko</th>
+        <th>Nazwa zamka</th>
+      </tr>
+    </thead>
+    <tbody>
 
 {% block content %}
-  <h2>Home</h2>
+
+    
+
+{% for post in rows %}
+   
+        {% if post.1 %}
+<tr class="success">
+          <td>{{ post.0 }} </td>
+       <td>{{ post.2 }} </td> 
+       <td>{{ post.3 }} </td> 
+       <td>{{ post.4 }} </td> 
+      </tr>
+       {% else %}
+ 	<tr class="danger">
+        <td>{{ post.0 }} </td>
+       <td>{{ post.2 }} </td> 
+       <td>{{ post.3 }} </td> 
+       <td>{{ post.4 }} </td> 
+      </tr>
+
+        {% endif %}
+   
+{% endfor %}
+
+
+
+
 {% endblock %}
+
+    
+      
+     
+      
+    </tbody>
+  </table>
+
+
+
+  </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+

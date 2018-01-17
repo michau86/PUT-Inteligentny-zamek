@@ -9,6 +9,8 @@ from datetime import datetime
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.contrib import auth
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 username = "root"
 userpassword = "inteligentnyzamek"
 databasename = "inteligentny_zamek_db"
@@ -17,6 +19,19 @@ databaseaddres = "127.0.0.1"
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
 
 
+@login_required(login_url="login/")
+def website(request):
+
+    try:
+        cursor = db.cursor()
+        cursor.execute("SELECT DATE, ACCESS, locks_keys.NAME, locks_keys.SURNAME, locks.NAME AS 'ZAMEK' FROM access_to_locks, locks_keys, locks WHERE locks_keys.ID_KEY = access_to_locks.ID_KEY AND locks.ID_LOCK = access_to_locks.ID_KEY ORDER BY DATE DESC")
+        rows = cursor.fetchall()
+    finally:
+        a =""
+    print type(rows)
+    for p in rows:
+            type(p)
+    return render_to_response('home.html', {"rows": rows})
 
 # api do logowania
 @csrf_exempt

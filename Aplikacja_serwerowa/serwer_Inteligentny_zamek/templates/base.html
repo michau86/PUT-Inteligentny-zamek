@@ -7,10 +7,21 @@
 <body>
   <header>
     <h1>Inteligentny zamek</h1>
-    {% if user.is_authenticated %}
+{% if not user.is_anonymous %}
       zalogowany jako {{ user.username }}!
     <h3>TUTAJ BEDZIE LISTAAA XD</h3>
       <a href="{% url 'logout' %}">logout</a>
+
+
+{% for post in rows %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
+
+
     {% else %}
       <a href="{% url 'login' %}">login</a>
     {% endif %}
