@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.ArrayList;
 import inteligenty_zamek.app_ik.R;
-import inteligenty_zamek.app_ik.inWork.History_using_keyActivity;
+import inteligenty_zamek.app_ik.Views.History_using_keyActivity;
 import inteligenty_zamek.app_ik.models.HistoryListElement;
 
 

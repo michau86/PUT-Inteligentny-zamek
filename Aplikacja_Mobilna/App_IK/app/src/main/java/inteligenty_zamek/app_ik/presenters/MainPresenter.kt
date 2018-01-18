@@ -8,9 +8,7 @@ import android.widget.Toast
 import inteligenty_zamek.app_ik.API.*
 import inteligenty_zamek.app_ik.Views.MainActivity
 import inteligenty_zamek.app_ik.models.MainModel
-import inteligenty_zamek.app_ik.adapters.MainListAdapter
-import inteligenty_zamek.app_ik.rest_class.Certyficat
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer
+import inteligenty_zamek.app_ik.models.GlobalContainer
 
 /**
  * Created by Damian on 26.10.2017.

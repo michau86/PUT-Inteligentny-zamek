@@ -3,7 +3,6 @@ package inteligenty_zamek.app_ik.API
 import android.content.Context
 import android.content.SharedPreferences
 import inteligenty_zamek.app_ik.R
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer
 
 /**
  * Created by Damian on 28.11.2017.

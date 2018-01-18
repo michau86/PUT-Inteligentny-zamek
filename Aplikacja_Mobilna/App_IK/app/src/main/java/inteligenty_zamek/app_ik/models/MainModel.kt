@@ -1,8 +1,6 @@
 package inteligenty_zamek.app_ik.models
 
 import android.content.Context
-import inteligenty_zamek.app_ik.rest_class.Certyficat
-import inteligenty_zamek.app_ik.rest_class.User
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.LinkedHashMap

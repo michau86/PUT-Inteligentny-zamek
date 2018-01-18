@@ -3,7 +3,6 @@ package inteligenty_zamek.app_ik.adapters;
 /**
  * Created by Damian on 23.12.2017.
  */
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,10 +20,8 @@ import java.util.List;
 import java.util.Locale;
 
 import inteligenty_zamek.app_ik.R;
-import inteligenty_zamek.app_ik.Views.MainActivity;
-import inteligenty_zamek.app_ik.inWork.UserListActivity;
-import inteligenty_zamek.app_ik.rest_class.Certyficat;
-import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.Views.UserListActivity;
+import inteligenty_zamek.app_ik.models.User;
 
 
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyViewHolder>  {

@@ -8,10 +8,10 @@ import android.view.View
 import android.widget.*
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
-import inteligenty_zamek.app_ik.rest_class.User
+import inteligenty_zamek.app_ik.models.User
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.R
-import inteligenty_zamek.app_ik.rest_class.Lock
+import inteligenty_zamek.app_ik.models.Lock
 import inteligenty_zamek.app_ik.presenters.GenerationCertyficatPresenter
 import android.app.DatePickerDialog
 import android.graphics.PorterDuff

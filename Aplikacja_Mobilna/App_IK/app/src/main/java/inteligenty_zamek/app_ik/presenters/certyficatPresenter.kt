@@ -9,7 +9,7 @@ import inteligenty_zamek.app_ik.Views.ManagmentCertyficationUserActivity
 import inteligenty_zamek.app_ik.Views.Managment_certyficationActivity
 import inteligenty_zamek.app_ik.Views.certyficatActivity
 import inteligenty_zamek.app_ik.models.certyficatModel
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer
+import inteligenty_zamek.app_ik.models.GlobalContainer
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.HashMap

@@ -1,16 +1,9 @@
 package inteligenty_zamek.app_ik.models
 
-import android.util.Log
-import android.widget.SimpleAdapter
 import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
-import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.Views.CertificationaskActivity
-import inteligenty_zamek.app_ik.Views.CertyficatWaitActivity
-import inteligenty_zamek.app_ik.rest_class.Certyficat
-import inteligenty_zamek.app_ik.rest_class.Lock
-import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.ArrayList
@@ -39,7 +32,7 @@ class CertificationaskModel(val context: CertificationaskActivity)
             lockList = ArrayList<Lock>()
             for (i in 0 until arrJson!!.length()) {
                 try {
-                   val lock=Lock()
+                   val lock= Lock()
                     lock.name  =  arrJson.getJSONObject(i).getString("NAME")
                     lock.localization=arrJson.getJSONObject(i).getString("LOCALIZATION")
                     lock.idKey=arrJson.getJSONObject(i).getString("ID_LOCK")

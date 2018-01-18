@@ -2,29 +2,23 @@ package inteligenty_zamek.app_ik.Views;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
 
-import inteligenty_zamek.app_ik.API.CyptographyApi;
 import inteligenty_zamek.app_ik.API.EnumChoice;
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
-import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
 import inteligenty_zamek.app_ik.R;
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer;
-import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.models.GlobalContainer;
 import inteligenty_zamek.app_ik.presenters.LoginPresenter;
 
 public class  LoginActivity extends Activity{

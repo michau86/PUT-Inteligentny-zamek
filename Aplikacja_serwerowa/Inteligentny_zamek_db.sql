@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Gru 2017, 14:51
--- Wersja serwera: 10.1.25-MariaDB
--- Wersja PHP: 5.6.31
+-- Czas generowania: 18 Sty 2018, 16:06
+-- Wersja serwera: 10.1.21-MariaDB
+-- Wersja PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `inteligentny_zamek_db`
 --
-CREATE DATABASE IF NOT EXISTS `inteligentny_zamek_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci;
-USE `inteligentny_zamek_db`;
 
 -- --------------------------------------------------------
 
@@ -249,7 +245,10 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (15, 'Can delete content type', 5, 'delete_contenttype'),
 (16, 'Can add session', 6, 'add_session'),
 (17, 'Can change session', 6, 'change_session'),
-(18, 'Can delete session', 6, 'delete_session');
+(18, 'Can delete session', 6, 'delete_session'),
+(19, 'Can add site', 7, 'add_site'),
+(20, 'Can change site', 7, 'change_site'),
+(21, 'Can delete site', 7, 'delete_site');
 
 -- --------------------------------------------------------
 
@@ -270,6 +269,15 @@ CREATE TABLE `auth_user` (
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `auth_user`
+--
+
+INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
+(1, 'pbkdf2_sha256$36000$6cFw4EZmhCsa$eKSZxMZJy0kSoJY2Zks3FCiI/CVOaKYO+3tN1GQXBWA=', '2018-01-18 13:49:49', 1, 'damian', '', '', 'a@wp.pl', 1, 1, '2018-01-15 19:57:44'),
+(2, 'pbkdf2_sha256$20000$5Ig7Px8IhL3g$KusfaBd3JpFhZcC1Nq4IxbDPMqijpfeVu2NylDi1sQ0=', NULL, 1, 'dam', '', '', 'a@wp.pl', 1, 1, '2018-01-15 20:32:18'),
+(3, 'pbkdf2_sha256$36000$g9CoxGW6ol8G$05BUSYWEPLxqTv9LXWf7PIbSan+h/RWNvlAARXIRzqs=', '2018-01-16 00:41:23', 1, 'Damian2', '', '', 'a@wp.pl', 1, 1, '2018-01-15 23:20:43');
 
 -- --------------------------------------------------------
 
@@ -334,7 +342,8 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (3, 'auth', 'permission'),
 (4, 'auth', 'user'),
 (5, 'contenttypes', 'contenttype'),
-(6, 'sessions', 'session');
+(6, 'sessions', 'session'),
+(7, 'sites', 'site');
 
 -- --------------------------------------------------------
 
@@ -354,6 +363,7 @@ CREATE TABLE `django_migrations` (
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
+(0, 'sites', '0001_initial', '2018-01-15 21:45:24'),
 (1, 'contenttypes', '0001_initial', '2017-05-28 08:09:48'),
 (2, 'auth', '0001_initial', '2017-05-28 08:09:52'),
 (3, 'admin', '0001_initial', '2017-05-28 08:09:52'),
@@ -378,6 +388,25 @@ CREATE TABLE `django_session` (
   `session_key` varchar(40) NOT NULL,
   `session_data` longtext NOT NULL,
   `expire_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `django_session`
+--
+
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('oc9v0kkbyxx9qist4c6b66acbjctp99e', 'YjM3MzY1MjRiYjViNDMyY2ZhM2JjY2Q2OTc3MTY5MzI4ZTQwNjVkYzp7Il9hdXRoX3VzZXJfaGFzaCI6IjE0MTEzZDcwZjk1ZjRlOWJlMmQxZThhMmM1NzNmYmYyNTg3NTAwZTIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=', '2018-02-01 13:49:49');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `django_site`
+--
+
+CREATE TABLE `django_site` (
+  `id` int(11) NOT NULL,
+  `domain` varchar(100) NOT NULL,
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -433,8 +462,18 @@ CREATE TABLE `locks_keys` (
 --
 
 INSERT INTO `locks_keys` (`ID_KEY`, `ID_LOCK`, `ID_USER`, `LOCK_KEY`, `FROM_DATE`, `TO_DATE`, `ISACTUAL`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`, `IS_PERNAMENT`, `NAME`, `SURNAME`) VALUES
-(2, 2, 134, 'ASDF', '2017-04-29 05:31:31', '2017-07-07 07:28:24', NULL, NULL, NULL, '8-10;14-23', '0-10', NULL, NULL, '2-23', 1, 'Maciej', 'MM'),
-(5, 2, 136, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMltZm96JrgFHG8uXGTmhY5lflTwFY23yGOxli+Wf5oQ6tmKe8GsRhwhW9/pr9aTEqet/Lr8lqAZ+gpx170G6/jNgokH1dMImMo1zaTHgxjtkictYgQhwNGPQtxJ7PZfozJqFu7l6cAF5uwVWUff4gw0e5TDjuw/UcwP3Uo8K+3QIDAQAB', '2017-11-07 12:00:00', '2018-04-29 12:29:00', NULL, '', 'NULL', '0-12', '8-12', 'NULL', 'NULL', 'NULL', 1, 'Maciej', 'mm');
+(1, 2, 137, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC0r0MlBmKIr03UHTrx8CZAyEfraDtEPKAZJkm1RRa28JPcSCRgvp6Qt/uxekzvMs76W4S+QJrWoYazl4ykNWM8t7cZBdw4mKq0Y50D/ZBDOxX4v6HCHUFcz59yMmdxwQeVjJxxt1wLWIZMmxGy4i4HuASvu8T5AF8JR028ku6fUQIDAQAB', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, '0-24;', '0-24;', '', '', '', '', '', 0, 'sadx', 'xcv'),
+(2, 2, 145, 'ASDF', '2017-04-29 05:31:31', '2018-07-07 07:28:24', '2017-12-19 15:37:29', NULL, NULL, '8-10;14-23', '0-10', NULL, NULL, '2-23', 1, 'Maciej', 'MM'),
+(5, 1, 145, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMltZm96JrgFHG8uXGTmhY5lflTwFY23yGOxli+Wf5oQ6tmKe8GsRhwhW9/pr9aTEqet/Lr8lqAZ+gpx170G6/jNgokH1dMImMo1zaTHgxjtkictYgQhwNGPQtxJ7PZfozJqFu7l6cAF5uwVWUff4gw0e5TDjuw/UcwP3Uo8K+3QIDAQAB', '2017-11-07 12:00:00', '2018-04-29 12:29:00', NULL, '', 'NULL', '0-12', '8-12', 'NULL', 'NULL', 'NULL', 1, 'Maciej', 'mm'),
+(6, 2, 145, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDS4rwG0PNP65fOfEdiltVHvTDi3L5DtQNOemWxkgkmRdT/RbZWLQNAZLz0bOduWX83pnzssCjnzRm7pmB6iVwt/QeIBWYS8J60AyUOmrEdGtljcbA1aPX5Nz8yVOGxEjCzN1nfN7xohpGJEpXbxobOnMmR88pQV2XEi3iEPjGoKQIDAQAB', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, '7-13;', '', '', '', '0-24;', '', '', 0, 'Damian', 'moj nowy cert'),
+(7, 2, 137, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCQQXy/jA0MzE1Slbom9whZzSQh8+RvAD/GchCHfxMMs35abxO6/Yk/mgGpMgzCzETICSLZXEeDE7oJr3KHAEnVJ6PrCojvj94Kj+isryD1U9i713cbBjS+Ddtb2Tpj0BmhDWtSvULREoNPi/mnCA3HyUuDIv6BnTHdMDiWU/OmEQIDAQAB', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, '1-3;4-6;', '7-15;', '', '', '', '', '', 0, 'da', 'nanowow'),
+(8, 2, 137, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9Y4Vb4lz6eZjjXPRS62zD7iN2hzVtbER5rd8rsF6JQpmRwUDvRnOfljbsW2DHxvUNzSh3tN/qQeVIoOAw7vEYR1jiLIFvj3+vrYEKs1/Vf3faN7ENeR36IMjSVMQgmfRZ4pK4CSTnZtlb7P8ZA+O5jh2cNoesEl+zhGL/Xv3QYQIDAQAB', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, '1-4;', '', '', '', '', '', '', 0, 'asddsfadsgfdsfg', 'dsfgdfg'),
+(9, 2, 137, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDIzZiAeNgUim3WtgWJTYpECspbZ2uHETGXQi3CIyR1lMqw3rLI3inCb9c6csHSe7lGlAsaLaMblB8/pCZfOrG0ltuBgozuQu1eP9tosKi2WCTBv+WrOSGdF0ase0LfzoMMASszKHtLLHgGVYmbCr4AlUEaWk53UvABMg5o1TI3kwIDAQAB', '2017-12-29 00:00:00', '2017-12-30 00:00:00', NULL, '2-4;', '5-6;7-8;', '', '', '', '', '', 0, 'dgsd', 'dfg'),
+(10, 2, 145, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJFkLpvqtuxWZb5hQye9JHYwo6Z5IN3ebmhvpOvzjyh6+htvQIg1jCCfT/bgH9bOuwdKfTNnNHcSExsbbCdtAnFsPRkT49NVbJb6NJ2Iz3wBa33lFSsm5YstY0hyTdmBsz03LpgH6aRcXEroVWmC3EgeNgTpGA2nokxu+Iq3QcWwIDAQAB', '2018-01-01 00:00:00', '2018-01-31 00:00:00', '2018-01-06 19:16:15', '6:07-12:07', '', '', '', '', '', '', 0, 'zx', 'xczv'),
+(11, 2, 137, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJC419YwnThjrVCDMeqSygHPf9/SBbQgLo8rx3yzsHuGBPNqKoJsUsJR3YbonQQUrNw0bTWinJoEAn5c9dcospa5zsMRBeA8KxeQYvn07L4IQvaX0mxvFpdQU5VXXXuGf3+OmKZhP5Afj616Laj+4gLKk/o7WVxVu17BDXFldNmQIDAQAB', '2018-01-01 00:00:00', '2018-01-16 00:00:00', NULL, '10:07-12:0', '', '', '', '', '', '', 0, 'asd', 'sdfa'),
+(12, 1, 142, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFMVfjxUht4m6gOnOQ8HsxkZyeM/5RKh/zXmrDtLyaAENLDYspx9rY/VEvdirO7NckljdX6y99YoJSL8QttKMCupZrXS+k7BHT/tLjeIY+hqFt6w5Hg1x/n5RCQMufYmzoUSYTxxCNlmAboPZdRBlbtgUQMjiTAbgYJsdeSJRVOQIDAQAB', '2018-01-01 00:00:00', '2018-01-17 00:00:00', NULL, '21:27-23:5', '', '', '', '', '', '', 0, 'sdfg', 'dsfg'),
+(13, 2, 142, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiCS6xk61L9JQAmnYqJRQhbpf+wd87I+dXrKgyNv35/yNgHHHY4yDOaHt3gZWHPNjIz0dpt/f2TjK96J03uwMMOWQjCSAAGe23FznljBbpmanX34lRgQCzAxUX6BzWOE5ghuhY9unyAgI14VFbUqJlohVLz2L3rwLytv89XJs+/QIDAQAB', '2018-01-17 00:00:00', '2018-01-17 00:00:00', NULL, '10:27-12:2', '', '', '', '', '', '', 0, 'sdfg', 'dsfg'),
+(14, 2, 1, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDhfu664DccYOI1SlvNV6emQTG2wMMDjXBZyCv041fYGaigwo9x7xaMUtmKhu5WFKxVrz8lrr2h9OHcJFsHb6jP+a79SCjBjEdvagTPRQsXKhafq/5OkWdTwSqmfLOdshummAncxChdxIUGfaVlt68gn0U8DCAfztbsBDt3JqXCAQIDAQAB', '2018-01-06 00:00:00', '2018-01-16 00:00:00', NULL, '10:02-13:0', '', '', '', '', '', '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -464,9 +503,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID_USER`, `LOGIN`, `PASSWORD`, `NAME`, `SURNAME`, `TOKEN`, `ISACTIVATED`, `IS_ADMIN`, `PUBLIC_KEY`, `Serial_number`, `Validitiy_period`, `Version`, `Signature_Algorithm_Identifier`, `Hash_Algorithm`) VALUES
-(134, 'Maciej1', '01D48A697442ED3231773C944973E87315FFD44232A2503D1B68B02F1D677FF5', 'Maciej', 'Marciniak', 'aaa', 0, 1, 'ddd', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCyoCd559OOPfZAtzHqj31zcBqLglDekGGaGzJ8AQpVZWoWSs8GSm14r0LdO7qb0QYjExp0diGiyhSkgAhJ+jDJFyD2v4M62OebiCgl35y2a0EZeYaVWKFyNTax3IDKtW/ZvZP7H25ahP1Ea6BlpFFYNxEi52cJG7LP06JtnMBDMwIDAQAB', '2018-12-10 23:50:32', 1, 'RSA', 'SHA-256'),
-(136, 'Maciej3', '01D48A697442ED3231773C944973E87315FFD44232A2503D1B68B02F1D677FF5', 'Mm', 'Mm', NULL, 0, 0, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHZcJstVK0Vg5ZEnHq0UTC1dhM8h8srCR3jTl3\nSpk+V0xWapLga3gRSN3ne0nPjRw+YpRe+ZAWd5E9OuEUBi0UwfYYEmLU3t3djMR4J2q++tyvQ4g8\ny/Q2mOLnXzw5gDtl3jfhdmZOVIEJeJkpqCVINNRNcHSAg+P7KGAiUFm7JQIDAQAB\n', '', NULL, 1, 'RSA', 'SHA-256'),
-(137, 'Damian', '913BEEB024BAA2BE29C3D19B1F859B5508BDFCE177554446073478C4B86F6A9F', 'D am ian', 'Xff', NULL, 0, 1, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9cVoaNxtzARE4uFW29KZPOUI0yHt8fZzESNht\n/UGQoiOizX+3mholAbRXFEVxg7DXs0qa6UD6bPE9hLqm5+3H8LhSWuY+Hbyg6mPFFn6o66gW3aY+\nXCV5fzlsnj7crK3ohuYedhJ+psST2FsIJImWPbJy1ytm1JteyuimqRJbMQIDAQAB\n', NULL, NULL, 1, 'RSA', 'SHA-256');
+(1, 'potestujmy', '913BEEB024BAA2BE29C3D19B1F859B5508BDFCE177554446073478C4B86F6A9F', 'saddf', 'fsdasdf', NULL, 2, 0, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDH9LZSsOFVnkGeJd4lzwYxDDOXQlsJGWit2Spp\nwiHRG+cSv6BSbrTwVuMFErkyhpCzLtXJBG42N7/v0bUmk4NcfETheG1d7y6/4XKCQ7HiZZh226E5\n6/0azb9gPMFLq6MRCmDnyFAq3qXPMzjP+nCG7ayBpyD++f4n9OYe0VXBPwIDAQAB\n', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC5IlbTGE42Iz7dniaCfP1fJOLrhnoz+mCiURSlcVnGqOzb1vXJADYrsoTgLC6JTOt91WxhRpZQYMYCdvaR6ApwzH+uwQI1jUityYrxarDmBNK1UU6CwFS/qTytm5u5MJWc5t2FPmS1/t9LeADd9EiFioIe9Nt9AGZaSw2gr5ln6QIDAQAB', '2018-01-07 12:11:08', 1, 'RSA', 'SHA-256'),
+(134, 'Maciej1', '01D48A697442ED3231773C944973E87315FFD44232A2503D1B68B02F1D677FF5', 'Maciej', 'Marciniak', 'aaa', 2, 1, 'ddd', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCyoCd559OOPfZAtzHqj31zcBqLglDekGGaGzJ8AQpVZWoWSs8GSm14r0LdO7qb0QYjExp0diGiyhSkgAhJ+jDJFyD2v4M62OebiCgl35y2a0EZeYaVWKFyNTax3IDKtW/ZvZP7H25ahP1Ea6BlpFFYNxEi52cJG7LP06JtnMBDMwIDAQAB', '2018-12-10 23:50:32', 1, 'RSA', 'SHA-256'),
+(136, 'Maciej3', '01D48A697442ED3231773C944973E87315FFD44232A2503D1B68B02F1D677FF5', 'Mm', 'Mm', NULL, 1, 0, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHZcJstVK0Vg5ZEnHq0UTC1dhM8h8srCR3jTl3\nSpk+V0xWapLga3gRSN3ne0nPjRw+YpRe+ZAWd5E9OuEUBi0UwfYYEmLU3t3djMR4J2q++tyvQ4g8\ny/Q2mOLnXzw5gDtl3jfhdmZOVIEJeJkpqCVINNRNcHSAg+P7KGAiUFm7JQIDAQAB\n', '', NULL, 1, 'RSA', 'SHA-256'),
+(137, 'Damian', '913BEEB024BAA2BE29C3D19B1F859B5508BDFCE177554446073478C4B86F6A9F', 'D am ian', 'Xff', NULL, 0, 0, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9cVoaNxtzARE4uFW29KZPOUI0yHt8fZzESNht\n/UGQoiOizX+3mholAbRXFEVxg7DXs0qa6UD6bPE9hLqm5+3H8LhSWuY+Hbyg6mPFFn6o66gW3aY+\nXCV5fzlsnj7crK3ohuYedhJ+psST2FsIJImWPbJy1ytm1JteyuimqRJbMQIDAQAB\n', NULL, NULL, 1, 'RSA', 'SHA-256'),
+(140, 'potestujmy4', '913BEEB024BAA2BE29C3D19B1F859B5508BDFCE177554446073478C4B86F6A9F', 'saddf', 'fsdasdf', NULL, 0, 0, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC/tweAAg0+3Ipt/QT9/VUOdek3+vaqQXCzcCPO\nuw0yC/v2CWh3eHDH1mtWr+3w/bp2HW/1DJjj0DJfxFviF0qCpBYF+EcPNj+4BZvu7yQO1twQueh5\n2E0BIjkZ2zS1vNFx/IRYQGb+W8Av8hCVgDtHwSAnAOy4zXQrmaftP9jm3QIDAQAB\n', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDTirrwd839ZBF/vys/gK9jfoRzQP9E9l8bKyeIoVDt421TJRSmdB6H8x7SzU8p6XqcYh6rVukn6YjE4Fu2tv1dsAhjnHXwwHfGyi0jJCks/8FfL6OVWLlloW3f8EqSAjc2cvpavuGpuJfL8U1ROcuBmmHaKq+4w230zqNgJt9duwIDAQAB', '2018-12-15 20:02:57', 1, 'RSA', 'SHA-256'),
+(142, 'potestujmy6', '913BEEB024BAA2BE29C3D19B1F859B5508BDFCE177554446073478C4B86F6A9F', 'Maciej', 'MM', NULL, 1, 0, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD9XjXDsVNKkPkjr+ht4+dfnY+JxTMtgtZqBUzK\nvVzyRd/DOdtnI+aqawiqCBMJ2BRvUjvYccEGsdOqlLvzP4N8XQfpeSE8C03BiELtlE01z6hfxzXB\nAjaA7Q7BY0D5quudaZFERxd8kHrONEi5vffzClhhn17wYfdgVNDPHx+m5wIDAQAB\n', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCWwtC+8su68l2m7ETV4T2lKtq23SxbGkktziirA+BGN68eslip5QEWlKi+8LoBqL0r10svZ6/6LIzNLDmuIGDLwNfI4rwOtZzsBHteEQTPrkzQHgDacdK44fT/omWopor5cjkm+RVByOE/npAZWiIiVgxZU2x38bpRVIUQGvLbhQIDAQAB', '2018-12-15 20:07:38', 1, 'RSA', 'SHA-256'),
+(145, 'DamianTest10', '851EB1F79381A0A9771954693A6ACF988DD5D1FFC23C266A64071C661978BE93', 'Damian', 'Test', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDXomqGBabdtDY052WVQF5esCcntn6lcqvxlUs4wnGfhvKM6B1yX+xMCuaiHaTkIGibb2fVnD9Tonh6xnBKCux1YdoCzivcR8kDUE2udq4zdOyFE1r8aHPEiwErbCf1om70MipJR2AX+8Ek83O99SPwfw+qrDLxcMYURVZyiIY7DQIDAQAB', 0, 1, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC6bIhggJ76s5na/Qfi8lj0l8mHz2k+m6fQ8KoD\nOVxSVgpa0cbSsR2NGtbQkcEAqTk7S8PSCmRhbpmCMmU6IzLhV1fiSjs4kCEUH0FcObREk+Qrlqtn\nOfWHKRuINoOOIOazZD80/RhVOYWp1ryM8LKaJNX+Fz1A2pDE6UygFs5c1QIDAQAB\n', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCyl5+tiTKv2+Y+UY2XR0rBdlL9Z+QtAfOibhdeP2do0X5uLnaNhYhmSvaxr7q8uNNXrO3EV4UUCzJoM3vZGKCYHbidIFGo1z108gF9+7OEhpzUFJVzFLOzjxwEwXwBbN8ymIja8fZevlSpIh06nce9Qt3+XJfD3j7ETA+p6JFNrQIDAQAB', '2019-01-07 19:44:40', 1, 'RSA', 'SHA-256'),
+(146, 'oczekuje1', '913BEEB024BAA2BE29C3D19B1F859B5508BDFCE177554446073478C4B86F6A9F', 'Imie1', 'Nazwisko1', NULL, 1, 0, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCsxxyIkcCBKpyI+41iGsUZBSOg3lJzVqNumbFu\nVbsss6nthVSc+mCW92+AMpI+RCa47telYm7mGtIq+RU6eT2ERog/vp/1XtsuajKioV7P3jb6A4q5\nQhq+cct3Q2wqyurXCO2Gj3sszUqOD+Pw4q+OjLsk9jQqxxkLWix1u3If1QIDAQAB\n', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCQR2EG+kl+5wwZrW6kXJjIExgLazO2rv5fDf7znwhuw6CKgB+eg6kd4TL4+/aqjj1UdzxwJck11flNStW1ftEdbkKnCxvVXnk79YjJAPwoaxq158ShAelqx6FICLCn9QgZaIeYrMc19OQmX97r+2ntMvSbvF5nRem3vYzZbCGOzwIDAQAB', '2019-01-08 00:12:27', 1, 'RSA', 'SHA-256'),
+(147, 'oczekuje2', '913BEEB024BAA2BE29C3D19B1F859B5508BDFCE177554446073478C4B86F6A9F', 'Imie2', 'Nazwisko2', NULL, 1, 0, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCeMT7l7wYeamQFxYw85S9NWqRUFbk/KU+2xSPS\n1fUEQytklg1DWwP65Vpqi8ITPEXloR318GLghHbQyY/pK3/RKtmmMrYZD7c3RoKYDaMhuvz5Sgmf\ne4aoammFENOtbAz2jRwK8wPQE0gJ66nuroUA0PRGYzGaRMaOVUU9mHqbdwIDAQAB\n', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCT7KEKyt09L3EzYScewk0ZtoLjMOJfV8ra363MDfpNCjWwQ9ogFw4Tqx3/EC2f6TAW1DJQBSNCHBX0uziUA/bmN5fWKkYxjF+tL6kQjskABt/mIMFAuEiUHAYZRY17J7Endiox4vlkJpVT709V4inDAA41oZyx+kokcNC6SG82dwIDAQAB', '2019-01-08 00:12:40', 1, 'RSA', 'SHA-256');
 
 -- --------------------------------------------------------
 
@@ -485,8 +530,8 @@ CREATE TABLE `wait_locks_keys` (
 --
 
 INSERT INTO `wait_locks_keys` (`ID_KEY`, `ID_LOCK`, `ID_USER`) VALUES
-(3, 2, 124),
-(4, 2, 124);
+(11, 1, 145),
+(12, 1, 145);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -573,6 +618,13 @@ ALTER TABLE `django_session`
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
 
 --
+-- Indexes for table `django_site`
+--
+ALTER TABLE `django_site`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `django_site_domain_a2e37b91_uniq` (`domain`);
+
+--
 -- Indexes for table `locks`
 --
 ALTER TABLE `locks`
@@ -627,37 +679,22 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT dla tabeli `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT dla tabeli `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `auth_user_groups`
---
-ALTER TABLE `auth_user_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `auth_user_user_permissions`
---
-ALTER TABLE `auth_user_user_permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `django_admin_log`
---
-ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT dla tabeli `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT dla tabeli `django_migrations`
+-- AUTO_INCREMENT dla tabeli `django_site`
 --
-ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+ALTER TABLE `django_site`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `locks`
 --
@@ -667,888 +704,26 @@ ALTER TABLE `locks`
 -- AUTO_INCREMENT dla tabeli `locks_keys`
 --
 ALTER TABLE `locks_keys`
-  MODIFY `ID_KEY` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_KEY` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID_USER` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+  MODIFY `ID_USER` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 --
 -- AUTO_INCREMENT dla tabeli `wait_locks_keys`
 --
 ALTER TABLE `wait_locks_keys`
-  MODIFY `ID_KEY` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_KEY` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Ograniczenia dla zrzutów tabel
 --
-
---
--- Ograniczenia dla tabeli `access_to_locks`
---
-ALTER TABLE `access_to_locks`
-  ADD CONSTRAINT `ACCESS_TO_LOCKS_ibfk_1` FOREIGN KEY (`ID_KEY`) REFERENCES `locks_keys` (`ID_KEY`);
-
---
--- Ograniczenia dla tabeli `auth_group_permissions`
---
-ALTER TABLE `auth_group_permissions`
-  ADD CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
-  ADD CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`);
 
 --
 -- Ograniczenia dla tabeli `auth_permission`
 --
 ALTER TABLE `auth_permission`
   ADD CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`);
-
---
--- Ograniczenia dla tabeli `auth_user_groups`
---
-ALTER TABLE `auth_user_groups`
-  ADD CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
-  ADD CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
-
---
--- Ograniczenia dla tabeli `auth_user_user_permissions`
---
-ALTER TABLE `auth_user_user_permissions`
-  ADD CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
-  ADD CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
-
---
--- Ograniczenia dla tabeli `django_admin_log`
---
-ALTER TABLE `django_admin_log`
-  ADD CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
-  ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
-
---
--- Ograniczenia dla tabeli `locks_keys`
---
-ALTER TABLE `locks_keys`
-  ADD CONSTRAINT `LOCKS_KEYS_ibfk_1` FOREIGN KEY (`ID_LOCK`) REFERENCES `locks` (`ID_LOCK`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `LOCKS_KEYS_ibfk_2` FOREIGN KEY (`ID_USER`) REFERENCES `users` (`ID_USER`) ON DELETE CASCADE ON UPDATE CASCADE;
---
--- Baza danych: `phpmyadmin`
---
-CREATE DATABASE IF NOT EXISTS `phpmyadmin` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `phpmyadmin`;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__bookmark`
---
-
-CREATE TABLE `pma__bookmark` (
-  `id` int(11) NOT NULL,
-  `dbase` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `user` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `label` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `query` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Bookmarks';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__central_columns`
---
-
-CREATE TABLE `pma__central_columns` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_type` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_length` text COLLATE utf8_bin,
-  `col_collation` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_isNull` tinyint(1) NOT NULL,
-  `col_extra` varchar(255) COLLATE utf8_bin DEFAULT '',
-  `col_default` text COLLATE utf8_bin
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Central list of columns';
-
---
--- Zrzut danych tabeli `pma__central_columns`
---
-
-INSERT INTO `pma__central_columns` (`db_name`, `col_name`, `col_type`, `col_length`, `col_collation`, `col_isNull`, `col_extra`, `col_default`) VALUES
-('inteligentny_zamek_db', 'ISACTIVATED', 'tinyint', '1', '', 0, ',', '0');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__column_info`
---
-
-CREATE TABLE `pma__column_info` (
-  `id` int(5) UNSIGNED NOT NULL,
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `column_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `comment` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `mimetype` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `transformation` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `transformation_options` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `input_transformation` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `input_transformation_options` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Column information for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__designer_settings`
---
-
-CREATE TABLE `pma__designer_settings` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `settings_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Settings related to Designer';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__export_templates`
---
-
-CREATE TABLE `pma__export_templates` (
-  `id` int(5) UNSIGNED NOT NULL,
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `export_type` varchar(10) COLLATE utf8_bin NOT NULL,
-  `template_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `template_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved export templates';
-
---
--- Zrzut danych tabeli `pma__export_templates`
---
-
-INSERT INTO `pma__export_templates` (`id`, `username`, `export_type`, `template_name`, `template_data`) VALUES
-(1, 'root', 'database', 'inteligentny_zamek_db', '{\"quick_or_custom\":\"quick\",\"what\":\"sql\",\"structure_or_data_forced\":\"0\",\"table_select[]\":[\"access_to_locks\",\"auth_group\",\"auth_group_permissions\",\"auth_permission\",\"auth_user\",\"auth_user_groups\",\"auth_user_user_permissions\",\"django_admin_log\",\"django_content_type\",\"django_migrations\",\"django_session\",\"locks\",\"locks_keys\",\"users\",\"wait_locks_keys\"],\"table_structure[]\":[\"access_to_locks\",\"auth_group\",\"auth_group_permissions\",\"auth_permission\",\"auth_user\",\"auth_user_groups\",\"auth_user_user_permissions\",\"django_admin_log\",\"django_content_type\",\"django_migrations\",\"django_session\",\"locks\",\"locks_keys\",\"users\",\"wait_locks_keys\"],\"table_data[]\":[\"access_to_locks\",\"auth_group\",\"auth_group_permissions\",\"auth_permission\",\"auth_user\",\"auth_user_groups\",\"auth_user_user_permissions\",\"django_admin_log\",\"django_content_type\",\"django_migrations\",\"django_session\",\"locks\",\"locks_keys\",\"users\",\"wait_locks_keys\"],\"output_format\":\"sendit\",\"filename_template\":\"@DATABASE@\",\"remember_template\":\"on\",\"charset\":\"utf-8\",\"compression\":\"none\",\"maxsize\":\"\",\"codegen_structure_or_data\":\"data\",\"codegen_format\":\"0\",\"csv_separator\":\",\",\"csv_enclosed\":\"\\\"\",\"csv_escaped\":\"\\\"\",\"csv_terminated\":\"AUTO\",\"csv_null\":\"NULL\",\"csv_structure_or_data\":\"data\",\"excel_null\":\"NULL\",\"excel_columns\":\"something\",\"excel_edition\":\"win\",\"excel_structure_or_data\":\"data\",\"htmlword_structure_or_data\":\"structure_and_data\",\"htmlword_null\":\"NULL\",\"json_structure_or_data\":\"data\",\"latex_caption\":\"something\",\"latex_structure_or_data\":\"structure_and_data\",\"latex_structure_caption\":\"Struktura tabeli @TABLE@\",\"latex_structure_continued_caption\":\"Struktura tabeli @TABLE@ (kontynuacja)\",\"latex_structure_label\":\"tab:@TABLE@-structure\",\"latex_relation\":\"something\",\"latex_comments\":\"something\",\"latex_mime\":\"something\",\"latex_columns\":\"something\",\"latex_data_caption\":\"ZawartoÅ›Ä‡ tabeli @TABLE@\",\"latex_data_continued_caption\":\"ZawartoÅ›Ä‡ tabeli @TABLE@ (kontynuacja)\",\"latex_data_label\":\"tab:@TABLE@-data\",\"latex_null\":\"\\\\textit{NULL}\",\"mediawiki_structure_or_data\":\"structure_and_data\",\"mediawiki_caption\":\"something\",\"mediawiki_headers\":\"something\",\"ods_null\":\"NULL\",\"ods_structure_or_data\":\"data\",\"odt_structure_or_data\":\"structure_and_data\",\"odt_relation\":\"something\",\"odt_comments\":\"something\",\"odt_mime\":\"something\",\"odt_columns\":\"something\",\"odt_null\":\"NULL\",\"pdf_report_title\":\"\",\"pdf_structure_or_data\":\"structure_and_data\",\"phparray_structure_or_data\":\"data\",\"sql_include_comments\":\"something\",\"sql_header_comment\":\"\",\"sql_use_transaction\":\"something\",\"sql_compatibility\":\"NONE\",\"sql_structure_or_data\":\"structure_and_data\",\"sql_create_table\":\"something\",\"sql_auto_increment\":\"something\",\"sql_create_view\":\"something\",\"sql_procedure_function\":\"something\",\"sql_create_trigger\":\"something\",\"sql_backquotes\":\"something\",\"sql_type\":\"INSERT\",\"sql_insert_syntax\":\"both\",\"sql_max_query_size\":\"50000\",\"sql_hex_for_binary\":\"something\",\"sql_utc_time\":\"something\",\"texytext_structure_or_data\":\"structure_and_data\",\"texytext_null\":\"NULL\",\"xml_structure_or_data\":\"data\",\"xml_export_events\":\"something\",\"xml_export_functions\":\"something\",\"xml_export_procedures\":\"something\",\"xml_export_tables\":\"something\",\"xml_export_triggers\":\"something\",\"xml_export_views\":\"something\",\"xml_export_contents\":\"something\",\"yaml_structure_or_data\":\"data\",\"\":null,\"lock_tables\":null,\"as_separate_files\":null,\"csv_removeCRLF\":null,\"csv_columns\":null,\"excel_removeCRLF\":null,\"htmlword_columns\":null,\"json_pretty_print\":null,\"ods_columns\":null,\"sql_dates\":null,\"sql_relation\":null,\"sql_mime\":null,\"sql_disable_fk\":null,\"sql_views_as_tables\":null,\"sql_metadata\":null,\"sql_create_database\":null,\"sql_drop_table\":null,\"sql_if_not_exists\":null,\"sql_truncate\":null,\"sql_delayed\":null,\"sql_ignore\":null,\"texytext_columns\":null}'),
-(2, 'root', 'table', 'inteligentny_zamek', '{\"quick_or_custom\":\"quick\",\"what\":\"sql\",\"allrows\":\"1\",\"output_format\":\"sendit\",\"filename_template\":\"@TABLE@\",\"remember_template\":\"on\",\"charset\":\"utf-8\",\"compression\":\"none\",\"maxsize\":\"\",\"codegen_structure_or_data\":\"data\",\"codegen_format\":\"0\",\"csv_separator\":\",\",\"csv_enclosed\":\"\\\"\",\"csv_escaped\":\"\\\"\",\"csv_terminated\":\"AUTO\",\"csv_null\":\"NULL\",\"csv_structure_or_data\":\"data\",\"excel_null\":\"NULL\",\"excel_columns\":\"something\",\"excel_edition\":\"win\",\"excel_structure_or_data\":\"data\",\"htmlword_structure_or_data\":\"structure_and_data\",\"htmlword_null\":\"NULL\",\"json_structure_or_data\":\"data\",\"latex_caption\":\"something\",\"latex_structure_or_data\":\"structure_and_data\",\"latex_structure_caption\":\"Struktura tabeli @TABLE@\",\"latex_structure_continued_caption\":\"Struktura tabeli @TABLE@ (kontynuacja)\",\"latex_structure_label\":\"tab:@TABLE@-structure\",\"latex_relation\":\"something\",\"latex_comments\":\"something\",\"latex_mime\":\"something\",\"latex_columns\":\"something\",\"latex_data_caption\":\"ZawartoÅ›Ä‡ tabeli @TABLE@\",\"latex_data_continued_caption\":\"ZawartoÅ›Ä‡ tabeli @TABLE@ (kontynuacja)\",\"latex_data_label\":\"tab:@TABLE@-data\",\"latex_null\":\"\\\\textit{NULL}\",\"mediawiki_structure_or_data\":\"data\",\"mediawiki_caption\":\"something\",\"mediawiki_headers\":\"something\",\"ods_null\":\"NULL\",\"ods_structure_or_data\":\"data\",\"odt_structure_or_data\":\"structure_and_data\",\"odt_relation\":\"something\",\"odt_comments\":\"something\",\"odt_mime\":\"something\",\"odt_columns\":\"something\",\"odt_null\":\"NULL\",\"pdf_report_title\":\"\",\"pdf_structure_or_data\":\"data\",\"phparray_structure_or_data\":\"data\",\"sql_include_comments\":\"something\",\"sql_header_comment\":\"\",\"sql_use_transaction\":\"something\",\"sql_compatibility\":\"NONE\",\"sql_structure_or_data\":\"structure_and_data\",\"sql_create_table\":\"something\",\"sql_auto_increment\":\"something\",\"sql_create_view\":\"something\",\"sql_create_trigger\":\"something\",\"sql_backquotes\":\"something\",\"sql_type\":\"INSERT\",\"sql_insert_syntax\":\"both\",\"sql_max_query_size\":\"50000\",\"sql_hex_for_binary\":\"something\",\"sql_utc_time\":\"something\",\"texytext_structure_or_data\":\"structure_and_data\",\"texytext_null\":\"NULL\",\"xml_structure_or_data\":\"data\",\"xml_export_events\":\"something\",\"xml_export_functions\":\"something\",\"xml_export_procedures\":\"something\",\"xml_export_tables\":\"something\",\"xml_export_triggers\":\"something\",\"xml_export_views\":\"something\",\"xml_export_contents\":\"something\",\"yaml_structure_or_data\":\"data\",\"\":null,\"lock_tables\":null,\"csv_removeCRLF\":null,\"csv_columns\":null,\"excel_removeCRLF\":null,\"htmlword_columns\":null,\"json_pretty_print\":null,\"ods_columns\":null,\"sql_dates\":null,\"sql_relation\":null,\"sql_mime\":null,\"sql_disable_fk\":null,\"sql_views_as_tables\":null,\"sql_metadata\":null,\"sql_drop_table\":null,\"sql_if_not_exists\":null,\"sql_procedure_function\":null,\"sql_truncate\":null,\"sql_delayed\":null,\"sql_ignore\":null,\"texytext_columns\":null}'),
-(3, 'root', 'server', 'inteligentny_zamek', '{\"quick_or_custom\":\"quick\",\"what\":\"sql\",\"db_select[]\":[\"inteligentny_zamek_db\",\"phpmyadmin\",\"test_inteligentny_zamek_db\"],\"output_format\":\"sendit\",\"filename_template\":\"@SERVER@\",\"remember_template\":\"on\",\"charset\":\"utf-8\",\"compression\":\"none\",\"maxsize\":\"\",\"codegen_structure_or_data\":\"data\",\"codegen_format\":\"0\",\"csv_separator\":\",\",\"csv_enclosed\":\"\\\"\",\"csv_escaped\":\"\\\"\",\"csv_terminated\":\"AUTO\",\"csv_null\":\"NULL\",\"csv_structure_or_data\":\"data\",\"excel_null\":\"NULL\",\"excel_columns\":\"something\",\"excel_edition\":\"win\",\"excel_structure_or_data\":\"data\",\"htmlword_structure_or_data\":\"structure_and_data\",\"htmlword_null\":\"NULL\",\"json_structure_or_data\":\"data\",\"latex_caption\":\"something\",\"latex_structure_or_data\":\"structure_and_data\",\"latex_structure_caption\":\"Struktura tabeli @TABLE@\",\"latex_structure_continued_caption\":\"Struktura tabeli @TABLE@ (kontynuacja)\",\"latex_structure_label\":\"tab:@TABLE@-structure\",\"latex_relation\":\"something\",\"latex_comments\":\"something\",\"latex_mime\":\"something\",\"latex_columns\":\"something\",\"latex_data_caption\":\"ZawartoÅ›Ä‡ tabeli @TABLE@\",\"latex_data_continued_caption\":\"ZawartoÅ›Ä‡ tabeli @TABLE@ (kontynuacja)\",\"latex_data_label\":\"tab:@TABLE@-data\",\"latex_null\":\"\\\\textit{NULL}\",\"mediawiki_structure_or_data\":\"data\",\"mediawiki_caption\":\"something\",\"mediawiki_headers\":\"something\",\"ods_null\":\"NULL\",\"ods_structure_or_data\":\"data\",\"odt_structure_or_data\":\"structure_and_data\",\"odt_relation\":\"something\",\"odt_comments\":\"something\",\"odt_mime\":\"something\",\"odt_columns\":\"something\",\"odt_null\":\"NULL\",\"pdf_report_title\":\"\",\"pdf_structure_or_data\":\"data\",\"phparray_structure_or_data\":\"data\",\"sql_include_comments\":\"something\",\"sql_header_comment\":\"\",\"sql_use_transaction\":\"something\",\"sql_compatibility\":\"NONE\",\"sql_structure_or_data\":\"structure_and_data\",\"sql_create_table\":\"something\",\"sql_auto_increment\":\"something\",\"sql_create_view\":\"something\",\"sql_create_trigger\":\"something\",\"sql_backquotes\":\"something\",\"sql_type\":\"INSERT\",\"sql_insert_syntax\":\"both\",\"sql_max_query_size\":\"50000\",\"sql_hex_for_binary\":\"something\",\"sql_utc_time\":\"something\",\"texytext_structure_or_data\":\"structure_and_data\",\"texytext_null\":\"NULL\",\"yaml_structure_or_data\":\"data\",\"\":null,\"as_separate_files\":null,\"csv_removeCRLF\":null,\"csv_columns\":null,\"excel_removeCRLF\":null,\"htmlword_columns\":null,\"json_pretty_print\":null,\"ods_columns\":null,\"sql_dates\":null,\"sql_relation\":null,\"sql_mime\":null,\"sql_disable_fk\":null,\"sql_views_as_tables\":null,\"sql_metadata\":null,\"sql_drop_database\":null,\"sql_drop_table\":null,\"sql_if_not_exists\":null,\"sql_procedure_function\":null,\"sql_truncate\":null,\"sql_delayed\":null,\"sql_ignore\":null,\"texytext_columns\":null}');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__favorite`
---
-
-CREATE TABLE `pma__favorite` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `tables` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Favorite tables';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__history`
---
-
-CREATE TABLE `pma__history` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `username` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `timevalue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `sqlquery` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='SQL history for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__navigationhiding`
---
-
-CREATE TABLE `pma__navigationhiding` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `item_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `item_type` varchar(64) COLLATE utf8_bin NOT NULL,
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Hidden items of navigation tree';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__pdf_pages`
---
-
-CREATE TABLE `pma__pdf_pages` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `page_nr` int(10) UNSIGNED NOT NULL,
-  `page_descr` varchar(50) CHARACTER SET utf8 NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='PDF relation pages for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__recent`
---
-
-CREATE TABLE `pma__recent` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `tables` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Recently accessed tables';
-
---
--- Zrzut danych tabeli `pma__recent`
---
-
-INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"inteligentny_zamek_db\",\"table\":\"users\"},{\"db\":\"inteligentny_zamek_db\",\"table\":\"locks_keys\"},{\"db\":\"inteligentny_zamek_db\",\"table\":\"locks\"},{\"db\":\"inteligentny_zamek_db\",\"table\":\"wait_locks_keys\"},{\"db\":\"inteligentny_zamek_db\",\"table\":\"access_to_locks\"},{\"db\":\"phpmyadmin\",\"table\":\"pma__users\"}]');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__relation`
---
-
-CREATE TABLE `pma__relation` (
-  `master_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `master_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `master_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Relation table';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__savedsearches`
---
-
-CREATE TABLE `pma__savedsearches` (
-  `id` int(5) UNSIGNED NOT NULL,
-  `username` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `search_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `search_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved searches';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__table_coords`
---
-
-CREATE TABLE `pma__table_coords` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `pdf_page_number` int(11) NOT NULL DEFAULT '0',
-  `x` float UNSIGNED NOT NULL DEFAULT '0',
-  `y` float UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table coordinates for phpMyAdmin PDF output';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__table_info`
---
-
-CREATE TABLE `pma__table_info` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `display_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table information for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__table_uiprefs`
---
-
-CREATE TABLE `pma__table_uiprefs` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `prefs` text COLLATE utf8_bin NOT NULL,
-  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Tables'' UI preferences';
-
---
--- Zrzut danych tabeli `pma__table_uiprefs`
---
-
-INSERT INTO `pma__table_uiprefs` (`username`, `db_name`, `table_name`, `prefs`, `last_update`) VALUES
-('root', 'inteligentny_zamek_db', 'access_to_locks', '{\"sorted_col\":\"`access_to_locks`.`DATE` DESC\"}', '2017-12-02 22:03:01'),
-('root', 'inteligentny_zamek_db', 'users', '{\"CREATE_TIME\":\"2017-12-10 16:35:35\",\"col_visib\":[\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\"]}', '2017-12-10 22:45:42');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__tracking`
---
-
-CREATE TABLE `pma__tracking` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `version` int(10) UNSIGNED NOT NULL,
-  `date_created` datetime NOT NULL,
-  `date_updated` datetime NOT NULL,
-  `schema_snapshot` text COLLATE utf8_bin NOT NULL,
-  `schema_sql` text COLLATE utf8_bin,
-  `data_sql` longtext COLLATE utf8_bin,
-  `tracking` set('UPDATE','REPLACE','INSERT','DELETE','TRUNCATE','CREATE DATABASE','ALTER DATABASE','DROP DATABASE','CREATE TABLE','ALTER TABLE','RENAME TABLE','DROP TABLE','CREATE INDEX','DROP INDEX','CREATE VIEW','ALTER VIEW','DROP VIEW') COLLATE utf8_bin DEFAULT NULL,
-  `tracking_active` int(1) UNSIGNED NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Database changes tracking for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__userconfig`
---
-
-CREATE TABLE `pma__userconfig` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `timevalue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `config_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User preferences storage for phpMyAdmin';
-
---
--- Zrzut danych tabeli `pma__userconfig`
---
-
-INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
-('root', '2017-09-02 23:04:00', '{\"lang\":\"pl\",\"collation_connection\":\"utf8mb4_unicode_ci\"}');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__usergroups`
---
-
-CREATE TABLE `pma__usergroups` (
-  `usergroup` varchar(64) COLLATE utf8_bin NOT NULL,
-  `tab` varchar(64) COLLATE utf8_bin NOT NULL,
-  `allowed` enum('Y','N') COLLATE utf8_bin NOT NULL DEFAULT 'N'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User groups with configured menu items';
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `pma__users`
---
-
-CREATE TABLE `pma__users` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `usergroup` varchar(64) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Users and their assignments to user groups';
-
---
--- Indeksy dla zrzutów tabel
---
-
---
--- Indexes for table `pma__bookmark`
---
-ALTER TABLE `pma__bookmark`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `pma__central_columns`
---
-ALTER TABLE `pma__central_columns`
-  ADD PRIMARY KEY (`db_name`,`col_name`);
-
---
--- Indexes for table `pma__column_info`
---
-ALTER TABLE `pma__column_info`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `db_name` (`db_name`,`table_name`,`column_name`);
-
---
--- Indexes for table `pma__designer_settings`
---
-ALTER TABLE `pma__designer_settings`
-  ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `pma__export_templates`
---
-ALTER TABLE `pma__export_templates`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `u_user_type_template` (`username`,`export_type`,`template_name`);
-
---
--- Indexes for table `pma__favorite`
---
-ALTER TABLE `pma__favorite`
-  ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `pma__history`
---
-ALTER TABLE `pma__history`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `username` (`username`,`db`,`table`,`timevalue`);
-
---
--- Indexes for table `pma__navigationhiding`
---
-ALTER TABLE `pma__navigationhiding`
-  ADD PRIMARY KEY (`username`,`item_name`,`item_type`,`db_name`,`table_name`);
-
---
--- Indexes for table `pma__pdf_pages`
---
-ALTER TABLE `pma__pdf_pages`
-  ADD PRIMARY KEY (`page_nr`),
-  ADD KEY `db_name` (`db_name`);
-
---
--- Indexes for table `pma__recent`
---
-ALTER TABLE `pma__recent`
-  ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `pma__relation`
---
-ALTER TABLE `pma__relation`
-  ADD PRIMARY KEY (`master_db`,`master_table`,`master_field`),
-  ADD KEY `foreign_field` (`foreign_db`,`foreign_table`);
-
---
--- Indexes for table `pma__savedsearches`
---
-ALTER TABLE `pma__savedsearches`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `u_savedsearches_username_dbname` (`username`,`db_name`,`search_name`);
-
---
--- Indexes for table `pma__table_coords`
---
-ALTER TABLE `pma__table_coords`
-  ADD PRIMARY KEY (`db_name`,`table_name`,`pdf_page_number`);
-
---
--- Indexes for table `pma__table_info`
---
-ALTER TABLE `pma__table_info`
-  ADD PRIMARY KEY (`db_name`,`table_name`);
-
---
--- Indexes for table `pma__table_uiprefs`
---
-ALTER TABLE `pma__table_uiprefs`
-  ADD PRIMARY KEY (`username`,`db_name`,`table_name`);
-
---
--- Indexes for table `pma__tracking`
---
-ALTER TABLE `pma__tracking`
-  ADD PRIMARY KEY (`db_name`,`table_name`,`version`);
-
---
--- Indexes for table `pma__userconfig`
---
-ALTER TABLE `pma__userconfig`
-  ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `pma__usergroups`
---
-ALTER TABLE `pma__usergroups`
-  ADD PRIMARY KEY (`usergroup`,`tab`,`allowed`);
-
---
--- Indexes for table `pma__users`
---
-ALTER TABLE `pma__users`
-  ADD PRIMARY KEY (`username`,`usergroup`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT dla tabeli `pma__bookmark`
---
-ALTER TABLE `pma__bookmark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `pma__column_info`
---
-ALTER TABLE `pma__column_info`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `pma__export_templates`
---
-ALTER TABLE `pma__export_templates`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT dla tabeli `pma__history`
---
-ALTER TABLE `pma__history`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `pma__pdf_pages`
---
-ALTER TABLE `pma__pdf_pages`
-  MODIFY `page_nr` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `pma__savedsearches`
---
-ALTER TABLE `pma__savedsearches`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;--
--- Baza danych: `test_inteligentny_zamek_db`
---
-CREATE DATABASE IF NOT EXISTS `test_inteligentny_zamek_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `test_inteligentny_zamek_db`;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `auth_group`
---
-
-CREATE TABLE `auth_group` (
-  `id` int(11) NOT NULL,
-  `name` varchar(80) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `auth_group_permissions`
---
-
-CREATE TABLE `auth_group_permissions` (
-  `id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `auth_permission`
---
-
-CREATE TABLE `auth_permission` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `content_type_id` int(11) NOT NULL,
-  `codename` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Zrzut danych tabeli `auth_permission`
---
-
-INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
-(1, 'Can add log entry', 1, 'add_logentry'),
-(2, 'Can change log entry', 1, 'change_logentry'),
-(3, 'Can delete log entry', 1, 'delete_logentry'),
-(4, 'Can add group', 2, 'add_group'),
-(5, 'Can change group', 2, 'change_group'),
-(6, 'Can delete group', 2, 'delete_group'),
-(7, 'Can add permission', 3, 'add_permission'),
-(8, 'Can change permission', 3, 'change_permission'),
-(9, 'Can delete permission', 3, 'delete_permission'),
-(10, 'Can add user', 4, 'add_user'),
-(11, 'Can change user', 4, 'change_user'),
-(12, 'Can delete user', 4, 'delete_user'),
-(13, 'Can add content type', 5, 'add_contenttype'),
-(14, 'Can change content type', 5, 'change_contenttype'),
-(15, 'Can delete content type', 5, 'delete_contenttype'),
-(16, 'Can add session', 6, 'add_session'),
-(17, 'Can change session', 6, 'change_session'),
-(18, 'Can delete session', 6, 'delete_session');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `auth_user`
---
-
-CREATE TABLE `auth_user` (
-  `id` int(11) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  `last_login` datetime DEFAULT NULL,
-  `is_superuser` tinyint(1) NOT NULL,
-  `username` varchar(150) NOT NULL,
-  `first_name` varchar(30) NOT NULL,
-  `last_name` varchar(30) NOT NULL,
-  `email` varchar(254) NOT NULL,
-  `is_staff` tinyint(1) NOT NULL,
-  `is_active` tinyint(1) NOT NULL,
-  `date_joined` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `auth_user_groups`
---
-
-CREATE TABLE `auth_user_groups` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `auth_user_user_permissions`
---
-
-CREATE TABLE `auth_user_user_permissions` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `django_admin_log`
---
-
-CREATE TABLE `django_admin_log` (
-  `id` int(11) NOT NULL,
-  `action_time` datetime NOT NULL,
-  `object_id` longtext,
-  `object_repr` varchar(200) NOT NULL,
-  `action_flag` smallint(5) UNSIGNED NOT NULL,
-  `change_message` longtext NOT NULL,
-  `content_type_id` int(11) DEFAULT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `django_content_type`
---
-
-CREATE TABLE `django_content_type` (
-  `id` int(11) NOT NULL,
-  `app_label` varchar(100) NOT NULL,
-  `model` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Zrzut danych tabeli `django_content_type`
---
-
-INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
-(1, 'admin', 'logentry'),
-(2, 'auth', 'group'),
-(3, 'auth', 'permission'),
-(4, 'auth', 'user'),
-(5, 'contenttypes', 'contenttype'),
-(6, 'sessions', 'session');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `django_migrations`
---
-
-CREATE TABLE `django_migrations` (
-  `id` int(11) NOT NULL,
-  `app` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `applied` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Zrzut danych tabeli `django_migrations`
---
-
-INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
-(1, 'contenttypes', '0001_initial', '2017-11-19 13:53:41'),
-(2, 'auth', '0001_initial', '2017-11-19 13:53:45'),
-(3, 'admin', '0001_initial', '2017-11-19 13:53:46'),
-(4, 'admin', '0002_logentry_remove_auto_add', '2017-11-19 13:53:46'),
-(5, 'contenttypes', '0002_remove_content_type_name', '2017-11-19 13:53:47'),
-(6, 'auth', '0002_alter_permission_name_max_length', '2017-11-19 13:53:47'),
-(7, 'auth', '0003_alter_user_email_max_length', '2017-11-19 13:53:48'),
-(8, 'auth', '0004_alter_user_username_opts', '2017-11-19 13:53:48'),
-(9, 'auth', '0005_alter_user_last_login_null', '2017-11-19 13:53:48'),
-(10, 'auth', '0006_require_contenttypes_0002', '2017-11-19 13:53:48'),
-(11, 'auth', '0007_alter_validators_add_error_messages', '2017-11-19 13:53:48'),
-(12, 'auth', '0008_alter_user_username_max_length', '2017-11-19 13:53:49'),
-(13, 'sessions', '0001_initial', '2017-11-19 13:53:49');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `django_session`
---
-
-CREATE TABLE `django_session` (
-  `session_key` varchar(40) NOT NULL,
-  `session_data` longtext NOT NULL,
-  `expire_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Indeksy dla zrzutów tabel
---
-
---
--- Indexes for table `auth_group`
---
-ALTER TABLE `auth_group`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `auth_group_permissions`
---
-ALTER TABLE `auth_group_permissions`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `auth_group_permissions_group_id_permission_id_0cd325b0_uniq` (`group_id`,`permission_id`),
-  ADD KEY `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` (`permission_id`);
-
---
--- Indexes for table `auth_permission`
---
-ALTER TABLE `auth_permission`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`);
-
---
--- Indexes for table `auth_user`
---
-ALTER TABLE `auth_user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indexes for table `auth_user_groups`
---
-ALTER TABLE `auth_user_groups`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `auth_user_groups_user_id_group_id_94350c0c_uniq` (`user_id`,`group_id`),
-  ADD KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`);
-
---
--- Indexes for table `auth_user_user_permissions`
---
-ALTER TABLE `auth_user_user_permissions`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` (`user_id`,`permission_id`),
-  ADD KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`);
-
---
--- Indexes for table `django_admin_log`
---
-ALTER TABLE `django_admin_log`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `django_admin_log_content_type_id_c4bce8eb_fk_django_co` (`content_type_id`),
-  ADD KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`);
-
---
--- Indexes for table `django_content_type`
---
-ALTER TABLE `django_content_type`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`);
-
---
--- Indexes for table `django_migrations`
---
-ALTER TABLE `django_migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `django_session`
---
-ALTER TABLE `django_session`
-  ADD PRIMARY KEY (`session_key`),
-  ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT dla tabeli `auth_group`
---
-ALTER TABLE `auth_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `auth_group_permissions`
---
-ALTER TABLE `auth_group_permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `auth_permission`
---
-ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT dla tabeli `auth_user`
---
-ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `auth_user_groups`
---
-ALTER TABLE `auth_user_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `auth_user_user_permissions`
---
-ALTER TABLE `auth_user_user_permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `django_admin_log`
---
-ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `django_content_type`
---
-ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT dla tabeli `django_migrations`
---
-ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- Ograniczenia dla zrzutów tabel
---
-
---
--- Ograniczenia dla tabeli `auth_group_permissions`
---
-ALTER TABLE `auth_group_permissions`
-  ADD CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
-  ADD CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`);
-
---
--- Ograniczenia dla tabeli `auth_permission`
---
-ALTER TABLE `auth_permission`
-  ADD CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`);
-
---
--- Ograniczenia dla tabeli `auth_user_groups`
---
-ALTER TABLE `auth_user_groups`
-  ADD CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
-  ADD CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
-
---
--- Ograniczenia dla tabeli `auth_user_user_permissions`
---
-ALTER TABLE `auth_user_user_permissions`
-  ADD CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
-  ADD CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
-
---
--- Ograniczenia dla tabeli `django_admin_log`
---
-ALTER TABLE `django_admin_log`
-  ADD CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
-  ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

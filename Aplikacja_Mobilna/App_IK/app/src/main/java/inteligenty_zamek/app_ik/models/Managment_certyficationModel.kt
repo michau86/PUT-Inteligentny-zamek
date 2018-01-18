@@ -1,16 +1,12 @@
 package inteligenty_zamek.app_ik.models
 
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.TextView
 import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.R
-import inteligenty_zamek.app_ik.rest_class.User
 import org.json.JSONArray
 import java.util.*
 

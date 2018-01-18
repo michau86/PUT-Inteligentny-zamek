@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'django_extensions',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -38,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 ]
+
+SECURE_SSL_REDIRECT = True
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,9 +71,11 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'serwer_Inteligentny_zamek.wsgi.application'
 
-
+SSLIFY_PORT = 8080
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 

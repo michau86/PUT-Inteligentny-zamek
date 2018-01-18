@@ -7,11 +7,9 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,7 +17,6 @@ import java.util.List;
 
 import inteligenty_zamek.app_ik.R;
 import inteligenty_zamek.app_ik.Views.MainActivity;
-import inteligenty_zamek.app_ik.rest_class.Certyficat;
 
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> {

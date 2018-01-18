@@ -1,9 +1,7 @@
 package inteligenty_zamek.app_ik.Navigation;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -26,12 +24,11 @@ import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.Views.Admin_PanelActivity;
 import inteligenty_zamek.app_ik.Views.Managment_certyficationActivity;
 import inteligenty_zamek.app_ik.R;
-import inteligenty_zamek.app_ik.inWork.SetingsActivity;
+import inteligenty_zamek.app_ik.Views.SetingsActivity;
 import inteligenty_zamek.app_ik.Views.LoginActivity;
 import inteligenty_zamek.app_ik.Views.MainActivity;
-import inteligenty_zamek.app_ik.rest_class.GlobalClassContainer;
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer;
-import inteligenty_zamek.app_ik.rest_class.User;
+import inteligenty_zamek.app_ik.models.GlobalContainer;
+import inteligenty_zamek.app_ik.models.User;
 
 public class BaseActivity extends Activity
 {
@@ -223,7 +220,6 @@ private void logout(User user,String ipserwer)
 
 public void logoutresponse(String response)
 {
-Log.i("HHHH",response);
     JSONObject jObj = null;
     try {
         jObj = new JSONObject(response);
@@ -240,7 +236,7 @@ Log.i("HHHH",response);
             // editor.commit();
             runOnUiThread(new Runnable() {
                 public void run() {
-                    ((GlobalClassContainer) getApplication()).setDefaultValue();
+                    GlobalContainer.setdefault();
                     Intent intent4 = new Intent(BaseActivity.this, LoginActivity.class);
                     startActivity(intent4);
                     finish();
