@@ -6,20 +6,20 @@ Rozdział zawierać będzie objaśnienia używanych zwrotów i pojęć umożliwi
 \subsection{Pojęcia i definicje}
 W dokumencie tym posługiwać się będziemy następującymi pojęciami:
 \begin{itemize*}
-	\item \textbf{Klucz dostępowy} --- jest to  klucz określający dostęp do pomieszczenia dla użytkownika w konkretnych dniach oraz godzinach,
-	\item \textbf{Klucz szyfrujący} 
+	\item {Klucz dostępowy} --- jest to  klucz określający dostęp do pomieszczenia dla użytkownika w konkretnych dniach oraz godzinach,
+	\item {Klucz szyfrujący} 
 	--- jest to klucz prywatny wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używany jest on do szyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
-	\item \textbf{Klucz deszyfrujący }
+	\item {Klucz deszyfrujący }
 	--- jest to klucz publiczny wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używane jest on do odszyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
-	\item \textbf{Inteligentny zamek}
+	\item {Inteligentny zamek}
 	--- system obsługujący otwieranie elektrozamka bądź serwomechanizmu,
-	\item \textbf{Konto}
+	\item {Konto}
 	--- reprezentacja użytkownika w systemie za pomocą takich danych jak login hasło, imię, nazwisko.
-	\item \textbf{Administrator}
+	\item {Administrator}
 	--- jest to fizyczna osoba posiadającą dla swojego konta uprawnienia administratora co wiąże się z pełnym dostępem do systemu,
-	\item \textbf{Certyfikat dostępowy}
+	\item {Certyfikat dostępowy}
 	--- jest to certyfikat przechowujący informacje takie jak dane użytkownik, do jakiego pomieszczenia oraz w jakich dniach i godzinach	ma dostęp
-	\item \textbf{Certyfikat klucza szyfrującego}
+	\item {Certyfikat klucza szyfrującego}
 	-- jest to certyfikat przechowujący dane o użytkowniku, ważności klucza szyfrującego oraz sam klucz deszyfrujący.
 \end{itemize*}
 
@@ -27,8 +27,8 @@ W dokumencie tym posługiwać się będziemy następującymi pojęciami:
 \subsection{Stan wiedzy}
 Przed przystąpieniem do projektu wykonaliśmy rozeznanie w około systemów zbliżonych do naszego, który na dany moment były produkowane. I tak doszliśmy do wniosku, że wszystkie systemy inteligentnych zamków wykonane przez uznane firmy, takie jak Gerda Lock, czy Danalock zostały wykonane typowo dla użytku domowego a nie tak jak nasz projekt inżynierski, który jest przeznaczony do zarządzania w budynkach o większej złożoności, takich jak biurowce, z różnym stopniem dostępu. Opis wraz z porównaniem poszczególnych systemów znajduje się w tabelach poniżej.
 
-Tabela \ref{tab:porownanie1} zawiera porównanie firm pod względem otwierania zamka. Już w pierwszym wierszy można zauważyć, indywidualne zastosowanie systemów, ponieważ każdy z prezentowanych systemów, poza firmą August, nie oferuje obsługi wielu urządzeń z poziomu jednej aplikacji. Proponowane przez nas rozwiązanie umożliwia skalowalność systemu oraz wprowadzanie różnorodności w zarządzaniu dostępem. Następne funkcjonalności wprowadzają zagrożenia lub zwiększają podatności sytemu na ataki hakerskie. Weźmy pod uwagę otwieranie dowolnego zamka z dowolnego miejsce przez stronę WWW, umożliwia taka funkcjonalność zdalne sterowanie dostępem w całym budynku. Skutkuje to brakiem kontroli, którą nie powoduje znacznych korzyści dla celów biznesowych dla, których nasz system jest dedykowany.
-	\begin{longtable}[!ht]{|p{4cm}|p{1cm}|p{1cm}|p{1,5cm}|p{1cm}|p{1,1cm}|} 
+Tabela \ref{tab:porownanie1} zawiera porównanie firm pod względem otwierania zamka. Już w pierwszym wierszu można zauważyć, indywidualne zastosowanie systemów, ponieważ każdy z prezentowanych systemów, poza firmą August, nie oferuje obsługi wielu urządzeń z poziomu jednej aplikacji. Proponowane przez nas rozwiązanie umożliwia skalowalność systemu oraz wprowadzanie różnorodności w zarządzaniu dostępem. Następne funkcjonalności wprowadzają zagrożenia lub zwiększają podatności sytemu na ataki hakerskie. Weźmy pod uwagę otwieranie dowolnego zamka z dowolnego miejsce przez stronę WWW, umożliwia taka funkcjonalność zdalne sterowanie dostępem w całym budynku. Skutkuje to brakiem kontroli, którą nie powoduje znacznych korzyści dla celów biznesowych dla, których nasz system jest dedykowany.
+	\begin{longtable}[!ht]{|m{4cm}|m{1cm}|m{1cm}|m{1,5cm}|m{1cm}|m{1,1cm}|} 
 		\caption{Tabela porównania otwierania zamków}
 		\label{tab:porownanie1}\\
 		\hline	
@@ -49,21 +49,21 @@ Tabela \ref{tab:porownanie1} zawiera porównanie firm pod względem otwierania z
 
  	\newpage
  	Tabela \ref{tab:porownanie2} zawiera porównanie firm pod względem zasilania i montażu. Wszystkie systemy zawierały podstawowe wady eksploatacyjne, gdy system w budynku zawierałby wiele urządzeń danego typu, to znaczy problem z zasilaniem. Nasz system oferuje podłączenie zasilania bezpośrednio z sieci, taka konfiguracja pozwala uodpornić system na konieczność wymiany baterii w każdym zamku. Gdyby jednak konieczne było zasilanie awaryjne, w sytuacji zaniku napięcia, możliwe jest zastosowanie UPSów, które podtrzymają urządzenia przez czas awarii.
- \begin{longtable}[!ht]{|p{2.9cm}|p{1.45cm}|p{1.45cm}|p{1,45cm}|p{1,45cm}|p{1,45cm}|} 
+ \begin{longtable}[!ht]{|m{2.9cm}|m{1.3cm}|m{1.3cm}|m{1,35cm}|m{1,3cm}|m{1,45cm}|} 
  	\caption{Tabela porównania zasilania i montażu}
  	\label{tab:porownanie2}\\
  	\hline	
- 	Funkcja & NOKI & August & DanaLock & Gerda Lock & Nasz \linebreak system \\	\hline
+ 	Funkcja & NOKI & August &DanaLock & Gerda Lock & Nasz \linebreak system \\	\hline
  	zasilanie zewnętrzne (z sieci)	
  	& brak & brak & brak & brak & tak \\	\hline
 	 zasilanie bateryjne (podstawowe/ awaryjne)	
 	 & podst. & podst. &podst. & podst. & możliwe awaryjne \\	\hline
  	sposób montażu	
- 	& nakładka na zamek & nakładka na zamek & nakładka na zamek & nakładka na zamek & nakładka na zamek lub elektrozamek  \\	\hline
+ 	& nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \linebreak zamek lub elektrozamek  \\	\hline
  \end{longtable}
  
 Tabela \ref{tab:porownanie3} zawiera porównanie firm pod względem dziennika zdarzeń oraz powiadomień. Funkcjonalność naszego systemu zgodna jest z możliwościami firm NOKI oraz Gerda Lock. Pozostali dystrybutorzy nie udostępniają tak szczegółowych informacji na temat działa urządzeń.
-\begin{longtable}[!ht]{|p{4cm}|p{1cm}|p{1cm}|p{1,5cm}|p{1cm}|p{1,1cm}|} 
+\begin{longtable}[!ht]{|m{4cm}|m{1cm}|m{1cm}|m{1,5cm}|m{1cm}|m{1,1cm}|} 
 	\caption{Tabela porównania dziennika zdarzeń oraz powiadomień}
 	\label{tab:porownanie3}\\
 	\hline	
