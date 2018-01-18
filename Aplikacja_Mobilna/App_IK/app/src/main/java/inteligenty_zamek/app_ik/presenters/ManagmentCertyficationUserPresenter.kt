@@ -6,8 +6,8 @@ import inteligenty_zamek.app_ik.API.HTTPRequestAPI
 import inteligenty_zamek.app_ik.Views.ManagmentCertyficationUserActivity
 import inteligenty_zamek.app_ik.models.ManagmentCertyficationUserModel
 import inteligenty_zamek.app_ik.Views.certyficatActivity
-import inteligenty_zamek.app_ik.rest_class.Certyficat
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer
+import inteligenty_zamek.app_ik.models.Certyficat
+import inteligenty_zamek.app_ik.models.GlobalContainer
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.Map
@@ -41,7 +41,7 @@ class ManagmentCertyficationUserPresenter(val view: ManagmentCertyficationUserAc
                 for (i in 0 until arrJson.length()) {
                     try {
 
-                        val cert=Certyficat(
+                        val cert= Certyficat(
                                 arrJson.getJSONObject(i).getString("ISACTUAL"),
                                 arrJson.getJSONObject(i).getString("IS_PERNAMENT"),
                                 arrJson.getJSONObject(i).getString("MONDAY"),
@@ -62,7 +62,7 @@ class ManagmentCertyficationUserPresenter(val view: ManagmentCertyficationUserAc
                                 arrJson.getJSONObject(i).getString("LOCK_KEY"),
                                 arrJson.getJSONObject(i).getString("ID_USER"),
                                 arrJson.getJSONObject(i).getString("MAC_ADDRESS")
-                                )
+                        )
                             cert.userName=arrJson.getJSONObject(i).getString("USER_NAME")
                             cert.userSurname=arrJson.getJSONObject(i).getString("USER_SURNAME")
                         model.Keys!!.put(i,cert)

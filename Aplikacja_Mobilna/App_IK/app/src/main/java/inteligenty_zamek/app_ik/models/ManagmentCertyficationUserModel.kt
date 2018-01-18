@@ -4,7 +4,6 @@ import android.content.Context
 import inteligenty_zamek.app_ik.API.CyptographyApi
 import inteligenty_zamek.app_ik.API.EnumChoice
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi
-import inteligenty_zamek.app_ik.rest_class.Certyficat
 import java.util.ArrayList
 import java.util.LinkedHashMap
 

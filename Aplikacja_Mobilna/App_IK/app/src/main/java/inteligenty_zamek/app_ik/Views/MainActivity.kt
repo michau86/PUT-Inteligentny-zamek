@@ -18,8 +18,8 @@ import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.R
 import inteligenty_zamek.app_ik.adapters.*
 import inteligenty_zamek.app_ik.presenters.MainPresenter
-import inteligenty_zamek.app_ik.rest_class.Certyficat
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer
+import inteligenty_zamek.app_ik.models.Certyficat
+import inteligenty_zamek.app_ik.models.GlobalContainer
 
 import java.util.Arrays
 import java.util.Collections

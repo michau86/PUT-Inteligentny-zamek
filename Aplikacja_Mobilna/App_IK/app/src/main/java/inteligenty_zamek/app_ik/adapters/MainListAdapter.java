@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import inteligenty_zamek.app_ik.R;
 import inteligenty_zamek.app_ik.models.MainModel;
-import inteligenty_zamek.app_ik.rest_class.Certyficat;
+import inteligenty_zamek.app_ik.models.Certyficat;
 
 /**
  * Created by Damian on 07.11.2017.

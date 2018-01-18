@@ -1,12 +1,9 @@
 package inteligenty_zamek.app_ik.models;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 
 import inteligenty_zamek.app_ik.API.EnumChoice;
 import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
-import inteligenty_zamek.app_ik.rest_class.User;
 import inteligenty_zamek.app_ik.API.Valdiation;
 
 /**

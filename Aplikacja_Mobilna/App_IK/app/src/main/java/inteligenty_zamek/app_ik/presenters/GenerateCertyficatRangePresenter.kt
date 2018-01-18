@@ -1,7 +1,7 @@
 package inteligenty_zamek.app_ik.presenters
 
 import inteligenty_zamek.app_ik.Views.GenerateCertyficatRangeActivity
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer
+import inteligenty_zamek.app_ik.models.GlobalContainer
 import inteligenty_zamek.app_ik.models.GenerateCertyficatRangeModel
 import java.util.ArrayList
 
@@ -69,7 +69,7 @@ class GenerateCertyficatRangePresenter(view: GenerateCertyficatRangeActivity)
     {
         if(GlobalContainer.mondayList!=null)
         {
-            model.mondayList=GlobalContainer.mondayList
+            model.mondayList= GlobalContainer.mondayList
         }
     }
 

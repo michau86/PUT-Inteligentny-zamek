@@ -8,8 +8,8 @@ import inteligenty_zamek.app_ik.API.sharedPreferenceApi
 import inteligenty_zamek.app_ik.Views.Admin_PanelActivity
 import inteligenty_zamek.app_ik.Views.GenerationCertyficatActivity
 import inteligenty_zamek.app_ik.models.GenerationCertyficatModel
-import inteligenty_zamek.app_ik.rest_class.Certyficat
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer
+import inteligenty_zamek.app_ik.models.Certyficat
+import inteligenty_zamek.app_ik.models.GlobalContainer
 import org.json.JSONException
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -29,7 +29,7 @@ class GenerationCertyficatPresenter(val view: GenerationCertyficatActivity)
         {
             if(bundle.getBoolean("haveCertificate"))
             {
-                model.certificate=GlobalContainer.obj as Certyficat
+                model.certificate= GlobalContainer.obj as Certyficat
             }
 
            view.setDefaultValueFromCertificate(model.certificate!!.userName,

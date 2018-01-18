@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import inteligenty_zamek.app_ik.R;
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer;
+import inteligenty_zamek.app_ik.models.GlobalContainer;
 
 public class NavDrawerListAdapter extends BaseAdapter {
 

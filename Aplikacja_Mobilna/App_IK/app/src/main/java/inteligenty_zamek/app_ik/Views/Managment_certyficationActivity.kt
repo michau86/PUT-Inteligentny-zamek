@@ -12,7 +12,7 @@ import inteligenty_zamek.app_ik.*
 
 import inteligenty_zamek.app_ik.Navigation.BaseActivity
 import inteligenty_zamek.app_ik.presenters.Managment_certyficationPresenter
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer
+import inteligenty_zamek.app_ik.models.GlobalContainer
 
 class Managment_certyficationActivity : BaseActivity() {
     internal var toastDelay = 4000

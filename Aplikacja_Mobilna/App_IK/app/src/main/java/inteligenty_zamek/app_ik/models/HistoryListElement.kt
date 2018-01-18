@@ -1,7 +1,5 @@
 package inteligenty_zamek.app_ik.models
 
-import inteligenty_zamek.app_ik.rest_class.Certyficat
-
 /**
  * Created by Damian on 02.01.2018.
  */

@@ -11,7 +11,7 @@ import inteligenty_zamek.app_ik.API.sharedPreferenceApi;
 import inteligenty_zamek.app_ik.API.HTTPRequestAPI;
 import inteligenty_zamek.app_ik.Views.LoginActivity;
 import inteligenty_zamek.app_ik.Views.MainActivity;
-import inteligenty_zamek.app_ik.rest_class.GlobalContainer;
+import inteligenty_zamek.app_ik.models.GlobalContainer;
 import inteligenty_zamek.app_ik.models.LoginModel;
 
 
