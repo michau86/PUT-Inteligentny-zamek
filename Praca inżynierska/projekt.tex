@@ -120,9 +120,48 @@
 
 \newpage
 \subsection{Komunikacja modułów systemu z aplikacją  serwera}
+	\newpage
+	\begin{landscape}
+			\subsubsection{Komunikaty HTTPRequest pomiędzy urządzeniem sterującym, a serwerem}
 
+		
+		\begin{longtable}[!ht]{|p{5cm}|p{6cm}|p{6.5cm}|p{3cm}|} 
+			\caption{Tabela komunikatów HTTP dla Raspberry Pi}
+			\label{tab:http_raspberry}\\
+			\hline	
+			Adres URL & Parametry & Odpowiedź & Opis \\	\hline
+			/api/RPI/download/cerificate/ & certificate\_id --- identyfikator certyfikatu \newline RPI\_MAC --- adres MAC urządzenia \newline login\_user --- login użytkownika & "data": dict\_all\_certificate, "public\_key": public\_key \tablinia "data": "invalid" & Pobranie certyfikatu użytkownika \\ \hline
+			/api/RPI/access\_decision/ & certificate\_id --- identyfikator certyfikatu \newline decision --- informacja o odmowie/akceptacji dostępu & "status": "ok" \tablinia "data": "invalid" & Informacja do serwera o statusie otwierania zamka \\ \hline
+		\end{longtable}
+	\end{landscape}
+\newpage
+\begin{landscape}
 	\subsubsection{Komunikaty HTTPRequest pomiędzy aplikacją mobilną, \newline a serwerem}
-	\subsubsection{Komunikaty HTTPRequest pomiędzy urządzeniem sterującym, a serwerem}
+	\begin{longtable}[!ht]{|p{5cm}|p{6cm}|p{6.5cm}|p{3cm}|} 
+		\caption{Tabela komunikatów HTTP dla urządzenia mobilnego}
+		\label{tab:http_mobilne}\\
+		\hline	
+		Adres URL & Parametry & Odpowiedź & Opis \\	\hline
+		/api/login/ & username --- login użytkownika \newline password --- hasło użytkownika & "status": "ok", "token": token \tablinia "status": "ERROR PASSWORD", "token": "invalid" \tablinia "status": "not activated", "token": "invalid" & Logowanie użytkownika do aplikacji \\ \hline
+		/api/register/ & login --- login użytkownika \newline password --- hasła użytkownika \newline name --- imię użytkownika \newline surname -- nazwisko użytkownika \newline publickey --- klucz publiczny użytkownika & "status": "ERROR" \tablinia "status": "REGISTER OK" & Rejestracja nowego użytkownika do aplikacji \\ \hline
+		/api/logout/ & login --- login użytkownika \newline token --- klucz sesji logowania & "status": "logout" \tablinia "status": "invalid" & Wylogowanie użytkownika z aplikacji \\ \hline
+		/api/download/all\_certifacate/ & login --- login użytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_certificate \tablinia "status": "invalid" & Pobranie wszystkich dostępnych certyfikatów użytkownika \\ \hline
+		/api/download/all\_locks/ & login --- login użytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_locks \tablinia "status": "invalid" & Pobranie listy wszystkich dostępnych zamków w systemie \\ \hline
+		/api/download/all\_user/ & login --- login użytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_users \tablinia "status": "invalid" & Pobranie listy wszystkich użytkowników systemu \\ \hline
+		/api/deactivation/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline certificate\_id --- identyfikator certyfikatu do usunięcia & "status": "ok" \tablinia "status": "invalid" & Usunięcie dostępu do certyfikatu \\ \hline
+		/api/request\_new\_certificate/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline lock\_id --- identyfikator zamka & "status": "ok" \tablinia "status": "invalid" & Wnioskowanie o nowy certyfikat \\ \hline
+		/api/change\_password/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline newpasswd --- nowe hasło użytkownika & "status": "ok" \tablinia "status": "invalid" & Zmiana hasła użytkownika \\ \hline
+		/api/admin/history/ & login --- login użytkownika \newline token --- klucz sesji logowania & "data": dict\_history \tablinia "status": "invalid" & Pobranie historii użycia zamków w systemie (administrator) \\ \hline
+		/api/admin/download/\linebreak all\_certificate/ & login --- login użytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_certificate \tablinia "status": "invalid" & Pobranie wszystkich certyfikatów z systemu (administrator)\\ \hline
+		/api/admin/deactivation/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline certificate\_id --- identyfikator certyfikatu do usunięcia & "status": "ok" \tablinia "status": "invalid" & Usunięcie dostępu do certyfikatu (administrator) \\ \hline
+		/api/admin/register\_waiting/ & login --- login użytkownika \newline token --- klucz sesji logowania & "status": "ok" \tablinia "status": "invalid" & Pobranie listy oczekujących użytkowników na zaakceptowanie rejestracji \\ \hline
+		/api/admin/register\_decision/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline user\_login --- login użytkownika, którego dotyczy decyzja \newline decision --- decyzja True/False dotycząca akceptacji rejestracji & "status": "ok" \tablinia "status": "invalid" & Podjęcie decyzji przez administratora dotycząca rejestracji użytkownika o danym loginie \\ \hline
+		/api/admin/certificate\_waiting/ & login --- login użytkownika \newline token --- klucz sesji logowania & "status": "ok" \tablinia "status": "invalid" & Pobranie listy oczekujących certyfikatów na zaakceptowanie \\ \hline
+		/api/admin/certificate\_decision/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline certificate\_id --- identyfikator certyfikatu, którego dotyczy decyzja & "status": "ok" \tablinia "status": "invalid" & Podjęcie decyzji przez administratora dotycząca przyjęcia \\ \hline
+		/api/admin/\linebreak generate\_new\_certificate/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline user\_id --- identyfikator użytkownika \newline lock\_id --- identyfikator zamka \newline from\_date --- data od której obowiązuje certyfikat \newline to\_date --- data do której obowiązuje certyfikat \newline monday...sunday --- 7 parametrów oznaczjacych zakresy godzin w poszczególnych dniach tygodnia \newline is\_pernament --- czy dostęp jest ciągły \newline name --- imię użytkownika certyfikatu \newline surname --- nazwisko użytkownika certyfikatu & "status": "ok" \tablinia "status": "invalid" & Generowanie nowego certyfikatu (administrator) \\ \hline
+		
+	\end{longtable}
+\end{landscape}
 	
 \newpage
 \subsection{Protokoły komunikacji pomiędzy urządzeniem \newline sterującym i aplikacją mobilną}
