@@ -134,6 +134,7 @@
 		\section*{Panel logowania użytkownika}
 	Widok umożliwia zalogowanie się użytkownika do systemu poprzez podanie loginu, hasła oraz adres IP serwera w odpowiednie pola, a następnie kliknięcie w przycisk “ZALOGUJ SIĘ”. Samo pole hasła jest maskowane. Jeśli nie posiada się konta, można je utworzyć poprzez przycisk “ZAREJESTRUJ SIĘ”. (Rysunek \ref{rys:panel_logowania_pionowo})
 	
+	
 	\begin{figure}[ht!]
 			\centering
 			\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
@@ -420,121 +421,88 @@
 		\paragraph{Symbolika ikon}
 		Aplikacja mobilna oraz strona internetowa korzysta z symboli zawartych w fontwesome. oto poszcególne znaczenia dla danych ikon:
 	   
-			\begin{figure}[ht!]
-\centering
-				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-				{Obrazy/full_user}
-				\caption{	ikona oznaczająca użytkownika  aktywnego z atkualnym kluczem szyfrującym}
-				\label{rys:user_full}
-			\end{figure} 
-		
-			\begin{figure}[ht!]
-			\centering
-			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-			{Obrazy/user}
-			\caption{ikona oznaczająca użytkownika  aktywnego z nieatkualnym kluczem szyfrującym}
-			\label{rys:user}
-		\end{figure} 
-	
-		
-			\begin{figure}[ht!]
-			\centering
-			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-			{Obrazy/block_user}
-			\caption{ikona oznaczająca uzytkownika zablokowanego}
-			\label{rys:user_block}
-		\end{figure}  
-			
-			
-				\begin{figure}[ht!]
-				
-				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-				{Obrazy/sort_desc}
-				\caption{sortowanie od a do z}
-				\label{rys:sort_asc}
-			\end{figure} 
-		 
-			
-				\begin{figure}[ht!]
-				
-				
-				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-				{Obrazy/sort_asc}
-				\caption{sortowanie od z do a}
-				\label{rys:sort_desc}
-			\end{figure} 
-			
-			\begin{figure}[ht!]
-			
-			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-			{Obrazy/full_user}
-			\caption{po nacisnieciu pokazuje na ekranie hasło które było wcześniej zamaskowane}
-			\label{rys:user_full}
-		\end{figure} 
-			
-			
-			\begin{figure}[ht!]
-			
-			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-			{Obrazy/full_user}
-			\caption{maskuje jawne hasło}
-			\label{rys:user_full}
-		\end{figure} 
-			
-		
-			\begin{figure}[ht!]
-			
-			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-			{Obrazy/full_user}
-			\caption{rozwijająca menu}
-			\label{rys:user_full}
-		\end{figure} 
-			
-			
-				\begin{figure}[ht!]
-				
-				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-				{Obrazy/full_user}
-				\caption{chowająca menu}
-				\label{rys:user_full}
-			\end{figure} 
-			
-			
-				\begin{figure}[ht!]
-				
-				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-				{Obrazy/full_user}
-				\caption{oznaczająca zamknięty zamek}
-				\label{rys:user_full}
-			\end{figure}  
-			
-			
-				\begin{figure}[ht!]
-				
-				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-				{Obrazy/full_user}
-				\caption{oznaczajaća otwarty zamek}
-				\label{rys:user_full}
-			\end{figure}  
-			
-		
-			\begin{figure}[ht!]
-			
-			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-			{Obrazy/full_user}
-			\caption{oznaczajaca niepoprawnść}
-			\label{rys:user_full}
-		\end{figure} 
-			
-	
-		\begin{figure}[ht!]
-		
-		\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
-		{Obrazy/full_user}
-		\caption{oznaczająća poprawność}
-		\label{rys:user_full}
-	\end{figure} 
-			
+	   
+	   	\begin{longtable}[!ht]{|m{2cm}|m{10cm}|} 
+	   	\caption{Tabela ikon używanych w systemie}
+	   	\label{tab:ikony}\\
+	   	\hline	
+	   	Ikona & Opis   \\	\hline
+	   	
+	  \includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/full_user}
+	   	& 
+	   	
+	  ikona oznaczająca użytkownika  aktywnego z atkualnym kluczem szyfrującym 	 
+	   	
+	   	\\	\hline
+	   	
+	   		\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]
+	   	{Obrazy/user}
+	   	&
+	   	
+	   	ikona oznaczająca użytkownika  aktywnego z nieatkualnym kluczem szyfrującym \\	\hline
+	   		\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]
+	   		{Obrazy/block_user}&
+	   	
+	   	ikona oznaczająca użytkownika zablokowanego \\	\hline
+	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/sort_desc}
+	   	&
+	   	
+	   	ikonka oznaczająca sortowanie od a do z
+	   		
+	   	\\	\hline
+	   				
+	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]
+	   	{Obrazy/sort_asc}
+	   	&
+	   	
+	   	Ikonka oznaczająca sortowanie od z do a
+	   	\\	\hline
+	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]
+	   	{Obrazy/oko_1}
+	   	&
+	   	
+	   	ikonka służąca do  pokazania na ekranie hasło które było wcześniej zamaskowane
+	   				
+	   	\\	\hline
+	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]
+	   	{Obrazy/oko_2}&
+	   	
+	   	Ikonka służąca do maskowania hasła
+	   	\\	\hline
+	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]
+	   	{Obrazy/menu}&
+	   	
+	   	Ikonka służąca do rozwijania menu
+	   	\\	\hline
+	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]
+	   	{Obrazy/menu}&
+	   	
+	   	Ikonka służąca do chowania menu
+	   	\\	\hline
+	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]
+	   	{Obrazy/lock}&
+	   	
+	   	Ikonka oznaczająca zamknięty zamek
+		\\	\hline		
+	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]
+	   	{Obrazy/lock_2}&
+	   	
+	   	Ikonka oznaczająca otwarty zamek
+	   	\\	\hline					
+	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]
+	   	{Obrazy/error}&
+	   	
+	   Ikonka oznaczająca niepoprawnść np. niepoprawne hasło
+	   \\	\hline
+	   \includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]
+	   {Obrazy/ok}&
+	   
+	   oznaczająća poprawność np. poprawny dostęp do pomieszczenia	
+	   	\\	\hline				
+	   					
+	   \end{longtable}
+	   
+
 	
 		\paragraph{Znaczenie kolorystyki}
 		W systemie występują 4 kolory informujące użytkownika o zaistniałych sytuacjach
