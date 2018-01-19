@@ -1,2 +1,9 @@
 \select@language {polish}
 \contentsline {figure}{\numberline {1}{\ignorespaces Schemat og\IeC {\'o}lny systemu}}{16}
+\contentsline {figure}{\numberline {2}{\ignorespaces Schemat og\IeC {\'o}lny diagramu klas dla Aplikacji Mobilnej}}{26}
+\contentsline {figure}{\numberline {3}{\ignorespaces Diagram klas dla paczki adapters}}{27}
+\contentsline {figure}{\numberline {4}{\ignorespaces Diagram klas dla paczki navigations}}{28}
+\contentsline {figure}{\numberline {5}{\ignorespaces Diagram klas dla paczki api}}{29}
+\contentsline {figure}{\numberline {6}{\ignorespaces Diagram klas dla paczki models}}{52}
+\contentsline {figure}{\numberline {7}{\ignorespaces Diagram klas dla paczki views}}{53}
+\contentsline {figure}{\numberline {8}{\ignorespaces Diagram klas dla paczki presenters}}{54}
