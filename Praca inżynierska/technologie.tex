@@ -1,29 +1,29 @@
-% !TeX spellcheck = pl_PL
+% !TeX spellcheck = de_DE
 \newpage\section{Wybór technologii informatycznych} \label{sec:technologie}
 \subsection{Urządzenie sterujące}
 
 \newpage
 \subsection{Aplikacja serwera}
 Aplikacja serwerowa została stworzona przy pomocy zintegrowanego środowiska programistycznego PyCharm w wersji 2017.1.3. Technologie użyte w aplikacji serwerowej były następujące:
-\begin{itemize}
+\begin{itemize*}
 	\item python w wersji 2.7
 	\item framework Django
-	\item MySQl 
-	\item Ajax
-	\item jQuery
-	\item JSON
-\end{itemize}
+	\item MySQl -- wybór tego rodzaju bazy danych został podyktowany dobrym wspaerciem dla środowiska linux oraz frameworka Django,
+	\item HTML5 -- jest to podstawowa technologia w stronach internetowych, wybór wersji 5 został podyktowany tym żę jest to najnowsza wersja,
+	\item Bootstrap -- biblioteka ta została wybrana ze względu na łatwość w użyciu
+	\item JSON --format ten  został wybrany z względu na jego prostotę użytkowania oraz wsparcie w postaci, bibliotek.
+\end{itemize*}
 Ponadto oprogramowanie serwera było testowane przy pomocy narzędzia XAMMP w wersji 3.2.2 które emulowało środowisko apache oraz baze danych MySQl.
 
 \newpage
 \subsection{Aplikacja mobilna}
-Aplikacja mobilna została stworzona przy pomocy zintegrowanego środowiska programistycznego Android Studio w wersji 3.0 wraz z zintegrowanym emulatorem Genymotion w darmowej wersji. Języki użyte w aplikacji były nastepujące:
-\begin{itemize}
-	\item Java 
-	\item Kotlin
-	\item XML
-	\item JSON
-\end{itemize}
+Aplikacja mobilna została stworzona przy pomocy zintegrowanego środowiska programistycznego Android Studio w wersji 3.0 wraz z zintegrowanym emulatorem Genymotion w darmowej edycji. Wybór Android Studio został podyktowany tym że jest to oficjalne środowisko dla systemu android natomiast Genymotion został wybrany z powodu rudnośći z oficjalnym emulatorem w środowisku gdzie występują procesory firmy AMD.  Ponadto dla wygenerowania diagramów klas zostało wykorzystane środowiski intellij idea w wersji trial 2017 Enterprise ze względu na to żę udostępniały taką funkcję. Języki użyte w aplikacji były nastepujące:
+\begin{itemize*}
+	\item Java -- wybór ten był podyktowany wcześniejszą pracą projektową która opierała się o język java,
+	\item Kotlin -- powodem wybrania tego języka był wzrost popularnośći niego pod względem tworzenia aplikacji androidowych, oficjalne wpsarcie firmy google dla tego jezyka oraz chęć lepszego poznania go,
+	\item XML -- środowisko android wymusza w swoim projekcie by wygląd aplikacji był napisany w jezyku xml,
+	\item JSON -- format ten  został wybrany z względu na jego prostotę użytkowania oraz wsparcie w postaci bibliotek,
+\end{itemize*}
 Cała aplikacja ponaddto została napisana w oparciu o wzorzec architektoniczny Model View Presenter. 
 
 \newpage
@@ -31,8 +31,8 @@ Cała aplikacja ponaddto została napisana w oparciu o wzorzec architektoniczny 
 
 \newpage
 \subsection{System kontroli wersji}
-Podczas tworzenia naszej poracy użyliśmy systemu kotroli wersji GIT wraz z  oprogramowaniem dekstopowym przeznaczonym do środowiska windows o anzwie GitHub Dekstop.
+Podczas tworzenia naszej poracy użyliśmy systemu kotroli wersji GIT wraz z  oprogramowaniem dekstopowym przeznaczonym do środowiska windows o nazwie GitHub Dekstop. Wybór ten był podyktowany znajomośćią tego systemu kontroli wersji oraz dużą popularnośćią jaką cieszy się w środowisku programistycznym.
 
 \newpage
 \subsection{Prowadzenie dokumentacji}
- Dokumentacje prowadziliśmy w języku LaTeX przy pomocy oprogramowania TexStudio. 
+ Dokumentacje prowadziliśmy w języku LaTeX przy pomocy oprogramowania TexStudio. Diagramy UML głównie były generowane przy pomocy programu Visual Paradigme wyjątek tutaj stanowią diagramy klas dla aplikacji mobilnej gdzie zostały one wygenerowane automatycznie przy pomocy środowiska intellij idea 2017 w wersji enterprise (trial 30 dniowy)
