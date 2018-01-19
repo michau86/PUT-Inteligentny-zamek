@@ -409,10 +409,144 @@
 	\subsubsection{Komunikacja człowiek-interfejs}
 	
 		\paragraph{Komunikaty tekstowe}
+			 W aplikacji mobilnej komunikaty są wyświetlane przy pomocy toast. Komunikaty te  trwają na ekranie 4 sekundy. Informują one użytkownika o zaistniałych sytuacjach takich jak
+			 \begin{itemize}
+			 	\item błąd połaczenia z bazą danych
+			 	\item informacja o zablokowanym koncie 
+			 	\item informacja o czynnośćiach dodania bądż usunięcia odpowiednio użytkownika bądż certyfikatu
+			 	\item o pobraniu listy certyfikatów
+			 \end{itemize}
+		 Dodatkowo są wyświetlane na ekranie komunikaty tekstowe przy pomocy  textview odnośnie walidacji danych oraz podpowiedzi podczas wpisywania haseł przy pomocy tooltip-ów ktore informuje użytkownika o paramterach jakie hasło powinno mieć
 		\paragraph{Symbolika ikon}
+		Aplikacja mobilna oraz strona internetowa korzysta z symboli zawartych w fontwesome. oto poszcególne znaczenia dla danych ikon:
+	   
+			\begin{figure}[ht!]
+\centering
+				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+				{Obrazy/full_user}
+				\caption{	ikona oznaczająca użytkownika  aktywnego z atkualnym kluczem szyfrującym}
+				\label{rys:user_full}
+			\end{figure} 
+		
+			\begin{figure}[ht!]
+			\centering
+			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+			{Obrazy/user}
+			\caption{ikona oznaczająca użytkownika  aktywnego z nieatkualnym kluczem szyfrującym}
+			\label{rys:user}
+		\end{figure} 
+	
+		
+			\begin{figure}[ht!]
+			\centering
+			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+			{Obrazy/block_user}
+			\caption{ikona oznaczająca uzytkownika zablokowanego}
+			\label{rys:user_block}
+		\end{figure}  
+			
+			
+				\begin{figure}[ht!]
+				
+				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+				{Obrazy/sort_desc}
+				\caption{sortowanie od a do z}
+				\label{rys:sort_asc}
+			\end{figure} 
+		 
+			
+				\begin{figure}[ht!]
+				
+				
+				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+				{Obrazy/sort_asc}
+				\caption{sortowanie od z do a}
+				\label{rys:sort_desc}
+			\end{figure} 
+			
+			\begin{figure}[ht!]
+			
+			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+			{Obrazy/full_user}
+			\caption{po nacisnieciu pokazuje na ekranie hasło które było wcześniej zamaskowane}
+			\label{rys:user_full}
+		\end{figure} 
+			
+			
+			\begin{figure}[ht!]
+			
+			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+			{Obrazy/full_user}
+			\caption{maskuje jawne hasło}
+			\label{rys:user_full}
+		\end{figure} 
+			
+		
+			\begin{figure}[ht!]
+			
+			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+			{Obrazy/full_user}
+			\caption{rozwijająca menu}
+			\label{rys:user_full}
+		\end{figure} 
+			
+			
+				\begin{figure}[ht!]
+				
+				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+				{Obrazy/full_user}
+				\caption{chowająca menu}
+				\label{rys:user_full}
+			\end{figure} 
+			
+			
+				\begin{figure}[ht!]
+				
+				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+				{Obrazy/full_user}
+				\caption{oznaczająca zamknięty zamek}
+				\label{rys:user_full}
+			\end{figure}  
+			
+			
+				\begin{figure}[ht!]
+				
+				\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+				{Obrazy/full_user}
+				\caption{oznaczajaća otwarty zamek}
+				\label{rys:user_full}
+			\end{figure}  
+			
+		
+			\begin{figure}[ht!]
+			
+			\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+			{Obrazy/full_user}
+			\caption{oznaczajaca niepoprawnść}
+			\label{rys:user_full}
+		\end{figure} 
+			
+	
+		\begin{figure}[ht!]
+		
+		\includegraphics[width=1.5cm,height=1cm,keepaspectratio]
+		{Obrazy/full_user}
+		\caption{oznaczająća poprawność}
+		\label{rys:user_full}
+	\end{figure} 
+			
+	
 		\paragraph{Znaczenie kolorystyki}
+		W systemie występują 4 kolory informujące użytkownika o zaistniałych sytuacjach
+		\begin{itemize}
+			\item czerwony który w zależnośći od kontekstu sugeruje albo niepoprawne wpisane dane, nie uzyskanie dostępu do pomieszcenia albo nieautoryzowaną próbę dostępu do pomieczenia,
+			\item zielony który w zależnośći od kontekstu sugeruje poprwane uzyskanie dostępu do pomiezsceń, autoryzowaną próbę dostępu do pomieszczenia lub użytkownika który jest aktywny oraz posiada aktualny klucz szyfrujący,
+			\item żółty sugeruje w naszym systemie oczekiwanie na zdarzenie,
+			\item kolor fioletowy określa użytkownika który nie ma dostępu do funkcji systemu (w zależnosci od ikony ma nieaktualny klucz szyfrujący lub ma konto zablokowane)
+		\end{itemize}
 		
 	\subsubsection{Kolorystyka systemu}
+	Kolorystyka systemu została oparta o styl material design któy jest dostępny dla systemu android od wersji 5.0. Strona jak i palikacja mobilna są zbliżone kolorystycznie. Różnice w kolorach są spowodowane tylko narzuconą kolorystyką z biblioteki Bootsrap.
 	
 \newpage
 \subsection{Bezpieczeństwo systemu}
