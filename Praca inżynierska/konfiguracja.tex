@@ -44,8 +44,18 @@
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 \setlength{\parindent}{25pt}
 \setlength{\parskip}{5pt}
-\usepackage{pdflscape}
 \frenchspacing
+\newcommand{\linia}{\rule{\linewidth}{0.4mm}}
+\newcommand{\tablinia}{\newline \linia \newline}   
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
 
 
 % Jeżeli kody programów zawierają polskie litery należy dodać odpowiedni znak poniżej

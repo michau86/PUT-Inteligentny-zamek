@@ -1,14 +1,12 @@
 % !TeX spellcheck = pl_PL
 % 
 \newpage\section{Projekt systemu \textsl{\NazwaSys}}\label{sec:projekt}
+Głównym celem pracy dyplomowej jest zaprojektowanie systemu 
+
 \subsection{Diagramy UML}
 
-	\subsubsection{Diagramy przypadków użycia}
+	\subsubsection{Diagram przypadków użycia}
 	
-		\paragraph{Aplikacja mobilna}
-		\paragraph{Aplikacja serwera}
-		\paragraph{Urządzenie sterujące}
-		\paragraph{Moduł zliczania osób}
 		
 	\subsubsection{Diagramy sekwencji systemu}
 	
@@ -137,12 +135,12 @@
 \newpage
 \begin{landscape}
 	\subsubsection{Komunikaty HTTPRequest pomiędzy aplikacją mobilną, \newline a serwerem}
-	\begin{longtable}[!ht]{|p{5cm}|p{6cm}|p{6.5cm}|p{3cm}|} 
+	\begin{longtable}[!ht]{|m{5cm}|m{6cm}|m{6.5cm}|m{3cm}|} 
 		\caption{Tabela komunikatów HTTP dla urządzenia mobilnego}
 		\label{tab:http_mobilne}\\
 		\hline	
 		Adres URL & Parametry & Odpowiedź & Opis \\	\hline
-		/api/login/ & username --- login użytkownika \newline password --- hasło użytkownika & "status": "ok", "token": token \tablinia "status": "ERROR PASSWORD", "token": "invalid" \tablinia "status": "not activated", "token": "invalid" & Logowanie użytkownika do aplikacji \\ \hline
+		/api/login/ & username --- login użytkownika \newline password --- hasło użytkownika & "status": "ok", "token": token \tablinia "Status'': "ERROR PASSWORD", "token": "invalid" \tablinia "status": "not activated", "token": "invalid" & Logowanie użytkownika do aplikacji \\ \hline
 		/api/register/ & login --- login użytkownika \newline password --- hasła użytkownika \newline name --- imię użytkownika \newline surname -- nazwisko użytkownika \newline publickey --- klucz publiczny użytkownika & "status": "ERROR" \tablinia "status": "REGISTER OK" & Rejestracja nowego użytkownika do aplikacji \\ \hline
 		/api/logout/ & login --- login użytkownika \newline token --- klucz sesji logowania & "status": "logout" \tablinia "status": "invalid" & Wylogowanie użytkownika z aplikacji \\ \hline
 		/api/download/all\_certifacate/ & login --- login użytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_certificate \tablinia "status": "invalid" & Pobranie wszystkich dostępnych certyfikatów użytkownika \\ \hline
