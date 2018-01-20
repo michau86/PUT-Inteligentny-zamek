@@ -8,9 +8,9 @@ W dokumencie tym posługiwać się będziemy następującymi pojęciami:
 \begin{itemize*}
 	\item {Klucz dostępowy} --- jest to  klucz określający dostęp do pomieszczenia dla użytkownika w konkretnych dniach oraz godzinach,
 	\item {Klucz szyfrujący} 
-	--- jest to klucz prywatny wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używany jest on do szyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
+	--- jest to klucz prywatny\footnote{klucz prywatny szerzej został opisany w rozdziale projekt w ramach opisu projektu PKI.} wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używany jest on do szyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
 	\item {Klucz deszyfrujący }
-	--- jest to klucz publiczny wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używane jest on do odszyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
+	--- jest to klucz publiczny\footnote{klucz publiczny szerzej został opisany w rozdziale projekt w ramach opisu projektu PKI.} wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używane jest on do odszyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
 	\item {Inteligentny zamek}
 	--- system obsługujący otwieranie elektrozamka bądź serwomechanizmu,
 	\item {Konto}
@@ -32,7 +32,9 @@ Tabela \ref{tab:porownanie1} zawiera porównanie firm pod względem otwierania z
 		\caption{Tabela porównania otwierania zamków}
 		\label{tab:porownanie1}\\
 		\hline	
-		Funkcja & NOKI & August & DanaLock & Gerda Lock & Nasz system  \\	\hline
+		Funkcja & NUKI\footnote{strona producenta z opisem zamka: https://nuki.io/en/smart-lock/ (dostęp 20.01.2018).} & August\footnote{strona producenta z opisem zamka: http://august.com/keyless-entry/ (dostęp 20.01.2018).} & DanaLock\footnote{strona producenta z opisem zamka: https://danalock.com/danalock-v3.html (dostęp 20.01.2018).} &
+		 Gerda Lock \footnote{strona producenta z opisem zamka: https://www.gerdalock.com/produkty/gerdalock (dostęp 20.01.2018).} & 
+		 Nasz system  \\	\hline
 		 zarządzanie wieloma zamkami z jednej aplikacji
 		 & brak & tak & brak & brak & tak \\	\hline
 		otwieranie zamka przy pomocy strony WWW
