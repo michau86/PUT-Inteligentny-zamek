@@ -7,10 +7,10 @@ Urządzenie sterujące utworzone zostało na mikrokomputerze Raspberry Pi 3, ze 
 
 Podczas projektowania urządzenia sterującego zastosowano następujące technologie:
 \begin{itemize*}
-	\item język programowania Python w wersji 2.7.13 \footnote{ Dokumentacja Pythona: \href {https://docs.python.org/2/}{https://docs.python.org/2/}} wraz z bibliotekami PyCrypto\footnote{ Strona biblioteki PyCrypto: \href{https://pypi.python.org/pypi/pycrypto}{https://pypi.python.org/pypi/pycrypto}}, MySQL-db\footnote{ Dokumentacja MySQL-db: \href{http://mysql-python.sourceforge.net/MySQLdb.html\#mysqldb}{http://mysql\-python.sourceforge.net/MySQLdb.html\#mysqldb}} oraz BlueZ \footnote{ Dokumentacja BlueZ: \href{https://docs.ubuntu.com/core/en/stacks/bluetooth/bluez/docs/}{https://docs.ubuntu.com/core/en/stacks/bluetooth/bluez/docs/}},
+	\item język programowania Python w wersji 2.7.13 \footnote{ Dokumentacja Pythona: \href {https://docs.python.org/2/}{https://docs.python.org/2/}} wraz z bibliotekami PyCrypto\footnote{ jest to biblioteka udostępniająca funkcje kryptograficzne}, MySQL-db\footnote{ jest to iterfejs oferująćy API do bazy MySQl  } oraz BlueZ \footnote{Biblioteka ułątwiająća zarządzanie modułem Bluetooth  },
 	\item format zapisu danych JSON,
 	\item biblioteka RPI.GPIO
-	 \footnote{ Dokumentacja RPI.GPIO: \href{https://sourceforge.net/p/raspberry-gpio-python/wiki/Home/}{\mbox{https://sourceforge.net/p/raspberry-gpio-python/wiki/Home/}}}, aby uzyskać dostęp do interfejsu wejścia/wyjścia.
+	 \footnote{ jest to biblioteka oferująca klasy do obsługi portów  wejścia i wyjścia}, aby uzyskać dostęp do interfejsu wejścia/wyjścia.
 \end{itemize*}
 
 Programem wykorzystywanym do implementacji programu jest PyCharm w wersji 2017.2.4. Wybór technologii oraz oprogramowania związany był z wysokim stopniem integracji urządzenia Raspberry Pi z językiem Python. Środowisko PyCharm zostało wybrane ze względu na zaawansowane funkcjonalności wspomagające tworzenie kodu o wysokiej czytelności oraz IDE udostępnia funkcję Inteli-sense (podpowiedzi pod względem wartości, pól klas, procedur).
@@ -37,8 +37,7 @@ Aplikacja mobilna została stworzona przy pomocy zintegrowanego środowiska prog
 	\item XML ---język prezentowania grafiki w systemie Android,
 	\item JSON --- format danych / język przechowywania oraz transportowania danych pomiędzy systemami.
 \end{itemize}
-Cała aplikacja ponadto została napisana w oparciu o wzorzec architektoniczny Model---View---Presenter \footnote{ Architektura ta jest rekomendowana przez firmę Google
-źródło: \\ \href{https://github.com/googlesamples/android-architecture}{https://github.com/googlesamples/android-architecture}}. Zastosowano wyżej wymienione języki ze względu na wydajność programów w języku Java w systemach Android oraz chęci poznania nowego języka programowa Kotlin, który jest w pełni kompatybilny z językiem Java (przetwarzany do Javy).  
+Cała aplikacja ponadto została napisana w oparciu o wzorzec architektoniczny Model---View---Presenter \footnote{ jest to wzorzec architektoniczny w którym view odpowiedzialny jest za generowanie vidoków model przechowuje informacje o obiektach systemu natomiast presenter przechowuje całą logikę biznesową}. Zastosowano wyżej wymienione języki ze względu na wydajność programów w języku Java w systemach Android oraz chęci poznania nowego języka programowa Kotlin, który jest w pełni kompatybilny z językiem Java (przetwarzany do Javy).  
 
 \subsection{Moduł zliczania osób}
 Moduł zliczania osób jest mocno związany z aplikacją urządzania sterującego ze względu na to, że zostaną uruchomione na jednym mikrokomputerze Raspberry Pi. Zastosowano zatem język Python w wersji 2.7.13 oraz bibliotekę graficzną Open-CV, dzięki któremu w łatwy sposób można przetwarzać obrazy zaawansowanymi metodami. 
