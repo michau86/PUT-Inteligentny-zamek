@@ -27,13 +27,13 @@ W dokumencie tym posługiwać się będziemy następującymi pojęciami:
 \subsection{Stan wiedzy}\label{sec:Stan wiedzy}
 Przed przystąpieniem do projektu wykonaliśmy rozeznanie w około systemów zbliżonych do naszego, który na dany moment były produkowane. I tak doszliśmy do wniosku, że wszystkie systemy inteligentnych zamków wykonane przez uznane firmy, takie jak Gerda Lock, czy Danalock zostały wykonane typowo dla użytku domowego a nie tak jak nasz projekt inżynierski, który jest przeznaczony do zarządzania w budynkach o większej złożoności, takich jak biurowce, z różnym stopniem dostępu. Opis wraz z porównaniem poszczególnych systemów znajduje się w tabelach poniżej.
 
-Tabela \ref{tab:porownanie1} zawiera porównanie firm pod względem otwierania zamka. Już w pierwszym wierszu można zauważyć, indywidualne zastosowanie systemów, ponieważ każdy z prezentowanych systemów, poza firmą August, nie oferuje obsługi wielu urządzeń z poziomu jednej aplikacji. Proponowane przez nas rozwiązanie umożliwia skalowalność systemu oraz wprowadzanie różnorodności w zarządzaniu dostępem. Następne funkcjonalności wprowadzają zagrożenia lub zwiększają podatności sytemu na ataki hakerskie. Weźmy pod uwagę otwieranie dowolnego zamka z dowolnego miejsce przez stronę WWW, umożliwia taka funkcjonalność zdalne sterowanie dostępem w całym budynku. Skutkuje to brakiem kontroli, którą nie powoduje znacznych korzyści dla celów biznesowych dla, których nasz system jest dedykowany.
+Tabela \ref{tab:porownanie1} zawiera porównanie firm pod względem otwierania zamka. Już w pierwszym wierszu można zauważyć, indywidualne zastosowanie systemów, ponieważ każdy z prezentowanych systemów, poza firmą August, nie oferuje obsługi wielu urządzeń z poziomu jednej aplikacji. Proponowane przez nas \linebreak rozwiązanie umożliwia skalowalność systemu oraz wprowadzanie różnorodności w zarządzaniu dostępem. Następne funkcjonalności wprowadzają zagrożenia lub zwiększają podatności sytemu na ataki hakerskie. Weźmy pod uwagę otwieranie dowolnego zamka z dowolnego miejsce przez stronę WWW, umożliwia taka funkcjonalność zdalne sterowanie dostępem w całym budynku. Skutkuje to \linebreak brakiem kontroli, którą nie powoduje znacznych korzyści dla celów biznesowych dla, których nasz system jest dedykowany.
 	\begin{longtable}[!ht]{|m{4cm}|m{1cm}|m{1cm}|m{1,5cm}|m{1cm}|m{1,1cm}|} 
 		\caption{Tabela porównania otwierania zamków}
 		\label{tab:porownanie1}\\
 		\hline	
-		Funkcja & NUKI\footnote{strona producenta z opisem zamka: \hyperref[strona internetowa Nuki]https://nuki.io/en/smart-lock/ (dostęp 20.01.2018).} & August\footnote{strona producenta z opisem zamka: \hyperref[strona internetowa august]http://august.com/keyless-entry/ (dostęp 20.01.2018).} & DanaLock\footnote{strona producenta z opisem zamka: \hyperref[strona internetowa DanaLock]https://danalock.com/danalock-v3.html (dostęp 20.01.2018).} &
-		 Gerda Lock \footnote{strona producenta z opisem zamka: \hyperref[strona internetowa Gerda Lock]https://www.gerdalock.com/produkty/gerdalock (dostęp 20.01.2018).} & 
+		Funkcja & NUKI\footnote{ \href{https://nuki.io/en/smart-lock/}{strona producenta z opisem zamka firmy NUKI}} & August\footnote{ \href{http://august.com/keyless-entry/ }{strona internetowa firmy August}} & DanaLock\footnote{ \href{https://danalock.com/danalock-v3.html}{strona producenta z opisem zamka firmy DanaLock}} &
+		 Gerda Lock \footnote{ \href{https://www.gerdalock.com/produkty/gerdalock} {strona producenta z opisem zamka firmy Gerda Lock}} & 
 		 Nasz system  \\	\hline
 		 zarządzanie wieloma zamkami z jednej aplikacji
 		 & brak & tak & brak & brak & tak \\	\hline
@@ -94,7 +94,7 @@ W ramach zajęć projektowych oraz laboratoryjnych o nazwę Projekt Zespołowy p
 		\item Wnioskowanie o certyfikat nowy.
 	\end{itemize*}
 
-		Dodatkowo zostało zaimplementowane gniazdka sieciowe do obsługi połączenia bluetooth oraz w każdym widoku, który korzystał z połączenia z serwerem, były napisane fragmenty kodu. Funkcje te oraz kod zostały napisane bez uwzględnienia wzorców architektonicznych (wszystko dotyczące danego widoku było zawarte w jednej klasie), posiadały szereg błędów powodujących niestabilne działanie systemu oraz stosowały metody z systemu android. które były określane przez środowisko android studio, jako ''deprecated''\footnote{opis deprecated: \hyperref[sec:trona internetowa z opiscem eprecated] https://developer.android.com/reference/java/lang/Deprecated.html (dostęp 20.01.2018).}  (niewspierane), co mogło powodować przy nowszych wersjach androida wadliwe działanie systemu. Z racji pisania pod wersje systemu android 4.4 wygląd różni się od tego, który został zaimplementowany w pracy dyplomowej.
+		Dodatkowo zostało zaimplementowane gniazdka sieciowe do obsługi połączenia bluetooth oraz w każdym widoku, który korzystał z połączenia z serwerem, były napisane fragmenty kodu. Funkcje te oraz kod zostały napisane bez uwzględnienia wzorców architektonicznych (wszystko dotyczące danego widoku było zawarte w jednej klasie), posiadały szereg błędów powodujących niestabilne działanie systemu oraz stosowały metody z systemu android. które były określane przez środowisko android studio, jako ''deprecated''\footnote{ Jeśli funkcja jest oznaczona jako deprecated to jest to informacja o tym, żę dana funkcja jest już przestarzała i może w nowszych modelach telefonów (dla nowszych systemów Android) nie działać}. Z racji pisania pod wersje systemu android 4.4 wygląd różni się od tego, który został zaimplementowany w pracy dyplomowej.
 
    Aplikacja serwerowa została wykonana w stopniu umożliwiającym podstawowe funkcje pozwalające na komunikację pomiędzy urządzeniami. Api zapewniało w minimalnym stopniu bezpieczeństwo. Funkcje serwera utworzone w ramach zajęć przedmiotowych:
    	\begin{itemize*}
@@ -107,7 +107,6 @@ W ramach zajęć projektowych oraz laboratoryjnych o nazwę Projekt Zespołowy p
    
 	Wszystkie te funkcje zwracały odpowiednio pożądane dane, albo wartość ''Invalid'' co powodowało wyświetlanie komunikatów o błędach użytkownikowi bez rozróżniania powodu, np. awarii serwera (mylnie wysyłany komunikat ''Invalid'' zamiast komunikatu HTTP typu 500).
 	
-	\newpage
 	Urządzenie sterujące zamkiem zostało napisane w języku Python i pozwalało na odbieranie danych z aplikacji mobilnej oraz posiadało funkcje odpowiedzialną za otwieranie zamka.
 
 	W ramach przedmiotu ochrona danych prowadzone przez dr inż. Anne Grocholewską-Czuryło zostały zaimplementowane w systemie fragmenty PKI, takie jak:
