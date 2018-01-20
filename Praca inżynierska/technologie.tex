@@ -37,8 +37,7 @@ Aplikacja mobilna została stworzona przy pomocy zintegrowanego środowiska prog
 	\item XML ---język prezentowania grafiki w systemie Android,
 	\item JSON --- format danych / język przechowywania oraz transportowania danych pomiędzy systemami.
 \end{itemize}
-Cała aplikacja ponadto została napisana w oparciu o wzorzec architektoniczny Model---View---Presenter \footnote{ Architektura ta jest rekomendowana przez firmę Google
-źródło: \\ \href{https://github.com/googlesamples/android-architecture}{https://github.com/googlesamples/android-architecture}}. Zastosowano wyżej wymienione języki ze względu na wydajność programów w języku Java w systemach Android oraz chęci poznania nowego języka programowa Kotlin, który jest w pełni kompatybilny z językiem Java (przetwarzany do Javy).  
+Cała aplikacja ponadto została napisana w oparciu o wzorzec architektoniczny Model---View---Presenter \footnote{ jest to wzorzec architektoniczny w którym view odpowiedzialny jest za generowanie vidoków model przechowuje informacje o obiektach systemu natomiast presenter przechowuje całą logikę biznesową}. Zastosowano wyżej wymienione języki ze względu na wydajność programów w języku Java w systemach Android oraz chęci poznania nowego języka programowa Kotlin, który jest w pełni kompatybilny z językiem Java (przetwarzany do Javy).  
 
 \subsection{Moduł zliczania osób}
 Moduł zliczania osób jest mocno związany z aplikacją urządzania sterującego ze względu na to, że zostaną uruchomione na jednym mikrokomputerze Raspberry Pi. Zastosowano zatem język Python w wersji 2.7.13 oraz bibliotekę graficzną Open-CV, dzięki któremu w łatwy sposób można przetwarzać obrazy zaawansowanymi metodami. 
