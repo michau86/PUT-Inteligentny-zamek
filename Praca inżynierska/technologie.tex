@@ -3,47 +3,45 @@
 Prezentowany projekt ze względu na rozbudowaną konstrukcję, składa się również z wielu technologii informatycznych. Dominującymi językami programowania są Python oraz Java (z elementami języka Kotlin). Wybór oraz uzasadnienie decyzji zostało przedstawione w poniższych punktach.
 
 \subsection{Urządzenie sterujące}
-Urządzenie sterujące utworzone zostało na mikrokomputerze Raspberry Pi 3, ze względu na szereg interfejsów dostępnych na płytce. Inne rodzaju mikrokontrolery np. typy STM32 umożliwiają podłączenie takich urządzeń jak bluetooth oraz karta sieciowa Wifi, lecz jest to wówczas zintegrowany układ (celem pracy dyplomowej nie było tworzenie płytki PCB pozwalającej zintegrować układy) oraz drugim powodem jest wydajność i elastyczność programów. 
+Urządzenie sterujące utworzone zostało na mikrokomputerze Raspberry Pi 3, ze względu na szereg interfejsów dostępnych na płytce. Inne rodzaju mikrokontrolery np. typy STM32 umożliwiają podłączenie takich urządzeń jak bluetooth oraz karta sieciowa WiFi, lecz jest to wówczas zintegrowany układ (celem pracy dyplomowej nie było tworzenie płytki PCB pozwalającej zintegrować układy) oraz drugim powodem jest wydajność i elastyczność programów. 
 
 Podczas projektowania urządzenia sterującego zastosowano następujące technologie:
 \begin{itemize*}
-	\item język programowania Python w wersji 2.7.13 wraz z bibliotekami PyCrypto, MySQLdb oraz BlueZ,
+	\item język programowania Python w wersji 2.7.13 wraz z bibliotekami PyCrypto, MySQL-db oraz BlueZ,
 	\item format zapisu danych JSON,
 	\item biblioteka RPI.GPIO, aby uzyskać dostęp do interfejsu wejścia/wyjścia.
 \end{itemize*}
 
-Programem wykorzystywanym do implementacji programu jest PyCharm w wersji 2017.2.4. Wybór technologii oraz oprogramowania związany był z wysokim stopniem integracji urządzenia Raspberry Pi z językiem Python. Środowisko Pycharm zostało wybrane ze względu na zaawansowane funkcjonalności wspomagające tworzenie kodu o wysokiej czytelności oraz IDE udostępnia funkcję InteliSense (podpowiedzi pod względem wartości, pól klas, procedur).
+Programem wykorzystywanym do implementacji programu jest PyCharm w wersji 2017.2.4. Wybór technologii oraz oprogramowania związany był z wysokim stopniem integracji urządzenia Raspberry Pi z językiem Python. Środowisko PyCharm zostało wybrane ze względu na zaawansowane funkcjonalności wspomagające tworzenie kodu o wysokiej czytelności oraz IDE udostępnia funkcję Inteli-sense (podpowiedzi pod względem wartości, pól klas, procedur).
 
 \newpage
-\subsection{Aplikacja serwera}
-Aplikacja serwerowa została stworzona przy pomocy zintegrowanego środowiska programistycznego PyCharm w wersji 2017.1.4. Technologie użyte w aplikacji serwerowej były następujące:
+\subsection{Aplikacja serwera i baza danych}
+Aplikacja serwerowa została stworzona przy pomocy środowiska programistycznego PyCharm w wersji 2017.1.4. Technologie użyte w aplikacji serwerowej były następujące:
 \begin{itemize*}
-	\item język programowania Python w wersji 2.7.13,
+	\item język programowania Python w wersji 2.7.13 wraz z bibliotekami \linebreak PyCrypto i MySQL-db,
 	\item framework Django,
-	\item MySQl,
-	\item JSON.
+	\item baza danych MySQL wykorzystująca oprogramowanie XAMPP w celu emulacji środowiska Apache,
+	\item format zapisu danych JSON,
 \end{itemize*}
 
-Ponadto oprogramowanie serwera było testowane przy pomocy narzędzia XAMMP w wersji 3.2.2 które emulowało środowisko apache oraz baze danych MySQl.
+Wybór wyżej wymienionych technologii uzasadniony jest popularnością serwisów Webowych opartych o framework Django, wskazuje na to liczna liczba ofert pracy względem innych frameworków. Przez zastosowanie Django, zdecydowano jednocześnie o użyciu języka Python oraz bazy danych MySQL ze~względu na bardzo wysoką kompatybilność tych technologii. 
 
-\newpage
 \subsection{Aplikacja mobilna}
-Aplikacja mobilna została stworzona przy pomocy zintegrowanego środowiska programistycznego Android Studio w wersji 3.0 wraz z zintegrowanym emulatorem Genymotion w darmowej wersji. Języki użyte w aplikacji były nastepujące:
+Aplikacja mobilna została stworzona przy pomocy zintegrowanego środowiska programistycznego Android Studio w wersji 3.0 wraz z zintegrowanym emulatorem Genymotion z licencją darmową. Zdecydowano się na wybór systemu Android, ponieważ cieszy się bardzo dużą popularnością (urządzenia z systemem Windows są już dużą rzadkością). W przyszłości rozwoju projektu uwzględnić można również urządzenia z system iOS. Ze względu na możliwości stosowania wielu języków programowania wewnątrz jednej aplikacji, użyto następujących technologii:
 \begin{itemize}
-	\item Java 
-	\item Kotlin
-	\item XML
-	\item JSON
+	\item Java w wersji dla systemów Android jako podstawa funkcjonowania aplikacji,
+	\item Kotlin --- jako język poszerzający możliwości języka Java oraz pozwalający tworzyć kod o mniej objętości, tzn. bardziej czytelny,
+	\item XML ---język prezentowania grafiki w systemie Android,
+	\item JSON --- format danych / język przechowywania oraz transportowania danych pomiędzy systemami.
 \end{itemize}
-Cała aplikacja ponaddto została napisana w oparciu o wzorzec architektoniczny Model View Presenter. 
+Cała aplikacja ponadto została napisana w oparciu o wzorzec architektoniczny Model---View---Presenter. Zastosowano wyżej wymienione języki ze względu na wydajność programów w języku Java w systemach Android oraz chęci poznania nowego języka programowa Kotlin, który jest w pełni kompatybilny z językiem Java (przetwarzany do Javy).  
 
 \newpage
 \subsection{Moduł zliczania osób}
+Moduł zliczania osób jest mocno związany z aplikacją urządzania sterującego ze względu na to, że zostaną uruchomione na jednym mikrokomputerze Raspberry Pi. Zastosowano zatem język Python w wersji 2.7.13 oraz bibliotekę graficzną Open-CV, dzięki któremu w łatwy sposób można przetwarzać obrazy zaawansowanymi metodami. 
 
-\newpage
 \subsection{System kontroli wersji}
-Podczas tworzenia naszej poracy użyliśmy systemu kotroli wersji GIT wraz z  oprogramowaniem dekstopowym przeznaczonym do środowiska windows o anzwie GitHub Dekstop.
+Podczas tworzenia prezentowanej pracy użyto systemu kontroli wersji GIT wraz z  oprogramowaniem desktopowym przeznaczonym dla środowiska Windows o nazwie GitHub Desktop. Zastosowano takie oprogramowanie, ponieważ w znacznym stopniu ułatwia współbieżne tworzenie kodu programu oraz w czytelny sposób prezentuje wprowadzane zmiany pomiędzy iteracjami wersji udostępnianych programów.
 
-\newpage
 \subsection{Prowadzenie dokumentacji}
- Dokumentacje prowadziliśmy w języku LaTeX przy pomocy oprogramowania TexStudio. 
+ Dokumentacje pracy dyplomowej prowadzona została w języku LaTeX przy pomocy oprogramowania TexStudio. Technologia wymaga większej pracy wejściowej, aby poprawnie sformatować tekst, lecz w przypadku potrzeby edycji poszczególnych fragmentów pozwala zachować zaplanowany format w pozostałych fragmentach dokumentu. Język LaTeX umożliwia w szybki sposób zmianę formatu całego dokumenty (np. wielkości czcionki, stylu nagłówków bez potrzeby przetwarzania całego tekstu).
