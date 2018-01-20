@@ -1,33 +1,33 @@
 \select@language {polish}
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Schemat og\IeC {\'o}lny systemu}}{16}{figure.3.1}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Schemat og\IeC {\'o}lny diagramu klas dla Aplikacji Mobilnej}}{23}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagram klas dla paczki adapters}}{24}{figure.5.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagram klas dla paczki navigations}}{25}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagram klas dla paczki api}}{26}{figure.5.4}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagram klas dla paczki models}}{27}{figure.5.5}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Diagram klas dla paczki views}}{28}{figure.5.6}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Diagram klas dla paczki presenters}}{29}{figure.5.7}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Panel logowania u\IeC {\.z}ytkownika}}{36}{figure.5.8}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Panel logowania u\IeC {\.z}ytkownika }}{37}{figure.5.9}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Lista dost\IeC {\k e}pnych zamk\IeC {\'o}w}}{38}{figure.5.10}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Panel boczny z uprawnieniami administratora}}{39}{figure.5.11}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Panel boczny bez uprawnieni administratora}}{39}{figure.5.12}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Panel zarz\IeC {\k a}dzania certyfikatami }}{40}{figure.5.13}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Panel listy certyfikat\IeC {\'o}w}}{40}{figure.5.14}
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Panel certyfikatu }}{41}{figure.5.15}
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Panel wnioskowania o certyfikat }}{41}{figure.5.16}
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Panel administratora}}{42}{figure.5.17}
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Panel historii u\IeC {\.z}ycia zamk\IeC {\'o}w (filtr)}}{43}{figure.5.18}
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Panel historii u\IeC {\.z}ycia zamk\IeC {\'o}w (historia)}}{43}{figure.5.19}
-\contentsline {figure}{\numberline {5.20}{\ignorespaces Panel generowania nowego klucza cz. 1 }}{44}{figure.5.20}
-\contentsline {figure}{\numberline {5.21}{\ignorespaces Panel generowania nowego klucza cz. 2}}{44}{figure.5.21}
-\contentsline {figure}{\numberline {5.22}{\ignorespaces Panel generowania nowego klucza dla u\IeC {\.z}ytkownika }}{44}{figure.5.22}
-\contentsline {figure}{\numberline {5.23}{\ignorespaces Panel zarz\IeC {\k a}dzania certyfikatami (administrator) }}{45}{figure.5.23}
-\contentsline {figure}{\numberline {5.24}{\ignorespaces Panel listy oczekuj\IeC {\k a}cych u\IeC {\.z}ytkownik\IeC {\'o}w }}{46}{figure.5.24}
-\contentsline {figure}{\numberline {5.25}{\ignorespaces Panel listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w }}{46}{figure.5.25}
-\contentsline {figure}{\numberline {5.26}{\ignorespaces Panel zarz\IeC {\k a}dzania kontami u\IeC {\.z}ytkownik\IeC {\'o}w}}{47}{figure.5.26}
-\contentsline {figure}{\numberline {5.27}{\ignorespaces Panel ustawie\IeC {\'n} konta (zmiana has\IeC {\l }a)}}{48}{figure.5.27}
-\contentsline {figure}{\numberline {5.28}{\ignorespaces Panel ustawie\IeC {\'n} konta (certyfikat szyfruj\IeC {\k a}\IeC {\'c}y)}}{48}{figure.5.28}
-\contentsline {figure}{\numberline {5.29}{\ignorespaces Panel ustawie\IeC {\'n} konta (adres ip)}}{49}{figure.5.29}
-\contentsline {figure}{\numberline {5.30}{\ignorespaces Strona logowania}}{49}{figure.5.30}
-\contentsline {figure}{\numberline {5.31}{\ignorespaces Strona z wy\IeC {\'s}wietlon\IeC {\k a} histori\IeC {\k a} u\IeC {\.z}ycia zamk\IeC {\'o}W)}}{50}{figure.5.31}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Schemat og\IeC {\'o}lny diagramu klas dla Aplikacji Mobilnej}}{24}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagram klas dla paczki adapters}}{25}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagram klas dla paczki navigations}}{26}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagram klas dla paczki api}}{27}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagram klas dla paczki models}}{28}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Diagram klas dla paczki views}}{29}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Diagram klas dla paczki presenters}}{30}{figure.5.7}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Panel logowania u\IeC {\.z}ytkownika}}{40}{figure.5.8}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Panel logowania u\IeC {\.z}ytkownika }}{41}{figure.5.9}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Lista dost\IeC {\k e}pnych zamk\IeC {\'o}w}}{42}{figure.5.10}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Panel boczny z uprawnieniami administratora}}{43}{figure.5.11}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Panel boczny bez uprawnieni administratora}}{43}{figure.5.12}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Panel zarz\IeC {\k a}dzania certyfikatami }}{44}{figure.5.13}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Panel listy certyfikat\IeC {\'o}w}}{44}{figure.5.14}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Panel certyfikatu }}{45}{figure.5.15}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Panel wnioskowania o certyfikat }}{45}{figure.5.16}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Panel administratora}}{46}{figure.5.17}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Panel historii u\IeC {\.z}ycia zamk\IeC {\'o}w (filtr)}}{47}{figure.5.18}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Panel historii u\IeC {\.z}ycia zamk\IeC {\'o}w (historia)}}{47}{figure.5.19}
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Panel generowania nowego klucza cz. 1 }}{48}{figure.5.20}
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Panel generowania nowego klucza cz. 2}}{48}{figure.5.21}
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Panel generowania nowego klucza dla u\IeC {\.z}ytkownika }}{48}{figure.5.22}
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Panel zarz\IeC {\k a}dzania certyfikatami (administrator) }}{49}{figure.5.23}
+\contentsline {figure}{\numberline {5.24}{\ignorespaces Panel listy oczekuj\IeC {\k a}cych u\IeC {\.z}ytkownik\IeC {\'o}w }}{50}{figure.5.24}
+\contentsline {figure}{\numberline {5.25}{\ignorespaces Panel listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w }}{50}{figure.5.25}
+\contentsline {figure}{\numberline {5.26}{\ignorespaces Panel zarz\IeC {\k a}dzania kontami u\IeC {\.z}ytkownik\IeC {\'o}w}}{51}{figure.5.26}
+\contentsline {figure}{\numberline {5.27}{\ignorespaces Panel ustawie\IeC {\'n} konta (zmiana has\IeC {\l }a)}}{52}{figure.5.27}
+\contentsline {figure}{\numberline {5.28}{\ignorespaces Panel ustawie\IeC {\'n} konta (certyfikat szyfruj\IeC {\k a}\IeC {\'c}y)}}{52}{figure.5.28}
+\contentsline {figure}{\numberline {5.29}{\ignorespaces Panel ustawie\IeC {\'n} konta (adres ip)}}{53}{figure.5.29}
+\contentsline {figure}{\numberline {5.30}{\ignorespaces Strona logowania}}{53}{figure.5.30}
+\contentsline {figure}{\numberline {5.31}{\ignorespaces Strona z wy\IeC {\'s}wietlon\IeC {\k a} histori\IeC {\k a} u\IeC {\.z}ycia zamk\IeC {\'o}W)}}{54}{figure.5.31}

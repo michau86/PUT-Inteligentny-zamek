@@ -1,31 +1,28 @@
 % !TeX spellcheck = pl_PL
 % 
 \newpage\section{Projekt systemu \textsl{\NazwaSys}}\label{sec:projekt}
-Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdział dokładnie przedstawi projekt kompletnego systemu. Punkt \ref{sec:Diagramy UML} obrazuje na diagramach UML przypadki użycia poszczególnych funkcjonalności urządzeń, następnie wyszczególnione zostaną sekwencje działań głównych funkcji systemu oraz przedstawione zostaną modele bazy danych i wszystkich klas wyszczególnione dla każdego urządzenia osobno.
+Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdział dokładnie przedstawi projekt kompletnego systemu. Punkt \ref{sec:Diagramy UML} obrazuje na diagramach UML przypadki użycia poszczególnych funkcjonalności urządzeń, następnie wyszczególnione zostaną sekwencje działań głównych funkcji systemu oraz przedstawione zostaną modele bazy danych i wszystkich klas wyszczególnione dla każdego urządzenia osobno. 
+
+Podrozdział \ref{sec:Schemat elektryczny zamka} zawiera uproszczony schemat elektryczny urządzenia sterującego zamkami. Następnie przedstawiona zostanie komunikacja modułów z aplikacją serwerową, tzn. opisane zostanie API serwera pozwalające podłączenie innych urządzeń do systemu oraz przebieg transmisji danych pomiędzy urządzeniem sterującym a aplikacją mobilną.
+
+Punkt \ref{sec:Projekt interfejsu graficznego} przedstawia projekt interfejsu graficznego, wraz z objaśnieniami zastosowanej kolorystyki i symboli.
+
+Ostatni rozdział opisuje mechanizmy bezpieczeństwa zaprojektowane w systemie z uwzględnieniem głównych właściwości poufności, integralności oraz dostępności.
 
 \subsection{Diagramy UML}\label{sec:Diagramy UML}
-
 	\subsubsection{Diagram przypadków użycia}
 	
-		
-	\subsubsection{Diagramy sekwencji systemu}
-	
-		\paragraph{Aplikacja mobilna}
-		\paragraph{Aplikacja serwera}
-		\paragraph{Urządzenie sterujące}
-		\paragraph{Moduł zliczania osób}
-		
 	\subsubsection{Projekt bazy danych} 
 	
 	\subsubsection{Diagramy klas} 
 	
-		\paragraph{Aplikacja mobilna}
+		\paragraph*{Aplikacja mobilna}
 		Aplikacja mobilna składa się z szeregu klas napisanych w 2 językach: kotlin oraz java. Ponadto klasy te 
 		zostały podzielone na 5 kategorii takich jak:
 		\begin{itemize*}
 			\item API 
 			(rysunek \ref{Diagram klas dla paczki api}) 
-			--  które przechowywuje klasy odpowiedzialne za funkcje wykorzystywane w wielu miejscach systemu ,
+			--  które przechowuje klasy odpowiedzialne za funkcje wykorzystywane w wielu miejscach systemu ,
 			\item Navigation 
 			(rysunek \ref{Diagram klas dla paczki navigations}) 
 			-- są to klasy odpowiedzialne za generowanie nawigacji w apikacji mobilnej,
@@ -33,92 +30,83 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 			(rysunek \ref{Diagram klas dla paczki adapters}) 
 			 -- w którym są przechowywane klasy adapter wykorzystywane w systemie do wyświetlania dnaych,
 		\end{itemize*}
-		Oprócz tych wymienionych wyżej są jeszce 3 kategorie implementujące wzorzech architektoniczny Model-View-Presenter i są to odpowiednio:
-			\begin{itemize*}
-				\item Model
-				(rysunek \ref{Diagram klas dla paczki models}) 
-				 -- przechowywujący klasy modele odpoweidzialne za przechowywanie danych,   
+	
+Oprócz tych wymienionych wyżej są Jeszce 3 kategorie implementujące wzorzec architektoniczny Model-View-Presenter i są to odpowiednio:
+\begin{itemize*}
+	\item Model (rysunek \ref{Diagram klas dla paczki models}) 
+				 -- przechowujący klasy modele odpowiedzialne za przechowywanie danych,   
 				\item view 
 				(rysunek \ref{Diagram klas dla paczki views}) 
 				-- przechowywująćy klasy widoków odpowiedzialne za generowanie widoków w aplikacji, 
 				\item presenter
 				(rysunek \ref{Diagram klas dla paczki presenters}) 
 				 -- przechowywujaće klasy presenter odpowiedzialne za interakcje pomięczy modalami oraz widokami.
-			\end{itemize*}
-		
-	
+\end{itemize*}
+		\newpage
 		\begin{figure}[ht!]
 			\centering
-			\includegraphics[width=12.5cm,height=6cm,keepaspectratio]{Obrazy/AM_DK_ALL}
+			\includegraphics[width=12cm]{Obrazy/AM_DK_ALL}
 			\caption{Schemat ogólny diagramu klas dla Aplikacji Mobilnej}
 			\label{Schemat ogólny diagramu klas dla Aplikacji mobilnej}
 		\end{figure}
-	
-
+	\newpage
 		\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=12.5cm,height=10cm,keepaspectratio]{Obrazy/AM_DK_adapter}
+		\includegraphics[width=12cm]{Obrazy/AM_DK_adapter}
 		\caption{Diagram klas dla paczki adapters}
 		\label{Diagram klas dla paczki adapters}
 	\end{figure}
-
-
-	
+\newpage
 		\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=12.5cm,height=10cm,keepaspectratio]{Obrazy/AM_DK_navigation}
+		\includegraphics[width=12cm]{Obrazy/AM_DK_navigation}
 		\caption{Diagram klas dla paczki navigations}
 		\label{Diagram klas dla paczki navigations}
 	\end{figure}
-
-	
-	
-	
-	
+\newpage
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=12.5cm,height=16cm,keepaspectratio]{Obrazy/AM_DK_api}
+		\includegraphics[width=12cm]{Obrazy/AM_DK_api}
 		\caption{Diagram klas dla paczki api}
 		\label{Diagram klas dla paczki api}
 	\end{figure}
-
-	
-
+\newpage
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=12.5cm,height=16cm,keepaspectratio]{Obrazy/AM_DK_model}
+		\includegraphics[width=12cm]{Obrazy/AM_DK_model}
 		\caption{Diagram klas dla paczki models}
 		\label{Diagram klas dla paczki models}
 	\end{figure}
 
-	
+	\newpage
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=12.5cm,height=12cm,keepaspectratio]{Obrazy/AM_DK_view}
+	\includegraphics[width=12cm]{Obrazy/AM_DK_view}
 	\caption{Diagram klas dla paczki views}
 	\label{Diagram klas dla paczki views}
 \end{figure}
+\newpage
+Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji mobilnej przedstawia rozwinięcie paczki Presenter wraz z połączeniami z innymi paczkami
 
-		
-			Ostatni diagram dotycząćy aplikacji mobilnej przedstawia rozwinięcie paczk Presenter wraz z połączeniami z innymi paczkami
 		\begin{figure}[ht!]
 			\centering
-			\includegraphics[width=12.5cm,height=14cm,keepaspectratio]{Obrazy/AM_DK_presenter}
+			\includegraphics[width=12cm]{Obrazy/AM_DK_presenter}
 			\caption{Diagram klas dla paczki presenters}
 			\label{Diagram klas dla paczki presenters}
 		\end{figure}
+
+		\newpage		
+
+		\paragraph*{Aplikacja serwera}
 		
-		\newpage
-		\paragraph{Aplikacja serwera}
-		\paragraph{Urządzenie sterujące}
-		\paragraph{Moduł zliczania osób}
+		\paragraph*{Urządzenie sterujące}
+		\paragraph*{Moduł zliczania osób}
 
 \newpage		
-\subsection{Uproszczony schemat elektryczny systemu}
+\subsection{Uproszczony schemat elektryczny systemu}\label{sec:Schemat elektryczny zamka}
 
 \newpage
 \subsection{Komunikacja modułów systemu z aplikacją  serwera}
-	\newpage
 	\begin{landscape}
 			\subsubsection{Komunikaty HTTPRequest pomiędzy urządzeniem sterującym, a serwerem}
 
@@ -165,10 +153,9 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 \subsection{Protokoły komunikacji pomiędzy urządzeniem \newline sterującym i aplikacją mobilną}
 
 \newpage
-\subsection{Interfejs graficzny systemu}
-
+\subsection{Interfejs graficzny systemu}\label{sec:Projekt interfejsu graficznego}
 	\subsubsection{Widoki aplikacji mobilnej}
-		\section*{Panel logowania użytkownika}
+		\paragraph*{Panel logowania użytkownika}
 	Widok umożliwia zalogowanie się użytkownika do systemu poprzez podanie loginu, hasła oraz adres IP serwera w odpowiednie pola, a następnie kliknięcie w przycisk “ZALOGUJ SIĘ”. Samo pole hasła jest maskowane. Jeśli nie posiada się konta, można je utworzyć poprzez przycisk “ZAREJESTRUJ SIĘ”. (Rysunek \ref{rys:panel_logowania_pionowo})
 	
 	
@@ -181,8 +168,8 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 
 	
-	\section*{Panel rejestracji użytkownika}
-	Panel rejestracji służy do utworzenie nowego użytkownika poprzez podanie loginu, hasła, imienia i nazwiska użytkownika oraz adresu IP serwera do którego chcemy się zarejestrować. Pole z hasłem jest maskowane wraz z możliwośćią odkrywania hasłą przy pomocy ikonki oko Po upewnieniu się, że wszystkie dane są poprawne, aby zakończyć proces rejestracji, klikamy przycisk “ZAREJESTRUJ”. (Rysunek \ref{rys:panel_rejestracji_pionowo})
+	\paragraph*{Panel rejestracji użytkownika}
+	Panel rejestracji służy do utworzenie nowego użytkownika poprzez podanie loginu, hasła, imienia i nazwiska użytkownika oraz adresu IP serwera do którego chcemy się zarejestrować. Pole z hasłem jest maskowane wraz z możliwością odkrywania hasła przy pomocy ikonki oko Po upewnieniu się, że wszystkie dane są poprawne, aby zakończyć proces rejestracji, klikamy przycisk “ZAREJESTRUJ”. (Rysunek \ref{rys:panel_rejestracji_pionowo})
 	
 	\begin{figure}[ht!]
 		\centering
@@ -194,7 +181,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 	
 	
-	\section*{Panel listy zamków}
+	\paragraph*{Panel listy zamków}
 	Widok listy dostępnych zamków przedstawia listę nazw zamków do jakich dany użytkownik ma dostęp. Ułatwieniem jest możliwość sortowania wyników i wyszukiwanie po nazwach. Kliknięcie w nazwę zamka powoduje otwarcie zamka. Zmiana koloru ikon zamków sygnalizować ma status zamka.Opisy znaczeń poszcególnych koloróW oraz symboli opisane są w rozdziale symbolika oraz kolory. (Rysunek \ref{rys:panel_listy_dostepnych_zamkow_pionowo})
 	
 	\begin{figure}[ht!]
@@ -208,7 +195,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 	
 	
-	\section*{Panel boczny}
+	\paragraph*{Panel boczny}
 	Panel boczny pozwala na szybkie przełączanie pomiędzy widokami. Chowany jest po lewej stronie ekranu. Umożliwia przechodzenie odpowiednio do listy zamków, zarządzania certyfikatami, panelu administracyjnego oraz ustawień. Ostatnia pozycja powoduje wylogowanie z aplikacji. Pnanel ten w zależnośći od uprawnień użytkownika możę posiadać lub nie pole z panelem administraotra (Rysunek \ref{rys:panel_boczny_pionowo} i \ref{rys:panel_boczny_pionowo2})
 	
 	\begin{figure}[ht!]
@@ -226,7 +213,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 
 	
-	\section*{Panel zarządzania certyfikatami}
+	\paragraph*{Panel zarządzania certyfikatami}
 	Panel zarządzania certyfikatami umożliwia wybór funkcji dodania certyfikatu. Kolejne pozycje to lista posiadanych certyfikatów oraz wysłanie wniosku o utworzenie nowego certyfikatu  (Rysunek \ref{rys:panel_zarządzania_certyfikatami_pionowo})
 	
 	\begin{figure}[ht!]
@@ -239,7 +226,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 
 	
-	\section*{Panel listy certyfikatów}
+	\paragraph*{Panel listy certyfikatów}
 	Panel listy certyfikatów, jest listą aktualnych certyfikatów należących do użytkownika. Kliknięcie w dany certyfikat przenosi do widoku szczegółowego związanego z operacjami na tym certyfikacie. (Rysunek \ref{rys:panel_listy_certyfikatów_pionowo} )
 	
 	\begin{figure}[ht!]
@@ -252,7 +239,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 
 	
-	\section*{Panel certyfikatu}
+	\paragraph*{Panel certyfikatu}
 	Panel certyfikatu zawiera informacje o dacie wygaśnięcia, którego zamku dotyczy oraz w jakim czasie przyznaje dostęp. Na dole dostępne są dwa przyciski pozwalające usunąć certyfikat lub wysłać prośbę o przedłużenie ważności. W zależnośći od tego czy uzytkownik ma uprawnienia administratora przycisk przedłuż certyfikat albo wyśle zgłoszenie do serwera (dla użytkownika bez uprawnieni administratora) albo przeniesie do panelu generowania certyfikatu (dla użytkownika o uprawnieniach administratora) (Rysunek \ref{rys:panel_certyfikatu_pionowo})
 	
 	\begin{figure}[ht!]
@@ -264,7 +251,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 		
 	\end{figure}
 	
-	\section*{Panel wnioskowania o certyfikat}
+	\paragraph*{Panel wnioskowania o certyfikat}
 	Panel wnioskowania o certyfikat polega na wybraniu z listy wszystkich zamków, konkretnego do którego chcemy uzyskać dostęp i wysłać wniosek o przydzielenie dostępu. (Rysunek \ref{rys:panel_wnioskowania_o_certyfikat_pionowo})
 	
 	\begin{figure}[ht!]
@@ -277,7 +264,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 	
 	
-	\section*{Panel administratora}
+	\paragraph*{Panel administratora}
 	W panelu administratora znajdują się 6 przycisków do administrowania systemem zamków:
 	\begin{itemize*}
 		\item ,,Historia użycia zamków''
@@ -300,7 +287,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 
 	
-	\section*{Panel historii użycia zamków}
+	\paragraph*{Panel historii użycia zamków}
 	Panel historii użycia zamków składa się z rozwijanej listy filtorwania histori w której są elementy takie jak lista dostępnych zamkóW, lista dostępnych uzytkowników, data podług której następuje filtracja oraz chekbox do zaznaczania czy tylko były nieautoryzowane próby. By uzyskać daną filtrację należy nacisnać przycisk filtruj. Oprócz panelu do filtrowania znajduje się również sama historia gdzie wyświetlane jestrodzaj próby otwarcia, data oraz przez kogo była ta próba podjęta. (Rysunek \ref{rys:panel_historii_uzycia_zamka_pionowo} i \ref{rys:panel_historii_uzycia_zamka_pionowo2})
 	
 	\begin{figure}[ht!]
@@ -317,7 +304,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 	\newpage
 	
-	\section*{Panel generowania nowego certyfikatu (administrator)}
+	\paragraph*{Panel generowania nowego certyfikatu (administrator)}
 	Panel generowanie nowego certyfikatu (administrator) służy do tworzenia nowych certyfikatów przez administratora. W pierwszych polach podaje się imię i nazwisko kogo dotyczy certyfikat.Następnie wybierane jest użytkownik (login) oraz zamek z rozwijanej listy. W dalszej części wybierane jest zakres dat w których certyfikat ma być ważny. Potem widać przycisk o nazwie "zakres obowiązywania certyfikatów" który przekierowywuje do widoku odpowiedzialnego za to w jakich godzinach dla danych dni tygodni certyfikat udziela dostępu. (Rysunek \ref{rys:panel_generowanie_nowego_klucza_gosc_admin_pioniowo}, \ref{rys:panel_generowanie_nowego_klucza_admin_pionowo2} i 
 	\ref{rys:panel_wyboru_zakresu_certyfikatu})
 	
@@ -344,7 +331,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 
 	
-	\section*{Panel zarządzania certyfikatami~(administrator)}
+	\paragraph*{Panel zarządzania certyfikatami~(administrator)}
 	Panel zarządzania certyfikatami użytkowników (administrator) jest widokiem tylko wszystkich aktywnych certyfikatów w systemie. Administrator klikając na pozycję przechodzi do panelu certyfikatu opisanego wyżej. Tam może usunąć dostęp lub go przedłużyć. Ułatwieniem jest możliwość wyboru typu sortowania. (Rysunek \ref{rys:panel_lista_certyfikatow_administrator_pionowo})
 	
 	\begin{figure}[ht!]
@@ -357,7 +344,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 
 	
-	\section*{Panel~listy~oczekujących~użytkowników~do~rejestracji}
+	\paragraph*{Panel~listy~oczekujących~użytkowników~do~rejestracji}
 	Panel listy oczekujących użytkowników jest listą wszystkich gości, którzy ubiegają się o zarejestrowanie. PO kliknięciu w odpowiednią pozycję pojawiają się dwie opcję: “AKCEPTUJ” lub “ODRZUĆ”.  (Rysunek \ref{rys:panel_lista_oczekujacych_uzytkownikow_pionowo} )
 	
 	\begin{figure}[ht!]
@@ -370,7 +357,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	\end{figure}
 
 	
-	\section*{Panel~listy~oczekujących~certyfikatów do~wygenerowania}
+	\paragraph*{Panel~listy~oczekujących~certyfikatów do~wygenerowania}
 	Panel listy oczekujących certyfikatów jest listą wszystkich certyfikatów, które ubiegają się o akceptację administratora. Po kliknięciu w odpowiednią pozycję pojawiają się dwie opcję: “AKCEPTUJ” lub “ODRZUĆ”.  (Rysunek \ref{rys:panel_lista_oczekujacych_certyfikatow_pionowo} )
 	
 	\begin{figure}[ht!]
@@ -382,7 +369,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 		
 	\end{figure}
 	
-	\section*{Panel zarządzania kontami użytkowników}
+	\paragraph*{Panel zarządzania kontami użytkowników}
 	Panel ten służy do zarządzania kontami użytkowników. Wyświetla on listę użytkownikóW systemu wraz z zonaczeniami czy jest on aktyny bądż zablokowany oraz czy ma ważny klucz szyfrujący (Rysunek \ref{rys:panel_Zarządzania_Kontami})
 	
 	\begin{figure}[ht!]
@@ -394,7 +381,7 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 		
 	\end{figure}
 	
-	\section*{Panel ustawień konta}
+	\paragraph*{Panel ustawień konta}
 	W panelu ustawień użytkownik może zmienić hasło do swojego konta. Wymagane jest podanie starego hasła, a następnie nowego.Ponadto w panelu tym mamy podgląD certyfikatu szyfrujaćego wraz z możliwośćią wygenerowania nowego oraz zmiane adresu ip serwera  (Rysunek \ref{rys:panel_ustawienia_pionowo} i \ref{rys:panel_ustawienia_poziomo})
 	
 	\begin{figure}[ht!]
@@ -554,10 +541,10 @@ Głównym celem pracy dyplomowej jest zaprojektowanie systemu. Opisywany rozdzia
 	Kolorystyka systemu została oparta o styl material design któy jest dostępny dla systemu android od wersji 5.0. Strona jak i palikacja mobilna są zbliżone kolorystycznie. Różnice w kolorach są spowodowane tylko narzuconą kolorystyką z biblioteki Bootsrap.
 	
 \newpage
-\subsection{Bezpieczeństwo systemu}
+\subsection{Bezpieczeństwo systemu}\label{sec:Projekt bezpieczeństwo}
 	\subsubsection{Projekt infrastruktury klucza publicznego (PKI)}\label{sec:Projekt PKI}
-		\paragraph{Idea PKI}
-		\paragraph{Urzedy certyfikujące}
+		\paragraph*{Idea PKI}
+		\paragraph*{Urzędy certyfikujące}
 		\paragraph{Klient systemu}
 	\subsubsection{Poufność}
 	\subsubsection{Dostępność}
