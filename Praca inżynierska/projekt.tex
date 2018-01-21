@@ -10,10 +10,109 @@ Punkt \ref{sec:Projekt interfejsu graficznego} przedstawia projekt interfejsu gr
 Ostatni rozdział opisuje mechanizmy bezpieczeństwa zaprojektowane w systemie z uwzględnieniem głównych właściwości poufności, integralności oraz dostępności.
 
 \subsection{Diagramy UML}\label{sec:Diagramy UML}
+Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolejności przedstawiony zostanie diagram przypadków użycia, gdzie wymienione zostaną wszystkie funkcjonalności systemu oraz przyłączone do nich zostaną poszczególne podmioty (aktorzy) systemu, które biorą udział przy wykonywaniu danej funkcjonalności. Następnie omówiony zostanie diagram relacji oraz encji bazy danych. Na koniec omówione zostaną diagramy klas, wykonane dla każdego modułu osobno. 
 	\subsubsection{Diagram przypadków użycia}
-	
+	Diagram przypadków użycia (funkcjonalności) systemu wraz z opowiadającymi aktorami przedstawiono na Rys. \ref{diagram:diagram przypadków_użycia}.
+	\begin{landscape}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=22cm]{Obrazy/Diagram_przypadkow_uzycia.png}
+			\caption{Diagram przypadków użycia}
+			\label{diagram:diagram przypadków_użycia}
+		\end{figure}
+	\end{landscape}
+\newpage
 	\subsubsection{Projekt bazy danych} 
+	Baza danych będzie składać się z pięciu tabel:
+	\begin{itemize*}
+		\item {USERS} --- przechowuje dane użytkowników oraz dane niezbędne przy weryfikacji logowania,
+		\item {LOCKS} --- zawiera informacje na temat dostępnych w systemie zamków,
+		\item {ACCESS\_TO\_LOCKS} --- archiwizuje próby użycia certyfikatów,
+		\item {LOCKS\_KEYS} --- zawiera wszystkie klucze dostępowe użytkowników,
+		\item {WAIT\_LOCKS\_KEYS} --- przetrzymuje klucze dostępowe oczekujące na zatwierdzenie przez administratora.
+	\end{itemize*}
 	
+	Wiersz tabeli USERS zawierać musi:
+	\begin{itemize*}
+		\item {ID\_USER} --- unikalny identyfikator (klucz główny) użytkownika składający się z 10 cyfr,
+		\item {LOGIN} --- unikalna nazwa użytkownika niezbędna podczas logowania, zawierająca nie więcej niż 255 znaków,
+		\item {PASSWORD} --- hasło zapisane w postaci skrótu, potrzebne do autoryzacji dostępu użytkownikowi,
+		\item {NAME} - imię użytkownika,
+		\item {SURNAME} --- nazwisko użytkownika,
+		\item {TOKEN} --- generowany ciąg pseudolosowy klucz sesji logowania,
+		\item  {ISACTIVATED} --- pole boolowskie oznaczające, czy dane konto jest zaakceptowane,
+		\item {IS\_ADMIN} --- pole boolowskie wskazujące czy dany użytkownik jest administratorem czy nie, (aktywowane) przez administratora.
+		\item {PUBLIC\_KEY} --- klucz publiczny użytkownika potrzebny do podpisu cyfrowego,
+		\item Serial\_number --- unikalny numer seryjny certyfikatu szyfrującego,
+		\item Validity\_period --- data do której ważny jest certyfikat szyfrujący,
+		\item Version --- numer wersji certyfikatu szyfrującego,
+		\item Signature\_Algorithm\_Identifier --- identyfikator algorytmu szyfrującego,
+		\item Hash\_Algorithm --- identyfikator algorytmu funkcji skrótu.
+	\end{itemize*}
+	
+	Zamek opisywany jest poprzez kolumny:
+	\begin{itemize*}
+		\item {ID\_LOCK} --- unikalny identyfikator (klucz główny) zamka składający się z 10 cyfr,
+		\item {NAME} --- unikalna nazwa zamka,
+		\item {MAC\_ADDRESS} --- adres fizyczny urządzenia sterującego zamkiem,
+		\item {LOCALIZATION} --- nieobowiązkowe pole opisujące fizyczne położenie zamka,
+		\item {People\_inside} --- wartość licznika osób znajdujących się wewnątrz pomieszczenia.
+	\end{itemize*}
+	\newpage
+	
+	Klucz dostępowy składa się z:
+	\begin{itemize*}
+		\item {ID\_KEY} --- unikalny identyfikator (klucz główny) klucza dostępowego składający się z 10 cyfr,
+		\item {ID\_LOCK} --- klucz obcy do tabeli przechowującej dostępne zamki,
+		\item {ID\_USER} --- klucz obcy do tabeli przechowującej dane użytkownika, jest to pole służące do określenia kto utworzył klucz dostępu,
+		\item {LOCK\_KEY} --- unikalna wartość certyfikatu dostępu,
+		\item {FROM\_DATE} --- data od której obowiązuje klucz,
+		\item {TO\_DATE} --- data do której obowiązuje klucz,
+		\item {ISACTUAL} --- data wygaśnięcia klucza, jeśli równa TO, oznacza to że klucz utracił ważność z powodu czasu, jeśli różna oznacza, to że zablokowano z innego powodu ważność,
+		\item {MONDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w poniedziałki,
+		\item {TUESDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp we wtorki,
+		\item {WEDNESDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w środy,
+		\item {THURSDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w czwartki,
+		\item {FRIDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w piątki,
+		\item {SATURDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w soboty,
+		\item {SUNDAY} --- słowne określenie, w których godzinach zostanie przyznany dostęp w niedziele,
+		\item {IS\_PERNAMENT} --- zmienna boolowska oznaczająca czy dostęp jest zawsze,
+		\item {NAME} - imię osoby, której dotyczy certyfikat,
+		\item {SURNAME} --- nazwisko osoby, której dotyczy certyfikat.
+	\end{itemize*}
+	
+	W tabeli archiwizującej akcje na zamku znajdują się takie dane jak:
+	\begin{itemize*}
+		\item {ID} --- unikalny identyfikator (klucz główny) akcji wykonanej na certyfikacie składający się z 10 cyfr,
+		\item {ID\_KEY} --- klucz obcy do tabeli przechowującej klucze dostępowe, dzięki tej informacji możemy uzyskać dane o zamku, który został otwierany jak również do kogo należał klucz,
+		\item {DATE} --- dokładna data z godziną użycia klucza dostępowego,
+		\item {ACCESS} --- binarna flaga informująca czy dostęp został przyznany czy odmówiony.
+	\end{itemize*}
+\newpage
+	Tabela WAIT\_LOCKS\_KEYS składa się z:
+	\begin{itemize*}
+		\item {ID\_KEY} --- unikalny identyfikator (klucz główny) oczekującego certyfikatu,
+		\item{ID\_LOCK} --- klucz obcy do tabeli LOCKS, oznacza zamek do którego jest zgłaszana prośba dostępu,
+		\item {ID\_USER} --- klucz obcy do tabeli USERS, oznacza użytkownika który zgłasza prośbę o dostęp do zamka.
+	\end{itemize*}
+	
+	Diagramy bazy danych odpowiednio encji i relacji przedstawione zostały na Rys \ref{diagram:diagram encji} i Rys. \ref{diagram:diagram relacji}.  
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=13cm]{Obrazy/Diagram_encji.png}
+		\caption{Diagram encji bazy danych}
+		\label{diagram:diagram encji}
+	\end{figure}
+	\newpage
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=13cm]{Obrazy/Diagram_relacji.png}
+		\caption{Diagram relacji bazy danych}
+		\label{diagram:diagram relacji}
+	\end{figure}
+\newpage
+
 	\subsubsection{Diagramy klas} 
 	
 		\paragraph*{Aplikacja mobilna}
@@ -433,7 +532,7 @@ Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji 
 	
 	\subsubsection{Komunikacja człowiek-interfejs}
 	
-		\paragraph{Komunikaty tekstowe}
+		\paragraph*{Komunikaty tekstowe}
 			 W aplikacji mobilnej komunikaty są wyświetlane przy pomocy toast. Komunikaty te  trwają na ekranie 4 sekundy. Informują one użytkownika o zaistniałych sytuacjach takich jak
 			 \begin{itemize}
 			 	\item błąd połaczenia z bazą danych
@@ -442,7 +541,7 @@ Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji 
 			 	\item o pobraniu listy certyfikatów
 			 \end{itemize}
 		 Dodatkowo są wyświetlane na ekranie komunikaty tekstowe przy pomocy  textview odnośnie walidacji danych oraz podpowiedzi podczas wpisywania haseł przy pomocy tooltip-ów ktore informuje użytkownika o paramterach jakie hasło powinno mieć
-		\paragraph{Symbolika ikon}
+		\paragraph*{Symbolika ikon}
 		Aplikacja mobilna oraz strona internetowa korzysta z symboli zawartych w fontwesome. oto poszcególne znaczenia dla danych ikon:
 	   
 	   
@@ -481,7 +580,7 @@ Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji 
 	   
 
 	
-		\paragraph{Znaczenie kolorystyki}
+		\paragraph*{Znaczenie kolorystyki}
 		W systemie występują 4 kolory informujące użytkownika o zaistniałych sytuacjach
 		\begin{itemize}
 			\item czerwony który w zależnośći od kontekstu sugeruje albo niepoprawne wpisane dane, nie uzyskanie dostępu do pomieszcenia albo nieautoryzowaną próbę dostępu do pomieczenia,
@@ -500,7 +599,7 @@ Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji 
 		Ideą infrastruktury klucza publicznego jest zarządzanie cyfrowymi certyfikatami i kluczami szyfrującymi dla osób, oprogramowania, urządzeń i systemów. Przy jednoczesnym zahowaniu integralnośći, poufnośći oraz dostępnośći.
 		\paragraph*{Urzędy certyfikujące}
 		W prrzypadku \NazwaSys urzędem certyfikującym 
-		\paragraph{Klient systemu}
+		\paragraph*{Klient systemu}
 		W prrzypadku \NazwaSys klientem systemu będzie Aplikacja mobilna. Będzie ona odpowiedzialna za uwierzytelnianie uzytkownika w systemie oraz generowanie klucza szyfrujacego, który zostanie po tym fakcie wysyłany do urzędu certyfikującego. Sam klucz szyfrujący będzie tworzony w momecnie rejestracji uzytkownika oraz na żadanie użytkownika.
 		 %nie jestem pewien czy tutaj czy w rozdziale Bezpieczeńśtwo to co poniżęj jest%
 		 
@@ -508,5 +607,7 @@ Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji 
 		
 		Drugim newraligcznym punktem aplikcaji mobilnej będzie transmisja danych dlatego w komunikacji pomiędzy serwerem a urządzeniem mobilnym wykorzystany będzie protokół HTTPs. Co uniemożliwi podsłuch danych.
 	\subsubsection{Poufność}
+	Poufność zostanie zapewniona przy pomocy odpowiedniego przechowywania danych a kliencie systemu, bezpiecznej wymianie danych dzięki transmisji z wykorzystaniem SSL pomiędzy modułąmi systemu oraz funkcją uwierzytelniajaćym w aplikacji mobilnej oraz na serwerze dzięi którym, dane poufne nie trafia. w niepowołane ręce. 
 	\subsubsection{Dostępność}
+	Dzięki popularnośći aplikacji mobilnych nasz system będzie w dużym stopniu dostępny dla użytkowników systemu. Jedynymi zagrożeniami będzie awaria sieci komputerowej w któej znajdować będzie się system oraz awaria sieci elektrycznej. Pierwsze jak i drugie zagrożenie będziemy redukować w postaci ożliwośći uzyskania dostępu do pomieszceni w tradycyjny sposób przy pomocy kluczy. Ponadto drugie zagrożenie będzie też redukowane przy pomcy urządzeni awaryjnego zasilania, co umożliwi funkcjonownaie systemu po zaniku napięcia w sieci elektrycznej przez określony czas. 
 	\subsubsection{Integralność}
