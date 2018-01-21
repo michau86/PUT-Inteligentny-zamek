@@ -11,7 +11,7 @@ Ostatni rozdział opisuje mechanizmy bezpieczeństwa zaprojektowane w systemie z
 
 \subsection{Diagramy UML}\label{sec:Diagramy UML}
 Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolejności przedstawiony zostanie diagram przypadków użycia, gdzie wymienione zostaną wszystkie funkcjonalności systemu oraz przyłączone do nich zostaną poszczególne podmioty (aktorzy) systemu, które biorą udział przy wykonywaniu danej funkcjonalności. Następnie omówiony zostanie diagram relacji oraz encji bazy danych. Na koniec omówione zostaną diagramy klas, wykonane dla każdego modułu osobno. 
-	\subsubsection{Diagram przypadków użycia [Maciej Marciniak]}
+	\subsubsection[Diagram przypadków użycia]{Diagram przypadków użycia [Maciej Marciniak]}
 	Diagram przypadków użycia (funkcjonalności) systemu wraz z opowiadającymi aktorami przedstawiono na Rys. \ref{diagram:diagram przypadków_użycia}.
 	\begin{landscape}
 		\begin{figure}[!h]
@@ -22,7 +22,7 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 		\end{figure}
 	\end{landscape}
 \newpage
-	\subsubsection{Projekt bazy danych [Maciej Marciniak]} 
+	\subsubsection[Projekt bazy danych]{Projekt bazy danych [Maciej Marciniak]} 
 	Baza danych będzie składać się z pięciu tabel:
 	\begin{itemize*}
 		\item {USERS} --- przechowuje dane użytkowników oraz dane niezbędne przy weryfikacji logowania,
@@ -193,172 +193,215 @@ Oprócz tych wymienionych wyżej są dodatkowo 3 kategorie implementujące wzorz
 		\end{figure}
 		\newpage		
 
-		\paragraph*{Aplikacja serwera}
-		
-		\paragraph*{Urządzenie sterujące}
-		\paragraph*{Moduł zliczania osób}
-
+	\paragraph*{Aplikacja serwera [Maciej Marciniak]}
+	Diagram klas znajdujący się na Rys. \ref{diagram:Diagram_klas_aplikacji_serwerowej} przedstawia klasy i metody potrzebne do realizacji projektu. Klasa Views przechowuje funkcje wykonujące akcje na bazie danych, zaś klasa URLs odpowiada za wskazanie pod jakim adresem URL znajduje się konkretna funkcja. Nazwy oraz budowę klas narzuca framework Django. Każda nazwa funkcji odpowiada nazwie URLa oraz opisuje jaką funkcję ma pełnić.
+	
+	\paragraph*{Urządzenie sterujące [Maciej Marciniak]}
+	Zaprojektowane klasy, które mają zostać zaimplementowane w urządzeniu sterującym znajdują się na Rys. \ref{diagram:Diagram_klas_urzadzenia_sterujacego}. Klasa Main jest głównym elementem programu. W niej wywołana ma zostać funkcja ''main'' (język Python nie wymaga funkcji niesocjalizującej charakterystycznej dla innych języków programowania). Obiekty klasy Certificate i CertificatePKI odpowiednio przechowywać mają dane certyfikatów dostępowych i szyfrujących. Metoda w Main Compare\_PKI\_Certificate porównywać ma klucze szyfrujące, czy są identyczne. Klasa Servo zarządzać ma fizycznym zamkiem przy drzwiach, uniwersalnie dla serwomechanizmu oraz elektrozamka. Funkcja Open ma mieć na celu ustawienie zamka w stanie otwartym, zaś Close analogicznie zamkniętym. 
+	
+	
+		\begin{landscape}
+		\begin{figure}[!h]
+			\centering
+			\vspace{2.5cm}
+			\includegraphics[width=21cm]{Obrazy/Diagram_klas_aplikacja_serwerowa.png}
+			\caption{Diagram klas aplikacji serwerowej}
+			\label{diagram:Diagram_klas_aplikacji_serwerowej}
+		\end{figure}	
+	\end{landscape}
+\begin{landscape}
+		\begin{figure}[!h]
+			\centering
+			\vspace{-1.5cm}
+			\includegraphics[width=15cm]{Obrazy/Diagram_klas_urzadzenie_sterujace.png}
+			\caption{Diagram klas urządzenia sterującego}
+			\label{diagram:Diagram_klas_urzadzenia_sterujacego}
+		\end{figure}
+	\end{landscape}
+			
+	\paragraph*{Moduł zliczania osób [Maciej Marciniak]}
+	Moduł zliczania osób ze względu na swoją funkcjonalność i wykorzystanie biblioteki Open-CV nie wymaga tworzenia specjalnych klas, ani wyszczególnienia konkretnych metod. Jedyną możliwością jest wyodrębnienie klas przechowujących zliczane osoby znajdujące się w obiektywie kamery. Klasa dla konkretnej osoby posiadać ma metody do aktualizacji współrzędnych danej osoby oraz określające, czy przesuwa się w górę, czy w dół granicy obiektywu. Zmienne ''x'' i ''y'' przechowywać mają współrzędne osoby, ''donę'' oznaczać ukończenie śledzenia osoby, ''state'' obecny stan, a ''age'' i ''max\_age'' określać mają jak długo dany obiekt ma być namierzany.
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=12.5cm]{Obrazy/Diagram_klas_modul_zliczania_osob.png}
+		\caption{Diagram klas modułu zliczania osób}
+		\label{diagram:Diagram_klas_modul_zliczania_osob}
+	\end{figure}
 \newpage		
-\subsection{Uproszczony schemat elektryczny systemu}\label{sec:Schemat elektryczny zamka}
+\subsection[Uproszczony schemat elektryczny systemu]{Uproszczony schemat elektryczny systemu \newline [Maciej Marciniak]}\label{sec:Schemat elektryczny zamka}
+Urządzenie sterujące jest jedynym fizycznym elementem projektowanym w pracy dyplomowej. Uproszczony schemat instalacji elektrycznej przedstawiony został na Rys. \ref{schemat:schemat elektryczny systemu}. Centrum modułu jest mikrokomputer Raspberry Pi 3, zasilane z uniwersalnego gniazda USB. Zatem układ zasilany może być z komputera lub z zasilacza o napięciu 5V i minimalnym prądzie 1A. Urządzenie zostało zaprojektowane w taki sposób, aby można było podłączyć serwomechanizm i/lub elektrozamek. Umożliwia to dowolną konfigurację sprzętu według potrzeb i możliwości danych drzwi. 
 
+Zasilanie elektrozamka pochodzić ma z zasilacza 12V umożliwiającym podanie wysokiego prądu. Wysokie wymagania związane są z trudem wprawienia zapadki elektrozamka w ruch pod wpływem często niewielkiego elektromagnesu. Ze względu na wyższe zasilanie zamka niż znajdujące się w Raspberry Pi wymagane jest użycie tranzystora. Zdecydowano użyć elementu BD137-16 ze względu na swój niski koszt oraz wysoką odporność na prąd. Układ związany z serwomechanizmem jest zgodny z parametrami mikrokomputera, dlatego zasilanie oraz sterowanie prowadzone jest bezpośrednio z układu.
+
+Piny sterujące urządzeniami w zamku są uzależnione od pełnionych w Raspberry Pi funkcji. Sterowanie elektrozamkiem możliwe jest na niemal każdym pinie, ze względu na brak wymagań specjalistycznego sterowania, za to serwomechanizm wymaga zastosowania sygnału PWM, który musi być obsługiwany przez dane GPIO (w tym wypadku takim pinem jest GPIO\_18).
 \newpage
-\subsection{Komunikacja modułów systemu z aplikacją  serwera}
-	\begin{landscape}
-			\subsubsection{Komunikaty HTTPRequest pomiędzy urządzeniem sterującym, a serwerem}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=14cm]{Obrazy/Schemat_elektryczny.pdf}
+	\caption{Schemat elektryczny systemu}
+	\label{schemat:schemat elektryczny systemu}
+\end{figure}
+\newpage
 
-		
-		\begin{longtable}[!ht]{|p{5cm}|p{6cm}|p{6.5cm}|p{3cm}|} 
+\subsection[Komunikacja modułów systemu z aplikacją]{Komunikacja modułów systemu z aplikacją  serwera [Maciej Marciniak]}\label{Komunikacja serwer}
+Tworząc aplikację serwerową należy zapewnić możliwość komunikację (tak zwane API), która pozwoli na interakcję z zasobami zarządzanymi przez serwer. Przedstawiany system udostępniać powinien usługi dla urządzenia sterującego, w tym również modułu zliczającego osoby oraz dla aplikacji mobilnej. Ze względu na odległości mogące dzielić systemy od siebie zdecydowano ,jako interfejs komunikacji sieć Internetową z użyciem bezpiecznego protokołu Https. 
+	\subsubsection{Komunikaty HTTPRequest pomiędzy urządzeniem sterującym, a serwerem}
+	Komunikacja pomiędzy urządzeniem sterującym, a serwerem powinna zapewniać możliwość weryfikacji poprawności certyfikatów dostępowych oraz szyfrujących w celu potwierdzenia tożsamości użytkownika oraz zdecydowaniu, czy dana osoba ma przydzielony dostęp do pomieszczenia o danej porze dnia. Dodatkowo serwer powinien udostępniać API do wpisywania liczby osób w pomieszczeniu oraz wpisujące do bazy danych, czy dostęp został przyznany, czy nie. Wykaz wymaganych API znajduje się w Tabeli \ref{tab:http_raspberry}.
+	\subsubsection{Komunikaty HTTPRequest pomiędzy aplikacją mobilną, \newline a serwerem}
+	Aplikacja mobilna powinna posiadać podstawowe operacja użytkowników, takie jak logowanie, rejestracja, wylogowanie, dodatkowo powinny zostać udostępnione funkcje związane z zarządzaniem konta jak i certyfikatami dostępowymi. Funkcjonalności powiązane z operacjami na koncie to zmiana hasła, wymiana certyfikatu szyfrującego, możliwość blokowania konta. Funkcja zarządzającymi certyfikatami dostępowymi są generowanie nowych kluczy, blokowanie ich, aktywowanie. API powinno być dedykowane dla dwóch rodzajów użytkowników zwykłego oraz z uprawnieniami administratora. Właściwości funkcji drugiego typu konta powinny dodatkowo udostępniać podgląd w historię używania poszczególnych zamków oraz edycję wszystkich parametrów kont użytkownika zwykłego. Wykaz zaprojektowanego API znajduje się w Tabeli \ref{tab:http_mobilne}.
+	\begin{landscape}
+		\begin{longtable}[!ht]{|m{5cm}|m{5cm}|m{4.5cm}|m{4cm}|} 
 			\caption{Tabela komunikatów HTTP dla Raspberry Pi}
 			\label{tab:http_raspberry}\\
 			\hline	
 			Adres URL & Parametry & Odpowiedź & Opis \\	\hline
-			/api/RPI/download/cerificate/ & certificate\_id --- identyfikator certyfikatu \newline RPI\_MAC --- adres MAC urządzenia \newline login\_user --- login użytkownika & "data": dict\_all\_certificate, "public\_key": public\_key \tablinia "data": "invalid" & Pobranie certyfikatu użytkownika \\ \hline
-			/api/RPI/access\_decision/ & certificate\_id --- identyfikator certyfikatu \newline decision --- informacja o odmowie/akceptacji dostępu & "status": "ok" \tablinia "data": "invalid" & Informacja do serwera o statusie otwierania zamka \\ \hline
+			/api/RPI/download/certificate/ & certificate\_id --- identyfikator certyfikatu, \newline RPI\_MAC --- adres MAC \linebreak urządzenia, \newline login\_user --- login użytkownika & ''data'': dict\_all\_certificate, \newline ''public\_key'': public\_key \tablinia ''data'': ''invalid'' & Pobranie certyfikatu użytkownika \\ \hline
+			/api/RPI/access\_decision/ & certificate\_id --- identyfikator certyfikat,u \newline decision --- informacja o odmowie/akceptacji dostępu & ''status'': ''ok'' \tablinia ''data'': ''invalid'' & Informacja do serwera o statusie otwierania zamka \\ \hline
+			/api/RPI/people\_counter/ & counter --- liczba osób w pomieszczeniu, \newline RPI\_MAC --- adres MAC urządzenia & ''status'': ''ok'' \tablinia ''data'': ''Invalid'' & Ustawienie licznika osób w pomieszczeniu \\ \hline
 		\end{longtable}
 	\end{landscape}
-\newpage
+
 \begin{landscape}
-	\subsubsection{Komunikaty HTTPRequest pomiędzy aplikacją mobilną, \newline a serwerem}
-	\begin{longtable}[!ht]{|m{5cm}|m{6cm}|m{6.5cm}|m{3cm}|} 
+	\begin{longtable}[!ht]{|m{5cm}|m{5cm}|m{4.7cm}|m{4cm}|} 
 		\caption{Tabela komunikatów HTTP dla urządzenia mobilnego}
 		\label{tab:http_mobilne}\\
 		\hline	
 		Adres URL & Parametry & Odpowiedź & Opis \\	\hline
-		/api/login/ & username --- login użytkownika \newline password --- hasło użytkownika & "status": "ok", "token": token \tablinia "Status'': "ERROR PASSWORD", "token": "invalid" \tablinia "status": "not activated", "token": "invalid" & Logowanie użytkownika do aplikacji \\ \hline
-		/api/register/ & login --- login użytkownika \newline password --- hasła użytkownika \newline name --- imię użytkownika \newline surname -- nazwisko użytkownika \newline publickey --- klucz publiczny użytkownika & "status": "ERROR" \tablinia "status": "REGISTER OK" & Rejestracja nowego użytkownika do aplikacji \\ \hline
-		/api/logout/ & login --- login użytkownika \newline token --- klucz sesji logowania & "status": "logout" \tablinia "status": "invalid" & Wylogowanie użytkownika z aplikacji \\ \hline
-		/api/download/all\_certifacate/ & login --- login użytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_certificate \tablinia "status": "invalid" & Pobranie wszystkich dostępnych certyfikatów użytkownika \\ \hline
-		/api/download/all\_locks/ & login --- login użytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_locks \tablinia "status": "invalid" & Pobranie listy wszystkich dostępnych zamków w systemie \\ \hline
-		/api/download/all\_user/ & login --- login użytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_users \tablinia "status": "invalid" & Pobranie listy wszystkich użytkowników systemu \\ \hline
-		/api/deactivation/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline certificate\_id --- identyfikator certyfikatu do usunięcia & "status": "ok" \tablinia "status": "invalid" & Usunięcie dostępu do certyfikatu \\ \hline
-		/api/request\_new\_certificate/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline lock\_id --- identyfikator zamka & "status": "ok" \tablinia "status": "invalid" & Wnioskowanie o nowy certyfikat \\ \hline
-		/api/change\_password/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline newpasswd --- nowe hasło użytkownika & "status": "ok" \tablinia "status": "invalid" & Zmiana hasła użytkownika \\ \hline
-		/api/admin/history/ & login --- login użytkownika \newline token --- klucz sesji logowania & "data": dict\_history \tablinia "status": "invalid" & Pobranie historii użycia zamków w systemie (administrator) \\ \hline
-		/api/admin/download/\linebreak all\_certificate/ & login --- login użytkownika \newline token --- klucz sesji logowania & "data": dict\_all\_certificate \tablinia "status": "invalid" & Pobranie wszystkich certyfikatów z systemu (administrator)\\ \hline
-		/api/admin/deactivation/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline certificate\_id --- identyfikator certyfikatu do usunięcia & "status": "ok" \tablinia "status": "invalid" & Usunięcie dostępu do certyfikatu (administrator) \\ \hline
-		/api/admin/register\_waiting/ & login --- login użytkownika \newline token --- klucz sesji logowania & "status": "ok" \tablinia "status": "invalid" & Pobranie listy oczekujących użytkowników na zaakceptowanie rejestracji \\ \hline
-		/api/admin/register\_decision/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline user\_login --- login użytkownika, którego dotyczy decyzja \newline decision --- decyzja True/False dotycząca akceptacji rejestracji & "status": "ok" \tablinia "status": "invalid" & Podjęcie decyzji przez administratora dotycząca rejestracji użytkownika o danym loginie \\ \hline
-		/api/admin/certificate\_waiting/ & login --- login użytkownika \newline token --- klucz sesji logowania & "status": "ok" \tablinia "status": "invalid" & Pobranie listy oczekujących certyfikatów na zaakceptowanie \\ \hline
-		/api/admin/certificate\_decision/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline certificate\_id --- identyfikator certyfikatu, którego dotyczy decyzja & "status": "ok" \tablinia "status": "invalid" & Podjęcie decyzji przez administratora dotycząca przyjęcia \\ \hline
-		/api/admin/\linebreak generate\_new\_certificate/ & login --- login użytkownika \newline token --- klucz sesji logowania \newline user\_id --- identyfikator użytkownika \newline lock\_id --- identyfikator zamka \newline from\_date --- data od której obowiązuje certyfikat \newline to\_date --- data do której obowiązuje certyfikat \newline monday...sunday --- 7 parametrów oznaczjacych zakresy godzin w poszczególnych dniach tygodnia \newline is\_pernament --- czy dostęp jest ciągły \newline name --- imię użytkownika certyfikatu \newline surname --- nazwisko użytkownika certyfikatu & "status": "ok" \tablinia "status": "invalid" & Generowanie nowego certyfikatu (administrator) \\ \hline
-		
+		/api/login/ & username --- login użytkownika, \newline password --- hasło użytkownika & ''status'': ''ok'', ''token'': token \tablinia ''status'':''ERROR~\mbox{PASSWORD}'', ''token'': ''invalid'' \tablinia ''status'': ''not activated'', \newline ''token'': ''invalid'', \tablinia ''status'': ''blocked'', \newline''token'': ''invalid'' & Logowanie użytkownika do aplikacji \\ \hline
+		/api/register/ & login --- login użytkownika, \newline password --- hasła użytkownika, \newline name --- imię użytkownika, \newline surname -- nazwisko użytkownika, \newline publickey --- klucz publiczny użytkownika & ''status'': 'ERROR'' \tablinia ''status'': ''REGISTER OK'' & Rejestracja nowego użytkownika do aplikacji \\ \hline
+		/api/logout/ & login --- login użytkownika, \newline token --- klucz sesji logowania & ''status'': ''logout'' \tablinia ''status'': ''invalid'' & Wylogowanie użytkownika z aplikacji \\ \hline
+		/api/download/all\_certifacate/ & login --- login użytkownika, \newline token --- klucz sesji logowania & ''data'': dict\_all\_certificate \tablinia ''status'': ''invalid'' & Pobranie wszystkich dostępnych certyfikatów użytkownika \\ \hline
+		/api/download/all\_locks/ & login --- login użytkownika, \newline token --- klucz sesji logowania & ''data'': dict\_all\_locks \tablinia ''status'': ''invalid'' & Pobranie listy wszystkich dostępnych zamków w systemie \\ \hline
+		/api/download/all\_user/ & login --- login użytkownika, \newline token --- klucz sesji logowania & ''data'': dict\_all\_users \tablinia ''status'': ''invalid'' & Pobranie listy wszystkich użytkowników systemu \\ \hline
+		/api/deactivation/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline certificate\_id --- identyfikator certyfikatu do usunięcia & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Usunięcie dostępu do certyfikatu \\ \hline
+		/api/request\_new\_certificate/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline lock\_id --- identyfikator zamka & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Wnioskowanie o nowy certyfikat \\ \hline
+		/api/change\_password/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline newpasswd --- nowe hasło użytkownika & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Zmiana hasła użytkownika \\ \hline
+		/api/replace\_certificate/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline old\_public\_key --- obecny klucz publiczny użytkownika, \newline new\_public\_key --- nowy klucz publiczny użytkownika & ''status'': ''ok'', \newline ''data'': dict\_certificate \tablinia ''status'': ''invalid'' & Wymiana certyfikatu szyfrującego na żądanie użytkownika \\ \hline
+		\newpage
+		\hline
+		/api/admin/history/ & login --- login użytkownika, \newline token --- klucz sesji logowania & ''data'': dict\_history \tablinia ''status'': ''invalid'' & Pobranie historii użycia zamków w systemie (administrator) \\ \hline
+		/api/admin/download/\linebreak all\_certificate/ & login --- login użytkownika, \newline token --- klucz sesji logowania & ''data'': dict\_all\_certificate \tablinia ''status'': ''invalid'' & Pobranie wszystkich certyfikatów z systemu (administrator)\\ \hline
+		/api/admin/deactivation/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline certificate\_id --- identyfikator certyfikatu do usunięcia & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Usunięcie dostępu do certyfikatu (administrator) \\ \hline
+		/api/admin/register\_waiting/ & login --- login użytkownika, \newline token --- klucz sesji logowania & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Pobranie listy oczekujących użytkowników na zaakceptowanie rejestracji \\ \hline
+		/api/admin/register\_decision/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline user\_login --- login użytkownika, którego dotyczy decyzja, \newline decision --- decyzja True/False dotycząca akceptacji rejestracji & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Podjęcie decyzji przez administratora dotycząca rejestracji użytkownika o danym loginie \\ \hline
+		/api/admin/certificate\_waiting/ & login --- login użytkownika, \newline token --- klucz sesji logowania & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Pobranie listy oczekujących certyfikatów na zaakceptowanie \\ \hline
+		/api/admin/certificate\_decision/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline certificate\_id --- identyfikator certyfikatu, którego dotyczy decyzja & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Podjęcie decyzji przez administratora dotycząca przyjęcia \\ \hline
+		/api/admin/\linebreak generate\_new\_certificate/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline user\_id --- identyfikator użytkownika, \newline lock\_id --- identyfikator zamka, \newline from\_date --- data od której obowiązuje certyfikat, \newline to\_date --- data do której obowiązuje certyfikat, \newline monday...sunday --- 7 parametrów oznaczjacych zakresy godzin w poszczególnych dniach tygodnia, \newline is\_pernament --- czy dostęp jest ciągły, \newline name --- imię użytkownika certyfikatu, \newline surname --- nazwisko użytkownika certyfikatu & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Generowanie nowego certyfikatu (administrator) \\ \hline
+		/api/admin/deactivation\-\_user\_accout/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline user\_id --- identyfikator użytkownika, którego konto ma zostać zablokowane & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Zablokowanie konta wybranego użytkownika (administrator) \\ \hline
+		/api/admin/deactivation\-\_user\_certificate/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline user\_id --- identyfikator użytkownika, którego certyfikat szyfrujący ma zostać zablokowany & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Zablokowanie certyfikatu szyfrującego wybranego użytkownika (administrator) \\ \hline
 	\end{longtable}
 \end{landscape}
-	
 \newpage
-\subsection{Protokoły komunikacji pomiędzy urządzeniem \newline sterującym i aplikacją mobilną}
+\subsection[Interfejs komunikacji pomiędzy urządzeniem sterującym i aplikacją mobilną]{Interfejs komunikacji pomiędzy urządzeniem \newline sterującym i aplikacją mobilną [Maciej Marciniak]}
+W rozdziale \ref{Komunikacja serwer} opisano dwie ścieżki komunikacji urządzeń z serwerem, trzecią opcją jest komunikacja pomiędzy urządzeniem sterującym, a aplikacją mobilną. W tym wypadku nie jest istotna duża odległość komunikacji, wręcz jest niewskazana. Odpowiednim interfejsem, zapewniającym szybką i uniwersalną transmisję jest moduł bluetooth, w który wersja mikrokomputera Raspberry Pi 3 jest wyposażona. 
+
+Komunikacja pomiędzy urządzeniami polega tylko na przesyle podpisanych cyfrowo certyfikatów dostępowych. Format przesyłanych danych jest w postaci: \\
+\begin{minipage}[t]{\textwidth}
+	<id~certyfikatu>;\\<login~użytkownika>;\\<sygnatura~klucza~dostępowego>;\\<certyfikat~szyfrujący~w~postaci~JSONa>
+\end{minipage} 
 
 \newpage
-\subsection{Interfejs graficzny systemu}\label{sec:Projekt interfejsu graficznego}
+\subsection[Interfejs graficzny systemu]{Interfejs graficzny systemu [Damian Filipowicz]}\label{sec:Projekt interfejsu graficznego}
+Jednym z dwóch modułów posiadających w systemie interfejs graficzny jest aplikacja mobilna, drugim zaś strona internetowa. Aplikacja mobilna zawierać powinna wszystkie funkcjonalności systemu z wykorzystaniem czytelnego interfejsu użytkownika. Strona internetowa  ma mieć na celu interakcję tylko z administratorem systemu, dlatego nie są stawiany wysoki priorytet estetyczny. 
 	\subsubsection{Widoki aplikacji mobilnej}
 		\paragraph*{Panel logowania użytkownika}
-	Widok umożliwiać będzie zalogowanie się użytkownika do systemu poprzez podanie loginu, hasła oraz adres IP serwera w odpowiednie pola, a następnie kliknięcie w przycisk “ZALOGUJ SIĘ”. Samo pole hasła będzie maskowane. Jeśli nie posiada się konta, zostanie utworzona możliwość  utworzenia konta poprzez przycisk “ZAREJESTRUJ SIĘ”. (Rysunek \ref{rys:panel_logowania_pionowo})
-	
+	Widok umożliwiać będzie zalogowanie się użytkownika do systemu poprzez podanie loginu, hasła oraz adres IP serwera w odpowiednie pola, a następnie kliknięcie w przycisk “ZALOGUJ SIĘ”. Samo pole hasła będzie maskowane. Jeśli nie posiada się konta, zostanie utworzona możliwość  utworzenia konta poprzez przycisk “ZAREJESTRUJ SIĘ”. (Rys. \ref{rys:panel_logowania_pionowo})
 	
 	\begin{figure}[ht!]
 			\centering
-			\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
-			{Obrazy/logowanie_uzytkownika_pionowo}
+			\includegraphics[width=6.5cm]{Obrazy/logowanie_uzytkownika_pionowo}
 			\caption{Panel logowania użytkownika}
 			\label{rys:panel_logowania_pionowo}
 	\end{figure}
-
-	
+	\newpage
 	\paragraph*{Panel rejestracji użytkownika}
-	Panel rejestracji służyć będzie do utworzenie nowego użytkownika poprzez podanie loginu, hasła, imienia i nazwiska użytkownika oraz adresu IP serwera do którego chcemy się zarejestrować. Pole z hasłem będzie maskowane wraz z możliwością odkrywania hasła przy pomocy ikonki oko Po upewnieniu się, że wszystkie dane są poprawne, aby zakończyć proces rejestracji, trzeba będzie kliknać przycisk “ZAREJESTRUJ”. (Rysunek \ref{rys:panel_rejestracji_pionowo})
+	Panel rejestracji służyć będzie do utworzenie nowego użytkownika poprzez podanie loginu, hasła, imienia i nazwiska użytkownika oraz adresu IP serwera do którego chcemy się zarejestrować. Pole z hasłem będzie maskowane wraz z możliwością odkrywania hasła przy pomocy ikonki oko Po upewnieniu się, że wszystkie dane są poprawne, aby zakończyć proces rejestracji, trzeba będzie kliknąć przycisk “ZAREJESTRUJ”. (Rys. \ref{rys:panel_rejestracji_pionowo})
 	
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+		\includegraphics[width=6.5cm]
 			{Obrazy/rejestracja_uzytkownika_pionowo}
 			\caption{Panel logowania użytkownika }
 			\label{rys:panel_rejestracji_pionowo}
-		
 	\end{figure}
-	
-	
+	\newpage
 	\paragraph*{Panel listy zamków}
-	Widok listy dostępnych zamków przedstawia listę nazw zamków do jakich dany użytkownik ma dostęp. Ułatwieniem będzie możliwość sortowania wyników i wyszukiwanie po nazwach. Kliknięcie w nazwę zamka spowoduje otwarcie zamka. Zmiana koloru\footnote{Opisy znaczeń poszcególnych kolorów oraz symboli opisane są w rozdziale \ref{Symbolika ikon}} ikon zamków sygnalizować będzie status zamka. (Rysunek \ref{rys:panel_listy_dostepnych_zamkow_pionowo})
+	Widok listy dostępnych zamków przedstawia listę nazw zamków do jakich dany użytkownik ma dostęp. Ułatwieniem będzie możliwość sortowania wyników i wyszukiwanie po nazwach. Kliknięcie w nazwę zamka spowoduje otwarcie zamka. Zmiana koloru\footnote{ Opisy znaczeń poszczególnych kolorów oraz symboli opisane są w rozdziale \ref{Symbolika ikon}} ikon zamków sygnalizować będzie status zamka. (Rys. \ref{rys:panel_listy_dostepnych_zamkow_pionowo})
 	
 	\begin{figure}[ht!]
 			\centering
-		\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+		\includegraphics[width=6.5cm]
 			{Obrazy/lista_dostepnych_zamkow_pionowo}
 			\caption{Lista dostępnych zamków}
 			\label{rys:panel_listy_dostepnych_zamkow_pionowo}
-	
-		
 	\end{figure}
-	
-	
+\newpage
 	\paragraph*{Panel boczny}
-	Panel boczny pozwalać będzie na szybkie przełączanie pomiędzy widokami. Chowany zostanie po lewej stronie ekranu. Umożliwi przechodzenie odpowiednio do listy zamków, zarządzania certyfikatami, panelu administracyjnego oraz ustawień. Ostatnia pozycja spowoduje wylogowanie z aplikacji. Pnanel ten w zależnośći od uprawnień użytkownika możę posiadać lub nie pole z panelem administraotra (Rysunek \ref{rys:panel_boczny_pionowo} i \ref{rys:panel_boczny_pionowo2})
+	Panel boczny pozwalać będzie na szybkie przełączanie pomiędzy widokami. Chowany zostanie po lewej stronie ekranu. Umożliwi przechodzenie odpowiednio do listy zamków, zarządzania certyfikatami, panelu administracyjnego oraz ustawień. Ostatnia pozycja spowoduje wylogowanie z aplikacji. Pnanel ten w zależnośći od uprawnień użytkownika możę posiadać lub nie pole z panelem administraotra (Rys. \ref{rys:panel_boczny_pionowo} i \ref{rys:panel_boczny_pionowo2})
 	
 	\begin{figure}[ht!]
-		\begin{minipage}{0.5\textwidth}
+		\begin{minipage}{0.45\textwidth}
 			\includegraphics[width=\textwidth]
 			{Obrazy/panel_boczny_pionowo}
 			\caption{Panel boczny z uprawnieniami administratora}
 			\label{rys:panel_boczny_pionowo}
 		\end{minipage}
-		\begin{minipage}{0.5\textwidth}
+	\hspace{0.1\textwidth}
+		\begin{minipage}{0.45\textwidth}
 			\includegraphics[width=\textwidth]{Obrazy/panel_boczny_pionowo2}
 			\caption{Panel boczny bez uprawnieni administratora}
 			\label{rys:panel_boczny_pionowo2}
 		\end{minipage}	
 	\end{figure}
-
+\newpage
 	
 	\paragraph*{Panel zarządzania certyfikatami}
-	Panel zarządzania certyfikatami umożliwi wybór funkcji dodania certyfikatu. Kolejne pozycje to lista posiadanych certyfikatów oraz wysłanie wniosku o utworzenie nowego certyfikatu  (Rysunek \ref{rys:panel_zarządzania_certyfikatami_pionowo})
+	Panel zarządzania certyfikatami umożliwi wybór funkcji dodania certyfikatu. Kolejne pozycje to lista posiadanych certyfikatów oraz wysłanie wniosku o utworzenie nowego certyfikatu  (Rys. \ref{rys:panel_zarządzania_certyfikatami_pionowo})
 	
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+		\includegraphics[width=6.5cm]
 			{Obrazy/zarzadzaj_certyfikatami_pionowo}
 			\caption{Panel zarządzania certyfikatami }
 			\label{rys:panel_zarządzania_certyfikatami_pionowo}
-		
 	\end{figure}
-
+\newpage
 	
 	\paragraph*{Panel listy certyfikatów}
-	Panel listy certyfikatów, będzie listą aktualnych certyfikatów należących do użytkownika. Kliknięcie w dany certyfikat przeniesie do widoku szczegółowego związanego z operacjami na tym certyfikacie. (Rysunek \ref{rys:panel_listy_certyfikatów_pionowo} )
+	Panel listy certyfikatów, będzie listą aktualnych certyfikatów należących do użytkownika. Kliknięcie w dany certyfikat przeniesie do widoku szczegółowego związanego z operacjami na tym certyfikacie. (Rys. \ref{rys:panel_listy_certyfikatów_pionowo} )
 	
 	\begin{figure}[ht!]
 			\centering
-	\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+	\includegraphics[width=6.5cm]
 			{Obrazy/lista_certyfikatow_pionowo}
 			\caption{Panel listy certyfikatów}
 			\label{rys:panel_listy_certyfikatów_pionowo}
-		
 	\end{figure}
-
+\newpage
 	
 	\paragraph*{Panel certyfikatu}
-	Panel certyfikatu zawierać będzie informacje o dacie wygaśnięcia, którego zamku dotyczy oraz w jakim czasie przyznaje dostęp. Na dole dostępne będą dwa przyciski pozwalające usunąć certyfikat lub wysłać prośbę o przedłużenie ważności. W zależnośći od tego czy uzytkownik ma uprawnienia administratora przycisk przedłuż certyfikat albo wyśle zgłoszenie do serwera (dla użytkownika bez uprawnieni administratora) albo przeniesie do panelu generowania certyfikatu (dla użytkownika o uprawnieniach administratora) (Rysunek \ref{rys:panel_certyfikatu_pionowo})
+	Panel certyfikatu zawierać będzie informacje o dacie wygaśnięcia, którego zamku dotyczy oraz w jakim czasie przyznaje dostęp. Na dole dostępne będą dwa przyciski pozwalające usunąć certyfikat lub wysłać prośbę o przedłużenie ważności. W zależności od tego, czy użytkownik ma uprawnienia administratora przycisk przedłuż certyfikat albo wyśle zgłoszenie do serwera (dla użytkownika bez uprawnieni administratora) albo przeniesie do panelu generowania certyfikatu (dla użytkownika o uprawnieniach administratora) (Rys. \ref{rys:panel_certyfikatu_pionowo})
 	
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+		\	\includegraphics[width=6.5cm]
 			{Obrazy/certyfikat_pionowo}
 			\caption{Panel certyfikatu }
 			\label{rys:panel_certyfikatu_pionowo}
-		
 	\end{figure}
+	\newpage
 	
 	\paragraph*{Panel wnioskowania o certyfikat}
-	Panel wnioskowania o certyfikat polegać będzie na wybraniu z listy wszystkich zamków, konkretnego do którego chcemy uzyskać dostęp i wysłaniu wniosku o przydzielenie dostępu. (Rysunek \ref{rys:panel_wnioskowania_o_certyfikat_pionowo})
+	Panel wnioskowania o certyfikat polegać będzie na wybraniu z listy wszystkich zamków, konkretnego do którego chcemy uzyskać dostęp i wysłaniu wniosku o przydzielenie dostępu. (Rys. \ref{rys:panel_wnioskowania_o_certyfikat_pionowo})
 	
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+			\includegraphics[width=6.5cm]
 			{Obrazy/wnioskuj_o_certyfikat_pionowo}
 			\caption{Panel wnioskowania o certyfikat }
 			\label{rys:panel_wnioskowania_o_certyfikat_pionowo}
-	
 	\end{figure}
-	
+	\newpage
 	
 	\paragraph*{Panel administratora}
 	W panelu administratora znajdować się będzie 6 przycisków do administrowania systemem zamków:
@@ -371,28 +414,28 @@ Oprócz tych wymienionych wyżej są dodatkowo 3 kategorie implementujące wzorz
 		\item ,,Zarządzanie kontami użytkowników''.
 	\end{itemize*}
 	
-	Po kliknięciu każdego przycisku przejdzie się do nowego odpowiadającego widoku. (Rysunek \ref{rys:panel_administracyjny_pionowo})
+	Po kliknięciu każdego przycisku przejdzie się do nowego odpowiadającego widoku. (Rys. \ref{rys:panel_administracyjny_pionowo})
 	
 	\begin{figure}[ht!]
 			\centering
-	\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+			\includegraphics[width=6.5cm]
 			{Obrazy/panel_administracyjny_pionowo}
 			\caption{Panel administratora}
 			\label{rys:panel_administracyjny_pionowo}
-	
 	\end{figure}
-
+\newpage
 	
 	\paragraph*{Panel historii użycia zamków}
-	Panel historii użycia zamków składać się będzie z rozwijanej listy filtorwania histori składajaćej się z elementów takich jak lista dostępnych zamkóW, lista dostępnych uzytkowników, data podług której następuje filtracja oraz chekbox do zaznaczania czy tylko były nieautoryzowane próby. By uzyskać daną filtrację trzeba będzie nacisnać przycisk filtruj. Oprócz panelu do filtrowania znajdzie się również sama historia gdzie wyświetlane jestrodzaj próby otwarcia, data oraz przez kogo była ta próba podjęta. (Rysunek \ref{rys:panel_historii_uzycia_zamka_pionowo} i \ref{rys:panel_historii_uzycia_zamka_pionowo2})
+	Panel historii użycia zamków składać się będzie z rozwijanej listy, filtrowania historii składającej się z elementów takich jak lista dostępnych zamków, lista dostępnych użytkowników, data podług której następuje filtracja oraz checkbox do zaznaczania czy tylko były nieautoryzowane próby. By uzyskać daną filtrację trzeba będzie nacisnąć przycisk filtruj. Oprócz panelu do filtrowania znajdzie się również sama historia gdzie wyświetlany jest rodzaj próby otwarcia, data oraz przez kogo była ta próba podjęta. (Rys. \ref{rys:panel_historii_uzycia_zamka_pionowo} i \ref{rys:panel_historii_uzycia_zamka_pionowo2})
 	
 	\begin{figure}[ht!]
-		\begin{minipage}{0.5\textwidth}
+		\begin{minipage}{0.45\textwidth}
 			\includegraphics[width=\textwidth]{Obrazy/historia_zamkow_pionowo}
 			\caption{Panel historii użycia zamków (filtr)}
 			\label{rys:panel_historii_uzycia_zamka_pionowo}
 		\end{minipage}
-		\begin{minipage}{0.5\textwidth}
+	\hspace{0.1\textwidth}
+		\begin{minipage}{0.45\textwidth}
 			\includegraphics[width=\textwidth]{Obrazy/historia_zamkow_pionowo2}
 			\caption{Panel historii użycia zamków (historia)}
 			\label{rys:panel_historii_uzycia_zamka_pionowo2}	
@@ -401,114 +444,107 @@ Oprócz tych wymienionych wyżej są dodatkowo 3 kategorie implementujące wzorz
 	\newpage
 	
 	\paragraph*{Panel generowania nowego certyfikatu (administrator)}
-	Panel generowanie nowego certyfikatu (administrator) będzie służył do tworzenia nowych certyfikatów przez administratora. W pierwszych polach podaje się imię i nazwisko kogo dotyczy certyfikat.Następnie wybierane jest użytkownik (login) oraz zamek z rozwijanej listy. W dalszej części wybierane jest zakres dat w których certyfikat ma być ważny. Potem widać przycisk o nazwie "zakres obowiązywania certyfikatów" który przekierowywuje do widoku odpowiedzialnego za to w jakich godzinach dla danych dni tygodni certyfikat udziela dostępu. (Rysunek \ref{rys:panel_generowanie_nowego_klucza_gosc_admin_pioniowo}, \ref{rys:panel_generowanie_nowego_klucza_admin_pionowo2} i 
+	Panel generowanie nowego certyfikatu (administrator) będzie służył do tworzenia nowych certyfikatów przez administratora. W pierwszych polach podaje się imię i nazwisko kogo dotyczy certyfikat.Następnie wybierane jest użytkownik (login) oraz zamek z rozwijanej listy. W dalszej części wybierane jest zakres dat w których certyfikat ma być ważny. Potem widać przycisk o nazwie ''zakres obowiązywania certyfikatów'', który przekierowuje do widoku odpowiedzialnego za to w jakich godzinach dla danych dni tygodni certyfikat udziela dostępu. (Rys. \ref{rys:panel_generowanie_nowego_klucza_gosc_admin_pioniowo}, \ref{rys:panel_generowanie_nowego_klucza_admin_pionowo2} i 
 	\ref{rys:panel_wyboru_zakresu_certyfikatu})
 	
+	\vspace{-0.3cm}
 	\begin{figure}[ht!]
-		\vspace{-0.5cm}
-		\begin{minipage}{0.5\textwidth}
+		\begin{minipage}{0.35\textwidth}
 			\includegraphics[width=\textwidth]{Obrazy/generowanie_nowego_klucza_gosc_admin_pioniowo}
 			\caption{Panel generowania nowego klucza cz. 1 }
 			\label{rys:panel_generowanie_nowego_klucza_gosc_admin_pioniowo}
 		\end{minipage}
-		\hspace{0.5cm}
-		\begin{minipage}{0.5\textwidth}
+		\hspace{0.1\textwidth}
+		\begin{minipage}{0.35\textwidth}
 			\includegraphics[width=\textwidth]{Obrazy/generowanie_nowego_klucza_admin_pionowo2}
 			\caption{Panel generowania nowego klucza cz. 2}
 			\label{rys:panel_generowanie_nowego_klucza_admin_pionowo2}	
 		\end{minipage}
 	\end{figure}
-	\vspace{-0.5cm}
+	\vspace{-0.55cm}
 	\begin{figure}[ht!]
 		\center
-			\includegraphics[width=4.5cm]{Obrazy/generowanie_nowego_klucza_uzytkownik_zalogowany_admin_pioniowo}
-			\caption{Panel generowania nowego klucza dla użytkownika }
-			\label{rys:panel_generowanie_nowego_klucza_uzytkownik_zalogowany_admin_pioniowo}
+			\includegraphics[width=4cm]{Obrazy/generowanie_nowego_klucza_uzytkownik_zalogowany_admin_pioniowo}
+			\caption{Panel generowania nowego klucza cz. 3}
+			\label{rys:panel_wyboru_zakresu_certyfikatu}
 	\end{figure}
-
+\newpage
 	
 	\paragraph*{Panel zarządzania certyfikatami~(administrator)}
-	Panel zarządzania certyfikatami użytkowników (administrator) będzie widokiem tylko wszystkich aktywnych certyfikatów w systemie. Administrator klikając na pozycję przejdzie do panelu certyfikatu opisanego wyżej. Tam może usunąć dostęp lub go przedłużyć. Ułatwieniem jest możliwość wyboru typu sortowania. (Rysunek \ref{rys:panel_lista_certyfikatow_administrator_pionowo})
+	Panel zarządzania certyfikatami użytkowników (administrator) będzie widokiem tylko wszystkich aktywnych certyfikatów w systemie. Administrator klikając na pozycję przejdzie do panelu certyfikatu opisanego wyżej. Tam może usunąć dostęp lub go przedłużyć. Ułatwieniem jest możliwość wyboru typu sortowania. (Rys. \ref{rys:panel_lista_certyfikatow_administrator_pionowo})
 	
 	\begin{figure}[ht!]
 		\centering
-	\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+	\includegraphics[width=6.5cm]
 			{Obrazy/lista_certyfikatow_administrator_pionowo}
 			\caption{Panel zarządzania certyfikatami (administrator) }
 			\label{rys:panel_lista_certyfikatow_administrator_pionowo}
-	
 	\end{figure}
-
+\newpage
 	
 	\paragraph*{Panel~listy~oczekujących~użytkowników~do~rejestracji}
-	Panel listy oczekujących użytkowników będzie listą wszystkich gości, którzy ubiegają się o zarejestrowanie. Po kliknięciu w odpowiednią pozycję pojawiają się dwie opcję: “AKCEPTUJ” lub “ODRZUĆ”.  (Rysunek \ref{rys:panel_lista_oczekujacych_uzytkownikow_pionowo} )
+	Panel listy oczekujących użytkowników będzie listą wszystkich gości, którzy ubiegają się o zarejestrowanie. Po kliknięciu w odpowiednią pozycję pojawiają się dwie opcję: “AKCEPTUJ” lub “ODRZUĆ”.  (Rys. \ref{rys:panel_lista_oczekujacych_uzytkownikow_pionowo} )
 	
 	\begin{figure}[ht!]
 		\centering
-	\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+			\includegraphics[width=6.5cm]
 			{Obrazy/lista_oczekujacych_uzytkownikow_pionowo}
 			\caption{Panel listy oczekujących użytkowników }
 			\label{rys:panel_lista_oczekujacych_uzytkownikow_pionowo}
-	
 	\end{figure}
-
+\newpage
 	
 	\paragraph*{Panel~listy~oczekujących~certyfikatów do~wygenerowania}
-	Panel listy oczekujących certyfikatów będzie listą wszystkich certyfikatów, które ubiegającyh się o akceptację administratora. Po kliknięciu w odpowiednią pozycję pojawią się dwie opcję: “AKCEPTUJ” lub “ODRZUĆ”.  (Rysunek \ref{rys:panel_lista_oczekujacych_certyfikatow_pionowo} )
+	Panel listy oczekujących certyfikatów będzie listą wszystkich certyfikatów, które ubiegającyh się o akceptację administratora. Po kliknięciu w odpowiednią pozycję pojawią się dwie opcję: “AKCEPTUJ” lub “ODRZUĆ”.  (Rys. \ref{rys:panel_lista_oczekujacych_certyfikatow_pionowo} )
 	
 	\begin{figure}[ht!]
 			\centering
-			\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+			\includegraphics[width=6.5cm]
 			{Obrazy/lista_oczekujacych_certyfikatow_pionowo}
 			\caption{Panel listy oczekujących certyfikatów }
 			\label{rys:panel_lista_oczekujacych_certyfikatow_pionowo}
-		
 	\end{figure}
+\newpage
 	
 	\paragraph*{Panel zarządzania kontami użytkowników}
-	Panel ten służyć będzie do zarządzania kontami użytkowników. Wyświetli on listę użytkowników systemu wraz z z oznaczeniami czy jest on aktyny bądż zablokowany oraz czy ma ważny klucz szyfrujący (Rysunek \ref{rys:panel_Zarządzania_Kontami})
+	Panel ten służyć będzie do zarządzania kontami użytkowników. Wyświetli on listę użytkowników systemu wraz z z oznaczeniami czy jest on aktyny bądż zablokowany oraz czy ma ważny klucz szyfrujący (Rys. \ref{rys:panel_Zarządzania_Kontami})
 	
 	\begin{figure}[ht!]
 			\centering
-			\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+			\includegraphics[width=6.5cm]
 			{Obrazy/zarzadzanie_kontami}
 			\caption{Panel zarządzania kontami użytkowników}
 			\label{rys:rys:panel_Zarządzania_Kontami}
-		
 	\end{figure}
+\newpage
 	
 	\paragraph*{Panel ustawień konta}
-	W panelu ustawień użytkownik będzie mógł zmienić hasło do swojego konta. Wymaga podania starego hasła, a następnie nowego. Ponadto w panelu tym będzie podgląd certyfikatu szyfrujaćego wraz z możliwością wygenerowania nowego oraz zmiane adresu ip serwera  (Rysunek \ref{rys:panel_ustawienia_pionowo} i \ref{rys:panel_ustawienia_pionowo2} i \ref{rys:panel_ustawienia_pionowo3})
+	W panelu ustawień użytkownik będzie mógł zmienić hasło do swojego konta. Wymaga podania starego hasła, a następnie nowego. Ponadto w panelu tym będzie podgląd certyfikatu szyfrującego wraz z możliwością wygenerowania nowego oraz zmianę adresu ip serwera  (Rys. \ref{rys:panel_ustawienia_pionowo} i \ref{rys:panel_ustawienia_pionowo2} i \ref{rys:panel_ustawienia_pionowo3})
 	
 	\begin{figure}[ht!]
-			\centering
-			\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
-			{Obrazy/ustawienia_1}
-			\caption{Panel ustawień konta (zmiana hasła)}
+		\begin{minipage}{0.35\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/ustawienia_1}
+			\caption{Panel generowania nowego klucza cz. 1 }
 			\label{rys:panel_ustawienia_pionowo}
+		\end{minipage}
+		\hspace{0.3\textwidth}
+		\begin{minipage}{0.35\textwidth}
+			\includegraphics[width=\textwidth]	{Obrazy/ustawienia_2}
+			\caption{Panel generowania nowego klucza cz. 2}
+			\label{rys:panel_ustawienia_pionowo2}	
+		\end{minipage}
 	\end{figure}
 	\begin{figure}[ht!]
 			\centering
-		\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
-	{Obrazy/ustawienia_2}
-	\caption{Panel ustawień konta (certyfikat szyfrująćy)}
-	\label{rys:panel_ustawienia_pionowo2}
-\end{figure}
-	\begin{figure}[ht!]
-			\centering
-		\includegraphics[width=12.5cm,height=8cm,keepaspectratio]
+		\includegraphics[width=4.5cm]
 	{Obrazy/ustawienia_3}
 	\caption{Panel ustawień konta (adres ip)}
 	\label{rys:panel_ustawienia_pionowo3}
 \end{figure}
 	\newpage
-	
-	
-	
-	
+
 	\subsubsection{Widoki strony internetowej systemu}
-	Strona internetowa posiadć będzie dwa widoki. Jeden to widok logowania  (Rysunek \ref{rys:strona_1} w któym administrator musi wpisać login oraz hasło. W drguim widoku mamy listę histori otwarcia zamków  (Rysunek \ref{rys:strona_2}) wraz z zaznaczeniem kolorystycznym która pokazuje czy była to próba autoryzowana.
-	
+	Strona internetowa posiadać powinna dwa widoki, jeden widok logowania  (Rys. \ref{rys:strona_1}, w którym administrator musi wpisać login oraz hasło. W drugim widoku mamy listę historii otwarcia zamków  (Rys. \ref{rys:strona_2}) wraz z zaznaczeniem kolorystycznym które pokazuje czy była to próba autoryzowana.
 
 \begin{figure}[ht!]
 		\centering
@@ -523,71 +559,69 @@ Oprócz tych wymienionych wyżej są dodatkowo 3 kategorie implementujące wzorz
 		\centering
 	\includegraphics[width=12.5cm,height=10cm,keepaspectratio]
 {Obrazy/strona_historia}
-\caption{Strona z wyświetloną historią użycia zamkóW)}
+\caption{Strona z wyświetloną historią użycia zamków)}
 \label{rys:strona_2}
 \end{figure}
 	
 	\subsubsection{Komunikacja człowiek-interfejs}
-	
+	Aplikacja komunikować się może z człowiekiem na wiele sposób, jednym z nich są komunikaty tekstowe lub znane symbole informujące o funkcjonalności. 
 		\paragraph*{Komunikaty tekstowe}
 			 W aplikacji mobilnej komunikaty są wyświetlane przy pomocy toast. Komunikaty te  trwają na ekranie 4 sekundy. Informują one użytkownika o zaistniałych sytuacjach takich jak
-			 \begin{itemize}
-			 	\item błąd połaczenia z bazą danych
+			 \begin{itemize*}
+			 	\item błąd połączenia z bazą danych
 			 	\item informacja o zablokowanym koncie 
-			 	\item informacja o czynnośćiach dodania bądż usunięcia odpowiednio użytkownika bądż certyfikatu
+			 	\item informacja o czynnościach dodania bądź usunięcia odpowiednio użytkownika bądź certyfikatu
 			 	\item o pobraniu listy certyfikatów
-			 \end{itemize}
-		 Dodatkowo są wyświetlane na ekranie komunikaty tekstowe przy pomocy  textview odnośnie walidacji danych oraz podpowiedzi podczas wpisywania haseł przy pomocy tooltip-ów ktore informuje użytkownika o paramterach jakie hasło powinno mieć
+			 \end{itemize*}
+		 
+		 Dodatkowo są wyświetlane na ekranie komunikaty tekstowe przy pomocy  textview odnośnie walidacji danych oraz podpowiedzi podczas wpisywania haseł przy pomocy tooltip-ów, które informują użytkownika o parametrach jakie hasło powinno mieć.
+		 
 		\paragraph*{Symbolika ikon}
-		Aplikacja mobilna oraz strona internetowa korzysta z symboli zawartych w fontwesome. oto poszcególne znaczenia dla danych ikon:
-	   
-	   
+		Aplikacja mobilna oraz strona internetowa korzysta z symboli zawartych w fontwesome, oto poszczególne znaczenia dla danych ikon:
+	  
 	   	\begin{longtable}[!ht]{|m{2cm}|m{10cm}|} 
 	   	\caption{Tabela ikon używanych w systemie}
 	   	\label{tab:ikony}\\
 	   	\hline	
 	   	Ikona & Opis   \\	\hline
 	   	
-	  \includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/full_user} 	&  	ikona oznaczająca użytkownika  aktywnego z atkualnym kluczem szyfrującym 	 
+	  \includegraphics[width=0.6cm]{Obrazy/full_user} 	&  	ikona oznaczająca użytkownika  aktywnego z aktualnym kluczem szyfrującym 	 
 	   	\\	\hline
-	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/user} & 	ikona oznaczająca użytkownika  aktywnego z nieatkualnym kluczem szyfrującym \\	\hline
-	   		\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/block_user}&ikona oznaczająca użytkownika zablokowanego \\	\hline
-	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/sort_desc}&ikonka oznaczająca sortowanie od a do z		
+	   	\includegraphics[width=0.6cm]{Obrazy/user} & 	ikona oznaczająca użytkownika  aktywnego z nieaktualnym kluczem szyfrującym \\	\hline
+	   		\includegraphics[width=0.6cm]{Obrazy/block_user}&ikona oznaczająca użytkownika zablokowanego \\	\hline
+	   	\includegraphics[width=0.6cm]{Obrazy/sort_desc}&ikonka oznaczająca sortowanie od a do z		
 	   	\\	\hline				
-	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/sort_asc}&Ikonka oznaczająca sortowanie od z do a
+	   	\includegraphics[width=0.6cm]{Obrazy/sort_asc}&Ikonka oznaczająca sortowanie od z do a
 	   	\\	\hline
-	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/oko_1}	&	ikonka służąca do  pokazania na ekranie hasło które było wcześniej zamaskowane
+	   	\includegraphics[width=0.6cm]{Obrazy/oko_1}	&	ikonka służąca do  pokazania na ekranie hasło które było wcześniej zamaskowane
 	   	\\	\hline
-	    \includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/oko_2}&Ikonka służąca do maskowania hasła
+	    \includegraphics[width=0.6cm]{Obrazy/oko_2}&Ikonka służąca do maskowania hasła
 	   	\\	\hline
-	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/menu}&Ikonka służąca do rozwijania menu
+	   	\includegraphics[width=0.6cm]{Obrazy/menu}&Ikonka służąca do rozwijania menu
 	   	\\	\hline
-	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/menu}&Ikonka służąca do chowania menu
+	   	\includegraphics[width=0.6cm]{Obrazy/menu}&Ikonka służąca do chowania menu
 	   	\\	\hline
-	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/lock}&Ikonka oznaczająca zamknięty zamek
+	   	\includegraphics[width=0.6cm]{Obrazy/lock}&Ikonka oznaczająca zamknięty zamek
 		\\	\hline		
-	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/lock_2}&Ikonka oznaczająca otwarty zamek
+	   	\includegraphics[width=0.6cm]{Obrazy/lock_2}&Ikonka oznaczająca otwarty zamek
 	   	\\	\hline					
-	   	\includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/error}&Ikonka oznaczająca niepoprawnść np. niepoprawne hasło
+	   	\includegraphics[width=0.6cm]{Obrazy/error}&Ikonka oznaczająca niepoprawność np. niepoprawne hasło
 	   \\	\hline
-	   \includegraphics[width=1.5cm,height=0.7cm,keepaspectratio]{Obrazy/ok}&oznaczająća poprawność np. poprawny dostęp do pomieszczenia	
-	   	\\	\hline				
-	   					
+	   \includegraphics[width=0.6cm]{Obrazy/ok}& oznaczająca poprawność np. poprawny dostęp do pomieszczenia	
+	   	\\	\hline							
 	   \end{longtable}
-	   
-
 	
 		\paragraph*{Znaczenie kolorystyki}
 		W systemie występują 4 kolory informujące użytkownika o zaistniałych sytuacjach
 		\begin{itemize}
-			\item czerwony który w zależnośći od kontekstu sugeruje albo niepoprawne wpisane dane, nie uzyskanie dostępu do pomieszcenia albo nieautoryzowaną próbę dostępu do pomieczenia,
-			\item zielony który w zależnośći od kontekstu sugeruje poprwane uzyskanie dostępu do pomiezsceń, autoryzowaną próbę dostępu do pomieszczenia lub użytkownika który jest aktywny oraz posiada aktualny klucz szyfrujący,
+			\item czerwony który w zależności od kontekstu sugeruje albo niepoprawne wpisane dane, nie uzyskanie dostępu do pomieszczenia albo nieautoryzowaną próbę dostępu do pomieszczenia,
+			\item zielony który w zależności od kontekstu sugeruje poprawne uzyskanie dostępu do pomieszczeń, autoryzowaną próbę dostępu do pomieszczenia lub użytkownika który jest aktywny, lub posiada aktualny klucz szyfrujący,
 			\item żółty sugeruje w naszym systemie oczekiwanie na zdarzenie,
-			\item kolor fioletowy określa użytkownika który nie ma dostępu do funkcji systemu (w zależnosci od ikony ma nieaktualny klucz szyfrujący lub ma konto zablokowane)
+			\item kolor fioletowy określa użytkownika który nie ma dostępu do funkcji systemu (w zależności od ikony ma nieaktualny klucz szyfrujący lub ma konto zablokowane)
 		\end{itemize}
 		
 	\subsubsection{Kolorystyka systemu}
-	Kolorystyka systemu została oparta o styl material design któy jest dostępny dla systemu android od wersji 5.0. Strona jak i palikacja mobilna są zbliżone kolorystycznie. Różnice w kolorach są spowodowane tylko narzuconą kolorystyką z biblioteki Bootsrap.
+	Kolorystyka systemu została oparta o styl material design, który jest dostępny dla systemu android od wersji 5.0. Strona jak i aplikacja mobilna są zbliżone kolorystycznie. Różnice w kolorach są spowodowane tylko narzuconą kolorystyką z biblioteki Bootsrap.
 	
 \newpage
 \subsection{Bezpieczeństwo systemu}\label{sec:Projekt bezpieczeństwo}

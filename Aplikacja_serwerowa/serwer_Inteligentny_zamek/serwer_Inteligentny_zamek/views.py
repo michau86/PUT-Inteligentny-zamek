@@ -59,8 +59,10 @@ def api_login(request):
                         return JsonResponse({"status": "ok", "token": token})
                 else:
                     return JsonResponse({"status": "ERROR PASSWORD", "token": "invalid"})
-            else:
+            elif data[2] == 1:
                 return JsonResponse({"status": "not activated", "token": "invalid"})
+			else:
+				return JsonResponse({"status": "blocked", "token": "invalid"})
         except Exception:
             return JsonResponse({"status": "ERROR", "token": "Invalid"})
 
@@ -348,30 +350,6 @@ def api_request_new_certificate(request):
             else:
                 return JsonResponse({"status": "invalid"})
 
-        except Exception:
-            return JsonResponse({"status": "Invalid"})
-
-
-
-@csrf_exempt
-def api_admin_block_certificate(request):
-    if request.method == 'POST':
-        login = request.POST.get('login')
-        token = request.POST.get('token')
-        user_login = request.POST.get('user_login')
-        try:
-            cursor = db.cursor()
-            cursor.execute("SELECT TOKEN, IS_ADMIN FROM USERS WHERE login='%s'" % login)
-            data = cursor.fetchone()
-            for row in data:
-                token_db = row[0]
-                isadmin = row[1]
-            if (token_db == token and token != None and isadmin == 1):
-                cursor.execute("UPDATE USERS SET PUBLIC_KEY = NULL, Serial_number = NULL, Validitiy_period = NULL WHERE LOGIN = '%s' " % (user_login))
-                db.commit()
-                return JsonResponse({"status": "ok"})
-            else:
-                return JsonResponse({"status": "invalid"})
         except Exception:
             return JsonResponse({"status": "Invalid"})
 

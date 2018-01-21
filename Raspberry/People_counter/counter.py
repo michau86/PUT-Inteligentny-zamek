@@ -16,14 +16,14 @@ ap = argparse.ArgumentParser()
 ap.add_argument("-ip", "--ipcamera", help="ip camera use")
 args = vars(ap.parse_args())
 if args.get("ipcamera", None) is None:
-    w = 1280
-    h = 960
+    width_camera = 1280
+    height_camera = 960
     from picamera.array import PiRGBArray
     from picamera import PiCamera
-    cap = PiCamera(resolution=(w, h))
+    cap = PiCamera(resolution=(width_camera, height_camera))
     cap.iso = 800
     cap.led = False
-    rawCapture = PiRGBArray(cap, size=(w, h))
+    rawCapture = PiRGBArray(cap, size=(width_camera, height_camera))
     cap.rotation = 180
     cap.brightness = 55
     cap.framerate = 24
@@ -36,23 +36,23 @@ if args.get("ipcamera", None) is None:
 else:
     cap = cv2.VideoCapture("rtsp://admin:admin@192.168.130.140:554/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif")
     time.sleep(0.25)
-    w = cap.get(3)
-    h = cap.get(4)
+    width_camera = cap.get(3)
+    height_camera = cap.get(4)
     
-frameArea = h*w
+frameArea = height_camera*width_camera
 areaTH = frameArea/250
 
-line_up = int(2*(h/5))
-line_down   = int(3*(h/5))
+line_up = int(2*(height_camera/5))
+line_down   = int(3*(height_camera/5))
 
-up_limit =   int(1*(h/5))
-down_limit = int(4*(h/5))
+up_limit =   int(1*(height_camera/5))
+down_limit = int(4*(height_camera/5))
 
 pt1 =  (0, line_down)
-pt2 =  (int(w), line_down)
+pt2 =  (int(width_camera), line_down)
 
 pt3 =  (0, line_up)
-pt4 =  (int(w), line_up)
+pt4 =  (int(width_camera), line_up)
 
 fgbg = cv2.BackgroundSubtractorMOG2()
 
@@ -101,12 +101,12 @@ while(1):
             M = cv2.moments(cnt)
             cx = int(M['m10']/M['m00'])
             cy = int(M['m01']/M['m00'])
-            x,y,w,h = cv2.boundingRect(cnt)
+            x,y,width_camera,height_camera = cv2.boundingRect(cnt)
 
             new = True
             if cy in range(up_limit,down_limit):
                 for i in persons:
-                    if abs(cx-i.getX()) <= w and abs(cy-i.getY()) <= h:
+                    if abs(cx-i.getX()) <= width_camera and abs(cy-i.getY()) <= height_camera:
                         new = False
                         i.updateCoords(cx,cy)
                         if i.going_UP(line_down,line_up) == True:
@@ -131,7 +131,7 @@ while(1):
                     pid += 1
                     
             #cv2.circle(frame,(cx,cy), 5, (0,0,255), -1)
-            #img = cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),2)
+            #img = cv2.rectangle(frame,(x,y),(x+width_camera,y+height_camera),(0,255,0),2)
     cnt_old = cnt_now
     cnt_now = cnt_up - cnt_down
     if not cnt_old == cnt_now:
