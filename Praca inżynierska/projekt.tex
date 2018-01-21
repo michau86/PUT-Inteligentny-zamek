@@ -305,7 +305,7 @@ Komunikacja pomiędzy urządzeniami polega tylko na przesyle podpisanych cyfrowo
 Jednym z dwóch modułów posiadających w systemie interfejs graficzny jest aplikacja mobilna, drugim zaś strona internetowa. Aplikacja mobilna zawierać powinna wszystkie funkcjonalności systemu z wykorzystaniem czytelnego interfejsu użytkownika. Strona internetowa  ma mieć na celu interakcję tylko z administratorem systemu, dlatego nie są stawiany wysoki priorytet estetyczny. 
 	\subsubsection{Widoki aplikacji mobilnej}
 		\paragraph*{Panel logowania użytkownika}
-	Widok umożliwiać będzie zalogowanie się użytkownika do systemu poprzez podanie loginu, hasła oraz adres IP serwera w odpowiednie pola, a następnie kliknięcie w przycisk “ZALOGUJ SIĘ”. Samo pole hasła będzie maskowane. Jeśli nie posiada się konta, zostanie utworzona możliwość  utworzenia konta poprzez przycisk “ZAREJESTRUJ SIĘ”. (Rys. \ref{rys:panel_logowania_pionowo})
+	Widok umożliwiać będzie zalogowanie się użytkownika do systemu poprzez podanie loginu, hasła oraz adres IP serwera w odpowiednie pola, a następnie kliknięcie w przycisk ''ZALOGUJ SIĘ”. Samo pole hasła będzie maskowane. Jeśli nie posiada się konta, zostanie utworzona możliwość  utworzenia konta poprzez przycisk ''ZAREJESTRUJ SIĘ”. (Rys. \ref{rys:panel_logowania_pionowo})
 	
 	\begin{figure}[ht!]
 			\centering
@@ -315,7 +315,7 @@ Jednym z dwóch modułów posiadających w systemie interfejs graficzny jest apl
 	\end{figure}
 	\newpage
 	\paragraph*{Panel rejestracji użytkownika}
-	Panel rejestracji służyć będzie do utworzenie nowego użytkownika poprzez podanie loginu, hasła, imienia i nazwiska użytkownika oraz adresu IP serwera do którego chcemy się zarejestrować. Pole z hasłem będzie maskowane wraz z możliwością odkrywania hasła przy pomocy ikonki oko Po upewnieniu się, że wszystkie dane są poprawne, aby zakończyć proces rejestracji, trzeba będzie kliknąć przycisk “ZAREJESTRUJ”. (Rys. \ref{rys:panel_rejestracji_pionowo})
+	Panel rejestracji służyć będzie do utworzenie nowego użytkownika poprzez podanie loginu, hasła, imienia i nazwiska użytkownika oraz adresu IP serwera do którego chcemy się zarejestrować. Pole z hasłem będzie maskowane wraz z możliwością odkrywania hasła przy pomocy ikonki oko Po upewnieniu się, że wszystkie dane są poprawne, aby zakończyć proces rejestracji, trzeba będzie kliknąć przycisk ''ZAREJESTRUJ”. (Rys. \ref{rys:panel_rejestracji_pionowo})
 	
 	\begin{figure}[ht!]
 		\centering
@@ -483,7 +483,7 @@ Jednym z dwóch modułów posiadających w systemie interfejs graficzny jest apl
 \newpage
 	
 	\paragraph*{Panel~listy~oczekujących~użytkowników~do~rejestracji}
-	Panel listy oczekujących użytkowników będzie listą wszystkich gości, którzy ubiegają się o zarejestrowanie. Po kliknięciu w odpowiednią pozycję pojawiają się dwie opcję: “AKCEPTUJ” lub “ODRZUĆ”.  (Rys. \ref{rys:panel_lista_oczekujacych_uzytkownikow_pionowo} )
+	Panel listy oczekujących użytkowników będzie listą wszystkich gości, którzy ubiegają się o zarejestrowanie. Po kliknięciu w odpowiednią pozycję pojawiają się dwie opcję: ''AKCEPTUJ” lub ''ODRZUĆ”.  (Rys. \ref{rys:panel_lista_oczekujacych_uzytkownikow_pionowo} )
 	
 	\begin{figure}[ht!]
 		\centering
@@ -495,7 +495,7 @@ Jednym z dwóch modułów posiadających w systemie interfejs graficzny jest apl
 \newpage
 	
 	\paragraph*{Panel~listy~oczekujących~certyfikatów do~wygenerowania}
-	Panel listy oczekujących certyfikatów będzie listą wszystkich certyfikatów, które ubiegającyh się o akceptację administratora. Po kliknięciu w odpowiednią pozycję pojawią się dwie opcję: “AKCEPTUJ” lub “ODRZUĆ”.  (Rys. \ref{rys:panel_lista_oczekujacych_certyfikatow_pionowo} )
+	Panel listy oczekujących certyfikatów będzie listą wszystkich certyfikatów, które ubiegającyh się o akceptację administratora. Po kliknięciu w odpowiednią pozycję pojawią się dwie opcję: ''AKCEPTUJ” lub ''ODRZUĆ”.  (Rys. \ref{rys:panel_lista_oczekujacych_certyfikatow_pionowo} )
 	
 	\begin{figure}[ht!]
 			\centering
@@ -624,21 +624,48 @@ Jednym z dwóch modułów posiadających w systemie interfejs graficzny jest apl
 	Kolorystyka systemu została oparta o styl material design, który jest dostępny dla systemu android od wersji 5.0. Strona jak i aplikacja mobilna są zbliżone kolorystycznie. Różnice w kolorach są spowodowane tylko narzuconą kolorystyką z biblioteki Bootsrap.
 	
 \newpage
-\subsection{Bezpieczeństwo systemu}\label{sec:Projekt bezpieczeństwo}
+	\subsection{Bezpieczeństwo systemu}\label{sec:Projekt bezpieczeństwo}
+	Prezentowany system ma na celu zapewniać bezpieczeństwo, zatem sam powinien być bezpieczny.Podstawowym zabezpieczeniem jakie można zastosować jest szyfrowanie połączeń oraz danych przechowywanych na nośnikach. Pierwszy sposób zapewnia wcześniej opisane w punkcie \ref{Komunikacja serwer} zastosowanie bezpiecznego protokoły Https. Druga forma zabezpieczania, mianowicie szyfrowanie odbywać się powinno głównie po stronie aplikacji mobilnej. Zdecydowano o zastosowaniu szyfrowania AES w trybie CBC, jest to wydajny algorytm, a przy tym bezpieczny (nie wykryto jak dotąd żadnych luk). Istotną kwestią bezpieczeństwa jest również weryfikacja tożsamości oraz autoryzacja w systemie.
 	\subsubsection{Projekt infrastruktury klucza publicznego (PKI)}\label{sec:Projekt PKI}
-		\paragraph*{Idea PKI}
-		Ideą infrastruktury klucza publicznego jest zarządzanie cyfrowymi certyfikatami i kluczami szyfrującymi dla osób, oprogramowania, urządzeń i systemów. Przy jednoczesnym zahowaniu integralnośći, poufnośći oraz dostępnośći.
-		\paragraph*{Urzędy certyfikujące}
-		W prrzypadku \NazwaSys urzędem certyfikującym 
-		\paragraph*{Klient systemu}
-		W prrzypadku \NazwaSys klientem systemu będzie Aplikacja mobilna. Będzie ona odpowiedzialna za uwierzytelnianie uzytkownika w systemie oraz generowanie klucza szyfrujacego, który zostanie po tym fakcie wysyłany do urzędu certyfikującego. Sam klucz szyfrujący będzie tworzony w momecnie rejestracji uzytkownika oraz na żadanie użytkownika.
-		 %nie jestem pewien czy tutaj czy w rozdziale Bezpieczeńśtwo to co poniżęj jest%
-		 
-		Aplikacja będzie przechowywać newralgiczne dane systemu takie jak hasło uzytkownika, jego token oraz klucz szyfrujacy. Kluczową kwestią jest odpowiednie przechowywanie tych danych w telefonie tak by nie mógł nikt niepowołany ich uzyskać. Hasło przechowywane będzie w pamieći telefonu w postaci zaszyfrowanego pliku. Plik ten będzie szyfrowany kluczem wszytym w oprogramowanie aplikacji za pomocą metody AES. Token użytkownika oraz klucz szyfrujacy będzie przechowywany jako plik w smartphonie. Plik ten będzie szyfrowany hasłem użytkownika. Dzięki temu nawet jeżeli niepowołana osoba uzyska dostęp do danych plikóW nie będzie w stanie ich odszyfrować.
+	W pierwszej kolejności opisana zostanie przedstawiony projekt infrastruktury klucza publicznego (w skrócie PKI). Ideą infrastruktury klucza publicznego jest zarządzanie cyfrowymi certyfikatami i kluczami szyfrującymi dla osób, oprogramowania, urządzeń i systemów. Przy jednoczesnym zachowaniu integralności, poufności oraz dostępności.
+		\paragraph*{Certyfikat szyfrujący}
+		Certyfikat klucza szyfrującego ma format JSONa składającego się z następujących pól:
+		\begin{itemize*}
+			\item ''PUBLIC\_KEY” - wartość klucza publicznego pary kluczy dostępowych,
+			\item ''Signature\_Algorithm\_Identifier'' --- algorytm szyfrujący sygnaturę,
+			\item ''Validity\_period'' --- data ważności pary kluczy,
+			\item ''Version'' --- wersja certyfikatu,
+			\item ''Issuer\_name'' --- nazwa emitenta,
+			\item ''Hash\_Algorithm'' --- algorytm funkcji skrótu,
+			\item ''Serial\_number'' --- unikalna wartość dla certyfikatu,
+			\item ''User\_Name'' --- imię i nazwisko użytkownika.
+		\end{itemize*}
+	\newpage
+		Przykładowa zawartość takiego certyfikatu szyfrującego może być następująca:\\
+		{\footnotesize  \{\\
+			''PUBLIC\_KEY'':''MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7jik\linebreak izatJoaAnSc89HJO75BRi+IUXWBOb6yfD\&nFZd5pxEmWNXxK6sKjDLfw4XbZ\linebreak sQhBDzLAQ6KvgzNx2+WUB9nBDnP00KQ1BmvOh7GWiCeXf44Xaj3\%n+k+znM7\linebreak uRW9TpTLwOZwNpJAtec89g6UC9d+1QCH3fd950zhlYxTu21DemwIDAQAB\%n'',\\
+			''Signature\_Algorithm\_Identifier'':''RSA'',\\
+			''Validity\_period'':''2018-12-18T20:59:29'',\\
+			''Version'':1,\\
+			''Issuer\_name'':''Test10'',\\
+			''Hash\_Algorithm'':''SHA-256'',\\
+			''Serial\_number'':''MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD\linebreak gW6H2k5BeVvGbKY81X+cvnrGOKNgCN6017fKdkGceGhFAP6ZNyPxvzjhlUS\&\linebreak /ikJRsaybUiIKP\&/lxtiheEX9hdlbY19vbrCUn3CXO\&/ILXxlYANMk1eca\linebreak UTu+VWXg5\&/GEGQ4YeNJh+au78KSnYitPMJezrN8\&/t+hkTjAFt166eDJw\linebreak IDAQAB'',\\
+			''User\_Name'':''Damian Test''  \\
+		\}}
+								 
+		\paragraph*{Urzędy certyfikujące [Maciej Marciniak]}
+		W prezentowanym systemie urzędem certyfikującym może być aplikacja serwerowa posiadająca w bazie danych przy rekordach użytkownika w tabeli Users znajdować mogą się kolumny przechowujące certyfikaty szyfrujące. W ten sposób certyfikat zostanie przypisany do konkretnej osoby. Charakter systemu nie wymusza potrzeby przechowywania historii przypisanych certyfikatów do danego użytkownika, ponieważ w obiegu systemu nie powinna pojawić się sytuacja, gdzie będą podpisane dane starym kluczem, tak jak może się zdarzyć taka sytuacja przy podpisywaniu fizycznych dokumentów. Ze względu na brak potrzeby przechowywania certyfikatów unieważnionych, nowo wygenerowane certyfikaty mogą nadpisywać stare rekordy, skutkuje to oszczędnością pamięci systemu. 
 		
-		Drugim newraligcznym punktem aplikcaji mobilnej będzie transmisja danych dlatego w komunikacji pomiędzy serwerem a urządzeniem mobilnym wykorzystany będzie protokół HTTPs. Co uniemożliwi podsłuch danych.
+		Urzędem rejestrującym jest tylko pośrednio aplikacja serwerowa, właściwym modułem pełniącym tę funkcję jest aplikacja mobilna z uprawnieniami administracyjnymi.
+		\paragraph*{Klient systemu [Damian Filipowicz]}
+		W przypadku systemu \NazwaSys \space klientem systemu będzie Aplikacja mobilna. Będzie ona odpowiedzialna za uwierzytelnianie użytkownika w systemie oraz generowanie klucza szyfrującego, który zostanie po tym fakcie wysyłany do urzędu certyfikującego. Sam klucz szyfrujący będzie tworzony w momencie rejestracji użytkownika oraz na żądanie użytkownika.
+		
 	\subsubsection{Poufność}
-	Poufność zostanie zapewniona przy pomocy odpowiedniego przechowywania danych a kliencie systemu, bezpiecznej wymianie danych dzięki transmisji z wykorzystaniem SSL pomiędzy modułąmi systemu oraz funkcją uwierzytelniajaćym w aplikacji mobilnej oraz na serwerze dzięi którym, dane poufne nie trafia. w niepowołane ręce. 
+	Poufność zostanie zapewniona przy pomocy odpowiedniego przechowywania danych. Aplikacja będzie przechowywać newralgiczne dane systemu takie jak hasło użytkownika, jego token oraz klucz szyfrujący. Kluczową kwestią jest odpowiednie przechowywanie tych danych w telefonie tak, aby nie mógł nikt niepowołany ich uzyskać. Hasło przechowywane będzie w postaci zaszyfrowanego pliku, który będzie szyfrowany kluczem wszytym w oprogramowanie aplikacji za pomocą metody AES w trybie CBC. Token użytkownika oraz klucz szyfrujący będzie przechowywany jako plik w smartphonie i szyfrowany hasłem użytkownika. Dzięki temu nawet jeżeli niepowołana osoba uzyska dostęp do danych plików nie będzie w stanie ich odszyfrować w łatwy sposób.
+	
+	Drugim newralgicznym punktem aplikacji mobilnej będzie transmisja danych, dlatego w komunikacji pomiędzy serwerem, a urządzeniem mobilnym wykorzystany będzie protokół Https. Co uniemożliwi podsłuch danych. Pomiędzy uprzędzeniem sterującym, a telefonem komunikacja poprzez bluetooth zabezpieczona jest kluczem aplikacji. Mechanizm ten powoduje, że żadna aplikacja nie posiadająca danego kodu nie będzie w stanie połączyć się z aplikacjami prezentowanego systemu.	
+	
 	\subsubsection{Dostępność}
-	Dzięki popularnośći aplikacji mobilnych nasz system będzie w dużym stopniu dostępny dla użytkowników systemu. Jedynymi zagrożeniami będzie awaria sieci komputerowej w któej znajdować będzie się system oraz awaria sieci elektrycznej. Pierwsze jak i drugie zagrożenie będziemy redukować w postaci ożliwośći uzyskania dostępu do pomieszceni w tradycyjny sposób przy pomocy kluczy. Ponadto drugie zagrożenie będzie też redukowane przy pomcy urządzeni awaryjnego zasilania, co umożliwi funkcjonownaie systemu po zaniku napięcia w sieci elektrycznej przez określony czas. 
+	Dzięki popularności aplikacji mobilnych prezentowany system będzie w dużym stopniu dostępny dla użytkowników. Jedynymi zagrożeniami będzie awaria sieci komputerowej, w której znajdować będzie się serwer oraz awaria sieci elektrycznej. Pierwsze jak i drugie zagrożenie będziemy redukować w postaci możliwość uzyskania dostępu do pomieszczeń w tradycyjny sposób przy pomocy kluczy (przy zastosowaniu rozwiązania z elektrozamkiem, które nie wymaga ingerencji w mechanizm oryginalny). Ponadto drugie zagrożenie będzie też redukowane przy pomocy urządzeni awaryjnego zasilania, co umożliwi funkcjonowanie systemu po zaniku napięcia w sieci elektrycznej przez określony czas.
 	\subsubsection{Integralność}
+	Integralność zasobów zapewniona jest dzięki pośredniczeniu aplikacji serwerowej w dostępie do bazy danych. Modyfikacje w bazie danych wprowadzić można tylko pośrednicząc przez serwer, który weryfikuje uprawnienia i filtruje możliwe odwołania do informacji, do których nie posiada użytkownik dostępu. Wprowadzać modyfikacje będzie mógł ewentualnie administrator po wcześniejszym zalogowaniu się do aplikacji zarządzającej bazą danych.
