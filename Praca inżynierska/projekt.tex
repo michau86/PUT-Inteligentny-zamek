@@ -23,7 +23,7 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 	\end{landscape}
 \newpage
 	\subsubsection{Projekt bazy danych} 
-	Baza danych będzie składać się z pięciu tabel:
+	Baza danych\cite{BD} będzie składać się z pięciu tabel:
 	\begin{itemize*}
 		\item {USERS} --- przechowuje dane użytkowników oraz dane niezbędne przy weryfikacji logowania,
 		\item {LOCKS} --- zawiera informacje na temat dostępnych w systemie zamków,
@@ -117,14 +117,14 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 	
 		\paragraph*{Aplikacja mobilna}
 		Aplikacja mobilna składa się z szeregu klas napisanych w 2 językach: kotlin oraz java. Ponadto klasy te 
-		zostały podzielone na 5 kategorii takich jak:
+		zostały podzielone na 5 kategorii 	(rysunek \ref{Schemat ogólny diagramu klas dla Aplikacji mobilnej}) takich jak:
 		\begin{itemize*}
 			\item API 
 			(rysunek \ref{Diagram klas dla paczki api}) 
-			--  które przechowuje klasy odpowiedzialne za funkcje wykorzystywane w wielu miejscach systemu ,
+			--  które przechowuje klasy odpowiedzialne za funkcje wykorzystywane w wielu miejscach systemu. W paczce znajdują się klasy odpowiedzialne między innymi za odczyt oraz zapis do pliku, komunikacje HTTPS, czy wykorzystywanie SharedPreferences w aplikacji ,
 			\item Navigation 
 			(rysunek \ref{Diagram klas dla paczki navigations}) 
-			-- są to klasy odpowiedzialne za generowanie nawigacji w apikacji mobilnej,
+			-- są to klasy odpowiedzialne za generowanie nawigacji w apikacji mobilnej. Paczka znajdują się 4 klasy,
 			\item Adapters
 			(rysunek \ref{Diagram klas dla paczki adapters}) 
 			 -- w którym są przechowywane klasy adapter wykorzystywane w systemie do wyświetlania dnaych,
@@ -133,13 +133,13 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 Oprócz tych wymienionych wyżej są Jeszce 3 kategorie implementujące wzorzec architektoniczny Model-View-Presenter i są to odpowiednio:
 \begin{itemize*}
 	\item Model (rysunek \ref{Diagram klas dla paczki models}) 
-				 -- przechowujący klasy modele odpowiedzialne za przechowywanie danych,   
+				 -- przechowujący klasy modele odpowiedzialne za przechowywanie danych. Każda z klas która jest powiązana z odpowiednim widokiem   w nazwie na poczaTku ma nazwę widoku a na końcu ma słowo Model,   
 				\item view 
 				(rysunek \ref{Diagram klas dla paczki views}) 
-				-- przechowywująćy klasy widoków odpowiedzialne za generowanie widoków w aplikacji, 
+				-- przechowywująćy klasy widoków odpowiedzialne za generowanie widoków w aplikacji. Każda z klas która jest powiązana z odpowiednim widokiem   w nazwie na poczaTku ma nazwę widoku a na końcu ma słowo Activity, 
 				\item presenter
 				(rysunek \ref{Diagram klas dla paczki presenters}) 
-				 -- przechowywujaće klasy presenter odpowiedzialne za interakcje pomięczy modalami oraz widokami.
+				 -- przechowywujaće klasy presenter odpowiedzialne za interakcje pomięczy modalami oraz widokami.Każda z klas która jest powiązana z odpowiednim widokiem   w nazwie na poczaTku ma nazwę widoku a na końcu ma słowo Presenter.
 \end{itemize*}
 		\newpage
 		\begin{figure}[ht!]
@@ -253,9 +253,9 @@ Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji 
 
 \newpage
 \subsection{Interfejs graficzny systemu}\label{sec:Projekt interfejsu graficznego}
-	\subsubsection{Widoki aplikacji mobilnej}
+	\subsubsection{Widoki aplikacji mobilnej\cite{desingMobile}}
 		\paragraph*{Panel logowania użytkownika}
-	Widok umożliwia zalogowanie się użytkownika do systemu poprzez podanie loginu, hasła oraz adres IP serwera w odpowiednie pola, a następnie kliknięcie w przycisk “ZALOGUJ SIĘ”. Samo pole hasła jest maskowane. Jeśli nie posiada się konta, można je utworzyć poprzez przycisk “ZAREJESTRUJ SIĘ”. (Rysunek \ref{rys:panel_logowania_pionowo})
+	Widok umożliwiać będzie zalogowanie się użytkownika do systemu poprzez podanie loginu, hasła oraz adres IP serwera w odpowiednie pola, a następnie kliknięcie w przycisk “ZALOGUJ SIĘ”. Samo pole hasła będzie maskowane. Jeśli nie posiada się konta, zostanie utworzona możliwość  utworzenia konta poprzez przycisk “ZAREJESTRUJ SIĘ”. (Rysunek \ref{rys:panel_logowania_pionowo})
 	
 	
 	\begin{figure}[ht!]
@@ -268,7 +268,7 @@ Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji 
 
 	
 	\paragraph*{Panel rejestracji użytkownika}
-	Panel rejestracji służy do utworzenie nowego użytkownika poprzez podanie loginu, hasła, imienia i nazwiska użytkownika oraz adresu IP serwera do którego chcemy się zarejestrować. Pole z hasłem jest maskowane wraz z możliwością odkrywania hasła przy pomocy ikonki oko Po upewnieniu się, że wszystkie dane są poprawne, aby zakończyć proces rejestracji, klikamy przycisk “ZAREJESTRUJ”. (Rysunek \ref{rys:panel_rejestracji_pionowo})
+	Panel rejestracji służyć będzie do utworzenie nowego użytkownika poprzez podanie loginu, hasła, imienia i nazwiska użytkownika oraz adresu IP serwera do którego chcemy się zarejestrować. Pole z hasłem będzie maskowane wraz z możliwością odkrywania hasła przy pomocy ikonki oko Po upewnieniu się, że wszystkie dane są poprawne, aby zakończyć proces rejestracji, trzeba będzie kliknać przycisk “ZAREJESTRUJ”. (Rysunek \ref{rys:panel_rejestracji_pionowo})
 	
 	\begin{figure}[ht!]
 		\centering
@@ -281,7 +281,7 @@ Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji 
 	
 	
 	\paragraph*{Panel listy zamków}
-	Widok listy dostępnych zamków przedstawia listę nazw zamków do jakich dany użytkownik ma dostęp. Ułatwieniem jest możliwość sortowania wyników i wyszukiwanie po nazwach. Kliknięcie w nazwę zamka powoduje otwarcie zamka. Zmiana koloru ikon zamków sygnalizować ma status zamka.Opisy znaczeń poszcególnych koloróW oraz symboli opisane są w rozdziale symbolika oraz kolory. (Rysunek \ref{rys:panel_listy_dostepnych_zamkow_pionowo})
+	Widok listy dostępnych zamków przedstawia listę nazw zamków do jakich dany użytkownik ma dostęp. Ułatwieniem będzie możliwość sortowania wyników i wyszukiwanie po nazwach. Kliknięcie w nazwę zamka spowoduje otwarcie zamka. Zmiana koloru\footnote{Opisy znaczeń poszcególnych kolorów oraz symboli opisane są w rozdziale \ref{Symbolika ikon}} ikon zamków sygnalizować będzie status zamka. (Rysunek \ref{rys:panel_listy_dostepnych_zamkow_pionowo})
 	
 	\begin{figure}[ht!]
 			\centering
@@ -295,7 +295,7 @@ Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji 
 	
 	
 	\paragraph*{Panel boczny}
-	Panel boczny pozwala na szybkie przełączanie pomiędzy widokami. Chowany jest po lewej stronie ekranu. Umożliwia przechodzenie odpowiednio do listy zamków, zarządzania certyfikatami, panelu administracyjnego oraz ustawień. Ostatnia pozycja powoduje wylogowanie z aplikacji. Pnanel ten w zależnośći od uprawnień użytkownika możę posiadać lub nie pole z panelem administraotra (Rysunek \ref{rys:panel_boczny_pionowo} i \ref{rys:panel_boczny_pionowo2})
+	Panel boczny pozwalać będzie na szybkie przełączanie pomiędzy widokami. Chowany zostanie po lewej stronie ekranu. Umożliwi przechodzenie odpowiednio do listy zamków, zarządzania certyfikatami, panelu administracyjnego oraz ustawień. Ostatnia pozycja spowoduje wylogowanie z aplikacji. Pnanel ten w zależnośći od uprawnień użytkownika możę posiadać lub nie pole z panelem administraotra (Rysunek \ref{rys:panel_boczny_pionowo} i \ref{rys:panel_boczny_pionowo2})
 	
 	\begin{figure}[ht!]
 		\begin{minipage}{0.5\textwidth}
@@ -313,7 +313,7 @@ Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji 
 
 	
 	\paragraph*{Panel zarządzania certyfikatami}
-	Panel zarządzania certyfikatami umożliwia wybór funkcji dodania certyfikatu. Kolejne pozycje to lista posiadanych certyfikatów oraz wysłanie wniosku o utworzenie nowego certyfikatu  (Rysunek \ref{rys:panel_zarządzania_certyfikatami_pionowo})
+	Panel zarządzania certyfikatami umożliwi wybór funkcji dodania certyfikatu. Kolejne pozycje to lista posiadanych certyfikatów oraz wysłanie wniosku o utworzenie nowego certyfikatu  (Rysunek \ref{rys:panel_zarządzania_certyfikatami_pionowo})
 	
 	\begin{figure}[ht!]
 		\centering
@@ -326,7 +326,7 @@ Ostatni diagram (\ref{Diagram klas dla paczki presenters}) dotyczący aplikacji 
 
 	
 	\paragraph*{Panel listy certyfikatów}
-	Panel listy certyfikatów, jest listą aktualnych certyfikatów należących do użytkownika. Kliknięcie w dany certyfikat przenosi do widoku szczegółowego związanego z operacjami na tym certyfikacie. (Rysunek \ref{rys:panel_listy_certyfikatów_pionowo} )
+	Panel listy certyfikatów, będzie listą aktualnych certyfikatów należących do użytkownika. Kliknięcie w dany certyfikat przeniesie do widoku szczegółowego związanego z operacjami na tym certyfikacie. (Rysunek \ref{rys:panel_listy_certyfikatów_pionowo} )
 	
 	\begin{figure}[ht!]
 			\centering
