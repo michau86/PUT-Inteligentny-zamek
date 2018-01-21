@@ -2,8 +2,8 @@
 \newpage\section{Wybór technologii informatycznych} \label{sec:technologie}
 Prezentowany projekt ze względu na rozbudowaną konstrukcję, składa się również z wielu technologii informatycznych. Dominującymi językami programowania są Python oraz Java (z elementami języka Kotlin). Wybór oraz uzasadnienie decyzji zostało przedstawione w poniższych punktach.
 
-\subsection{Urządzenie sterujące}
-Urządzenie sterujące utworzone zostało na mikrokomputerze Raspberry Pi 3, ze względu na szereg interfejsów dostępnych na płytce. Inne rodzaju mikrokontrolery np. typy STM32 umożliwiają podłączenie takich urządzeń jak bluetooth oraz karta sieciowa WiFi, lecz jest to wówczas zintegrowany układ (celem pracy dyplomowej nie było tworzenie płytki PCB pozwalającej zintegrować układy) oraz drugim powodem jest wydajność i elastyczność programów. 
+\subsection{Urządzenie sterujące [Maciej Marciniak]}}
+Urządzenie sterujące utworzone zostało na mikrokomputerze Raspberry Pi 3, ze względu na szereg interfejsów dostępnych na płytce. Inne rodzaju mikrokontrolery np. typy STM32 umożliwiają podłączenie takich urządzeń jak~bluetooth oraz karta sieciowa WiFi, lecz jest to wówczas zintegrowany układ (celem pracy dyplomowej nie było tworzenie płytki PCB pozwalającej zintegrować układy) oraz drugim powodem jest wydajność i elastyczność programów. 
 
 Podczas projektowania urządzenia sterującego zastosowano następujące technologie:
 \begin{itemize*}
@@ -23,14 +23,16 @@ Aplikacja serwerowa została stworzona przy pomocy środowiska programistycznego
 	\item framework Django,
 	\item baza danych MySQL wykorzystująca oprogramowanie XAMPP w celu emulacji środowiska Apache,
 	\item format zapisu danych JSON,
+	\item HTML5
+	\item Bootstrap 3
 \end{itemize*}
 
-Wybór wyżej wymienionych technologii uzasadniony jest popularnością serwisów Webowych opartych o framework Django, wskazuje na to liczna liczba ofert pracy względem innych frameworków. Przez zastosowanie Django, zdecydowano jednocześnie o użyciu języka Python oraz bazy danych MySQL ze~względu na bardzo wysoką kompatybilność tych technologii. 
+Wybór wyżej wymienionych technologii uzasadniony jest popularnością serwisów Webowych opartych o framework Django, wskazuje na to liczna liczba ofert pracy względem innych frameworków. Przez zastosowanie Django, zdecydowano jednocześnie o użyciu języka Python oraz bazy danych MySQL ze~względu na bardzo wysoką kompatybilność tych technologii. Html5 został wybrany ponieważ jest to najnowsza wersja. Natomiast framework Bootstrap został wybrany z względu na intuicyjne tworzenie w nim stron responsywnych oraz dobrą współracę z framewrokiem Django.
 
-\subsection{Aplikacja mobilna}
+\subsection{Aplikacja mobilna [Damian Filipowicz]}
 Aplikacja mobilna została stworzona przy pomocy zintegrowanego środowiska programistycznego Android Studio w wersji 3.0 wraz z zintegrowanym emulatorem Genymotion z licencją darmową. "Srodowisko android studio w wersji 3.0 zostało wybrane ze względu na kompatybilność z językiem kotlin oraz wsparcie oficjalne firmy Google
  \footnote{Firma Google obecnie jest odpowiedzialna za rozwój systemu operacyjnego Android.}
- dla tego środowiska . Zdecydowano się na wybór systemu Android, ponieważ cieszy się bardzo dużą popularnością (urządzenia z systemem Windows są już dużą rzadkością). W przyszłości rozwoju projektu uwzględnić można również urządzenia z system iOS. Ze względu na możliwości stosowania wielu języków programowania wewnątrz jednej aplikacji, użyto następujących technologii:
+ dla tego środowiska . Zdecydowano się na~wybór systemu Android, ponieważ cieszy się bardzo dużą popularnością (urządzenia z systemem Windows są już dużą rzadkością). W przyszłości rozwoju projektu uwzględnić można również urządzenia z system iOS. Ze względu na~możliwości stosowania wielu języków programowania wewnątrz jednej aplikacji, użyto następujących technologii:
 \begin{itemize}
 	\item Java w wersji dla systemów Android jako podstawa funkcjonowania aplikacji,
 	\item Kotlin --- jako język poszerzający możliwości języka Java oraz pozwalający tworzyć kod o mniej objętości, tzn. bardziej czytelny,
