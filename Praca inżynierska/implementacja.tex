@@ -4,9 +4,174 @@
 % Odpowiedź na pytanie: Jak system zbudowano?
 \subsection[Aplikacja mobilna]{Aplikacja mobilna [Damian Filipowicz]}
 	\subsubsection{Przechowywanie danych}
-	\subsubsection{Implementacja graficzna}
-	\subsubsection{Walidacja danych wprowadzanych przez użytkownika}
+	W aplikacji mobilnej zostały zaimplementowane 3 możliwości przechowywania danych. Pierwszą z nich jest możliwość trzymania ich w pamięci telefonu jako pliki. Obiekty te przechowywane są w katalogu aplikacji. Przechowują one odpowiednio:
+	\begin{itemize*}
+	\item	klucz szyfrujący użytkownika zaszyfrowany hasłem użytkownika
+	\item certyfikat klucza szyfrującego 
+	\item certyfikaty dostępowe
+	\end{itemize*}	
+	Istnieje możliwość eksportowania dwóch pierwszych plików (listening: \ref{lst:kod1}) ze względu na brak możliwości ich odzyskania oraz umożliwieni użytkownikowi z korzystania w wielu urządzeniach z tego samego klucza szyfrującego. W przypadku kiedy użytkownik zgubi telefon lub  wyczyści dane aplikacji to wszystkie dane znajdujące się w pamieci telefonu zostaną skasowane. Eksport ten odbywa się w widoku ustawień. Te dwa pliki zostają połączone w jeden plik który zostaje zaszyfrowany hasłem. Plik zapisywany jest w miejscu na telefonie gdzie wskażę użytkownik.  Operacje na pliku wykonywane są przy pomocy klasy statycznej ''fileReadWriteAp'' .
+	
+	\begin{lstlisting}[caption={Funkcja eksportująca klucz szyfrujący.}, label={lst:kod1}, language=Kotlin]
+fun exportKey(path:String,password:String)
+{
+	if(!Valdiation.isCorrectPassword(password))
+	{
+		view.showMessage("niepoprawne haslo")
+		view.showErrorPasswordKey()
+	}
+	try {
+		val privateKey = fileReadWriteApi.
+		readFromFile("*" + model.login, view)
+		
+		val publicCert = fileReadWriteApi
+		.readFromFile("**" + sharedPreferenceApi.
+		getString(view, EnumChoice.login), view)
+		
+		val str = "{\"public\":" + publicCert +
+ 		", \"private\": \"" + privateKey + "\"}"
+ 		
+		val toSend = CyptographyApi.
+		encrypt(str, password)
+		
+		fileReadWriteApi.writeToFile
+		(toSend, view, path, true)
+		
+		view.showMessage
+		("poprawnie wyeksporotwano certyfikat")
+	}catch (ex:Exception){
+		view.showMessage
+		("Wystapil blad podczas eksportu pliku")
+	}
+}
 
+	\end{lstlisting}	
+	Wybrór  tej technologi do wymienionych powyższych danych jest uzadaniony zwiekszoną trawłością ich w stosunku do danych przechowywanych w pamięci aplikacji jak np.  w klasie globlajnej oraz możliwość przechowywania bardziej skomplikowanych danych.
+
+	
+	Drugim spsosobem przechowywania danych jest funkcja androidowa ShardPreferences. Przechowywuje ona proste typy danych takiej jak int string char bool w postaci klucz(wartość stringowa) value (wartość z danego typu który się podało)., W pamięci tej przechowywuje takie dane jak:
+	\begin{itemize*}
+		\item 	adres ip serwera,
+		\item login użytkownika,
+		\item hasło użytkownika zaszyfrowane kluczem wszytym w oprogramowanie,
+		\item token sesji użytkownika,
+		\item informacja czy użytkownik aplikacji jest zalogowany,
+		\item informacjaczy użytkownik aplikacji jest administratorem.	
+	\end{itemize*}
+	Ponadto przechowuje informacje wykorzystywane w widokach generowania certyfikatu takie jak
+	\begin{itemize*}
+		\item wybór loginu,
+		\item wybór zamka,
+		\item imie, 
+		\item nazwisko.
+	\end{itemize*}	
+	Przykładowy fragment kodu odczytująćy dane z shared preferences znajduje się na listeningu \ref{lst:kod2}. Dzięki temu rozwiązaniu unikamy literówek które powodować mogły by błędy w odczycie danych. 
+		
+		\begin{lstlisting}[caption={fragment kodu odpowiedzialny za odczytanie tokena.}, label={lst:kod2}, language=Kotlin]
+	val token=
+	CyptographyApi.decrypt( 
+	sharedPreferenceApi.
+	getString(view,EnumChoice.token)
+	)
+	
+	\end{lstlisting}
+		Wybór tej technologi został podyktowany zwiekszoną trwałością danych w stosunku do klasy globalnej oraz prostotą w użytkowniu jej. Żeby jeszcze bardziej ułatwić wykorzystywanie tej techniki została napisana specjalna klasa statyczna SharedPreferencesApi (\ref{lst:kod3}) w której został zaimplementowany klasa EnumChoice przechowywujący wszystkie klucze.
+	
+		\begin{lstlisting}[caption={klasa EnumChoice.}, label={lst:kod3}, language=Kotlin]
+enum class EnumChoice(val value:String)
+{
+	ip("ipserwer"),password("password"),
+	token("sessionToken"),
+	login("login"),nameuser("name"),surname("surname"),
+	isLogin("isLogin"),isAdmin("isadmin"),
+	choiceLogin("choiceLogin"),choiceLock("choiceLock"),
+	publicKey("publicKey")
+}
+
+		\end{lstlisting}
+		
+		Trzecim sposobem jest przechowywanie w klasie globalnej (Global Container)  obiektów. Przechowywane w niej są wszystkie dane które nie wymagają przechowywania po wyłączeniu aplikacji.
+		
+		\subsubsection{Implementacja graficzna}
+		
+		Wszystkie wartości stringowe wyświetlane na ekranie są przechowywane w pliku Strings znajdującego się w katalogu res/values. Wybór takiego sposobu został podyktowany faktem możliwości późniejszego łatwiejszego przerabiania tekstów oraz możliwości łatwiejszego tłumaczenia na inny język. Wszystkie kolory użyte w aplikacji przechowywane są w pliku colors. Ma to na celu ułatwienie  zmiany kolorów w całej aplikacji. Styl dla podstawowych elementów graficznych takich jak ''editText'', ''TextView'' czy ''Button'' przechowywane są w pliku styles co ma za zadanie umożliwienie łatwiejszej zmiany wyglądów danych elementów w całej aplikacji.
+		
+		Oprócz stylów elementów czy wartości stringowych należy również napisać w jaki sposób generowane są widoki. Widoki te są przechowywane w plikach XML.  Dla widoków które nie posiadały listy został zaimplementowany układ ''LinearLayout'' ze względu na prostotę w tworzeniu oraz ewentualnych zmianach w wyglądzie. Natomiast dla widoków z wyświetlanymi jakimiś listami został zaimplementowany układ ''ConstrainLayout'' ze względu na fakt że przy liście występuje znacznie więcej odwołań do generowania widoku a układ ten jest pod tym względem o wiele wydajniejszy od wspomnianego wcześniej ''LinearLayout''. 
+		
+	
+	\subsubsection{Walidacja danych wprowadzanych przez użytkownika}
+	Walidacja danych wprowadzonych przez użytkownika odbywa Się przy pomocy klasy statycznej Validation. Klasa ta udostępnia cztery funkcje odpowiedzialne za:
+	\begin{itemize*}
+	\item poprawność formatu adresu ip ,
+	\item czy data podana w drugim parametrze jest datą późniejszą niż data podana w pierwszym parametrze (listening \ref{}),
+	\item poprawność hasła,
+	\item poprawność loginu.
+	
+	\end{itemize*}
+	Wyrażenia regularne użyte w tych funkcjach znajdują się na listeningu \ref{lst:kod5}.
+	
+	\begin{lstlisting}[caption={Wyrażenia regularne.}, label={lst:kod4}, language=Kotlin]
+ 
+  "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$)
+  .{4,}$"
+ 
+  "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.)
+  {3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$"
+ 
+		\end{lstlisting}
+		
+		
+			\begin{lstlisting}[caption={Funkcja odpowiedzialna za sprawdzanie która data jest pó"zniejsza.}, label={lst:kod5}, language=Java]
+	public static boolean biggerThanTime(String time1,String time2){
+		Date date = new Date() ;
+		
+		SimpleDateFormat dateFormat = new 
+		
+		SimpleDateFormat("HH:mm") ;
+		
+		dateFormat.format(date);
+		
+		try {
+			if (dateFormat.parse(time1).
+			after(dateFormat.parse(time2))) {
+			return false;
+			} else {
+			return true;
+			}
+		}catch (Exception ex){}
+		
+		return false;
+	}
+	
+		\end{lstlisting}
+		\subsection{4.	Komunikacja z serwerem}
+		
+		
+		Do komunikacji z serwerem napisana została specjalna klasa dziedzicząca po klasie AsyncTask o nazwie HTTPRequest. Klasa ta wysyła podane w konstruktorze (listening \ref{lst:kod6}) w postaci Hasmap-u dane do serwera i po otrzymaniu informacji zwrotnej z serwera przekazuje tą odpowiedź. Odpowiedź ta jest przekazywana do klasy która utworzyła i wykonała klasę HTTPRequets do funkcji o nazwie podanej w parametrze konstruktora przy pomocy refleksji (listening: \ref{lst:kod7}). Dzięki temu klasa ta jest uniwersalna i Może być stosowana w każdym miejscu programu.
+	
+	\begin{lstlisting}[caption={Konstruktor klasy HTTPRequest.}, label={lst:kod6}, language=Java]
+public HTTPRequestAPI(Object presenter,String url,String methodName,HashMap DataToSend) {
+	this.urlString=url;
+	this.DataToSend=DataToSend;
+	this.methodName=methodName;
+	this.presenter=presenter;
+}
+
+\end{lstlisting}	
+	
+		\begin{lstlisting}[caption={Metoda OnPost zwracająca odpowied"z serwera.}, label={lst:kod7}, language=Java]
+@Override
+protected void onPostExecute(String response) {
+java.lang.reflect.Method method;
+try {
+	method = presenter.getClass().getMethod(methodName, String.class);
+	method.invoke(presenter, response);
+	}catch(Exception ex){}
+}
+
+
+	\end{lstlisting}	
+		
 \newpage
 \subsection{Serwer}
 	\subsubsection[Aplikacja serwerowa]{Aplikacja serwerowa [Maciej Marciniak]}
@@ -23,7 +188,7 @@
 %rzyład: wzorzec arichtektoniczny MWK (ang. \textit{Model-Viewer-Controller}) \cite{mvc2017}.
 %Zobacz listing \ref{lst:kod1}.
 
-%\begin{lstlisting}[frame=single,captionpos=b,caption={Zawartość pliku \texttt{gvtopng.bat}},label={lst:kod1},basicstyle=\ttfamily]
+%\begin{lstlisting}[frame=single,captionpos=b,caption={Zawartość pliku %\texttt{gvtopng.bat}},label={lst:kod1},basicstyle=\ttfamily]
 % "c:\Program Files (x86)\Graphviz2.30\bin\dot.exe" ^
 % -Tpng ucased.gv > ucased.png 
 %\end{lstlisting}

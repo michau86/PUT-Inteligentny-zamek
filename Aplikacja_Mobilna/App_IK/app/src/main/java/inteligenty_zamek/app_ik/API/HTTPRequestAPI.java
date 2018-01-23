@@ -35,10 +35,6 @@ public class HTTPRequestAPI extends
     Object presenter;
 
     public HTTPRequestAPI(Object presenter,String url,String methodName,HashMap DataToSend) {
-
-
-// Install the all-trusting trust manager
-
         this.urlString=url;
         this.DataToSend=DataToSend;
         this.methodName=methodName;
@@ -60,19 +56,15 @@ public class HTTPRequestAPI extends
     protected void onPostExecute(String response) {
 
         java.lang.reflect.Method method;
-        Log.i("HHHH","8");
-        Log.i("HHHH",response);
         try {
             method = presenter.getClass().getMethod(methodName, String.class);
             method.invoke(presenter, response);
-
         }catch(Exception ex){
         }
     }
 
     public String performPostCall(String requestURL,
                                   HashMap<String, String> postDataParams) {
-        Log.i("HHHH",requestURL);
         URL url;
         String response = "";
         try {
@@ -82,7 +74,6 @@ public class HTTPRequestAPI extends
             context.init(null, new X509TrustManager[]{new NullX509TrustManager()}, new SecureRandom());
             HttpsURLConnection.setDefaultSSLSocketFactory(context.getSocketFactory());
             javax.net.ssl.HttpsURLConnection conn = (HttpsURLConnection)url.openConnection();
-
             conn.setReadTimeout(15000);
             conn.setConnectTimeout(15000);
             conn.setRequestMethod("POST");
@@ -97,10 +88,6 @@ public class HTTPRequestAPI extends
             writer.flush();
             writer.close();
             os.close();
-
-          //  int responseCode = conn.getResponseCode();
-
-
                 String line;
                 BufferedReader br = new BufferedReader(new InputStreamReader(
                         conn.getInputStream()));
@@ -117,14 +104,11 @@ public class HTTPRequestAPI extends
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException{
         StringBuilder result = new StringBuilder();
         boolean first = true;
-
-
         for(Map.Entry<String, String> entry : params.entrySet()){
             if (first)
                 first = false;
             else
                 result.append("&");
-
             result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
             result.append("=");
             result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));

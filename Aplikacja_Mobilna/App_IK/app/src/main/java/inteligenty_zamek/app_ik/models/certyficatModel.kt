@@ -14,7 +14,16 @@ class certyficatModel(val view:Context, val position:Int)
     val isLogin=sharedPreferenceApi.getBoolean(view,EnumChoice.isLogin)
     val isAdmin=sharedPreferenceApi.getBoolean(view,EnumChoice.isAdmin)
     val login= sharedPreferenceApi.getString(view,EnumChoice.login)
-    val token=CyptographyApi.decrypt(sharedPreferenceApi.getString(view,EnumChoice.token))
+
+
+    val token=
+            //funkcja kryptograficzna deszyfrująca string
+            CyptographyApi.decrypt(
+                    //pobranie stringa , drugim parametrem jest wybór klucza, w tym przypadku jest to token
+            sharedPreferenceApi.getString(view,EnumChoice.token)
+    )
+
+
     val ipaddres=sharedPreferenceApi.getString(view,EnumChoice.ip)
     val fromAdminPanel:Boolean
     init

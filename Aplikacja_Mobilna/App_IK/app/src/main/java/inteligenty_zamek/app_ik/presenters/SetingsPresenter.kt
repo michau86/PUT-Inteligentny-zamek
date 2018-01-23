@@ -135,25 +135,27 @@ class SetingsPresenter(val view: SetingsActivity)
 
     fun exportKey(path:String,password:String)
     {
+        // walidacja poprawnośći hasła
         if(!Valdiation.isCorrectPassword(password))
         {
             view.showMessage("niepoprawne hasło")
             view.showErrorPasswordKey()
         }
         try {
+            //odczytanie klucza prywatnego z plkiku
             val privateKey = fileReadWriteApi.readFromFile("*" + model.login, view)
+            //odczytanie publicznego certyfikatu klucza szyfrującego
             val publicCert = fileReadWriteApi.readFromFile(
                     "**" + sharedPreferenceApi.getString(view, EnumChoice.login), view)
-
+            //połącenie klucza prywatnego oraz certyfikatu w jedne string
             val str = "{\"public\":" + publicCert + ", \"private\": \"" + privateKey + "\"}"
-
+            //zaszyfrowanie hasłem użytkownika
             val toSend = CyptographyApi.encrypt(str, password)
-
+            //zapisanie pliku w podanej ścieżce
             fileReadWriteApi.writeToFile(toSend, view, path, true)
             view.showMessage("poprawnie wyeksporotwano certyfikat")
         }catch (ex:Exception){
-            view.showMessage("niepoprawne hasło")
-            view.showErrorPasswordKey()
+            view.showMessage("Wystąpił błą podczas eksportu pliku")
         }
     }
     fun importKey(path:String,password:String)
@@ -164,8 +166,6 @@ class SetingsPresenter(val view: SetingsActivity)
             val result = CyptographyApi.decrypt(v, password)
 
             val json: JSONObject = JSONObject(result)
-            Log.i("HHHH", json.getString("private").toString())
-            Log.i("HHHH", json.getJSONObject("public").toString())
 
             fileReadWriteApi.writeToFile(
                     json.getString("private").toString(), view, "*" + model.login)
