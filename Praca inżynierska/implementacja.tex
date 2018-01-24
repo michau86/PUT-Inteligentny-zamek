@@ -274,6 +274,27 @@ def api_register(request):
 	
 	
 	\subsubsection[Strona internetowa]{Strona internetowa [\StudentB]}
+	Strona internetowa została dopisana do projektu serwera w oparciu o framework django. Zaimplementowane są trzy widoki. Widok logowania, widok wyświetlający historię oraz widok do którego przechodzi się po wylogowaniu. Główny widok możliwy jest do wyświetlnenia tylko po zalogowaniu. Login oraz hasło używane dozalogowania należy wygenerować podczas konfiguracji serera przy pomocy polecnenia ''python manage.py createsuperuser'' lub modyfikując wpis w bazie danych ręcznie. Strona internetowa znajduje się w plikach:
+	\begin{itemize*}
+		\item views.py
+		\item urls.py
+		\item *.html
+	\end{itemize*}
+ 
+	W pliku ''urls.py''(listening: \ref{lst:python url}) znajduą się adresy URL które korzystają z wbudowanej funkcji django ''auth\_views.login'' służącej do logowania oraz ''auth\_views.logout'' służąca do wylogowania. Plik ''views.py'' posiada API(listening: \ref{lst:serwer login strona}) wykorzystywane w stronie głównej które pobiera z bazy danych. W plikach z rozszerzeniem html znajduje się implementacja wyglądu strony.
+	
+	{\footnotesize 
+		\begin{lstlisting}[caption={API logowania do strony internetowej}, label={lst:serwer login strona}, language=Python]	
+	@login_required(login_url="login/")
+def website(request):
+  try:
+    cursor = db.cursor()
+    cursor.execute("SELECT DATE, ACCESS, locks_keys.NAME, locks_keys.SURNAME, locks.NAME AS 'ZAMEK' FROM access_to_locks, locks_keys, locks WHERE locks_keys.ID_KEY = access_to_locks.ID_KEY AND locks.ID_LOCK = access_to_locks.ID_KEY ORDER BY DATE DESC")
+    rows = cursor.fetchall()
+  finally:
+    return render_to_response('home.html', {"rows": rows})
+		\end{lstlisting}}
+	
 	
 \newpage
 \subsection[Urządzenie sterujące]{Urządzenie sterujące [\StudentA]}
