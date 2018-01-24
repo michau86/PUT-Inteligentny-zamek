@@ -302,7 +302,16 @@ Komunikacja pomiędzy urządzeniami polega tylko na przesyle podpisanych cyfrowo
 
 \newpage
 \subsection[Interfejs graficzny systemu]{Interfejs graficzny systemu [Damian Filipowicz]}\label{sec:Projekt interfejsu graficznego}
-Jednym z dwóch modułów posiadających w systemie interfejs graficzny jest aplikacja mobilna, drugim zaś strona internetowa. Aplikacja mobilna zawierać powinna wszystkie funkcjonalności systemu z wykorzystaniem czytelnego interfejsu użytkownika. Strona internetowa  ma mieć na celu interakcję tylko z administratorem systemu, dlatego nie są stawiany wysoki priorytet estetyczny. 
+Jednym z dwóch modułów posiadających w systemie interfejs graficzny jest aplikacja mobilna, drugim zaś strona internetowa. Aplikacja mobilna zawierać powinna wszystkie funkcjonalności systemu z wykorzystaniem czytelnego interfejsu użytkownika. Strona internetowa  ma mieć na celu interakcję tylko z administratorem systemu, dlatego nie są stawiany wysoki priorytet estetyczny. Nominalną wielkością ekranu braną pod uwagę przy projektowaniu interfejsu graficznego dla aplikacji mobilnej będzie ekran o wielkości 5 in. Motywacją takiego wyboru jest rozkład popularności ekranów dla urządzeń mobilnych w 2017 roku. Jak widać na załączonym rysunku (rys. \ref{rys:prognoza}) wielkość ekranu 5,0 jest pierwszą znaczącą wielkością dla urządzeń mobilnych. 
+  
+	\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=12cm]
+	{Obrazy/porowananie}
+	\caption{Prognoza popularności ekranów dla urządzen mobilnych na przestrzeni lat 2015-2021  }
+	\label{rys:prognoza}
+\end{figure}\footnote{ \href{https://www.idc.com/getdoc.jsp?containerId=prUS42628117}{https://www.idc.com/getdoc.jsp?containerId=prUS42628117} (odczyt z dnia 24.01.2018)}
+
 	\subsubsection{Widoki aplikacji mobilnej}
 	\paragraph*{Panel logowania użytkownika}
 	Widok umożliwiać będzie zalogowanie się użytkownika do systemu poprzez podanie loginu, hasła oraz adres IP serwera w odpowiednie pola, a następnie kliknięcie w przycisk ''ZALOGUJ SIĘ”. Samo pole hasła będzie maskowane. Jeśli nie posiada się konta, zostanie utworzona możliwość  utworzenia konta poprzez przycisk ''ZAREJESTRUJ SIĘ”. (Rys. \ref{rys:panel_logowania_pionowo})
