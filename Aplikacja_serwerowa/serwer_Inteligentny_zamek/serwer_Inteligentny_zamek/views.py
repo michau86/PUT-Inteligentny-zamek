@@ -61,8 +61,8 @@ def api_login(request):
                     return JsonResponse({"status": "ERROR PASSWORD", "token": "invalid"})
             elif data[2] == 1:
                 return JsonResponse({"status": "not activated", "token": "invalid"})
-			else:
-				return JsonResponse({"status": "blocked", "token": "invalid"})
+            else:
+                return JsonResponse({"status": "blocked", "token": "invalid"})
         except Exception:
             return JsonResponse({"status": "ERROR", "token": "Invalid"})
 
@@ -76,11 +76,8 @@ def api_register(request):
         name = request.POST.get('name')
         surname = request.POST.get('surname')
         publickkey = request.POST.get('publickkey')
-        # prepare a cursor object using cursor() method
         cursor = db.cursor()
-        # execute SQL query using execute() method.
         cursor.execute("SELECT LOGIN FROM USERS WHERE LOGIN='%s'" % login)
-        # Fetch a single row using fetchone() method.
         data = cursor.fetchone()
         if data is not None:
             return JsonResponse({"status": "ERROR LOGIN"})
@@ -117,15 +114,11 @@ def api_logout(request):
     if request.method == 'POST':
         login = request.POST.get('login')
         token = request.POST.get('token')
-
         try:
             cursor = db.cursor()
             cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
             data = cursor.fetchone()[0]
-
-            # jezeli token jest poprawny to nastepuje wylogowanie
             if (data == token and token != None):
-                # aktualizacja tokena na pusty
                 cursor.execute("UPDATE USERS SET TOKEN = NULL WHERE LOGIN = '%s'" % (login))
                 db.commit()
                 return JsonResponse({"status": "logout"})
