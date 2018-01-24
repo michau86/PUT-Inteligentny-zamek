@@ -13,7 +13,7 @@ from datetime import date
 import Servo
 import Models
 
-server_address = 'http://192.168.137.1:8080/'
+server_address = 'https://192.168.137.1:8080/'
 url_download_certificate = server_address + 'api/RPI/download/cerificate/'
 url_access_decision = server_address + 'api/RPI/access_decision/'
 
@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
                     if data:
                         request = requests.post(url_download_certificate,
-                                                data={'mac': mac, 'certificate_id': id_certificate, 'login': login})
+                                                data={'mac': mac, 'certificate_id': id_certificate, 'login': login}, verify=False)
                         if request.json()['data'] == 'invalid':
                             with open("log.log", "a") as log:
                                 log.write(
@@ -118,7 +118,7 @@ if __name__ == '__main__':
                                         '%Y-%m-%d %H:%M:%S') + ":\tAccess denied to lock: received data false" + "\n")
                             request1 = requests.post(url_access_decision,
                                                      data={'certificate_id': id_certificate,
-                                                           'desicion': "0"})
+                                                           'desicion': "0"}, verify=False)
                             client_sock.send("Access denied")
                         else:
                             certificate = Models.Certificate(isactual=request.json()['data'][0]['ISACTUAL'],
@@ -150,7 +150,7 @@ if __name__ == '__main__':
                                         '%Y-%m-%d %H:%M:%S') + ":\tAccess denied to lock : public key false" + "\n")
                                 request = requests.post(url_access_decision,
                                                         data={'certificate_id': id_certificate,
-                                                              'desicion': "0"})
+                                                              'desicion': "0"}, verify=False)
                                 client_sock.send("Access denied")
                             else:
                                 key = '-----BEGIN PUBLIC KEY-----\n' + certificatePKI_original.publickey + '\n-----END PUBLIC KEY-----'
@@ -166,7 +166,7 @@ if __name__ == '__main__':
                                                 '%Y-%m-%d %H:%M:%S') + ":\tAccess granted to lock" + "\n")
                                         request1 = requests.post(url_access_decision,
                                                                  data={'certificate_id': id_certificate,
-                                                                       'desicion': "1"})
+                                                                       'desicion': "1"}, verify=False)
                                         client_sock.send("Access granted")
                                         servo.Open()
                                         time.sleep(10)
@@ -177,7 +177,7 @@ if __name__ == '__main__':
                                                 '%Y-%m-%d %H:%M:%S') + ":\tAccess denied to lock : certificate false" + "\n")
                                         request1 = requests.post(url_access_decision,
                                                                  data={'certificate_id': id_certificate,
-                                                                       'desicion': "0"})
+                                                                       'desicion': "0"}, verify=False)
                                         client_sock.send("Access denied")
                                 else:
                                     with open("log.log", "a") as log:
@@ -185,12 +185,12 @@ if __name__ == '__main__':
                                             '%Y-%m-%d %H:%M:%S') + ":\tAccess denied to lock : signature false" + "\n")
                                     request1 = requests.post(url_access_decision,
                                                              data={'certificate_id': id_certificate,
-                                                                   'desicion': "0"})
+                                                                   'desicion': "0"}, verify=False)
                                     client_sock.send("Access denied")
 
                     else:
                         request1 = requests.post(url_access_decision,
-                                                 data={'certificate_id': id_certificate, 'desicion': "0"})
+                                                 data={'certificate_id': id_certificate, 'desicion': "0"}, verify=False)
                         client_sock.send("Access denied")
 
                     client_sock.close()

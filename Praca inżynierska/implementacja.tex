@@ -10,171 +10,264 @@
 	\item certyfikat klucza szyfrującego 
 	\item certyfikaty dostępowe
 	\end{itemize*}	
-	Istnieje możliwość eksportowania dwóch pierwszych plików (listening: \ref{lst:kod1}) ze względu na brak możliwości ich odzyskania oraz umożliwieni użytkownikowi z korzystania w wielu urządzeniach z tego samego klucza szyfrującego. W przypadku kiedy użytkownik zgubi telefon lub  wyczyści dane aplikacji to wszystkie dane znajdujące się w pamieci telefonu zostaną skasowane. Eksport ten odbywa się w widoku ustawień. Te dwa pliki zostają połączone w jeden plik który zostaje zaszyfrowany hasłem. Plik zapisywany jest w miejscu na telefonie gdzie wskażę użytkownik.  Operacje na pliku wykonywane są przy pomocy klasy statycznej ''fileReadWriteAp'' .
+	Istnieje możliwość eksportowania dwóch pierwszych plików (Listing: \ref{lst:kod1}) ze względu na brak możliwości ich odzyskania oraz umożliwieni użytkownikowi z korzystania w wielu urządzeniach z tego samego klucza szyfrującego. W przypadku kiedy użytkownik zgubi telefon lub  wyczyści dane aplikacji to wszystkie dane znajdujące się w pamięci telefonu zostaną skasowane. Eksport ten odbywa się w widoku ustawień. Te dwa pliki zostają połączone w jeden plik który zostaje zaszyfrowany hasłem. Plik zapisywany jest w miejscu na telefonie gdzie wskażę użytkownik.  Operacje na pliku wykonywane są przy pomocy klasy statycznej ''fileReadWriteAp''.
+	
+	Wybór  tej technologi do wymienionych powyższych danych jest uzasadniony zwiększoną trwałością ich w stosunku do danych przechowywanych w pamięci aplikacji jak np.  w klasie globalnej oraz możliwość przechowywania bardziej skomplikowanych danych.
 	
 	\begin{lstlisting}[caption={Funkcja eksportująca klucz szyfrujący.}, label={lst:kod1}, language=Kotlin]
-fun exportKey(path:String,password:String)
-{
-	if(!Valdiation.isCorrectPassword(password))
-	{
-		view.showMessage("niepoprawne haslo")
-		view.showErrorPasswordKey()
-	}
-	try {
-		val privateKey = fileReadWriteApi.
-		readFromFile("*" + model.login, view)
-		
-		val publicCert = fileReadWriteApi
-		.readFromFile("**" + sharedPreferenceApi.
-		getString(view, EnumChoice.login), view)
-		
-		val str = "{\"public\":" + publicCert +
- 		", \"private\": \"" + privateKey + "\"}"
- 		
-		val toSend = CyptographyApi.
-		encrypt(str, password)
-		
-		fileReadWriteApi.writeToFile
-		(toSend, view, path, true)
-		
-		view.showMessage
-		("poprawnie wyeksporotwano certyfikat")
-	}catch (ex:Exception){
-		view.showMessage
-		("Wystapil blad podczas eksportu pliku")
-	}
+fun exportKey(path:String,password:String){
+  if(!Valdiation.isCorrectPassword(password)){
+    view.showMessage("niepoprawne haslo")
+    view.showErrorPasswordKey()
+  }
+  try {
+    val privateKey = fileReadWriteApi.readFromFile("*" + model.login, view)
+    val publicCert = fileReadWriteApi.readFromFile("**" + sharedPreferenceApi.getString(view, EnumChoice.login), view)	
+    val str = "{\"public\":" + publicCert + ", \"private\": \"" + privateKey + "\"}"
+    val toSend = CyptographyApi.encrypt(str, password)
+    fileReadWriteApi.writeToFile(toSend, view, path, true)
+    view.showMessage("poprawnie wyeksporotwano certyfikat")
+  }
+  catch (ex:Exception){
+    view.showMessage("Wystapil blad podczas eksportu pliku")
+  }
 }
-
 	\end{lstlisting}	
-	Wybrór  tej technologi do wymienionych powyższych danych jest uzadaniony zwiekszoną trawłością ich w stosunku do danych przechowywanych w pamięci aplikacji jak np.  w klasie globlajnej oraz możliwość przechowywania bardziej skomplikowanych danych.
-
-	
-	Drugim spsosobem przechowywania danych jest funkcja androidowa ShardPreferences. Przechowywuje ona proste typy danych takiej jak int string char bool w postaci klucz(wartość stringowa) value (wartość z danego typu który się podało)., W pamięci tej przechowywuje takie dane jak:
+		
+	Drugim sposobem przechowywania danych jest funkcja androidowa SharedPreferences. Przechowuje ona proste typy danych takiej jak int, string, char, bool w postaci klucz (wartość typu string) value (wartość z danego typu, który się podało). W pamięci tej przechowuje takie dane jak:
 	\begin{itemize*}
-		\item 	adres ip serwera,
+		\item adres ip serwera,
 		\item login użytkownika,
 		\item hasło użytkownika zaszyfrowane kluczem wszytym w oprogramowanie,
 		\item token sesji użytkownika,
 		\item informacja czy użytkownik aplikacji jest zalogowany,
-		\item informacjaczy użytkownik aplikacji jest administratorem.	
+		\item informacja czy użytkownik aplikacji jest administratorem.	
 	\end{itemize*}
-	Ponadto przechowuje informacje wykorzystywane w widokach generowania certyfikatu takie jak
+
+	Ponadto przechowuje informacje wykorzystywane w widokach generowania certyfikatu takie jak:
 	\begin{itemize*}
 		\item wybór loginu,
 		\item wybór zamka,
-		\item imie, 
+		\item imię, 
 		\item nazwisko.
 	\end{itemize*}	
-	Przykładowy fragment kodu odczytująćy dane z shared preferences znajduje się na listeningu \ref{lst:kod2}. Dzięki temu rozwiązaniu unikamy literówek które powodować mogły by błędy w odczycie danych. 
+
+	Przykładowy fragment kodu odczytujący dane z SharedPreferences znajduje się na listingu \ref{lst:kod2}. Dzięki temu rozwiązaniu unikamy ''literówek'', które powodować, by mogły błędy w odczycie danych. 
 		
-		\begin{lstlisting}[caption={fragment kodu odpowiedzialny za odczytanie tokena.}, label={lst:kod2}, language=Kotlin]
-	val token=
-	CyptographyApi.decrypt( 
-	sharedPreferenceApi.
-	getString(view,EnumChoice.token)
-	)
-	
+	\begin{lstlisting}[caption={Fragment kodu odpowiedzialny za odczytanie tokenu}, label={lst:kod2}, language=Kotlin]
+val token = CyptographyApi.decrypt( sharedPreferenceApi.getString (view, EnumChoice.token))
 	\end{lstlisting}
-		Wybór tej technologi został podyktowany zwiekszoną trwałością danych w stosunku do klasy globalnej oraz prostotą w użytkowniu jej. Żeby jeszcze bardziej ułatwić wykorzystywanie tej techniki została napisana specjalna klasa statyczna SharedPreferencesApi (\ref{lst:kod3}) w której został zaimplementowany klasa EnumChoice przechowywujący wszystkie klucze.
+	
+	Wybór tej technologi został podyktowany zwiększona trwałością danych w stosunku do klasy globalnej oraz prostotą w użytkowaniu jej. Żeby jeszcze bardziej ułatwić wykorzystywanie tej techniki została napisana specjalna klasa statyczna SharedPreferencesApi (\ref{lst:kod3}), w której został zaimplementowany klasa EnumChoice przechowujący wszystkie klucze.
 	
 		\begin{lstlisting}[caption={klasa EnumChoice.}, label={lst:kod3}, language=Kotlin]
-enum class EnumChoice(val value:String)
-{
-	ip("ipserwer"),password("password"),
-	token("sessionToken"),
-	login("login"),nameuser("name"),surname("surname"),
-	isLogin("isLogin"),isAdmin("isadmin"),
-	choiceLogin("choiceLogin"),choiceLock("choiceLock"),
-	publicKey("publicKey")
+enum class EnumChoice(val value:String){
+  ip("ipserwer"),
+  password("password"),
+  token("sessionToken"),
+  login("login"), 
+  nameuser("name"), 
+  surname("surname"),
+  isLogin("isLogin"), 
+  isAdmin("isadmin"),
+  choiceLogin("choiceLogin"), 
+  choiceLock("choiceLock"),
+  publicKey("publicKey")
 }
-
 		\end{lstlisting}
 		
-		Trzecim sposobem jest przechowywanie w klasie globalnej (Global Container)  obiektów. Przechowywane w niej są wszystkie dane które nie wymagają przechowywania po wyłączeniu aplikacji.
+	Trzecim sposobem jest przechowywanie w klasie globalnej (GlobalContainer)  obiektów. Przechowywane w niej są wszystkie dane które nie wymagają przechowywania po wyłączeniu aplikacji.
 		
-		\subsubsection{Implementacja graficzna}
+	\subsubsection{Implementacja graficzna}
 		
-		Wszystkie wartości stringowe wyświetlane na ekranie są przechowywane w pliku Strings znajdującego się w katalogu res/values. Wybór takiego sposobu został podyktowany faktem możliwości późniejszego łatwiejszego przerabiania tekstów oraz możliwości łatwiejszego tłumaczenia na inny język. Wszystkie kolory użyte w aplikacji przechowywane są w pliku colors. Ma to na celu ułatwienie  zmiany kolorów w całej aplikacji. Styl dla podstawowych elementów graficznych takich jak ''editText'', ''TextView'' czy ''Button'' przechowywane są w pliku styles co ma za zadanie umożliwienie łatwiejszej zmiany wyglądów danych elementów w całej aplikacji.
+	Wszystkie wartości typu string wyświetlane na ekranie są przechowywane w pliku Strings znajdującego się w katalogu res/values. Wybór takiego sposobu został podyktowany faktem możliwości późniejszego łatwiejszego przerabiania tekstów oraz możliwości łatwiejszego tłumaczenia na inny język. Wszystkie kolory użyte w aplikacji przechowywane są w pliku colors. Ma to na celu ułatwienie  zmiany kolorów w całej aplikacji. Styl dla podstawowych elementów graficznych takich jak ''editText'', ''TextView'' czy ''Button'' przechowywane są w pliku styles co ma za zadanie umożliwienie łatwiejszej zmiany wyglądów danych elementów w całej aplikacji.
 		
-		Oprócz stylów elementów czy wartości stringowych należy również napisać w jaki sposób generowane są widoki. Widoki te są przechowywane w plikach XML.  Dla widoków które nie posiadały listy został zaimplementowany układ ''LinearLayout'' ze względu na prostotę w tworzeniu oraz ewentualnych zmianach w wyglądzie. Natomiast dla widoków z wyświetlanymi jakimiś listami został zaimplementowany układ ''ConstrainLayout'' ze względu na fakt że przy liście występuje znacznie więcej odwołań do generowania widoku a układ ten jest pod tym względem o wiele wydajniejszy od wspomnianego wcześniej ''LinearLayout''. 
+	Oprócz stylów elementów, czy wartości tekstowych należy również napisać, w jaki sposób generowane są widoki. Widoki te są przechowywane w plikach XML.  Dla widoków które nie posiadały listy został zaimplementowany układ ''LinearLayout'' ze względu na prostotę w tworzeniu oraz ewentualnych zmianach w wyglądzie. Natomiast dla widoków z wyświetlanymi jakimiś listami został zaimplementowany układ ''ConstrainLayout'' ze względu na fakt że przy liście występuje znacznie więcej odwołań do generowania widoku a układ ten jest pod tym względem o wiele wydajniejszy od wspomnianego wcześniej ''LinearLayout''. 
 		
-	
+	\newpage
 	\subsubsection{Walidacja danych wprowadzanych przez użytkownika}
 	Walidacja danych wprowadzonych przez użytkownika odbywa Się przy pomocy klasy statycznej Validation. Klasa ta udostępnia cztery funkcje odpowiedzialne za:
 	\begin{itemize*}
 	\item poprawność formatu adresu ip ,
-	\item czy data podana w drugim parametrze jest datą późniejszą niż data podana w pierwszym parametrze (listening \ref{}),
+	\item czy data podana w drugim parametrze jest datą późniejszą niż data podana w pierwszym parametrze (listing \ref{lst:kod5}),
 	\item poprawność hasła,
 	\item poprawność loginu.
-	
 	\end{itemize*}
-	Wyrażenia regularne użyte w tych funkcjach znajdują się na listeningu \ref{lst:kod5}.
+
+	Wyrażenia regularne użyte w tych funkcjach znajdują się na listingu \ref{lst:kod4}.
 	
 	\begin{lstlisting}[caption={Wyrażenia regularne.}, label={lst:kod4}, language=Kotlin]
- 
   "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$)
   .{4,}$"
  
   "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.)
   {3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$"
- 
 		\end{lstlisting}
-		
-		
-			\begin{lstlisting}[caption={Funkcja odpowiedzialna za sprawdzanie która data jest pó"zniejsza.}, label={lst:kod5}, language=Java]
-	public static boolean biggerThanTime(String time1,String time2){
-		Date date = new Date() ;
-		
-		SimpleDateFormat dateFormat = new 
-		
-		SimpleDateFormat("HH:mm") ;
-		
-		dateFormat.format(date);
-		
-		try {
-			if (dateFormat.parse(time1).
-			after(dateFormat.parse(time2))) {
-			return false;
-			} else {
-			return true;
-			}
-		}catch (Exception ex){}
-		
-		return false;
-	}
+
+	\begin{lstlisting}[caption={Funkcja odpowiedzialna za sprawdzanie, która data jest pó"zniejsza.}, label={lst:kod5}, language=Java]
+public static boolean biggerThanTime(String time1,String time2){
+  Date date = new Date() ;
+  SimpleDateFormat dateFormat = new 
+  SimpleDateFormat("HH:mm") ;
+  dateFormat.format(date);
+  try 
+  {
+    if (dateFormat.parse(time1).after( dateFormat.parse(time2))) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  catch (Exception ex){}	
+  return false;
+}
+	\end{lstlisting}
 	
-		\end{lstlisting}
-		\subsection{4.	Komunikacja z serwerem}
-		
-		
-		Do komunikacji z serwerem napisana została specjalna klasa dziedzicząca po klasie AsyncTask o nazwie HTTPRequest. Klasa ta wysyła podane w konstruktorze (listening \ref{lst:kod6}) w postaci Hasmap-u dane do serwera i po otrzymaniu informacji zwrotnej z serwera przekazuje tą odpowiedź. Odpowiedź ta jest przekazywana do klasy która utworzyła i wykonała klasę HTTPRequets do funkcji o nazwie podanej w parametrze konstruktora przy pomocy refleksji (listening: \ref{lst:kod7}). Dzięki temu klasa ta jest uniwersalna i Może być stosowana w każdym miejscu programu.
+	\newpage
+	\subsubsection{Komunikacja z serwerem}
+	Do komunikacji z serwerem napisana została specjalna klasa dziedzicząca po klasie AsyncTask o nazwie HTTPRequest. Klasa ta wysyła podane w konstruktorze (listing \ref{lst:kod6}) w postaci Hasmap-u dane do serwera i po otrzymaniu informacji zwrotnej z serwera przekazuje tą odpowiedź. Odpowiedź ta jest przekazywana do klasy która utworzyła i wykonała klasę HTTPRequests do funkcji o nazwie podanej w parametrze konstruktora przy pomocy refleksji (listing: \ref{lst:kod7}). Dzięki temu klasa ta jest uniwersalna i Może być stosowana w każdym miejscu programu.
 	
 	\begin{lstlisting}[caption={Konstruktor klasy HTTPRequest.}, label={lst:kod6}, language=Java]
 public HTTPRequestAPI(Object presenter,String url,String methodName,HashMap DataToSend) {
-	this.urlString=url;
-	this.DataToSend=DataToSend;
-	this.methodName=methodName;
-	this.presenter=presenter;
+  this.urlString=url;
+  this.DataToSend=DataToSend;
+  this.methodName=methodName;
+  this.presenter=presenter;
 }
-
 \end{lstlisting}	
 	
-		\begin{lstlisting}[caption={Metoda OnPost zwracająca odpowied"z serwera.}, label={lst:kod7}, language=Java]
+\begin{lstlisting}[caption={Metoda OnPost zwracająca odpowied"z serwera.}, label={lst:kod7}, language=Java]
 @Override
 protected void onPostExecute(String response) {
 java.lang.reflect.Method method;
 try {
-	method = presenter.getClass().getMethod(methodName, String.class);
-	method.invoke(presenter, response);
-	}catch(Exception ex){}
+  method = presenter.getClass().getMethod(methodName, String.class);
+  method.invoke(presenter, response);
+  }
+  catch(Exception ex){}
 }
-
-
-	\end{lstlisting}	
+\end{lstlisting}	
 		
 \newpage
 \subsection{Serwer}
+Serwer systemu zarządza wszystkimi informacjami, jest pośrednikiem w przekazywaniu i modyfikacji rekordów z bazy danych MySQL. Emulowaniem środowiska MySQL oraz Apache zajmuje się program XAMP w wersji 3.2.2.
+ 
 	\subsubsection[Aplikacja serwerowa]{Aplikacja serwerowa [Maciej Marciniak]}
+	Aplikacja serwerowa została zaimplementowana przy użyciu języka programowania Python 2.7 oraz frameworku Django. Program  właściwie składa się głównie z 3 plików:
+	\begin{itemize*}
+		\item setting.py --- odpowiedzialny za konfigurację połączenia z bazą danych, zwracanymi komunikatami, kodowanie, strefą czasową i innymi parametrami o mniejszym znaczeniu,
+		\item urls.py --- przechowywana tu tablica obiektów URL ustala, dla jakiego adresu URL (pierwszy parametr), wykonać konkretną metodę (parametr view), listing \ref{lst:python url} przedstawia fragment pliku urls.py,
+		\item views.py --- główny skrypt serwera, zawiera główną logikę aplikacji, to znaczy metody wykonywane dla konkretnych adresów URL.
+	\end{itemize*}
+
+{\footnotesize 
+\begin{lstlisting}[caption={Fragment pliku urls.py}, label={lst:python url}, language=Python]
+urlpatterns = [
+  url(r'^$', views.website, name='home'),
+  url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
+  url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
+  url(r'^list/$', views.website, name='list'),
+  url(r'^api/login/$', views.api_login, name='api_login'),
+  ...
+]
+\end{lstlisting}}
+
+	Funkcjonalności systemu w  dużej mierze wymagają stanu zalogowania, weryfikowane jest to przez podanie od użytkownika loginu oraz tokenu sesji logowania. Pola uzyskane w zapytaniu Http w metodzie POST są porównywane z znajdującymi się w bazie danych. Przykładowe API wymagające weryfikacji logowania znajduje się w listingu \ref{lst:serwer weryfikacja}. Użytkownik wysyła pole ''login'' oraz ''token'', następnie wykonane zostaje zapytanie do bazy danych o aktualnie znajdującą się wartość w rekordzie. Jeżeli wartości się pokrywają i nie są puste, może zostać wykonane polecenie, które chciał wywołać użytkownik. Dodatkowo, gdy operacja wymaga uprawnień administratora, weryfikowana jest flaga w bazie danych, czy dany użytkownik jest administratorem (IS\_ADMIN).
+\newpage	
+	{\footnotesize 
+	\begin{lstlisting}[caption={Przykładowe API weryfikujące stan logowania}, label={lst:serwer weryfikacja}, language=Python]
+def api_download_all_locks(request):
+  if request.method == 'POST':
+    login = request.POST.get('login')
+    token = request.POST.get('token')
+    try:
+      cursor = db.cursor()
+      cursor.execute("SELECT TOKEN FROM USERS WHERE login='%s'" % login)
+      token_from_DB = cursor.fetchone()[0]
+      if (token_from_DB == token and token != None):
+        ...
+    except Exception:
+      return JsonResponse({"status": "Invalid"})
+	\end{lstlisting}}
+	
+	Operacje logowania i rejestracji są podstawowymi działaniami, dzięki którym będzie można wykonywać bardziej złożone działania oraz niezbędne do poprawnego funkcjonowania PKI. Listing \ref{lst:serwer login} i listing \ref{lst:serwer register} przedstawiają kompletne funkcje logowania i rejestracji użytkowników. 
+	
+	Logowanie wymaga podania loginu w polu 'username' oraz skrótu \linebreak SHA-256 hasła użytkownika. W pierwszej kolejności (linia 5 do 9) tworzony jest ciąg pseudolosowy, który będzie użyty jako token sesji logowania. Zastosowany generator jest wbudowany w bibliotekę RSA, w tym wypadku tworzone ciągi są kluczem publicznym algorytmu RSA. Następnym krokiem jest pobranie skrótu hasła oraz flag (czy jest administratorem, status konta) z bazy danych. Wiersz 15 decyduje, czy konto użytkownika jest aktywne, jeśli nie, to w linii 24 sprawdzane jest, czy konto zostało aktywowane, jeśli tak, oznacza to, że dane konto zostało zablokowane. W przypadku jednak, gdy konto ma status aktywny, następuje aktualizacja wartości tokenu w bazie danych oraz weryfikacja uprawnień użytkownika. Zwrócony status logowania jako root oznacza, zalogowanie się jako administrator.
+	\newpage
+{\footnotesize 
+\begin{lstlisting}[caption={API logowania}, label={lst:serwer login}, language=Python]	
+def api_login(request):
+  if request.method == 'POST':
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    random_generator = Random.new().read
+    key = RSA.generate(1024, random_generator).publickey().exportKey()
+    token = ""
+    for x in key.split("\n")[1:-1]:
+      token += x
+    try:
+      cursor = db.cursor()
+      cursor.execute("SELECT PASSWORD, IS_ADMIN, ISACTIVATED FROM USERS WHERE login='%s'" % username)
+      data = cursor.fetchone()
+      if data[2] == 0:
+        if data[0] == password:
+          cursor.execute("UPDATE USERS SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
+          db.commit()
+          if data[1] == 1:
+            return JsonResponse({"status": "root", "token": token})
+          else:
+            return JsonResponse({"status": "ok", "token": token})
+        else:
+        return JsonResponse({"status": "ERROR PASSWORD", "token": "invalid"})
+      elif data[2] == 1:
+        return JsonResponse({"status": "not activated", "token": "invalid"})
+      else:
+        return JsonResponse({"status": "blocked", "token": "invalid"})
+    except Exception:
+      return JsonResponse({"status": "ERROR", "token": "Invalid"})
+\end{lstlisting}}
+
+	Operacja rejestracji wymaga podania unikalnego dla systemu loginu, hasła w postaci skrótu SHA-256, imienia, nazwiska użytkownika oraz wygenerowany klucz publiczny RSA. Pierwszym etapem rejestracji jest weryfikacja, czy podany login znajduje się obecnie w bazie danych użytkowników. W tym celu wykonywane jest zapytanie SQL z filtrem podanego loginu, w przypadku, gdy polecenie zwróci pustą wartość (w języku Python None), oznacza to brak istnienia danego użytkownika w bazie. W przeciwnym wypadku, otrzymania wartości z zapytania, zostaje zwrócona przez serwer odpowiedź błędu loginu (ERROR~LOGIN).
+
+\newpage
+{\footnotesize
+\begin{lstlisting}[caption={API rejestracji}, label={lst:serwer register}, language=Python]	
+def api_register(request):
+  if request.method == 'POST':
+    login = request.POST.get('login')
+    password = request.POST.get('password')
+    name = request.POST.get('name')
+    surname = request.POST.get('surname')
+    publickkey = request.POST.get('publickkey')
+    cursor = db.cursor()
+    cursor.execute("SELECT LOGIN FROM USERS WHERE LOGIN='%s'" % login)
+    data = cursor.fetchone()
+    if data is not None:
+      return JsonResponse({"status": "ERROR LOGIN"})
+    else:
+      try:
+        random_generator = Random.new().read
+        key = RSA.generate(1024, random_generator).publickey().exportKey()
+        serial = ""
+        for x in key.split("\n")[1:-1]:
+          serial += x
+        record = [login, password, name, surname, '0', publickkey, '1', serial, datetime.now().replace(year=datetime.now().year + 1)]
+        cursor.execute( 'INSERT INTO USERS (LOGIN,PASSWORD,NAME,SURNAME,IS_ADMIN,PUBLIC_KEY, ISACTIVATED, Serial_number, Validitiy_period) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)', record)
+        db.commit()
+        cursor.execute( "SELECT CONCAT(NAME, ' ', SURNAME) as User_Name, LOGIN as Issuer_name,  PUBLIC_KEY, Serial_number, Validitiy_period, Version, Signature_Algorithm_Identifier, Hash_Algorithm FROM `users` WHERE `LOGIN` = '%s'" % (login))
+        db.commit()
+        dict_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]
+        if len(dict_certificate) == 0:
+          return JsonResponse({"status": "invalid"})
+        else:
+          return JsonResponse({"status": "ok", "data": dict_certificate})
+      except Exception:
+        db.rollback()
+        return JsonResponse({"status": "ERROR"})
+\end{lstlisting}}
+\newpage
+	\subsubsection[Baza danych]{Baza danych [\StudentA]}
+	
 	\subsubsection[Strona internetowa]{Strona internetowa [Damian Filipowicz]}
 \newpage
 \subsection[Urządzenie sterujące]{Urządzenie sterujące [Maciej Marciniak]}
@@ -182,17 +275,5 @@ try {
 \newpage
 \subsection[Moduł zliczania osób]{Moduł zliczania osób [Maciej Marciniak]}
 
-\newpage
-\subsection{Wnioski}
-
-%rzyład: wzorzec arichtektoniczny MWK (ang. \textit{Model-Viewer-Controller}) \cite{mvc2017}.
-%Zobacz listing \ref{lst:kod1}.
-
-%\begin{lstlisting}[frame=single,captionpos=b,caption={Zawartość pliku %\texttt{gvtopng.bat}},label={lst:kod1},basicstyle=\ttfamily]
-% "c:\Program Files (x86)\Graphviz2.30\bin\dot.exe" ^
-% -Tpng ucased.gv > ucased.png 
-%\end{lstlisting}
-
-%Korzystając z systemu Graphviz można wygenerować diagram UML (zob. rysunek \ref{fig:ucased}). Podpis umieszcza się pod rysunkiem.
 
  

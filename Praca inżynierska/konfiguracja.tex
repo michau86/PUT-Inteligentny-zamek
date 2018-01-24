@@ -9,32 +9,13 @@
 \def\AlbumA       {121996}
 \def\StudentB     {Damian Filipowicz}
 \def\AlbumB       {122002}
-
-%Kierunek:
 \def\Kierunek {Informatyka}
- 
-%Specjalnosc:
 \def\Specjalnosc {Bezpieczeństwo systemów informatycznych} 
-
-%Poziom studiów: 
 \def\PoziomStudiow {I stopnia}
-%\def\PoziomStudiow {II stopnia}
-
-%Forma studiów:
 \def\FormaStudiow {stacjonarne}
-%\def\FormaStudiow {niestacjonarne}
-
-
-% Kierunek:      Informatyka - studia stacjonarne I stopnia
-%                Informatyka - studia niestacjonarne I stopnia
-% Specjalność:   Technologie informatyczne
-%        
-
-% Zmiana nazw w opisie tabel i rysunków
 \AtBeginDocument{
     \renewcommand*{\tablename}{Tabela}
     \renewcommand*{\figurename}{Rys.} 
-		% TO DO: Spis tablic -> Spis tabel
 }
 \setcounter{secnumdepth}{4}
 
@@ -53,12 +34,10 @@
 \hypersetup{
 	colorlinks=true,
 	linkcolor=black,
-	filecolor=magenta,      
-	urlcolor=cyan,
+	filecolor=black,      
+	urlcolor=black,
 }
 
-
-% Jeżeli kody programów zawierają polskie litery należy dodać odpowiedni znak poniżej
 \lstset{literate=%
     {ż}{{\.z}}1
     {ą}{{\c{a}}}1
@@ -67,6 +46,62 @@
 		{ć}{{\'c}}1
 		{ś}{{\'s}}1
 }
-        
+
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+
+\lstdefinelanguage{Kotlin}{
+	keywords={package, as, typealias, this, super, val, var, fun, for, null, true, false, is, in, throw, return, break, continue, object, if, try, else, while, do, when, yield, typeof, yield, typeof, class, interface, enum, object, override, public, private, get, set, import, abstract, },
+	keywordstyle=\color{NavyBlue}\bfseries,
+	ndkeywords={@Deprecated, Iterable, Int, Integer, Float, Double, String, Runnable, dynamic},
+	ndkeywordstyle=\color{BurntOrange}\bfseries,
+	emph={println, return@, forEach,},
+	emphstyle={\color{OrangeRed}},
+	identifierstyle=\color{black},
+	sensitive=true,
+	commentstyle=\color{gray}\ttfamily,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	stringstyle=\color{ForestGreen}\ttfamily,
+	morestring=[b]",
+	morestring=[s]{"""*}{*"""},
+}
+
+\lstset{
+language=Python,
+basicstyle=\ttm,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            % 
+}
+
+\lstset{language=Java,
+	showspaces=false,
+	showtabs=false,
+	breaklines=true,
+	showstringspaces=false,
+	breakatwhitespace=true,
+	commentstyle=\color{pgreen},
+	keywordstyle=\color{pblue},
+	stringstyle=\color{pred},
+	basicstyle=\ttfamily,
+	moredelim=[il][\textcolor{pgrey}]{$$},
+	moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
+}
+     
+\lstset{
+	numbers=left, 
+  	numberstyle=\footnotesize, 
+   	numbersep=8pt, 
+   	frame = single, 
+   	language=Java, 
+   	framexleftmargin=15pt
+}  
 
 
