@@ -10,7 +10,7 @@
 	\item certyfikat klucza szyfrującego 
 	\item certyfikaty dostępowe
 	\end{itemize*}	
-	Istnieje możliwość eksportowania dwóch pierwszych plików (Listing: \ref{lst:kod1}) ze względu na brak możliwości ich odzyskania oraz umożliwieni użytkownikowi z korzystania w wielu urządzeniach z tego samego klucza szyfrującego. W przypadku kiedy użytkownik zgubi telefon lub  wyczyści dane aplikacji to wszystkie dane znajdujące się w pamięci telefonu zostaną skasowane. Eksport ten odbywa się w widoku ustawień. Te dwa pliki zostają połączone w jeden plik który zostaje zaszyfrowany hasłem. Plik zapisywany jest w miejscu na telefonie gdzie wskażę użytkownik.  Operacje na pliku wykonywane są przy pomocy klasy statycznej ''fileReadWriteAp''.
+	Istnieje możliwość eksportowania dwóch pierwszych plików (Listing: \ref{lst:kod1}) ze względu na brak możliwości ich odzyskania oraz umożliwieni użytkownikowi z korzystania w wielu urządzeniach z tego samego klucza szyfrującego. W przypadku kiedy użytkownik zgubi telefon lub  wyczyści dane aplikacji to wszystkie dane znajdujące się w pamięci telefonu zostaną skasowane. Eksport ten odbywa się w widoku ustawień. Te dwa pliki zostają połączone w jeden plik który zostaje zaszyfrowany hasłem. Plik zapisywany jest w miejscu na telefonie gdzie wskażę użytkownik.  Operacje na pliku wykonywane są przy pomocy klasy statycznej ''FileReadWriteAp''.
 	
 	Wybór  tej technologi do wymienionych powyższych danych jest uzasadniony zwiększoną trwałością ich w stosunku do danych przechowywanych w pamięci aplikacji jak np.  w klasie globalnej oraz możliwość przechowywania bardziej skomplikowanych danych.
 	
@@ -52,13 +52,13 @@ fun exportKey(path:String,password:String){
 		\item nazwisko.
 	\end{itemize*}	
 
-	Przykładowy fragment kodu odczytujący dane z SharedPreferences znajduje się na listingu \ref{lst:kod2}. Dzięki temu rozwiązaniu unikamy ''literówek'', które powodować, by mogły błędy w odczycie danych. 
+	Przykładowy fragment kodu odczytujący dane z SharedPreferences znajduje się na Listingu \ref{lst:kod2}. Dzięki temu rozwiązaniu unikamy ''literówek'', które powodować, by mogły błędy w odczycie danych. 
 		
 	\begin{lstlisting}[caption={Fragment kodu odpowiedzialny za odczytanie tokenu}, label={lst:kod2}, language=Kotlin]
 val token = CyptographyApi.decrypt( sharedPreferenceApi.getString (view, EnumChoice.token))
 	\end{lstlisting}
 	
-	Wybór tej technologi został podyktowany zwiększona trwałością danych w stosunku do klasy globalnej oraz prostotą w użytkowaniu jej. Żeby jeszcze bardziej ułatwić wykorzystywanie tej techniki została napisana specjalna klasa statyczna SharedPreferencesApi (\ref{lst:kod3}), w której został zaimplementowany klasa EnumChoice przechowujący wszystkie klucze.
+	Wybór tej technologi został podyktowany zwiększona trwałością danych w stosunku do klasy globalnej oraz prostotą w użytkowaniu jej. Żeby jeszcze bardziej ułatwić wykorzystywanie tej techniki została napisana specjalna klasa statyczna SharedPreferencesApi, w której został zaimplementowany klasa EnumChoice \linebreak (Listing \ref{lst:kod3}) przechowujący wszystkie klucze.
 	
 		\begin{lstlisting}[caption={klasa EnumChoice.}, label={lst:kod3}, language=Kotlin]
 enum class EnumChoice(val value:String){
@@ -89,12 +89,12 @@ enum class EnumChoice(val value:String){
 	Walidacja danych wprowadzonych przez użytkownika odbywa Się przy pomocy klasy statycznej Validation. Klasa ta udostępnia cztery funkcje odpowiedzialne za:
 	\begin{itemize*}
 	\item poprawność formatu adresu ip ,
-	\item czy data podana w drugim parametrze jest datą późniejszą niż data podana w pierwszym parametrze (listing \ref{lst:kod5}),
+	\item czy data podana w drugim parametrze jest datą późniejszą niż data podana w pierwszym parametrze (Listing \ref{lst:kod5}),
 	\item poprawność hasła,
 	\item poprawność loginu.
 	\end{itemize*}
 
-	Wyrażenia regularne użyte w tych funkcjach znajdują się na listingu \ref{lst:kod4}.
+	Wyrażenia regularne użyte w tych funkcjach znajdują się na Listingu \ref{lst:kod4}.
 	
 	\begin{lstlisting}[caption={Wyrażenia regularne.}, label={lst:kod4}, language=Kotlin]
   "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$)
@@ -122,8 +122,7 @@ public static boolean biggerThanTime(String time1,String time2){
   return false;
 }
 	\end{lstlisting}
-	
-	\newpage
+
 	\subsubsection{Komunikacja z serwerem}
 	Do komunikacji z serwerem napisana została specjalna klasa dziedzicząca po klasie AsyncTask o nazwie HTTPRequest. Klasa ta wysyła podane w konstruktorze (listing \ref{lst:kod6}) w postaci Hasmap-u dane do serwera i po otrzymaniu informacji zwrotnej z serwera przekazuje tą odpowiedź. Odpowiedź ta jest przekazywana do klasy która utworzyła i wykonała klasę HTTPRequests do funkcji o nazwie podanej w parametrze konstruktora przy pomocy refleksji (listing: \ref{lst:kod7}). Dzięki temu klasa ta jest uniwersalna i Może być stosowana w każdym miejscu programu.
 	
@@ -147,12 +146,11 @@ try {
   catch(Exception ex){}
 }
 \end{lstlisting}	
-		
-\newpage
+
 \subsection{Serwer}
 Serwer systemu zarządza wszystkimi informacjami, jest pośrednikiem w przekazywaniu i modyfikacji rekordów z bazy danych MySQL. Emulowaniem środowiska MySQL oraz Apache zajmuje się program XAMP w wersji 3.2.2.
  
-	\subsubsection[Aplikacja serwerowa]{Aplikacja serwerowa [\StudentA]}
+	\subsubsection{Aplikacja serwerowa [\StudentA]}
 	Aplikacja serwerowa została zaimplementowana przy użyciu języka programowania Python 2.7 oraz frameworku Django. Program  właściwie składa się głównie z 3 plików:
 	\begin{itemize*}
 		\item setting.py --- odpowiedzialny za konfigurację połączenia z bazą danych, zwracanymi komunikatami, kodowanie, strefą czasową i innymi parametrami o mniejszym znaczeniu,
@@ -173,6 +171,8 @@ urlpatterns = [
 \end{lstlisting}}
 
 	Funkcjonalności systemu w  dużej mierze wymagają stanu zalogowania, weryfikowane jest to przez podanie od użytkownika loginu oraz tokenu sesji logowania. Pola uzyskane w zapytaniu Http w metodzie POST są porównywane z znajdującymi się w bazie danych. Przykładowe API wymagające weryfikacji logowania znajduje się w listingu \ref{lst:serwer weryfikacja}. Użytkownik wysyła pole ''login'' oraz ''token'', następnie wykonane zostaje zapytanie do bazy danych o aktualnie znajdującą się wartość w rekordzie. Jeżeli wartości się pokrywają i nie są puste, może zostać wykonane polecenie, które chciał wywołać użytkownik. Dodatkowo, gdy operacja wymaga uprawnień administratora, weryfikowana jest flaga w bazie danych, czy dany użytkownik jest administratorem (IS\_ADMIN).
+	
+	Operacje logowania i rejestracji są podstawowymi działaniami, dzięki którym będzie można wykonywać bardziej złożone działania oraz niezbędne do poprawnego funkcjonowania PKI. Listing \ref{lst:serwer login} i listing \ref{lst:serwer register} przedstawiają kompletne funkcje logowania i rejestracji użytkowników. 
 \newpage	
 	{\footnotesize 
 	\begin{lstlisting}[caption={Przykładowe API weryfikujące stan logowania}, label={lst:serwer weryfikacja}, language=Python]
@@ -189,16 +189,8 @@ def api_download_all_locks(request):
     except Exception:
       return JsonResponse({"status": "Invalid"})
 	\end{lstlisting}}
-	
-	Operacje logowania i rejestracji są podstawowymi działaniami, dzięki którym będzie można wykonywać bardziej złożone działania oraz niezbędne do poprawnego funkcjonowania PKI. Listing \ref{lst:serwer login} i listing \ref{lst:serwer register} przedstawiają kompletne funkcje logowania i rejestracji użytkowników. 
-	
-	Logowanie wymaga podania loginu w polu 'username' oraz skrótu \linebreak SHA-256 hasła użytkownika. W pierwszej kolejności (linia 5 do 9) tworzony jest ciąg pseudolosowy, który będzie użyty jako token sesji logowania. Zastosowany generator jest wbudowany w bibliotekę RSA, w tym wypadku tworzone ciągi są kluczem publicznym algorytmu RSA. Następnym krokiem jest pobranie skrótu hasła oraz flag (czy jest administratorem, status konta) z bazy danych. Wiersz 15 decyduje, czy konto użytkownika jest aktywne, jeśli nie, to w linii 24 sprawdzane jest, czy konto zostało aktywowane, jeśli tak, oznacza to, że dane konto zostało zablokowane. W przypadku jednak, gdy konto ma status aktywny, następuje aktualizacja wartości tokenu w bazie danych oraz weryfikacja uprawnień użytkownika. Zwrócony status logowania jako root oznacza, zalogowanie się jako administrator.
-	
-	Operacja rejestracji wymaga podania unikalnego dla systemu loginu, hasła w postaci skrótu SHA-256, imienia, nazwiska użytkownika oraz wygenerowany klucz publiczny RSA. Pierwszym etapem rejestracji jest weryfikacja, czy podany login znajduje się obecnie w bazie danych użytkowników. W tym celu wykonywane jest zapytanie SQL z filtrem podanego loginu, w przypadku, gdy polecenie zwróci pustą wartość (w języku Python None), oznacza to brak istnienia danego użytkownika w bazie. W przeciwnym wypadku, otrzymania wartości z zapytania, zostaje zwrócona przez serwer odpowiedź błędu loginu (ERROR~LOGIN).
-	
-	Wiersze 15 do 22 skryptu \ref{lst:serwer register} tworzą certyfikat szyfrujący. Pierwszych 5 \linebreak linii generuje pseudolosową wartość (wg algorytmu RSA dla klucza publicznego), będącą unikalnym identyfikatorem dla certyfikatu szyfrującego. Następnie dodawany do bazy danych jest użytkownik wraz z utworzonym certyfikatem z polami odpowiednio Public\_Key (przesłany klucz publiczny od użytkownika), \linebreak Serial\_number (wygenerowana wartość pseudolosowa) oraz Validity\_period \linebreak (obecna data przedłużona o rok), pozostałe wartości są domyślne (klucz szyfrujący RSA, funkcja skrótu SHA-256 i wersja certyfikatu 1).
-	
-	Wiersze od 23 do końca funkcji pobierana jest kompletna zawartość certyfikatu (w formacie JSON), która następnie przesyłana jest, jako odpowiedź zwrotna dla użytkownika. W przypadku błędu konwersji rekordu z bazy danych na format JSON lub błędu bazy danych zwrócona zostanie informacja o błędnym wykonaniu polecenia (status invalid w sytuacji braku dodania certyfikatu do bazy danych lub status ERROR, gdy pojawi się nieokreślony błąd podczas wykonywania procesu rejestracji).
+
+	Logowanie wymaga podania loginu w polu 'username' oraz skrótu SHA-256 hasła użytkownika. W pierwszej kolejności (linia 5 do 9) tworzony jest ciąg pseudolosowy, który będzie użyty jako token sesji logowania. Zastosowany generator jest wbudowany w bibliotekę RSA, w tym wypadku tworzone ciągi są kluczem publicznym algorytmu RSA. Następnym krokiem jest pobranie skrótu hasła oraz flag (czy jest administratorem, status konta) z bazy danych. Wiersz 15 decyduje, czy konto użytkownika jest aktywne, jeśli nie, to w linii 24 sprawdzane jest, czy konto zostało aktywowane, jeśli tak, oznacza to, że dane konto zostało zablokowane. W przypadku jednak, gdy konto ma status aktywny, następuje aktualizacja wartości tokenu w bazie danych oraz weryfikacja uprawnień użytkownika. Zwrócony status logowania jako root oznacza, zalogowanie się jako administrator.
 	
 {\footnotesize 
 \begin{lstlisting}[caption={API logowania}, label={lst:serwer login}, language=Python]	
@@ -232,8 +224,13 @@ def api_login(request):
     except Exception:
       return JsonResponse({"status": "ERROR", "token": "Invalid"})
 \end{lstlisting}}
-
 \newpage
+Operacja rejestracji wymaga podania unikalnego dla systemu loginu, hasła w postaci skrótu SHA-256, imienia, nazwiska użytkownika oraz wygenerowany klucz publiczny RSA. Pierwszym etapem rejestracji jest weryfikacja, czy podany login znajduje się obecnie w bazie danych użytkowników. W tym celu wykonywane jest zapytanie SQL z filtrem podanego loginu, w przypadku, gdy polecenie zwróci pustą wartość (w języku Python None), oznacza to brak istnienia danego użytkownika w bazie. W przeciwnym wypadku, otrzymania wartości z zapytania, zostaje zwrócona przez serwer odpowiedź błędu loginu (ERROR~LOGIN).
+
+Wiersze 15 do 22 skryptu \ref{lst:serwer register} tworzą certyfikat szyfrujący. Pierwszych 5 linii generuje pseudolosową wartość (wg algorytmu RSA dla klucza publicznego), będącą unikalnym identyfikatorem dla certyfikatu szyfrującego. Następnie dodawany do bazy danych jest użytkownik wraz z utworzonym certyfikatem z polami odpowiednio Public\_Key (przesłany klucz publiczny od użytkownika), Serial\_number (wygenerowana wartość pseudolosowa) oraz Validity\_period (obecna data przedłużona o rok), pozostałe wartości są domyślne (klucz szyfrujący RSA, funkcja skrótu SHA-256 i wersja certyfikatu 1).
+
+Wiersze od 23 do końca funkcji pobierana jest kompletna zawartość certyfikatu (w formacie JSON), która następnie przesyłana jest, jako odpowiedź zwrotna dla użytkownika. W przypadku błędu konwersji rekordu z bazy danych na format JSON lub błędu bazy danych zwrócona zostanie informacja o błędnym wykonaniu polecenia (status invalid w sytuacji braku dodania certyfikatu do bazy danych lub status ERROR, gdy pojawi się nieokreślony błąd podczas wykonywania procesu rejestracji).
+
 {\footnotesize
 \begin{lstlisting}[caption={API rejestracji}, label={lst:serwer register}, language=Python]	
 def api_register(request):
@@ -270,18 +267,15 @@ def api_register(request):
         return JsonResponse({"status": "ERROR"})
 \end{lstlisting}}
 \newpage
-	\subsubsection[Baza danych]{Baza danych [\StudentA]}
-	
-	
-	\subsubsection[Strona internetowa]{Strona internetowa [\StudentB]}
-	Strona internetowa została dopisana do projektu serwera w oparciu o framework django. Zaimplementowane są trzy widoki. Widok logowania, widok wyświetlający historię oraz widok do którego przechodzi się po wylogowaniu. Główny widok możliwy jest do wyświetlnenia tylko po zalogowaniu. Login oraz hasło używane dozalogowania należy wygenerować podczas konfiguracji serera przy pomocy polecnenia ''python manage.py createsuperuser'' lub modyfikując wpis w bazie danych ręcznie. Strona internetowa znajduje się w plikach:
+	\subsubsection{Strona internetowa [\StudentB]}
+	Strona internetowa została dopisana do projektu serwera w oparciu o framework Django. Zaimplementowane są trzy widoki. Widok logowania, widok wyświetlający historię oraz widok do którego przechodzi się po wylogowaniu. Główny widok możliwy jest do wyświetlenia tylko po zalogowaniu. Login oraz hasło używane do zalogowania należy wygenerować podczas konfiguracji serwera przy pomocy polecenia ''python manage.py createsuperuser'' lub modyfikując wpis w bazie danych ręcznie. Strona internetowa znajduje się w plikach:
 	\begin{itemize*}
 		\item views.py
 		\item urls.py
 		\item *.html
 	\end{itemize*}
  
-	W pliku ''urls.py''(listening: \ref{lst:python url}) znajduą się adresy URL które korzystają z wbudowanej funkcji django ''auth\_views.login'' służącej do logowania oraz ''auth\_views.logout'' służąca do wylogowania. Plik ''views.py'' posiada API(listening: \ref{lst:serwer login strona}) wykorzystywane w stronie głównej które pobiera z bazy danych. W plikach z rozszerzeniem html znajduje się implementacja wyglądu strony.
+	W pliku ''urls.py''(listening: \ref{lst:python url}) znajduą się adresy URL które korzystają z wbudowanej funkcji django ''auth\_views.login'' służącej do logowania oraz ''auth\_views.logout'' służąca do wylogowania. Plik ''views.py'' posiada API (Listing: \ref{lst:serwer login strona}) wykorzystywane w stronie głównej które pobiera z bazy danych. W plikach z rozszerzeniem html znajduje się implementacja wyglądu strony.
 	
 	{\footnotesize 
 		\begin{lstlisting}[caption={API logowania do strony internetowej}, label={lst:serwer login strona}, language=Python]	
@@ -294,12 +288,9 @@ def website(request):
   finally:
     return render_to_response('home.html', {"rows": rows})
 		\end{lstlisting}}
-	
-	
-\newpage
-\subsection[Urządzenie sterujące]{Urządzenie sterujące [\StudentA]}
 
-\newpage
+\subsection{Urządzenie sterujące [\StudentA]}
+
 \subsection[Moduł zliczania osób]{Moduł zliczania osób [\StudentA]}
 
 
