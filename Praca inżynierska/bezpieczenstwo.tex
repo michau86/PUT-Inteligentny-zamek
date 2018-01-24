@@ -9,7 +9,7 @@ Funkcje kryptograficzne użyte w aplikacji mobilnej należy rozdzielić na dwie 
 
 Drugą sekcją są funkcje kryptograficzne użyte podczas generowania klucza szyfrującego oraz używania go do podpisów. Algorytmem użytym do tego jest RSA. Sygnatura wykorzystywana w tym algorytmie to SHA-256. Do implementacji tych funkcji skorzystaliśmy z gotowej biblioteki ''security''. Klucze te są podstawą kryptograficzną naszego projektu oraz implementacji PKI. Generowane są one po stronie aplikacji mobilnej i z pary kluczy prywatny publiczny tylko publiczny jest przesyłany do serwera, i dzięki temu oraz polityce przechowywania tego klucza uniemożliwiamy przejęcie tego klucza przez osoby niepowołane.     
 
-"z
+Aplikacja zarządzająca zamkiem korzysta z funkcji kryptograficznych takich jak RSA oraz SHA-256. Wykorzystuje ona je w procesie weryfikacji certyfikatu użytkownik wysłanego z urządzenia mobilnego. Do implementacji tych funkcji wykorzystano gotową bibliotekę ''pyCrypto''
 
 \newpage
 \subsection[Podatności systemu (OWASP Top 10)]{Podatności systemu (OWASP Top 10) \newline [\StudentA]}
