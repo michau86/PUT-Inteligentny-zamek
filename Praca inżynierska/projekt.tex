@@ -16,7 +16,7 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 	\begin{landscape}
 		\begin{figure}[!h]
 			\centering
-			\includegraphics[width=22cm]{Obrazy/Diagram_przypadkow_uzycia.png}
+			\includegraphics[width=24cm]{Obrazy/Diagram_przypadkow_uzycia.png}
 			\caption{Diagram przypadków użycia}
 			\label{diagram:diagram przypadków_użycia}
 		\end{figure}
@@ -50,16 +50,6 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 		\item Hash\_Algorithm --- identyfikator algorytmu funkcji skrótu.
 	\end{itemize*}
 	
-	Zamek opisywany jest poprzez kolumny:
-	\begin{itemize*}
-		\item {ID\_LOCK} --- unikalny identyfikator (klucz główny) zamka składający się z 10 cyfr,
-		\item {NAME} --- unikalna nazwa zamka,
-		\item {MAC\_ADDRESS} --- adres fizyczny urządzenia sterującego zamkiem,
-		\item {LOCALIZATION} --- nieobowiązkowe pole opisujące fizyczne położenie zamka,
-		\item {People\_inside} --- wartość licznika osób znajdujących się wewnątrz pomieszczenia.
-	\end{itemize*}
-	\newpage
-	
 	Klucz dostępowy składa się z:
 	\begin{itemize*}
 		\item {ID\_KEY} --- unikalny identyfikator (klucz główny) klucza dostępowego składający się z 10 cyfr,
@@ -80,7 +70,17 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 		\item {NAME} - imię osoby, której dotyczy certyfikat,
 		\item {SURNAME} --- nazwisko osoby, której dotyczy certyfikat.
 	\end{itemize*}
-	
+
+\newpage
+	Zamek opisywany jest poprzez kolumny:
+	\begin{itemize*}
+		\item {ID\_LOCK} --- unikalny identyfikator (klucz główny) zamka składający się z 10 cyfr,
+		\item {NAME} --- unikalna nazwa zamka,
+		\item {MAC\_ADDRESS} --- adres fizyczny urządzenia sterującego zamkiem,
+		\item {LOCALIZATION} --- nieobowiązkowe pole opisujące fizyczne położenie zamka,
+		\item {People\_inside} --- wartość licznika osób znajdujących się wewnątrz pomieszczenia.
+	\end{itemize*}
+
 	W tabeli archiwizującej akcje na zamku znajdują się takie dane jak:
 	\begin{itemize*}
 		\item {ID} --- unikalny identyfikator (klucz główny) akcji wykonanej na certyfikacie składający się z 10 cyfr,
@@ -88,7 +88,7 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 		\item {DATE} --- dokładna data z godziną użycia klucza dostępowego,
 		\item {ACCESS} --- binarna flaga informująca czy dostęp został przyznany czy odmówiony.
 	\end{itemize*}
-\newpage
+
 	Tabela WAIT\_LOCKS\_KEYS składa się z:
 	\begin{itemize*}
 		\item {ID\_KEY} --- unikalny identyfikator (klucz główny) oczekującego certyfikatu,
@@ -114,7 +114,7 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 \newpage
 
 	\subsubsection{Diagramy klas}
-		\paragraph*{Aplikacja mobilna [Damian Filipowicz]}
+		\paragraph{Aplikacja mobilna [Damian Filipowicz]}
 		Aplikacja mobilna składa się z szeregu klas napisanych w 2 językach: Kotlin oraz Java. Ponadto klasy te zostały podzielone na 5 kategorii (Rys. \ref{Schemat ogólny diagramu klas dla Aplikacji mobilnej}) takich jak:
 		\begin{itemize*}
 			\item API 
@@ -131,14 +131,14 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 	\begin{figure}[ht!]
 		\centering
 		\vspace{-0.6cm}
-		\includegraphics[width=7.8cm]{Obrazy/AM_DK_ALL}
+		\includegraphics[width=11cm]{Obrazy/AM_DK_ALL}
 		\caption{Schemat ogólny diagramu klas dla Aplikacji Mobilnej}
 		\label{Schemat ogólny diagramu klas dla Aplikacji mobilnej}
 	\end{figure}
 	\newpage
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=12.5cm]{Obrazy/AM_DK_adapter}
+	\includegraphics[width=16cm]{Obrazy/AM_DK_adapter}
 	\caption{Diagram klas dla paczki adapters}
 	\label{Diagram klas dla paczki adapters}
 \end{figure}

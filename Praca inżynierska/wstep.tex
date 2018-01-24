@@ -1,8 +1,26 @@
 % !TeX spellcheck = pl_PL
 \newpage\section{Wstęp}\label{sec:wstep}
-Wstęp pracy zawiera krótki opis celu i zakresu planowanego projektu. System nosi potoczną nazwę \NazwaSys, która związana jest z dodaniem  pewnych szczególnych funkcjonalności względnie zwykłym przedmiotom, tak~jak~dzieje się to w obecnie modnych urządzeniach \footnote{ porównanie wybranych systemów wraz z opisem można znaleźć na stronie \href{http://www.toptenreviews.com/home/smart-home/best-smart-locks/}{http://www.toptenreviews.com/home/smart-home/best-smart-locks/}} typu Internet of things. Znaczna część znajdujących się na rynku rozwiązań dedykowana jest użytkownikom indywidualnym, do użytku domowego, opisywany system przeznaczony jest do zastosowań biurowych (dla średnich i dużych przedsiębiorstw).
+Wstęp pracy zawiera krótki opis celu i zakresu planowanego projektu. System nosi potoczną nazwę \NazwaSys, która związana jest z dodaniem  pewnych szczególnych funkcjonalności względnie zwykłym przedmiotom, tak~jak~dzieje się to w obecnie modnych urządzeniach \footnote{ Porównanie wybranych systemów wraz z opisem można znaleźć na stronie \href{http://www.toptenreviews.com/home/smart-home/best-smart-locks/}{http://www.toptenreviews.com/home/smart-home/best-smart-locks/}} typu Internet of Things. Znaczna część znajdujących się na rynku rozwiązań dedykowana jest użytkownikom indywidualnym, do użytku domowego, opisywany system przeznaczony jest do zastosowań biurowych (dla średnich i dużych przedsiębiorstw).
 
-Praca wykonywana jest zespołowo i aby oznaczyć w pracy fragmenty za które jest odpowiedzialna dana osoba przybrano następujący format zapisu.W tytułach fragmentów widnieje w nawiasach kwadratowych imie oraz nazwisko osoby wykonującej dany fragment. W przypadku kiedy~nie~ma nawiasów oznacza to że fragment został opracowywany wspólnie.
+Praca wykonywana jest zespołowo i aby oznaczyć w pracy fragmenty za które jest odpowiedzialna dana osoba przybrano następujący format zapisu.W tytułach fragmentów widnieje w nawiasach kwadratowych imię oraz nazwisko osoby wykonującej dany fragment. W przypadku kiedy~nie~ma nawiasów oznacza to że fragment został opracowywany wspólnie.
+
+Podział prac wygląda następująco:
+\begin{itemize*}
+	\item Maciej Marciniak:
+	\begin{enumerate*}
+		\item Stworzenie oprogramowania do zliczania osób w wchodzących i wychodzących z pomieszczenia,
+		\item Implementacja serwera systemu (bazy danych, systemu kontroli uprawnień),
+		\item Utworzenie wewnętrznego PKI służącego do podpisywania cyfrowo kluczy dostępowych dla sterownika zamka fizycznego od strony urzędów certyfikujących systemu,
+		\item Oprogramowanie sterownika zamka fizycznego.
+	\end{enumerate*}
+	\item Damian Filipowicz:
+	\begin{enumerate*}
+		\item Zaprojektowanie oraz stworzenie graficznego interfejsu aplikacji mobilnej,
+		\item Implementacja wewnętrznego PKI od strony klienta systemu,
+		\item Stworzenie oprogramowania do aplikacji mobilnej do zarządzania systemem (od strony użytkownika oraz administratora),
+		\item Utworzenie strony dla administratora z podglądem historii zamków w sieci lokalnej.	
+	\end{enumerate*}
+\end{itemize*}
 
 \subsection{Cel i zakres pracy}
 
@@ -29,7 +47,6 @@ Następny dział pracy skupi się na bezpieczeństwie systemu. Omówione zostan�
 
 Ostatnim rozdziałem przed podsumowaniem jest omówienie przeprowadzanych testów pod względem poprawności działania systemu. Jednocześnie zostanie graficznie przedstawione działanie każdego modułu.
 
-\newpage
 \subsection{Metodyka pracy grupowej}
 Metodyka użyta podczas pracy grupowej była oparta o model kaskadowy składający się z etapów takich jak:
 \begin{itemize*}

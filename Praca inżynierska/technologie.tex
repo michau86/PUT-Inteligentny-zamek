@@ -2,7 +2,7 @@
 \newpage\section{Wybór technologii informatycznych} \label{sec:technologie}
 Prezentowany projekt ze względu na rozbudowaną konstrukcję, składa się również z wielu technologii informatycznych. Dominującymi językami programowania są Python oraz Java (z elementami języka Kotlin). Wybór oraz uzasadnienie decyzji zostało przedstawione w poniższych punktach.
 
-\subsection[Urządzenie sterujące]{Urządzenie sterujące [Maciej Marciniak]}
+\subsection{Urządzenie sterujące [Maciej Marciniak]}
 Urządzenie sterujące utworzone zostało na mikrokomputerze Raspberry Pi 3, ze względu na szereg interfejsów dostępnych na płytce. Inne rodzaju mikrokontrolery np. typy STM32 umożliwiają podłączenie takich urządzeń jak~bluetooth oraz karta sieciowa WiFi, lecz jest to wówczas zintegrowany układ (celem pracy dyplomowej nie było tworzenie płytki PCB pozwalającej zintegrować układy) oraz drugim powodem jest wydajność i elastyczność programów. 
 
 Podczas projektowania urządzenia sterującego zastosowano następujące technologie:
@@ -15,11 +15,10 @@ Podczas projektowania urządzenia sterującego zastosowano następujące technol
 
 Programem wykorzystywanym do implementacji programu jest PyCharm w wersji 2017.2.4. Wybór technologii oraz oprogramowania związany był z wysokim stopniem integracji urządzenia Raspberry Pi z językiem Python. Środowisko PyCharm zostało wybrane ze względu na zaawansowane funkcjonalności wspomagające tworzenie kodu o wysokiej czytelności oraz IDE udostępnia funkcję Inteli-sense (podpowiedzi pod względem wartości, pól klas, procedur).
 
-\newpage
-\subsection[Aplikacja serwera i baza danych]{Aplikacja serwera i baza danych [Maciej Marciniak]}
+\subsection{Aplikacja serwera i baza danych [Maciej Marciniak]}
 Aplikacja serwerowa została stworzona przy pomocy środowiska programistycznego PyCharm w wersji 2017.1.4. Technologie użyte w aplikacji serwerowej były następujące:
 \begin{itemize*}
-	\item język programowania Python w wersji 2.7.13 wraz z bibliotekami \linebreak PyCrypto i MySQL-db,
+	\item język programowania Python w wersji 2.7.13 wraz z bibliotekami PyCrypto i MySQL-db,
 	\item framework Django,
 	\item baza danych MySQL wykorzystująca oprogramowanie XAMPP w celu emulacji środowiska Apache,
 	\item format zapisu danych JSON,
@@ -29,7 +28,8 @@ Aplikacja serwerowa została stworzona przy pomocy środowiska programistycznego
 
 Wybór wyżej wymienionych technologii uzasadniony jest popularnością serwisów Webowych opartych o framework Django, wskazuje na to liczna liczba ofert pracy względem innych frameworków. Przez zastosowanie Django, zdecydowano jednocześnie o użyciu języka Python oraz bazy danych MySQL ze~względu na bardzo wysoką kompatybilność tych technologii. Html5 został wybrany ponieważ jest to najnowsza wersja. Natomiast framework Bootstrap został wybrany z względu na intuicyjne tworzenie w nim stron responsoryjnych oraz dobrą współpracę z frameworkiem Django.
 
-\subsection[Aplikacja mobilna]{Aplikacja mobilna [Damian Filipowicz]}
+\newpage
+\subsection{Aplikacja mobilna [Damian Filipowicz]}
 Aplikacja mobilna została stworzona przy pomocy zintegrowanego środowiska programistycznego Android Studio w wersji 3.0 wraz z zintegrowanym emulatorem Genymotion z licencją darmową. "Srodowisko android studio w wersji 3.0 zostało wybrane ze względu na kompatybilność z językiem kotlin oraz wsparcie oficjalne firmy Google
  \footnote{Firma Google obecnie jest odpowiedzialna za rozwój systemu operacyjnego Android.}
  dla tego środowiska . Zdecydowano się na~wybór systemu Android, ponieważ cieszy się bardzo dużą popularnością (urządzenia z systemem Windows są już dużą rzadkością). W przyszłości rozwoju projektu uwzględnić można również urządzenia z system iOS. Ze względu na~możliwości stosowania wielu języków programowania wewnątrz jednej aplikacji, użyto następujących technologii:
@@ -42,7 +42,7 @@ Aplikacja mobilna została stworzona przy pomocy zintegrowanego środowiska prog
 
 Cała aplikacja ponadto została napisana w oparciu o wzorzec architektoniczny MVP \footnote{ Wzorzec architektoniczny Model--View Presenter w którym View odpowiedzialny jest za generowanie widoków model przechowuje informacje o obiektach systemu natomiast presenter przechowuje całą logikę biznesową}. Zastosowano wyżej wymienione języki ze względu na wydajność programów w języku Java w systemach Android oraz chęci poznania nowego języka programowa Kotlin, który jest w pełni kompatybilny z językiem Java (przetwarzany do Javy).  
 
-\subsection[Moduł zliczania osób]{Moduł zliczania osób [Maciej Marciniak]}
+\subsection{Moduł zliczania osób [Maciej Marciniak]}
 Moduł zliczania osób jest mocno związany z aplikacją urządzania sterującego ze względu na to, że zostaną uruchomione na jednym mikrokomputerze Raspberry Pi. Zastosowano zatem język Python w wersji 2.7.13 oraz bibliotekę graficzną Open-CV, dzięki któremu w łatwy sposób można przetwarzać obrazy zaawansowanymi metodami. 
 
 \subsection{System kontroli wersji}

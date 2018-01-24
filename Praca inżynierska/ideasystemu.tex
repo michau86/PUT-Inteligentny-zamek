@@ -8,14 +8,13 @@ System łączy ze sobą 5 podsystemów różnymi interfejsami komunikacyjnymi.Ur
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=12.5cm]{Obrazy/Schemat_ogolny}
+	\includegraphics[width=16cm]{Obrazy/Schemat_ogolny}
 	\caption{Schemat ogólny systemu}
 	\label{Schemat ogólny systemu}
 \end{figure}
 
 Urządzenia sterujące łączą się z elektrozamkiem lub serwomechanizmem poprzez przewody elektryczne, a z kamerą IP oraz serwerem poprzez sieć LAN. Aplikacja serwerowa nawiązuje połączenie z bazą danych przez lokalny interfejs sieciowy.
 
-\newpage
 \subsection{Opis składowych systemu}
 System ma złożoną budowę, ponieważ składa się z 5 podsystemów. Pierwszym z nich jest urządzenie sterujące, w którego skład wchodzą Raspberry Pi~3\footnote{ Raspberry Pi 3 jest mikrokomputerem z procesorem ARMv7} oraz serwomechanizm lub zamek elektroniczny. Podstawową funkcją tego modułu jest weryfikacja klucza cyfrowego przesyłanego przez urządzenia mobilne oraz otwieranie zamka przy pozytywnym wyniku weryfikacji. Każde zdarzenie zapisywane jest w pliku z logami. Oprogramowanie mikrokomputera obejmuje system Linux raspbian-jessie \footnote{ System operacyjny raspbian-jessie jest dedykowanym systemem operacyjnym dla komputerów Raspberry Pi umożliwiającym w pełni wykorzystać interfejsy wejścia wyjścia} oraz skrypt napisany w języku Python 2.7. Programy łączą się do serwera w celu pobrania informacji o poprawności i~dacie ważności certyfikatu dostępowego, następnie dane są porównywane z~tymi otrzymanymi od użytkownika. Dodatkowo weryfikowany jest podpis cyfrowy, którym sygnowany jest klucz dostępowy. Jeśli dane zostaną zweryfikowane poprawnie, to zostaje wysterowany serwomechanizm (lub wysłany impuls do elektrozamka), który otwiera zamek, w przeciwnym przypadku użytkownik zostanie poinformowany o odmowie dostępu, a nieudana próba dostania się do~systemu zarejestrowana zostanie w bazie danych wraz z danymi właściciela klucza dostępowego.
 
@@ -27,7 +26,6 @@ Przedostatnim elementem składowym systemu jest baza danych, która przechowuje 
 
 Ostatnim z składowych systemu jest oprogramowanie zliczające liczbę osób wchodzących i wychodzących dla danego pomieszczeniu lub całego budynku wraz z kamerą, której zadaniem jest obliczanie informacji o aktualnej liczbie osób w danym pomieszczeniu. 
 
-\newpage
 \subsection{Podmioty systemu} 
 W pracy dyplomowej można wyodrębnić następujące podmioty:
 	\begin{itemize}

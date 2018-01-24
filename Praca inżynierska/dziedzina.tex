@@ -23,56 +23,55 @@ W dokumencie tym posługiwać się będziemy następującymi pojęciami:
 	-- jest to certyfikat przechowujący dane o~użytkowniku, ważności klucza szyfrującego oraz sam klucz deszyfrujący.
 \end{itemize*}
 
-\newpage
 \subsection{Stan wiedzy}\label{sec:Stan wiedzy}
 Przed przystąpieniem do projektu wykonaliśmy rozeznanie w około systemów zbliżonych do naszego, który na dany moment były produkowane. I~tak~doszliśmy do wniosku, że wszystkie systemy inteligentnych zamków wykonane przez uznane firmy, takie jak Gerda Lock, czy Danalock zostały wykonane typowo dla użytku domowego a nie tak jak nasz projekt inżynierski, który jest przeznaczony do zarządzania w budynkach o większej złożoności, takich jak biurowce, z różnym stopniem dostępu. Opis wraz z porównaniem poszczególnych systemów znajduje się w tabelach poniżej.
 
 Tabela \ref{tab:porownanie1} zawiera porównanie firm pod względem otwierania zamka. Już w pierwszym wierszu można zauważyć, indywidualne zastosowanie systemów, ponieważ każdy z prezentowanych systemów, poza firmą August, nie~oferuje obsługi wielu urządzeń z poziomu jednej aplikacji. Proponowane przez nas~rozwiązanie umożliwia skalowalność systemu oraz wprowadzanie różnorodności w~zarządzaniu dostępem. Następne funkcjonalności wprowadzają zagrożenia lub zwiększają podatności sytemu na ataki hakerskie. Weźmy pod uwagę otwieranie dowolnego zamka z dowolnego miejsce przez stronę WWW, umożliwia taka funkcjonalność zdalne sterowanie dostępem w całym budynku. Skutkuje to brakiem kontroli, którą nie powoduje znacznych korzyści dla celów biznesowych dla, których nasz system jest dedykowany.
-	\begin{longtable}[!ht]{|m{4cm}|m{1cm}|m{1cm}|m{1,5cm}|m{1cm}|m{1,1cm}|} 
+\newpage
+	\begin{longtable}[!ht]{|m{6cm}|m{1.4cm}|m{1.4cm}|m{1.7cm}|m{2cm}|m{2cm}|} 
 		\caption{Tabela porównania otwierania zamków}
 		\label{tab:porownanie1}\\
 		\hline	
-		Funkcja & NUKI\footnote{ strona producenta z opisem zamka firmy NUKI: \href{https://nuki.io/en/smart-lock/}{https://nuki.io/en/smart-lock/}} & August\footnote{ strona producenta z opisem zamka firmy August: \href{http://august.com/keyless-entry/ }{http://august.com/keyless-entry/}} & DanaLock\footnote{ strona producenta z opisem zamka firmy DanaLock: \href{https://danalock.com/danalock-v3.html}{\\https://danalock.com/danalock-v3.html}} &
-		 Gerda Lock \footnote{ strona producenta z opisem zamka firmy Gerda Lock: \href{https://www.gerdalock.com/produkty/gerdalock}{\\https://www.gerdalock.com/produkty/gerdalock}} & 
+		Funkcja & NUKI\footnote{ strona producenta z opisem zamka firmy NUKI: \href{https://nuki.io/en/smart-lock/}{https://nuki.io/en/smart-lock/}} & August\footnote{ Strona producenta z opisem zamka firmy August: \href{http://august.com/keyless-entry/ }{http://august.com/keyless-entry/}} & DanaLock\footnote{ Strona producenta z opisem zamka firmy DanaLock: \href{https://danalock.com/danalock-v3.html}{https://danalock.com/danalock-v3.html}} &
+		 Gerda Lock \footnote{ Strona producenta z opisem zamka firmy Gerda Lock: \href{https://www.gerdalock.com/produkty/gerdalock}{https://www.gerdalock.com/produkty/gerdalock}} & 
 		 Nasz system  \\	\hline
-		 zarządzanie wieloma zamkami z jednej aplikacji
+		 Zarządzanie wieloma zamkami z jednej aplikacji
 		 & brak & tak & brak & brak & tak \\	\hline
-		otwieranie zamka przy pomocy strony WWW
+		Otwieranie zamka przy pomocy strony WWW
 		& brak & brak & tak & brak & brak \\	\hline
-		inne sposoby otwarcia zamka niż aplikacja
+		Inne sposoby otwarcia zamka niż aplikacja
 		& brak & brak & brak & tak & tak \\	\hline
-		automatyczne zamykanie zamka
+		Automatyczne zamykanie zamka
 		& brak & tak & tak & tak & tak \\	\hline
-		tryb otwierania zamka automatycznie
+		Tryb otwierania zamka automatycznie
 		& tak& brak & tak & tak & nie \\	\hline	
-		tryb otwierania zamka po zezwoleniu przyciskiem
+		Tryb otwierania zamka po zezwoleniu przyciskiem
 		& brak & tak & tak & tak & tak \\		\hline
 	\end{longtable}
 
- 	\newpage
  	Tabela \ref{tab:porownanie2} zawiera porównanie firm pod względem zasilania i montażu. Wszystkie systemy zawierały podstawowe wady eksploatacyjne, gdy system w~budynku zawierałby wiele urządzeń danego typu, to znaczy problem z zasilaniem. Nasz system oferuje podłączenie zasilania bezpośrednio z sieci, taka konfiguracja pozwala uodpornić system na konieczność wymiany baterii w każdym zamku. Gdyby jednak konieczne było zasilanie awaryjne, w sytuacji zaniku napięcia, możliwe jest zastosowanie UPSów, które podtrzymają urządzenia przez czas awarii.
- \begin{longtable}[!ht]{|m{2.9cm}|m{1.3cm}|m{1.3cm}|m{1,35cm}|m{1,3cm}|m{1,45cm}|} 
+ \begin{longtable}[!ht]{|m{5cm}|m{1.7cm}|m{1.7cm}|m{1.7cm}|m{2cm}|m{2.4cm}|} 
  	\caption{Tabela porównania zasilania i montażu}
  	\label{tab:porownanie2}\\
  	\hline	
- 	Funkcja & NUKI & August &DanaLock & Gerda Lock & Nasz \linebreak system \\	\hline
- 	zasilanie zewnętrzne (z sieci)	
+ 	Funkcja & NUKI & August &DanaLock & Gerda Lock & Nasz system \\	\hline
+ 	Zasilanie zewnętrzne (z sieci)	
  	& brak & brak & brak & brak & tak \\	\hline
-	 zasilanie bateryjne (podstawowe/ awaryjne)	
-	 & podst. & podst. &podst. & podst. & możliwe awaryjne \\	\hline
- 	sposób montażu	
- 	& nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \linebreak zamek lub elektrozamek  \\	\hline
+	 Zasilanie bateryjne \newline (podstawowe/ awaryjne)	
+	 & podstawowe & podstawowe &podstawowe & podstawowe & możliwe \newline awaryjne \\	\hline
+ 	Sposób montażu	
+ 	& nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \newline zamek lub  \newline elektrozamek  \\	\hline
  \end{longtable}
  
-Tabela \ref{tab:porownanie3} zawiera porównanie firm pod względem dziennika zdarzeń oraz powiadomień. Funkcjonalność naszego systemu zgodna jest z możliwościami firm NOKI oraz Gerda Lock. Pozostali dystrybutorzy nie udostępniają tak szczegółowych informacji na temat działa urządzeń.
-\begin{longtable}[!ht]{|m{4cm}|m{1cm}|m{1cm}|m{1,5cm}|m{1cm}|m{1,1cm}|} 
-	\caption{Tabela porównania dziennika zdarzeń oraz powiadomień}
+Tabela \ref{tab:porownanie3} zawiera porównanie firm pod względem dziennika zdarzeń oraz powiadomień. Funkcjonalność naszego systemu zgodna jest z możliwościami firm NUKI oraz Gerda Lock. Pozostali dystrybutorzy nie udostępniają tak szczegółowych informacji na temat działa urządzeń.
+\begin{longtable}[!ht]{|m{6cm}|m{1.4cm}|m{1.4cm}|m{1.7cm}|m{2cm}|m{2cm}|} 
+	\caption{Tabela porównania powiadomień działania}
 	\label{tab:porownanie3}\\
 	\hline	
 	& NUKI & August & DanaLock & Gerda Lock & Nasz system \\	\hline
 	podgląd kto otworzył zamek
 	& taki & brak & brak & tak & tak \\	\hline
-	powiadomienie o otwarciu drzwi (ogólnie i przez daną osobę)
+	powiadomienie o otwarciu drzwi \newline (ogólnie i przez daną osobę)
 	& brak & brak & brak & tak & tak  \\	\hline
 	powiadomienie o nieautoryzowanych próbach otwarcia
 	& tak & brak & brak & tak & tak  \\	\hline
