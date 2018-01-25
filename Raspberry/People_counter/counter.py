@@ -8,7 +8,7 @@ import argparse
 
 cnt_up   = 0
 cnt_down = 0
-server_address = 'http://192.168.137.1:8080/'
+server_address = 'https://192.168.137.1:8080/'
 url_people_counter = server_address + 'api/RPI/people_counter/'
 mac = "B8:27:EB:FC:73:A2"
 
@@ -127,7 +127,7 @@ while(1):
     cnt_now = cnt_up - cnt_down
     if not cnt_old == cnt_now:
         print cnt_now
-        request = requests.post(url_people_counter, data={'counter': cnt_now,'mac': mac})
+        request = requests.post(url_people_counter, data={'counter': cnt_now,'mac': mac}, verify=False)
     '''for i in persons:
         cv2.putText(frame, str(i.getId()),(i.getX(),i.getY()),font,0.8,i.getRGB(),1)
         

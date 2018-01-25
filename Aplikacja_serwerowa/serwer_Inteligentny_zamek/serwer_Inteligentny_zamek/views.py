@@ -19,10 +19,13 @@ def website(request):
 
     try:
         cursor = db.cursor()
-        cursor.execute("SELECT DATE, ACCESS, locks_keys.NAME, locks_keys.SURNAME, locks.NAME AS 'ZAMEK' FROM access_to_locks, locks_keys, locks WHERE locks_keys.ID_KEY = access_to_locks.ID_KEY AND locks.ID_LOCK = access_to_locks.ID_KEY ORDER BY DATE DESC")
+        cursor.execute("SELECT DATE, ACCESS, locks_keys.NAME, locks_keys.SURNAME, locks.NAME AS 'ZAMEK'  FROM access_to_locks, locks_keys, locks WHERE locks_keys.ID_KEY = access_to_locks.ID_KEY AND locks.ID_LOCK = access_to_locks.ID_KEY ORDER BY DATE DESC")
         rows = cursor.fetchall()
+        cursor.execute("SELECT SUM(People_inside) FROM locks")
+        people_inside = cursor.fetchone()
+        print people_inside[0]
     finally:
-        return render_to_response('home.html', {"rows": rows})
+        return render_to_response('home.html', {"rows": rows, "people_inside": people_inside[0]})
 
 # api do logowania
 @csrf_exempt
@@ -558,28 +561,28 @@ def api_admin_register_decision(request):
         user_login = request.POST.get('user_login')
         decision = request.POST.get('decision')
         try:
-            cursor = db.cursor()
-            cursor.execute("SELECT TOKEN, IS_ADMIN FROM USERS WHERE login='%s'" % login)
-            token_from_DB = cursor.fetchall()
-            for row in token_from_DB:
-                token_db = row[0]
-                admin = row[1]
-            if (token_db == token and token != None) and admin == 1:
-                cursor = db.cursor()
-                cursor.execute("SELECT LOGIN FROM USERS WHERE login='%s' and ISACTIVATED=1" % user_login)
-                login_from_DB = cursor.fetchall()
-                if len(login_from_DB) > 0:
-                    cursor = db.cursor()
-                    if decision == "1":
-                        cursor.execute(
-                            "UPDATE USERS SET ISACTIVATED=0 WHERE LOGIN='%s' " % (user_login))
-                    elif decision == "0":
-                        cursor.execute("DELETE FROM users WHERE LOGIN='%s'" % user_login)
-                    else:
-                        return JsonResponse({"status": "invalid"})
-                    db.commit()
-                    return JsonResponse({"status": "ok"})
-            return JsonResponse({"status": "invalid"})
+           cursor = db.cursor()
+           cursor.execute("SELECT TOKEN, IS_ADMIN FROM USERS WHERE login='%s'" % login)
+           token_from_DB = cursor.fetchall()
+           for row in token_from_DB:
+               token_db = row[0]
+               admin = row[1]
+           if (token_db == token and token != None) and admin == 1:
+               cursor = db.cursor()
+               cursor.execute("SELECT LOGIN FROM USERS WHERE login='%s' and ISACTIVATED=1" % user_login)
+               login_from_DB = cursor.fetchall()
+               if len(login_from_DB) > 0:
+                   cursor = db.cursor()
+                   if decision == "1":
+                       cursor.execute(
+                           "UPDATE USERS SET ISACTIVATED=0 WHERE LOGIN='%s' " % (user_login))
+                   elif decision == "0":
+                       cursor.execute("DELETE FROM users WHERE LOGIN='%s'" % user_login)
+                   else:
+                       return JsonResponse({"status": "invalid"})
+                   db.commit()
+                   return JsonResponse({"status": "ok"})
+           return JsonResponse({"status": "invalid"})
         except Exception:
             return JsonResponse({"status": "Invalid"})
 
@@ -602,7 +605,6 @@ def api_admin_cetificate_waiting(request):
                 dict_all_certificate = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row
                                         in cursor.fetchall()]
                 if len(dict_all_certificate) > 0:
-                    print dict_all_certificate
                     return JsonResponse({"data": dict_all_certificate})
                 else:
                     return JsonResponse({"data": "empty"})
