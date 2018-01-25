@@ -63,11 +63,8 @@ if __name__ == '__main__':
             server_sock = BluetoothSocket(RFCOMM)
             server_sock.bind(("", PORT_ANY))
             server_sock.listen(1)
-
             port = server_sock.getsockname()[1]
-
             uuid = "fa87c0d0-afac-11de-8a39-0800200c9a66"
-
             advertise_service(server_sock, "BluetoothChatSecure",
                               service_id=uuid,
                               service_classes=[uuid, SERIAL_PORT_CLASS],
