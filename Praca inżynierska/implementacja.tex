@@ -1,14 +1,12 @@
 % !TeX spellcheck = pl_PL
 \newpage\section{Implementacja} \label{sec:implementacja}
 Rozdział przedstawia opis wybranych technik użytych do utworzenia głównych funkcji systemu. Techniki te zostały podzielone na cztery kategorie:
-\begin{itemize}
+\begin{itemize*}
 	\item Aplikacja mobilna opisująca implementacje przechowywania danych, graficznych widoków, walidacji danych oraz komunikacji z serwerem. 
 	\item Serwer opisujący implementację serwera  oraz strony internetowej wraz z opisem komunikacji między oprogramowaniem serwera a bazą danych.
-	
 	\item  Urządzenie sterujące opisujące implementację urządzenia odpowiedzialnego za sterowanie fizyczne dostępem do zamka wraz z komunikacją z serwerem.
-	
 	\item Moduł zliczania osób opisujące oprogramowanie odpowiedzialne za zliczanie osób w danym pomieszczeniu. 
-\end{itemize} 
+\end{itemize*} 
 \subsection[Aplikacja mobilna]{Aplikacja mobilna [\StudentB]}
  Aplikacja mobilna jest  modułem odpowiedzialnym za interakcję użytkownika z systemem. Umożliwia on autoryzację, zarządzanie przez administratora systemem oraz uzyskiwanie dostępu do pomieszczenia.
 	\subsubsection{Przechowywanie danych}
@@ -202,10 +200,9 @@ def api_download_all_locks(request):
 	
 	Wiersze 15 do 22 skryptu \ref{lst:serwer register} tworzą certyfikat szyfrujący. Pierwszych 5 linii generuje pseudolosową wartość (wg algorytmu RSA dla klucza publicznego), będącą unikalnym identyfikatorem dla certyfikatu szyfrującego. Następnie dodawany do bazy danych jest użytkownik wraz z utworzonym certyfikatem z polami odpowiednio Public\_Key (przesłany klucz publiczny od użytkownika), Serial\_number (wygenerowana wartość pseudolosowa) oraz Validity\_period (obecna data przedłużona o rok), pozostałe wartości są domyślne (klucz szyfrujący RSA, funkcja skrótu SHA-256 i wersja certyfikatu 1).
 
-	Wiersze od 23 do końca funkcji pobierana jest kompletna zawartość certyfikatu (w formacie JSON), która następnie przesyłana jest, jako odpowiedź zwrotna dla użytkownika. W przypadku błędu konwersji rekordu z bazy danych na format JSON lub błędu bazy danych zwrócona zostanie informacja o błędnym wykonaniu polecenia (status invalid w sytuacji braku dodania certyfikatu do bazy danych lub status ERROR, gdy pojawi się nieokreślony błąd podczas wykonywania procesu rejestracji).
+	Wiersze od 23 do końca funkcji pobierana jest kompletna zawartość certyfikatu (w formacie JSON), która następnie przesyłana jest, jako odpowiedź zwrotna dla użytkownika. W przypadku błędu konwersji rekordu z bazy danych na format JSON lub błędu bazy danych zwrócona zostanie informacja o błędnym wykonaniu polecenia (status invalid w sytuacji braku dodania certyfikatu do bazy danych lub status ERROR, gdy pojawi się nieokreślony błąd podczas wykonywania procesu rejestracji).\cite{programowanie_aplikacji_webowych}
 	\newpage
-
-
+	
 {\footnotesize
 \begin{lstlisting}[caption={API rejestracji}, label={lst:serwer register}, language=Python]	
 def api_register(request):

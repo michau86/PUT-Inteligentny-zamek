@@ -31,16 +31,15 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 
 \begin{enumerate*}
 	\item Logowanie (strona internetowa) \newline
-	Test polegał na wykonaniu logowania błędnymi danymi (Rys. \ref{rys:Strona3} oraz sprawdzenia czy pomimo braku zalogowania można było uzyskać dostęp strony historii użycia zamków.
+	Test polegał na wykonaniu logowania błędnymi danymi (Rys. \ref{rys:Strona3} oraz sprawdzenia czy pomimo braku zalogowania można było uzyskać dostęp strony historii użycia zamków. \newline
 	Wnioskiem z testów jest stwierdzenie poprawności komunikowania o błędnym logowaniu. Próbując przejść na stronę główna nie będąc zalogowany, zostajemy przekierowani do strony logowania.
 \begin{figure}[ht!]
 		\centering
 		\includegraphics[width=8.5cm]{Obrazy/Strona3}
 		\caption{Strona logowania -- walidacja hasła}
 		\label{rys:Strona3}
-	\end{figure}
+\end{figure}
 
-	
 	\item Zliczanie osób: \newline
 	 Test polegał na sprawdzeni poprawności zliczania osób w korytarzu, gdy przechodzą przez niego osoby w obie strony.
 	
@@ -50,76 +49,75 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 		\vspace{-0.35cm}
 	\begin{minipage}{0.3\textwidth}
 		\includegraphics[width=\textwidth]{Obrazy/Kamera1}
-		\caption{Stan początkowy testu zliczania osób (urządzenie sterujące)}
+		\caption{Stan początkowy testu zliczania osób }
 		\label{rys:Kamera1}
 	\end{minipage}
 	\hspace{0.01\textwidth}
 	\begin{minipage}{0.69\textwidth}
 		\vspace{-1cm}
 		\includegraphics[width=\textwidth]{Obrazy/Strona1}
-		\caption{Stan początkowy testu zliczania osób (strona internetowa}
+		\caption{Stan początkowy testu zliczania osób}
 		\label{rys:Strona1}
 	\end{minipage}
 	\end{figure}
 
 	\begin{figure}[ht!]
-		\vspace{-2.4cm}
+		\vspace{-1.5cm}
 	\begin{minipage}{0.69\textwidth}
 		\includegraphics[width=\textwidth]{Obrazy/Strona2}
-		\caption{Stan po ''wejściu'' osoby (strona internetowa)}
+		\caption{Stan po ''wejściu'' osoby }
 		\label{rys:Strona2}
 	\end{minipage}
 	\hspace{0.01\textwidth}
 	\begin{minipage}{0.3\textwidth}
 		\includegraphics[width=0.9\textwidth]{Obrazy/Kamera2}
-		\caption{Stan po ''wejściu'' osoby (urządzenie sterujące)}
+		\caption{Stan po ''wejściu'' osoby}
 		\label{rys:Kamera2}
 	\end{minipage}
 \end{figure}
 
 	\begin{figure}[ht!]
-		\vspace{-1.9cm}
+		\vspace{-1.7cm}
 		\centering
 		\includegraphics[width=4cm]{Obrazy/Kamera3}
-		\caption{Stan po ''wyjściu'' osoby (urządzenie sterujące)}
+		\caption{Stan po ''wyjściu'' osoby}
 		\label{rys:Kamera3}
 	\end{figure}
 \newpage
-	\item Symulacja otwarcia
-	\item (strona) historia
-	\item logowanie użytkownika
+	\item M Symulacja otwarcia
+	\item M (strona) historia
+	\item M logowanie użytkownika
 	Walidacja hasła 
 	zalogowanie, 
 	opisanie panelu bocznego
-	\item rejestracja
+	\item M rejestracja
 	wyświetlanie podpowiedzi do hasła
 	walidacja hasła 
 	ukazywanie ukrywanie hasła
 	rejestracja (komunikat +przekierowanie)
-	\item (admin)zaakceptowanie rejestracji
+	\item M (admin)zaakceptowanie rejestracji
 	widok rejestracji odrzucenie 
 	akceptowanie wyniki
-	\item wnioskowanie o certyfikat
+	\item D wnioskowanie o certyfikat
 	widok wnioskowania o certyfikat
-	\item wygenerowanie nowego klucza dostępowego
+	\item D wygenerowanie nowego klucza dostępowego
 	wygenerowanie nowego klucza (wnioski) 
-	\item (admin) zaakceptowanie certyfikatu
+	\item D zaakceptowanie certyfikatu dostępowego przez administratora
 	akceptacja certyfikatu opusprzejscia
-	\item (admin) wygenerowanie certyfikatu
-	\item  pobranie certyfikatu
-	\item uzyskanie dostępu do zamka (aktywacja bluetooth)
+	\item D (admin) wygenerowanie certyfikatu dostępowego
+	\item D  pobranie certyfikatu
+	\item M uzyskanie dostępu do zamka (aktywacja bluetooth)
 		 jako podpunkt pokazanie braku dostępu do zamka (zmiana daty)
-	\item przedłużenie certyfikatu
-	przypis bo opisane wczesniej
-	\item usuniecie certyfikatu
-	przypis bo opisane wczesniej
-	\item (admin) historia użycia zamka
+	\item D przedłużenie certyfikatu dostępowego
+	przypis bo opisane wcześniej
+	\item M blokowanie certyfikatu szyfrującego *admin, user)
+	\item M (admin) historia użycia zamka
 	ukazanie hsitroi zamka
-	\item  zarządzanie kontami użytkowników
+	\item D zarządzanie kontami użytkowników
 			przypis bo wczesniej było opisane
 			pod pkt zablokowanie klucza prywatnego
 			przypis bo opisane wczesniej było
 			pod pkt zablokowanie konta użytkownika
-	\item  eksport/import klucza
+	\item  D eksport/import klucza
 	przypis bo opisane w czesnije było
 \end{enumerate*}

@@ -11,7 +11,7 @@ Ostatni rozdział opisuje mechanizmy bezpieczeństwa zaprojektowane w systemie z
 
 \subsection{Diagramy UML}\label{sec:Diagramy UML}
 Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolejności przedstawiony zostanie diagram przypadków użycia, gdzie wymienione zostaną wszystkie funkcjonalności systemu oraz przyłączone do nich zostaną poszczególne podmioty (aktorzy) systemu, które biorą udział przy wykonywaniu danej funkcjonalności. Następnie omówiony zostanie diagram relacji oraz encji bazy danych. Na koniec omówione zostaną diagramy klas, wykonane dla każdego modułu osobno. 
-	\subsubsection[Diagram przypadków użycia]{Diagram przypadków użycia [Maciej Marciniak]}
+	\subsubsection{Diagram przypadków użycia [Maciej Marciniak]}
 	Diagram przypadków użycia (funkcjonalności) systemu wraz z opowiadającymi aktorami przedstawiono na Rys. \ref{diagram:diagram przypadków_użycia}.
 	\begin{landscape}
 		\begin{figure}[!h]
@@ -22,7 +22,7 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 		\end{figure}
 	\end{landscape}
 \newpage
-	\subsubsection[Projekt bazy danych]{Projekt bazy danych [Maciej Marciniak]} 
+	\subsubsection{Projekt bazy danych [Maciej Marciniak]} 
 	Baza danych będzie składać się z pięciu tabel:
 	\begin{itemize*}
 		\item {USERS} --- przechowuje dane użytkowników oraz dane niezbędne przy weryfikacji logowania,
@@ -113,8 +113,9 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 	\end{figure}
 \newpage
 
-	\subsubsection{Diagramy klas}
-		\paragraph{Aplikacja mobilna [Damian Filipowicz]}
+	\subsubsection{Diagramy klas}\label{sec:diagramy klas}
+	Rozdział \ref{sec:diagramy klas} przedstawia struktury danych potrzebne do zrealizowania projektu. Diagramy jeżeli posiadają ze sobą więzi, np. jedna klasa używa obiektów drugiej, wtedy zostają połączone relacjami różnego typu. Połączenia przedstawione jako przerywane linie oznaczają relację \textit{use}, to znaczy są sporadycznie używane pomiędzy sobą, lecz nie są w stałym użyciu. Drugą relacją znajdującą się na schematach jest linia ciągła zakończona rombem, oznaczająca relację ścisłą (klasy mają pomiędzy sobą wspólne obiekty i są używane w częsty sposób). Najsilniejszym z przedstawianych związków jest relacja dziedziczenia, przedstawiana jako linia z zakończonym trójkątnym grotem. Dziedziczenie oznacza przejęcie obiektów klasy przez inną strukturę.
+		\paragraph*{Aplikacja mobilna [Damian Filipowicz]}
 		Aplikacja mobilna składa się z szeregu klas napisanych w 2 językach: Kotlin oraz Java. Ponadto klasy te zostały podzielone na 5 kategorii (Rys. \ref{Schemat ogólny diagramu klas dla Aplikacji mobilnej}) takich jak:
 		\begin{itemize*}
 			\item API 
@@ -131,7 +132,7 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 	\begin{figure}[ht!]
 		\centering
 		\vspace{-0.6cm}
-		\includegraphics[width=11cm]{Obrazy/AM_DK_ALL}
+		\includegraphics[width=9cm]{Obrazy/AM_DK_ALL}
 		\caption{Schemat ogólny diagramu klas dla Aplikacji Mobilnej}
 		\label{Schemat ogólny diagramu klas dla Aplikacji mobilnej}
 	\end{figure}
@@ -195,10 +196,10 @@ Oprócz tych wymienionych wyżej są dodatkowo 3 kategorie implementujące wzorz
 		\end{figure}
 		\newpage		
 
-	\paragraph{Aplikacja serwera [Maciej Marciniak]}
+	\paragraph*{Aplikacja serwera [Maciej Marciniak]}
 	Diagram klas znajdujący się na Rys. \ref{diagram:Diagram_klas_aplikacji_serwerowej} przedstawia klasy i metody potrzebne do realizacji projektu. Klasa Views przechowuje funkcje wykonujące akcje na bazie danych, zaś klasa URLs odpowiada za wskazanie pod jakim adresem URL znajduje się konkretna funkcja. Nazwy oraz budowę klas narzuca framework Django. Każda nazwa funkcji odpowiada nazwie URLa oraz opisuje jaką funkcję ma pełnić.
 	
-	\paragraph{Urządzenie sterujące [Maciej Marciniak]}
+	\paragraph*{Urządzenie sterujące [Maciej Marciniak]}
 	Zaprojektowane klasy, które mają zostać zaimplementowane w urządzeniu sterującym znajdują się na Rys. \ref{diagram:Diagram_klas_urzadzenia_sterujacego}. Klasa Main jest głównym elementem programu. W niej wywołana ma zostać funkcja ''main'' (język Python nie wymaga funkcji niesocjalizującej charakterystycznej dla innych języków programowania). Obiekty klasy Certificate i CertificatePKI odpowiednio przechowywać mają dane certyfikatów dostępowych i szyfrujących. Metoda w Main Compare\_PKI\_Certificate porównywać ma klucze szyfrujące, czy są identyczne. Klasa Servo zarządzać ma fizycznym zamkiem przy drzwiach, uniwersalnie dla serwomechanizmu oraz elektrozamka. Funkcja Open ma mieć na celu ustawienie zamka w stanie otwartym, zaś Close analogicznie zamkniętym. 
 	
 	\begin{figure}[!h]
@@ -218,7 +219,7 @@ Oprócz tych wymienionych wyżej są dodatkowo 3 kategorie implementujące wzorz
 		\end{figure}	
 	\end{landscape}
 			
-	\paragraph{Moduł zliczania osób [Maciej Marciniak]}
+	\paragraph*{Moduł zliczania osób [Maciej Marciniak]}
 	Moduł zliczania osób ze względu na swoją funkcjonalność i wykorzystanie biblioteki Open-CV nie wymaga tworzenia specjalnych klas, ani wyszczególnienia konkretnych metod. Jedyną możliwością jest wyodrębnienie klas przechowujących zliczane osoby znajdujące się w obiektywie kamery. Klasa dla konkretnej osoby posiadać ma metody do aktualizacji współrzędnych danej osoby oraz określające, czy przesuwa się w górę, czy w dół granicy obiektywu. Zmienne ''x'' i ''y'' przechowywać mają współrzędne osoby, ''donę'' oznaczać ukończenie śledzenia osoby, ''state'' obecny stan, a ''age'' i ''max\_age'' określać mają jak długo dany obiekt ma być namierzany.
 	\begin{figure}[!h]
 		\centering
@@ -284,7 +285,7 @@ Tworząc aplikację serwerową należy zapewnić możliwość komunikację (tak 
 		/api/admin/\-generate\_new\_certificate/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline user\_id --- identyfikator użytkownika, \newline lock\_id --- identyfikator zamka, \newline from\_date --- data od której obowiązuje certyfikat, \newline to\_date --- data do której obowiązuje certyfikat, \newline monday...sunday --- 7 parametrów oznaczjacych zakresy godzin w poszczególnych dniach tygodnia, \newline is\_pernament --- czy dostęp jest ciągły, \newline name --- imię użytkownika certyfikatu, \newline surname --- nazwisko użytkownika certyfikatu & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Generowanie nowego certyfikatu (administrator) \\ \hline
 		/api/admin/\-deactivation\_user\_accout/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline user\_id --- identyfikator użytkownika, którego konto ma zostać zablokowane & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Zablokowanie konta wybranego użytkownika (administrator) \\ \hline
 		/api/admin/deactivation\-\_user\_certificate/ & login --- login użytkownika, \newline token --- klucz sesji logowania, \newline user\_id --- identyfikator użytkownika, którego certyfikat szyfrujący ma zostać zablokowany & ''status'': ''ok'' \tablinia ''status'': ''invalid'' & Zablokowanie certyfikatu szyfrującego wybranego użytkownika (administrator) \\ \hline
-	\end{longtable}\cite{programowanie_aplikacji_webowych}
+	\end{longtable}
 \end{landscape}
 \newpage
 \subsection{Interfejs komunikacji pomiędzy urządzeniem sterującym i aplikacją mobilną [Maciej Marciniak]}
@@ -442,7 +443,7 @@ Panel zarządzania certyfikatami umożliwi wybór funkcji dodania certyfikatu. K
 	\newpage
 	
 	\paragraph*{Panel generowania nowego certyfikatu (administrator)}
-	Panel generowanie nowego certyfikatu (administrator) będzie służył do tworzenia nowych certyfikatów przez administratora. W pierwszych polach podaje się imię i nazwisko kogo dotyczy certyfikat.Następnie wybierane jest użytkownik (login) oraz zamek z rozwijanej listy. W dalszej części wybierane jest zakres dat w których certyfikat ma być ważny. Potem widać przycisk o nazwie ''zakres obowiązywania certyfikatów'', który przekierowuje do widoku odpowiedzialnego za to w jakich godzinach dla danych dni tygodni certyfikat udziela dostępu. (Rys. \ref{rys:panel_generowanie_nowego_klucza_gosc_admin_pioniowo}, \ref{rys:panel_generowanie_nowego_klucza_admin_pionowo2} i 
+	Panel generowanie nowego certyfikatu (administrator) będzie służył do tworzenia nowych certyfikatów przez administratora. W pierwszych polach podaje się imię i nazwisko kogo dotyczy certyfikat.Następnie wybierane jest użytkownik (login) oraz zamek z rozwijanej listy. W dalszej części wybierane jest zakres dat w których certyfikat ma być ważny. Potem widać przycisk o nazwie ''zakres obowiązywania certyfikatów'', który przekierowuje do widoku odpowiedzialnego za to w jakich godzinach dla danych dni tygodni certyfikat udziela dostępu (Rys.~\ref{rys:panel_generowanie_nowego_klucza_gosc_admin_pioniowo}, \ref{rys:panel_generowanie_nowego_klucza_admin_pionowo2} i 
 	\ref{rys:panel_wyboru_zakresu_certyfikatu})
 	
 	\vspace{-0.3cm}
