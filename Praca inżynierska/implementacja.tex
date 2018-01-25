@@ -1,7 +1,16 @@
 % !TeX spellcheck = pl_PL
 \newpage\section{Implementacja} \label{sec:implementacja}
-Rozdział przedstawia opis wybranych technik użytych do utworzenia głównych funkcji systemu. 
+Rozdział przedstawia opis wybranych technik użytych do utworzenia głównych funkcji systemu. Techniki te zostały podzielone na cztery kategorie:
+\begin{itemize}
+	\item Aplikacja mobilna opisująca implementacje przechowywania danych, graficznych widoków, walidacji danych oraz komunikacji z serwerem. 
+	\item Serwer opisujący implementację serwera  oraz strony internetowej wraz z opisem komunikacji między oprogramowaniem serwera a bazą danych.
+	
+	\item  Urządzenie sterujące opisujące implementację urządzenia odpowiedzialnego za sterowanie fizyczne dostępem do zamka wraz z komunikacją z serwerem.
+	
+	\item Moduł zliczania osób opisujące oprogramowanie odpowiedzialne za zliczanie osób w danym pomieszczeniu. 
+\end{itemize} 
 \subsection[Aplikacja mobilna]{Aplikacja mobilna [\StudentB]}
+ Aplikacja mobilna jest  modułem odpowiedzialnym za interakcję użytkownika z systemem. Umożliwia on autoryzację, zarządzanie przez administratora systemem oraz uzyskiwanie dostępu do pomieszczenia.
 	\subsubsection{Przechowywanie danych}
 	W aplikacji mobilnej zostały zaimplementowane 3 możliwości przechowywania danych. Pierwszą z nich jest możliwość trzymania ich w pamięci telefonu jako pliki. Obiekty te przechowywane są w katalogu aplikacji. Przechowują one odpowiednio:
 	\begin{itemize*}
