@@ -21,10 +21,11 @@ def website(request):
         cursor = db.cursor()
         cursor.execute("SELECT DATE, ACCESS, locks_keys.NAME, locks_keys.SURNAME, locks.NAME AS 'ZAMEK'  FROM access_to_locks, locks_keys, locks WHERE locks_keys.ID_KEY = access_to_locks.ID_KEY AND locks.ID_LOCK = access_to_locks.ID_KEY ORDER BY DATE DESC")
         rows = cursor.fetchall()
-        cursor.execute("SELECT SUM('People_inside')FROM locks")
-        people_inside = cursor.fetchall()[0]
+        cursor.execute("SELECT SUM(People_inside) FROM locks")
+        people_inside = cursor.fetchone()
+        print people_inside[0]
     finally:
-        return render_to_response('home.html', {"rows": rows, "people_inside": people_inside})
+        return render_to_response('home.html', {"rows": rows, "people_inside": people_inside[0]})
 
 # api do logowania
 @csrf_exempt
