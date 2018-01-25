@@ -30,44 +30,85 @@ Testowy laptop posiada następujące parametry:
 Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji pomiędzy użytkownikiem oraz systemem. Podczas wizualizacji zakładamy żę cały system został poprawnie zainstalowany. Środowisko testowe zostało dokładnie opisane w poprzednim punkcie.
 
 \begin{enumerate*}
-	\item Test: polegał on na sprawdzeni poprawności zliczania osób w pomieszczeniu poprzez przejście w 2 strony ludzi. 
+	\item Logowanie (strona internetowa) \newline
+	Test polegał na wykonaniu logowania błędnymi danymi (Rys. \ref{rys:Strona3} oraz sprawdzenia czy pomimo braku zalogowania można było uzyskać dostęp strony historii użycia zamków.
+	Wnioskiem z testów jest stwierdzenie poprawności komunikowania o błędnym logowaniu. Próbując przejść na stronę główna nie będąc zalogowany, zostajemy przekierowani do strony logowania.
+\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=8.5cm]{Obrazy/Strona3}
+		\caption{Strona logowania -- walidacja hasła}
+		\label{rys:Strona3}
+	\end{figure}
+
 	
-	Wnioski: Podczas testu wykryto prawidłowo ilość osób które ''weszły'' oraz ''wyszły''. Widoczne jest to na zrzutach z kamery... i zrzutach z strony internetowej 
-	\item Logowanie (strona internetowa)
-	Test polegał na wykonaniu logowania błędnymi danymi, sprawdzenia czy pomimo braku zalogowania można było uzyskać dostęp do pomieszcenia oraz poprawne zalogowanie.
-	Wnioski...
-	\item Zasymulowaliśmy otwarcie 
+	\item Zliczanie osób: \newline
+	 Test polegał na sprawdzeni poprawności zliczania osób w korytarzu, gdy przechodzą przez niego osoby w obie strony.
+	
+	Wnioski: Podczas testu wykryto prawidłową liczbę osób, które umownie ''weszły'' oraz ''wyszły''. Efekt widoczny jest na zrzutach ekranu z urządzenia sterującego. Początkowo liczniki osób wchodzących i wychodzący w lewym góry rogu ekranu wynoszą zero (Rys. \ref{rys:Kamera1}), taka sama wartość występuje przy wartości na stronie internetowej (Rys. \ref{rys:Strona1}). Rysunek \ref{rys:Kamera2} i \ref{rys:Strona2} przedstawia stan po ''wejściu'' do pomieszczenia. Działanie zliczania osób wychodzących przedstawia Rys. \ref{rys:Kamera3}.
+
+	\begin{figure}[ht!]
+		\vspace{-0.35cm}
+	\begin{minipage}{0.3\textwidth}
+		\includegraphics[width=\textwidth]{Obrazy/Kamera1}
+		\caption{Stan początkowy testu zliczania osób (urządzenie sterujące)}
+		\label{rys:Kamera1}
+	\end{minipage}
+	\hspace{0.01\textwidth}
+	\begin{minipage}{0.69\textwidth}
+		\vspace{-1cm}
+		\includegraphics[width=\textwidth]{Obrazy/Strona1}
+		\caption{Stan początkowy testu zliczania osób (strona internetowa}
+		\label{rys:Strona1}
+	\end{minipage}
+	\end{figure}
+
+	\begin{figure}[ht!]
+		\vspace{-2.4cm}
+	\begin{minipage}{0.69\textwidth}
+		\includegraphics[width=\textwidth]{Obrazy/Strona2}
+		\caption{Stan po ''wejściu'' osoby (strona internetowa)}
+		\label{rys:Strona2}
+	\end{minipage}
+	\hspace{0.01\textwidth}
+	\begin{minipage}{0.3\textwidth}
+		\includegraphics[width=0.9\textwidth]{Obrazy/Kamera2}
+		\caption{Stan po ''wejściu'' osoby (urządzenie sterujące)}
+		\label{rys:Kamera2}
+	\end{minipage}
+\end{figure}
+
+	\begin{figure}[ht!]
+		\vspace{-1.9cm}
+		\centering
+		\includegraphics[width=4cm]{Obrazy/Kamera3}
+		\caption{Stan po ''wyjściu'' osoby (urządzenie sterujące)}
+		\label{rys:Kamera3}
+	\end{figure}
+\newpage
+	\item Symulacja otwarcia
 	\item (strona) historia
+	\item logowanie użytkownika
+	Walidacja hasła 
+	zalogowanie, 
+	opisanie panelu bocznego
 	\item rejestracja
 	wyświetlanie podpowiedzi do hasła
 	walidacja hasła 
 	ukazywanie ukrywanie hasła
 	rejestracja (komunikat +przekierowanie)
-	\item logowanie admin
-	Walidacja hasła 
-	zalogowanie, 
-	opisanie panelu bocznego
-	\item (admin) zmiana hasła
-	walidacja nowego hasła
-	zmiana hasła (niepoprawnie komunikat)
-	zmiana hasła poprawnie
 	\item (admin)zaakceptowanie rejestracji
 	widok rejestracji odrzucenie 
 	akceptowanie wyniki
-	\item (admin)wylogowanie
-	poikazanie poprawnosci wylogowania (opis gdzie przechoidiz
 	\item wnioskowanie o certyfikat
 	widok wnioskowania o certyfikat
-	 
-	\item wygenerowanie nowego klucza
+	\item wygenerowanie nowego klucza dostępowego
 	wygenerowanie nowego klucza (wnioski) 
 	\item (admin) zaakceptowanie certyfikatu
 	akceptacja certyfikatu opusprzejscia
 	\item (admin) wygenerowanie certyfikatu
 	\item  pobranie certyfikatu
-	\item lista certyfikatów 
-	\item uzyskanie dostępu do zamka
-	\item  pokazanie braku dostępu do zamka (zmiana daty)
+	\item uzyskanie dostępu do zamka (aktywacja bluetooth)
+		 jako podpunkt pokazanie braku dostępu do zamka (zmiana daty)
 	\item przedłużenie certyfikatu
 	przypis bo opisane wczesniej
 	\item usuniecie certyfikatu
@@ -75,14 +116,10 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 	\item (admin) historia użycia zamka
 	ukazanie hsitroi zamka
 	\item  zarządzanie kontami użytkowników
-	przypis bo wczesniej było opisane
-	\item zablokowanie klucza prywatnego
-	przypis bo opisane wczesniej było
-	\item zablokowanie konta użytkownika
-	\item  eksport klucza
+			przypis bo wczesniej było opisane
+			pod pkt zablokowanie klucza prywatnego
+			przypis bo opisane wczesniej było
+			pod pkt zablokowanie konta użytkownika
+	\item  eksport/import klucza
 	przypis bo opisane w czesnije było
-	\item import klucza
-	przypis bo opisane w zesniej było
-	\item zmiana adresu IP
-	przypi bo opisane wczesniej bYło
 \end{enumerate*}

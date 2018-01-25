@@ -21,7 +21,17 @@ Rozdział przedstawia opis wybranych technik użytych do utworzenia głównych f
 	Istnieje możliwość eksportowania dwóch pierwszych plików (Listing: \ref{lst:kod1}) ze względu na brak możliwości ich odzyskania oraz umożliwieni użytkownikowi z korzystania w wielu urządzeniach z tego samego klucza szyfrującego. W przypadku kiedy użytkownik zgubi telefon lub  wyczyści dane aplikacji to wszystkie dane znajdujące się w pamięci telefonu zostaną skasowane. Eksport ten odbywa się w widoku ustawień. Te dwa pliki zostają połączone w jeden plik który zostaje zaszyfrowany hasłem. Plik zapisywany jest w miejscu na telefonie gdzie wskażę użytkownik.  Operacje na pliku wykonywane są przy pomocy klasy statycznej ''FileReadWriteApi''.
 	
 	Wybór  tej technologi do wymienionych powyższych danych jest uzasadniony zwiększoną trwałością ich w stosunku do danych przechowywanych w pamięci aplikacji jak np.  w klasie globalnej oraz możliwość przechowywania bardziej skomplikowanych danych.
-	
+		
+	Drugim sposobem przechowywania danych jest funkcja androidowa SharedPreferences. Przechowuje ona proste typy danych takiej jak int, string, char, bool w postaci klucz (wartość typu string) value (wartość z danego typu, który się podało). W pamięci tej przechowuje takie dane jak:
+	\begin{itemize*}
+		\item adres ip serwera,
+		\item login użytkownika,
+		\item hasło użytkownika zaszyfrowane kluczem wszytym w oprogramowanie,
+		\item token sesji użytkownika,
+		\item informacja czy użytkownik aplikacji jest zalogowany,
+		\item informacja czy użytkownik aplikacji jest administratorem.	
+	\end{itemize*}
+\newpage
 	\begin{lstlisting}[caption={Funkcja eksportująca klucz szyfrujący.}, label={lst:kod1}, language=Kotlin]
 fun exportKey(path:String,password:String){
   if(!Valdiation.isCorrectPassword(password)){
@@ -41,16 +51,6 @@ fun exportKey(path:String,password:String){
   }
 }
 	\end{lstlisting}	
-		
-	Drugim sposobem przechowywania danych jest funkcja androidowa SharedPreferences. Przechowuje ona proste typy danych takiej jak int, string, char, bool w postaci klucz (wartość typu string) value (wartość z danego typu, który się podało). W pamięci tej przechowuje takie dane jak:
-	\begin{itemize*}
-		\item adres ip serwera,
-		\item login użytkownika,
-		\item hasło użytkownika zaszyfrowane kluczem wszytym w oprogramowanie,
-		\item token sesji użytkownika,
-		\item informacja czy użytkownik aplikacji jest zalogowany,
-		\item informacja czy użytkownik aplikacji jest administratorem.	
-	\end{itemize*}
 
 	Ponadto przechowuje informacje wykorzystywane w widokach generowania certyfikatu takie jak:
 	\begin{itemize*}
@@ -90,9 +90,8 @@ enum class EnumChoice(val value:String){
 		
 	Wszystkie wartości typu string wyświetlane na ekranie są przechowywane w pliku Strings znajdującego się w katalogu res/values. Wybór takiego sposobu został podyktowany faktem możliwości późniejszego łatwiejszego przerabiania tekstów oraz możliwości łatwiejszego tłumaczenia na inny język. Wszystkie kolory użyte w aplikacji przechowywane są w pliku colors. Ma to na celu ułatwienie  zmiany kolorów w całej aplikacji. Styl dla podstawowych elementów graficznych takich jak ''editText'', ''TextView'' czy ''Button'' przechowywane są w pliku styles co ma za zadanie umożliwienie łatwiejszej zmiany wyglądów danych elementów w całej aplikacji.
 		
-	Oprócz stylów elementów, czy wartości tekstowych należy również napisać, w jaki sposób generowane są widoki. Widoki te są przechowywane w plikach XML.  Dla widoków które nie posiadały listy został zaimplementowany układ ''LinearLayout'' ze względu na prostotę w tworzeniu oraz ewentualnych zmianach w wyglądzie. Natomiast dla widoków z wyświetlanymi jakimiś listami został zaimplementowany układ ''ConstrainLayout'' ze względu na fakt że przy liście występuje znacznie więcej odwołań do generowania widoku a układ ten jest pod tym względem o wiele wydajniejszy od wspomnianego wcześniej ''LinearLayout''. 
-		
-	\newpage
+	Oprócz stylów elementów, czy wartości tekstowych należy również napisać, w jaki sposób generowane są widoki. Widoki te są przechowywane w plikach XML.  Dla widoków które nie posiadały listy został zaimplementowany układ ''LinearLayout'' ze względu na prostotę w tworzeniu oraz ewentualnych zmianach w wyglądzie. Natomiast dla widoków z wyświetlanymi jakimiś listami został zaimplementowany układ ''ConstrainLayout'' ze względu na fakt że przy liście występuje znacznie więcej odwołań do generowania widoku a układ ten jest pod tym względem o wiele wydajniejszy od wspomnianego wcześniej ''LinearLayout''. \cite{desingMobile}
+
 	\subsubsection{Walidacja danych wprowadzanych przez użytkownika}
 	Walidacja danych wprowadzonych przez użytkownika odbywa Się przy pomocy klasy statycznej Validation. Klasa ta udostępnia cztery funkcje odpowiedzialne za:
 	\begin{itemize*}
@@ -180,7 +179,7 @@ urlpatterns = [
 	Funkcjonalności systemu w  dużej mierze wymagają stanu zalogowania, weryfikowane jest to przez podanie od użytkownika loginu oraz tokenu sesji logowania. Pola uzyskane w zapytaniu Http w metodzie POST są porównywane z znajdującymi się w bazie danych. Przykładowe API wymagające weryfikacji logowania znajduje się w listingu \ref{lst:serwer weryfikacja}. Użytkownik wysyła pole ''login'' oraz ''token'', następnie wykonane zostaje zapytanie do bazy danych o aktualnie znajdującą się wartość w rekordzie. Jeżeli wartości się pokrywają i nie są puste, może zostać wykonane polecenie, które chciał wywołać użytkownik. Dodatkowo, gdy operacja wymaga uprawnień administratora, weryfikowana jest flaga w bazie danych, czy dany użytkownik jest administratorem (IS\_ADMIN). Wiersze try except służą nie tylko do zamaskowania błędów działania aplikacji, ale również do zabezpieczenia programu przed podatnością SQL Injection (eliminacja tak zwanego feed backu o błędach przy próbie podawania innych wartości niż zaplanowano w systemie).
 	
 	Operacje logowania i rejestracji są podstawowymi działaniami, dzięki którym będzie można wykonywać bardziej złożone działania oraz niezbędne do poprawnego funkcjonowania PKI. Listing \ref{lst:serwer login} i listing \ref{lst:serwer register} przedstawiają kompletne funkcje logowania i rejestracji użytkowników. 
-\newpage	
+
 	{\footnotesize 
 	\begin{lstlisting}[caption={Przykładowe API weryfikujące stan logowania}, label={lst:serwer weryfikacja}, language=Python]
 def api_download_all_locks(request):
@@ -199,44 +198,13 @@ def api_download_all_locks(request):
 
 	Logowanie wymaga podania loginu w polu 'username' oraz skrótu SHA-256 hasła użytkownika. W pierwszej kolejności (linia 5 do 9) tworzony jest ciąg pseudolosowy, który będzie użyty jako token sesji logowania. Zastosowany generator jest wbudowany w bibliotekę RSA, w tym wypadku tworzone ciągi są kluczem publicznym algorytmu RSA. Następnym krokiem jest pobranie skrótu hasła oraz flag (czy jest administratorem, status konta) z bazy danych. Wiersz 15 decyduje, czy konto użytkownika jest aktywne, jeśli nie, to w linii 24 sprawdzane jest, czy konto zostało aktywowane, jeśli tak, oznacza to, że dane konto zostało zablokowane. W przypadku jednak, gdy konto ma status aktywny, następuje aktualizacja wartości tokenu w bazie danych oraz weryfikacja uprawnień użytkownika. Zwrócony status logowania jako root oznacza, zalogowanie się jako administrator.
 	
-{\footnotesize 
-\begin{lstlisting}[caption={API logowania}, label={lst:serwer login}, language=Python]	
-def api_login(request):
-  if request.method == 'POST':
-    username = request.POST.get('username')
-    password = request.POST.get('password')
-    random_generator = Random.new().read
-    key = RSA.generate(1024, random_generator).publickey().exportKey()
-    token = ""
-    for x in key.split("\n")[1:-1]:
-      token += x
-    try:
-      cursor = db.cursor()
-      cursor.execute("SELECT PASSWORD, IS_ADMIN, ISACTIVATED FROM USERS WHERE login='%s'" % username)
-      data = cursor.fetchone()
-      if data[2] == 0:
-        if data[0] == password:
-          cursor.execute("UPDATE USERS SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
-          db.commit()
-          if data[1] == 1:
-            return JsonResponse({"status": "root", "token": token})
-          else:
-            return JsonResponse({"status": "ok", "token": token})
-        else:
-        return JsonResponse({"status": "ERROR PASSWORD", "token": "invalid"})
-      elif data[2] == 1:
-        return JsonResponse({"status": "not activated", "token": "invalid"})
-      else:
-        return JsonResponse({"status": "blocked", "token": "invalid"})
-    except Exception:
-      return JsonResponse({"status": "ERROR", "token": "Invalid"})
-\end{lstlisting}}
-\newpage
-Operacja rejestracji wymaga podania unikalnego dla systemu loginu, hasła w postaci skrótu SHA-256, imienia, nazwiska użytkownika oraz wygenerowany klucz publiczny RSA. Pierwszym etapem rejestracji jest weryfikacja, czy podany login znajduje się obecnie w bazie danych użytkowników. W tym celu wykonywane jest zapytanie SQL z filtrem podanego loginu, w przypadku, gdy polecenie zwróci pustą wartość (w języku Python None), oznacza to brak istnienia danego użytkownika w bazie. W przeciwnym wypadku, otrzymania wartości z zapytania, zostaje zwrócona przez serwer odpowiedź błędu loginu (ERROR~LOGIN).
+	Operacja rejestracji wymaga podania unikalnego dla systemu loginu, hasła w postaci skrótu SHA-256, imienia, nazwiska użytkownika oraz wygenerowany klucz publiczny RSA. Pierwszym etapem rejestracji jest weryfikacja, czy podany login znajduje się obecnie w bazie danych użytkowników. W tym celu wykonywane jest zapytanie SQL z filtrem podanego loginu, w przypadku, gdy polecenie zwróci pustą wartość (w języku Python None), oznacza to brak istnienia danego użytkownika w bazie. W przeciwnym wypadku, otrzymania wartości z zapytania, zostaje zwrócona przez serwer odpowiedź błędu loginu (ERROR~LOGIN).
+	
+	Wiersze 15 do 22 skryptu \ref{lst:serwer register} tworzą certyfikat szyfrujący. Pierwszych 5 linii generuje pseudolosową wartość (wg algorytmu RSA dla klucza publicznego), będącą unikalnym identyfikatorem dla certyfikatu szyfrującego. Następnie dodawany do bazy danych jest użytkownik wraz z utworzonym certyfikatem z polami odpowiednio Public\_Key (przesłany klucz publiczny od użytkownika), Serial\_number (wygenerowana wartość pseudolosowa) oraz Validity\_period (obecna data przedłużona o rok), pozostałe wartości są domyślne (klucz szyfrujący RSA, funkcja skrótu SHA-256 i wersja certyfikatu 1).
 
-Wiersze 15 do 22 skryptu \ref{lst:serwer register} tworzą certyfikat szyfrujący. Pierwszych 5 linii generuje pseudolosową wartość (wg algorytmu RSA dla klucza publicznego), będącą unikalnym identyfikatorem dla certyfikatu szyfrującego. Następnie dodawany do bazy danych jest użytkownik wraz z utworzonym certyfikatem z polami odpowiednio Public\_Key (przesłany klucz publiczny od użytkownika), Serial\_number (wygenerowana wartość pseudolosowa) oraz Validity\_period (obecna data przedłużona o rok), pozostałe wartości są domyślne (klucz szyfrujący RSA, funkcja skrótu SHA-256 i wersja certyfikatu 1).
+	Wiersze od 23 do końca funkcji pobierana jest kompletna zawartość certyfikatu (w formacie JSON), która następnie przesyłana jest, jako odpowiedź zwrotna dla użytkownika. W przypadku błędu konwersji rekordu z bazy danych na format JSON lub błędu bazy danych zwrócona zostanie informacja o błędnym wykonaniu polecenia (status invalid w sytuacji braku dodania certyfikatu do bazy danych lub status ERROR, gdy pojawi się nieokreślony błąd podczas wykonywania procesu rejestracji).
+	\newpage
 
-Wiersze od 23 do końca funkcji pobierana jest kompletna zawartość certyfikatu (w formacie JSON), która następnie przesyłana jest, jako odpowiedź zwrotna dla użytkownika. W przypadku błędu konwersji rekordu z bazy danych na format JSON lub błędu bazy danych zwrócona zostanie informacja o błędnym wykonaniu polecenia (status invalid w sytuacji braku dodania certyfikatu do bazy danych lub status ERROR, gdy pojawi się nieokreślony błąd podczas wykonywania procesu rejestracji).
 
 {\footnotesize
 \begin{lstlisting}[caption={API rejestracji}, label={lst:serwer register}, language=Python]	
@@ -247,9 +215,11 @@ def api_register(request):
     name = request.POST.get('name')
     surname = request.POST.get('surname')
     publickkey = request.POST.get('publickkey')
+    
     cursor = db.cursor()
     cursor.execute("SELECT LOGIN FROM USERS WHERE LOGIN='%s'" % login)
     data = cursor.fetchone()
+    
     if data is not None:
       return JsonResponse({"status": "ERROR LOGIN"})
     else:
@@ -274,6 +244,41 @@ def api_register(request):
         return JsonResponse({"status": "ERROR"})
 \end{lstlisting}}
 \newpage
+{\footnotesize 
+	\begin{lstlisting}[caption={API logowania}, label={lst:serwer login}, language=Python]	
+	def api_login(request):
+	if request.method == 'POST':
+	username = request.POST.get('username')
+	password = request.POST.get('password')
+	
+	random_generator = Random.new().read
+	key = RSA.generate(1024, random_generator).publickey().exportKey()
+	token = ""
+	for x in key.split("\n")[1:-1]:
+	token += x
+	
+	try:
+	cursor = db.cursor()
+	cursor.execute("SELECT PASSWORD, IS_ADMIN, ISACTIVATED FROM USERS WHERE login='%s'" % username)
+	data = cursor.fetchone()
+	if data[2] == 0:
+	if data[0] == password:
+	cursor.execute("UPDATE USERS SET TOKEN = '%s' WHERE LOGIN = '%s'" % (token, username))
+	db.commit()
+	if data[1] == 1:
+	return JsonResponse({"status": "root", "token": token})
+	else:
+	return JsonResponse({"status": "ok", "token": token})
+	else:
+	return JsonResponse({"status": "ERROR PASSWORD", "token": "invalid"})
+	elif data[2] == 1:
+	return JsonResponse({"status": "not activated", "token": "invalid"})
+	else:
+	return JsonResponse({"status": "blocked", "token": "invalid"})
+	except Exception:
+	return JsonResponse({"status": "ERROR", "token": "Invalid"})
+	\end{lstlisting}}
+
 	\subsubsection{Strona internetowa [\StudentB]}
 	Strona internetowa została dopisana do projektu serwera w oparciu o framework Django. Zaimplementowane są trzy widoki. Widok logowania, widok wyświetlający historię oraz widok do którego przechodzi się po wylogowaniu. Główny widok możliwy jest do wyświetlenia tylko po zalogowaniu. Login oraz hasło używane do zalogowania należy wygenerować podczas konfiguracji serwera przy pomocy polecenia ''python manage.py createsuperuser'' lub modyfikując wpis w bazie danych ręcznie. Strona internetowa znajduje się w plikach:
 	\begin{itemize*}
@@ -340,9 +345,18 @@ def Check_access(certificate):
               continue
   return False
 	\end{lstlisting}}
-
+\newpage
 \subsection{Moduł zliczania osób [\StudentA]}
 	Moduł zliczania osób zaimplementowany jest w zintegrowaniu z urządzeniem sterującym. Głównym problemem zastosowania biblioteki Open-CV w Raspberry Pi jest brak posiadania przez mikrokomputer karty graficznej. Operacje przetwarzania obrazu wydajnie pracują, gdy wykonywane są z wysokim współczynnikiem współbieżności. Brak procesorów graficznych skutkuje przeniesieniem złożonych obliczeń na zwykłe procesory CPU, skutkując nie wydajną pracą (obraz bardzo często się zacina). 
+	
+	Podczas zwykłej pracy moduł zliczania osób nie posiada interfejsu graficznego, przedstawiony widok na Rys. \ref{rys:Zliczanie osob} został utworzony tylko do celów demonstracyjnych. Zielony prostokąt i czerwona kropka oznaczają wykrytą osobą i jego centralny punkt. Dwie linie, niebieska oznacza granicę, gdzie zliczona osoba ''wychodzi'', a czerwona, kiedy ''wchodzi'', przy czym zawsze jest brana pod uwagę linia druga (ze względu na potrzebę czasu reakcji wykrywania osoby).
+	
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=8cm]{Obrazy/Kamera1}
+		\caption{Stan początkowy testu zliczania osób (urządzenie sterujące)}
+		\label{rys:Zliczanie osob}
+	\end{figure}
 	
 	Algorytm zliczania osób polega na ''śledzeniu'' osób, wykorzystano do tego celu metodę \textit{findContours}. Wcześniej, aby przygotować obraz należy wykonać binarną różnicę obrazu pierwszego (zarejestrowanego bez żadnej osoby w obiektywie) z obrazem obecnym, służy do tego funkcja \textit{threshold}. 
 	
