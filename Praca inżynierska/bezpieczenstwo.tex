@@ -12,8 +12,8 @@ Drugą sekcją są funkcje kryptograficzne użyte podczas generowania klucza szy
 
 Aplikacja zarządzająca zamkiem korzysta z funkcji kryptograficznych takich jak RSA oraz SHA-256. Wykorzystuje ona je w procesie weryfikacji certyfikatu użytkownik wysłanego z urządzenia mobilnego. Do implementacji tych funkcji wykorzystano gotową bibliotekę ''PyCrypto''
 
-\subsection{Podatności systemu (OWASP Top 10) [\StudentA]}
-W punkcie tym zostaną opisane podatnośći systemu na zagrożenia według metodologi OWASP TOP 10 z 2017 roku. Wszystkie zagrożenia zostały wypisane poniżej wraz z opisem czy dane zagrożenie występuje w naszym systemie oraz uzasadnieniem.
+\subsection{Podatności systemu (OWASP Top 10) [\StudentA]} \label{sec:OWASP}
+W punkcie tym zostaną opisane podatności systemu na zagrożenia według metodologi OWASP TOP 10 z 2017 roku. Wszystkie zagrożenia zostały wypisane poniżej wraz z opisem czy dane zagrożenie występuje w naszym systemie oraz uzasadnieniem.
 \begin{enumerate*}
 	\item SQL injection 
 	
@@ -26,17 +26,17 @@ W punkcie tym zostaną opisane podatnośći systemu na zagrożenia według metod
 	 Nie występuje ono dzięki polityce generowania oraz przechowywania wrażliwych danych,  zabezpieczenie ekspozycji tych informacji przy pomocy szyfrowanego połączenia między modułami oraz zabezpieczenia aplikacji serwerowej pod względem podatności na ataki uwzględniające przejecie wrażliwych danych.
 	\item zewnętrzne encje XML 
 	
-	 System \NazwaSys nie jest podatny na tego typu zagrożenia ze względu na nieużywanie tego formatu do przechowywania danych. Obecnie podczas przesyłu informacji oraz przetrzymywania ich poza bazą danych używamy formatu JSON.
+	 System \NazwaSys \space nie jest podatny na tego typu zagrożenia ze względu na nieużywanie tego formatu do przechowywania danych. Obecnie podczas przesyłu informacji oraz przetrzymywania ich poza bazą danych używamy formatu JSON.
 	\item zepsuta kontrola dostępu 
 	
 	 Nie wykryto takiego zagrożenia. Wszystkie funkcje uwierzytelniające są zabezpieczone oraz przetestowane pod kątem poprawności wykonywania oraz kontroli dostępu do części systemu wymagających konkretnych uprawnień.
 	 \item Błędna konfiguracja zabezpieczeń
 	 
-	 Obecnie w celach testowych istnieje taka podatność. Znajduje się ona w aplikacji mobilnej w  postaci umożliwienia nawiązywania połączenia HTTPs z serwerem który posiada certyfikat SSL z niezaufanego źródła. Zostało to wprowadzone w celach testowych. Rozwiązanie to zostało opisane w punkcie \ref{sec:techniki kryptograficzne} wraz z zaleceniami dotyczącymi poprawy bezpieczeństwa w warunkach docelowych. Ponadto nie zostały wykorzystane dobre praktyki związane z uwierzytelnieniem użytkownika w postaci stosowania soli do wygenerowania funkcji skrótu z hasła.
+	 Obecnie w celach testowych istnieje taka podatność. Znajduje się ona w aplikacji mobilnej w  postaci umożliwienia nawiązywania połączenia Https z serwerem który posiada certyfikat SSL z niezaufanego źródła. Zostało to wprowadzone w celach testowych. Rozwiązanie to zostało opisane w punkcie \ref{sec:techniki kryptograficzne} wraz z zaleceniami dotyczącymi poprawy bezpieczeństwa w warunkach docelowych. Ponadto nie zostały wykorzystane dobre praktyki związane z uwierzytelnieniem użytkownika w postaci stosowania soli do wygenerowania funkcji skrótu z hasła.
 	 
 	 \item podatność XSS
 	 
-	 Istnieje możliwość podatności XSS typu reflected w momencie kiedy administrator kliknie w niezaufany link. Kluczową kwestią w tym wypadku jest odpowiednie przeszkolenie kadry ad ministrującej danym serwerem by nie dopuścić do ataku opierającego się w sporej mierze na wykorzystaniu socjotechniki. Pondto brak podstawowych zabezpieczeń na tego typu ataki w postaci filtracji danych przesyłanych przez użytkownika. 
+	 Istnieje możliwość podatności XSS typu reflected w momencie kiedy administrator kliknie w niezaufany link. Kluczową kwestią w tym wypadku jest odpowiednie przeszkolenie kadry ad ministrującej danym serwerem by nie dopuścić do ataku opierającego się w sporej mierze na wykorzystaniu socjotechniki. Ponadto brak podstawowych zabezpieczeń na tego typu ataki w postaci filtracji danych przesyłanych przez użytkownika. 
 	 
 	 \item Niezabezpieczona deserializacja
 	 
@@ -46,12 +46,34 @@ W punkcie tym zostaną opisane podatnośći systemu na zagrożenia według metod
 	 
 	 Podatność ta została ograniczona dzięki dbaniu o wykorzystywanie najnowszych funkcji oraz aktualizowanie na bieżąco wszystkich komponentów znajdujących się w modułach projektu.
 	 
-	 \item Niewystarczające      
+	 \item Niewystarczające monitorowanie 
+	 
+	 Zagrożenie te występuje w systemie. Nie ma żadnego zdarzenia monitorującego błędnych prób logowania do systemu oraz nieautoryzowanych prób wykonania poszczególnych API na serwerze. Ponadto nie zostały przeprowadzone testy penetracyjne oraz nie zostały zaimplementowane funkcje ostrzegające o potencjalnych atakach w czasie rzeczywistym.      
 \end{enumerate*}
 
 \subsection{Inne zagrożenia występujące w systemie [\StudentB]}
 
+Oprócz zagrożeń wykrytych w podpunkcie \ref{sec:OWASP} w systemie zostały wykryte następujące zagrożenia. W momencie kradzieży urządzenia na którym użytkownik jest zalogowany można uzyskać z jego konta dostęp do pomieszczeń.
+ 
+ Ponadto z powodu braku zabezpieczeń funkcji newralgicznych takich jak generowanie certyfikatu czy akceptowanie rejestracji przez użytkownika zalogowanego z uprawnieniami administratora, w momencie kradzieży urządzenia istnieje możliwości wygenerowania dostępu do każdego z możliwych pomieszczeń oraz przyznanie tychże uprawnień dla dowolnego z użytkowników systemu. 
+ 
+ W przypadku utraty klucza szyfrującego przez użytkownika nie ma przewidzianej żadnej funkcji umożliwiającej przez administratora metody pozwalającej na odzyskanie certyfikatu klucza szyfrującego potrzebnego do wygenerowania nowego klucza szyfrującego.
+ 
 \subsection{Możliwości poprawy bezpieczeństwa systemu [\StudentA]}
 
-\subsection{Wnioski}
+Dzięki przeprowadzonej analizie pod względem metodologi OWASP oraz weryfikacji pod kątem innych zagrożeń została sporządzona lista możliwości poprawy systemu pod względem bezpieczeństwa. 
+\begin{itemize*}
+	\item zablokowanie możliwości połączenia http gdy certyfikat pochodzi z niezaufanego źródła,
+	\item zastosowanie soli podczas uwierzytelniania użytkownika,
+	\item  zastosowanie filtracji danych wprowadzonych przez użytkownika w formularzu logowania dla strony internetowej,
+	\item poprawa APi pod względme monitorowania błędnych prób autoryzacji w systemie,
+	\item  poprawa API pod względem nieautoryzowanych prób dostępu do poszczególnych API,
+	\item wykonanie testów penetracyjnych wraz z ewentualnym wyeliminowaniem zagrożeń wykrytych,
+	\item zaimplementowanie funkcji ostrzegajacech o atakach przeszukujących lub typu DDoS administratora systemu w czasie rzeczywistym,
+	\item umożliwienie szybszej możliwości zgłoszenia unieważnienia konta, 
+	\item wprowadzenie funkcji otwierania zamka oraz dostępu do metod administratora po autoryzacji czytnikiem linii papilarnych,
+	\item zabezpieczenie metod wymagających uprawnień administratora poprzez zastosowanie wymogu wprowadzania hasła autoryzującego,
+	\item przygotowanie narzędzia dla administratora systemu ułatwiającego przywracanie klucza dostępowego dla użytkownika. 
+\end{itemize*}
+
  
