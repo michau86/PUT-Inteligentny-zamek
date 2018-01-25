@@ -3,24 +3,32 @@
 \newpage
 \section*{Dodatki} \label{Dodatki}
 \addcontentsline{toc}{section}{Dodatki}
-%\newpage\textbf{Dodatki}\\
-%\addcontentsline{toc}{section}{Dodatki}
 \subsection*{Instalacja systemu \NazwaSys}
-Instalacje systemu należy podzielić na 4 kroki. Pierwszym z nich jet instalacja serwera.  Żeby to wykonać należy zainstalować w podanej kolejności następujące elementy w systemie linux bąd"z Windows:
+Instalacje systemu należy podzielić na 4 kroki. Pierwszym z nich jet instalacja serwera. Żeby wykonać to, należy zainstalować w podanej kolejności następujące elementy w systemie Linux bądź Windows:
 \begin{itemize*}
-	\item Środowisko python 2.7 wraz z programem pip
-	\item biblioteka pyCrypto zainstalowane przy pomocy polecenia pip -install pyCrypto
-	\item  framework Django przy pomocy polecenia pip -install Django
-	\item biblioteka MySQLdb przy pomocy polecenia pip -install MySQLdb
-	\item  biblioteka pySSL przy pomocy polecenia pip -install pySSL
-	\item biblioteka Werkzug przy pomocy polecenia pip - install Werkzug
+	\item środowisko Python 2.7 wraz z programem pip,
+	\item biblioteka pyCrypto zainstalowane przy pomocy polecenia pip -install pyCrypto,
+	\item  framework Django przy pomocy polecenia pip -install Django,
+	\item biblioteka MySQLdb przy pomocy polecenia pip -install MySQLdb,
+	\item  biblioteka pySSL przy pomocy polecenia pip -install pySSL,
+	\item biblioteka Werkzug przy pomocy polecenia pip - install Werkzug.
 \end{itemize*}
-W celu uruchomienia serwera należy podac polecenie python manage.py runserver\_plus xxx.xxx.xxx.xxx:8080 --cert-file cert.crt gdzie w miejscu ''xxx.xxx.xxx.xxx'' należy wpisać adres IP serwera.
 
-Kolejnym elementem instalacyjnym systemu jest?????
 
-Ostatnim elementem potrzebnym do funkcjonowania projektu jest aplikacja mobilna. W celu zainstalowania jej potrzebny będzie telefon mobilny z wersją systemu operacyjnego android w wersji minimalnej 5.0 z włączoną funkcją programistyczną  W celu wgrania aplikacji na telefon należy przekopiować plik z rozszerzeniem apk do pamięci telefonu a następnie uruchomić go w urządzeniu mobilnym (należy wcześniej zezwolić na instalowanie oprogramowania z nieznanego "zródła).
 
-  
+W celu uruchomienia serwera należy podać polecenie \textit{python manage.py runserver\_plus xxx.xxx.xxx.xxx:8080 --cert-file cert.crt} gdzie w miejscu ''xxx.xxx.xxx.xxx'' należy wpisać adres IP serwera.
+
+Instalacja urządzenia sterującego i moduły zliczania osób polega na pobraniu systemu raspian z strony internetowej \href{https://www.raspberrypi.org/downloads/}{https://www.raspberrypi.org/downloads/} oraz zainstalować odpowiednie biblioteki Pythona 2.7:
+\begin{itemize*}
+	\item biblioteka BlueZ, poprzez polecenie konsoli linuxowej: pip -install BlueZ,
+	\item biblioteka PyCrypto, polecenie pip -install PyCrypto,
+	\item biblioteka httplib, polecenie pip -install httplib,
+	\item biblioteka OpenCV, polecenie pip -install python-opencv.
+\end{itemize*}
+
+Pobrane pliki z skryptem należy uruchomić poleceniami odpowiednio \textit{python Inteligentny\_zamek.py}, Wcześniej należy otworzyć plik w notatniku i podać adres IP aplikacji serwerowej opisanej wyżej. Moduł zliczania osób uruchamia się poleceniem \textit{python counter.py -ip 1} dodatek -ip 1 oznacza, że zostanie uruchomiona wersja programu z kamerą IP, bez tego parametru, domyślna kamera Raspberry Pi (jeśli taka jest podłączona).
+
+Ostatnim elementem potrzebnym do funkcjonowania projektu jest aplikacja mobilna. W celu zainstalowania jej potrzebny będzie telefon mobilny z wersją systemu operacyjnego android w wersji minimalnej 5.0 z włączoną funkcją programistyczną  W celu wgrania aplikacji na telefon należy przekopiować plik z rozszerzeniem apk do pamięci telefonu a następnie uruchomić go w urządzeniu mobilnym (należy wcześniej zezwolić na instalowanie oprogramowania z nieznanego źródła).
+ 
 \subsection*{Instrukcja użytkownika systemu \NazwaSys}
 

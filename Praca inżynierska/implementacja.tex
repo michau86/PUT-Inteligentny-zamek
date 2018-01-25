@@ -1,7 +1,6 @@
 % !TeX spellcheck = pl_PL
 \newpage\section{Implementacja} \label{sec:implementacja}
-% Dokumentacja programistyczna
-% Odpowiedź na pytanie: Jak system zbudowano?
+Rozdział przedstawia opis wybranych technik użytych do utworzenia głównych funkcji systemu. 
 \subsection[Aplikacja mobilna]{Aplikacja mobilna [\StudentB]}
 	\subsubsection{Przechowywanie danych}
 	W aplikacji mobilnej zostały zaimplementowane 3 możliwości przechowywania danych. Pierwszą z nich jest możliwość trzymania ich w pamięci telefonu jako pliki. Obiekty te przechowywane są w katalogu aplikacji. Przechowują one odpowiednio:
@@ -10,7 +9,7 @@
 	\item certyfikat klucza szyfrującego 
 	\item certyfikaty dostępowe
 	\end{itemize*}	
-	Istnieje możliwość eksportowania dwóch pierwszych plików (Listing: \ref{lst:kod1}) ze względu na brak możliwości ich odzyskania oraz umożliwieni użytkownikowi z korzystania w wielu urządzeniach z tego samego klucza szyfrującego. W przypadku kiedy użytkownik zgubi telefon lub  wyczyści dane aplikacji to wszystkie dane znajdujące się w pamięci telefonu zostaną skasowane. Eksport ten odbywa się w widoku ustawień. Te dwa pliki zostają połączone w jeden plik który zostaje zaszyfrowany hasłem. Plik zapisywany jest w miejscu na telefonie gdzie wskażę użytkownik.  Operacje na pliku wykonywane są przy pomocy klasy statycznej ''FileReadWriteAp''.
+	Istnieje możliwość eksportowania dwóch pierwszych plików (Listing: \ref{lst:kod1}) ze względu na brak możliwości ich odzyskania oraz umożliwieni użytkownikowi z korzystania w wielu urządzeniach z tego samego klucza szyfrującego. W przypadku kiedy użytkownik zgubi telefon lub  wyczyści dane aplikacji to wszystkie dane znajdujące się w pamięci telefonu zostaną skasowane. Eksport ten odbywa się w widoku ustawień. Te dwa pliki zostają połączone w jeden plik który zostaje zaszyfrowany hasłem. Plik zapisywany jest w miejscu na telefonie gdzie wskażę użytkownik.  Operacje na pliku wykonywane są przy pomocy klasy statycznej ''FileReadWriteApi''.
 	
 	Wybór  tej technologi do wymienionych powyższych danych jest uzasadniony zwiększoną trwałością ich w stosunku do danych przechowywanych w pamięci aplikacji jak np.  w klasie globalnej oraz możliwość przechowywania bardziej skomplikowanych danych.
 	
