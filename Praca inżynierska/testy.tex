@@ -1,10 +1,29 @@
 % !TeX spellcheck = pl_PL
-\newpage\section{Wdrożenie i testowanie systemu \NazwaSys} \label{sec:testy}
-\subsection{Środowisko testowe [\StudentA]}
-% parametry komputera: procesor, liczba rdzeni, wielkość pamięci, karta graficzna, karta sieciowa, system operacyjny itp.
+\newpage
+\section{Wdrożenie i testowanie systemu \NazwaSys} \label{sec:testy}
+Rozdział skupiać się będzie na przedstawieniu działania systemu oraz w jakim środowisku zostało testowane. Wizualizacja funkcjonowania modułów, będzie jednocześnie, krótkimi testami poprawności zaprojektowanych poszczególnych części implementacji. 
+
+\subsection{Środowisko testowe}
+Stanowisko testowe podczas implementacji projektu składa się z:
+\begin{itemize*}
+	\item laptopa z systemem Windows 10 EDU służącego, jako serwer (aplikacja serwerowa, baza danych),
+	\item mikrokomputera Raspberry Pi 3 Model B, jako urządzenie sterujące oraz moduł zliczania osób,
+	\item kamera IP Dahua DH-IPC-HDW2220RP-ZS, jako kamera zliczająca,
+	\item 3 smartphony różnych modeli:
+	\begin{enumerate*}
+		\item Samsung S5 Neo (Android 6.0),
+		\item Samsung S5 (Android 6.0),
+		\item ZTE Blade A452 (Android 5.1).
+	\end{enumerate*}
+\end{itemize*}
+
+Testowy laptop posiada następujące parametry:
+\begin{itemize*}
+	\item pamięć ram 32 GB,
+	\item procesor Intel Core i7-6700HQ,
+	\item dysk SSD NVMe o średniej prędkości odczytu 1,6GB/s i odczycie 920MB/s,
+	\item karta graficzna Nvidia Quadro M2000M,
+	\item karta sieciowa Intel Dual Band Wireless-AC 8260.
+\end{itemize*}
 
 \subsection{Wizualizacja działania systemu \textsl{\NazwaSys}}
-% przedstawic graficznie struktury danych, dane i wyniki działania aplikacji 
-% można wykorzystać SVG
-
- 
