@@ -97,8 +97,7 @@ enum class EnumChoice(val value:String){
 	Wyrażenia regularne użyte w tych funkcjach znajdują się na Listingu \ref{lst:kod4}.
 	
 	\begin{lstlisting}[caption={Wyrażenia regularne.}, label={lst:kod4}, language=Kotlin]
-  "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$)
-  .{4,}$"
+  "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$"
  
   "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.)
   {3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$"
@@ -124,7 +123,7 @@ public static boolean biggerThanTime(String time1,String time2){
 	\end{lstlisting}
 
 	\subsubsection{Komunikacja z serwerem}
-	Do komunikacji z serwerem napisana została specjalna klasa dziedzicząca po klasie AsyncTask o nazwie HTTPRequest. Klasa ta wysyła podane w konstruktorze (listing \ref{lst:kod6}) w postaci Hasmap-u dane do serwera i po otrzymaniu informacji zwrotnej z serwera przekazuje tą odpowiedź. Odpowiedź ta jest przekazywana do klasy która utworzyła i wykonała klasę HTTPRequests do funkcji o nazwie podanej w parametrze konstruktora przy pomocy refleksji (listing: \ref{lst:kod7}). Dzięki temu klasa ta jest uniwersalna i Może być stosowana w każdym miejscu programu.
+	Do komunikacji z serwerem napisana została specjalna klasa dziedzicząca po klasie AsyncTask o nazwie HTTPRequest. Klasa ta wysyła podane w konstruktorze (listing \ref{lst:kod6}) w postaci Hashmap-u dane do serwera i po otrzymaniu informacji zwrotnej z serwera przekazuje tą odpowiedź. Odpowiedź ta jest przekazywana do klasy która utworzyła i wykonała klasę HTTPRequests do funkcji o nazwie podanej w parametrze konstruktora przy pomocy refleksji (listing: \ref{lst:kod7}). Dzięki temu klasa ta jest uniwersalna i Może być stosowana w każdym miejscu programu.
 	
 	\begin{lstlisting}[caption={Konstruktor klasy HTTPRequest.}, label={lst:kod6}, language=Java]
 public HTTPRequestAPI(Object presenter,String url,String methodName,HashMap DataToSend) {
@@ -275,11 +274,11 @@ def api_register(request):
 		\item *.html
 	\end{itemize*}
  
-	W pliku ''urls.py''(listening: \ref{lst:python url}) znajduą się adresy URL które korzystają z wbudowanej funkcji django ''auth\_views.login'' służącej do logowania oraz ''auth\_views.logout'' służąca do wylogowania. Plik ''views.py'' posiada API (Listing: \ref{lst:serwer login strona}) wykorzystywane w stronie głównej które pobiera z bazy danych. W plikach z rozszerzeniem html znajduje się implementacja wyglądu strony.
+	W pliku ''urls.py''(Listing: \ref{lst:python url}) znajdują się adresy URL które korzystają z wbudowanej funkcji django ''auth\_views.login'' służącej do logowania oraz ''auth\_views.logout'' służąca do wylogowania. Plik ''views.py'' posiada API (Listing: \ref{lst:serwer login strona}) wykorzystywane w stronie głównej które pobiera z bazy danych. W plikach z rozszerzeniem html znajduje się implementacja wyglądu strony.
 	
 	{\footnotesize 
 		\begin{lstlisting}[caption={API logowania do strony internetowej}, label={lst:serwer login strona}, language=Python]	
-	@login_required(login_url="login/")
+@login_required(login_url="login/")
 def website(request):
   try:
     cursor = db.cursor()
@@ -288,10 +287,53 @@ def website(request):
   finally:
     return render_to_response('home.html', {"rows": rows})
 		\end{lstlisting}}
-
 \subsection{Urządzenie sterujące [\StudentA]}
+Program urządzenia sterującego nasłuchuje połączeń bluetooth (jest serwerem) od urządzeń mobilnych. Aplikacje korzystają z bezpiecznego trybu komunikacji, to znaczy posiadają wbudowany klucz, który musi być po obu stronach połączenia identyczny. Fragment kodu odpowiedzialny za utworzenie bezpiecznego serwera znajduje się w Listingu \ref{lst:RPI bt}. Wiersz związany z kluczem aplikacji znajduje się w linii 5, w linii 6 zostaje przypisany do usług serwera. Każde nawiązanie połączenie z urządzeniem sterującym zostaje odnotowane w pliku log, tak samo jest z odebranymi danymi oraz decyzją przyznania dostępu. 
+{\footnotesize 
+\begin{lstlisting}[caption={Tworzenie serwera bluetooth}, label={lst:RPI bt}, language=Python]
+server_sock = BluetoothSocket(RFCOMM)
+server_sock.bind(("", PORT_ANY))
+server_sock.listen(1)
+port = server_sock.getsockname()[1]
+uuid = "fa87c0d0-afac-11de-8a39-0800200c9a66"
+advertise_service(server_sock, "BluetoothChatSecure", service_id=uuid, service_classes=[uuid, SERIAL_PORT_CLASS], profiles=[SERIAL_PORT_PROFILE])
+\end{lstlisting}}
+Istotną rolą urządzenia sterującego jest weryfikacja poprawności certyfikatów. Sprawdzając klucze dostępowe ważne jest potwierdzenie, czy dany klucz ma przyznane uprawniania w konkretnym przedziale czasowym, odpowiedzialna za to jest funkcja ''Check\_access'' znajdująca się w Listingu \ref{lst:RPI check access}. Objaśnienie umieszczonego kodu:
+\begin{itemize*}
+	\item wiersz 2 --- weryfikacja, czy certyfikat jest aktualny (''None'' oznacza stan aktywny),
+	\item wiersz 3 --- sprawdzenie ważności certyfikatu, czy obecna data mieści się pomiędzy datą od której jest ważny certyfikat (date\_from) oraz datą do której jest ważny (date\_to),
+	\item  wiersz 4 --- sprawdza specjalną flagę ważnego certyfikatu, czy posiadany jest dostęp stały, bez ograniczania godzin w poszczególnych dniach,
+	\item wiersze 6 do 21 --- analiza godzin, w których certyfikat ma dostęp, gdy nie jest ustawiona flaga dostępu stałego,
+	\item w każdym niespełnionym wyżej opisanym przypadku zostanie odrzucony dostęp.
+\end{itemize*}
 
-\subsection[Moduł zliczania osób]{Moduł zliczania osób [\StudentA]}
+{\footnotesize 
+	\begin{lstlisting}[caption={Funkcja Check-access urządzenia sterującego}, label={lst:RPI check access}, language=Python]
+def Check_access(certificate):
+  if certificate.isactual is None:
+    if datetime.strptime(certificate.date_from, '%Y-%m-%dT%H:%M:%S') < datetime.now() < datetime.strptime( certificate.date_to, '%Y-%m-%dT%H:%M:%S'):
+      if certificate.ispernament == 1:
+        return True
+      else:
+        try:
+          day_access = certificate.access_table[date.today().weekday()].split(";")
+        except Exception:
+          day_access = []
+        now = datetime.now()
+        if len(day_access) > 0:
+          for x in day_access:
+            x = x.split("-")
+            try:
+              x0 = x[0].split(":")
+              x1 = x[1].split(":")
+              if datetime.now().replace(hour=int(x0[0]), minute=int(x0[1])) <= now < datetime.now().replace(hour=int(x1[0]), minute=int(x1[1])):
+                return True
+            except Exception:
+              continue
+  return False
+	\end{lstlisting}}
+
+\subsection{Moduł zliczania osób [\StudentA]}
 
 
  

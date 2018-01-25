@@ -1,5 +1,4 @@
 # coding=utf-8
-
 from django.http import JsonResponse  # zwracanie JSONow w odpowiedzi
 from django.views.decorators.csrf import csrf_exempt  # wylaczenie CSRF tokenow
 import MySQLdb
@@ -7,9 +6,6 @@ from Crypto.PublicKey import RSA
 from Crypto import Random
 from datetime import datetime
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
-from django.contrib import auth
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 username = "root"
 userpassword = "inteligentnyzamek"
@@ -17,7 +13,6 @@ databasename = "inteligentny_zamek_db"
 databaseaddres = "127.0.0.1"
 
 db = MySQLdb.connect(databaseaddres, username, userpassword, databasename)
-
 
 @login_required(login_url="login/")
 def website(request):
@@ -27,11 +22,7 @@ def website(request):
         cursor.execute("SELECT DATE, ACCESS, locks_keys.NAME, locks_keys.SURNAME, locks.NAME AS 'ZAMEK' FROM access_to_locks, locks_keys, locks WHERE locks_keys.ID_KEY = access_to_locks.ID_KEY AND locks.ID_LOCK = access_to_locks.ID_KEY ORDER BY DATE DESC")
         rows = cursor.fetchall()
     finally:
-        a =""
-    print type(rows)
-    for p in rows:
-            type(p)
-    return render_to_response('home.html', {"rows": rows})
+        return render_to_response('home.html', {"rows": rows})
 
 # api do logowania
 @csrf_exempt
@@ -42,7 +33,6 @@ def api_login(request):
         random_generator = Random.new().read
         key = RSA.generate(1024, random_generator).publickey().exportKey()
         token = ""
-
         for x in key.split("\n")[1:-1]:
             token += x
         try:
