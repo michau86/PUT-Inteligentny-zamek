@@ -1,5 +1,18 @@
 % !TeX spellcheck = pl_PL
 \newpage
 \section{Podsumowanie} \label{sec:podsumowanie}
-
+	Podsumowując prace wykonaną podczas tworzenia pracy dyplomowej zrealizowano wszystkie punkty przewidziane w zadaniach szczegółowych umieszczonych w kartach prac. Bazując na pracy wykonanej w ramach wcześniejszych przedmiotów wykonano w pierwszej kolejności zgodnie z metodyką kaskadową  planowanie oraz analizę systemu pod kątem praktycznego wykorzystania w postaci między innymi przypadków użycia. Następnie W trakcie etapu tworzenia projektu znaczna uwaga została skupiona na  przewidzeniu wszystkich możliwych  elementów potrzebnych do utworzenia oraz implementacji zgodnej z dobrymi praktykami programowania. W dalszej fazie opisanej w dokumencie została wykonana implementacja poszczególnych modułów systemu. W trakcie realizacji z powodów ograniczeń sprzętowych urządzenia rapsbery Pi. okazało się że moc obliczeniowa dla oprogramowania sterującego zamkiem oraz kodu odpowiedzialnego za zliczanie osób w pomieszczeniu jest niewystarczająca w stosunku do tego co oferuje te urządzenie. 
+	Po procesie implementacji wraz z poprawą wykrytych na bieżąco błędów przeprowadzony został wewnętrzny audyt  systemu. Był on oparty o metodologię OWASP. Audyt ten został szczegółowo opisany w rozdziale Bezpieczeństwo (rozdział \ref{sec:bezpieczenstwo}). Po wykonaniu tego audytu odkryte zostały potencjalne nieprzewidziane zagrożenia oraz zostały zaproponowane potencjalne możliwości naprawy ich. Następnie przeprowadzony został proces testowania podczas którego odkryto problem z komunikacją pomiędzy urządzeniem sterującym oraz aplikacją mobilną która powoduje brak informowania użytkownika o fakcie uzyskania błąd odrzucenia dostępu do pomieszczenia podczas otwierania zamka. W fazie testowania użyty został certyfikat SSL z niezaufanego źródła, wygenerowany przy pomocy biblioteki ''Werkzug''. Żeby moduły akceptowały połączenia z niezaufanego źródła zostały zaimplementowane funkcje zezwalające na nie. Przed wdrożeniem projektu należałoby zapewnić prawdziwy certyfikat SSL z zaufanego źródła oraz wyłączyć w modułach możliwość łączenia z niezaufanymi źródłami.               
 	\subsection{Dalsze perspektywy rozwoju projektu}
+	W ramach dalszych perspektyw rozwoju systemu \NazwaSys w pierwszej kolejności należałoby wyeliminować zagrożenia odkryte podczas przeprowadzonego audytu oraz  wyeliminować problemy zauważone w fazie testowania. 
+	W dalszych krokach można rozszerzyć pracę dyplomową o:
+	\begin{itemize*}
+	\item  obsługę urządzeń z systemami operacyjnymi takimi jak Ios czy Tize,
+	\item dodanie możliwości korzystania z aplikacji przeznaczonej na smartwache, 
+	\item zaprojektowanie oraz implementacje modułów ekonomicznych z wykorzystaniem mikroprocesora STM,
+	\item rozszerzenie funkcjonalności systemu o funkcje związane z tematem internetem przedmiotów,
+	 
+	\end{itemize*}
+	
+ 
+	 
