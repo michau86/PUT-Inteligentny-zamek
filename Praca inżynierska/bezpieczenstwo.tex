@@ -3,7 +3,7 @@
 \section{Bezpieczeństwo systemu \textsl{\NazwaSys}} \label{sec:bezpieczenstwo}
 
 
-\subsection{Techniki kryptograficzne [\StudentB]}
+\subsection{Techniki kryptograficzne [\StudentB]}\label{sec:techniki kryptograficzne}
 W systemie \textsl{\NazwaSys} zaimplementowano szereg funkcji kryptograficznych. Komunikacja pomiędzy modułami wymienionymi w punkcie \ref{Komunikacja serwer}, odbywa się przy pomocy Web API. Sama transmisja danych oparta jest o~protokół Https. Po stronie serwera przy pomocy paczek ''pySSl'' oraz ''Werkzug'' została zaimplementowana funkcja SSL dla wszystkich API włącznie z stroną internetową. Z racji braku posiadania własnego certyfikatu SSL w~projekcie tym został wygenerowany przy pomocy paczki ''Werkzug'' przykładowy certyfikat. Z~racji tego że ten urząd nie jest rozpoznawalny wyświetlają się komunikaty na~stronie internetowej o niebezpieczeństwie w postaci niezaufanego certyfikatu. W~aplikacji mobilnej na~czas korzystania z niego została zaimplementowana opcja zezwalająca na używanie certyfikatów z niezaufanego źródła. Podczas wdrażania projektu w prawdziwych warunkach zalecamy wykorzystanie prawdziwego certyfikatu.
 
 Funkcje kryptograficzne użyte w aplikacji mobilnej należy rozdzielić na~dwie sekcje. Pierwszą z~nich są funkcje używane podczas przechowywania danych użytkownika. Wszystkie newralgiczne informacje są szyfrowane w celu polepszenia poufności w systemie. Dane przechowywane w pamięci telefonu szyfrowane są funkcją kryptograficzną AES w trybie blokowym CBC. W przypadku aplikacji mobilnej korzystaliśmy z gotowej implementacji zawartej w bibliotece ''crypto'' przeznaczonej dla języka Java. Dane szyfrowane są trzema rodzajami haseł i~tak hasło użytkownika przechowywane jest w pamięci telefonu (SharedPreferences) w postaci zaszyfrowanego tekstu, który jest szyfrowany hasłem zaszytym w~implementacje aplikacji. Klucz szyfrujący oraz token szyfrowane są za pomocą hasła użytkownika. Podczas eksportu klucza szyfrującego wraz z~certyfikatem klucza szyfrującego, które łączone są w jeden plik   występuje dodatkowe szyfrowanie hasłem które użytkownik wpisze. Zapewnia to zwiększoną poufność oraz poprawia bezpieczeństwo podczas przenoszenia pliku.                
@@ -13,6 +13,41 @@ Drugą sekcją są funkcje kryptograficzne użyte podczas generowania klucza szy
 Aplikacja zarządzająca zamkiem korzysta z funkcji kryptograficznych takich jak RSA oraz SHA-256. Wykorzystuje ona je w procesie weryfikacji certyfikatu użytkownik wysłanego z urządzenia mobilnego. Do implementacji tych funkcji wykorzystano gotową bibliotekę ''PyCrypto''
 
 \subsection{Podatności systemu (OWASP Top 10) [\StudentA]}
+W punkcie tym zostaną opisane podatnośći systemu na zagrożenia według metodologi OWASP TOP 10 z 2017 roku. Wszystkie zagrożenia zostały wypisane poniżej wraz z opisem czy dane zagrożenie występuje w naszym systemie oraz uzasadnieniem.
+\begin{enumerate*}
+	\item SQL injection 
+	
+	 Podatność nie występuje w prezentowanym systemie ze względu na zabezpieczenie w serwerze Web api pod kątem tego zagrożenia które zostało szerzej opisane w punkcie (litening: ).
+	\item złamanie uwierzytelnienia 
+	
+	 Zagrożenie nie występuje w systemie ze względu na walidację hasła przeprowadzaną podczas rejestracji użytkownika oraz funkcji zmiany hasła przy pomocy wyrażenia regularnego które wymusza odpowiednie parametry hasła. Hasło to musi spełniać następujące warunki. Posiadać musi przynajmniej jedną dużą literę, jedną małą literę,  cyfrę oraz znak specjalny.
+	\item narażenie na ekspozycje czułych danych 
+	
+	 Nie występuje ono dzięki polityce generowania oraz przechowywania wrażliwych danych,  zabezpieczenie ekspozycji tych informacji przy pomocy szyfrowanego połączenia między modułami oraz zabezpieczenia aplikacji serwerowej pod względem podatności na ataki uwzględniające przejecie wrażliwych danych.
+	\item zewnętrzne encje XML 
+	
+	 System \NazwaSys nie jest podatny na tego typu zagrożenia ze względu na nieużywanie tego formatu do przechowywania danych. Obecnie podczas przesyłu informacji oraz przetrzymywania ich poza bazą danych używamy formatu JSON.
+	\item zepsuta kontrola dostępu 
+	
+	 Nie wykryto takiego zagrożenia. Wszystkie funkcje uwierzytelniające są zabezpieczone oraz przetestowane pod kątem poprawności wykonywania oraz kontroli dostępu do części systemu wymagających konkretnych uprawnień.
+	 \item Błędna konfiguracja zabezpieczeń
+	 
+	 Obecnie w celach testowych istnieje taka podatność. Znajduje się ona w aplikacji mobilnej w  postaci umożliwienia nawiązywania połączenia HTTPs z serwerem który posiada certyfikat SSL z niezaufanego źródła. Zostało to wprowadzone w celach testowych. Rozwiązanie to zostało opisane w punkcie \ref{sec:techniki kryptograficzne} wraz z zaleceniami dotyczącymi poprawy bezpieczeństwa w warunkach docelowych. Ponadto nie zostały wykorzystane dobre praktyki związane z uwierzytelnieniem użytkownika w postaci stosowania soli do wygenerowania funkcji skrótu z hasła.
+	 
+	 \item podatność XSS
+	 
+	 Istnieje możliwość podatności XSS typu reflected w momencie kiedy administrator kliknie w niezaufany link. Kluczową kwestią w tym wypadku jest odpowiednie przeszkolenie kadry ad ministrującej danym serwerem by nie dopuścić do ataku opierającego się w sporej mierze na wykorzystaniu socjotechniki. Pondto brak podstawowych zabezpieczeń na tego typu ataki w postaci filtracji danych przesyłanych przez użytkownika. 
+	 
+	 \item Niezabezpieczona deserializacja
+	 
+	 Nie istnieje takie zagrożenie w systemie. Nie ma możliwości zmiany żadnego fragmentu kodu przez osoby trzecie oraz fakt przejęcia i modyfikacji danych nie umożliwi w żaden sposób uzyskanie dostępu do jakiejkolwiek części systemu.
+	 
+	 \item  Używanie komponentów z znanymi podatnościami
+	 
+	 Podatność ta została ograniczona dzięki dbaniu o wykorzystywanie najnowszych funkcji oraz aktualizowanie na bieżąco wszystkich komponentów znajdujących się w modułach projektu.
+	 
+	 \item Niewystarczające      
+\end{enumerate*}
 
 \subsection{Inne zagrożenia występujące w systemie [\StudentB]}
 
