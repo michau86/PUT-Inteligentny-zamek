@@ -149,7 +149,7 @@ try {
 \subsection{Serwer}
 Serwer systemu zarządza wszystkimi informacjami, jest pośrednikiem w przekazywaniu i modyfikacji rekordów z bazy danych MySQL. Emulowaniem środowiska MySQL oraz Apache zajmuje się program XAMP w wersji 3.2.2.
  
-	\subsubsection{Aplikacja serwerowa [\StudentA]}
+	\subsubsection{Aplikacja serwerowa [\StudentA]}\label{sec:apk serw}
 	Aplikacja serwerowa została zaimplementowana przy użyciu języka programowania Python 2.7 oraz frameworku Django. Program  właściwie składa się głównie z 3 plików:
 	\begin{itemize*}
 		\item setting.py --- odpowiedzialny za konfigurację połączenia z bazą danych, zwracanymi komunikatami, kodowanie, strefą czasową i innymi parametrami o mniejszym znaczeniu,
@@ -169,7 +169,7 @@ urlpatterns = [
 ]
 \end{lstlisting}}
 
-	Funkcjonalności systemu w  dużej mierze wymagają stanu zalogowania, weryfikowane jest to przez podanie od użytkownika loginu oraz tokenu sesji logowania. Pola uzyskane w zapytaniu Http w metodzie POST są porównywane z znajdującymi się w bazie danych. Przykładowe API wymagające weryfikacji logowania znajduje się w listingu \ref{lst:serwer weryfikacja}. Użytkownik wysyła pole ''login'' oraz ''token'', następnie wykonane zostaje zapytanie do bazy danych o aktualnie znajdującą się wartość w rekordzie. Jeżeli wartości się pokrywają i nie są puste, może zostać wykonane polecenie, które chciał wywołać użytkownik. Dodatkowo, gdy operacja wymaga uprawnień administratora, weryfikowana jest flaga w bazie danych, czy dany użytkownik jest administratorem (IS\_ADMIN).
+	Funkcjonalności systemu w  dużej mierze wymagają stanu zalogowania, weryfikowane jest to przez podanie od użytkownika loginu oraz tokenu sesji logowania. Pola uzyskane w zapytaniu Http w metodzie POST są porównywane z znajdującymi się w bazie danych. Przykładowe API wymagające weryfikacji logowania znajduje się w listingu \ref{lst:serwer weryfikacja}. Użytkownik wysyła pole ''login'' oraz ''token'', następnie wykonane zostaje zapytanie do bazy danych o aktualnie znajdującą się wartość w rekordzie. Jeżeli wartości się pokrywają i nie są puste, może zostać wykonane polecenie, które chciał wywołać użytkownik. Dodatkowo, gdy operacja wymaga uprawnień administratora, weryfikowana jest flaga w bazie danych, czy dany użytkownik jest administratorem (IS\_ADMIN). Wiersze try except służą nie tylko do zamaskowania błędów działania aplikacji, ale również do zabezpieczenia programu przed podatnością SQL Injection (eliminacja tak zwanego feed backu o błędach przy próbie podawania innych wartości niż zaplanowano w systemie).
 	
 	Operacje logowania i rejestracji są podstawowymi działaniami, dzięki którym będzie można wykonywać bardziej złożone działania oraz niezbędne do poprawnego funkcjonowania PKI. Listing \ref{lst:serwer login} i listing \ref{lst:serwer register} przedstawiają kompletne funkcje logowania i rejestracji użytkowników. 
 \newpage	
@@ -334,6 +334,8 @@ def Check_access(certificate):
 	\end{lstlisting}}
 
 \subsection{Moduł zliczania osób [\StudentA]}
-
-
- 
+	Moduł zliczania osób zaimplementowany jest w zintegrowaniu z urządzeniem sterującym. Głównym problemem zastosowania biblioteki Open-CV w Raspberry Pi jest brak posiadania przez mikrokomputer karty graficznej. Operacje przetwarzania obrazu wydajnie pracują, gdy wykonywane są z wysokim współczynnikiem współbieżności. Brak procesorów graficznych skutkuje przeniesieniem złożonych obliczeń na zwykłe procesory CPU, skutkując nie wydajną pracą (obraz bardzo często się zacina). 
+	
+	Algorytm zliczania osób polega na ''śledzeniu'' osób, wykorzystano do tego celu metodę \textit{findContours}. Wcześniej, aby przygotować obraz należy wykonać binarną różnicę obrazu pierwszego (zarejestrowanego bez żadnej osoby w obiektywie) z obrazem obecnym, służy do tego funkcja \textit{threshold}. 
+	
+	Posiadając listę wykrytych obiektów (poruszających się) następuje filtracja obiektów zbyt małych (możliwych błędów wykrycia ruchu). Kolejnym krokiem jest sprawdzenie, czy istnieje ''osoba'', znajdująca się w obszarze wiążącym ją z wykrytym obiektem, jeśli tak, następuje aktualizacja współrzędnych danej osoby, w przeciwnym wypadku ''pojawia'' się nowa osoba. Rozpoznanie, czy dana osoba wchodzi, czy wychodzi z pomieszczenia polega na prześledzeniu ścieżki jaką przebyła. W zależności od ustawień, osoba idąca ''w górę'' będzie liczona, jako wejście, a ''w dół'' jako wyjście. Istnieje możliwość błędnego odczytu osoby, dlatego w przypadku, gdy osoba nie przemieści się przez 5 odczytów z kamery, zostaje usunięta z listy weryfikowanych. \cite{rozpoznawanie_twarzy}

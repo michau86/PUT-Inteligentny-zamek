@@ -242,11 +242,11 @@ Piny sterujące urządzeniami w zamku są uzależnione od pełnionych w Raspberr
 \end{figure}
 \newpage
 
-\subsection[Komunikacja modułów systemu z aplikacją]{Komunikacja modułów systemu z aplikacją  serwera [Maciej Marciniak]}\label{Komunikacja serwer}
-Tworząc aplikację serwerową należy zapewnić możliwość komunikację (tak zwane API), która pozwoli na interakcję z zasobami zarządzanymi przez serwer. Przedstawiany system udostępniać powinien usługi dla urządzenia \linebreak sterującego, w tym również modułu zliczającego osoby oraz dla aplikacji mobilnej. Ze względu na odległości mogące dzielić systemy od siebie zdecydowano ,jako interfejs komunikacji sieć Internetową z użyciem bezpiecznego protokołu Https. 
+\subsection{Komunikacja modułów systemu z aplikacją  serwera [Maciej Marciniak]}\label{Komunikacja serwer}
+Tworząc aplikację serwerową należy zapewnić możliwość komunikację (tak zwane API), która pozwoli na interakcję z zasobami zarządzanymi przez serwer. Przedstawiany system udostępniać powinien usługi dla urządzenia sterującego, w tym również modułu zliczającego osoby oraz dla aplikacji mobilnej. Ze względu na odległości mogące dzielić systemy od siebie zdecydowano ,jako interfejs komunikacji sieć Internetową z użyciem bezpiecznego protokołu Https. 
 	\subsubsection{Komunikaty HTTPRequest pomiędzy urządzeniem sterującym, a serwerem}
-	Komunikacja pomiędzy urządzeniem sterującym, a serwerem powinna \linebreak zapewniać możliwość weryfikacji poprawności certyfikatów dostępowych oraz \linebreak szyfrujących w celu potwierdzenia tożsamości użytkownika oraz zdecydowaniu, czy dana osoba ma przydzielony dostęp do pomieszczenia o danej porze dnia. Dodatkowo serwer powinien udostępniać API do wpisywania liczby osób \linebreak w~pomieszczeniu oraz wpisujące do bazy danych, czy dostęp został przyznany, czy nie. Wykaz wymaganych API znajduje się w Tabeli \ref{tab:http_raspberry}.
-	\subsubsection{Komunikaty HTTPRequest pomiędzy aplikacją mobilną, \newline a serwerem}
+	Komunikacja pomiędzy urządzeniem sterującym, a serwerem powinna  zapewniać możliwość weryfikacji poprawności certyfikatów dostępowych oraz szyfrujących w celu potwierdzenia tożsamości użytkownika oraz zdecydowaniu, czy dana osoba ma przydzielony dostęp do pomieszczenia o danej porze dnia. Dodatkowo serwer powinien udostępniać API do wpisywania liczby osób w~pomieszczeniu oraz wpisujące do bazy danych, czy dostęp został przyznany, czy nie. Wykaz wymaganych API znajduje się w Tabeli \ref{tab:http_raspberry}.
+	\subsubsection{Komunikaty HTTPRequest pomiędzy aplikacją mobilną, a serwerem}
 	Aplikacja mobilna powinna posiadać podstawowe operacja użytkowników, takie jak logowanie, rejestracja, wylogowanie, dodatkowo powinny zostać udostępnione funkcje związane z zarządzaniem konta jak i certyfikatami dostępowymi. Funkcjonalności powiązane z operacjami na koncie to zmiana hasła, wymiana certyfikatu szyfrującego, możliwość blokowania konta. Funkcja zarządzającymi certyfikatami dostępowymi są generowanie nowych kluczy, blokowanie ich, aktywowanie. API powinno być dedykowane dla dwóch rodzajów użytkowników zwykłego oraz z uprawnieniami administratora. Właściwości funkcji drugiego typu konta powinny dodatkowo udostępniać podgląd w historię używania poszczególnych zamków oraz edycję wszystkich parametrów kont użytkownika zwykłego. Wykaz zaprojektowanego API znajduje się w Tabeli \ref{tab:http_mobilne}.\cite{programowanie_aplikacji_webowych}
 	\begin{landscape}
 		\begin{longtable}[!ht]{|m{5cm}|m{7cm}|m{4.5cm}|m{5.5cm}|} 
@@ -289,7 +289,7 @@ Tworząc aplikację serwerową należy zapewnić możliwość komunikację (tak 
 	\end{longtable}\cite{programowanie_aplikacji_webowych}
 \end{landscape}
 \newpage
-\subsection{Interfejs komunikacji pomiędzy urządzeniem \newline sterującym i aplikacją mobilną [Maciej Marciniak]}
+\subsection{Interfejs komunikacji pomiędzy urządzeniem sterującym i aplikacją mobilną [Maciej Marciniak]}
 W rozdziale \ref{Komunikacja serwer} opisano dwie ścieżki komunikacji urządzeń z serwerem, trzecią opcją jest komunikacja pomiędzy urządzeniem sterującym, a aplikacją mobilną. W tym wypadku nie jest istotna duża odległość komunikacji, wręcz jest niewskazana. Odpowiednim interfejsem, zapewniającym szybką i uniwersalną transmisję jest moduł bluetooth, w który wersja mikrokomputera Raspberry Pi 3 jest wyposażona. 
 
 Komunikacja pomiędzy urządzeniami polega tylko na przesyle podpisanych cyfrowo certyfikatów dostępowych. Format przesyłanych danych jest w postaci: \\
@@ -464,7 +464,7 @@ Panel zarządzania certyfikatami umożliwi wybór funkcji dodania certyfikatu. K
 	\vspace{-0.55cm}
 	\begin{figure}[ht!]
 		\center
-			\includegraphics[width=4cm]{Obrazy/generowanie_nowego_klucza_uzytkownik_zalogowany_admin_pioniowo}
+			\includegraphics[width=5.8cm]{Obrazy/generowanie_nowego_klucza_uzytkownik_zalogowany_admin_pioniowo}
 			\caption{Panel generowania nowego klucza cz. 3}
 			\label{rys:panel_wyboru_zakresu_certyfikatu}
 	\end{figure}

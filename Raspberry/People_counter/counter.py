@@ -77,24 +77,15 @@ while(1):
         i.age_one()
     
     fgmask = fgbg.apply(frame)
-    fgmask2 = fgbg.apply(frame)
 
     try:
-        ret,imBin= cv2.threshold(fgmask,200,255,cv2.THRESH_BINARY)
-        ret,imBin2 = cv2.threshold(fgmask2,200,255,cv2.THRESH_BINARY)
-        
+        ret,imBin = cv2.threshold(fgmask,200,255,cv2.THRESH_BINARY)
         mask = cv2.morphologyEx(imBin, cv2.MORPH_OPEN, kernelOp)
-        mask2 = cv2.morphologyEx(imBin2, cv2.MORPH_OPEN, kernelOp)
-        
-        mask =  cv2.morphologyEx(mask , cv2.MORPH_CLOSE, kernelCl)
-        mask2 = cv2.morphologyEx(mask2, cv2.MORPH_CLOSE, kernelCl)
+        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernelCl)
     except:
-        print('EOF')
-        print 'UP:',cnt_up
-        print 'DOWN:',cnt_down
         break
     
-    contours0, hierarchy = cv2.findContours(mask2,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+    contours0, hierarchy = cv2.findContours(mask,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
     for cnt in contours0:
         area = cv2.contourArea(cnt)
         if area > areaTH:
