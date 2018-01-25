@@ -4,7 +4,10 @@
 \section*{Dodatki} \label{Dodatki}
 \addcontentsline{toc}{section}{Dodatki}
 \subsection*{Instalacja systemu \NazwaSys}
-Instalacje systemu należy podzielić na 4 kroki. Pierwszym z nich jet instalacja serwera. Żeby wykonać to, należy zainstalować w podanej kolejności następujące elementy w systemie Linux bądź Windows:
+Instalacje systemu należy podzielić na 4 kroki.
+W pierwszym korku należy zainstalować serwer bazy danych MySQL. Można to wykonać za pomocą instalacji pakietu xampp w którym zawiera się ten serwer baz danych. W kolejnym etapie należy utworzyć bazę danych o nazwie ''Inteligentny\_zamek\_db'' a następnie zaimportować do niej plik z bazą danych o nazwie ''baza\_danych.db''/ W tym momencie mamy utworzoną bazę danych wraz z kontem administratora o loginie ''administrator'' i haśle ''Admin''.  
+
+ W tym momencie przechodzimy do instalacja serwera. Żeby wykonać to, należy zainstalować w podanej kolejności następujące elementy w systemie Linux bądź Windows:
 \begin{itemize*}
 	\item środowisko Python 2.7 wraz z programem pip,
 	\item biblioteka pyCrypto zainstalowane przy pomocy polecenia pip -install pyCrypto,
@@ -17,6 +20,8 @@ Instalacje systemu należy podzielić na 4 kroki. Pierwszym z nich jet instalacj
 
 
 W celu uruchomienia serwera należy podać polecenie \textit{python manage.py runserver\_plus xxx.xxx.xxx.xxx:8080 --cert-file cert.crt} gdzie w miejscu ''xxx.xxx.xxx.xxx'' należy wpisać adres IP serwera.
+
+W tym momencie należy utworzyć konto superuser-a dla administratora który będzie mieć dostęp do strony internetowej z historią. utworzenie tego kont odbywa się przy pomocy polecenia ''python manage.py createsuperuser''. Po wpisaniu tego polecenia należy podać login adres e-mail oraz hasło wraz z powtórzeniem tego hasła. po poprawnej konfiguracji mamy już dostęp do strony internetowej.
 
 Instalacja urządzenia sterującego i moduły zliczania osób polega na pobraniu systemu raspian z strony internetowej \href{https://www.raspberrypi.org/downloads/}{https://www.raspberrypi.org/downloads/} oraz zainstalować odpowiednie biblioteki Pythona 2.7:
 \begin{itemize*}
