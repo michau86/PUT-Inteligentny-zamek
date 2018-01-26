@@ -109,6 +109,10 @@ public class LoginPresenter {
                     {
                         view.showMessage("konto musi zostac aktywowane przez administratora");
                     }
+                    else if (jObj.getString("status").equals("blocked"))
+                    {
+                        view.showMessage("konto zostało zablokowane");
+                    }
                     else
                         {
                        view.setWarning();

@@ -48,13 +48,9 @@ class GenerationCertyficatActivity : BaseActivity() {
         navMenuIcons = resources.obtainTypedArray(R.array.nav_drawer_icons)
         set(navMenuTitles, navMenuIcons)
 
-        spin = findViewById(R.id.generationCertyficatspinnerUser) as Spinner
+
 
         presenter = GenerationCertyficatPresenter(this)
-
-        val arrayAdapterFroLoginUser = ArrayAdapter(this, android.R.layout.simple_spinner_item, items)
-        arrayAdapterFroLoginUser.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spin!!.adapter = arrayAdapterFroLoginUser
         context=this
 
         //pobranie listy zamków oraz użytkowników

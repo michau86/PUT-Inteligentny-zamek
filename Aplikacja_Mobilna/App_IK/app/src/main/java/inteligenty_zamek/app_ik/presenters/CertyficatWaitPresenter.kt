@@ -169,7 +169,8 @@ class CertyficatWaitPresenter(val view: CertyficatWaitActivity): ITwoButtonList
         if (JSONObject(result).getString("status") == "ok")
         {
             model.Keys!!.remove(model.hashmapPositionID!!.get(model.position))
-         //   model.listItems.removeAt(model.position)
+            model.resultsMap!!.remove(model.hashmapPositionID!!.get(model.indexOfKeysToRemove))
+            model.updateHashmapPositionID()
             view.setAdapter(model.resultsMap!!)
         }
         else

@@ -518,7 +518,7 @@ def api_admin_deactivation_user_certificate(request):
             if (token_db == token and token != None) and admin == 1:
                 cursor = db.cursor()
                 cursor.execute(
-                    "UPDATE USERS SET Validitiy_period='%s' WHERE ID_USER='%s' " % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), user_id))
+                    "UPDATE USERS SET Validitiy_period='%s'  WHERE ID_USER='%s' " % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), user_id))
                 db.commit()
                 return JsonResponse({"status": "ok"})
             else:

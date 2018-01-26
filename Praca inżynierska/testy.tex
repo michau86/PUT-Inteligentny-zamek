@@ -104,26 +104,298 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 	\item M (admin)zaakceptowanie rejestracji
 	widok rejestracji odrzucenie 
 	akceptowanie wyniki
-	\item D wnioskowanie o certyfikat
-	widok wnioskowania o certyfikat
-	\item D wygenerowanie nowego klucza dostępowego
-	wygenerowanie nowego klucza (wnioski) 
-	\item D zaakceptowanie certyfikatu dostępowego przez administratora
-	akceptacja certyfikatu opusprzejscia
-	\item D (admin) wygenerowanie certyfikatu dostępowego
-	\item D  pobranie certyfikatu
+	\item  wnioskowanie o certyfikat\newline
+	Test polegał na sprawdzeniu listy z oczekującymi cretyfikatami, wykonaniu wnioskowania o certyfikat a następnie ponownym sprawdzeniu listy z oczekującymi certyfikatami.
+	
+	Wnioski: W stanie początkowym (Ry.s \ref{rys:wnioskowanie1}) nie było żadnego certyfikatu oczekujaćego na liście. Podczas wnioskowania o certyfikat w momencie włączzenia widoku (Ry.s \ref{rys:wnioskowanie2}) wyświetlił się  sie komunikat o treści ''pobrano listę zamków''. W kolejnym kroku podczas nacisnięcia na pole z zzamkiem (Ry.s \ref{rys:wnioskowanie3}) wyświetliła się wiadomość o treści "Wniosek zosatał wysłany". Po ponownym sprawdzeniu na liście oczekujących certyfikatów (Ry.s \ref{rys:wnioskowanie4}) znajdował się wniosek o certyfikat. Test zakońćzył się pomyślnie dla tego scenariusza.
+	
+	
+	\begin{figure}[ht!]
+
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/wnioskowanie1}
+			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+			\label{rys:wnioskowanie1}
+		\end{minipage}
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/wnioskowanie2}
+			\caption{Stan początkowy podczas załadowania widoku wnioskowania o certyfikat}
+			\label{rys:wnioskowanie2}
+		\end{minipage}
+	
+		\begin{minipage}{0.2\textwidth}
+		\includegraphics[width=\textwidth]{Obrazy/wnioskowanie3}
+		\caption{Wnioskowanie o certyfikat}
+		\label{rys:wnioskowanie3}
+	\end{minipage}
+	\begin{minipage}{0.2\textwidth}
+		\includegraphics[width=\textwidth]{Obrazy/wnioskowanie4}
+		\caption{Stan listy opczekujących certyfikatów po wnioskowaniu o certyfikat}
+		\label{rys:wnioskowanie4}
+	\end{minipage}
+	\end{figure}
+	
+	
+	
+	
+	\item wygenerowanie nowego klucza dostępowego\newline
+	Test polegał na sprawdzeniu wartośći certyfikatu klucza dostępowego, wygenrowaniu nowego i spradzenie ponowne wartośći certyfikatu dostępowego.
+	Wnioski: Podczas testu w stanie początkowym (Ry.s \ref{rys:generowanieKD1})znajdował się certyfikat dostępowy ważny do 2019.01.26 14:23:55. Po naciśnieciu przycisku ''Wygeneruj''  (Ry.s \ref{rys:generowanieKD2}) certyfikat został zmeinion na nowy z datą ważności o godzinę dłuższą.
+ 
+	
+	\begin{figure}[ht!]
+		
+		\begin{minipage}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/generowanieKD1}
+			\caption{Stan początkowy wyświetlonego certygikatu klucza dostępowego }
+			\label{rys:generowanieKD1}
+		\end{minipage}
+		\begin{minipage}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/generowanieKD2}
+			\caption{Stan po wygenerowaniu nowego certyfikatu klucza dostępowego}
+			\label{rys:generowanieKD2}
+		\end{minipage}
+		
+	
+	\end{figure}
+	
+	
+	\item  zaakceptowanie certyfikatu dostępowego przez administratora
+	Test polegał na przejśćiu do widoku odpowiedzialnego za zarządzanie oczekującymi certyfikatami dostępu oraz odpowiednio usunięcie i zaakceptowanie wbniosku:
+	Wnioski: w stanie początkowym znajdowały się dwa certyfikaty (Ry.s \ref{rys:generowanieCert1}. Po nacisnięciu przycisku usuń z listy zniknął dany wniosek (Ry.s \ref{rys:generowanieCert2}. Po wyborze akceptuj zostaliśmy przekierowani do widoku generowania certyfikatu. Po ponownym wejśćiu do listy certyfikatów (Ry.s \ref{rys:generowanieCert3}) lista ta była pusta. Test został pomyślnie przeprowadzony (Ry.s \ref{rys:generowanieCert4}). 
+	
+		\begin{figure}[ht!]
+		
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/oczekujaceCert0}
+			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+			\label{rys:generowanieCert1}
+		\end{minipage}
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/oczekujaceCert1}
+			\caption{Stan listy oczekujaćych certyfikatów po usunięciu z listy elementu}
+			\label{rys:generowanieCert2}
+		\end{minipage}
+		
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/oczekujaceCert2}
+			\caption{Stan listy oczekujaćych certyfikatów po ponownym otworzeniu}
+			\label{rys:generowanieCert3}
+		\end{minipage}
+	
+	\begin{minipage}{0.2\textwidth}
+		\includegraphics[width=\textwidth]{Obrazy/generowanieerror}
+		\caption{Stan listy oczekujaćych certyfikatów po ponownym otworzeniu}
+		\label{rys:generowanieCert4}
+	\end{minipage}
+	
+	\end{figure}
+	
+	
+	
+	\item  Wygenerowanie certyfikatu dostępowego
+	Test polegą na przeprowadzeniu procesu generowania certyfikatu z uwzględniemiem wpisywania niepoprawnych danych.
+	
+	Wnioski W początkowym stanie zostały wypełnione dane użytkownika oraz wybrany został login i zamek (Ry.s \ref{rys:generowanie1}), Następnie po naciśnięciu przycisk dodaj zakresy zostało wykonane przejście do widoku  wygenerowania zakresów (Rys. \ref{rys:generowanie2}). W nim wprowadzono  błędny zakres (Rys. \ref{rys:generowanie3}). Została zwrócona walidacja (Rys. \ref{rys:generowanie4}). Następnie zostął dodany poprawne zakresy (Rys. \ref{rys:generowanie5}). Potem został usunięty jeden zakres (Rys. \ref{rys:generowanie6})   . Po naciśnięciu przycisku kontynuj generowanie certyfikatu zostało wykonane przekierowanie  do daljszej częśći generowania certyfikatu. W widoku tym pozostały wszystkie dane uzupełnione przed przejśćiem do dodawnia zakresów. Wprowadzony został błędny zakres dat . Została wyświetlona walidacja (Rys. \ref{rys:generowanie7}).Po poprawie danych proces został pozytywnie ukończony w postaci przejśćia do widoku panelu administratora.
+	
+	
+	
+		\begin{figure}[ht!]
+		
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/generowanie1}
+			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+			\label{rys:generowanie1}
+		\end{minipage}
+	
+		
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/generowanie3}
+			\caption{Wnioskowanie o certyfikat}
+			\label{rys:generowanie2}
+		\end{minipage}
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/generowanie4}
+			\caption{Stan listy opczekujących certyfikatów po wnioskowaniu o certyfikat}
+			\label{rys:generowanie3}
+		\end{minipage}
+	\end{figure}
+
+
+	
+
+
+	\begin{figure}[ht!]
+	
+		\begin{minipage}{0.2\textwidth}
+		\includegraphics[width=\textwidth]{Obrazy/generowanieerror}
+		\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+		\label{rys:generowanie4}
+	\end{minipage}
+	
+		\begin{minipage}{0.2\textwidth}
+		\includegraphics[width=\textwidth]{Obrazy/generowanie5}
+		\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+		\label{rys:generowanie5}
+	\end{minipage}
+	
+
+	\begin{minipage}{0.2\textwidth}
+		\includegraphics[width=\textwidth]{Obrazy/generowanie6}
+		\caption{Stan początkowy podczas załadowania widoku wnioskowania o certyfikat}
+		\label{rys:generowanie6}
+	\end{minipage}
+	
+	\begin{minipage}{0.2\textwidth}
+		\includegraphics[width=\textwidth]{Obrazy/generowanie8}
+		\caption{Wnioskowanie o certyfikat}
+		\label{rys:generowanie7}
+	\end{minipage}
+
+\end{figure}
+	
+	
+	\item   pobranie certyfikatu
+	Test polegał na wyczyszczeniu pamięći telefonu. Sprawdzeniu listy certryfikatów pobraniu samcyh certyfikatów oraz ponownym sprawdzeniu listy cerrtyfikatów.
+	Wnioski: W stanie początkowym na liśćie nie były wyświetlane żadne cerrtyfikaty (Rys. \ref{rys:getCert1}). Nastepnie zostało wybrane pole pobierz z serwera. W tym momencie został wyświetlony komun ikat ''pobrano z serwera''(Rys. \ref{rys:getCert2}). Po ponownym przejsciu do listy certyfikatów widniała już pozycja na liście (Rys. \ref{rys:getCert3}).
+	
+		\begin{figure}[ht!]
+		
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/getCer1}
+			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+			\label{rys:getCert1}
+		\end{minipage}
+		
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/getCert2}
+			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+			\label{rys:getCert2}
+		\end{minipage}
+		
+		
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/getCert3}
+			\caption{Stan początkowy podczas załadowania widoku wnioskowania o certyfikat}
+			\label{rys:getCert3}
+		\end{minipage}
+		
+	
+	\end{figure}
+	
+	
 	\item M uzyskanie dostępu do zamka (aktywacja bluetooth)
 		 jako podpunkt pokazanie braku dostępu do zamka (zmiana daty)
 	\item D przedłużenie certyfikatu dostępowego
-	przypis bo opisane wcześniej
+	Test polegał na nacisnieciu przycisku usun oraz przedłuż w widoku certyfikatu (Rys. \ref{rys:przedluzCert1}).
+	Wnioski dla konta administratora usuń certyfikat powodowało usunięcie go z listy i przejśćie do widoku certyfikatów. Przycisk przedłuż powodował przeniesienie do widoku generowania. Dla konta o uprawnieniach  mniejszych od administratora przycisk usuń działał analogicznie jak u administratora natomiast przycisk przedłuż powodował wyświeltenie komunikatu ''wysłano wniosek'' (Rys. \ref{rys:przedluzCert2}).
+	Po sprawdzeniu w widoku lista oczekujacych certyfikatow po wnioskowniau widniaj on na liscie. Test zotał pomyślnie zakońćzony
+	
+	
+		\begin{figure}[ht!]
+		
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/przedluzCert1}
+			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+			\label{rys:przedluzCert1}
+		\end{minipage}
+		
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/przedluzCert2}
+			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+			\label{rys:przedluzCert2}
+		\end{minipage}
+		
+		
+	
+		
+	\end{figure}
+	
+	
 	\item M blokowanie certyfikatu szyfrującego *admin, user)
 	\item M (admin) historia użycia zamka
 	ukazanie hsitroi zamka
 	\item D zarządzanie kontami użytkowników
-			przypis bo wczesniej było opisane
-			pod pkt zablokowanie klucza prywatnego
-			przypis bo opisane wczesniej było
-			pod pkt zablokowanie konta użytkownika
+		Test polegał na wyświetleniu listy użytkownikó zablokowaniu klucza dostępowego oraz konta.
+		
+		Wnioski: Podczas testu w stanie początkowym wszyscy uzytkownicy systemu posiadali aktualny klucz dostępowy oraz nie byli zablokowani (Rys. \ref{rys:zarzadzanieKontem1}). Po zablokowniu klucza dostępowego  Administratora zmienił sie status na liśćie(Rys. \ref{rys:zarzadzanieKontem3}). Po Zablokowaniu konta użytkownika(Rys. \ref{rys:zarzadzanieKontem4}) również zmienił się status na liście (Rys. \ref{rys:zarzadzanieKontem5}). po wygenerowaniu ponownie klucza dostępowego nastąpiła zmiana statusu na liśćie (Rys. \ref{rys:zarzadzanieKontem6}). Próba zalogowania się na koncie zablokowanym nie doszla do skutku. Został wyświetlony komunikat ''Konto zostało zablokowane'' (Rys. \ref{rys:zarzadzanieKontem7}). Test przebiegł pomyślnie
+		
+		
+				\begin{figure}[ht!]
+					\begin{minipage}{0.2\textwidth}
+						\includegraphics[width=\textwidth]{Obrazy/konto1}
+						\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+						\label{rys:zarzadzanieKontem1}
+					\end{minipage}
+				\begin{minipage}{0.2\textwidth}
+					\includegraphics[width=\textwidth]{Obrazy/konto2}
+					\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+					\label{rys:zarzadzanieKontem2}
+				\end{minipage}
+			
+			\begin{minipage}{0.2\textwidth}
+				\includegraphics[width=\textwidth]{Obrazy/konto3}
+				\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+				\label{rys:zarzadzanieKontem3}
+			\end{minipage}
+			
+			\begin{minipage}{0.2\textwidth}
+				\includegraphics[width=\textwidth]{Obrazy/konto4}
+				\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+				\label{rys:zarzadzanieKontem4}
+			\end{minipage}
+			
+			
+			\begin{minipage}{0.2\textwidth}
+				\includegraphics[width=\textwidth]{Obrazy/konto5}
+				\caption{Stan początkowy podczas załadowania widoku wnioskowania o certyfikat}
+				\label{rys:zarzadzanieKontem5}
+			\end{minipage}
+		
+		
+			\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/konto6}
+			\caption{Stan początkowy podczas załadowania widoku wnioskowania o certyfikat}
+			\label{rys:zarzadzanieKontem6}
+		\end{minipage}
+	
+		\begin{minipage}{0.2\textwidth}
+		\includegraphics[width=\textwidth]{Obrazy/konto7}
+		\caption{Stan początkowy podczas załadowania widoku wnioskowania o certyfikat}
+		\label{rys:zarzadzanieKontem7}
+	\end{minipage}
+
+			
+		\end{figure}
+		
 	\item  D eksport/import klucza
-	przypis bo opisane w czesnije było
+	Test polegał na eksporcie oraz imporcie klucza szyfrująćego wraz z próbami niepoprawnego wpisywania hasła.
+	
+	Wnioski: Podczas póby ekspory z błędnie wprowadzonym hasłem została wyswietlona walidacja(Rys. \ref{rys:impExp1}) w postaci komunikatu ''niepoprawne hasło''. Po wprowadzeniu poprawnego hasłą oraz eksporcie został wyśewietlony komunikat (Rys. \ref{rys:impExp2} ''poprawnie wyeksportowano certyfikat''. Podczas próbuy importu z błędnie wprowadzonym hasłem został wyświertlony komunikat (Rys. \ref{rys:impExp1} ''niepoprawne hasło''. Po wprowadzeniu poprawnego hasła i ponownej próBie został wyświetlony komunikat (Rys. \ref{rys:impExp3} ''poprawnie zimportowano certyfikat''. Test przebiegł pomyślnie.
+	
+	
+	
+	\begin{figure}[ht!]
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/impExp1}
+			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+			\label{rys:impExp1}
+		\end{minipage}
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/impExp2}
+			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+			\label{rys:impExp2}
+		\end{minipage}
+		
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/impExp3}
+			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
+			\label{rys:impExp3}
+		\end{minipage}
+		
+		
+		
+		
+	\end{figure}
+	
 \end{enumerate*}
