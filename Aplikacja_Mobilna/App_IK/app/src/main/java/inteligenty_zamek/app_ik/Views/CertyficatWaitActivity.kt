@@ -112,13 +112,11 @@ class CertyficatWaitActivity : BaseActivity() {
         val it = listitem.entries.iterator()
         while (it.hasNext()) {
             val pair = it.next() as java.util.Map.Entry<*, *>
-            val Array:ArrayList<String> =pair.value  as ArrayList<String>
-            val item = userWatModel(Array[0], "dla użytkownika:\nLogin "+ Array[1]+
-                    "\nImie i nazwisko  "+Array[2]+" "+Array[3])
+            val Array: ArrayList<String> = pair.value as ArrayList<String>
+            val item = userWatModel(Array[0], "dla użytkownika:\nLogin " + Array[1] +
+                    "\nImie i nazwisko  " + Array[2] + " " + Array[3])
             itemList!!.add(item)
         }
-        val item = userWatModel("test ", "teest")
-        itemList!!.add(item)
     }
 
     fun showMessage(message:String)

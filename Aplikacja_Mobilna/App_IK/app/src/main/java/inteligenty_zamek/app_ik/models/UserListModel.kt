@@ -42,8 +42,10 @@ class UserListModel(view: UserListActivity)
                                     false
                                 },
                                 arrJson.getJSONObject(i).getString("Validitiy_period")
+
                         )
                 )
+                Log.i("HHHH dod: ",arrJson.getJSONObject(i).getString("Validitiy_period"))
                 userlist2!!.add(
 
                         User(

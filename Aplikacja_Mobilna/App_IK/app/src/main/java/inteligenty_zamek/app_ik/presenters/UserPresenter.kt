@@ -23,10 +23,10 @@ class UserPresenter(val view: UserActivity)
 
 
         try {
-            val date1 = SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(sdf.format(myCalendar.getTime()))
-            val date2 = SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(model.user.validitiy_period.replace("T", " "))
+            val date1 = SimpleDateFormat("yyyy-MM-dd ").parse(sdf.format(myCalendar.getTime()))
+            val date2 = SimpleDateFormat("yyyy-MM-dd ").parse(model.user.validitiy_period.replace("T", " "))
 
-            if (date1.compareTo(date2) > 0) {
+            if (date1.compareTo(date2)< 0) {
                 view.blockButton()
             }
         }catch (ex:Exception){view.blockButton()}

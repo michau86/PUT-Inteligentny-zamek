@@ -64,7 +64,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         User listKey = itemList.get(position);
-        Log.i("HHH getview ",listKey.getLogin());
+        Log.i("HHH getview",listKey.getLogin());
+        Log.i("hhh",listKey.validitiy_period);
         holder.name.setText(listKey.getLogin());
         holder.place.setText(listKey.getName());
 
@@ -81,9 +82,11 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
 
 
         try {
-            Date date1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(sdf.format(myCalendar.getTime()));
-            Date date2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(listKey.validitiy_period.replace("T", " "));
-
+            Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(sdf.format(myCalendar.getTime()));
+            Log.i("hhh",date1.toString());
+            Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(listKey.validitiy_period.replace("T", " "));
+            Log.i("hhh",date2.toString());
+            Log.i("hhh", Integer.toString(date1.compareTo(date2)));
             if (date1.compareTo(date2) > 0) {
                 holder.name.setTextColor(ContextCompat.getColor(((UserListActivity) context), R.color.deactivationtColor));
                 holder.ico.setTextColor(ContextCompat.getColor(((UserListActivity) context), R.color.deactivationtColor));
