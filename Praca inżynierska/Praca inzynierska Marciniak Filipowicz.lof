@@ -1,66 +1,83 @@
 \select@language {polish}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Schemat ogólny systemu}}{11}{figure.3.1}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagram przypadków użycia}}{16}{figure.5.1}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Schemat og\IeC {\'o}lny systemu}}{11}{figure.3.1}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagram przypadk\IeC {\'o}w u\IeC {\.z}ycia}}{16}{figure.5.1}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Diagram encji bazy danych}}{18}{figure.5.2}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Diagram relacji bazy danych}}{19}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Schemat ogólny diagramu klas dla Aplikacji Mobilnej}}{20}{figure.5.4}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Schemat og\IeC {\'o}lny diagramu klas dla Aplikacji Mobilnej}}{20}{figure.5.4}
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Diagram klas dla paczki adapters}}{21}{figure.5.5}
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Diagram klas dla paczki navigations}}{22}{figure.5.6}
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Diagram klas dla paczki api}}{23}{figure.5.7}
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Diagram klas dla paczki models}}{24}{figure.5.8}
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Diagram klas dla paczki views}}{25}{figure.5.9}
 \contentsline {figure}{\numberline {5.10}{\ignorespaces Diagram klas dla paczki presenters}}{26}{figure.5.10}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Diagram klas urządzenia sterującego}}{27}{figure.5.11}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Diagram klas urz\IeC {\k a}dzenia steruj\IeC {\k a}cego}}{27}{figure.5.11}
 \contentsline {figure}{\numberline {5.12}{\ignorespaces Diagram klas aplikacji serwerowej}}{28}{figure.5.12}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Diagram klas modułu zliczania osób}}{29}{figure.5.13}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Diagram klas modu\IeC {\l }u zliczania os\IeC {\'o}b}}{29}{figure.5.13}
 \contentsline {figure}{\numberline {5.14}{\ignorespaces Schemat elektryczny systemu}}{30}{figure.5.14}
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Prognoza trendów wielkości ekranów dla urządzeń mobilnych na przestrzeni lat 2015-2021\cite {Prognoza android}}}{35}{figure.5.15}
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Panel logowania użytkownika}}{36}{figure.5.16}
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Panel logowania użytkownika }}{36}{figure.5.17}
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Lista dostępnych zamków}}{37}{figure.5.18}
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Panel zarządzania certyfikatami }}{37}{figure.5.19}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Prognoza trend\IeC {\'o}w wielko\IeC {\'s}ci ekran\IeC {\'o}w dla urz\IeC {\k a}dze\IeC {\'n} mobilnych na przestrzeni lat 2015-2021\cite {Prognoza android}}}{35}{figure.5.15}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Panel logowania u\IeC {\.z}ytkownika}}{36}{figure.5.16}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Panel logowania u\IeC {\.z}ytkownika }}{36}{figure.5.17}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Lista dost\IeC {\k e}pnych zamk\IeC {\'o}w}}{37}{figure.5.18}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Panel zarz\IeC {\k a}dzania certyfikatami }}{37}{figure.5.19}
 \contentsline {figure}{\numberline {5.20}{\ignorespaces Panel boczny z uprawnieniami administratora}}{38}{figure.5.20}
 \contentsline {figure}{\numberline {5.21}{\ignorespaces Panel boczny bez uprawnieni administratora}}{38}{figure.5.21}
-\contentsline {figure}{\numberline {5.22}{\ignorespaces Panel listy certyfikatów}}{39}{figure.5.22}
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Panel listy certyfikat\IeC {\'o}w}}{39}{figure.5.22}
 \contentsline {figure}{\numberline {5.23}{\ignorespaces Panel certyfikatu }}{39}{figure.5.23}
 \contentsline {figure}{\numberline {5.24}{\ignorespaces Panel wnioskowania o certyfikat }}{40}{figure.5.24}
 \contentsline {figure}{\numberline {5.25}{\ignorespaces Panel administratora}}{40}{figure.5.25}
-\contentsline {figure}{\numberline {5.26}{\ignorespaces Panel historii użycia zamków (filtr)}}{41}{figure.5.26}
-\contentsline {figure}{\numberline {5.27}{\ignorespaces Panel historii użycia zamków (historia)}}{41}{figure.5.27}
+\contentsline {figure}{\numberline {5.26}{\ignorespaces Panel historii u\IeC {\.z}ycia zamk\IeC {\'o}w (filtr)}}{41}{figure.5.26}
+\contentsline {figure}{\numberline {5.27}{\ignorespaces Panel historii u\IeC {\.z}ycia zamk\IeC {\'o}w (historia)}}{41}{figure.5.27}
 \contentsline {figure}{\numberline {5.28}{\ignorespaces Panel generowania nowego klucza cz. 1 }}{42}{figure.5.28}
 \contentsline {figure}{\numberline {5.29}{\ignorespaces Panel generowania nowego klucza cz. 2}}{42}{figure.5.29}
 \contentsline {figure}{\numberline {5.30}{\ignorespaces Panel generowania nowego klucza cz. 3}}{42}{figure.5.30}
-\contentsline {figure}{\numberline {5.31}{\ignorespaces Panel zarządzania certyfikatami (administrator) }}{43}{figure.5.31}
-\contentsline {figure}{\numberline {5.32}{\ignorespaces Panel listy oczekujących użytkowników }}{43}{figure.5.32}
-\contentsline {figure}{\numberline {5.33}{\ignorespaces Panel listy oczekujących certyfikatów }}{44}{figure.5.33}
-\contentsline {figure}{\numberline {5.34}{\ignorespaces Panel zarządzania kontami użytkowników}}{44}{figure.5.34}
+\contentsline {figure}{\numberline {5.31}{\ignorespaces Panel zarz\IeC {\k a}dzania certyfikatami (administrator) }}{43}{figure.5.31}
+\contentsline {figure}{\numberline {5.32}{\ignorespaces Panel listy oczekuj\IeC {\k a}cych u\IeC {\.z}ytkownik\IeC {\'o}w }}{43}{figure.5.32}
+\contentsline {figure}{\numberline {5.33}{\ignorespaces Panel listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w }}{44}{figure.5.33}
+\contentsline {figure}{\numberline {5.34}{\ignorespaces Panel zarz\IeC {\k a}dzania kontami u\IeC {\.z}ytkownik\IeC {\'o}w}}{44}{figure.5.34}
 \contentsline {figure}{\numberline {5.35}{\ignorespaces Panel generowania nowego klucza cz. 1 }}{45}{figure.5.35}
 \contentsline {figure}{\numberline {5.36}{\ignorespaces Panel generowania nowego klucza cz. 2}}{45}{figure.5.36}
-\contentsline {figure}{\numberline {5.37}{\ignorespaces Panel ustawień konta (adres ip)}}{45}{figure.5.37}
+\contentsline {figure}{\numberline {5.37}{\ignorespaces Panel ustawie\IeC {\'n} konta (adres ip)}}{45}{figure.5.37}
 \contentsline {figure}{\numberline {5.38}{\ignorespaces Strona logowania}}{46}{figure.5.38}
-\contentsline {figure}{\numberline {5.39}{\ignorespaces Strona z wyświetloną historią użycia zamków)}}{46}{figure.5.39}
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Stan początkowy testu zliczania osób (urządzenie sterujące)}}{59}{figure.6.1}
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Strona logowania -- walidacja hasła}}{63}{figure.8.1}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Stan początkowy testu zliczania osób }}{64}{figure.8.2}
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Stan początkowy testu zliczania osób}}{64}{figure.8.3}
-\contentsline {figure}{\numberline {8.4}{\ignorespaces Stan po ''wejściu'' osoby }}{64}{figure.8.4}
-\contentsline {figure}{\numberline {8.5}{\ignorespaces Stan po ''wejściu'' osoby}}{64}{figure.8.5}
-\contentsline {figure}{\numberline {8.6}{\ignorespaces Stan po ''wyjściu'' osoby}}{64}{figure.8.6}
-\contentsline {figure}{\numberline {8.7}{\ignorespaces Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }}{65}{figure.8.7}
-\contentsline {figure}{\numberline {8.8}{\ignorespaces Stan początkowy podczas załadowania widoku wnioskowania o certyfikat}}{65}{figure.8.8}
-\contentsline {figure}{\numberline {8.9}{\ignorespaces Wnioskowanie o certyfikat}}{65}{figure.8.9}
-\contentsline {figure}{\numberline {8.10}{\ignorespaces Stan listy opczekujących certyfikatów po wnioskowaniu o certyfikat}}{65}{figure.8.10}
-\contentsline {figure}{\numberline {8.11}{\ignorespaces Stan początkowy wyświetlonego certygikatu klucza dostępowego }}{66}{figure.8.11}
-\contentsline {figure}{\numberline {8.12}{\ignorespaces Stan po wygenerowaniu nowego certyfikatu klucza dostępowego}}{66}{figure.8.12}
-\contentsline {figure}{\numberline {8.13}{\ignorespaces Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }}{75}{figure.8.13}
-\contentsline {figure}{\numberline {8.14}{\ignorespaces Stan listy oczekujaćych certyfikatów po usunięciu z listy elementu}}{75}{figure.8.14}
-\contentsline {figure}{\numberline {8.15}{\ignorespaces Stan listy oczekujaćych certyfikatów po ponownym otworzeniu}}{75}{figure.8.15}
-\contentsline {figure}{\numberline {8.16}{\ignorespaces Stan listy oczekujaćych certyfikatów po ponownym otworzeniu}}{75}{figure.8.16}
-\contentsline {figure}{\numberline {8.17}{\ignorespaces Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }}{76}{figure.8.17}
-\contentsline {figure}{\numberline {8.18}{\ignorespaces Wnioskowanie o certyfikat}}{76}{figure.8.18}
-\contentsline {figure}{\numberline {8.19}{\ignorespaces Stan listy opczekujących certyfikatów po wnioskowaniu o certyfikat}}{76}{figure.8.19}
-\contentsline {figure}{\numberline {8.20}{\ignorespaces Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }}{77}{figure.8.20}
-\contentsline {figure}{\numberline {8.21}{\ignorespaces Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }}{77}{figure.8.21}
-\contentsline {figure}{\numberline {8.22}{\ignorespaces Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }}{77}{figure.8.22}
-\contentsline {figure}{\numberline {8.23}{\ignorespaces Stan początkowy podczas załadowania widoku wnioskowania o certyfikat}}{77}{figure.8.23}
-\contentsline {figure}{\numberline {8.24}{\ignorespaces Wnioskowanie o certyfikat}}{77}{figure.8.24}
+\contentsline {figure}{\numberline {5.39}{\ignorespaces Strona z wy\IeC {\'s}wietlon\IeC {\k a} histori\IeC {\k a} u\IeC {\.z}ycia zamk\IeC {\'o}w)}}{46}{figure.5.39}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Stan pocz\IeC {\k a}tkowy testu zliczania os\IeC {\'o}b (urz\IeC {\k a}dzenie steruj\IeC {\k a}ce)}}{59}{figure.6.1}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Strona logowania -- walidacja has\IeC {\l }a}}{63}{figure.8.1}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Stan pocz\IeC {\k a}tkowy testu zliczania os\IeC {\'o}b }}{64}{figure.8.2}
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Stan pocz\IeC {\k a}tkowy testu zliczania os\IeC {\'o}b}}{64}{figure.8.3}
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Stan po ''wej\IeC {\'s}ciu'' osoby }}{64}{figure.8.4}
+\contentsline {figure}{\numberline {8.5}{\ignorespaces Stan po ''wej\IeC {\'s}ciu'' osoby}}{64}{figure.8.5}
+\contentsline {figure}{\numberline {8.6}{\ignorespaces Stan po ''wyj\IeC {\'s}ciu'' osoby}}{64}{figure.8.6}
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Walidacja has\IeC {\l }a }}{65}{figure.8.7}
+\contentsline {figure}{\numberline {8.8}{\ignorespaces Zarejestrowanie}}{65}{figure.8.8}
+\contentsline {figure}{\numberline {8.9}{\ignorespaces Logowanie-- komunikat o nieaktywnym koncie}}{65}{figure.8.9}
+\contentsline {figure}{\numberline {8.10}{\ignorespaces Logowanie u\IeC {\.z}ytkownika -- b\IeC {\l }\IeC {\k a}d has\IeC {\l }a lub loginu}}{66}{figure.8.10}
+\contentsline {figure}{\numberline {8.11}{\ignorespaces Stan pocz\IeC {\k a}tkowy listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w na zaakceptowanie }}{67}{figure.8.11}
+\contentsline {figure}{\numberline {8.12}{\ignorespaces Stan pocz\IeC {\k a}tkowy podczas za\IeC {\l }adowania widoku wnioskowania o certyfikat}}{67}{figure.8.12}
+\contentsline {figure}{\numberline {8.13}{\ignorespaces Wnioskowanie o certyfikat}}{67}{figure.8.13}
+\contentsline {figure}{\numberline {8.14}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po wnioskowaniu o certyfikat}}{67}{figure.8.14}
+\contentsline {figure}{\numberline {8.15}{\ignorespaces Stan pocz\IeC {\k a}tkowy wy\IeC {\'s}wietlonego certyfikatu klucza dost\IeC {\k e}powego }}{68}{figure.8.15}
+\contentsline {figure}{\numberline {8.16}{\ignorespaces Stan po wygenerowaniu nowego certyfikatu klucza dost\IeC {\k e}powego}}{68}{figure.8.16}
+\contentsline {figure}{\numberline {8.17}{\ignorespaces Stan pocz\IeC {\k a}tkowy listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w na zaakceptowanie }}{77}{figure.8.17}
+\contentsline {figure}{\numberline {8.18}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po usuni\IeC {\k e}ciu z listy elementu}}{77}{figure.8.18}
+\contentsline {figure}{\numberline {8.19}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po ponownym otworzeniu}}{77}{figure.8.19}
+\contentsline {figure}{\numberline {8.20}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po ponownym otworzeniu}}{77}{figure.8.20}
+\contentsline {figure}{\numberline {8.21}{\ignorespaces Stan pocz\IeC {\k a}tkowy generowania certyfikatu }}{78}{figure.8.21}
+\contentsline {figure}{\numberline {8.22}{\ignorespaces widok zakres\IeC {\'o}w generowania certyfikat\IeC {\'o}w}}{78}{figure.8.22}
+\contentsline {figure}{\numberline {8.23}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po wnioskowaniu o certyfikat}}{78}{figure.8.23}
+\contentsline {figure}{\numberline {8.24}{\ignorespaces Walidacja czasu }}{79}{figure.8.24}
+\contentsline {figure}{\numberline {8.25}{\ignorespaces Zrzut ekranu z trzema pozycjami dost\IeC {\k e}pu do pomieszczenia w danym dniu }}{79}{figure.8.25}
+\contentsline {figure}{\numberline {8.26}{\ignorespaces Zrzut ekranu po usuni\IeC {\k e}ciu jednego elementu z listy godzin}}{79}{figure.8.26}
+\contentsline {figure}{\numberline {8.27}{\ignorespaces Walidacja daty}}{79}{figure.8.27}
+\contentsline {figure}{\numberline {8.28}{\ignorespaces Stan pocz\IeC {\k a}tkowy listy certyfikat\IeC {\'o}w u\IeC {\.z}ytkownika }}{80}{figure.8.28}
+\contentsline {figure}{\numberline {8.29}{\ignorespaces Stan po naci\IeC {\'s}ni\IeC {\k e}ciu pola pobierz z serwera }}{80}{figure.8.29}
+\contentsline {figure}{\numberline {8.30}{\ignorespaces Stan po naci\IeC {\'s}ni\IeC {\k e}ciu pola pobierz z serwera w widoku ''lista twoich certyfikat\IeC {\'o}w''}}{80}{figure.8.30}
+\contentsline {figure}{\numberline {8.31}{\ignorespaces Widok certyfikatu }}{81}{figure.8.31}
+\contentsline {figure}{\numberline {8.32}{\ignorespaces Komunikat wy\IeC {\'s}wietlaj\IeC {\k a}cy si\IeC {\k e} po wykonaniu wnioskowania o certyfikat }}{81}{figure.8.32}
+\contentsline {figure}{\numberline {8.33}{\ignorespaces Stan pocz\IeC {\k a}tkowy widoku''zarz\IeC {\k a}dzanie kontami'' }}{82}{figure.8.33}
+\contentsline {figure}{\numberline {8.34}{\ignorespaces Widok listy po zablokowaniu klucza szyfruj\IeC {\k a}cego administratora }}{82}{figure.8.34}
+\contentsline {figure}{\numberline {8.35}{\ignorespaces Widok zarz\IeC {\k a}dzania kontem u\IeC {\.z}ytkownika po zablokowaniu konta }}{82}{figure.8.35}
+\contentsline {figure}{\numberline {8.36}{\ignorespaces Widok listy po zablokowaniu konta u\IeC {\.z}ytkownika}}{82}{figure.8.36}
+\contentsline {figure}{\numberline {8.37}{\ignorespaces Widok listy po wygenerowaniu nowego klucza szyfruj\IeC {\k a}cego przez administratora}}{82}{figure.8.37}
+\contentsline {figure}{\numberline {8.38}{\ignorespaces Widok ekranu logowania z komunikatem o zablokowanym koncie u\IeC {\.z}ytkownika}}{82}{figure.8.38}
+\contentsline {figure}{\numberline {8.39}{\ignorespaces Walidacja has\IeC {\l }a podczas importu/eksportu pliku szyfruj\IeC {\k a}cego }}{83}{figure.8.39}
+\contentsline {figure}{\numberline {8.40}{\ignorespaces Zrzut ekranu po wyeksportowaniu pliku }}{83}{figure.8.40}
+\contentsline {figure}{\numberline {8.41}{\ignorespaces Zrzut ekranu po zaimportowaniu pliku }}{83}{figure.8.41}
