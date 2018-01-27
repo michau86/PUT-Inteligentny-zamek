@@ -46,38 +46,40 @@
 \contentsline {figure}{\numberline {8.4}{\ignorespaces Stan po ''wej\IeC {\'s}ciu'' osoby }}{64}{figure.8.4}
 \contentsline {figure}{\numberline {8.5}{\ignorespaces Stan po ''wej\IeC {\'s}ciu'' osoby}}{64}{figure.8.5}
 \contentsline {figure}{\numberline {8.6}{\ignorespaces Stan po ''wyj\IeC {\'s}ciu'' osoby}}{64}{figure.8.6}
-\contentsline {figure}{\numberline {8.7}{\ignorespaces Walidacja has\IeC {\l }a }}{65}{figure.8.7}
-\contentsline {figure}{\numberline {8.8}{\ignorespaces Zarejestrowanie}}{65}{figure.8.8}
-\contentsline {figure}{\numberline {8.9}{\ignorespaces Logowanie-- komunikat o nieaktywnym koncie}}{65}{figure.8.9}
-\contentsline {figure}{\numberline {8.10}{\ignorespaces Logowanie u\IeC {\.z}ytkownika -- b\IeC {\l }\IeC {\k a}d has\IeC {\l }a lub loginu}}{66}{figure.8.10}
-\contentsline {figure}{\numberline {8.11}{\ignorespaces Stan pocz\IeC {\k a}tkowy listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w na zaakceptowanie }}{67}{figure.8.11}
-\contentsline {figure}{\numberline {8.12}{\ignorespaces Stan pocz\IeC {\k a}tkowy podczas za\IeC {\l }adowania widoku wnioskowania o certyfikat}}{67}{figure.8.12}
-\contentsline {figure}{\numberline {8.13}{\ignorespaces Wnioskowanie o certyfikat}}{67}{figure.8.13}
-\contentsline {figure}{\numberline {8.14}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po wnioskowaniu o certyfikat}}{67}{figure.8.14}
-\contentsline {figure}{\numberline {8.15}{\ignorespaces Stan pocz\IeC {\k a}tkowy wy\IeC {\'s}wietlonego certyfikatu klucza dost\IeC {\k e}powego }}{68}{figure.8.15}
-\contentsline {figure}{\numberline {8.16}{\ignorespaces Stan po wygenerowaniu nowego certyfikatu klucza dost\IeC {\k e}powego}}{68}{figure.8.16}
-\contentsline {figure}{\numberline {8.17}{\ignorespaces Stan pocz\IeC {\k a}tkowy listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w na zaakceptowanie }}{77}{figure.8.17}
-\contentsline {figure}{\numberline {8.18}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po usuni\IeC {\k e}ciu z listy elementu}}{77}{figure.8.18}
-\contentsline {figure}{\numberline {8.19}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po ponownym otworzeniu}}{77}{figure.8.19}
-\contentsline {figure}{\numberline {8.20}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po ponownym otworzeniu}}{77}{figure.8.20}
-\contentsline {figure}{\numberline {8.21}{\ignorespaces Stan pocz\IeC {\k a}tkowy generowania certyfikatu }}{78}{figure.8.21}
-\contentsline {figure}{\numberline {8.22}{\ignorespaces widok zakres\IeC {\'o}w generowania certyfikat\IeC {\'o}w}}{78}{figure.8.22}
-\contentsline {figure}{\numberline {8.23}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po wnioskowaniu o certyfikat}}{78}{figure.8.23}
-\contentsline {figure}{\numberline {8.24}{\ignorespaces Walidacja czasu }}{79}{figure.8.24}
-\contentsline {figure}{\numberline {8.25}{\ignorespaces Zrzut ekranu z trzema pozycjami dost\IeC {\k e}pu do pomieszczenia w danym dniu }}{79}{figure.8.25}
-\contentsline {figure}{\numberline {8.26}{\ignorespaces Zrzut ekranu po usuni\IeC {\k e}ciu jednego elementu z listy godzin}}{79}{figure.8.26}
-\contentsline {figure}{\numberline {8.27}{\ignorespaces Walidacja daty}}{79}{figure.8.27}
-\contentsline {figure}{\numberline {8.28}{\ignorespaces Stan pocz\IeC {\k a}tkowy listy certyfikat\IeC {\'o}w u\IeC {\.z}ytkownika }}{80}{figure.8.28}
-\contentsline {figure}{\numberline {8.29}{\ignorespaces Stan po naci\IeC {\'s}ni\IeC {\k e}ciu pola pobierz z serwera }}{80}{figure.8.29}
-\contentsline {figure}{\numberline {8.30}{\ignorespaces Stan po naci\IeC {\'s}ni\IeC {\k e}ciu pola pobierz z serwera w widoku ''lista twoich certyfikat\IeC {\'o}w''}}{80}{figure.8.30}
-\contentsline {figure}{\numberline {8.31}{\ignorespaces Widok certyfikatu }}{81}{figure.8.31}
-\contentsline {figure}{\numberline {8.32}{\ignorespaces Komunikat wy\IeC {\'s}wietlaj\IeC {\k a}cy si\IeC {\k e} po wykonaniu wnioskowania o certyfikat }}{81}{figure.8.32}
-\contentsline {figure}{\numberline {8.33}{\ignorespaces Stan pocz\IeC {\k a}tkowy widoku''zarz\IeC {\k a}dzanie kontami'' }}{82}{figure.8.33}
-\contentsline {figure}{\numberline {8.34}{\ignorespaces Widok listy po zablokowaniu klucza szyfruj\IeC {\k a}cego administratora }}{82}{figure.8.34}
-\contentsline {figure}{\numberline {8.35}{\ignorespaces Widok zarz\IeC {\k a}dzania kontem u\IeC {\.z}ytkownika po zablokowaniu konta }}{82}{figure.8.35}
-\contentsline {figure}{\numberline {8.36}{\ignorespaces Widok listy po zablokowaniu konta u\IeC {\.z}ytkownika}}{82}{figure.8.36}
-\contentsline {figure}{\numberline {8.37}{\ignorespaces Widok listy po wygenerowaniu nowego klucza szyfruj\IeC {\k a}cego przez administratora}}{82}{figure.8.37}
-\contentsline {figure}{\numberline {8.38}{\ignorespaces Widok ekranu logowania z komunikatem o zablokowanym koncie u\IeC {\.z}ytkownika}}{82}{figure.8.38}
-\contentsline {figure}{\numberline {8.39}{\ignorespaces Walidacja has\IeC {\l }a podczas importu/eksportu pliku szyfruj\IeC {\k a}cego }}{83}{figure.8.39}
-\contentsline {figure}{\numberline {8.40}{\ignorespaces Zrzut ekranu po wyeksportowaniu pliku }}{83}{figure.8.40}
-\contentsline {figure}{\numberline {8.41}{\ignorespaces Zrzut ekranu po zaimportowaniu pliku }}{83}{figure.8.41}
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Zdj\IeC {\k e}cie serwomechanizmu }}{65}{figure.8.7}
+\contentsline {figure}{\numberline {8.8}{\ignorespaces Zdj\IeC {\k e}cie serwomechanizmu i elektrozamka }}{65}{figure.8.8}
+\contentsline {figure}{\numberline {8.9}{\ignorespaces Walidacja has\IeC {\l }a }}{66}{figure.8.9}
+\contentsline {figure}{\numberline {8.10}{\ignorespaces Zarejestrowanie}}{66}{figure.8.10}
+\contentsline {figure}{\numberline {8.11}{\ignorespaces Logowanie-- komunikat o nieaktywnym koncie}}{66}{figure.8.11}
+\contentsline {figure}{\numberline {8.12}{\ignorespaces Logowanie u\IeC {\.z}ytkownika -- b\IeC {\l }\IeC {\k a}d has\IeC {\l }a lub loginu}}{66}{figure.8.12}
+\contentsline {figure}{\numberline {8.13}{\ignorespaces Stan pocz\IeC {\k a}tkowy listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w na zaakceptowanie }}{67}{figure.8.13}
+\contentsline {figure}{\numberline {8.14}{\ignorespaces Stan pocz\IeC {\k a}tkowy podczas za\IeC {\l }adowania widoku wnioskowania o certyfikat}}{67}{figure.8.14}
+\contentsline {figure}{\numberline {8.15}{\ignorespaces Wnioskowanie o certyfikat}}{67}{figure.8.15}
+\contentsline {figure}{\numberline {8.16}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po wnioskowaniu o certyfikat}}{67}{figure.8.16}
+\contentsline {figure}{\numberline {8.17}{\ignorespaces Stan pocz\IeC {\k a}tkowy wy\IeC {\'s}wietlonego certyfikatu klucza dost\IeC {\k e}powego }}{68}{figure.8.17}
+\contentsline {figure}{\numberline {8.18}{\ignorespaces Stan po wygenerowaniu nowego certyfikatu klucza dost\IeC {\k e}powego}}{68}{figure.8.18}
+\contentsline {figure}{\numberline {8.19}{\ignorespaces Stan pocz\IeC {\k a}tkowy listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w na zaakceptowanie }}{77}{figure.8.19}
+\contentsline {figure}{\numberline {8.20}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po usuni\IeC {\k e}ciu z listy elementu}}{77}{figure.8.20}
+\contentsline {figure}{\numberline {8.21}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po ponownym otworzeniu}}{77}{figure.8.21}
+\contentsline {figure}{\numberline {8.22}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po ponownym otworzeniu}}{77}{figure.8.22}
+\contentsline {figure}{\numberline {8.23}{\ignorespaces Stan pocz\IeC {\k a}tkowy generowania certyfikatu }}{78}{figure.8.23}
+\contentsline {figure}{\numberline {8.24}{\ignorespaces widok zakres\IeC {\'o}w generowania certyfikat\IeC {\'o}w}}{78}{figure.8.24}
+\contentsline {figure}{\numberline {8.25}{\ignorespaces Stan listy oczekuj\IeC {\k a}cych certyfikat\IeC {\'o}w po wnioskowaniu o certyfikat}}{78}{figure.8.25}
+\contentsline {figure}{\numberline {8.26}{\ignorespaces Walidacja czasu }}{79}{figure.8.26}
+\contentsline {figure}{\numberline {8.27}{\ignorespaces Zrzut ekranu z trzema pozycjami dost\IeC {\k e}pu do pomieszczenia w danym dniu }}{79}{figure.8.27}
+\contentsline {figure}{\numberline {8.28}{\ignorespaces Zrzut ekranu po usuni\IeC {\k e}ciu jednego elementu z listy godzin}}{79}{figure.8.28}
+\contentsline {figure}{\numberline {8.29}{\ignorespaces Walidacja daty}}{79}{figure.8.29}
+\contentsline {figure}{\numberline {8.30}{\ignorespaces Stan pocz\IeC {\k a}tkowy listy certyfikat\IeC {\'o}w u\IeC {\.z}ytkownika }}{80}{figure.8.30}
+\contentsline {figure}{\numberline {8.31}{\ignorespaces Stan po naci\IeC {\'s}ni\IeC {\k e}ciu pola pobierz z serwera }}{80}{figure.8.31}
+\contentsline {figure}{\numberline {8.32}{\ignorespaces Stan po naci\IeC {\'s}ni\IeC {\k e}ciu pola pobierz z serwera w widoku ''lista twoich certyfikat\IeC {\'o}w''}}{80}{figure.8.32}
+\contentsline {figure}{\numberline {8.33}{\ignorespaces Widok certyfikatu }}{81}{figure.8.33}
+\contentsline {figure}{\numberline {8.34}{\ignorespaces Komunikat wy\IeC {\'s}wietlaj\IeC {\k a}cy si\IeC {\k e} po wykonaniu wnioskowania o certyfikat }}{81}{figure.8.34}
+\contentsline {figure}{\numberline {8.35}{\ignorespaces Stan pocz\IeC {\k a}tkowy widoku''zarz\IeC {\k a}dzanie kontami'' }}{82}{figure.8.35}
+\contentsline {figure}{\numberline {8.36}{\ignorespaces Widok listy po zablokowaniu klucza szyfruj\IeC {\k a}cego administratora }}{82}{figure.8.36}
+\contentsline {figure}{\numberline {8.37}{\ignorespaces Widok zarz\IeC {\k a}dzania kontem u\IeC {\.z}ytkownika po zablokowaniu konta }}{82}{figure.8.37}
+\contentsline {figure}{\numberline {8.38}{\ignorespaces Widok listy po zablokowaniu konta u\IeC {\.z}ytkownika}}{82}{figure.8.38}
+\contentsline {figure}{\numberline {8.39}{\ignorespaces Widok listy po wygenerowaniu nowego klucza szyfruj\IeC {\k a}cego przez administratora}}{82}{figure.8.39}
+\contentsline {figure}{\numberline {8.40}{\ignorespaces Widok ekranu logowania z komunikatem o zablokowanym koncie u\IeC {\.z}ytkownika}}{82}{figure.8.40}
+\contentsline {figure}{\numberline {8.41}{\ignorespaces Walidacja has\IeC {\l }a podczas importu/eksportu pliku szyfruj\IeC {\k a}cego }}{83}{figure.8.41}
+\contentsline {figure}{\numberline {8.42}{\ignorespaces Zrzut ekranu po wyeksportowaniu pliku }}{83}{figure.8.42}
+\contentsline {figure}{\numberline {8.43}{\ignorespaces Zrzut ekranu po zaimportowaniu pliku }}{83}{figure.8.43}

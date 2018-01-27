@@ -86,15 +86,19 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 \newpage
 	\item Symulacja otwarcia wraz z wyświetlaniem historii 
 	Test polegał na sprawdzeniu czy podczas wysyłania certyfikatu dostępowego urządzenie sterujące ''otwiera'' zamek.
-	Wnioski: dla certyfikatu dostępowego który nie miał dostępu w godzinie testowania nie uzyskano reakcji serwomechanizmu. Dla certyfikatu który miał uprawnienia do danej godziny zamek ''otworzył'' się (Rys. \ref{rys:open}). W trakcie  czynnościach została wyświetlona historia dostępu do zamku na stronie internetowej. Podczas zmian dynamicznie odświeżała się strona ukazując aktualne dane z bazy danych. 
-	
+	Wnioski: dla certyfikatu dostępowego, który nie miał dostępu w godzinie testowania nie uzyskano reakcji serwomechanizmu (Rys. \ref{rys:close}. Dla certyfikatu, który miał uprawnienia do danej godziny zamek ''otworzył'' się (Rys. \ref{rys:open}). W trakcie  czynnościach została wyświetlona historia dostępu do zamku na stronie internetowej. Podczas zmian dynamicznie odświeżała się strona ukazując aktualne dane z bazy danych. 
 		\begin{figure}[ht!]
-		
-		\begin{minipage}{0.2\textwidth}
+		\centering
+		\begin{minipage}{0.5\textwidth}
 			\includegraphics[width=\textwidth]{Obrazy/open}
 			\caption{Zdjęcie serwomechanizmu }
 			\label{rys:open}
 		\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{Obrazy/close}
+		\caption{Zdjęcie serwomechanizmu i elektrozamka }
+		\label{rys:close}
+	\end{minipage}
 	\end{figure}
 
 	\item Rejestracja oraz akceptacja rejestracji
@@ -120,103 +124,103 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 			\caption{Logowanie-- komunikat o nieaktywnym koncie}
 			\label{rys:reg3}
 		\end{minipage}
-
+	\hspace{0.05\textwidth}
+\begin{minipage}{0.3\textwidth}
+	\includegraphics[width=0.8\textwidth]{Obrazy/APK_logowanie_blad}
+	\caption{Logowanie użytkownika -- błąd hasła lub loginu}
+	\label{rys:Logodwanie_blad_hasla}
+\end{minipage}
 	\end{figure}
-
+\newpage
 	\item Logowanie użytkownika: \newline
 	Test: Test polega na weryfikacji działania autoryzacji danych logowania oraz przy tym przydział odpowiednich uprawnień (administrator/zwykły użytkownik). Pierwsza próba logowania następuje z podaniem błędnego hasła użytkownika, następnie poprawnego (użytkownik TestowyZwykly) posiada zwykłe uprawnienia, trzecia próba związana będzie z zmianą uprawnień danego użytkownika na uprawnienia administratora.\newline
 	Wnioski: Autoryzacja przedstawiona została na ilustracji Rys. \ref{rys:Logodwanie_blad_hasla}. Na ekranie pojawia się czerwony napis ''Błędny login lub hasło'', oznacza to w tym wypadku, że zostało podane błędne hasło (dany użytkownik istnieje w bazie danych, ale o innym haśle). Wyświetlane informacje nie wskazują na to, które dane zostały podane błędnie, przez co potencjalny włamywacz ma utrudnione zadanie przejęcia konta. Druga próba logowania skutkuje poprawnym zalogowaniem, jako użytkownik standardowy. Pojawia się okno główne, które po rozwinięciu menu wskazuje widok \ref{rys:panel_boczny_pionowo} (brak udostępnionych funkcji administracyjnych widocznych na rysunku \ref{rys:panel_boczny_pionowo2}). Trzecia próba logowania skutkuje pojawieniem się widoku \ref{rys:panel_boczny_pionowo2}, czyli zostały poprawnie przydzielone uprawnienia.
 	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics*[width=5cm]{Obrazy/APK_logowanie_blad}
-		\caption{Logowanie użytkownika -- błąd hasła lub loginu}
-		\label{rys:Logodwanie_blad_hasla}
-	\end{figure}
+	\newpage
 
 	\item Wnioskowanie o certyfikat\newline
 	Test polegał na sprawdzeniu listy z oczekującymi certyfikatami, wykonaniu wnioskowania o certyfikat a następnie ponownym sprawdzeniu listy z oczekującymi certyfikatami.
 	Wnioski: W stanie początkowym (Rys. \ref{rys:wnioskowanie1}) nie było żadnego certyfikatu oczekującego na liście. Podczas wnioskowania o certyfikat w momencie wyłączenia widoku (Rys. \ref{rys:wnioskowanie2}) wyświetlił się  komunikat o treści ''pobrano listę zamków''. W kolejnym kroku podczas naciśnięcia na pole z zamkiem (Ry.s \ref{rys:wnioskowanie3}) wyświetliła się wiadomość o treści "Wniosek został wysłany". Po ponownym sprawdzeniu na liście oczekujących certyfikatów (Rys. \ref{rys:wnioskowanie4}) znajdował się wniosek o certyfikat. Test zakończył się pomyślnie dla tego scenariusza.
-	
-	
 	\begin{figure}[ht!]
-		\begin{minipage}{0.2\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/wnioskowanie1}
+		\centering
+		\begin{minipage}{0.3\textwidth}
+			\includegraphics[width=0.8\textwidth]{Obrazy/wnioskowanie1}
 			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
 			\label{rys:wnioskowanie1}
 		\end{minipage}
-		\begin{minipage}{0.2\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/wnioskowanie2}
+		\begin{minipage}{0.3\textwidth}
+			\includegraphics[width=0.75\textwidth]{Obrazy/wnioskowanie2}
 			\caption{Stan początkowy podczas załadowania widoku wnioskowania o certyfikat}
 			\label{rys:wnioskowanie2}
 		\end{minipage}
 	
-		\begin{minipage}{0.2\textwidth}
-		\includegraphics[width=\textwidth]{Obrazy/wnioskowanie3}
+		\begin{minipage}{0.3\textwidth}
+		\includegraphics[width=0.8\textwidth]{Obrazy/wnioskowanie3}
 		\caption{Wnioskowanie o certyfikat}
 		\label{rys:wnioskowanie3}
 	\end{minipage}
-	\begin{minipage}{0.2\textwidth}
-		\includegraphics[width=\textwidth]{Obrazy/wnioskowanie4}
+\hspace{0.2\textwidth}
+	\begin{minipage}{0.3\textwidth}
+		\includegraphics[width=0.75\textwidth]{Obrazy/wnioskowanie4}
 		\caption{Stan listy oczekujących certyfikatów po wnioskowaniu o certyfikat}
 		\label{rys:wnioskowanie4}
 	\end{minipage}
 	\end{figure}
 
-	\item wygenerowanie nowego klucza dostępowego\newline
+	\item Wygenerowanie nowego klucza dostępowego\newline
 	Test polegał na sprawdzeniu wartości certyfikatu klucza dostępowego, wygenerowaniu nowego i sprawdzenie ponowne wartości certyfikatu dostępowego.
 	Wnioski: Podczas testu w stanie początkowym (Ry.s \ref{rys:generowanieKD1})znajdował się certyfikat dostępowy ważny do 2019.01.26 14:23:55. Po naciśnięciu przycisku ''Wygeneruj''  (Ry.s \ref{rys:generowanieKD2}) certyfikat został zmieniony na nowy z datą ważności o godzinę dłuższą.	
 	\begin{figure}[ht!]
-		\begin{minipage}{0.4\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/generowanieKD1}
+		\centering
+		\begin{minipage}{0.3\textwidth}
+			\includegraphics[width=0.8\textwidth]{Obrazy/generowanieKD1}
 			\caption{Stan początkowy wyświetlonego certyfikatu klucza dostępowego }
 			\label{rys:generowanieKD1}
 		\end{minipage}
-		\begin{minipage}{0.4\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/generowanieKD2}
+	\hspace{0.2\textwidth}
+		\begin{minipage}{0.3\textwidth}
+			\includegraphics[width=0.8\textwidth]{Obrazy/generowanieKD2}
 			\caption{Stan po wygenerowaniu nowego certyfikatu klucza dostępowego}
 			\label{rys:generowanieKD2}
 		\end{minipage}
-		
-	
 	\end{figure}
 	
-	\item  zaakceptowanie certyfikatu dostępowego przez administratora: \newline
+	\item  Zaakceptowanie certyfikatu dostępowego przez administratora: \newline
 	Test polegał na przejściu do widoku odpowiedzialnego za zarządzanie oczekującymi certyfikatami dostępu oraz odpowiednio usunięcie i zaakceptowanie wniosku.
-	\newline Wnioski: w stanie początkowym znajdowały się dwa certyfikaty (Ry.s \ref{rys:generowanieCert1}. Po naciśnięciu przycisku usuń z listy zniknął dany wniosek (Ry.s \ref{rys:generowanieCert2}. Po wyborze akceptuj zostaliśmy przekierowani do widoku generowania certyfikatu. Po ponownym wejściu do listy certyfikatów (Ry.s \ref{rys:generowanieCert3}) lista ta była pusta. Test został pomyślnie przeprowadzony (Ry.s \ref{rys:generowanieCert4}). 
-	
+	\newline Wnioski: w stanie początkowym znajdowały się dwa certyfikaty (Rys \ref{rys:generowanieCert1}. Po naciśnięciu przycisku usuń z listy zniknął dany wniosek (Ry.s \ref{rys:generowanieCert2}. Po wyborze akceptuj zostaliśmy przekierowani do widoku generowania certyfikatu. Po ponownym wejściu do listy certyfikatów (Ry.s \ref{rys:generowanieCert3}) lista ta była pusta. Test został pomyślnie przeprowadzony (Rys. \ref{rys:generowanieCert4}). 
 		\begin{figure}[ht!]
-		
-		\begin{minipage}{0.2\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/oczekujaceCert0}
+		\begin{minipage}{0.3\textwidth}
+			\includegraphics[width=0.8\textwidth]{Obrazy/oczekujaceCert0}
 			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
 			\label{rys:generowanieCert1}
 		\end{minipage}
-		\begin{minipage}{0.2\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/oczekujaceCert1}
+		\begin{minipage}{0.3\textwidth}
+			\includegraphics[width=0.8\textwidth]{Obrazy/oczekujaceCert1}
 			\caption{Stan listy oczekujących certyfikatów po usunięciu z listy elementu}
 			\label{rys:generowanieCert2}
 		\end{minipage}
 		
-		\begin{minipage}{0.2\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/oczekujaceCert2}
+		\begin{minipage}{0.3\textwidth}
+			\includegraphics[width=0.8\textwidth]{Obrazy/oczekujaceCert2}
 			\caption{Stan listy oczekujących certyfikatów po ponownym otworzeniu}
 			\label{rys:generowanieCert3}
 		\end{minipage}
 	
-	\begin{minipage}{0.2\textwidth}
-		\includegraphics[width=\textwidth]{Obrazy/generowanieerror}
+	\begin{minipage}{0.3\textwidth}
+		\includegraphics[width=0.8\textwidth]{Obrazy/generowanieerror}
 		\caption{Stan listy oczekujących certyfikatów po ponownym otworzeniu}
 		\label{rys:generowanieCert4}
 	\end{minipage}
 	
 	\end{figure}
 	
-	
-	
 	\item  Wygenerowanie certyfikatu dostępowego
 	Test polega na przeprowadzeniu procesu generowania certyfikatu z uwzględnieniem wpisywania niepoprawnych danych.
 	Wnioski W początkowym stanie zostały wypełnione dane użytkownika oraz wybrany został login i zamek (Ry.s \ref{rys:generowanie1}), Następnie po naciśnięciu przycisk dodaj zakresy zostało wykonane przejście do widoku  wygenerowania zakresów (Rys. \ref{rys:generowanie2}). W nim wprowadzono  błędny zakres (Rys. \ref{rys:generowanie3}). Została zwrócona walidacja (Rys. \ref{rys:generowanie4}). Następnie został dodany poprawne zakresy (Rys. \ref{rys:generowanie5}). Potem został usunięty jeden zakres (Rys. \ref{rys:generowanie6})   . Po naciśnięciu przycisku ''kontynuuj generowanie certyfikatu'' zostało wykonane przekierowanie  do dalszej części generowania certyfikatu. W widoku tym pozostały wszystkie dane uzupełnione przed przejściem do ''dodania zakresów''. Wprowadzony został błędny zakres dat w wyniku czego została wyświetlona walidacja (Rys. \ref{rys:generowanie7}).Po poprawie danych proces został pozytywnie ukończony w postaci przejścia do widoku panelu administratora.
+	
+	\item   pobranie certyfikatu
+	Test polegał na wyczyszczeniu pamięci telefonu. Sprawdzeniu listy certyfikatów pobraniu samych certyfikatów oraz ponownym sprawdzeniu listy certyfikatów.
+	Wnioski: W stanie początkowym na liście nie były wyświetlane żadne certyfikaty (Rys. \ref{rys:getCert1}). Następnie zostało wybrane pole pobierz z serwera. W tym momencie został wyświetlony komunikat ''pobrano z serwera''(Rys. \ref{rys:getCert2}). Po ponownym przejściu do listy certyfikatów widniała już pozycja na liście (Rys. \ref{rys:getCert3}).
 		\begin{figure}[ht!]
 		
 		\begin{minipage}{0.2\textwidth}
@@ -266,9 +270,7 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 \end{figure}
 	
 	
-	\item   pobranie certyfikatu
-	Test polegał na wyczyszczeniu pamięci telefonu. Sprawdzeniu listy certyfikatów pobraniu samych certyfikatów oraz ponownym sprawdzeniu listy certyfikatów.
-	Wnioski: W stanie początkowym na liście nie były wyświetlane żadne certyfikaty (Rys. \ref{rys:getCert1}). Następnie zostało wybrane pole pobierz z serwera. W tym momencie został wyświetlony komunikat ''pobrano z serwera''(Rys. \ref{rys:getCert2}). Po ponownym przejściu do listy certyfikatów widniała już pozycja na liście (Rys. \ref{rys:getCert3}).
+
 	
 		\begin{figure}[ht!]
 		
@@ -316,7 +318,9 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 			\label{rys:przedluzCert2}
 		\end{minipage}
 	\end{figure}
-	\item  zarządzanie kontami użytkowników
+
+\newpage
+	\item Zarządzanie kontami użytkowników
 		Test polegał na wyświetleniu listy użytkowniku zablokowaniu klucza dostępowego oraz konta.
 		
 		Wnioski: Podczas testu w stanie początkowym wszyscy użytkownicy systemu posiadali aktualny klucz dostępowy oraz nie byli zablokowani (Rys. \ref{rys:zarzadzanieKontem1}). Po zablokowaniu klucza dostępowego  Administratora zmienił się status na liście (Rys. \ref{rys:zarzadzanieKontem2}). Po Zablokowaniu konta użytkownika(Rys. \ref{rys:zarzadzanieKontem4}) również nastąpiła zmiana  status  (Rys. \ref{rys:zarzadzanieKontem5}). Po wygenerowaniu ponownie klucza dostępowego nastąpiła spodziewana zmiana (Rys. \ref{rys:zarzadzanieKontem6}). Próba zalogowania się na koncie zablokowanym nie doszła do skutku. Został wyświetlony komunikat ''Konto zostało zablokowane'' (Rys. \ref{rys:zarzadzanieKontem7}). Test przebiegł pomyślnie		
