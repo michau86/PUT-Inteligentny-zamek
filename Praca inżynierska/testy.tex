@@ -86,6 +86,7 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 \newpage
 	\item M Symulacja otwarcia
 	\item M (strona) historia
+<<<<<<< HEAD
 	\item M logowanie użytkownika
 	Walidacja hasła 
 	zalogowanie, 
@@ -115,6 +116,26 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 
 	\end{figure}
 	
+=======
+	\item Logowanie użytkownika: \newline
+	Test: Test polega na weryfikacji działania autoryzacji danych logowania oraz przy tym przydział odpowiednich uprawnień (administrator/zwykły użytkownik). Pierwsza próba logowania następuje z podaniem błędnego hasła użytkownika, następnie poprawnego (użytkownik TestowyZwykly) posiada zwykłe uprawnienia, trzecia próba związana będzie z zmianą uprawnień danego użytkownika na uprawnienia administratora.\newline
+	Wnioski: Autoryzacja przedstawiona została na ilustracji Rys. \ref{rys:Logodwanie_blad_hasla}. Na ekranie pojawia się czerwony napis ''Błędny login lub hasło'', oznacza to w tym wypadku, że zostało podane błędne hasło (dany użytkownik istnieje w bazie danych, ale o innym haśle). Wyświetlane informacje nie wskazują na to, które dane zostały podane błędnie, przez co potencjalny włamywacz ma utrudnione zadanie przejęcia konta. Druga próba logowania skutkuje poprawnym zalogowaniem, jako użytkownik standardowy. Pojawia się okno główne, które po rozwinięciu menu wskazuje widok \ref{rys:panel_boczny_pionowo} (brak udostępnionych funkcji administracyjnych widocznych na rysunku \ref{rys:panel_boczny_pionowo2}). Trzecia próba logowania skutkuje pojawieniem się widoku \ref{rys:panel_boczny_pionowo2}, czyli zostały poprawnie przydzielone uprawnienia.
+	
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics*[width=5cm]{Obrazy/APK_logowanie_blad}
+		\caption{Logowanie użytkownika -- błąd hasła lub loginu}
+		\label{rys:Logodwanie_blad_hasla}
+	\end{figure}
+	\item M rejestracja
+	wyświetlanie podpowiedzi do hasła
+	walidacja hasła 
+	ukazywanie ukrywanie hasła
+	rejestracja (komunikat +przekierowanie)
+	\item M (admin)zaakceptowanie rejestracji
+	widok rejestracji odrzucenie 
+	akceptowanie wyniki
+>>>>>>> 6856f5a0cc34593bad4ef8b44a069653bf7a79cf
 	\item  wnioskowanie o certyfikat\newline
 	Test polegał na sprawdzeniu listy z oczekującymi certyfikatami, wykonaniu wnioskowania o certyfikat a następnie ponownym sprawdzeniu listy z oczekującymi certyfikatami.
 	
