@@ -84,14 +84,20 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 		\label{rys:Kamera3}
 	\end{figure}
 \newpage
-	\item M Symulacja otwarcia
-	\item M (strona) historia
-<<<<<<< HEAD
-	\item M logowanie użytkownika
-	Walidacja hasła 
-	zalogowanie, 
-	opisanie panelu bocznego
-	\item M rejestracja oraz akceptacja rejestracji
+	\item M Symulacja otwarcia wraz z wyświetlaniem historii 
+	Test polegał na sprawdzeniu czy podczas wysyłania certyfikatu dostępowego urządzenie sterujące ''otwiera'' zamek.
+	Wnioski: dla certyfikatu dostępowego który nie miał dostępu w godzinie testowania nie uzyskano reakcji serwomechanizmu. Dla certyfikatu który miał uprawnienia do danej godziny zamek ''otworzył'' się (Rys. \ref{rys:open}). W trakcie  czynnościach została wyświetlona historia dostępu do zamku na stronie internetowej. Podczas zmian dynamicznie odświeżała się strona ukazując aktualne dane z bazy danych. 
+	
+		\begin{figure}[ht!]
+		
+		\begin{minipage}{0.2\textwidth}
+			\includegraphics[width=\textwidth]{Obrazy/open}
+			\caption{Zdjęcie serwomechanizmu }
+			\label{rys:open}
+		\end{minipage}
+	\end{figure}
+
+	\item  rejestracja oraz akceptacja rejestracji
 	Testowanie polegało na przeprowadzeniu procesu rejestracji wraz z wprowadzaniem błędnych danych oraz sprawdzenie możliwości logowania po rejestracji.
 	Wnioski: W trakcie rejestracji podczas próby z błędnym hasłem wyświetliła się walidacja (Rys. \ref{rys:reg1}). po wpisaniu poprawnego hasła oraz kolejnej próbie zarejestrowania wyświetlił się komunikat o poprawnej rejestracji (Rys. \ref{rys:reg2}) oraz nastąpiło przekierowanie do strony widoku logowania. Przy próbie logowania wyświetlił się komunikat o braku akceptacji konta (Rys. \ref{rys:reg3}). po zaakceptowaniu z konta administratora i ponownej próbie logowania, proces ten został pomyślnie sfinalizowany. Testy przeszły niemalże pozytywnie. Podczas wyświetlenie powiadomienia o nieaktywowanym koncie dodatkowo niepotrzebnie wyświetliła się walidacja hasła.   
 	
@@ -116,7 +122,6 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 
 	\end{figure}
 	
-=======
 	\item Logowanie użytkownika: \newline
 	Test: Test polega na weryfikacji działania autoryzacji danych logowania oraz przy tym przydział odpowiednich uprawnień (administrator/zwykły użytkownik). Pierwsza próba logowania następuje z podaniem błędnego hasła użytkownika, następnie poprawnego (użytkownik TestowyZwykly) posiada zwykłe uprawnienia, trzecia próba związana będzie z zmianą uprawnień danego użytkownika na uprawnienia administratora.\newline
 	Wnioski: Autoryzacja przedstawiona została na ilustracji Rys. \ref{rys:Logodwanie_blad_hasla}. Na ekranie pojawia się czerwony napis ''Błędny login lub hasło'', oznacza to w tym wypadku, że zostało podane błędne hasło (dany użytkownik istnieje w bazie danych, ale o innym haśle). Wyświetlane informacje nie wskazują na to, które dane zostały podane błędnie, przez co potencjalny włamywacz ma utrudnione zadanie przejęcia konta. Druga próba logowania skutkuje poprawnym zalogowaniem, jako użytkownik standardowy. Pojawia się okno główne, które po rozwinięciu menu wskazuje widok \ref{rys:panel_boczny_pionowo} (brak udostępnionych funkcji administracyjnych widocznych na rysunku \ref{rys:panel_boczny_pionowo2}). Trzecia próba logowania skutkuje pojawieniem się widoku \ref{rys:panel_boczny_pionowo2}, czyli zostały poprawnie przydzielone uprawnienia.
@@ -127,15 +132,10 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 		\caption{Logowanie użytkownika -- błąd hasła lub loginu}
 		\label{rys:Logodwanie_blad_hasla}
 	\end{figure}
-	\item M rejestracja
-	wyświetlanie podpowiedzi do hasła
-	walidacja hasła 
-	ukazywanie ukrywanie hasła
-	rejestracja (komunikat +przekierowanie)
-	\item M (admin)zaakceptowanie rejestracji
-	widok rejestracji odrzucenie 
-	akceptowanie wyniki
->>>>>>> 6856f5a0cc34593bad4ef8b44a069653bf7a79cf
+
+
+
+
 	\item  wnioskowanie o certyfikat\newline
 	Test polegał na sprawdzeniu listy z oczekującymi certyfikatami, wykonaniu wnioskowania o certyfikat a następnie ponownym sprawdzeniu listy z oczekującymi certyfikatami.
 	
@@ -228,7 +228,7 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 	\item  Wygenerowanie certyfikatu dostępowego
 	Test polega na przeprowadzeniu procesu generowania certyfikatu z uwzględnieniem wpisywania niepoprawnych danych.
 	
-	Wnioski W początkowym stanie zostały wypełnione dane użytkownika oraz wybrany został login i zamek (Ry.s \ref{rys:generowanie1}), Następnie po naciśnięciu przycisk dodaj zakresy zostało wykonane przejście do widoku  wygenerowania zakresów (Rys. \ref{rys:generowanie2}). W nim wprowadzono  błędny zakres (Rys. \ref{rys:generowanie3}). Została zwrócona walidacja (Rys. \ref{rys:generowanie4}). Następnie zostął dodany poprawne zakresy (Rys. \ref{rys:generowanie5}). Potem został usunięty jeden zakres (Rys. \ref{rys:generowanie6})   . Po naciśnięciu przycisku ''kontynuuj generowanie certyfikatu'' zostało wykonane przekierowanie  do dalszej części generowania certyfikatu. W widoku tym pozostały wszystkie dane uzupełnione przed przejściem do ''dodania zakresów''. Wprowadzony został błędny zakres dat w wyniku czego została wyświetlona walidacja (Rys. \ref{rys:generowanie7}).Po poprawie danych proces został pozytywnie ukończony w postaci przejścia do widoku panelu administratora.
+	Wnioski W początkowym stanie zostały wypełnione dane użytkownika oraz wybrany został login i zamek (Ry.s \ref{rys:generowanie1}), Następnie po naciśnięciu przycisk dodaj zakresy zostało wykonane przejście do widoku  wygenerowania zakresów (Rys. \ref{rys:generowanie2}). W nim wprowadzono  błędny zakres (Rys. \ref{rys:generowanie3}). Została zwrócona walidacja (Rys. \ref{rys:generowanie4}). Następnie został dodany poprawne zakresy (Rys. \ref{rys:generowanie5}). Potem został usunięty jeden zakres (Rys. \ref{rys:generowanie6})   . Po naciśnięciu przycisku ''kontynuuj generowanie certyfikatu'' zostało wykonane przekierowanie  do dalszej części generowania certyfikatu. W widoku tym pozostały wszystkie dane uzupełnione przed przejściem do ''dodania zakresów''. Wprowadzony został błędny zakres dat w wyniku czego została wyświetlona walidacja (Rys. \ref{rys:generowanie7}).Po poprawie danych proces został pozytywnie ukończony w postaci przejścia do widoku panelu administratora.
 	
 	
 	
@@ -316,9 +316,8 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 	\end{figure}
 	
 	
-	\item M uzyskanie dostępu do zamka (aktywacja bluetooth)
-		 jako podpunkt pokazanie braku dostępu do zamka (zmiana daty)
-	\item D przedłużenie certyfikatu dostępowego
+
+	\item  przedłużenie certyfikatu dostępowego
 	Test polegał na naciśnięciu przycisku usuń oraz przedłuż w widoku certyfikatu (Rys. \ref{rys:przedluzCert1}).
 	Wnioski dla konta administratora usuń certyfikat powodowało usunięcie go z listy i przejście do widoku certyfikatów. Przycisk przedłuż powodował przeniesienie do widoku generowania. Dla konta o uprawnieniach  mniejszych od administratora przycisk usuń działał analogicznie jak u administratora natomiast przycisk przedłuż powodował wyświetlenie komunikatu ''wysłano wniosek'' (Rys. \ref{rys:przedluzCert2}).
 	Podczas ponownego sprawdzenia  widoku ''lista oczekujących certyfikatów'' certyfikat uprzednio zawnioskowany  widniał  na liście. Test został pomyślnie zakończony
@@ -344,10 +343,10 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 	\end{figure}
 	
 	
-	\item M blokowanie certyfikatu szyfrującego *admin, user)
-	\item M (admin) historia użycia zamka
-	ukazanie hsitroi zamka
-	\item D zarządzanie kontami użytkowników
+
+	
+	
+	\item  zarządzanie kontami użytkowników
 		Test polegał na wyświetleniu listy użytkowniku zablokowaniu klucza dostępowego oraz konta.
 		
 		Wnioski: Podczas testu w stanie początkowym wszyscy użytkownicy systemu posiadali aktualny klucz dostępowy oraz nie byli zablokowani (Rys. \ref{rys:zarzadzanieKontem1}). Po zablokowaniu klucza dostępowego  Administratora zmienił się status na liście (Rys. \ref{rys:zarzadzanieKontem2}). Po Zablokowaniu konta użytkownika(Rys. \ref{rys:zarzadzanieKontem4}) również nastąpiła zmiana  status  (Rys. \ref{rys:zarzadzanieKontem5}). Po wygenerowaniu ponownie klucza dostępowego nastąpiła spodziewana zmiana (Rys. \ref{rys:zarzadzanieKontem6}). Próba zalogowania się na koncie zablokowanym nie doszła do skutku. Został wyświetlony komunikat ''Konto zostało zablokowane'' (Rys. \ref{rys:zarzadzanieKontem7}). Test przebiegł pomyślnie
@@ -396,7 +395,7 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 			
 		\end{figure}
 		
-	\item  D eksport/import klucza
+	\item eksport/import klucza
 	Test polegał na eksporcie oraz imporcie klucza szyfrującego wraz z próbami niepoprawnego wpisywania hasła.
 	
 	Wnioski: Podczas próby eksportu z błędnie wprowadzonym hasłem została wyświetlona walidacja(Rys. \ref{rys:impExp1}) w postaci komunikatu ''niepoprawne hasło''. Po wprowadzeniu poprawnego hasła oraz eksporcie został wyświetlony komunikat (Rys. \ref{rys:impExp2} ''poprawnie wyeksportowano certyfikat''. Podczas próby importu z błędnie wprowadzonym hasłem został wyświetlony komunikat (Rys. \ref{rys:impExp1} ''niepoprawne hasło''. Po wprowadzeniu poprawnego hasła i ponownej próbie został wyświetlony komunikat (Rys. \ref{rys:impExp3} ''poprawnie zaimportowano certyfikat''. Test przebiegł pomyślnie.
