@@ -159,7 +159,7 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 		\caption{Wnioskowanie o certyfikat}
 		\label{rys:wnioskowanie3}
 	\end{minipage}
-\hspace{0.2\textwidth}
+\hspace{0.01\textwidth}
 	\begin{minipage}{0.3\textwidth}
 		\includegraphics[width=0.75\textwidth]{Obrazy/wnioskowanie4}
 		\caption{Stan listy oczekujących certyfikatów po wnioskowaniu o certyfikat}
@@ -177,7 +177,7 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 			\caption{Stan początkowy wyświetlonego certyfikatu klucza dostępowego }
 			\label{rys:generowanieKD1}
 		\end{minipage}
-	\hspace{0.2\textwidth}
+	\hspace{0.01\textwidth}
 		\begin{minipage}{0.3\textwidth}
 			\includegraphics[width=0.8\textwidth]{Obrazy/generowanieKD2}
 			\caption{Stan po wygenerowaniu nowego certyfikatu klucza dostępowego}
@@ -189,131 +189,131 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 	Test polegał na przejściu do widoku odpowiedzialnego za zarządzanie oczekującymi certyfikatami dostępu oraz odpowiednio usunięcie i zaakceptowanie wniosku.
 	\newline Wnioski: w stanie początkowym znajdowały się dwa certyfikaty (Rys \ref{rys:generowanieCert1}. Po naciśnięciu przycisku usuń z listy zniknął dany wniosek (Ry.s \ref{rys:generowanieCert2}. Po wyborze akceptuj zostaliśmy przekierowani do widoku generowania certyfikatu. Po ponownym wejściu do listy certyfikatów (Ry.s \ref{rys:generowanieCert3}) lista ta była pusta. Test został pomyślnie przeprowadzony (Rys. \ref{rys:generowanieCert4}). 
 		\begin{figure}[ht!]
-		\begin{minipage}{0.3\textwidth}
-			\includegraphics[width=0.8\textwidth]{Obrazy/oczekujaceCert0}
+			\centering
+		\begin{minipage}{0.4\textwidth}
+			\includegraphics[width=0.7\textwidth]{Obrazy/oczekujaceCert0}
 			\caption{Stan początkowy listy oczekujących certyfikatów na zaakceptowanie }
 			\label{rys:generowanieCert1}
 		\end{minipage}
-		\begin{minipage}{0.3\textwidth}
-			\includegraphics[width=0.8\textwidth]{Obrazy/oczekujaceCert1}
+	\hspace{0.01\textwidth}
+		\begin{minipage}{0.4\textwidth}
+			\includegraphics[width=0.7\textwidth]{Obrazy/oczekujaceCert1}
 			\caption{Stan listy oczekujących certyfikatów po usunięciu z listy elementu}
 			\label{rys:generowanieCert2}
 		\end{minipage}
-		
-		\begin{minipage}{0.3\textwidth}
-			\includegraphics[width=0.8\textwidth]{Obrazy/oczekujaceCert2}
+	\end{figure}
+
+\begin{figure}
+	\centering
+		\begin{minipage}{0.4\textwidth}
+			\includegraphics[width=0.7\textwidth]{Obrazy/oczekujaceCert2}
 			\caption{Stan listy oczekujących certyfikatów po ponownym otworzeniu}
 			\label{rys:generowanieCert3}
 		\end{minipage}
-	
-	\begin{minipage}{0.3\textwidth}
-		\includegraphics[width=0.8\textwidth]{Obrazy/generowanieerror}
+	\hspace{0.01\textwidth}
+	\begin{minipage}{0.4\textwidth}
+		\includegraphics[width=0.7\textwidth]{Obrazy/generowanieerror}
 		\caption{Stan listy oczekujących certyfikatów po ponownym otworzeniu}
 		\label{rys:generowanieCert4}
 	\end{minipage}
-	
 	\end{figure}
 	
+	\newpage
 	\item  Wygenerowanie certyfikatu dostępowego
 	Test polega na przeprowadzeniu procesu generowania certyfikatu z uwzględnieniem wpisywania niepoprawnych danych.
 	Wnioski W początkowym stanie zostały wypełnione dane użytkownika oraz wybrany został login i zamek (Ry.s \ref{rys:generowanie1}), Następnie po naciśnięciu przycisk dodaj zakresy zostało wykonane przejście do widoku  wygenerowania zakresów (Rys. \ref{rys:generowanie2}). W nim wprowadzono  błędny zakres (Rys. \ref{rys:generowanie3}). Została zwrócona walidacja (Rys. \ref{rys:generowanie4}). Następnie został dodany poprawne zakresy (Rys. \ref{rys:generowanie5}). Potem został usunięty jeden zakres (Rys. \ref{rys:generowanie6})   . Po naciśnięciu przycisku ''kontynuuj generowanie certyfikatu'' zostało wykonane przekierowanie  do dalszej części generowania certyfikatu. W widoku tym pozostały wszystkie dane uzupełnione przed przejściem do ''dodania zakresów''. Wprowadzony został błędny zakres dat w wyniku czego została wyświetlona walidacja (Rys. \ref{rys:generowanie7}).Po poprawie danych proces został pozytywnie ukończony w postaci przejścia do widoku panelu administratora.
 	
-	\item   pobranie certyfikatu
-	Test polegał na wyczyszczeniu pamięci telefonu. Sprawdzeniu listy certyfikatów pobraniu samych certyfikatów oraz ponownym sprawdzeniu listy certyfikatów.
-	Wnioski: W stanie początkowym na liście nie były wyświetlane żadne certyfikaty (Rys. \ref{rys:getCert1}). Następnie zostało wybrane pole pobierz z serwera. W tym momencie został wyświetlony komunikat ''pobrano z serwera''(Rys. \ref{rys:getCert2}). Po ponownym przejściu do listy certyfikatów widniała już pozycja na liście (Rys. \ref{rys:getCert3}).
-		\begin{figure}[ht!]
-		
+	\begin{figure}[ht!]	
+		\centering
 		\begin{minipage}{0.2\textwidth}
 			\includegraphics[width=\textwidth]{Obrazy/generowanie1}
 			\caption{Stan początkowy generowania certyfikatu }
 			\label{rys:generowanie1}
 		\end{minipage}
-	
-		
+	\hspace{0.02\textwidth}
 		\begin{minipage}{0.2\textwidth}
 			\includegraphics[width=\textwidth]{Obrazy/generowanie3}
 			\caption{widok zakresów generowania certyfikatów}
 			\label{rys:generowanie2}
 		\end{minipage}
+	\hspace{0.02\textwidth}
 		\begin{minipage}{0.2\textwidth}
+			\vspace{0.35cm}
 			\includegraphics[width=\textwidth]{Obrazy/generowanie4}
 			\caption{Stan listy oczekujących certyfikatów po wnioskowaniu o certyfikat}
 			\label{rys:generowanie3}
+		\end{minipage}	
+	\hspace{0.02\textwidth}
+		\begin{minipage}{0.2\textwidth}
+			\vspace{-0.4cm}
+			\includegraphics[width=\textwidth]{Obrazy/generowanieerror}
+			\caption{Walidacja czasu }
+			\label{rys:generowanie4}
 		\end{minipage}
 	\end{figure}
-	\begin{figure}[ht!]	
+
+	\begin{figure}
+		\centering
 		\begin{minipage}{0.2\textwidth}
-		\includegraphics[width=\textwidth]{Obrazy/generowanieerror}
-		\caption{Walidacja czasu }
-		\label{rys:generowanie4}
-	\end{minipage}
-	
+			\vspace{0.4cm}
+			\includegraphics[width=\textwidth]{Obrazy/generowanie5}
+			\caption{Zrzut ekranu z trzema pozycjami dostępu do pomieszczenia w danym dniu }
+			\label{rys:generowanie5}
+		\end{minipage}
+	\hspace{0.05\textwidth}
 		\begin{minipage}{0.2\textwidth}
-		\includegraphics[width=\textwidth]{Obrazy/generowanie5}
-		\caption{Zrzut ekranu z trzema pozycjami dostępu do pomieszczenia w danym dniu }
-		\label{rys:generowanie5}
-	\end{minipage}
+			\includegraphics[width=\textwidth]{Obrazy/generowanie6}
+			\caption{Zrzut ekranu po usunięciu jednego elementu z listy godzin}
+			\label{rys:generowanie6}
+		\end{minipage}
+	\hspace{0.05\textwidth}
+		\begin{minipage}{0.2\textwidth}
+			\vspace{-0.5cm}
+			\includegraphics[width=\textwidth]{Obrazy/generowanie8}
+			\caption{Walidacja daty}
+			\label{rys:generowanie7}
+		\end{minipage}
+	\end{figure}
 	
-
-	\begin{minipage}{0.2\textwidth}
-		\includegraphics[width=\textwidth]{Obrazy/generowanie6}
-		\caption{Zrzut ekranu po usunięciu jednego elementu z listy godzin}
-		\label{rys:generowanie6}
-	\end{minipage}
-	
-	\begin{minipage}{0.2\textwidth}
-		\includegraphics[width=\textwidth]{Obrazy/generowanie8}
-		\caption{Walidacja daty}
-		\label{rys:generowanie7}
-	\end{minipage}
-
-\end{figure}
-	
-	
-
-	
-		\begin{figure}[ht!]
-		
+	\item   pobranie certyfikatu
+	Test polegał na wyczyszczeniu pamięci telefonu. Sprawdzeniu listy certyfikatów pobraniu samych certyfikatów oraz ponownym sprawdzeniu listy certyfikatów.
+	Wnioski: W stanie początkowym na liście nie były wyświetlane żadne certyfikaty (Rys. \ref{rys:getCert1}). Następnie zostało wybrane pole pobierz z serwera. W tym momencie został wyświetlony komunikat ''pobrano z serwera''(Rys. \ref{rys:getCert2}). Po ponownym przejściu do listy certyfikatów widniała już pozycja na liście (Rys. \ref{rys:getCert3}).
+	\begin{figure}[ht!]
+		\centering
 		\begin{minipage}{0.2\textwidth}
 			\includegraphics[width=\textwidth]{Obrazy/getCert1}
 			\caption{Stan początkowy listy certyfikatów użytkownika }
 			\label{rys:getCert1}
 		\end{minipage}
-		
+	\hspace{0.05\textwidth}
 		\begin{minipage}{0.2\textwidth}
 			\includegraphics[width=\textwidth]{Obrazy/getCert2}
 			\caption{Stan po naciśnięciu pola pobierz z serwera }
 			\label{rys:getCert2}
 		\end{minipage}
-		
-		
-		\begin{minipage}{0.2\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/getCert3}
+	\hspace{0.05\textwidth}
+		\begin{minipage}{0.3\textwidth}
+			\includegraphics[width=0.65\textwidth]{Obrazy/getCert3}
 			\caption{Stan po naciśnięciu pola pobierz z serwera w widoku ''lista twoich certyfikatów''}
 			\label{rys:getCert3}
 		\end{minipage}
-		
-	
 	\end{figure}
-	
-	
 
 	\item  przedłużenie certyfikatu dostępowego
 	Test polegał na naciśnięciu przycisku usuń oraz przedłuż w widoku certyfikatu (Rys. \ref{rys:przedluzCert1}).
 	Wnioski dla konta administratora usuń certyfikat powodowało usunięcie go z listy i przejście do widoku certyfikatów. Przycisk przedłuż powodował przeniesienie do widoku generowania. Dla konta o uprawnieniach  mniejszych od administratora przycisk usuń działał analogicznie jak u administratora natomiast przycisk przedłuż powodował wyświetlenie komunikatu ''wysłano wniosek'' (Rys. \ref{rys:przedluzCert2}).
 	Podczas ponownego sprawdzenia  widoku ''lista oczekujących certyfikatów'' certyfikat uprzednio zawnioskowany  widniał  na liście. Test został pomyślnie zakończony.
 	
-	
-		\begin{figure}[ht!]
-		
-		\begin{minipage}{0.2\textwidth}
+	\begin{figure}[ht!]
+		\centering
+		\begin{minipage}{0.25\textwidth}
 			\includegraphics[width=\textwidth]{Obrazy/przedluzCert1}
 			\caption{Widok certyfikatu }
 			\label{rys:przedluzCert1}
 		\end{minipage}
-		
-		\begin{minipage}{0.2\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/przedluzCert2}
+	\hspace{0.02\textwidth}
+		\begin{minipage}{0.5\textwidth}
+			\includegraphics[width=0.5\textwidth]{Obrazy/przedluzCert2}
 			\caption{Komunikat wyświetlający się po wykonaniu wnioskowania o certyfikat }
 			\label{rys:przedluzCert2}
 		\end{minipage}
@@ -326,69 +326,70 @@ Poniżej zostaną opisane poszczególne funkcje systemu wraz z opisem interakcji
 		Wnioski: Podczas testu w stanie początkowym wszyscy użytkownicy systemu posiadali aktualny klucz dostępowy oraz nie byli zablokowani (Rys. \ref{rys:zarzadzanieKontem1}). Po zablokowaniu klucza dostępowego  Administratora zmienił się status na liście (Rys. \ref{rys:zarzadzanieKontem2}). Po Zablokowaniu konta użytkownika(Rys. \ref{rys:zarzadzanieKontem4}) również nastąpiła zmiana  status  (Rys. \ref{rys:zarzadzanieKontem5}). Po wygenerowaniu ponownie klucza dostępowego nastąpiła spodziewana zmiana (Rys. \ref{rys:zarzadzanieKontem6}). Próba zalogowania się na koncie zablokowanym nie doszła do skutku. Został wyświetlony komunikat ''Konto zostało zablokowane'' (Rys. \ref{rys:zarzadzanieKontem7}). Test przebiegł pomyślnie		
 		
 				\begin{figure}[ht!]
-					\begin{minipage}{0.2\textwidth}
+					\centering
+					\begin{minipage}{0.23\textwidth}
 						\includegraphics[width=\textwidth]{Obrazy/konto1}
 						\caption{Stan początkowy widoku''zarządzanie kontami'' }
 						\label{rys:zarzadzanieKontem1}
 					\end{minipage}
-				\begin{minipage}{0.2\textwidth}
+					\hspace{0.01\textwidth}
+				\begin{minipage}{0.23\textwidth}
 					\includegraphics[width=\textwidth]{Obrazy/konto2}
 					\caption{Widok listy po zablokowaniu klucza szyfrującego administratora }
 					\label{rys:zarzadzanieKontem2}
 				\end{minipage}
-			
-		
-			
-			\begin{minipage}{0.2\textwidth}
+				\hspace{0.01\textwidth}
+			\begin{minipage}{0.23\textwidth}
 				\includegraphics[width=\textwidth]{Obrazy/konto4}
 				\caption{Widok zarządzania kontem użytkownika po zablokowaniu konta }
 				\label{rys:zarzadzanieKontem4}
 			\end{minipage}
-			
-			
-			\begin{minipage}{0.2\textwidth}
+			\hspace{0.01\textwidth}
+			\begin{minipage}{0.23\textwidth}
 				\includegraphics[width=\textwidth]{Obrazy/konto5}
 				\caption{Widok listy po zablokowaniu konta użytkownika}
 				\label{rys:zarzadzanieKontem5}
 			\end{minipage}
-		
-		
-			\begin{minipage}{0.2\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/konto6}
+\end{figure}
+\begin{figure}
+	\centering
+			\begin{minipage}{0.3\textwidth}
+			\includegraphics[width=0.7\textwidth]{Obrazy/konto6}
 			\caption{Widok listy po wygenerowaniu nowego klucza szyfrującego przez administratora}
 			\label{rys:zarzadzanieKontem6}
 		\end{minipage}
-	
-		\begin{minipage}{0.2\textwidth}
-		\includegraphics[width=\textwidth]{Obrazy/konto7}
+		\hspace{0.05\textwidth}
+		\begin{minipage}{0.3\textwidth}
+		\includegraphics[width=0.7\textwidth]{Obrazy/konto7}
 		\caption{Widok ekranu logowania z komunikatem o zablokowanym koncie użytkownika}
 		\label{rys:zarzadzanieKontem7}
-	\end{minipage}
-
-			
+	\end{minipage}	
 		\end{figure}
 		
+		\newpage
 	\item eksport/import klucza
 	Test polegał na eksporcie oraz imporcie klucza szyfrującego wraz z próbami niepoprawnego wpisywania hasła.
 	Wnioski: Podczas próby eksportu z błędnie wprowadzonym hasłem została wyświetlona walidacja(Rys. \ref{rys:impExp1}) w postaci komunikatu ''niepoprawne hasło''. Po wprowadzeniu poprawnego hasła oraz eksporcie został wyświetlony komunikat (Rys. \ref{rys:impExp2} ''poprawnie wyeksportowano certyfikat''. Podczas próby importu z błędnie wprowadzonym hasłem został wyświetlony komunikat (Rys. \ref{rys:impExp1} ''niepoprawne hasło''. Po wprowadzeniu poprawnego hasła i ponownej próbie został wyświetlony komunikat (Rys. \ref{rys:impExp3} ''poprawnie zaimportowano certyfikat''. Test przebiegł pomyślnie.
 	
 	\begin{figure}[ht!]
-		\begin{minipage}{0.2\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/impExp1}
-			\caption{Walidacja hasła podczas importu/eksportu pliku szyfrującego }
+		\centering
+		\begin{minipage}{0.3\textwidth}
+			\vspace{0.3cm}
+			\includegraphics[width=0.7\textwidth]{Obrazy/impExp1}
+			\caption{Walidacja hasła podczas importu/eksportu pliku szyfrującego}
 			\label{rys:impExp1}
 		\end{minipage}
-		\begin{minipage}{0.2\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/impExp2}
+	\hspace{0.01\textwidth}
+		\begin{minipage}{0.3\textwidth}
+			\includegraphics[width=0.7\textwidth]{Obrazy/impExp2}
 			\caption{Zrzut ekranu po wyeksportowaniu pliku }
 			\label{rys:impExp2}
 		\end{minipage}
-		
-		\begin{minipage}{0.2\textwidth}
-			\includegraphics[width=\textwidth]{Obrazy/impExp3}
+		\hspace{0.01\textwidth}
+		\begin{minipage}{0.3\textwidth}
+			\includegraphics[width=0.7\textwidth]{Obrazy/impExp3}
 			\caption{Zrzut ekranu po zaimportowaniu pliku }
 			\label{rys:impExp3}
 		\end{minipage}
 	\end{figure}
-	
 \end{enumerate*}

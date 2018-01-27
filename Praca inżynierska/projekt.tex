@@ -96,7 +96,7 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 		\item {ID\_USER} --- klucz obcy do tabeli USERS, oznacza użytkownika który zgłasza prośbę o dostęp do zamka.
 	\end{itemize*}
 	
-	Diagramy bazy danych odpowiednio encji i relacji przedstawione zostały na Rys \ref{diagram:diagram encji} i Rys. \ref{diagram:diagram relacji}.\cite{BD}  
+	Diagramy bazy danych odpowiednio encji i relacji przedstawione zostały na Rys \ref{diagram:diagram encji} i Rys. \ref{diagram:diagram relacji}\cite{BD}.  
 	
 	\begin{figure}[!h]
 		\centering
@@ -126,7 +126,7 @@ Podrozdział zawiera projekt systemu w postaci diagramów UML. W pierwszej kolej
 			--- są to klasy odpowiedzialne za generowanie nawigacji w aplikacji mobilnej. Paczka znajdują się 4 klasy,
 			\item Adapters
 			(Rys. \ref{Diagram klas dla paczki adapters}) 
-			 --- w którym są przechowywane klasy adapter wykorzystywane w systemie do wyświetlania danych,
+			 --- w którym są przechowywane klasy adapter wykorzystywane w systemie do wyświetlania danych.
 		\end{itemize*}
 	
 	\begin{figure}[ht!]
@@ -160,7 +160,7 @@ Oprócz tych wymienionych wyżej są dodatkowo 3 kategorie implementujące wzorz
 --- przechorowujący klasy widoków odpowiedzialne za generowanie widoków w aplikacji. Każda z klas która jest powiązana z odpowiednim widokiem   w nazwie na początku ma nazwę widoku a na końcu ma słowo Activity, 
 \item Presenter
 (rysunek \ref{Diagram klas dla paczki presenters}) 
---- przechowujący klasy presenter odpowiedzialne za interakcje pomiędzy modelami oraz widokami. Każda z klas, która jest powiązana z odpowiednim widokiem w nazwie na początku ma nazwę widoku, a na końcu ma słowo Presenter.\cite{And}
+--- przechowujący klasy presenter odpowiedzialne za interakcje pomiędzy modelami oraz widokami. Każda z klas, która jest powiązana z odpowiednim widokiem w nazwie na początku ma nazwę widoku, a na końcu ma słowo Presenter\cite{And}.
 \end{itemize*}
 \newpage
 \begin{figure}[ht!]
@@ -233,7 +233,7 @@ Urządzenie sterujące jest jedynym fizycznym elementem projektowanym w~pracy dy
 
 Zasilanie elektrozamka realizowane jest z zasilacza 12V będącego w stanie podać dużą wartość prądu. Wysokie wymagania związane są z trudem wprawienia zapadki elektrozamka w ruch, ponieważ w tego typu urządzeniach często znajdują się elektromagnesy niewielkich rozmiarów. Ze względu na wyższe napięcie zasilania zamka niż dostarczane przez Raspberry Pi wymagane jest użycie tranzystora kluczującego prąd z zasilacza. Zdecydowano użyć elementu o oznaczeniu BD137-16 ze względu na swój niewielki koszt oraz wysoki prąd przewodzenia. Układ związany z serwomechanizmem jest zgodny z parametrami mikrokomputera, dlatego zasilanie oraz sterowanie prowadzone jest bezpośrednio z niego.
 
-Piny sterujące urządzeniami w zamku są uzależnione od pełnionych w Raspberry Pi funkcji. Sterowanie elektrozamkiem możliwe jest przy użyciu niemal każdego pinu, ze względu na brak wymagań specjalistycznego sterowania, za to serwomechanizm wymaga zastosowania sygnału PWM, który musi być obsługiwany przez konkretny GPIO (w tym wypadku takim pinem jest GPIO\_18).\cite{RP3}
+Piny sterujące urządzeniami w zamku są uzależnione od pełnionych w Raspberry Pi funkcji. Sterowanie elektrozamkiem możliwe jest przy użyciu niemal każdego pinu, ze względu na brak wymagań specjalistycznego sterowania, za to serwomechanizm wymaga zastosowania sygnału PWM, który musi być obsługiwany przez konkretny GPIO (w tym wypadku takim pinem jest GPIO\_18)\cite{RP3}.
 \newpage
 \begin{figure}[!h]
 	\centering
@@ -248,7 +248,7 @@ Tworząc aplikację serwerową należy zapewnić możliwość komunikację (tak 
 	\subsubsection{Komunikaty HTTPRequest pomiędzy urządzeniem sterującym, a serwerem}
 	Komunikacja pomiędzy urządzeniem sterującym, a serwerem powinna  zapewniać możliwość weryfikacji poprawności certyfikatów dostępowych oraz szyfrujących w celu potwierdzenia tożsamości użytkownika oraz zdecydowaniu, czy dana osoba ma przydzielony dostęp do pomieszczenia o danej porze dnia. Dodatkowo serwer powinien udostępniać API do wpisywania liczby osób w~pomieszczeniu oraz wpisujące do bazy danych, czy dostęp został przyznany, czy nie. Wykaz wymaganych API znajduje się w Tabeli \ref{tab:http_raspberry}.
 	\subsubsection{Komunikaty HTTPRequest pomiędzy aplikacją mobilną, a serwerem}
-	Aplikacja mobilna powinna posiadać podstawowe operacja użytkowników, takie jak logowanie, rejestracja, wylogowanie, dodatkowo powinny zostać udostępnione funkcje związane z zarządzaniem konta jak i certyfikatami dostępowymi. Funkcjonalności powiązane z operacjami na koncie to zmiana hasła, wymiana certyfikatu szyfrującego, możliwość blokowania konta. Funkcja zarządzającymi certyfikatami dostępowymi są generowanie nowych kluczy, blokowanie ich, aktywowanie. API powinno być dedykowane dla dwóch rodzajów użytkowników zwykłego oraz z uprawnieniami administratora. Właściwości funkcji drugiego typu konta powinny dodatkowo udostępniać podgląd w historię używania poszczególnych zamków oraz edycję wszystkich parametrów kont użytkownika zwykłego. Wykaz zaprojektowanego API znajduje się w Tabeli \ref{tab:http_mobilne}.\cite{programowanie_aplikacji_webowych}
+	Aplikacja mobilna powinna posiadać podstawowe operacja użytkowników, takie jak logowanie, rejestracja, wylogowanie, dodatkowo powinny zostać udostępnione funkcje związane z zarządzaniem konta jak i certyfikatami dostępowymi. Funkcjonalności powiązane z operacjami na koncie to zmiana hasła, wymiana certyfikatu szyfrującego, możliwość blokowania konta. Funkcja zarządzającymi certyfikatami dostępowymi są generowanie nowych kluczy, blokowanie ich, aktywowanie. API powinno być dedykowane dla dwóch rodzajów użytkowników zwykłego oraz z uprawnieniami administratora. Właściwości funkcji drugiego typu konta powinny dodatkowo udostępniać podgląd w historię używania poszczególnych zamków oraz edycję wszystkich parametrów kont użytkownika zwykłego. Wykaz zaprojektowanego API znajduje się w Tabeli \ref{tab:http_mobilne}\cite{programowanie_aplikacji_webowych}.
 		\begin{longtable}[!ht]{|m{4cm}|m{4.5cm}|m{3.9cm}|m{2.8cm}|} 
 			\caption{Tabela komunikatów HTTP dla Raspberry Pi}
 			\label{tab:http_raspberry}\\
@@ -614,7 +614,7 @@ Panel zarządzania certyfikatami umożliwi wybór funkcji dodania certyfikatu. K
 		\end{itemize*}
 		
 	\subsubsection{Kolorystyka systemu}
-	Kolorystyka systemu została oparta o styl material design, który jest dostępny dla systemu android od wersji 5.0. Strona jak i aplikacja mobilna są zbliżone kolorystycznie. Różnice w kolorach są spowodowane tylko narzuconą kolorystyką z biblioteki Bootsrap.\cite{And,desingMobile}
+	Kolorystyka systemu została oparta o styl material design, który jest dostępny dla systemu android od wersji 5.0. Strona jak i aplikacja mobilna są zbliżone kolorystycznie. Różnice w kolorach są spowodowane tylko narzuconą kolorystyką z biblioteki Bootsrap\cite{And,desingMobile}.
 
 	\subsection{Bezpieczeństwo systemu}\label{sec:Projekt bezpieczeństwo}
 	Prezentowany system ma na celu zapewniać bezpieczeństwo, zatem sam powinien być bezpieczny. Podstawowym zabezpieczeniem jakie można zastosować jest szyfrowanie połączeń oraz danych przechowywanych na nośnikach. Pierwszy sposób zapewnia wcześniej opisane w punkcie \ref{Komunikacja serwer} zastosowanie bezpiecznego protokoły Https. Druga forma zabezpieczania, mianowicie szyfrowanie odbywać się powinno głównie po stronie aplikacji mobilnej. Zdecydowano o zastosowaniu szyfrowania AES w trybie CBC, jest to wydajny algorytm, a przy tym bezpieczny (nie wykryto jak dotąd żadnych luk). Istotną kwestią bezpieczeństwa jest również weryfikacja tożsamości oraz autoryzacja w systemie.
@@ -650,7 +650,7 @@ Panel zarządzania certyfikatami umożliwi wybór funkcji dodania certyfikatu. K
 		
 		Urzędem rejestrującym jest tylko pośrednio aplikacja serwerowa, właściwym modułem pełniącym tę funkcję jest aplikacja mobilna z uprawnieniami administracyjnymi.
 		\paragraph*{Klient systemu [Damian Filipowicz]}
-		W przypadku systemu \NazwaSys \space klientem systemu będzie Aplikacja mobilna. Będzie ona odpowiedzialna za uwierzytelnianie użytkownika w systemie oraz generowanie klucza szyfrującego, który zostanie po tym fakcie wysyłany do urzędu certyfikującego. Sam klucz szyfrujący będzie tworzony w momencie rejestracji użytkownika oraz na żądanie użytkownika.\cite{PKI}
+		W przypadku systemu \NazwaSys \space klientem systemu będzie Aplikacja mobilna. Będzie ona odpowiedzialna za uwierzytelnianie użytkownika w systemie oraz generowanie klucza szyfrującego, który zostanie po tym fakcie wysyłany do urzędu certyfikującego. Sam klucz szyfrujący będzie tworzony w momencie rejestracji użytkownika oraz na żądanie użytkownika\cite{PKI}.
 		
 	\subsubsection{Poufność}
 	Poufność zostanie zapewniona przy pomocy odpowiedniego przechowywania danych. Aplikacja będzie przechowywać newralgiczne dane systemu takie jak hasło użytkownika, jego token oraz klucz szyfrujący. Kluczową kwestią jest odpowiednie przechowywanie tych danych w telefonie tak, aby nie mógł nikt niepowołany ich uzyskać. Hasło przechowywane będzie w postaci zaszyfrowanego pliku, który będzie szyfrowany kluczem wszytym w oprogramowanie aplikacji za pomocą metody AES w trybie CBC. Token użytkownika oraz klucz szyfrujący będzie przechowywany jako plik w smartphonie i szyfrowany hasłem użytkownika. Dzięki temu nawet jeżeli niepowołana osoba uzyska dostęp do danych plików nie będzie w stanie ich odszyfrować w łatwy sposób.
