@@ -2,6 +2,8 @@ package inteligenty_zamek.app_ik.presenters;
 
 
 import android.content.Intent;
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
@@ -104,14 +106,14 @@ public class LoginPresenter {
                 }
                 else
                 {
-
+                    Log.i("hhh",jObj.getString("status"));
                     if(jObj.getString("status").equals("not activated"))
                     {
                         view.showMessage("konto musi zostac aktywowane przez administratora");
                     }
-                    else if (jObj.getString("status").equals("blocked"))
+                    if (jObj.getString("status").equals("blocked"))
                     {
-                        view.showMessage("konto zostało zablokowane");
+                        view.showMessage("konto zostalo zablokowane");
                     }
                     else
                         {
