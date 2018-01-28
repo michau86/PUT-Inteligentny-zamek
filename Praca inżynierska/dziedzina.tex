@@ -2,31 +2,31 @@
 % 
 \newpage
 \section{Opis dziedziny przedmiotowej pracy}\label{sec:dziedzina}
-Rozdział zawierać będzie objaśnienia używanych zwrotów i pojęć umożliwiających poprawne interpretowanie dalszych tekstów. Następnie opisany zostanie stan wiedzy związanej z tematyką pracy, to znaczy omówienie wybranych rozwiązań systemów tak zwanych inteligentnych zamków. W zestawieniu porównane zostaną również zaproponowane w pracy dyplomowej rozwiązania.
+Rozdział poniższy zawierać będzie objaśnienia używanych zwrotów i pojęć, umożliwiających poprawne interpretowanie dalszych tekstów. Następnie opisany zostanie stan wiedzy, związanej z tematyką pracy, to znaczy omówienie wybranych rozwiązań systemów, tak zwanych inteligentnych zamków. W zestawieniu porównane zostaną również zaproponowane w pracy dyplomowej rozwiązania.
 \subsection{Pojęcia i definicje}\label{sec:Pojęcia i definicje}
-W dokumencie tym posługiwać się będziemy następującymi pojęciami:
+W poniższej pracy inżynierskiej posługiwać się będziemy następującymi pojęciami:
 \begin{itemize*}
 	\item {Klucz dostępowy} --- jest to  klucz określający dostęp do pomieszczenia dla~użytkownika w konkretnych dniach oraz godzinach,
 	\item {Klucz szyfrujący} 
-	--- jest to klucz prywatny \footnote{ klucz prywatny szerzej został opisany w rozdziale \ref{sec:Projekt PKI}} wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używany jest on do szyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
+	--- jest to klucz prywatny \footnote{ klucz prywatny szerzej został opisany w rozdziale \ref{sec:Projekt PKI}}, wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używany jest on do szyfrowania wiadomości, wysyłanej z aplikacji mobilnej do urządzenia sterującego,
 	\item {Klucz deszyfrujący }
-	--- jest to klucz publiczny \footnote{ klucz publiczny szerzej został opisany w rozdziale \ref{sec:Projekt PKI}} wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używane jest on do odszyfrowania wiadomości wysyłanej z aplikacji mobilnej do urządzenia sterującego,
+	--- jest to klucz publiczny \footnote{ klucz publiczny szerzej został opisany w rozdziale \ref{sec:Projekt PKI}}, wygenerowany podczas tworzenia certyfikatu klucza szyfrującego. Używane jest on do odszyfrowania wiadomości, wysyłanej z aplikacji mobilnej do urządzenia sterującego,
 	\item {Inteligentny zamek}
 	--- system obsługujący otwieranie elektrozamka bądź serwomechanizmu,
 	\item {Konto}
-	--- reprezentacja użytkownika w systemie za pomocą takich danych jak login hasło, imię, nazwisko.
+	--- reprezentacja użytkownika w systemie za pomocą takich danych, jak login hasło, imię, nazwisko.
 	\item {Administrator}
-	--- jest to fizyczna osoba posiadającą dla swojego konta uprawnienia administratora co wiąże się z pełnym dostępem do systemu,
+	--- jest to fizyczna osoba, posiadającą dla swojego konta uprawnienia administratora, co wiąże się z pełnym dostępem do systemu,
 	\item {Certyfikat dostępowy}
-	--- jest to certyfikat przechowujący informacje takie jak dane użytkownik, do jakiego pomieszczenia oraz w jakich dniach i~godzinach	ma dostęp
+	--- jest to certyfikat przechowujący informacje, takie jak dane użytkownika, do jakiego pomieszczenia oraz w jakich dniach i~godzinach	ma dostęp
 	\item {Certyfikat klucza szyfrującego}
 	-- jest to certyfikat przechowujący dane o~użytkowniku, ważności klucza szyfrującego oraz sam klucz deszyfrujący.
 \end{itemize*}
 
 \subsection{Stan wiedzy}\label{sec:Stan wiedzy}
-Przed przystąpieniem do projektu wykonaliśmy rozeznanie w około systemów zbliżonych do naszego, który na dany moment były produkowane. I~tak~doszliśmy do wniosku, że wszystkie systemy inteligentnych zamków wykonane przez uznane firmy, takie jak Gerda Lock, czy Danalock zostały wykonane typowo dla użytku domowego a nie tak jak nasz projekt inżynierski, który jest przeznaczony do zarządzania w budynkach o większej złożoności, takich jak biurowce, z różnym stopniem dostępu. Opis wraz z porównaniem poszczególnych systemów znajduje się w tabelach poniżej.
+Przed przystąpieniem do projektu, wykonaliśmy rozeznanie w działu systemów zbliżonych do naszego, które na dany moment funkcjonowały na rynku. Po~tej analizie doszliśmy do wniosku, że wszystkie poznane przez nas systemy inteligentnych zamków wykonane przez uznane firmy, takie jak Gerda Lock, czy Danalock, zostały wykonane typowo dla użytku domowego, a nie tak jak zakłada nasz projekt inżynierski, z  przeznaczeniem do zarządzania w budynkach o większej złożoności, takich jak biurowce, z różnym stopniem dostępu. Opis wraz z porównaniem poszczególnych systemów, znajduje się w tabelach poniżej.
 
-Tabela \ref{tab:porownanie1} zawiera porównanie firm pod względem otwierania zamka. Już w pierwszym wierszu można zauważyć, indywidualne zastosowanie systemów, ponieważ każdy z prezentowanych systemów, poza firmą August, nie~oferuje obsługi wielu urządzeń z poziomu jednej aplikacji. Proponowane przez nas~rozwiązanie umożliwia skalowalność systemu oraz wprowadzanie różnorodności w~zarządzaniu dostępem. Następne funkcjonalności wprowadzają zagrożenia lub zwiększają podatności sytemu na ataki hakerskie. Weźmy pod uwagę otwieranie dowolnego zamka z dowolnego miejsce przez stronę WWW, umożliwia taka funkcjonalność zdalne sterowanie dostępem w całym budynku. Skutkuje to brakiem kontroli, którą nie powoduje znacznych korzyści dla celów biznesowych dla, których nasz system jest dedykowany.
+Tabela \ref{tab:porownanie1} zawiera porównanie firm pod względem otwierania zamka. Już w pierwszym wierszu tabeli można zauważyć indywidualny charakter zastosowania systemów, ponieważ każdy z prezentowanych systemów, poza firmą August, nie~oferuje obsługi wielu urządzeń z poziomu jednej aplikacji. Proponowane przez nas~rozwiązanie umożliwia skalowalność systemu oraz wprowadzanie różnorodności w~zarządzaniu dostępem. Następne funkcjonalności wprowadzają zagrożenia lub zwiększają podatności sytemu na ataki hakerskie. Na przykład otwieranie każdego zamka z dowolnego miejsce przez stronę WWW, daje możliwość zdalnego sterowania dostępem w całym systemie. Skutkuje to brakiem kontroli, czego efektem może być zagrożenie uzyskania dostępu przez nieuprawnione osoby.
 \newpage
 	\begin{longtable}[!ht]{|m{5cm}|m{1.5cm}|m{1.6cm}|m{1.9cm}|m{2cm}|m{2cm}|} 
 		\caption{Tabela porównania otwierania zamków}
@@ -63,7 +63,7 @@ Tabela \ref{tab:porownanie1} zawiera porównanie firm pod względem otwierania z
  	& nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \linebreak zamek & nakładka na \newline zamek lub  \newline elektrozamek  \\	\hline
  \end{longtable}
  
-Tabela \ref{tab:porownanie3} zawiera porównanie firm pod względem dziennika zdarzeń oraz powiadomień. Funkcjonalność naszego systemu zgodna jest z możliwościami firm NUKI oraz Gerda Lock. Pozostali dystrybutorzy nie udostępniają tak szczegółowych informacji na temat działa urządzeń.
+Tabela \ref{tab:porownanie3} zawiera porównanie firm pod względem dziennika zdarzeń oraz powiadomień. Funkcjonalność naszego systemu zgodna jest z możliwościami firm NUKI oraz Gerda Lock. Pozostali dystrybutorzy nie udostępniają tak szczegółowych informacji na temat działania urządzeń.
 \begin{longtable}[!ht]{|m{6cm}|m{1.4cm}|m{1.4cm}|m{1.7cm}|m{2cm}|m{2cm}|} 
 	\caption{Tabela porównania powiadomień działania}
 	\label{tab:porownanie3}\\
@@ -79,9 +79,9 @@ Tabela \ref{tab:porownanie3} zawiera porównanie firm pod względem dziennika zd
 
 \newpage
 \subsection{Stan pracy wykonany w ramach zajęć przedmiotowych} \label{sec:Stan pracy wykonany w ramach zajęć przedmiotowych}
-W ramach zajęć projektowych oraz laboratoryjnych o nazwę Projekt Zespołowy prowadzonych z mgr. Michałem Apolinarskim oraz dr Ewą Idzikowską zostały wykonane następujące fragmenty systemu:
+W ramach zajęć projektowych oraz laboratoryjnych o nazwie \textit{Projekt Zespołowy}, prowadzonych \linebreak z~mgr.~Michałem Apolinarskim oraz dr Ewą Idzikowską, zostały wykonane następujące fragmenty systemu:
 	
-	Aplikacja mobilna została wykonana dla wersji androida minimum 4.4 KitKat w stopniu umożliwiającym podstawowe funkcjonalności, takie jak:
+	Aplikacja mobilna została wykonana dla wersji Androida minimum 4.4 KitKat w stopniu umożliwiającym podstawowe funkcjonalności, takie jak:
 	\begin{itemize*}
 		\item Logowanie użytkowników,
 		\item Rejestracja użytkowników,
@@ -93,9 +93,11 @@ W ramach zajęć projektowych oraz laboratoryjnych o nazwę Projekt Zespołowy p
 		\item Wnioskowanie o certyfikat nowy.
 	\end{itemize*}
 
-		Dodatkowo zostało zaimplementowane gniazdka sieciowe do obsługi połączenia bluetooth oraz w każdym widoku, który korzystał z połączenia z serwerem, były napisane fragmenty kodu. Funkcje te oraz kod zostały napisane bez~uwzględnienia wzorców architektonicznych (wszystko dotyczące danego widoku było zawarte w jednej klasie), posiadały szereg błędów powodujących niestabilne działanie systemu oraz stosowały metody z systemu android. które były określane przez środowisko android studio, jako ''deprecated''\footnote{ Jeśli funkcja jest oznaczona jako deprecated to jest to informacja o tym, żę dana funkcja jest już przestarzała i może w nowszych modelach telefonów (dla nowszych systemów Android) nie działać}. Z racji pisania pod wersje systemu android 4.4 wygląd różni się od tego, który został zaimplementowany w pracy dyplomowej.
+	Dodatkowo zostały zaimplementowane gniazdka sieciowe do obsługi połączenia bluetooth oraz w każdym widoku, który korzystał z połączenia z serwerem, były napisane fragmenty kodu. Funkcje te oraz kod zostały napisane bez~uwzględnienia wzorców architektonicznych (wszystko dotyczące danego widoku było zawarte w~jednej klasie) oraz posiadały szereg błędów powodujących niestabilne działanie systemu, a także stosowały metody z~systemu Android, które były określane przez środowisko Android Studio, jako ''deprecated''\footnote{ Jeśli funkcja jest oznaczona, jako deprecated to jest to informacja o tym, żę dana funkcja jest już przestarzała i może w nowszych modelach telefonów (dla nowszych systemów Android) nie działać}. Z racji pisania aplikacji dedykowanej dla systemu Android 4.4, wygląd różni się od tego, który został zaimplementowany w pracy inżynierskiej.
 
-   Aplikacja serwerowa została wykonana w stopniu umożliwiającym podstawowe funkcje pozwalające na komunikację pomiędzy urządzeniami. Api zapewniało w minimalnym stopniu bezpieczeństwo. Funkcje serwera utworzone w ramach zajęć przedmiotowych:
+   Aplikacja serwerowa została wykonana w stopniu umożliwiającym podstawowe funkcje, pozwalające na~komunikację pomiędzy urządzeniami. Api zapewniało w minimalnym stopniu bezpieczeństwo. 
+   
+   Funkcje serwera utworzone w ramach zajęć przedmiotowych:
    	\begin{itemize*}
    		\item Logowanie użytkowników,
    		\item Rejestracja użytkowników,
@@ -104,15 +106,15 @@ W ramach zajęć projektowych oraz laboratoryjnych o nazwę Projekt Zespołowy p
    		\item Pobieranie list certyfikatów, próśb o certyfikaty oraz rejestracji.
    	\end{itemize*}
    
-	Wszystkie te funkcje zwracały odpowiednio pożądane dane, albo wartość ''Invalid'' co powodowało wyświetlanie komunikatów o błędach użytkownikowi bez rozróżniania powodu, np. awarii serwera (mylnie wysyłany komunikat ''Invalid'' zamiast komunikatu HTTP typu 500).
+	Wszystkie te funkcje zwracały odpowiednio pożądane dane, albo wartość ''Invalid'', co powodowało wyświetlanie komunikatów o błędach użytkownikowi bez rozróżniania powodu, np. awarii serwera (mylnie wysyłany komunikat ''Invalid'' zamiast komunikatu HTTP typu 500).
 	
-	Urządzenie sterujące zamkiem zostało napisane w języku Python i pozwalało na odbieranie danych z aplikacji mobilnej oraz posiadało funkcje odpowiedzialną za otwieranie zamka.
+	Urządzenie sterujące zamkiem zostało napisane w języku Python i pozwalało na odbieranie danych z~aplikacji mobilnej oraz posiadało funkcje odpowiedzialną za otwieranie zamka.
 
-	W ramach przedmiotu ochrona danych prowadzone przez dr inż. Anne Grocholewską-Czuryło zostały zaimplementowane w systemie fragmenty PKI, takie jak:
+	W ramach przedmiotu ochrona danych, prowadzonego przez dr inż. Anne Grocholewską-Czuryło, zostały zaimplementowane w systemie fragmenty PKI, takie jak:
 	   \begin{itemize*}
 	   	\item Format certyfikatu klucza szyfrującego,
 	   	\item Generowanie nowego certyfikatu szyfrującego użytkownika,
 	   	\item Blokowanie użytkowników oraz certyfikatów szyfrujących systemu.
 	   \end{itemize*}
    
-	 Funkcje te zostały napisane zarówno po stronie aplikacji mobilnej jak~i~aplikacji serwerowej. Ponadto po stronie androida został opracowany sposób przechowywania klucza prywatnego w formie zaszyfrowanego pliku hasłem użytkownika.
+	 Funkcje te zostały napisane zarówno po stronie aplikacji mobilnej jak~i~Aplikacji, serwerowej. Ponadto po~stronie androida został opracowany sposób przechowywania klucza prywatnego w formie zaszyfrowanego pliku hasłem użytkownika.

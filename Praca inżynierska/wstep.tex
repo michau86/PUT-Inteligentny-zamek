@@ -1,16 +1,16 @@
 % !TeX spellcheck = pl_PL
 \newpage\section{Wstęp}\label{sec:wstep}
-Wstęp pracy zawiera krótki opis celu i zakresu planowanego projektu. System nosi potoczną nazwę \NazwaSys, która związana jest z dodaniem  pewnych szczególnych funkcjonalności względnie zwykłym przedmiotom, tak~jak~dzieje się to w obecnie modnych urządzeniach\cite{porownanie zamkow} typu Internet of Things. Znaczna część znajdujących się na rynku rozwiązań dedykowana jest użytkownikom indywidualnym, do użytku domowego, opisywany system przeznaczony jest do zastosowań biurowych (dla średnich i dużych przedsiębiorstw).
+Wstęp pracy zawiera krótki opis celu i zakresu planowanego projektu. System nosi potoczną nazwę \linebreak \NazwaSys, która związana jest z dodaniem  pewnych szczególnych funkcjonalności względnie zwykłym przedmiotom, tak~jak~dzieje się to w obecnie modnych urządzeniach\cite{porownanie zamkow} typu Internet of Things. Znaczna część znajdujących się na rynku rozwiązań dedykowana jest użytkownikom indywidualnym, do użytku domowego, natomiast opisywany system przeznaczony jest do zastosowań biurowych (dla średnich i dużych przedsiębiorstw).
 
-Praca wykonywana jest zespołowo i aby oznaczyć w pracy fragmenty za które jest odpowiedzialna dana osoba przybrano następujący format zapisu.W tytułach fragmentów widnieje w nawiasach kwadratowych imię oraz nazwisko osoby wykonującej dany fragment. W przypadku kiedy~nie~ma nawiasów oznacza to że fragment został opracowywany wspólnie.
+Praca wykonywana jest zespołowo i w celu oznaczenia fragmentów, za które jest odpowiedzialna dana osoba, przybrano następujący format zapisu: w  tytułach fragmentów widnieje w nawiasach kwadratowych imię oraz nazwisko osoby wykonującej dany fragment. W przypadku, kiedy~nie~ma nawiasów oznacza to, że fragment został opracowany wspólnie.
 
 Podział prac wygląda następująco:
 \begin{itemize*}
 	\item Maciej Marciniak:
 	\begin{enumerate*}
-		\item Stworzenie oprogramowania do zliczania osób w wchodzących i wychodzących z pomieszczenia,
+		\item Stworzenie oprogramowania do zliczania osób, wchodzących i wychodzących z pomieszczenia,
 		\item Implementacja serwera systemu (bazy danych, systemu kontroli uprawnień),
-		\item Utworzenie wewnętrznego PKI służącego do podpisywania cyfrowo kluczy dostępowych dla sterownika zamka fizycznego od strony urzędów certyfikujących systemu,
+		\item Utworzenie wewnętrznego PKI, służącego do podpisywania cyfrowo kluczy dostępowych dla sterownika zamka fizycznego od strony urzędów certyfikujących systemu,
 		\item Oprogramowanie sterownika zamka fizycznego.
 	\end{enumerate*}
 	\item Damian Filipowicz:
@@ -24,31 +24,32 @@ Podział prac wygląda następująco:
 
 \subsection{Cel i zakres pracy}
 
-Celem pracy jest projekt i implementacja systemu kontroli ruchu oraz zarządzania dostępem do pomieszczeń. System ma na celu zamianę sposobu zarządzania dostępem w budynkach z starszymi modelami opartymi na fizycznych zamkach z kluczami fizycznymi, bądź systemów opartych na kartach magnetycznych na system posługujący się urządzeniami mobilnymi z system operacyjnym android. Głównym celem jest usprawnienie w uzyskiwaniu dostępu do pomieszczeń dzięki wyeliminowaniu konieczności posiadania przy sobie wielu kluczy fizycznych oraz sytuacji, w których użytkownik zapomniałby klucza lub karty magnetycznej i nie mógł uzyskać dostępu. Rozwiązaniem tych problemów jest możliwość przenoszenia kluczy (uprawnień) między telefonami. Dodatkowo nasz projekt ma usprawniać takie elementy, jak zarządzanie dostępem do wielu pomieszczeń oraz kontrolę osób przebywających w danym pomieszczeniu poprzez moduł zliczania osób wchodzących i wychodzących.
+Celem pracy jest projekt i implementacja systemu kontroli ruchu oraz zarządzania dostępem do pomieszczeń. System ma na celu zamianę sposobu zarządzania dostępem w budynkach ze starszymi modelami, opartymi na fizycznych zamkach z kluczami fizycznymi, bądź systemów, opartych na kartach magnetycznych na system posługujący się urządzeniami mobilnymi z systemem operacyjnym Android. Głównym celem jest usprawnienie uzyskiwania  dostępu do pomieszczeń, dzięki wyeliminowaniu konieczności posiadania przy sobie wielu kluczy fizycznych oraz sytuacji, w których użytkownik zapomniałby klucza lub karty magnetycznej i nie mógłby uzyskać dostępu. Rozwiązaniem tych problemów jest możliwość przenoszenia kluczy (uprawnień) między telefonami. 
+Dodatkowo nasz projekt ma usprawniać takie elementy, jak zarządzanie dostępem do wielu pomieszczeń oraz kontrolę osób, przebywających w danym pomieszczeniu poprzez moduł zliczania osób wchodzących i wychodzących.
 	
-W kwestii bezpieczeństwa systemu naszym zadaniem było spełnienie wymagań dotyczących zabezpieczeń systemu poprzez zastosowanie szeregu funkcji kryptograficznych przy procesie uwierzytelniania jak i przy generowaniu kluczy takich jak np. funkcje skrótu, SSH, algorytmów szyfrowania asymetrycznego oraz zastosowania infrastruktury klucza publicznego.
+W kwestii bezpieczeństwa systemu, naszym zadaniem było spełnienie wymagań dotyczących zabezpieczeń systemu, poprzez zastosowanie szeregu funkcji kryptograficznych przy procesie uwierzytelniania, jak i przy generowaniu kluczy takich jak np. funkcje skrótu, SSH, algorytmów szyfrowania asymetrycznego oraz zastosowania infrastruktury klucza publicznego.
 
-Zakres pracy w tworzeniu projektu orz implementacji obejmował takie elementy jak zaprojektowanie oraz stworzenie aplikacji klienckiej oraz serwerowej, oprogramowania do zliczania osób w pomieszczeniu, oprogramowania służącego do nadzorowania fizycznego dostępu do pomieszczenia, jak również strony internetowej jako panel administracyjny administratora systemu.
+Zakres pracy w tworzeniu projektu oraz implementacji, obejmował takie elementy, jak zaprojektowanie oraz stworzenie aplikacji klienckiej i serwerowej, oprogramowania do zliczania osób w pomieszczeniu, oprogramowania służącego do nadzorowania fizycznego dostępu do pomieszczenia, jak również strony internetowej, jako panel administracyjny administratora systemu.
 
 \newpage
 \subsection{Plan pracy}
 % Spis tresci napisany słownie
-Praca w pierwszej kolejności przedstawia dziedzinę projektu, którego dotyczy. Zostaną wyjaśnione używane pojęcia oraz nazwy własne umożliwiające poprawną interpretację opisanych działań. Po objaśnieniu terminologii, nasz projekt zostanie porównany z istniejącymi rozwiązaniami podobnego typu oraz zostaną wyciągnięte wnioski na temat niedopracowania lub możliwości poprawy danych rozwiązań jakie zastosowano projektując opisywany w pracy system. Kończąc prezentację dziedziny zostanie opisany stan wykonania pracy w ramach zajęć przedmiotowych w trakcie trwania studiów inżynierskich.
+Praca w pierwszej kolejności przedstawia dziedzinę projektu, której dotyczy. Poniżej zostaną wyjaśnione używane pojęcia oraz nazwy własne, umożliwiające poprawną interpretację opisanych działań. Po objaśnieniu terminologii, nasz projekt zostanie porównany z istniejącymi rozwiązaniami podobnego typu oraz zostaną sformułowane wnioski na temat niedopracowania lub możliwości poprawy danych rozwiązań, jakie zastosowano projektując opisywany w pracy system. Na zakończenie prezentacji dziedziny, zostanie opisany stan wykonania pracy w ramach zajęć przedmiotowych w trakcie trwania studiów inżynierskich.
 
-Następny rozdział ma na celu przedstawić ogólny zarys systemu. Opisany zostanie schemat połączeń poszczególnych modułów, interfejsów komunikacyjnych oraz wykaz wszystkich elementów składowych, wraz z możliwymi użytkownikami.
+Następny rozdział ma na celu przedstawienie ogólnego zarysu systemu. Opisany zostanie schemat połączeń poszczególnych modułów, interfejsów komunikacyjnych oraz wykaz wszystkich elementów składowych, wraz z możliwymi użytkownikami.
 
-Czwarty rozdział dotyczy przybliżenia użytych technologi raz z uzasadnieniem. Opis wyszczególnia zastosowane narzędzia do implementacji każdego~z~modułów oraz umożliwiające pracę zespołową.
+Czwarty rozdział dotyczy przybliżenia użytych technologii wraz z uzasadnieniem. Opis wyszczególnia zastosowane narzędzia do implementacji każdego~z~modułów oraz narzędzia umożliwiające pracę zespołową.
 
-Główny rozdział pracy dotyczy projektu systemu. W dziale w pierwszej kolejności opisane są diagramy UML (przypadków użycia, sekwencji, bazy danych oraz klas), które są odzwierciedleniem dalszej implementacji. Następnie przybliżony zostaje uproszczony schemat elektryczny urządzenia sterującego zamkiem fizycznym oraz moduł zliczający ludzi. Kolejne punkty opisują szczegółowo komunikacją pomiędzy urządzeniami oraz interfejs graficzny aplikacji mobilnej ~i~strony internetowej. Kończąc tematykę projektu zostaną przybliżone dokładniej zaprojektowane mechanizmy zapewniające bezpieczeństwo ze~względ na podstawowe zasady: poufność, dostępność i integralność.
+Główny rozdział pracy dotyczy projektu systemu. Zostały tutaj w pierwszej kolejności opisane diagramy UML (przypadków użycia, bazy danych oraz klas), które są odzwierciedleniem dalszej implementacji. Następnie przybliżony został uproszczony schemat elektryczny urządzenia sterującego zamkiem fizycznym oraz moduł zliczający ludzi. Kolejne punkty opisują szczegółowo komunikację pomiędzy urządzeniami oraz interfejs graficzny aplikacji mobilnej ~i~strony internetowej. Na zakończenie opisu projektu zostaną przybliżone dokładniej zaprojektowane mechanizmy zapewniające bezpieczeństwo ze~względu na~podstawowe zasady: poufność, dostępność i integralność.
 
-Po omówieniu projektu zostanie opisana implementacja systemu. Dział ten przybliży wybrane, kluczowe fragmenty programów oraz dokładniej określi metodykę powstałego kodu. 
+Po omówieniu projektu, zostanie opisana implementacja systemu. Dział ten przybliży wybrane, kluczowe fragmenty programów oraz dokładniej określi metodykę powstałego kodu. 
 
-Następny dział pracy skupi się na bezpieczeństwie systemu. Omówione zostaną szczegółowo zastosowane metody kryptograficzne oraz zostanie przeprowadzona analiza podatności względem listy najczęstszych podatności OWASP Top 10. Podsumowując dział zostaną zaproponowane możliwości poprawy  bezpieczeństwa systemu, których nie uwzględniono w fazie projektu, ani potem implementacji.
+Następny dział pracy skupi się na bezpieczeństwie systemu. Omówione zostaną szczegółowo zastosowane metody kryptograficzne oraz zostanie przeprowadzona analiza pod względem listy najczęstszych podatności OWASP Top 10. W podsumowaniu działu, zostaną zaproponowane możliwości poprawy  bezpieczeństwa systemu, których nie uwzględniono w fazie projektu, ani potem w implementacji.
 
-Ostatnim rozdziałem przed podsumowaniem jest omówienie przeprowadzanych testów pod względem poprawności działania systemu. Jednocześnie zostanie graficznie przedstawione działanie każdego modułu.
+W końcowej części pracy zawarte jest omówienie przeprowadzanych testów pod względem poprawności działania systemu. Jednocześnie zostanie graficznie przedstawione działanie każdego modułu.
 
 \subsection{Metodyka pracy grupowej}
-Metodyka użyta podczas pracy grupowej była oparta o model kaskadowy składający się z etapów takich jak:
+Metodyka użyta podczas pracy grupowej była oparta o model kaskadowy, składający się z etapów takich jak:
 \begin{itemize*}
 	\item Planowanie systemu,
 	\item Analiza systemu,
@@ -58,4 +59,4 @@ Metodyka użyta podczas pracy grupowej była oparta o model kaskadowy składają
 	\item Wdrożenie i pielęgnacja produktu.
 \end{itemize*}
 
-Uzasadnieniem wyboru takiej metodyki jest fakt używania takich metodyk podczas dużych projektów inżynierskich oraz brak konieczności pokazywania fragmentów działającego systemu podczas tworzenia pracy inżynierskiej. W~początkowej fazie ważniejsze było dla nas określenie specyfiki wymagań systemu oraz zaprojektowanie, aniżeli implementacja systemu\cite{waterfall}.
+Uzasadnieniem wyboru wyżej wymienionej metodyki, jest fakt popularności stosowania podczas realizowania dużych projektów inżynierskich. Kolejnym argumentem przy wyborze tej metodyki jest brak konieczności pokazywania fragmentów, działającego systemu podczas tworzenia pracy inżynierskiej. W~początkowej fazie priorytetem było określenie specyfiki wymagań systemu oraz zaprojektowanie, w dalszej kolejności implementacja systemu\cite{waterfall}.
