@@ -128,7 +128,7 @@ public static boolean biggerThanTime(String time1,String time2){
 	\end{lstlisting}
 
 	\subsubsection{Komunikacja z serwerem}
-	Do komunikacji z serwerem napisana została specjalna klasa dziedzicząca po klasie AsyncTask o nazwie HTTPRequest. Klasa ta wysyła podane w konstruktorze (listing \ref{lst:kod6}) w postaci Hashmap-u dane do serwera i po otrzymaniu informacji zwrotnej z serwera przekazuje tą odpowiedź. Odpowiedź ta jest przekazywana do klasy która utworzyła i wykonała klasę HTTPRequests do funkcji o nazwie podanej w parametrze konstruktora przy pomocy refleksji (listing: \ref{lst:kod7}). Dzięki temu klasa ta jest uniwersalna i Może być stosowana w każdym miejscu programu.
+	Do komunikacji z serwerem napisana została specjalna klasa dziedzicząca po klasie AsyncTask o nazwie HTTPRequest. Klasa ta wysyła podane w konstruktorze (listing \ref{lst:kod6}) w postaci Hashmap-u dane do serwera i~po~otrzymaniu informacji zwrotnej z serwera przekazuje tą odpowiedź. Odpowiedź ta jest przekazywana do~klasy która utworzyła i wykonała klasę HTTPRequests do funkcji o nazwie podanej w parametrze konstruktora przy pomocy refleksji (listing: \ref{lst:kod7}). Dzięki temu klasa ta jest uniwersalna i Może być stosowana w każdym miejscu programu.
 	
 	\begin{lstlisting}[caption={Konstruktor klasy HTTPRequest.}, label={lst:kod6}, language=Java]
 public HTTPRequestAPI(Object presenter,String url,String methodName,HashMap DataToSend) {
@@ -152,7 +152,7 @@ try {
 \end{lstlisting}	
 
 \subsection{Serwer}
-Serwer systemu zarządza wszystkimi informacjami, jest pośrednikiem w przekazywaniu i modyfikacji rekordów z bazy danych MySQL. Emulowaniem środowiska MySQL oraz Apache zajmuje się program XAMP w wersji 3.2.2.
+Serwer systemu zarządza wszystkimi informacjami, jest pośrednikiem w przekazywaniu i modyfikacji rekordów z bazy danych MySQL. Emulowaniem środowiska MySQL oraz Apache zajmuje się program XAMP w~wersji 3.2.2.
  
 	\subsubsection{Aplikacja serwerowa [\StudentA]}\label{sec:apk serw}
 	Aplikacja serwerowa została zaimplementowana przy użyciu języka programowania Python 2.7 oraz frameworku Django. Program  właściwie składa się głównie z 3 plików:
@@ -174,7 +174,7 @@ urlpatterns = [
 ]
 \end{lstlisting}}
 
-	Funkcjonalności systemu w  dużej mierze wymagają stanu zalogowania, weryfikowane jest to przez podanie od użytkownika loginu oraz tokenu sesji logowania. Pola uzyskane w zapytaniu Http w metodzie POST są porównywane z znajdującymi się w bazie danych. Przykładowe API wymagające weryfikacji logowania znajduje się w listingu \ref{lst:serwer weryfikacja}. Użytkownik wysyła pole ''login'' oraz ''token'', następnie wykonane zostaje zapytanie do bazy danych o aktualnie znajdującą się wartość w rekordzie. Jeżeli wartości się pokrywają i nie są puste, może zostać wykonane polecenie, które chciał wywołać użytkownik. Dodatkowo, gdy operacja wymaga uprawnień administratora, weryfikowana jest flaga w bazie danych, czy dany użytkownik jest administratorem (IS\_ADMIN). Wiersze try except służą nie tylko do zamaskowania błędów działania aplikacji, ale również do zabezpieczenia programu przed podatnością SQL Injection (eliminacja tak zwanego feed backu o błędach przy próbie podawania innych wartości niż zaplanowano w systemie).
+	Funkcjonalności systemu w  dużej mierze wymagają stanu zalogowania, weryfikowane jest to przez podanie od użytkownika loginu oraz tokenu sesji logowania. Pola uzyskane w zapytaniu Http w metodzie POST są~porównywane z znajdującymi się w bazie danych. Przykładowe API wymagające weryfikacji logowania znajduje się w listingu \ref{lst:serwer weryfikacja}. Użytkownik wysyła pole ''login'' oraz ''token'', następnie wykonane zostaje zapytanie do bazy danych o aktualnie znajdującą się wartość w rekordzie. Jeżeli wartości się pokrywają i nie są puste, może zostać wykonane polecenie, które chciał wywołać użytkownik. Dodatkowo, gdy operacja wymaga uprawnień administratora, weryfikowana jest flaga w bazie danych, czy dany użytkownik jest administratorem (IS\_ADMIN). Wiersze try except służą nie tylko do zamaskowania błędów działania aplikacji, ale również do zabezpieczenia programu przed podatnością SQL Injection (eliminacja tak zwanego feed backu o błędach przy próbie podawania innych wartości niż zaplanowano w systemie).
 	
 	Operacje logowania i rejestracji są podstawowymi działaniami, dzięki którym będzie można wykonywać bardziej złożone działania oraz niezbędne do poprawnego funkcjonowania PKI. Listing \ref{lst:serwer login} i listing \ref{lst:serwer register} przedstawiają kompletne funkcje logowania i rejestracji użytkowników. 
 
@@ -298,7 +298,8 @@ def website(request):
     return render_to_response('home.html', {"rows": rows})
 		\end{lstlisting}}
 \subsection{Urządzenie sterujące [\StudentA]}
-Program urządzenia sterującego nasłuchuje połączeń bluetooth (jest serwerem) od urządzeń mobilnych. Aplikacje korzystają z bezpiecznego trybu komunikacji, to znaczy posiadają wbudowany klucz, który musi być po obu stronach połączenia identyczny. Fragment kodu odpowiedzialny za utworzenie bezpiecznego serwera znajduje się w Listingu \ref{lst:RPI bt}. Wiersz związany z kluczem aplikacji znajduje się w linii 5, w linii 6 zostaje przypisany do usług serwera. Każde nawiązanie połączenie z urządzeniem sterującym zostaje odnotowane w pliku log, tak samo jest z odebranymi danymi oraz decyzją przyznania dostępu. 
+Program urządzenia sterującego nasłuchuje połączeń bluetooth (jest serwerem) od urządzeń mobilnych. Aplikacje korzystają z bezpiecznego trybu komunikacji, to znaczy posiadają wbudowany klucz, który musi być po obu stronach połączenia identyczny. Fragment kodu odpowiedzialny za utworzenie bezpiecznego serwera znajduje się w Listingu \ref{lst:RPI bt}. Wiersz związany z kluczem aplikacji znajduje się w linii 5, w linii 6 zostaje przypisany do usług serwera. Każde nawiązanie połączenie z urządzeniem sterującym zostaje odnotowane w pliku log, tak samo jest z odebranymi danymi oraz decyzją przyznania dostępu.
+ 
 {\footnotesize 
 \begin{lstlisting}[caption={Tworzenie serwera bluetooth}, label={lst:RPI bt}, language=Python]
 server_sock = BluetoothSocket(RFCOMM)
@@ -346,7 +347,7 @@ def Check_access(certificate):
 \subsection{Moduł zliczania osób [\StudentA]}
 	Moduł zliczania osób zaimplementowany jest w zintegrowaniu z urządzeniem sterującym. Głównym problemem zastosowania biblioteki Open-CV w Raspberry Pi jest brak posiadania przez mikrokomputer karty graficznej. Operacje przetwarzania obrazu wydajnie pracują, gdy wykonywane są z wysokim współczynnikiem współbieżności. Brak procesorów graficznych skutkuje przeniesieniem złożonych obliczeń na zwykłe procesory CPU, skutkując nie wydajną pracą (obraz bardzo często się zacina). 
 	
-	Podczas zwykłej pracy moduł zliczania osób nie posiada interfejsu graficznego, przedstawiony widok na Rys. \ref{rys:Zliczanie osob} został utworzony tylko do celów demonstracyjnych. Zielony prostokąt i czerwona kropka oznaczają wykrytą osobą i jego centralny punkt. Dwie linie, niebieska oznacza granicę, gdzie zliczona osoba ''wychodzi'', a czerwona, kiedy ''wchodzi'', przy czym zawsze jest brana pod uwagę linia druga (ze względu na potrzebę czasu reakcji wykrywania osoby).
+	Podczas zwykłej pracy moduł zliczania osób nie posiada interfejsu graficznego, przedstawiony widok na~Rys.~\ref{rys:Zliczanie osob} został utworzony tylko do celów demonstracyjnych. Zielony prostokąt i czerwona kropka oznaczają wykrytą osobą i jego centralny punkt. Dwie linie, niebieska oznacza granicę, gdzie zliczona osoba ''wychodzi'', a~czerwona, kiedy ''wchodzi'', przy czym zawsze jest brana pod uwagę linia druga (ze względu na potrzebę czasu reakcji wykrywania osoby).
 	
 	\begin{figure}[ht!]
 		\centering
