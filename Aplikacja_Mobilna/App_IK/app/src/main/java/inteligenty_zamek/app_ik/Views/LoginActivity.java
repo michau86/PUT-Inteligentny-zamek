@@ -134,11 +134,11 @@ public class  LoginActivity extends Activity{
     }
 
 
-    public void showMessage(String message)
+    public void showMessage(final String message)
     {
         runOnUiThread(new Runnable() {
             public void run() {
-                final Toast toast =Toast.makeText(context, "wystapil problem podczas polaczenia z serwerem", Toast.LENGTH_LONG);
+                final Toast toast =Toast.makeText(context, message, Toast.LENGTH_LONG);
                 toast.show();
                 new CountDownTimer(GlobalContainer.toastDelay, 1000)
                 {
